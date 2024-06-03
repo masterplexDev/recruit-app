@@ -6,3 +6,4 @@
     <link rel="stylesheet" href="http://localhost/recruit-app/assets/css/layout/user/c76e012c05e1318d.css" crossorigin="anonymous" data-n-g="" />
     <link rel="stylesheet" href="http://localhost/recruit-app/assets/css/layout/user/pretendardvariable-dynamic-subset.min.css" />
     <link rel="stylesheet" href="http://localhost/recruit-app/assets/css/layout/user/layout.css" />
+    <link href="http://localhost/recruit-app/assets/css/resume/common-sv-202405271315.css" rel="stylesheet" type="text/css" />
