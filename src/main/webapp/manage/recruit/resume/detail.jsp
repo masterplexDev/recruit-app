@@ -107,7 +107,7 @@ table{
 										<span>우미연</span>
 									</td>
 									<td rowspan="4">
-										<img src="http://localhost/admin-layout/assets/images/default.png" />
+										<img src="http://localhost/recruit-app/assets/images/default.png" />
 									</td>
 								</tr>
 								<tr>
