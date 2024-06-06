@@ -102,7 +102,7 @@
             </div>
         </div>
         <div class="item">
-            <label for="item3" style="margin-bottom: 20px; display: block;">3. 출근이 자유로운 편인가요?</label><br>
+            <label for="item3" style="margin-bottom: 20px; display: block;">3. 급여는 만족스럽나요?</label><br>
             <div class="options">
                 <input type="radio" id="item3_yes" name="item3" value="yes">
                 <label for="item3_yes">예</label><br>
@@ -113,7 +113,7 @@
             </div>
         </div>
         <div class="item">
-            <label for="item4" style="margin-bottom: 20px; display: block;">4. 직원을 위해 자기개발비를 지원해주나요?</label><br>
+            <label for="item4" style="margin-bottom: 20px; display: block;">4. 직원을 위한 복지 혜택이 충분한가요?</label><br>
             <div class="options">
                 <input type="radio" id="item4_yes" name="item4" value="yes">
                 <label for="item4_yes">예</label><br>

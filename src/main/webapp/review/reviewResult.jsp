@@ -107,31 +107,25 @@
                     <div class="rate_bar_set barfill total">
                         <div class="job_tooltip_box hover block">
                             <div class="rate_bar_group">
-                                <div class="rate_bar_title">복지 및 급여</div>
+                                <div class="rate_bar_title">이직시 나의 커리어에 도움이 될까요?</div>
                                 <div class="rate_bar_unit"><span class="rate_bar_val" style="max-width: 100%;"></span><span class="txt_point">5.0</span></div>
                             </div>
                         </div>
                         <div class="job_tooltip_box hover block">
                             <div class="rate_bar_group">
-                                <div class="rate_bar_title">업무와 삶의 균형</div>
+                                <div class="rate_bar_title">연차를 자유롭게 사용해도 될까요?</div>
                                 <div class="rate_bar_unit"><span class="rate_bar_val" style="max-width: 100%;"></span><span class="txt_point">5.0</span></div>
                             </div>
                         </div>
                         <div class="job_tooltip_box hover block">
                             <div class="rate_bar_group">
-                                <div class="rate_bar_title">사내문화</div>
+                                <div class="rate_bar_title">급여는 만족스럽나요?</div>
                                 <div class="rate_bar_unit"><span class="rate_bar_val" style="max-width: 100%;"></span><span class="txt_point">5.0</span></div>
                             </div>
                         </div>
                         <div class="job_tooltip_box hover block">
                             <div class="rate_bar_group">
-                                <div class="rate_bar_title">승진 기회 및 가능성</div>
-                                <div class="rate_bar_unit"><span class="rate_bar_val" style="max-width: 100%;"></span><span class="txt_point">5.0</span></div>
-                            </div>
-                        </div>
-                        <div class="job_tooltip_box hover block">
-                            <div class="rate_bar_group">
-                                <div class="rate_bar_title">경영진</div>
+                                <div class="rate_bar_title">복지 혜택이 충분한가요?</div>
                                 <div class="rate_bar_unit"><span class="rate_bar_val" style="max-width: 100%;"></span><span class="txt_point">5.0</span></div>
                             </div>
                         </div>
@@ -189,59 +183,6 @@
             </div>
           </div>
 
-          <div class="filter_set ">
-            <div class="btn_filter">
-              <button type="button" class="inner_text">재직상태</button>
-            </div>
-            <div class="filter_options">
-              <div class="jply_panel_sm">
-                <div class="con_body">
-                  <div class="jply_ip_wrap">
-                    <ul class="jply_checkbox_list">
-                          <li>
-                            <label class="jply_checkbox_box">
-                              <input type="checkbox" class="jply_checkbox_item" name="working_status[]" value="1">
-                              <span class="checkbox_icon"></span>
-                              <span class="checkbox_text">현직원</span>
-                            </label>
-                          </li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="con_bottom">
-                  <button type="button" class="jply_btn_sm ty_default filter_reset" data-query="working_status[]">초기화</button>
-                  <button type="button" class="jply_btn_sm ty_light submit_filter">적용</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="filter_set ">
-            <div class="btn_filter">
-              <button type="button" class="inner_text">지역</button>
-            </div>
-            <div class="filter_options">
-              <div class="jply_panel_sm">
-                <div class="con_body">
-                  <div class="jply_ip_wrap">
-                    <ul class="jply_checkbox_list">
-                          <li>
-                            <label class="jply_checkbox_box">
-                              <input type="checkbox" class="jply_checkbox_item" name="city[]" value="1">
-                              <span class="checkbox_icon"></span>
-                              <span class="checkbox_text">서울</span>
-                            </label>
-                          </li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="con_bottom">
-                  <button type="button" class="jply_btn_sm ty_default filter_reset" data-query="city[]">초기화</button>
-                  <button type="button" class="jply_btn_sm ty_light submit_filter">적용</button>
-                </div>
-              </div>
-            </div>
-          </div>
     </form>
   </div>
 </div>
@@ -278,31 +219,25 @@
         <div class="star_score" style="width:80%;">평점</div>
       </div>
     </dd>
-    <dt class="df_tit">승진 기회 및 가능성</dt>
+    <dt class="df_tit">커리어</dt>
     <dd class="blo_box1">
       <div class="us_bl_s">
         <div class="bl_score" style="width:100%;">평점</div>
       </div>
     </dd>
-    <dt class="df_tit">복지 및 급여</dt>
+    <dt class="df_tit">휴가 및 연차</dt>
     <dd class="blo_box1">
       <div class="us_bl_s">
         <div class="bl_score" style="width:60%;">평점</div>
       </div>
     </dd>
-    <dt class="df_tit">업무와 삶의 균형</dt>
+    <dt class="df_tit">연봉</dt>
     <dd class="blo_box1">
       <div class="us_bl_s">
         <div class="bl_score" style="width:60%;">평점</div>
       </div>
     </dd>
-    <dt class="df_tit">사내문화</dt>
-    <dd class="blo_box1">
-      <div class="us_bl_s">
-        <div class="bl_score" style="width:80%;">평점</div>
-      </div>
-    </dd>
-    <dt class="df_tit">경영진</dt>
+    <dt class="df_tit">복지 혜택</dt>
     <dd class="blo_box1">
       <div class="us_bl_s">
         <div class="bl_score" style="width:80%;">평점</div>
@@ -332,14 +267,6 @@
       <span>아직 스타트업이라고 하지만 이제 규모도 꽤 커졌고, 현 직원들과 지원자들이 회사를 바라보는 관점과 기대치도 달라지고 있습니다. 기술과 사업이 확장되는 만큼 체계를 갖추고 조직을 안정화하는 일에도 더 많은<br> 신경을 써주세요.</span>
     </dd>
   </dl>
-    <p class="etc_box">이 기업은 1년 후
-      <strong class="up">성장</strong>하고 있을 것이다.
-    </p>
-
-    <p class="txt recommend etc_box">이 기업을 <em>추천</em> 합니다!</p>
-
-          
-        
       </div>
     </div>
   </div>
