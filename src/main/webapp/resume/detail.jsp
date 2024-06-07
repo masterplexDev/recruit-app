@@ -6,9 +6,9 @@
 <head>
 	<jsp:include page="../assets/layout/user/lib.jsp" />  
 	<!-- golgolz start -->
-    <link href="http://localhost/recruit-app/assets/css/resume/layout-sv-202401301659.css" rel="stylesheet" type="text/css"/>
     <link href="http://localhost/recruit-app/assets/css/resume/write-sv-202405231305.css" rel="stylesheet" type="text/css"/>
     <link href="http://localhost/recruit-app/assets/css/resume/flow.css" />
+    <link href="http://localhost/recruit-app/assets/css/resume/layout-sv-202401301659.css" rel="stylesheet" type="text/css"/>
     <style>
       .autocomplete .list .hover {
         background-color: #f5f5f5;
@@ -46,6 +46,9 @@
 	<!-- golgolz end -->
 	<style text="text/css">
 		<!-- golgolz start -->
+		.resumeContainer{
+			width: 940px;
+		}
 		<!-- golgolz end -->
 	</style>
 	<script text="text/javascript">
