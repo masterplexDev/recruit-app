@@ -7,6 +7,11 @@
 	<jsp:include page="../assets/layout/user/lib.jsp" />  
 	<!-- golgolz start -->
 	
+	<!--bootstrap 시작-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<!--bootstrap끝-->
+
 	<!-- CSS 압축 -->
 
 <title>(주)커리어앤스카우트 2024년 기업정보|기업리뷰 3건,5.0 리뷰평점|잡플래닛</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><script type="text/javascript" async="" id="ChannelIOIn" src="https://cdn.channel.io/plugin/ch-plugin-web.js" charset="UTF-8"></script><script async="" src="https://www.clarity.ms/tag/hk5zmu2nqy?ref=gtm2"></script><script type="text/javascript" async="" src="https://www.clarity.ms/tag/hk5zmu2nqy?ref=gtm"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script async="" src="https://www.clarity.ms/s/0.7.32/clarity.js"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script async="" src="https://www.clarity.ms/tag/hk5zmu2nqy?ref=gtm2"></script><script type="text/javascript" async="" src="https://www.clarity.ms/tag/hk5zmu2nqy?ref=gtm"></script><script async="" defer="" src="https://cdn.megadata.co.kr/dist/prod/enp_tracker_self_hosted.min.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-PXHZWT4CL4&amp;l=dataLayer&amp;cx=c"></script><script type="text/javascript" integrity="sha384-Hwi3orOPog03kU6ymncHN9xVHt75+nMrU/xBXeYITFiGNejLb8MLhf//3o7mJtFf" crossorigin="anonymous" async="" src="https://cdn.amplitude.com/libs/analytics-browser-2.1.2-min.js.gz"></script><script type="text/javascript" async="" src="https://js.appboycdn.com/web-sdk/5.0/braze.no-amd.min.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-DXF9D3FXNT&amp;l=dataLayer&amp;cx=c"></script><script async="" src="https://cdn.branch.io/branch-latest.min.js"></script><script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script><script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-WSH52ZZ"></script><script async="" type="text/javascript" src="https://www.googletagservices.com/tag/js/gpt.js"></script><script async="" src="//www.google-analytics.com/analytics.js"></script><script src="/cdn-cgi/apps/head/9_bWgQBpCj0GLYoNxr-qC3r2GR4.js"></script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"090774e09e","applicationID":"3789469","transactionName":"clcLR0BZDV9cRU5HXEdRAERBGQhdXVIZ","queueTime":0,"applicationTime":146,"agent":""}</script><script type="text/javascript">(window.NREUM||(NREUM={})).init={ajax:{deny_list:["bam.nr-data.net"]}};(window.NREUM||(NREUM={})).loader_config={xpid:"UgIBVlRRGwAHXFhWAQg=",licenseKey:"090774e09e",applicationID:"3789469"};/*! For license information please see nr-loader-spa-1.260.1.min.js.LICENSE.txt */
@@ -256,20 +261,31 @@
   <dl class="tc_list">
     <dt class="merit">장점</dt>
     <dd class="df1">
-      <span>- 글로벌 진출이라는게 이런 것이구나 라는 것을 체감할 수 있음. 많을 때는 회사의 1/3은 해외 어딘가에 나가있는 듯. <br>- 해외영업/기술영업에 뜻이 있고, sales-driven한 환경에서 제품 개발에도 참여하면서 커리어를 발전시키고 싶다면 생각해 볼만한 환경임.<br>- 딜을 성사시킨 것이 실물로 나타나고 눈 앞에서 작동하는 것을 볼 때의 쾌감이 있음.</span>
+      <span>- 글로벌 진출이라는게 이런 것이구나 라는 것을 체감할 수 있음. 많을 때는 회사의 1/3은 해외 어딘가에 나가있는 듯. 
+      <br>- 해외영업/기술영업에 뜻이 있고, sales-driven한 환경에서 제품 개발에도 참여하면서 커리어를 발전시키고 싶다면 생각해 볼만한 환경임.
+      <br>- 딜을 성사시킨 것이 실물로 나타나고 눈 앞에서 작동하는 것을 볼 때의 쾌감이 있음.</span>
     </dd>
     <dt class="disadvantages">단점</dt>
     <dd class="df1">
-      <span>- 유연함의 이면에 감춰진 혼란함. 이젠 규모가 꽤 되는데, 아직도 갖춰지지 않은게 많음.<br>- 다른 리뷰에서 언급된 탁구대, 다트는 이미 예전에 없어졌고, 회사 규모가 커지면서 자연스럽게 한 팀으로 돌아갈 수 있는 시기는 지난 듯. 조금씩이지만 계속 나아지고는 있는 건 다행이랄까.<br>- 분야가 조금 특수하기 때문에 자신이랑 안 맞는다고 느끼기 쉬울 듯. 새로운 분야에서 빠르게 학습하며 새로운 스킬셋을 쌓는다고 생각하고 많이 공부하고 노력해야 함.</span>
+      <span>- 유연함의 이면에 감춰진 혼란함. 이젠 규모가 꽤 되는데, 아직도 갖춰지지 않은게 많음.
+      <br>- 다른 리뷰에서 언급된 탁구대, 다트는 이미 예전에 없어졌고, 회사 규모가 커지면서 자연스럽게 한 팀으로 돌아갈 수 있는 시기는 지난 듯. 조금씩이지만 계속 나아지고는 있는 건 다행이랄까.
+      <br>- 분야가 조금 특수하기 때문에 자신이랑 안 맞는다고 느끼기 쉬울 듯. 새로운 분야에서 빠르게 학습하며 새로운 스킬셋을 쌓는다고 생각하고 많이 공부하고 노력해야 함.</span>
     </dd>
     <dt class="df_tit">경영진에 바라는 점</dt>
     <dd class="df1">
       <span>아직 스타트업이라고 하지만 이제 규모도 꽤 커졌고, 현 직원들과 지원자들이 회사를 바라보는 관점과 기대치도 달라지고 있습니다. 기술과 사업이 확장되는 만큼 체계를 갖추고 조직을 안정화하는 일에도 더 많은<br> 신경을 써주세요.</span>
     </dd>
+    <dd style="display: flex; justify-content: flex-end; margin-top: 20px;">
+    	<button type="button" class="btn btn-dark">추천</button>
+    </dd>     
+          
   </dl>
+  
       </div>
+      
     </div>
   </div>
+  		
 </section>
                         <div class="pg_bottom um_paginnation">
         <article class="paginnation_new">
@@ -290,7 +306,10 @@
     </div>
 	</div>
 </div>
+
+
 </div>
+
 			
 			<!-- golgolz end -->
 			</section>
