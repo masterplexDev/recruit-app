@@ -9,7 +9,8 @@
     	$("#review_menu").addClass("bg-gradient-primary");
 	});
 </script>
-<!-- golgolz start -->
+<!-- golgolz start -->		
+
 <link href="http://localhost//recruit-app/assets/css/pagenation.css" rel="stylesheet" />
 <link href="http://localhost//recruit-app/assets/css/manage/order/admin.css" rel="stylesheet" />
 <link href="http://localhost//recruit-app/assets/css/manage/order/reset.css" rel="stylesheet" />
