@@ -14,6 +14,12 @@
             $("#dashboard_menu").addClass("bg-gradient-primary");
         });
     </script>
+    <style>
+    .chart-container {
+            position: relative;
+            height: 400px; /* Adjust this value as needed */
+        }
+    </style>
 </head>
 <body class="hold-transition sidebar-mini">
     <jsp:include page="../../assets/layout/admin/header.jsp" />
@@ -44,7 +50,7 @@
                                 </div>
                                 <!-- /.d-flex -->
                                 <div class="position-relative mb-4">
-                                    <canvas id="visitors-chart" height="200"></canvas>
+                                    <canvas id="visitors-chart"></canvas>
                                 </div>
                                 <div class="d-flex flex-row justify-content-end">
                                     <span class="mr-2">
@@ -68,7 +74,7 @@
                                 </div>
                                 <!-- /.d-flex -->
                                 <div class="position-relative mb-4">
-                                    <canvas id="companies-chart" height="200"></canvas>
+                                    <canvas id="companies-chart" ></canvas>
                                 </div>
                                 <div class="d-flex flex-row justify-content-end">
                                     <span class="mr-2">
@@ -90,7 +96,7 @@
                             <div class="card-header">
                                 <h3 class="card-title">기술 스택</h3>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body chart-container">
                                 <canvas id="techStack-chart" height="150"></canvas>
                                 <div class="d-flex flex-row justify-content-end">
                                     <ul class="chart-legend clearfix">
@@ -101,6 +107,16 @@
                                         <li><i class="far fa-circle text-orange"></i> 운영체제</li>
                                     </ul>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">등록 리뷰 수</h3>
+                            </div>
+                            <div class="card-body chart-container">
+                                <canvas id="reviewCount-chart" height="150"></canvas>
                             </div>
                         </div>
                     </div>
@@ -235,6 +251,30 @@
                     }
                 }
             });
+            
+            var ctxReviewCount = document.getElementById('reviewCount-chart').getContext('2d');
+            var reviewCountChart = new Chart(ctxReviewCount, {
+                type: 'bar',
+                data: {
+                    labels: ['1월', '2월', '3월', '4월', '5월', '6월'],
+                    datasets: [{
+                        label: '리뷰 수',
+                        data: [12, 19, 3, 5, 2, 3],
+                        backgroundColor: 'rgba(60,141,188,0.5)',
+                        borderColor: 'rgba(60,141,188,1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+            
         });
     </script>
 </body>
