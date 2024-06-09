@@ -12,8 +12,6 @@
 </div>
 <script type="text/template" id="tplLanguageItem">
 	<div class="container container1">
-		<input type="hidden" name="Language.Index" value="c508" /> 
-		<input type="hidden" name="Language[c508].Index_Name" value="c508" />
 		<div class="row">
 			<div class="dropdown dropdown-category is-label">
 				<div class="label hidden" aria-hidden="true">

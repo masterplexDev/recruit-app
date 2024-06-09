@@ -42,9 +42,6 @@
 				</div>
 			</div>
 		</div>
-		<button type="button" class="button buttonAddField">
-			<span>추가</span>
-		</button>
 	</div>
 </div>
 <script type="text/template" id="tplIntroduceItem"></script>

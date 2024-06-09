@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	
 	<jsp:include page="../assets/layout/user/lib.jsp" />  
 	<!-- golgolz start -->
     <link href="http://localhost/recruit-app/assets/css/resume/write-sv-202405231305.css" rel="stylesheet" type="text/css"/>
@@ -64,7 +65,7 @@
 		<main class="JobsFeed_Jobsfeed__DpeV9">  
 			<section class="Section_Section__P1hhc">
 			<!-- golgolz start -->
-				<div class="resumePage">
+							<div class="resumePage">
 					<form action="https://www.jobkorea.co.kr/User/Resume/Save" method="post" id="frm1">
 						<div class="resumeWrapper">
 							<div class="resumeContainer">
@@ -76,13 +77,7 @@
 								<div class="resumeTitle">
 									<input id="UserResume_M_Resume_Title" maxlength="100" name="UserResume.M_Resume_Title" placeholder="기업에게 나에 대해 알려줍시다. 강점, 목표, 관심분야도 좋아요." type="text" value="" />
 								</div>
- 								<jsp:include page="./category/profile.jsp" />
- 								<jsp:include page="./category/skill.jsp" />
- 								<jsp:include page="./category/edu.jsp" />
- 								<jsp:include page="./category/career.jsp" />
- 								<jsp:include page="./category/certification.jsp" />
  								<jsp:include page="./category/language.jsp" />
- 								<jsp:include page="./category/introduction.jsp" />
 							</div>
 						</div>
 					</form>
