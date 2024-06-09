@@ -1918,6 +1918,7 @@
       }
       .MainLayout_MainLayout__sidebar__G8teL {
         display: none;
+        margin-top:15px;
       }
       @media (min-width: 992px) {
         .MainLayout_MainLayout__sidebar__G8teL {
@@ -5832,7 +5833,7 @@ a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, bo
     text-align: center;
 }
 .Body_Body__MlgY5 {
-    width: 74.5283018868%;
+    width: 100%;
     margin:10px;
     margin-top: 30px;
     margin-bottom: 300px;
@@ -5841,6 +5842,7 @@ a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, bo
 
 .Summary_Summary__AO8Mn {
     margin-bottom: 50px;
+    font-size: 20px;
 }
 ol, ul {
     list-style: none;
@@ -5852,14 +5854,7 @@ ol, ul {
     display: inline-block;
     text-align: center;
     color: #86939e;
-    width: 20%;
-    border-right: 1px solid #d1d1d1;
-}
-.Summary_Summary_list__AyGdy {
-    display: inline-block;
-    text-align: center;
-    color: #86939e;
-    width: 20%;
+    width: 24%;
     border-right: 1px solid #d1d1d1;
 }
 .Summary_Summary_list__AyGdy:last-of-type {
@@ -5975,6 +5970,19 @@ dl {
     margin-inline-end: 0px;
     unicode-bidi: isolate;
 }
+@media (min-width: 992px) {
+    .MainLayout_MainLayout__sidebar__G8teL {
+        display: -ms-flexbox;
+        display: flex;
+        padding: 59px 0 0 55px;
+        border-right: 1px solid #f7f7f7;
+    }
+        .Grid_Grid__grid__md__4__YPyIl {
+        -ms-flex-preferred-size: 33.3333333333%;
+        flex-basis: 33.3333333333%;
+        max-width: 33.3333333333%;
+}
+
 <!--golgolz end-->
 </style>
 <script text="text/javascript">
