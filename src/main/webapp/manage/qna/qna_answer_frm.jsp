@@ -1,19 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" info=""%>s
+	pageEncoding="UTF-8" info=""%>
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="../assets/layout/admin/lib.jsp" />
+<jsp:include page="../../assets/layout/admin/lib.jsp" />
 <script type="text/javascript">
 	$(function(){
-    	$("#dashboard_menu").addClass("bg-gradient-primary");
+    	$("#qna_menu").addClass("bg-gradient-primary");
 	});
 </script>
 <!-- golgolz start -->
 <!-- golgolz end -->
 </head>
 <body>
-	<jsp:include page="../assets/layout/admin/header.jsp" />
+	<jsp:include page="../../assets/layout/admin/header.jsp" />
 	<main
 		class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ps ps--active-y">
 		<nav
@@ -28,15 +28,14 @@
 							관리자 기능</a></li>
 						<!-- 하단의 대시보드 텍스트를 본인 기능으로 변경 필요  -->
 						<li class="breadcrumb-item text-sm text-dark active"
-							aria-current="page">대시보드</li>
+							aria-current="page">문의 관리</li>
 					</ol>
-					<h6 class="font-weight-bolder mb-0">대시보드</h6>
+					<h6 class="font-weight-bolder mb-0">문의 관리</h6>
 				</nav>
 			</div>
 		</nav>
 	</main>
 	<!-- golgolz start -->
-	대시보드 페이지 입니다.
 	<!-- golgolz end -->
 </body>
 </html>

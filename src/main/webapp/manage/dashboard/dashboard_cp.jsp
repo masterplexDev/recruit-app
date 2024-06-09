@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" info=""%>s
+	pageEncoding="UTF-8" info=""%>
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="../assets/layout/admin/lib.jsp" />
+<jsp:include page="../../assets/layout/admin/lib.jsp" />
 <script type="text/javascript">
 	$(function(){
     	$("#dashboard_menu").addClass("bg-gradient-primary");
@@ -13,7 +13,7 @@
 <!-- golgolz end -->
 </head>
 <body>
-	<jsp:include page="../assets/layout/admin/header.jsp" />
+	<jsp:include page="../../assets/layout/admin/header.jsp" />
 	<main
 		class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ps ps--active-y">
 		<nav
@@ -36,7 +36,8 @@
 		</nav>
 	</main>
 	<!-- golgolz start -->
-	대시보드 페이지 입니다.
+	
+	
 	<!-- golgolz end -->
 </body>
 </html>

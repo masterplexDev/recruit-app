@@ -510,6 +510,7 @@
 			margin-top: 56px;
 			scrollbar-width: none;
 			-ms-overflow-style: none;
+			font-size: 16px;
 		}
 
 		.css-ng7qrx::-webkit-scrollbar {
