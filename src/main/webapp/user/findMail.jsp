@@ -510,6 +510,7 @@
 			margin-top: 56px;
 			scrollbar-width: none;
 			-ms-overflow-style: none;
+			font-size: 16px;
 		}
 
 		.css-ng7qrx::-webkit-scrollbar {
@@ -1017,7 +1018,7 @@
 							<div class="css-1jxi7lq"></div>
 						</div>
 						<div class="css-ng7qrx">
-							<p data-testid="Typography" color="rgba(55, 56, 60, 0.61)" class="css-d08m0c">계정을 찾기 위해
+							<p data-testid="Typography" color="rgba(55, 56, 60, 0.61)" class="css-d08m0c" >계정을 찾기 위해
 								이름과 전화번호를 입력해주세요.</p>
 							<div class="css-env1z2"><label data-testid="Typography" color="rgba(55, 56, 60, 0.61)"
 									for="mobile" class="css-afh7p0">이름</label></div>
