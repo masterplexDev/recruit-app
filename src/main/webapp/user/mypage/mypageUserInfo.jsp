@@ -6,6 +6,7 @@
 <head>
 	<jsp:include page="../../assets/layout/user/lib.jsp" />  
 	<!-- golgolz start -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<link rel="canonical" href="https://www.wanted.co.kr/my/profile" />
     <link rel="canonical" href="https://www.wanted.co.kr/my/profile" />
     <meta name="next-head-count" content="27" />
@@ -5763,6 +5764,9 @@
 	<script text="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
+			$("#modifyUser").click(function(){
+      		  location.href = "modifyUserInfo.jsp";
+      	  });
 			<!-- golgolz end -->
 		});
 	</script>
@@ -5830,9 +5834,8 @@
                   <div
                     class="Grid_Grid__container__J9CcC Grid_Grid__item__FUkSS Grid_Grid__align-items_center__VEikH ProfileViewHeaderActions_ProfileViewHeaderActions__root__MMI7E"
                   >
-                    <button
-                      class="Button_Button__root__V1ie3 Button_Button__outlined__H2mkd Button_Button__outlinedAssistive__mBcQK Button_Button__outlinedSizeMedium__k3ora ProfileViewHeaderActions_ProfileViewHeaderActions__btnSetting__5erq0"
-                    >
+                  
+                    <button id="modifyUser" class="Button_Button__root__V1ie3 Button_Button__outlined__H2mkd Button_Button__outlinedAssistive__mBcQK Button_Button__outlinedSizeMedium__k3ora ProfileViewHeaderActions_ProfileViewHeaderActions__btnSetting__5erq0">
                       <span class="Button_Button__label__1Kk0v">정보변경</span
                       ><span
                         class="Button_Button__interaction__kkYaa"
