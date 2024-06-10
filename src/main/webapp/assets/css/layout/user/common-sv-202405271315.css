@@ -50,7 +50,7 @@ legend {position:absolute; top:-9999px; left:-9999px;font-size:0px;letter-spacin
 body {font-size:12px;letter-spacing: 0px;color: #666;}
 a,
 a:link,
-a:visited {color: #999;text-decoration: none;}
+a:visited {text-decoration: none;}
 a:hover,
 a:active,
 a:focus {color:#39f;}
