@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<jsp:include page="../assets/layout/user/lib.jsp" />  
 	<!-- golgolz start -->
 	
 	<!-- CSS 압축-->
