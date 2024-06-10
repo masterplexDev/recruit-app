@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="../../../assets/layout/admin/lib.jsp" />
+<jsp:include page="../../assets/layout/admin/lib.jsp" />
 <!-- golgolz start -->
 <link href="./assets/css/manage/goods/general.css" rel="stylesheet" />
 <link href="./assets/css/manage/goods/goods.css" rel="stylesheet" />

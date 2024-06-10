@@ -6,7 +6,7 @@
 <jsp:include page="../../assets/layout/admin/lib.jsp" />
 <script type="text/javascript">
 	$(function() {
-		$("#company_menu").addClass("bg-gradient-primary");
+		$("#company_menu").addClass("bg-gradient-primary");		
 	});
 </script>
 <!-- golgolz start -->
@@ -48,7 +48,7 @@
 						<tbody>
 							<tr>
 								<th scope="row">직무별 검색</th>
-								<td><input type="hidden" name="page" value="1" /> 
+								<td><input type="hidden" name="page" value="1" />
 									<select name="category">
 										<option value="0" ${param.category eq '0' ? " selected" : "" }>기업코드</option>
 										<option value="1" ${param.category eq '1' ? " selected" : "" }>기업명</option>
@@ -142,7 +142,7 @@
 							<td>대기업</td>
 							<td>5,361만</td>
 							<td>
-								<input type="button" value="바로가기" class="btn btn-success btn-small" style="font-weight: bold; margin: 0px auto;" />
+								<input type="button" value="바로가기" class="btn btn-success btn-small" style="font-weight: bold; margin: 0px auto;" onclick="location.href='http://localhost/recruit-app/manage/company/detail.jsp'"/>
 							</td>
 						</tr>
 						<tr class="list0">
@@ -152,7 +152,7 @@
 							<td>중소기업</td>
 							<td>5,361만</td>
 							<td>
-								<input type="button" value="바로가기" class="btn btn-success btn-small" style="font-weight: bold; margin: 0px auto;" />
+								<input type="button" value="바로가기" class="btn btn-success btn-small" style="font-weight: bold; margin: 0px auto;" onclick="location.href='http://localhost/recruit-app/manage/company/detail.jsp'"/>
 							</td>
 						</tr>
 						<tr class="list0">
@@ -162,7 +162,7 @@
 							<td>중견기업</td>
 							<td>5,361만</td>
 							<td>
-								<input type="button" value="바로가기" class="btn btn-success btn-small" style="font-weight: bold; margin: 0px auto;" />
+								<input type="button" value="바로가기" class="btn btn-success btn-small" style="font-weight: bold; margin: 0px auto;" onclick="location.href='http://localhost/recruit-app/manage/company/detail.jsp'"/>
 							</td>
 						</tr>
 					</tbody>

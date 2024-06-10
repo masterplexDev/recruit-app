@@ -19,7 +19,7 @@
 .dropdown .buttonChoose > span .star { position: absolute; top: 0; right: -10px; overflow: visible; padding: 0; height: auto; color: #f33; }
 .dropdown.error { z-index: 100; margin-bottom: 23px; }
 .dropdown.error .buttonChoose { border: 3px solid #ff3232; }
-.dropdown div.list { z-index: 9300; overflow: hidden; position: absolute; left: 0; top: 61px; width: 100%; border: 1px solid #666; -webkit-box-sizing: border-box; box-sizing: border-box; background-color: #fff; }
+.dropdown div.list { z-index: 10000; overflow: hidden; position: absolute; left: 0; top: 61px; width: 100%; border: 1px solid #666; -webkit-box-sizing: border-box; box-sizing: border-box; background-color: #fff; }
 .dropdown div.list.is-scroll { overflow-y: auto; max-height: 228px; }
 .dropdown div.list.visible { display: block; }
 .dropdown div.list.hidden { display: none; }
@@ -1063,10 +1063,30 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 .formWrapLanguage { z-index: 30; }
 .formLanguage { padding: 0; }
 .formLanguage .container { padding: 20px 20px 10px; }
+.formLanguage .container:nth-child(1) { z-index: 190; }
+.formLanguage .container:nth-child(2) { z-index: 180; }
+.formLanguage .container:nth-child(3) { z-index: 170; }
+.formLanguage .container:nth-child(4) { z-index: 160; }
+.formLanguage .container:nth-child(5) { z-index: 150; }
+.formLanguage .container:nth-child(6) { z-index: 140; }
+.formLanguage .container:nth-child(7) { z-index: 130; }
+.formLanguage .container:nth-child(8) { z-index: 120; }
+.formLanguage .container:nth-child(9) { z-index: 110; }
+.formLanguage .container:nth-child(10) { z-index: 100; }
+.formLanguage .container .row:nth-child(1) { z-index: 200; }
+.formLanguage .container .row:nth-child(2) { z-index: 190; }
+.formLanguage .container .row:nth-child(3) { z-index: 180; }
+.formLanguage .container .row:nth-child(4) { z-index: 170; }
+.formLanguage .container .row:nth-child(5) { z-index: 160; }
+.formLanguage .container .row:nth-child(6) { z-index: 150; }
+.formLanguage .container .row:nth-child(7) { z-index: 140; }
+.formLanguage .container .row:nth-child(8) { z-index: 130; }
+.formLanguage .container .row:nth-child(9) { z-index: 120; }
+.formLanguage .container .row:nth-child(10) { z-index: 110; }
 .formLanguage .dropdown-language-name { width: 196px; margin-right: -1px; }
 .formLanguage .dropdown-language-category { width: 200px; margin-right: -1px; }
 .formLanguage .dropdown-grade { width: 250px; }
-.formLanguage .dropdown-category { width: 106px; margin-right: -1px; }
+.formLanguage .dropdown-category { z-index: 500; width: 106px; margin-right: -1px; }
 .formLanguage .dropdown-language-grade { width: 200px; margin-right: 0; }
 .formLanguage .input-grade { width: 115px; margin: 0 0 0 -1px; }
 .formLanguage .input-passdate { width: 115px; margin: 0 0 0 -1px; }

@@ -6,9 +6,9 @@
 <head>
 	<jsp:include page="../assets/layout/user/lib.jsp" />  
 	<!-- golgolz start -->
-    <link href="http://localhost/recruit-app/assets/css/resume/layout-sv-202401301659.css" rel="stylesheet" type="text/css"/>
     <link href="http://localhost/recruit-app/assets/css/resume/write-sv-202405231305.css" rel="stylesheet" type="text/css"/>
     <link href="http://localhost/recruit-app/assets/css/resume/flow.css" />
+    <link href="http://localhost/recruit-app/assets/css/resume/layout-sv-202401301659.css" rel="stylesheet" type="text/css"/>
     <style>
       .autocomplete .list .hover {
         background-color: #f5f5f5;
@@ -37,15 +37,18 @@
         })(window, "_LA");
       };
     </script>
-    <script src="./resume_register_origin_files/json2.js"></script>
-    <script src="./resume_register_origin_files/jquery"></script>
-    <script src="./resume_register_origin_files/itemtemplate.js"></script>
-    <script src="./resume_register_origin_files/JK_Cookie.js"></script>
-    <script src="./resume_register_origin_files/JK5cript"></script>
-    <script src="./resume_register_origin_files/ResumeReg"></script>
+    <script src="http://localhost/recruit-app/assets/js/user/resume/json2.js"></script>
+    <script src="http://localhost/recruit-app/assets/js/user/resume/jquery"></script>
+    <script src="http://localhost/recruit-app/assets/js/user/resume/itemtemplate.js"></script>
+    <script src="http://localhost/recruit-app/assets/js/user/resume/JK_Cookie.js"></script>
+    <script src="http://localhost/recruit-app/assets/js/user/resume/JK5cript"></script>
+    <script src="http://localhost/recruit-app/assets/js/user/resume/ResumeReg"></script>
 	<!-- golgolz end -->
 	<style text="text/css">
 		<!-- golgolz start -->
+		.resumeContainer{
+			width: 940px;
+		}
 		<!-- golgolz end -->
 	</style>
 	<script text="text/javascript">
@@ -65,11 +68,13 @@
 					<form action="https://www.jobkorea.co.kr/User/Resume/Save" method="post" id="frm1">
 						<div class="resumeWrapper">
 							<div class="resumeContainer">
+								<div class="formWrap formWrapCareer" id="formCareer" style="">
+									<div class="header">
+										<h2 class="header">제목</h2>
+									</div>
+								</div>
 								<div class="resumeTitle">
-									<input id="UserResume_M_Resume_Title" maxlength="100"
-										name="UserResume.M_Resume_Title"
-										placeholder="기업에게 나에 대해 알려줍시다. 강점, 목표, 관심분야도 좋아요." type="text"
-										value="" />
+									<input id="UserResume_M_Resume_Title" maxlength="100" name="UserResume.M_Resume_Title" placeholder="기업에게 나에 대해 알려줍시다. 강점, 목표, 관심분야도 좋아요." type="text" value="" />
 								</div>
  								<jsp:include page="./category/profile.jsp" />
  								<jsp:include page="./category/skill.jsp" />
@@ -83,10 +88,9 @@
 					</form>
 				</div>
 				<div id="healthLayer" style="display: none"></div>
-				<script src="./resume_register_origin_files/ResumeReg"></script>
-				<script src="./resume_register_origin_files/countdown.js"></script>
-				<script src="./resume_register_origin_files/LoginWatcher.js"></script>
-				<script type="text/javascript" src="./page_leave.js"></script>
+				<script src="http://localhost/recruit-app/assets/js/user/resume/countdown.js"></script>
+				<script src="http://localhost/recruit-app/assets/js/user/resume/LoginWatcher.js"></script>
+				<script type="text/javascript" src="http://localhost/recruit-app/assets/js/user/resume/page_leave.js"></script>
 				<script type="text/template" id="tplKeywordCheckBox"></script>
 				<script type="text/template" id="tplCommonDirectInput"></script>
 				<script type="text/template" id="tplCommonNotFound"></script>
