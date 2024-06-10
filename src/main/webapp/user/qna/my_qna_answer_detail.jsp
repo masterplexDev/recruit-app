@@ -36,7 +36,7 @@
 			<section class="Section_Section__P1hhc">
 			<!-- golgolz start -->
 			
-<div style="margin:40px auto 0; width:1300px"> 
+	<div style="margin:40px auto 0; width:1300px"> 
 	<div class="loungeContent inquiryContent" id="form">
 	<div class="topHdWrap">
 		<h2 class="lug_hd_2">문의&#183;신고</h2>
@@ -70,9 +70,7 @@
 	</div>
 	</section>
 	</div>
-	</section>
-</div>
-</div>
+	</div>
 			
 			<!-- golgolz end -->
 			</section>

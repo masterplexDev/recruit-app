@@ -40,14 +40,14 @@
 	<section class="content helpSecCont">
 	<div class="loungeContent inquiryContent">
 	<div class="topHdWrap">
-		<h2 class="lug_hd_2">문의&#183;신고</h2>
+		<h2 class="lug_hd_2">문의</h2>
 	</div>
 
 	<!--// tap menu -->
 	<div class="mtcTplTab">
 		<ul class="tabItems">
-			<li class=""><a href="qna_write_frm.jsp">문의·신고</a></li>
-			<li class="on"><a href="my_qna_list_frm.jsp">문의·신고 내역</a></li>
+			<li class=""><a href="qna_write_frm.jsp">문의</a></li>
+			<li class="on"><a href="my_qna_list_frm.jsp">문의 내역</a></li>
 		</ul>
 	</div>
 	<!-- tap menu //-->
@@ -76,7 +76,7 @@
 				<tbody>
 					<tr>
 					<td>0001</td>
-					<td class="alLeft"><span class="tit"><a href="qna_answer_detail.jsp">기업 리뷰는 어떻게 확인하는 지 궁금합니다.</a></span></td>
+					<td class="alLeft"><span class="tit"><a href="my_qna_answer_detail.jsp">기업 리뷰는 어떻게 확인하는 지 궁금합니다.</a></span></td>
 					<td>2024.05.24</td>
 					<td class="">답변완료</td>
 					</tr>
@@ -94,8 +94,10 @@
 	</div>
 	</div>
 	</div>
+	</div>
 	<!-- List 끝 //-->
 	</div>
+			</section>
 </div>
 			
 			<!-- golgolz end -->
