@@ -192,15 +192,11 @@
 						</tr>
 					</tbody>
 				</table>
-
-				
-
 				<!-- 		<div class="listBtmArea">
                 <div class="btnListExDn">
                     <a href="notice_list.jsp" class="btnMtcTpl">목록</a>
                 </div> -->
-			
-			<input type="button" value="작성" class="btn btn-info btn-sm" style="margin-top:20px; float:right">
+			<input type="button" value="작성" style="margin-top:20px; float:right; width:80px" onclick="location.href='http://localhost/recruit-app/manage/notice/notices_write.jsp'"/>
 
 				<div class="listBtmArea">
 					<div class="tplPagination">

@@ -115,7 +115,7 @@
                 <div class="container">
                     <div class="listHeader">
 
-                        <div class="total">총 <em>572,139</em>건<span class="subtitle">(전체 평균연봉)</span></div>
+                        <div class="total">총 <em>7</em>건<span class="subtitle">(전체 평균연봉)</span></div>
                         <!-- <div class="sort">
                             <input type="hidden" name="haveAGI" id="hidHaveAGI" value="0" />
                             <button type="button" class="button buttonViewOnlyCompany " id="btnHaveAGI">
@@ -150,7 +150,6 @@
                                         </div>
                                     <div class="headers">
                                         <div class="text">삼성전자㈜</div>
-                                            <button type="button" class="button buttonFavorites" onclick="jk.biz.core.layerlogin.loginCheckAndGo(null, this, [], '/Salary/Index#listCompany', 1);return false;" data-mem-sys="">좋아요</button>
                                                                             </div>
                                     <div class="summary">
                                                                                     <div class="item">매출액 170조 3천억원</div>
@@ -162,27 +161,6 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="/Company/1360583/Salary?C_IDX=7" target="_blank">
-                                        <div class="thumbnail">
-                                            <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2016/13/2x9an00bXu_cGpzromp2d3g26u0hnVfRd_akkj2qnu.jpg?v=202406041618&amp;hash=r&amp;serviceCode=CL" onerror="companylogoOnError('/salary/logourl?ucono=1360583' , this)">
-                                            <div class="inner">현대자동차㈜</div>
-                                        </div>
-                                    <div class="headers">
-                                        <div class="text">현대자동차㈜</div>
-                                            <button type="button" class="button buttonFavorites" onclick="jk.biz.core.layerlogin.loginCheckAndGo(null, this, [], '/Salary/Index#listCompany', 1);return false;" data-mem-sys="">좋아요</button>
-                                                                                    <div class="badge">채용중</div>
-                                    </div>
-                                    <div class="summary">
-                                            <div class="item">자동차&#183;조선&#183;철강&#183;항공</div>
-                                                                                    <div class="item">매출액 78조 3백억원</div>
-                                                                                    <div class="item">사원수 73,500명</div>
-                                    </div>
-                                    <div class="salary">
-                                        <div class="inner"><strong>11,742</strong>만원</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
                                 <a href="/Company/1517115/Salary?C_IDX=2167" target="_blank">
                                         <div class="thumbnail">
                                             <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2023/6/23/JK_CO_kXmqMBL23062314335619.png?v=202406041618" onerror="companylogoOnError('/salary/logourl?ucono=1517115' , this)">
@@ -190,8 +168,6 @@
                                         </div>
                                     <div class="headers">
                                         <div class="text">잡코리아(유)</div>
-                                            <button type="button" class="button buttonFavorites" onclick="jk.biz.core.layerlogin.loginCheckAndGo(null, this, [], '/Salary/Index#listCompany', 1);return false;" data-mem-sys="">좋아요</button>
-                                                                                    <div class="badge">채용중</div>
                                     </div>
                                     <div class="summary">
                                             <div class="item">포털&#183;컨텐츠&#183;커뮤니티</div>
@@ -203,26 +179,6 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="/Company/1508733/Salary?C_IDX=354" target="_blank">
-                                        <div class="thumbnail">
-                                            <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2022/1/06/JK_CO_YMc0NQg22010611014030.jpg?v=202406041618" onerror="companylogoOnError('/salary/logourl?ucono=1508733' , this)">
-                                            <div class="inner">하이트진로㈜</div>
-                                        </div>
-                                    <div class="headers">
-                                        <div class="text">하이트진로㈜</div>
-                                            <button type="button" class="button buttonFavorites" onclick="jk.biz.core.layerlogin.loginCheckAndGo(null, this, [], '/Salary/Index#listCompany', 1);return false;" data-mem-sys="">좋아요</button>
-                                                                            </div>
-                                    <div class="summary">
-                                            <div class="item">식품가공</div>
-                                                                                    <div class="item">매출액 2조 2,467억원</div>
-                                                                                    <div class="item">사원수 3,013명</div>
-                                    </div>
-                                    <div class="salary">
-                                        <div class="inner"><strong>11,250</strong>만원</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
                                 <a href="/Company/1532033/Salary?C_IDX=6021" target="_blank">
                                         <div class="thumbnail">
                                             <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2016/10/2w3bs008Rw_eXiu3zl3d24w0esYbUq_vx2sw.gif?v=202406041618&amp;hash=r&amp;serviceCode=CL" onerror="companylogoOnError('/salary/logourl?ucono=1532033' , this)">
@@ -230,8 +186,6 @@
                                         </div>
                                     <div class="headers">
                                         <div class="text">쿠팡</div>
-                                            <button type="button" class="button buttonFavorites" onclick="jk.biz.core.layerlogin.loginCheckAndGo(null, this, [], '/Salary/Index#listCompany', 1);return false;" data-mem-sys="">좋아요</button>
-                                                                                    <div class="badge">채용중</div>
                                     </div>
                                     <div class="summary">
                                             <div class="item">쇼핑몰&#183;오픈마켓&#183;소셜커머스</div>
@@ -244,26 +198,6 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="/Company/1710438/Salary?C_IDX=1258" target="_blank">
-                                        <div class="thumbnail">
-                                            <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2021/10/21/2q1jz007Pq_qWla2i3a2oq0dzMjSz_uqzq.jpg?v=202406041618&amp;hash=r&amp;serviceCode=CL" onerror="companylogoOnError('/salary/logourl?ucono=1710438' , this)">
-                                            <div class="inner">㈜하나투어</div>
-                                        </div>
-                                    <div class="headers">
-                                        <div class="text">㈜하나투어</div>
-                                            <button type="button" class="button buttonFavorites" onclick="jk.biz.core.layerlogin.loginCheckAndGo(null, this, [], '/Salary/Index#listCompany', 1);return false;" data-mem-sys="">좋아요</button>
-                                                                                    <div class="badge">채용중</div>
-                                    </div>
-                                    <div class="summary">
-                                            <div class="item">호텔&#183;여행&#183;항공</div>
-                                                                                                                            <div class="item">사원수 1,297명</div>
-                                    </div>
-                                    <div class="salary">
-                                        <div class="inner"><strong>4,542</strong>만원</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
                                 <a href="/Company/1385349/Salary?C_IDX=8" target="_blank">
                                         <div class="thumbnail">
                                             <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2017/6/2130s008R-_4X9u1963523-0esY8U6_5-2s-.jpg?v=202406041618&amp;hash=r&amp;serviceCode=CL" onerror="companylogoOnError('/salary/logourl?ucono=1385349' , this)">
@@ -271,8 +205,6 @@
                                         </div>
                                     <div class="headers">
                                         <div class="text">엘지전자㈜</div>
-                                            <button type="button" class="button buttonFavorites" onclick="jk.biz.core.layerlogin.loginCheckAndGo(null, this, [], '/Salary/Index#listCompany', 1);return false;" data-mem-sys="">좋아요</button>
-                                                                                    <div class="badge">채용중</div>
                                     </div>
                                     <div class="summary">
                                             <div class="item">전기&#183;전자&#183;제어</div>
@@ -292,7 +224,6 @@
                                         </div>
                                     <div class="headers">
                                         <div class="text">SOIL</div>
-                                            <button type="button" class="button buttonFavorites" onclick="jk.biz.core.layerlogin.loginCheckAndGo(null, this, [], '/Salary/Index#listCompany', 1);return false;" data-mem-sys="">좋아요</button>
                                                                             </div>
                                     <div class="summary">
                                             <div class="item">화학&#183;에너지&#183;환경</div>
@@ -312,8 +243,6 @@
                                         </div>
                                     <div class="headers">
                                         <div class="text">넥슨코리아</div>
-                                            <button type="button" class="button buttonFavorites" onclick="jk.biz.core.layerlogin.loginCheckAndGo(null, this, [], '/Salary/Index#listCompany', 1);return false;" data-mem-sys="">좋아요</button>
-                                                                                    <div class="badge">채용중</div>
                                     </div>
                                     <div class="summary">
                                             <div class="item">컴퓨터&#183;하드웨어&#183;장비</div>
@@ -326,26 +255,6 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="/Company/1487996/Salary?C_IDX=39" target="_blank">
-                                        <div class="thumbnail">
-                                            <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2022/13/2539s008R-_2X0u8923829-0esY8U9_8-2s-.gif?v=202406041618&amp;hash=r&amp;serviceCode=CL" onerror="companylogoOnError('/salary/logourl?ucono=1487996' , this)">
-                                            <div class="inner">대한항공</div>
-                                        </div>
-                                    <div class="headers">
-                                        <div class="text">대한항공</div>
-                                            <button type="button" class="button buttonFavorites" onclick="jk.biz.core.layerlogin.loginCheckAndGo(null, this, [], '/Salary/Index#listCompany', 1);return false;" data-mem-sys="">좋아요</button>
-                                                                            </div>
-                                    <div class="summary">
-                                            <div class="item">자동차&#183;조선&#183;철강&#183;항공</div>
-                                                                                    <div class="item">매출액 14조 5천억원</div>
-                                                                                    <div class="item">사원수 17,931명</div>
-                                    </div>
-                                    <div class="salary">
-                                        <div class="inner"><strong>9,806</strong>만원</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
                                 <a href="/Company/1976007/Salary?C_IDX=924" target="_blank">
                                         <div class="thumbnail">
                                             <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2020/12/16/2v7pq00aRn_zKldafzno3j2wn0gqYeIm_vpnw2qn.gif?v=202406041618&amp;hash=r&amp;serviceCode=CL" onerror="companylogoOnError('/salary/logourl?ucono=1976007' , this)">
@@ -353,8 +262,6 @@
                                         </div>
                                     <div class="headers">
                                         <div class="text">카카오</div>
-                                            <button type="button" class="button buttonFavorites" onclick="jk.biz.core.layerlogin.loginCheckAndGo(null, this, [], '/Salary/Index#listCompany', 1);return false;" data-mem-sys="">좋아요</button>
-                                                                                    <div class="badge">채용중</div>
                                     </div>
                                     <div class="summary">
                                             <div class="item">포털&#183;컨텐츠&#183;커뮤니티</div>
@@ -363,27 +270,6 @@
                                     </div>
                                     <div class="salary">
                                         <div class="inner"><strong>10,209</strong>만원</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/Company/16154114/Salary?C_IDX=8696" target="_blank">
-                                        <div class="thumbnail">
-                                            <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2022/9/16/JK_CO_Gv7v7T422091611283337.JPG?v=202406041618" onerror="companylogoOnError('/salary/logourl?ucono=16154114' , this)">
-                                            <div class="inner">메가스터디교육</div>
-                                        </div>
-                                    <div class="headers">
-                                        <div class="text">메가스터디교육</div>
-                                            <button type="button" class="button buttonFavorites" onclick="jk.biz.core.layerlogin.loginCheckAndGo(null, this, [], '/Salary/Index#listCompany', 1);return false;" data-mem-sys="">좋아요</button>
-                                                                                    <div class="badge">채용중</div>
-                                    </div>
-                                    <div class="summary">
-                                            <div class="item">학원&#183;어학원&#183;교육원</div>
-                                                                                    <div class="item">매출액 8,356억</div>
-                                                                                    <div class="item">사원수 1,700명</div>
-                                    </div>
-                                    <div class="salary">
-                                        <div class="inner"><strong>4,177</strong>만원</div>
                                     </div>
                                 </a>
                             </li>

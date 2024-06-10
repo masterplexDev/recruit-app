@@ -17,7 +17,10 @@
 	<link href="//i.jobkorea.kr/content/css/ver_2/company/sidemenu-sv-202401301659.css" rel="stylesheet" type="text/css" />
 	<!-- golgolz end -->
 	<style text="text/css">
-
+	#companyInfoList{width:80px; height:35px; font-size:15px; margin-right:30px; margin-top:27px}
+	#recruitmentNotice{width:120px; height:35px; font-size:15px; margin-right:30px; margin-top:27px}
+	#companyReview{width:80px; height:35px; font-size:15px; margin-top:27px}
+	#btnArea{height:100px; text-align:center;}
 	</style>
 	<script text="text/javascript">
 		$(function(){
@@ -251,10 +254,16 @@
     <div class="address">경기 성남시 분당구 판교로256번길 7 (삼평동) 넥슨코리아</div>
 
 </div>
-    <script src="//i.jobkorea.kr/content/javascript/pc/dist/corp/info/ui.company.header.min-sv-202009021425.js" type="text/javascript"></script>
+<div id="btnArea">
+	<input type="button" id="companyInfoList" value="목록"/>
+	<input type="button" id="recruitmentNotice" value="채용공고 보러가기"/>
+	<input type="button" id="companyReview" value="기업 리뷰"/>
+</div>
+   <!--  <script src="//i.jobkorea.kr/content/javascript/pc/dist/corp/info/ui.company.header.min-sv-202009021425.js"
+    type="text/javascript"></script> 보류! --> 
 			<!-- golgolz end -->
 			</section>
-			<jsp:include page="../assets/layout/user/footer.jsp" />  
+			<jsp:include page="../assets/layout/user/footer.jsp" />
 		</main>
 	</div>
 </body>
