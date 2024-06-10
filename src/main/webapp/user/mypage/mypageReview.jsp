@@ -5914,29 +5914,31 @@
           <jsp:include page="mypage_layout.jsp"/>
             <div class="Grid_Grid__item__FUkSS Grid_Grid__justify_center__QJu2X Grid_Grid__align-items_flex-start__PA0JE Grid_Grid__grid__xs__12__rVqKh Grid_Grid__grid__md__6__9g_JE">
             <div style="margin: 30px;">
-            <h1 style="font-size: 25px;"><strong>커리어</strong></h1>
+            <h1 style="font-size: 25px;"><strong>리뷰</strong></h1>
 			<!--// tap menu -->
 			<div class="mtcTplTab" >
 				<ul class="tabItems">
-					<li class="on"><a href="mypageCareer.jsp">나의 커리어</a></li>
-					<li class=""><a href="mypageReview.jsp">나의 리뷰</a></li>
+					<li class=""><a href="mypageCareer.jsp">나의 커리어</a></li>
+					<li class="on"><a href="mypageReview.jsp">나의 리뷰</a></li>
 				</ul>
 			</div>
 			<!-- tap menu //-->
 				<div style="margin-top: 30px;">
-					<label>나의 재직 기업</label>
+					<label>나의 리뷰</label>
 				</div>
 				<div>
 					<label>총 <strong>n</strong>건</label>
 				</div>
 				<div class="row salaryList salaryCompanyList" style="margin-top: 30px;">
 				<style>
-					table{
-					border: 1px solid #edeef0;
-					width: 100%;
+					table,tr{
+					border: 1px solid #edeef0; 
+					width: 100%; 
+					border-left: none; 
+					border-right: none;
+					color: gray;
 					}
-					.tableMiddle{
-					border: 1px solid #edeef0;
+					tr{
 					height: 100px;
 					}
 					.tableHeader{
@@ -5948,55 +5950,47 @@
 					margin-top: 1px;
 					margin-bottom: 1px;
 					}
+					.reviewTitle{
+					font-size: 15px;
+					}
 					.container{
 					margin-bottom: 100px;
 					}
 				</style>
 				<div class="container">
 					<table>
-						<tr class="tableMiddle">
-							<td class="tableHeader"><img src="http://localhost/recruit-app/assets/images/mypage/user_default.png" style="width: 70px; height: 70px;"></td>
+						<tr>
+							<td class="tableHeader"><h1 style="font-size: 15px;">쿠팡</h1></td>
 							<td class="companyInfo">
-							<h1 class="companyInfo" style="font-size: 18px;"><strong>쿠팡</strong></h1>
 							<ul class="companyInfo">
-								<li>매출액 4조 4227억</li>
-								<li>사원수 6372명</li>
+								<li class="reviewTitle">좋습니다</li>
+								<li class="writeDate">2024-05-11</li>
+								<li class="reviewContent">신입사원 초봉이 높아요. 좋아요.</li>
 							</ul>
 							</td>
-							<td class="tableHeader"><input type="button" value="리뷰 작성"></td>
+							<td class="tableHeader"><input type="button" value="상세보기"></td>
 						</tr>
-						<tr class="tableMiddle">
-							<td class="tableHeader"><img src="http://localhost/recruit-app/assets/images/mypage/user_default.png" style="width: 70px; height: 70px;"></td>
+						<tr>
+							<td class="tableHeader"><h1 style="font-size: 15px;">배달의 민족</h1></td>
 							<td class="companyInfo">
-							<h1 class="companyInfo" style="font-size: 18px;"><strong>배달의 민족</strong></h1>
 							<ul class="companyInfo">
-								<li>매출액 4조 4227억</li>
-								<li>사원수 6372명</li>
+								<li class="reviewTitle">조금 힘들어요</li>
+								<li class="writeDate">2022-01-13</li>
+								<li class="reviewContent">일은 힘든데, 성과급을 잘 챙겨줘요.</li>
 							</ul>
 							</td>
-							<td class="tableHeader"><input type="button" value="리뷰 작성"></td>
+							<td class="tableHeader"><input type="button" value="상세보기"></td>
 						</tr>
-						<tr class="tableMiddle">
-							<td class="tableHeader"><img src="http://localhost/recruit-app/assets/images/mypage/user_default.png" style="width: 70px; height: 70px;"></td>
+						<tr">
+							<td class="tableHeader"><h1 style="font-size: 15px;">티모넷</h1></td>
 							<td class="companyInfo">
-							<h1 class="companyInfo" style="font-size: 18px;"><strong>LG전자</strong></h1>
 							<ul class="companyInfo">
-								<li>매출액 4조 4227억</li>
-								<li>사원수 6372명</li>
+								<li class="reviewTitle">추천해요</li>
+								<li class="writeDate">2018-03-10</li>
+								<li class="reviewContent">워라벨이 보장돼요.</li>
 							</ul>
 							</td>
-							<td class="tableHeader"><input type="button" value="리뷰 작성"></td>
-						</tr>
-						<tr class="tableMiddle">
-							<td class="tableHeader"><img src="http://localhost/recruit-app/assets/images/mypage/user_default.png" style="width: 70px; height: 70px;"></td>
-							<td class="companyInfo">
-							<h1 class="companyInfo" style="font-size: 18px;"><strong>넥슨 유니버스</strong></h1>
-							<ul class="companyInfo">
-								<li>매출액 4조 4227억</li>
-								<li>사원수 6372명</li>
-							</ul>
-							</td>
-							<td class="tableHeader"><input type="button" value="리뷰 작성"></td>
+							<td class="tableHeader"><input type="button" value="상세보기"></td>
 						</tr>
 					</table>
                 </div>
