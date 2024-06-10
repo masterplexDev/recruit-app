@@ -123,6 +123,7 @@
         </div>
     </article>
 </section>
+
 <div class="page-wrapper" style="position:relative;">
       <!--page slider -->
       <div class="post-slider">
