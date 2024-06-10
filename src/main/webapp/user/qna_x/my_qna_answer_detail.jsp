@@ -61,7 +61,7 @@
 
 		<div class="listBtmArea">
 		<div class="btnListExDn">
-			<a href="my_qna_list_frm.jsp" class="btnMtcTpl">목록</a>
+			<a href="mypageQNAList.jsp" class="btnMtcTpl">목록</a>
 		</div>
 			<button type="button" onclick="javascript:window.scrollTo(0,0);" class="btnMtcTpl">TOP</button>
 		</div>
