@@ -126,7 +126,7 @@
 <div class="page-wrapper" style="position:relative;">
       <!--page slider -->
       <div class="post-slider">
-        <h1 class="silder-title">Trending Posts</h1>
+        <h1 class="silder-title">기업 홍보란</h1>
         <i class="fas fa-chevron-left prev"></i>  
         <i class="fas fa-chevron-right next"></i>   
         <div class="post-wrapper">
