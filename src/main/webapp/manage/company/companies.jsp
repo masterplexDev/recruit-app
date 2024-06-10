@@ -176,7 +176,7 @@
 								<div id="pageNation"></div>
 							</td>
 							<td align="right">
-								<input type="button" value="등록하기" class="btn btn-success btn-small float-right" style="font-weight: bold; margin: 0px auto;" />
+								<input type="button" value="등록하기" class="btn btn-success btn-small float-right" style="font-weight: bold; margin: 0px auto;" onclick="location.href='http://localhost/recruit-app/manage/company/detail.jsp'" />
 							</td>
 						</tr>
 					</tbody>

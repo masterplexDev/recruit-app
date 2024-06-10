@@ -5,9 +5,9 @@
 <head>
 <jsp:include page="../../assets/layout/admin/lib.jsp" />
 <!-- golgolz start -->
-<link href="./assets/css/manage/goods/general.css" rel="stylesheet" />
-<link href="./assets/css/manage/goods/goods.css" rel="stylesheet" />
-<link href="./assets/css/manage/goods/default.css" rel="stylesheet" />
+<link href="http://localhost/recruit-app/assets/css/manage/goods/general.css" rel="stylesheet" />
+<link href="http://localhost/recruit-app/assets/css/manage/goods/goods.css" rel="stylesheet" />
+<link href="http://localhost/recruit-app/assets/css/manage/goods/default.css" rel="stylesheet" />
 <script type="text/javascript">
 	$(function(){
 		$("#company_menu").addClass("bg-gradient-primary");
@@ -48,7 +48,7 @@
 <!-- golgolz end -->
 </head>
 <body>
-	<jsp:include page="../../../assets/layout/admin/header.jsp" />
+	<jsp:include page="../../assets/layout/admin/header.jsp" />
 	<main
 		class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ps ps--active-y">
 		<nav
