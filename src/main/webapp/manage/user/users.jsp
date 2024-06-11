@@ -4,12 +4,50 @@
 <html>
 <head>
 <jsp:include page="../../assets/layout/admin/lib.jsp" />
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
 <script type="text/javascript">
 	$(function(){
-    	$("#user_menu").addClass("bg-gradient-primary");
+		$("#user_menu").addClass("bg-gradient-primary");
+		
+	    	$("#start_date_first").datepicker({
+	    		showOtherMonths: true,
+	    	    selectOtherMonths: true,
+	    	    showButtonPanel: true,
+	    	    dateFormat: "yy-mm-dd"
+	    	});
+	    	
+	    	$("#end_date_first").datepicker({
+	  	    	showOtherMonths: true,
+	  	    	selectOtherMonths: true,
+	  	    	showButtonPanel: true,
+	  	    	dateFormat: "yy-mm-dd"
+	  		});
+	    	
+	    	$("#start_date_sec").datepicker({
+	    		showOtherMonths: true,
+	    	    selectOtherMonths: true,
+	    	    showButtonPanel: true,
+	    	    dateFormat: "yy-mm-dd"
+	    	});
+	    	
+	    	$("#end_date_sec").datepicker({
+	  	    	showOtherMonths: true,
+	  	    	selectOtherMonths: true,
+	  	    	showButtonPanel: true,
+	  	    	dateFormat: "yy-mm-dd"
+	  		});
 	});
 </script>
 <!-- golgolz start -->
+<link href="http://localhost//recruit-app/assets/css/pagenation.css" rel="stylesheet" />
+<link href="http://localhost//recruit-app/assets/css/manage/order/admin.css" rel="stylesheet" />
+<link href="http://localhost//recruit-app/assets/css/manage/order/reset.css" rel="stylesheet" />
+<link href="http://localhost/recruit-app/assets/css/manage/goods/general.css" rel="stylesheet" />
+<link href="http://localhost/recruit-app/assets/css/manage/goods/goods.css" rel="stylesheet" />
+<link href="http://localhost/recruit-app/assets/css/manage/goods/default.css" rel="stylesheet" />
 <!-- golgolz end -->
 </head>
 <body>
@@ -34,6 +72,136 @@
 				</nav>
 			</div>
 		</nav>
+		<div class="container-fluid py-4">
+			<!-- golgolz start -->
+			<div class="s_wrap">
+				<form name="fsearch" id="fsearch">
+					<input type="hidden" name="code" value="list">
+					<div class="tbl_frm01">
+						<table>
+							<colgroup> 
+								<col class="w100">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">검색어</th>
+									<td>
+										<input type="hidden" name="page" value="1" />
+										<select name="category">
+												<option value="1"${param.category eq '1' ? " selected" : "" }>아이디</option>
+												<option value="2"${param.category eq '2' ? " selected" : "" }>회원명</option>
+												<option value="3"${param.category eq '3' ? " selected" : "" }>핸드폰번호</option>
+										</select> 
+										<input type="text" name="keyword" value="${ param.keyword }" class="frm_input" size="30">
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">회원 가입기간</th>
+              						<td class="box text">
+              							<input type="text" id="start_date_first" class="frm_input" size="10"> - 
+              							<input type="text" id="end_date_first" class="frm_input" size="10"> 
+              						</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="btn_confirm">
+						<input type="submit" value="검색" class="btn_medium"> 
+						<!-- <input type="button" value="초기화" id="frmRest" class="btn_medium grey"> -->
+					</div>
+				</form>
+				<div class="local_ov mart30">
+					전체 : <b class="fc_red">5</b> 건 조회
+				</div>
+				<form name="forderlist" id="forderlist" method="post">
+					<input type="hidden" name="q1" value="code=list"> 
+					<input type="hidden" name="page" value="1">
+				</form>
+				<div class="tbl_head01">
+					<table id="sodr_list">
+						<colgroup>
+							<col class="w90">
+							<col class="w90">
+							<col class="w90">
+							<col class="w90">
+							<col class="w90">
+							<col class="w90">
+						</colgroup>
+						<thead>
+						<tr>
+							<th scope="col">번호</th>
+							<th scope="col">회원명</th>
+							<th scope="col">아이디</th>
+							<th scope="col">핸드폰번호</th>
+							<th scope="col">가입일자</th>
+							<th scope="col">상세조회</th>
+						</tr>
+						</thead>
+						<tbody>
+							<tr class="list0">
+								<td>1</td>
+								<td>우미연</td>
+								<td>woo</td>
+								<td>010-0000-0000</td>
+								<td>2018-05-01</td>
+								<td><input type="button" value="상세조회" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
+							</tr>
+							<tr class="list0">
+								<td>2</td>
+								<td>이명화</td>
+								<td>lee</td>
+								<td>010-1234-1234</td>
+								<td>2021-03-22</td>
+								<td><input type="button" value="상세조회" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
+							</tr>
+							<tr class="list0">
+								<td>3</td>
+								<td>홍성강</td>
+								<td>hong</td>
+								<td>010-3333-3333</td>
+								<td>2019-12-21</td>
+								<td><input type="button" value="상세조회" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
+							</tr>
+							<tr class="list0">
+								<td>4</td>
+								<td>박시현</td>
+								<td>park</td>
+								<td>010-5555-5555</td>
+								<td>2022-05-05</td>
+								<td><input type="button" value="상세조회" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
+							</tr>
+							<tr class="list0">
+								<td>5</td>
+								<td>정명호</td>
+								<td>jeong</td>
+								<td>010-1111-1111</td>
+								<td>2018-02-11</td>
+								<td><input type="button" value="상세조회" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div style="text-align: center; display: none;">
+					<h4><strong>검색결과가 존재하지 않습니다.</strong></h4>
+				</div>
+				<div class="modal">
+				
+				</div>				
+				<div class="alignCenter">
+          			<table cellpadding="0" cellspacing="0" border="0" width="100%">
+            			<tbody>
+              				<tr>
+                				<td align="center">
+						        	<div id="pageNation">
+							        </div>		
+                				</td>
+              				</tr>
+            			</tbody>
+          			</table>
+        		</div>	
+			</div>
+		</div>
 	</main>
 	<!-- golgolz start -->
 	<!-- golgolz end -->
