@@ -143,7 +143,7 @@ System.out.print("공지사항 아이디: "+notice_id);
 		<option value="1">선택</option>
 		<option value="2">공지사항</option>
 	  </select> -->
-		<input id="title" name="title" class="inputTypeText" placeholder="" maxLength="125" value="" type="text" style="height:30px; width:500px" />
+		<input id="title" name="title" class="inputTypeText" placeholder="" maxLength="125" value="수정할 제목" type="text" style="height:30px; width:500px" />
             <select id="noticeCategory" value="category">
             	<option name="notice" value="공지">공지</option>
             	<option name="service" value="서비스">서비스</option>
@@ -154,15 +154,15 @@ System.out.print("공지사항 아이디: "+notice_id);
 </tbody>
 </table>
 </div>
-  <textarea id="content" name="content"></textarea>
+  <textarea id="content" name="content">수정할 내용</textarea>
 </form>
 
 <div class="ec-base-button ">
-            <span class="gLeft">
+            <!-- <span class="gLeft">
                 <input type="button" value="목록" class="btnNormalFix sizeS" id="btnList" name="btnList" onclick="location.href='http://localhost/recruit-app/manage/notice/notices.jsp'"/>
-            </span>
+            </span> -->
             <span class="gRight">
-            	<input type="button" value="등록" class="btnSubmitFix sizeS" id="btnWrite" name="btnWrite" onclick="location.href='http://localhost/recruit-app/manage/notice/notices.jsp'"/>
+            	<input type="button" value="수정" class="btnSubmitFix sizeS" id="btnWrite" name="btnWrite" onclick="location.href='http://localhost/recruit-app/manage/notice/notices.jsp'"/>
             	<input type="button" value="취소" class="btnBasicFix sizeS" id="btnCancel" name="btnCancel" onclick="location.href='http://localhost/recruit-app/manage/notice/notices.jsp'"/>
             	
             	

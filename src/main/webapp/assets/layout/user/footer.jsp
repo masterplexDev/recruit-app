@@ -61,7 +61,6 @@
               </p>
             </div>
             
-            </div>
             <hr class="Footer_Divider__d8E_Z" />
             <div class="Footer_socialClass__TViS2">
               <span
@@ -69,5 +68,6 @@
                 >© 2024 GoojzzK Lab, Inc.</span
               >
               
+            </div>
             </div>
         </footer>
