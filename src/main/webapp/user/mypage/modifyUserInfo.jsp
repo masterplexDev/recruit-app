@@ -5780,7 +5780,7 @@
 		$(function(){
 			<!-- golgolz start -->
 			$("#modifyUser").click(function(){
-      		  location.href = "modifyUserInfo.jsp";
+      		  location.href = "checkPass.jsp";
       	  });
 			<!-- golgolz end -->
 		});

@@ -6,6 +6,7 @@
 <head>
 	<jsp:include page="../../assets/layout/user/lib.jsp" />  
 	<!-- golgolz start -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width">
 	<meta property="og:description" content="모든 원티드 서비스를 하나의 계정으로 이용할 수 있습니다.">

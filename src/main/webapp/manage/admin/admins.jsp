@@ -4,12 +4,19 @@
 <html>
 <head>
 <jsp:include page="../../assets/layout/admin/lib.jsp" />
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
 <script type="text/javascript">
 	$(function(){
     	$("#admin_menu").addClass("bg-gradient-primary");
 	});
 </script>
 <!-- golgolz start -->
+<link href="http://localhost//recruit-app/assets/css/pagenation.css" rel="stylesheet" />
+<link href="http://localhost//recruit-app/assets/css/manage/order/admin.css" rel="stylesheet" />
+<link href="http://localhost//recruit-app/assets/css/manage/order/reset.css" rel="stylesheet" />
 <!-- golgolz end -->
 </head>
 <body>
@@ -34,6 +41,138 @@
 				</nav>
 			</div>
 		</nav>
+		<div class="container-fluid py-4">
+			<!-- golgolz start -->
+			<div class="s_wrap">
+				<form name="fsearch" id="fsearch">
+					<input type="hidden" name="code" value="list">
+					<div class="tbl_frm01">
+						<table>
+							<colgroup> 
+								<col class="w100">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">검색어</th>
+									<td>
+										<input type="hidden" name="page" value="1" />
+										<select name="category">
+												<option value="1"${param.category eq '1' ? " selected" : "" }>아이디</option>
+										</select> 
+										<input type="text" name="keyword" value="${ param.keyword }" class="frm_input" size="30">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="btn_confirm">
+						<input type="submit" value="검색" class="btn_medium"> 
+						<!-- <input type="button" value="초기화" id="frmRest" class="btn_medium grey"> -->
+					</div>
+				</form>
+				<div class="local_ov mart30">
+					전체 : <b class="fc_red">n</b> 건 조회
+				</div>
+				<form name="forderlist" id="forderlist" method="post">
+					<input type="hidden" name="q1" value="code=list"> 
+					<input type="hidden" name="page" value="1">
+				</form>
+				<div class="tbl_head01">
+					<table id="sodr_list">
+						<colgroup>
+							<col class="w90">
+							<col class="w90">
+							<col class="w90">
+							<col class="w90">
+							<col class="w90">
+							<col class="w90">
+							<col class="w90">
+							<col class="w90">
+							<col class="w90">
+							<col class="w90">
+						</colgroup>
+						<thead>
+						<tr>
+							<th scope="col">번호</th>
+							<th scope="col">직책</th>
+							<th scope="col">아이디</th>
+							<th scope="col">대시보드</th>
+							<th scope="col">사용자관리</th>
+							<th scope="col">기업관리</th>
+							<th scope="col">공고관리</th>
+							<th scope="col">리뷰관리</th>
+							<th scope="col">문의관리</th>
+							<th scope="col">공지관리</th>
+							<th scope="col">권한설정</th>
+						</tr>
+						</thead>
+						<tbody>
+							<tr class="list0">
+								<td>1</td>
+								<td>일반</td>
+								<td>userManager</td>
+								<td>Y</td>
+								<td>Y</td>
+								<td>N</td>
+								<td>N</td>
+								<td>Y</td>
+								<td>Y</td>
+								<td>N</td>
+								<td><input type="button" value="권한설정" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
+							</tr>
+							<tr class="list0">
+								<td>2</td>
+								<td>일반</td>
+								<td>companyManager</td>
+								<td>Y</td>
+								<td>N</td>
+								<td>Y</td>
+								<td>Y</td>
+								<td>Y</td>
+								<td>Y</td>
+								<td>N</td>
+								<td><input type="button" value="권한설정" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
+							</tr>
+							<tr class="list0">
+								<td>3</td>
+								<td>일반</td>
+								<td>noticeManager</td>
+								<td>Y</td>
+								<td>N</td>
+								<td>N</td>
+								<td>N</td>
+								<td>N</td>
+								<td>N</td>
+								<td>Y</td>
+								<td><input type="button" value="권한설정" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div style="text-align: center; display: none;">
+					<h4><strong>검색결과가 존재하지 않습니다.</strong></h4>
+				</div>
+				<div class="modal">
+				
+				</div>				
+				<div class="alignCenter">
+          			<table cellpadding="0" cellspacing="0" border="0" width="100%">
+            			<tbody>
+              				<tr>
+                				<td align="center">
+						        	<div id="pageNation">
+							        </div>		
+                				</td>
+                				<td align="right">
+									<input type="button" value="관리자 등록" class="btn btn-success btn-small float-right" style="font-weight: bold; margin:0px auto;" />
+                				</td>
+              				</tr>
+            			</tbody>
+          			</table>
+        		</div>	
+			</div>
+		</div>
 	</main>
 	<!-- golgolz start -->
 	<!-- golgolz end -->
