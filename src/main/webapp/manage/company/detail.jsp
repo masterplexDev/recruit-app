@@ -44,6 +44,9 @@
 #benefits li:hover{
 	background-color: #DDD;
 }
+#companyIntro{
+	border:1px solid #dedede;
+}
 </style>
 <!-- golgolz end -->
 </head>
@@ -112,6 +115,13 @@
 									<td class="label">매출액(만원)</td>
 									<td class="box text">
 										<input type="text" name="name" value="" size="13" class="inputbox naver_shopping_prodName" />만원
+									</td>
+								</tr>
+								<tr>
+									<td class="label">기업소개</td>
+									<td class="box text">
+										<textarea id="companyIntro" rows="2" cols="100"></textarea>
+										<!-- <input type="text" name="name" value="" size="13" class="inputbox naver_shopping_prodName" /> -->
 									</td>
 								</tr>
 							</tbody>
