@@ -58,7 +58,7 @@
 		<div class="mtcTplTab" >
 			<ul class="tabItems">
 			<li class=""><a href="qnas.jsp">문의 내역</a></li>
-			<li class="on"><a href="new_qna_list.jsp">새로운 문의</a></li>
+			<li class="on"><a href="new_qnas_list.jsp">새로운 문의</a></li>
 			</ul>
 		</div>
 		<!-- tap menu //-->
