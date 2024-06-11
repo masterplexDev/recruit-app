@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<jsp:include page="../../assets/layout/user/lib.jsp" />  
+	<jsp:include page="../assets/layout/user/lib.jsp" />  
 	<!-- golgolz start -->
 	
 <link href="https://i.jobkorea.kr/content/css/ver_2/event/banner.promotion-sv-202401301659.css" rel="stylesheet" type="text/css" />
@@ -31,7 +31,7 @@
 </head>
 <body>
     <div id="__next" data-reactroot="" >
-		<jsp:include page="../../assets/layout/user/header.jsp" />
+		<jsp:include page="../assets/layout/user/header.jsp" />
 		<main class="JobsFeed_Jobsfeed__DpeV9">  
 			<section class="Section_Section__P1hhc">
 			<!-- golgolz start -->
@@ -149,7 +149,7 @@
 </div>
 			<!-- golgolz end -->
 			</section>
-			<jsp:include page="../../assets/layout/user/footer.jsp" />  
+			<jsp:include page="../assets/layout/user/footer.jsp" />  
 		</main>
 	</div>
 </body>
