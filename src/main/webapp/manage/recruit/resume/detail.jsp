@@ -5,9 +5,9 @@
 <head>
 <jsp:include page="../../../assets/layout/admin/lib.jsp" />
 <!-- golgolz start -->
-<link href="./assets/css/manage/goods/general.css" rel="stylesheet" />
-<link href="./assets/css/manage/goods/goods.css" rel="stylesheet" />
-<link href="./assets/css/manage/goods/default.css" rel="stylesheet" />
+<link href="http://localhost/recruit-app/assets/css/manage/goods/general.css" rel="stylesheet" />
+<link href="http://localhost/recruit-app/assets/css/manage/goods/goods.css" rel="stylesheet" />
+<link href="http://localhost/recruit-app/assets/css/manage/goods/default.css" rel="stylesheet" />
 <script type="text/javascript">
 	$(function(){
     	$("#recruit_menu").addClass("bg-gradient-primary");
@@ -84,10 +84,10 @@ table{
 			<!-- golgolz start -->
 			<div id="contentcolumn" class="">
 				<div class="contents" style="margin-top: 105px;">
-					<form id="dataForm" name="dataForm" action="http://localhost/online-shop/manage/goods/register_process.jsp" method="post" enctype="multipart/form-data">
+					<form id="dataForm" name="dataForm" action="http://localhost/recruit-app/manage/common_process.jsp" method="post" enctype="multipart/form-data">
 						<div class="subtitle">
 							<img
-								src="http://localhost/online-shop/assets/images/manage/goods/register/bul_subtitle.gif" />
+								src="http://localhost/recruit-app/assets/images/manage/common/bul_subtitle.gif" />
 							인적사항
 						</div>
 						<table class="tbstyleB" width="100%">
@@ -165,7 +165,7 @@ table{
 						</table>
 						<div class="subtitle">
 							<img
-								src="http://localhost/online-shop/assets/images/manage/goods/register/bul_subtitle.gif" />
+								src="http://localhost/recruit-app/assets/images/manage/common/bul_subtitle.gif" />
 							스킬
 						</div>
 						<table cellpadding="0" cellspacing="1" border="0" class="tbstyleB"
@@ -184,7 +184,7 @@ table{
 						</table>
 						<div class="subtitle">
 							<img
-								src="http://localhost/online-shop/assets/images/manage/goods/register/bul_subtitle.gif" />
+								src="http://localhost/recruit-app/assets/images/manage/common/bul_subtitle.gif" />
 							학력
 						</div>
 						<table id="school_table" class="table table-striped table-bordered horizontal_arrange" width="100%">
@@ -222,7 +222,7 @@ table{
 						</table>
 						<div class="subtitle">
 							<img
-								src="http://localhost/online-shop/assets/images/manage/goods/register/bul_subtitle.gif" />
+								src="http://localhost/recruit-app/assets/images/manage/common/bul_subtitle.gif" />
 							경력
 						</div>
 						<table id="school_table" class="table table-striped table-bordered horizontal_arrange" width="100%">
@@ -254,7 +254,7 @@ table{
 						</table>
 						<div class="subtitle">
 							<img
-								src="http://localhost/online-shop/assets/images/manage/goods/register/bul_subtitle.gif" />
+								src="http://localhost/recruit-app/assets/images/manage/common/bul_subtitle.gif" />
 							자격증
 						</div>
 						<table id="certification_table" class="table table-striped table-bordered horizontal_arrange">
@@ -275,7 +275,7 @@ table{
 						</table>
 						<div class="subtitle">
 							<img
-								src="http://localhost/online-shop/assets/images/manage/goods/register/bul_subtitle.gif" />
+								src="http://localhost/recruit-app/assets/images/manage/common/bul_subtitle.gif" />
 							어학
 						</div>
 						<table id="certification_table" class="table table-striped table-bordered horizontal_arrange">
@@ -304,7 +304,7 @@ table{
 						</table>
 						<div class="subtitle">
 							<img
-								src="http://localhost/online-shop/assets/images/manage/goods/register/bul_subtitle.gif" />
+								src="http://localhost/recruit-app/assets/images/manage/common/bul_subtitle.gif" />
 							자기소개서
 						</div>
 						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="border: 1px solid #333;">열정맨 우미연입니다.</textarea>

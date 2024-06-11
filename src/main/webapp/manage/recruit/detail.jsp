@@ -5,14 +5,14 @@
 <head>
 <jsp:include page="../../assets/layout/admin/lib.jsp" />
 <!-- golgolz start -->
-<link href="./assets/css/manage/goods/general.css" rel="stylesheet" />
-<link href="./assets/css/manage/goods/goods.css" rel="stylesheet" />
-<link href="./assets/css/manage/goods/default.css" rel="stylesheet" />
+<link href="http://localhost/recruit-app/assets/css/manage/goods/general.css" rel="stylesheet" />
+<link href="http://localhost/recruit-app/assets/css/manage/goods/goods.css" rel="stylesheet" />
+<link href="http://localhost/recruit-app/assets/css/manage/goods/default.css" rel="stylesheet" />
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <script type="text/javascript">
 	$(function(){
-		$("#company_menu").addClass("bg-gradient-primary");
+		$("#recruit_menu").addClass("bg-gradient-primary");
 
 	    $('#summernote').summernote({
 	        tabsize: 2,
@@ -80,9 +80,9 @@
 			<!-- golgolz start -->
 			<div id="contentcolumn" class="">
 				<div class="contents">
-					<form id="dataForm" name="dataForm" action="http://localhost/online-shop/manage/goods/register_process.jsp" method="post" enctype="multipart/form-data">
+					<form id="dataForm" name="dataForm" action="http://localhost/recruit-app/manage/common_process.jsp" method="post" enctype="multipart/form-data">
 						<div class="subtitle">
-							<img src="http://localhost/online-shop/assets/images/manage/goods/register/bul_subtitle.gif" />
+							<img src="http://localhost/recruit-app/assets/images/manage/common/bul_subtitle.gif" />
 							공고 정보
 						</div>
 						<table class="tbstyleB" width="100%">
@@ -126,7 +126,7 @@
 							</tbody>
 						</table>
 						<div class="subtitle">
-							<img src="http://localhost/online-shop/assets/images/manage/goods/register/bul_subtitle.gif" />
+							<img src="http://localhost/recruit-app/assets/images/manage/common/bul_subtitle.gif" />
 							근무 조건
 						</div>
 						<table class="tbstyleB" width="100%">
@@ -174,7 +174,7 @@
 							</tbody>
 						</table>
 						<div class="subtitle">
-							<img src="http://localhost/online-shop/assets/images/manage/goods/register/bul_subtitle.gif" />
+							<img src="http://localhost/recruit-app/assets/images/manage/common/bul_subtitle.gif" />
 							지원 조건
 						</div>
 						<table class="tbstyleB" width="100%">
@@ -205,7 +205,7 @@
 							</tbody>
 						</table>
 						<div class="subtitle">
-							<img src="http://localhost/online-shop/assets/images/manage/goods/register/bul_subtitle.gif" />
+							<img src="http://localhost/recruit-app/assets/images/manage/common/bul_subtitle.gif" />
 							공고상세
 						</div>
 						<div id="summernote"></div>
