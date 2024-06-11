@@ -49,13 +49,12 @@
 						<!-- <button type="button" class="mtcBtnB mtcSchBtn"><span class="skip">검색</span></button> -->
 					</div>
 				</fieldset>
-				<div class="tplSltBx tplGiSlt devTplSltBx" style="float : right; margin-right : 10px">
-                            <label for="lb_sel01">등록일순</label>
-                            <select name="OrderBy" id="schOrderBy" class="tplSlt" title="등록일 선택">
-                                <option value="0" selected=&#39;selected&#39;>등록일순</option>
-                                <option value="1" >조회순</option>
-                                <option value="2" >평점높은순</option>
-                                <option value="3" >평점낮은순</option>
+				<div class="lyTplArea schItems" style="float : right; margin-right : 10px">
+                            <label for="lb_sel01"></label>
+                            <select>
+                                <option value="내용+제목" selected>내용+제목</option>
+								<option value="내용">내용</option>
+								<option value="제목">제목</option>
                             </select>
                         </div>
 			</form>
@@ -73,12 +72,18 @@
 						<tr>
 							<th scope="col">
 								<div class="lyTplArea schItems">
-									<span class="tHd"><button type="button" class="btnListSort mtcBtnA">전체</button></span>
+									<!-- <span class="tHd"><button type="button" class="btnListSort mtcBtnA">전체</button></span>
 									<ul class="lyItems">
 										<li><a href="/help/notice?tab=1&SearchWord=">전체</a></li>
 										<li><a href="/help/notice?tab=2&SearchWord=">일반공지</a></li>
 										<li><a href="/help/notice?tab=3&SearchWord=">서비스오픈</a></li>
-									</ul>
+									</ul> -->
+									<select>
+										<option value="전체" selected>전체</option>
+										<option value="일반공지">일반공지</option>
+										<option value="서비스">서비스</option>
+										<option value="이벤트">이벤트</option>
+									</select>
 								</div>
 							</th>
 							<th scope="col">제목</th>

@@ -55,7 +55,7 @@
 
                 <!-- 공지사항 내용 //-->
             </div>
-            <div class="listBtmArea">
+            <div class="listBtmArea" style="margin-bottom:30px">
                 <div class="btnListExDn">
                     <a href="notice_list.jsp" class="btnMtcTpl">목록</a>
                 </div>
