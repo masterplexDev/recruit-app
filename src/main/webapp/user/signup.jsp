@@ -1516,6 +1516,12 @@
 								<img src="http://localhost/recruit-app/assets/images/mypage/calenderImg.png" alt="달력 아이콘" class="input-group-text" style="width: 15%; height: 48px;">
 								</div>
 							</div>
+							<div class="css-evy94o">
+								<div class="css-env1z2"><label ="Typography" color="rgba(55, 56, 60, 0.61)"
+										for="username" class="css-afh7p0">주소</label></div><input type="text"
+									placeholder="주소를 입력해주세요." name="addr" ="Input_username"
+									autocomplete="new-password" class="css-1sbrczv" value="">
+							</div>
 							<div class="question-css" style="margin-top: 20px; margin-bottom:30px;">
 								<div style="text-align: center; margin: 15px; ">
 								<p style="font-size: 15px">보안 질문 설정</p>

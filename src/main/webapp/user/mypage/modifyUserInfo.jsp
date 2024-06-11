@@ -7,20 +7,6 @@
 	<jsp:include page="../../assets/layout/user/lib.jsp" />  
 	<!-- golgolz start -->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-	<link href="view-source:https://www.jobkorea.co.kr/help/inquiry" rel="stylesheet" type="text/css" />
-	<link href="https://i.jobkorea.kr/content/css/ver_2/common-sv-202405271315.css" rel="stylesheet" type="text/css" />
-	<link href="https://i.jobkorea.kr/deploy/pc/dist/css/personal/common/gnb-sv-202405231305.css" rel="stylesheet" type="text/css" />
-	<link href="https://i.jobkorea.kr/content/css/ver_2/mtc/mtc_lounge-sv-202402231655.css" rel="stylesheet" type="text/css" />
-	<link href="https://i.jobkorea.kr/content/css/ver_2/help/help-sv-202402231655.css" rel="stylesheet" type="text/css" />
-	<link href="https://i.jobkorea.kr/deploy/pc/dist/css/personal/layout/footer-sv-202405131313.css" rel="stylesheet" type="text/css" />
-	<link href="https://i.jobkorea.kr/deploy/pc/dist/css/personal/pages/main/auto_search-sv-202405231305.css" rel="stylesheet" type="text/css" />
-	<link href="https://i.jobkorea.kr/content/css/ver_2/mtc/inquiry_selection.css?v=2024052914000" rel="stylesheet" type="text/css" />
-	
-    
 	<link rel="canonical" href="https://www.wanted.co.kr/my/profile" />
     <link rel="canonical" href="https://www.wanted.co.kr/my/profile" />
     <meta name="next-head-count" content="27" />
@@ -610,6 +596,11 @@
           -ms-flex-preferred-size: 41.6666666667%;
           flex-basis: 41.6666666667%;
           max-width: 41.6666666667%;
+        }
+        .Grid_Grid__grid__md__6__9g_JE {
+          -ms-flex-preferred-size: 50%;
+          flex-basis: 50%;
+          max-width: 50%;
         }
         .Grid_Grid__grid__md__7__EtaD8 {
           -ms-flex-preferred-size: 58.3333333333%;
@@ -5651,6 +5642,7 @@
 	    display: flex;
 	    flex-direction: column;
 	    gap: 15px;
+	    font-size: 15px;
 	}
 	* {
     font-family: Pretendard, 'Pretendard JP', 'Pretendard Std', -apple-system, system-ui, BlinkMacSystemFont, Roboto, 'Segoe UI', Helvetica, Arial, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
@@ -5709,6 +5701,7 @@
 	    line-height: var(--text-height-body);
 	    min-width: 120px;
 	    margin-right: 15px;
+	    font-size: 15px;
 	}
 	@media (max-width: 767px) {
     .css-9dug5j {
@@ -5764,142 +5757,31 @@
 	body {
 	background-color: #FFFFFF;
 	}
-	@media (min-width: 1000px) {
-    .Grid_Grid__grid__md__6__9g_JE {
-        -ms-flex-preferred-size: 50%;
-        flex-basis: 100%;
-        max-width: 65%;
-    }
-    }
-    .salaryList ol.list, .salaryList ul.list {
-    clear: both;
-    overflow: hidden;
-    position: relative;
-    padding: 0 18px;
-    margin-bottom: 20px;
-    border: 1px solid #d6dce4;
-    color: #666;
-	}
-	.salaryList ol.list li:first-child, .salaryList ul.list li:first-child {
-    border-top: 0;
-	}
-    display: list-item;
-    text-align: -webkit-match-parent;
-    unicode-bidi: isolate;
-	}
-	.salaryCompanyList ul.list li {
-    position: relative;
-    height: 129px;
-    padding: 32px 180px 0 220px;
-    box-sizing: border-box;
-	}
-	li {
-	.salaryCompanyList ul.list li > a {
-    display: block;
-    overflow: hidden;
-	}
-	a, a:link, a:visited {
-    color: #999;
-    text-decoration: none;
-	}
-	.salaryCompanyList ul.list .thumbnailText {
-    display: table;
-    top: 42px;
-	}
-	.salaryCompanyList ul.list .thumbnail {
-    overflow: hidden;
-    position: absolute;
-    left: 31px;
-    top: 46px;
-    width: 100px;
-    height: 40px;
-	}
-	.salaryCompanyList ul.list .thumbnailText .inner {
-    width: 100px;
-    height: 40px;
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
-    font-size: 14px;
-    letter-spacing: 0px;
-    font-weight: bold;
-    color: #ccc;
-    line-height: 1.45;
-	}
-	.salaryCompanyList ul.list .headers {
-    margin-bottom: 9px;
-    font-size: 0;
-	}
-	.salaryCompanyList ul.list .headers .text {
-    display: inline-block;
-    vertical-align: top;
-    color: #333;
-    font-size: 21px;
-    letter-spacing: -0.5px;
-    font-weight: bold;
-    vertical-align: middle;
-	}
-	.salaryCompanyList ul.list .headers .buttonFavorites {
-    display: inline-block;
-    vertical-align: top;
-    position: relative;
-    top: 2px;
-    overflow: hidden;
-    width: 15px;
-    height: 13px;
-    margin-left: 4px;
-    vertical-align: middle;
-	}
-	.salaryCompanyList ul.list .summary {
-    overflow: hidden;
-    position: relative;
-    font-size: 0;
-	}
-	.salaryCompanyList ul.list .summary .item {
-    display: inline-block;
-    vertical-align: top;
-    font-size: 14px;
-    letter-spacing: 0px;
-	}
-	.salaryCompanyList ul.list .salary {
-    display: table;
-    position: absolute;
-    right: 31px;
-    top: 0;
-    height: 100%;
-    font-size: 20px;
-    letter-spacing: -0.5px;
-    color: #999;
-	}
-	.salaryCompanyList ul.list .salary .inner {
-    display: table-cell;
-    vertical-align: middle;
-	}
-	.salaryCompanyList ul.list .salary strong {
-    color: #333;
-    font-size: 30px;
-    letter-spacing: -0.5px;
-    font-weight: bold;
-	}
+	.css-1sbrczv {
+		    width: 100%;
+		    height: 48px;
+		    min-height: 48px;
+		    padding: 0px 16px;
+		    outline: none;
+		    background-color: transparent;
+		    border: 1px solid rgba(112, 115, 124, 0.22);
+		    color: #171719;
+		    border-radius: 10px;
+		    font-size: 16px;
+		    font-weight: 400;
+		}
     </style>
 	<style text="text/css">
 		<!-- golgolz start -->
 		
 		<!-- golgolz end -->
 	</style>
-	<style type="text/css">
-	#qnaFrm{margin-left:300px; margin-right:40px}
-</style>
-
-
-<script type="text/javascript">
-	$(function(){
-    	$("#qna_menu").addClass("bg-gradient-primary");
-	});
-</script>
 	<script text="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
+			$("#modifyUser").click(function(){
+      		  location.href = "modifyUserInfo.jsp";
+      	  });
 			<!-- golgolz end -->
 		});
 	</script>
@@ -5913,97 +5795,128 @@
         <div class="MainLayout_MainLayout__root__p6itg">
           <div class="Grid_Grid__container__J9CcC Grid_Grid__spacing__5__ZwgDV">
           <jsp:include page="mypage_layout.jsp"/>
-            <div class="Grid_Grid__item__FUkSS Grid_Grid__justify_center__QJu2X Grid_Grid__align-items_flex-start__PA0JE Grid_Grid__grid__xs__12__rVqKh Grid_Grid__grid__md__6__9g_JE">
-            <div style="margin: 30px;">
-            <h1 style="font-size: 25px;"><strong>커리어</strong></h1>
-			<!--// tap menu -->
-			<div class="mtcTplTab" >
-				<ul class="tabItems">
-					<li class="on"><a href="mypageCareer.jsp">나의 커리어</a></li>
-					<li class=""><a href="mypageReview.jsp">나의 리뷰</a></li>
-				</ul>
-			</div>
-			<!-- tap menu //-->
-				<div style="margin-top: 30px;">
-					<label>나의 재직 기업</label>
-				</div>
-				<div>
-					<label>총 <strong>n</strong>건</label>
-				</div>
-				<div class="row salaryList salaryCompanyList" style="margin-top: 30px;">
-				<style>
-					table{
-					border: 1px solid #edeef0;
-					width: 100%;
-					}
-					.tableMiddle{
-					border: 1px solid #edeef0;
-					height: 100px;
-					}
-					.tableHeader{
-					text-align: center;
-					width: 80px;
-					}
-					.companyInfo{
-					margin-left:10px;
-					margin-top: 1px;
-					margin-bottom: 1px;
-					}
-					.container{
-					margin-bottom: 100px;
-					}
-				</style>
-				<div class="container">
-					<table>
-						<tr class="tableMiddle">
-							<td class="tableHeader"><img src="http://localhost/recruit-app/assets/images/mypage/user_default.png" style="width: 70px; height: 70px;"></td>
-							<td class="companyInfo">
-							<h1 class="companyInfo" style="font-size: 18px;"><strong>쿠팡</strong></h1>
-							<ul class="companyInfo">
-								<li>매출액 4조 4227억</li>
-								<li>사원수 6372명</li>
-							</ul>
-							</td>
-							<td class="tableHeader"><input type="button" value="리뷰 작성"></td>
-						</tr>
-						<tr class="tableMiddle">
-							<td class="tableHeader"><img src="http://localhost/recruit-app/assets/images/mypage/user_default.png" style="width: 70px; height: 70px;"></td>
-							<td class="companyInfo">
-							<h1 class="companyInfo" style="font-size: 18px;"><strong>배달의 민족</strong></h1>
-							<ul class="companyInfo">
-								<li>매출액 4조 4227억</li>
-								<li>사원수 6372명</li>
-							</ul>
-							</td>
-							<td class="tableHeader"><input type="button" value="리뷰 작성"></td>
-						</tr>
-						<tr class="tableMiddle">
-							<td class="tableHeader"><img src="http://localhost/recruit-app/assets/images/mypage/user_default.png" style="width: 70px; height: 70px;"></td>
-							<td class="companyInfo">
-							<h1 class="companyInfo" style="font-size: 18px;"><strong>LG전자</strong></h1>
-							<ul class="companyInfo">
-								<li>매출액 4조 4227억</li>
-								<li>사원수 6372명</li>
-							</ul>
-							</td>
-							<td class="tableHeader"><input type="button" value="리뷰 작성"></td>
-						</tr>
-						<tr class="tableMiddle">
-							<td class="tableHeader"><img src="http://localhost/recruit-app/assets/images/mypage/user_default.png" style="width: 70px; height: 70px;"></td>
-							<td class="companyInfo">
-							<h1 class="companyInfo" style="font-size: 18px;"><strong>넥슨 유니버스</strong></h1>
-							<ul class="companyInfo">
-								<li>매출액 4조 4227억</li>
-								<li>사원수 6372명</li>
-							</ul>
-							</td>
-							<td class="tableHeader"><input type="button" value="리뷰 작성"></td>
-						</tr>
-					</table>
+            <div
+              class="Grid_Grid__item__FUkSS Grid_Grid__align-items_flex-start__PA0JE Grid_Grid__grid__md__1__aOHPk MainLayout_MainLayout__space__8eQvZ"
+            ></div>
+            <div
+              class="Grid_Grid__item__FUkSS Grid_Grid__justify_center__QJu2X Grid_Grid__align-items_flex-start__PA0JE Grid_Grid__grid__xs__12__rVqKh Grid_Grid__grid__md__6__9g_JE"
+            >
+              <div
+                class="Grid_Grid__container__J9CcC Grid_Grid__direction_column__jR3AZ Grid_Grid__wrap_nowrap__4r_cp ProfileView_ProfileView__root__eOS_q"
+              >
+                <section
+                  class="Grid_Grid__item__FUkSS Grid_Grid__align-items_flex-start__PA0JE"
+                >
+                  <div
+                    class="Grid_Grid__container__J9CcC Grid_Grid__align-items_flex-start__PA0JE ProfileViewHeader_ProfileViewHeader__root__PjH6q"
+                  >
+                    <div
+                      class="Grid_Grid__item__FUkSS Grid_Grid__align-items_flex-start__PA0JE Grid_Grid__align-self_stretch__awciG"
+                    >
+                      <div
+                        class="Grid_Grid__container__J9CcC Grid_Grid__align-items_center__VEikH ProfileViewHeaderAvatar_ProfileViewHeaderAvatar__root__OR4Te"
+                      	style="text-align: center;"
+                      >
+                        <div
+                          class="Grid_Grid__item__FUkSS Grid_Grid__align-items_flex-start__PA0JE"
+                          style="text-align: center;"
+                        >
+                          <div
+                            class="Avatar_Avatar__root__5Xq6z Avatar_Avatar__sizeXlarge__cwS_g ProfileViewHeaderAvatar_ProfileViewHeaderAvatar__avatar__d0_38"
+                          	style="text-align: center;"
+                          >
+                            <div class="Avatar_Avatar__bg__MRkK0" style="text-align: center;">
+                              <img
+                                alt="프로필 이미지"
+                                src="http://localhost/recruit-app/assets/images/mypage/user_default.png"
+                                class="Avatar_Avatar__img__kcubw"
+                                style="text-align: center;"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="Grid_Grid__item__FUkSS Grid_Grid__align-items_flex-start__PA0JE ProfileViewHeaderAvatar_ProfileViewHeaderAvatar__info__dUe_s"
+                        >
+                          <h4
+                            class="Typography_Typography__root__xYuMs Typography_Typography__heading1__bVyRs Typography_Typography__weightBold__e15ql Typography_Typography__noWrap__ovbzF Typography_Typography__alignLeft__fYbY6 ProfileViewHeaderAvatar_ProfileViewHeaderAvatar__info__title__KuxZF"
+                          >
+                            정명호
+                          </h4>
+                        </div>
+                      </div>
+                    </div>
+                </section>
+                <div class="Grid_Grid__container__J9CcC Grid_Grid__align-items_center__VEikH ProfileViewFollowerFollwingInfo_ProfileViewFollowerFollwingInfo__root__TSJnS" >
                 </div>
-				</div>
+                <section class="Grid_Grid__item__FUkSS Grid_Grid__align-items_flex-start__PA0JE ProfileView_ProfileView__borderSection__VkDe7" style="margin: 30px 0px 30px 0px;">
+                  <h1 style="font-size: 25px;">회원정보 변경</h1>
+                </section>
+                <section
+                  class="Grid_Grid__item__FUkSS Grid_Grid__align-items_flex-start__PA0JE" style="margin-bottom: 50px;"
+                >
+                  <article class="css-dnwsdj">
+                  <div class="css-9as5im">
+                  <p data-testid="Typography" color="#000000" class="css-dk1ca0">회원정보</p>
+                  <p data-testid="Typography" color="rgba(55, 56, 60, 0.61)" class="css-1b12nwt">서비스에서 사용하는 내 정보를 변경할 수 있습니다.</p>
+                  </div>
+                  <ul class="css-14jv0iu">
+                  <li data-list-type="EMAIL_CHANGE" tabindex="0" class="css-1f5onls">
+                  <p data-testid="Typography" color="#000000" class="css-9dug5j">이메일</p>
+                  <input type="email" placeholder="이메일을 입력해주세요." name="email" data-testid="Input_email"
+					autocomplete="on" class="css-1sbrczv" value="jeong@gmail.com">
+                  </li>
+                  <li data-list-type="NAME_CHANGE" tabindex="0" class="css-15hfbq8">
+                  <p data-testid="Typography" color="#000000" class="css-9dug5j">이름</p>
+                  <input type="name" placeholder="이름을 입력해주세요." name="name"
+					autocomplete="on" class="css-1sbrczv" value="정명호">
+                  </li>
+                  <li data-list-type="NAME_CHANGE" tabindex="0" class="css-15hfbq8">
+                  <p data-testid="Typography" color="#000000" class="css-9dug5j">성별</p>
+                  <input type="text" name="gender"
+					autocomplete="on" class="css-1sbrczv" value="남자" readonly="readonly">
+                  </li>
+                  <li data-list-type="PHONE_CHANGE" tabindex="0" class="css-15hfbq8"><p data-testid="Typography" color="#000000" class="css-9dug5j">휴대폰 번호</p>
+                  <input type="text" placeholder="휴대폰 번호를 입력해주세요." name="phone"
+					autocomplete="on" class="css-1sbrczv" value="010-0000-0000">
+                  </li>
+                  <li data-list-type="PHONE_CHANGE" tabindex="0" class="css-15hfbq8"><p data-testid="Typography" color="#000000" class="css-9dug5j">전화번호</p>
+                  <input type="text" placeholder="전화번호를 입력해주세요." name="tel"
+					autocomplete="on" class="css-1sbrczv" value="032-000-0000">
+                  </li>
+                  <li data-list-type="SOCIAL_LINK" tabindex="0" class="css-15hfbq8"><p data-testid="Typography" color="#000000" class="css-9dug5j">주소</p>
+                  <input type="text" placeholder="주소를 입력해주세요." name="addr"
+					autocomplete="on" class="css-1sbrczv" value="인천시 부평구 부평동">
+                  </li>
+                  <li data-list-type="SOCIAL_LINK" tabindex="0" class="css-15hfbq8"><p data-testid="Typography" color="#000000" class="css-9dug5j">비밀번호</p>
+                  <input type="password" name="password" readonly="readonly" style="border: none;"
+					autocomplete="on" class="css-1sbrczv" value="*********">
+                   <input type="button" value="변경" class="button modifyPassBtn">
+                  </li>
+                   <li data-list-type="SOCIAL_LINK" tabindex="0" style="text-align: center;">
+                   <input type="button" value="수정완료" class="button modifyBtn" style="margin: 5px;">
+                   <input type="button" value="취소" class="button" style="margin: 5px;">
+                   </li>
+                  </ul></article>
+                </section>
+                <style>
+                	.button{
+                		width: 120px; height: 40px; border: 1px solid rgba(112, 115, 124, 0.22); border-radius: 10px;
+                	}
+                	.modifyPassBtn{
+                		background-color: grey;
+                		color: #FFFFFF;
+                	}
+                	.modifyBtn{
+                		background-color: skyblue;
+                		color: #FFFFFF;
+                	}
+                </style>
+              </div>
             </div>
-            </div>
+            <div
+              class="Grid_Grid__item__FUkSS Grid_Grid__align-items_flex-start__PA0JE Grid_Grid__grid__md__1__aOHPk MainLayout_MainLayout__space__8eQvZ"
+            ></div>
           </div>
         </div>
 			<!-- golgolz end -->

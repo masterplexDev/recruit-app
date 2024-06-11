@@ -5,7 +5,8 @@
 <head>
 <jsp:include page="../../assets/layout/user/lib.jsp" />
 <!-- golgolz start -->
-<link rel="canonical" href="https://www.wanted.co.kr/my/profile" />
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<link rel="canonical" href="https://www.wanted.co.kr/my/profile" />
     <link rel="canonical" href="https://www.wanted.co.kr/my/profile" />
     <meta name="next-head-count" content="27" />
     <link rel="dns-prefetch" href="https://asset.wanted.co.kr/" />
