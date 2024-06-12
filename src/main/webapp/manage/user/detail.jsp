@@ -103,6 +103,9 @@
 					</ol>
 					<h6 class="font-weight-bolder mb-0">회원정보 상세</h6>
 				</nav>
+				<p style="font-size: 15px; text-align: right;">
+							<strong>최근 로그인 일시: 2024-06-11 16:28:33</strong>
+							</p>
 			</div>
 		</nav>
 		<div class="container-fluid py-4">
@@ -123,31 +126,31 @@
 								<tr>
 									<td class="label">회원명</td>
 									<td class="box text">
-										<input type="text" name="name" value="" size="20" class="inputbox naver_shopping_prodName" />
+										<input type="text" name="name" value="이*화" size="20" class="inputbox naver_shopping_prodName" />
 									</td>
 								</tr>
 								<tr>
 									<td class="label">성별</td>
 									<td class="box text">
-										<input type="text" name="name" value="" size="20" class="inputbox naver_shopping_prodName" />
+										<input type="text" name="name" value="여자" size="20" class="inputbox naver_shopping_prodName" />
 									</td>
 								</tr>
 								<tr>
 									<td class="label">아이디</td>
 									<td class="box text">
-										<input type="text" name="name" value="" size="20" class="inputbox naver_shopping_prodName" />
+										<input type="text" name="name" value="l**@daum.net" size="20" class="inputbox naver_shopping_prodName" />
 									</td>
 								</tr>
 								<tr>
 									<td class="label">휴대폰번호</td>
 									<td class="box text">
-										<input type="text" name="name" value="" size="20" class="inputbox naver_shopping_prodName" />
+										<input type="text" name="name" value="010-****-1234" size="20" class="inputbox naver_shopping_prodName" />
 									</td>
 								</tr>
 								<tr>
 									<td class="label">전화번호</td>
 									<td class="box text">
-										<input type="text" name="name" value="" size="20" class="inputbox naver_shopping_prodName" />
+										<input type="text" name="name" value="02-***-5678" size="20" class="inputbox naver_shopping_prodName" />
 									</td>
 								</tr>
 							</tbody>
@@ -165,7 +168,7 @@
 								<tr>
 									<td class="label">가입일자</td>
 									<td class="box text">
-										<input type="text" name="name" value="" size="20" class="inputbox naver_shopping_prodName" />
+										<input type="text" name="name" value="2021-03-22" size="20" class="inputbox naver_shopping_prodName" />
 									</td>
 								</tr>
 								<tr>
@@ -185,9 +188,6 @@
 						<!--최근 활동 기록-->
 						<div style="margin:30px 0px 30px 0px;">
 							<label style="font-size: 20px; font-weight: bold; margin: 5px 0px 5px 0px;">최근 활동 기록</label>
-							<p style="font-size: 15px;">
-							최근 로그인 일시: 2024-06-11 16:28:33
-							</p>
 						</div>
 					<label style="font-size: 15px; font-weight: bold; margin: 5px 0px 5px 0px;">최근 지원현황</label>
 					<div class="tbl_head01" style="margin-bottom: 50px;">
@@ -209,7 +209,6 @@
 							<th scope="col">지원일자</th>
 							<th scope="col">제목</th>
 							<th scope="col">경력</th>
-							<th scope="col">거주지</th>
 							<th scope="col">이력서상세</th>
 							<th scope="col">지원상태</th>
 						</tr>
@@ -221,7 +220,6 @@
 								<td>2023-12-29</td>
 								<td>떠오르는 백엔드 신입 이명화입니다.</td>
 								<td>신입</td>
-								<td>서울시 강남구 역삼동 한독빌딩 88층</td>
 								<td><input type="button" value="바로가기" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
 								<td>최종합격</td>
 							</tr>
@@ -231,7 +229,6 @@
 								<td>2023-12-29</td>
 								<td>재능있는 백엔드 신입 장원영입니다.</td>
 								<td>신입</td>
-								<td>서울시 서초구 서초동</td>
 								<td><input type="button" value="바로가기" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
 								<td>서류지원</td>
 							</tr>
@@ -241,7 +238,6 @@
 								<td>2023-12-29</td>
 								<td>센스있는 백엔드 신입 난원영입니다.</td>
 								<td>신입</td>
-								<td>서울시 강남구 대치동</td>
 								<td><input type="button" value="바로가기" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
 								<td>불합격</td>
 							</tr>
@@ -271,35 +267,35 @@
 							<tr class="list0">
 								<td>1</td>
 								<td>기업</td>
-								<td>여기어때</td>
+								<td><a href="http://localhost/recruit-app/manage/qna/old_qnas_detail.jsp?qna_num=1">여기어때</a></td>
 								<td>2024-05-11</td>
 								<td>답변완료</td>
 							</tr>
 							<tr class="list0">
 								<td>2</td>
 								<td>기업</td>
-								<td>지원취소 안되나요?</td>
+								<td><a href="http://localhost/recruit-app/manage/qna/old_qnas_detail.jsp?qna_num=2">지원취소 안되나요?</a></td>
 								<td>2024-05-20</td>
 								<td>답변완료</td>
 							</tr>
 							<tr class="list0">
 								<td>3</td>
 								<td>민원</td>
-								<td>신고접수합니다.</td>
+								<td><a href="http://localhost/recruit-app/manage/qna/old_qnas_detail.jsp?qna_num=3">신고접수합니다.</a></td>
 								<td>2024-05-29</td>
 								<td>답변완료</td>
 							</tr>
 							<tr class="list0">
 								<td>4</td>
 								<td>민원</td>
-								<td>민원 처리가 늦어요.</td>
+								<td><a href="http://localhost/recruit-app/manage/qna/old_qnas_detail.jsp?qna_num=4">민원 처리가 늦어요.</a></td>
 								<td>2024-06-01</td>
 								<td>답변대기</td>
 							</tr>
 							<tr class="list0">
 								<td>5</td>
 								<td>기업</td>
-								<td>지원 공고 찾는 법</td>
+								<td><a href="http://localhost/recruit-app/manage/qna/old_qnas_detail.jsp?qna_num=5">지원 공고 찾는 법</a></td>
 								<td>2024-06-11</td>
 								<td>답변대기</td>
 							</tr>
