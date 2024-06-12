@@ -4,16 +4,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+<link href="../assets/css/company/company-info-list-1.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/company/company-info-list-2.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/company/company-info-list-3.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/company/company-info-list-4.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/company/company-info-list-5.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/company/company-info-list-6.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/company/company-info-list-7.css" rel="stylesheet" type="text/css" />
 <jsp:include page="../assets/layout/user/lib.jsp" />  
 <!-- golgolz start -->
-<meta charset="UTF-8">
-<link href="https://i.jobkorea.kr/content/css/ver_2/event/banner.promotion-sv-202401301659.css" rel="stylesheet" type="text/css" />
-<link href="https://i.jobkorea.kr//content/css/ver_2/modules/swiper/4.3.3/swiper.min.css?v=202405291400" rel="stylesheet" type="text/css" />
-<link href="https://i.jobkorea.kr/content/css/ver_2/common-sv-202405271315.css" rel="stylesheet" type="text/css" />
-<link href="https://i.jobkorea.kr/deploy/pc/dist/css/personal/common/gnb-sv-202405231305.css" rel="stylesheet" type="text/css" />
-<link href="https://i.jobkorea.kr/content/css/ver_1/salary/modules-sv-202401301659.css" rel="stylesheet" type="text/css" />
-<link href="https://i.jobkorea.kr/content/css/ver_1/salary/index-sv-202401301659.css" rel="stylesheet" type="text/css" />
-<link href="https://i.jobkorea.kr/deploy/pc/dist/css/personal/layout/footer-sv-202405131313.css" rel="stylesheet" type="text/css" />
 	<!-- golgolz end -->
 <style text="text/css">
 	#btnSearchCompany{width:70px; height:40px; background-color:#FFFFFF; border:1px solid #333; margin-left:5px; font-size:15px}

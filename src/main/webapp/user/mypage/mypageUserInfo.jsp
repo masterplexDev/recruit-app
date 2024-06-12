@@ -12,6 +12,7 @@
     <link rel="shortcut icon" href="https://static.wanted.co.kr/favicon/new/favicon.ico"/>
     <link rel="stylesheet" href="https://asset.wanted.co.kr/userweb/www/_next/static/css/c76e012c05e1318d.css" crossorigin="anonymous" data-n-g=""/>
 	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/mypage.css"/>
+	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/signup.css"/>
 	<!-- golgolz end -->
 	<style text="text/css">
 		<!-- golgolz start -->

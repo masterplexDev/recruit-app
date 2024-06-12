@@ -18,6 +18,7 @@
     <link rel="shortcut icon" href="https://static.wanted.co.kr/favicon/new/favicon.ico"/>
     <link rel="stylesheet" href="https://asset.wanted.co.kr/userweb/www/_next/static/css/c76e012c05e1318d.css" crossorigin="anonymous" data-n-g=""/>
 	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/mypage.css"/>
+	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/signup.css"/>
 	<!-- golgolz end -->
 	<style>
 	@media (min-width: 1000px) {
@@ -55,7 +56,7 @@
     overflow: hidden;
 	}
 	a, a:link, a:visited {
-    color: #333333;
+    color: #666666;
     text-decoration: none;
 	}
 	.salaryCompanyList ul.list .thumbnailText {
@@ -114,7 +115,7 @@
 	.salaryCompanyList ul.list .summary .item {
     display: inline-block;
     vertical-align: top;
-    font-size: 14px;
+    font-size: 15px;
     letter-spacing: 0px;
 	}
 	.salaryCompanyList ul.list .salary {
