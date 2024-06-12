@@ -3,8 +3,7 @@
     info=""%>
 <!DOCTYPE html>
 <html>
-<head>
-	<jsp:include page="../assets/layout/user/lib.jsp" />  
+<head> 
 	<!-- golgolz start -->
     <link href="http://localhost/recruit-app/assets/css/resume/write-sv-202405231305.css" rel="stylesheet" type="text/css"/>
     <link href="http://localhost/recruit-app/assets/css/resume/flow.css" />
@@ -16,8 +15,6 @@
       .popupSearchDuty .list .hover {
         background-color: #f5f5f5;
       }
-    </style>
-    <style>
       .async-hide {
         opacity: 0 !important;
       }
@@ -57,6 +54,7 @@
 			<!-- golgolz end -->
 		});
 	</script>
+	<jsp:include page="../assets/layout/user/lib.jsp" /> 
 </head>
 <body>
     <div id="__next" data-reactroot="">

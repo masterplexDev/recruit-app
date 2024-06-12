@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="../../assets/layout/admin/lib.jsp" />
 <!-- golgolz start -->
 <link href="http://localhost/recruit-app/assets/css/manage/goods/general.css" rel="stylesheet" />
 <link href="http://localhost/recruit-app/assets/css/manage/goods/goods.css" rel="stylesheet" />
@@ -53,6 +52,7 @@
 }
 </style>
 <!-- golgolz end -->
+<jsp:include page="../../assets/layout/admin/lib.jsp" />
 </head>
 <body>
 	<jsp:include page="../../assets/layout/admin/header.jsp" />

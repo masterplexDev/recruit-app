@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<jsp:include page="../assets/layout/user/lib.jsp" />  
 	<!-- golgolz start -->
     <link href="http://localhost/recruit-app/assets/css/resume/mtu_common-sv-202405081446.css" rel="stylesheet" type="text/css" />
     <link href="http://localhost/recruit-app/assets/css/resume/mtu_style-sv-202405161357.css" rel="stylesheet" type="text/css"  />
@@ -16,6 +15,7 @@
 		}
 		<!-- golgolz end -->
 	</style>
+	<jsp:include page="../assets/layout/user/lib.jsp" />  
 	<script text="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
