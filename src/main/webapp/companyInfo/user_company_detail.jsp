@@ -4,17 +4,17 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-	<jsp:include page="../assets/layout/user/lib.jsp" />  
-	<!-- golgolz start -->
 	<meta charset="UTF-8">
-	<link href="//i.jobkorea.kr/content/css/ver_2/common-sv-202405271315.css" rel="stylesheet" type="text/css" />
-    <link href="//i.jobkorea.kr/content/css/ver_2/company/layout-sv-202403131637.css" rel="stylesheet" type="text/css" />
-    <link href="//i.jobkorea.kr/content/css/ver_2/company/header-sv-202403131637.css" rel="stylesheet" type="text/css" />
-    <link href="//i.jobkorea.kr/content/css/ver_2/star/star_coredata-sv-202403131637.css" rel="stylesheet" type="text/css" />
-    <link href="//i.jobkorea.kr/content/css/ver_2/company/header_addons-sv-202404171307.css" rel="stylesheet" type="text/css" />
-    <link href="//i.jobkorea.kr/content/css/ver_2/company/header_animation-sv-202401301659.css" rel="stylesheet" type="text/css" />
-	<link href="//i.jobkorea.kr/content/css/ver_2/company/infomation-sv-202403131637.css" rel="stylesheet" type="text/css" /> 
-	<link href="//i.jobkorea.kr/content/css/ver_2/company/sidemenu-sv-202401301659.css" rel="stylesheet" type="text/css" />
+	<link href="../assets/css/company/company-info-detail-1.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/company/company-info-detail-2.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/company/company-info-detail-3.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/company/company-info-detail-4.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/company/company-info-detail-5.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/company/company-info-detail-6.css" rel="stylesheet" type="text/css" />
+	<link href="../assets/css/company/company-info-detail-7.css" rel="stylesheet" type="text/css" /> 
+	<link href="../assets/css/company/company-info-detail-8.css" rel="stylesheet" type="text/css" />
+	<jsp:include page="../assets/layout/user/lib.jsp" />
+	<!-- golgolz start -->
 	<!-- golgolz end -->
 	<style text="text/css">
 	#companyInfoList{width:80px; height:35px; font-size:15px; margin-right:30px; margin-top:27px}
