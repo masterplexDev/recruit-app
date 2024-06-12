@@ -4,9 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<jsp:include page="../assets/layout/user/lib.jsp" />  
-	<!-- golgolz start -->
-	
 <link href="https://i.jobkorea.kr/content/css/ver_2/event/banner.promotion-sv-202401301659.css" rel="stylesheet" type="text/css" />
 <link href="https://i.jobkorea.kr/content/css/ver_2/common-sv-202405271315.css" rel="stylesheet" type="text/css" />
 <link href="https://i.jobkorea.kr/deploy/pc/dist/css/personal/common/gnb-sv-202405231305.css" rel="stylesheet" type="text/css" />
@@ -14,6 +11,9 @@
 <link href="https://i.jobkorea.kr/content/css/ver_2/help/help-sv-202402231655.css" rel="stylesheet" type="text/css" />
 <link href="https://i.jobkorea.kr/deploy/pc/dist/css/personal/layout/footer-sv-202405131313.css" rel="stylesheet" type="text/css" />
 <link href="https://i.jobkorea.kr/deploy/pc/dist/css/personal/pages/main/auto_search-sv-202405231305.css" rel="stylesheet" type="text/css" />
+	
+	<jsp:include page="../assets/layout/user/lib.jsp" />  
+	<!-- golgolz start -->
 	
 	<!-- golgolz end -->
 	<style type="text/css">
@@ -45,8 +45,8 @@
 					<div class="searchBarItem mtcPlaceholder" float : right>
 						<span class="phTx">키워드 검색</span>
 						<input type="text" id="lb_sch" class="mtcSchInp" title="검색어 입력">
-						<input type="button" class="mtcBtnB mtcSchBtn" value="검색"/>
-						<!-- <button type="button" class="mtcBtnB mtcSchBtn"><span class="skip">검색</span></button> -->
+						<!-- <input type="button" class="mtcBtnB mtcSchBtn" value="검색"/> -->
+						<button type="button" class="mtcBtnB mtcSchBtn"><span class="skip">검색</span></button>
 					</div>
 				</fieldset>
 				<div class="lyTplArea schItems" style="float : right; margin-right : 10px">
@@ -120,7 +120,7 @@
 				</table>
 
 
-				<div class="listBtmArea">
+				<div class="listBtmArea" style="margin-bottom:40px">
                 <div class="btnListExDn">
                     <a href="notice_list.jsp" class="btnMtcTpl">목록</a>
                 </div>
