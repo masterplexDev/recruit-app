@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" info=""%>
-<noscript>
-	<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6"
-		height="0" width="0" style="display: none; visibility: hidden"></iframe>
-</noscript>
 
 <aside
 	class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-gradient-dark ps bg-white"

@@ -7,7 +7,7 @@
 	src:url('/plugin/font/NanumGothicRegular.eot?#iefix') format('embedded-opentype'),
 		url('/plugin/font/NanumGothicRegular.woff') format('woff'),
 		url('/plugin/font/NanumGothicRegular.ttf') format('truetype');
-	src:local(※), url('/plugin/font/NanumGothicRegular.woff') format('woff');
+	src:local(��), url('/plugin/font/NanumGothicRegular.woff') format('woff');
 }
 
 @font-face{
@@ -18,7 +18,7 @@
 	src:url('/plugin/font/NanumGothicBold.eot?#iefix') format('embedded-opentype'),
 		url('/plugin/font/NanumGothicBold.woff') format('woff'),
 		url('/plugin/font/NanumGothicBold.ttf') format('truetype');
-	src:local(※), url('/plugin/font/NanumGothicBold.woff') format('woff');
+	src:local(��), url('/plugin/font/NanumGothicBold.woff') format('woff');
 }
 
 @font-face{
@@ -29,7 +29,7 @@
 	src:url('/plugin/font/NanumGothicExtraBold.eot?#iefix') format('embedded-opentype'),
 		url('/plugin/font/NanumGothicExtraBold.woff') format('woff'),
 		url('/plugin/font/NanumGothicExtraBold.ttf') format('truetype');
-	src:local(※), url('/plugin/font/NanumGothicExtraBold.woff') format('woff');
+	src:local(��), url('/plugin/font/NanumGothicExtraBold.woff') format('woff');
 }
 
 html, body{min-width:100%;min-height:100%;}
@@ -38,7 +38,7 @@ html, body, div, p, h1, h2, h3, h4, h5, h6,
 ul, ol, li, dl, dt, dd, table, th, td, pre, blockquote, thead, tfoot,
 form, fieldset, legend, input, textarea, button, select{margin:0;padding:0;}
 body, div, table, th, td, pre, blockquote, thead, tfoot,
-input, button, textarea, ol, li, ul, dl, dt, dd{font-family:'나눔고딕','Nanum Gothic','맑은고딕','Malgun Gothic','gulim','arial', 'Dotum', 'AppleGothic', sans-serif;font-weight:400;}
+/* input, button, textarea, ol, li, ul, dl, dt, dd{font-family:'�굹�닎怨좊뵓','Nanum Gothic','留묒�怨좊뵓','Malgun Gothic','gulim','arial', 'Dotum', 'AppleGothic', sans-serif;font-weight:400;} */
 body, div, table, th, td, pre, blockquote, em{font-weight:normal;font-style:normal;color:#454545;}
 body, div, table, th, td, pre, blockquote{font-size:13px;}
 b, strong{font-weight:600;}
