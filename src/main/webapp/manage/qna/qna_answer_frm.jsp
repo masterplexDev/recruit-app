@@ -112,7 +112,6 @@ table{
 	</main>
 	<!-- golgolz start -->
 
-
 	<!-- golgolz end -->
 </body>
 </html>
