@@ -13,12 +13,12 @@
     <link rel="stylesheet" href="https://asset.wanted.co.kr/userweb/www/_next/static/css/c76e012c05e1318d.css" crossorigin="anonymous" data-n-g=""/>
 	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/mypage.css"/>
 	<!-- golgolz end -->
-	<style text="text/css">
+	<style type="text/css">
 		<!-- golgolz start -->
 		
 		<!-- golgolz end -->
 	</style>
-	<script text="text/javascript">
+	<script type="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
 			<!-- golgolz end -->
@@ -33,13 +33,13 @@
         <div class="MainLayout_MainLayout__root__p6itg">
           <div class="Grid_Grid__container__J9CcC Grid_Grid__spacing__5__ZwgDV">
           <jsp:include page="../mypage_layout.jsp"/>
-          <div class="Grid_Grid__item__FUkSS Grid_Grid__justify_center__QJu2X Grid_Grid__align-items_flex-start__PA0JE Grid_Grid__grid__xs__12__rVqKh Grid_Grid__grid__md__6__9g_JE">
+          <div class="Grid_Grid__item__FUkSS Grid_Grid__justify_center__QJu2X Grid_Grid__align-items_flex-start__PA0JE Grid_Grid__grid__xs__12__rVqKh Grid_Grid__grid__md__6__9g_JE" style="margin-left:30px">
 		  <!-- golgolz start -->
           
-			<div style="margin:40px auto 0; width:800px"> 
+			<div style="margin:30px auto 0; width:621px"> 
 			<div class="loungeContent inquiryContent" id="form">
 			<div class="topHdWrap">
-				<h2 class="lug_hd_2">문의&#183;신고</h2>
+				<h1 style="font-size: 25px;"><strong>문의</strong></h1>
 			</div>
 			<!--// 내 제안내역 보기 상세 -->
 				<div class="inquiryViewWrap">
