@@ -9,41 +9,13 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width">
-	<meta property="og:description" content="모든 원티드 서비스를 하나의 계정으로 이용할 수 있습니다.">
-	<meta property="og:image" content="https://image.wanted.co.kr/wantedoneid/meta_image_default_new.jpg">
+	<!-- 파비콘 -->
 	<link rel="shortcut icon" href="https://static.wanted.co.kr/favicon/new/favicon.ico">
-	<link rel="icon" type="image/png" sizes="16x16" href="https://static.wanted.co.kr/favicon/new/favicon-16x16.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="https://static.wanted.co.kr/favicon/new/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="https://static.wanted.co.kr/favicon/new/favicon-96x96.png">
-	<link rel="icon" type="image/png" sizes="192x192"
-		href="https://static.wanted.co.kr/favicon/new/favicon-192x192.png">
-	<link rel="apple-touch-icon" sizes="57x57"
-		href="https://static.wanted.co.kr/favicon/new/apple-touch-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="60x60"
-		href="https://static.wanted.co.kr/favicon/new/apple-touch-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72"
-		href="https://static.wanted.co.kr/favicon/new/apple-touch-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="76x76"
-		href="https://static.wanted.co.kr/favicon/new/apple-touch-icon-76x76.png">
-	<link rel="apple-touch-icon" sizes="114x114"
-		href="https://static.wanted.co.kr/favicon/new/apple-touch-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="120x120"
-		href="https://static.wanted.co.kr/favicon/new/apple-touch-icon-120x120.png">
-	<link rel="apple-touch-icon" sizes="144x144"
-		href="https://static.wanted.co.kr/favicon/new/apple-touch-icon-144x144.png">
-	<link rel="apple-touch-icon" sizes="152x152"
-		href="https://static.wanted.co.kr/favicon/new/apple-touch-icon-152x152.png">
-	<link rel="apple-touch-icon" sizes="180x180"
-		href="https://static.wanted.co.kr/favicon/new/apple-touch-icon-180x180.png">
-	<link rel="dns-prefetch" href="https://asset.wanted.co.kr/">
-	<link rel="preconnect" href="https://asset.wanted.co.kr/">
-	<link rel="preconnect" href="https://cdn.jsdelivr.net/" crossorigin="anonymous">
 	<style>
 		.async-hide {
 			opacity: 0 !important;
 		}
 	</style>
-	<title>Wanted OneID</title>
 	<style>
 		.async-hide {
 			opacity: 0 !important;
@@ -111,6 +83,7 @@
 			min-height: 100%;
 			background-color: #FFFFFf;
 		}
+	
 	</style>
 	<style data-emotion="css k82zmk" data-s="">
 		.css-k82zmk {
@@ -982,6 +955,9 @@
 			100% {
 				opacity: 0.2;
 			}
+		}
+		a{
+		color:#333333;
 		}
 	</style>
 	<style data-emotion="css" data-s=""></style>
