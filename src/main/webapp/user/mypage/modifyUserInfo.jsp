@@ -11,6 +11,7 @@
     <link rel="shortcut icon" href="https://static.wanted.co.kr/favicon/new/favicon.ico"/>
     <link rel="stylesheet" href="https://asset.wanted.co.kr/userweb/www/_next/static/css/c76e012c05e1318d.css" crossorigin="anonymous" data-n-g=""/>
 	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/mypage.css"/>
+	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/signup.css"/>
 	<!-- golgolz end -->
 <style>
 	@media (max-width: 767px) {
@@ -77,7 +78,7 @@
 		    border: 1px solid rgba(112, 115, 124, 0.22);
 		    color: #171719;
 		    border-radius: 10px;
-		    font-size: 16px;
+		    font-size: 15px;
 		    font-weight: 400;
 		}
     </style>
