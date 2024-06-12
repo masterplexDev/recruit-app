@@ -1,25 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" info=""%>
 <!DOCTYPE html>
 <html>
-<head>
-    <jsp:include page="../../assets/layout/admin/lib.jsp" />
+<head>    
+	<style>
+    .chart-container 
+    {
+        position: relative;
+        height: 400px; /* Adjust this value as needed */
+    }
+    .bg-gradient-primary{
+    	background-image: linear-gradient(195deg, #ec407a, #d81b60) !important;
+    }
+    </style>
     <!-- AdminLTE CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css"> -->
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- AdminLTE JS -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script> -->
+    <!-- ChartJS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+    <jsp:include page="../../assets/layout/admin/lib.jsp" />
     <script type="text/javascript">
         $(function(){
             $("#dashboard_menu").addClass("bg-gradient-primary");
         });
     </script>
-    <style>
-    .chart-container {
-            position: relative;
-            height: 400px; /* Adjust this value as needed */
-        }
-    </style>
 </head>
 <body class="hold-transition sidebar-mini">
     <jsp:include page="../../assets/layout/admin/header.jsp" />
@@ -125,11 +133,7 @@
             </div>
         </section>
         <!-- golgolz end -->
-    </main>
-    <!-- AdminLTE JS -->
-    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script>
-    <!-- ChartJS -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+        
     <script>
         $(function () {
             var ctxVisitors = document.getElementById('visitors-chart').getContext('2d');
@@ -277,5 +281,6 @@
             
         });
     </script>
+    </main>
 </body>
 </html>

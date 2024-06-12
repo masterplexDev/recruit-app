@@ -132,7 +132,7 @@ a.gnb_2da:focus, a.gnb_2da:hover {background:#484848 !important;color:#fff !impo
 #content .graph.w80p {width:80% !important;display:inline-block;}
 #content .graph .bar {position:absolute;left:-1px;top:-1px;height:8px;border:1px solid #3962cd;background:#6b8eef;font-size:0;}
 #content .graph .bar2 {position:absolute;left:-1px;top:-1px;height:8px;border:1px solid #ba39cd;background:#de68f0;font-size:0;}
-.breadcrumb {padding:0 0 0 25px;color:#000;line-height:34px;border-bottom:1px solid #e9e9e9;text-align:left;}
+.breadcrumb {padding:0 0 0 25px;color:#000;line-height:34px;text-align:left;}
 .breadcrumb span {font-weight:400;}
 .breadcrumb .ionicons {margin:0 7px 1px;vertical-align:middle;}
 
