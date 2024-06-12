@@ -17,6 +17,9 @@
 <link href="http://localhost//recruit-app/assets/css/pagenation.css" rel="stylesheet" />
 <link href="http://localhost//recruit-app/assets/css/manage/order/admin.css" rel="stylesheet" />
 <link href="http://localhost//recruit-app/assets/css/manage/order/reset.css" rel="stylesheet" />
+<link href="http://localhost/recruit-app/assets/css/manage/goods/general.css" rel="stylesheet" />
+<link href="http://localhost/recruit-app/assets/css/manage/goods/goods.css" rel="stylesheet" />
+<link href="http://localhost/recruit-app/assets/css/manage/goods/default.css" rel="stylesheet" />
 <!-- golgolz end -->
 </head>
 <body>

@@ -141,41 +141,41 @@
 						<tbody>
 							<tr class="list0">
 								<td>1</td>
-								<td>우미연</td>
-								<td>woo</td>
-								<td>010-0000-0000</td>
+								<td>우*연</td>
+								<td>w**@naver.com</td>
+								<td>010-****-0000</td>
 								<td>2018-05-01</td>
 								<td><input type="button" value="상세조회" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
 							</tr>
 							<tr class="list0">
 								<td>2</td>
-								<td>이명화</td>
-								<td>lee</td>
-								<td>010-1234-1234</td>
+								<td>이*화</td>
+								<td>l**@daum.net</td>
+								<td>010-****-1234</td>
 								<td>2021-03-22</td>
 								<td><input type="button" value="상세조회" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
 							</tr>
 							<tr class="list0">
 								<td>3</td>
-								<td>홍성강</td>
-								<td>hong</td>
-								<td>010-3333-3333</td>
+								<td>홍*강</td>
+								<td>h****@naver.com </td>
+								<td>010-****-3333</td>
 								<td>2019-12-21</td>
 								<td><input type="button" value="상세조회" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
 							</tr>
 							<tr class="list0">
 								<td>4</td>
-								<td>박시현</td>
-								<td>park</td>
-								<td>010-5555-5555</td>
+								<td>박*현</td>
+								<td>p****@gmail.com</td>
+								<td>010-****-5555</td>
 								<td>2022-05-05</td>
 								<td><input type="button" value="상세조회" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
 							</tr>
 							<tr class="list0">
 								<td>5</td>
-								<td>정명호</td>
-								<td>jeong</td>
-								<td>010-1111-1111</td>
+								<td>정*호</td>
+								<td>j****@gmail.com</td>
+								<td>010-****-1111</td>
 								<td>2018-02-11</td>
 								<td><input type="button" value="상세조회" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
 							</tr>
