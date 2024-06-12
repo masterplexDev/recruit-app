@@ -20,7 +20,7 @@
 	#companyInfoList{width:80px; height:35px; font-size:15px; margin-right:30px; margin-top:27px}
 	#recruitmentNotice{width:120px; height:35px; font-size:15px; margin-right:30px; margin-top:27px}
 	#companyReview{width:80px; height:35px; font-size:15px; margin-top:27px}
-	#btnArea{height:100px; text-align:center;}
+	#btnArea{height:50px; text-align:center;}
 	</style>
 	<script text="text/javascript">
 		$(function(){
@@ -58,6 +58,36 @@
         </div>
     </div>
     <div class="company-nav" role="navigation">
+    <div class="company-nav-container">
+
+            <a href="/company/1882711" class="company-nav-item active">
+                <div class="name">기업정보</div>
+                <div class="post">
+                    <div class="header screen-out">게시물</div>
+                    <div class="value"></div>
+                </div>
+
+            </a>
+            
+                <a href="/company/1882711/PassAssay" class="company-nav-item ">
+                    <div class="name">기업리뷰</div>
+                    <div class="post">
+                        <div class="header screen-out">게시물</div>
+                        <div class="value">53</div>
+                    </div>
+                </a>
+
+                <a href="/company/1882711/salary" class="company-nav-item ">
+                    <div class="name">채용공고</div>
+                    <div class="post">
+                        <div class="header screen-out">게시물</div>
+
+                    </div>
+                </a>
+
+
+        </div>
+    
     </div>
 </div>
 </div>
@@ -66,7 +96,7 @@
 <div class="company-body-infomation">
 
     <!--기본정보 영역-->
-    <div class="company-infomation-container working-environment-container working-environment-introduce fixed-height">
+    <div class="company-infomation-container working-environment-container working-environment-introduce fixed-height" style="margin-bottom:45px; height:200px">
                             <h3 class="header">기업소개</h3>
                             <div class="introduce-body">
                                 <p id="devsummary">
@@ -161,7 +191,7 @@
         </div>
     </div>
     
-     <div class="company-infomation-container corporate-issues-container corporate-history fixed-height">
+     <div class="company-infomation-container corporate-issues-container corporate-history fixed-height" style="padding-bottom:450px">
                 <h3 class="header">연혁</h3>
                 <div class="corporate-history-list-company">
                     <div class="corporate-history-list-item">
@@ -169,34 +199,28 @@
                     </div>
                 </div>                
             </div>
-
-        <div class="popup popup-latest-news hidden" aria-hidden="true">
-                <div class="popup-container">
-                    <div class="popup-header">
-                        <div class="title"></div>
-                        <div class="meta">
-                            <div class="meta-item date"></div>
-                            <div class="meta-item source"></div>
-                        </div>
-                    </div>
-                    <div class="popup-body">
-
-                    </div>
-                </div>
-                <a href="javascript:void(0);" class="button button-previous">이전</a>
-                <a href="javascript:void(0);" class="button button-next">이전</a>
-                <a href="javascript:void(0);" class="button button-close">닫기</a>
-
-        </div>
     </div>
 
         <!--복리후생-->
 
 
-        <div class="company-infomation-container working-environment-container working-environment-benefit">
+        <div class="company-infomation-container working-environment-container working-environment-benefit" style="margin:auto; width:1040px">
             <h3 class="header">복리후생</h3>
             <div class="benefit-list">
-<div class='benefit-item-group'>                    <div class="item pension">
+            	<div class='benefit-item-group'>                    
+            			<div class="benefit-body">
+                                    <p>국민연금 </p>
+                                    <p>고용보험</p>
+                        </div>
+            			<div class="benefit-body">
+                                    <p>경조금 </p>
+                                    <p>연차제도</p>
+                        </div>
+                        
+                    </div>
+         	 </div>
+          </div>
+<!-- <div class='benefit-item-group'>                    <div class="item pension">
                         <div class="benefit-header"> 연금&#183;보험</div>
                         <div class="benefit-body">
                                     <p>국민연금 </p>
@@ -243,21 +267,21 @@
                                     <p>심리상담</p>
                         </div>
                     </div>
-</div>
+</div> -->
             </div>
 
         </div>
-
-<div class="company-infomation-container working-environment-container working-environment-map">
+<div id="btnArea"></div>
+<div class="company-infomation-container working-environment-container working-environment-map" style="margin:auto; width:1040px">
     <h3 class="header">기업위치</h3>
 
     <div class="address">경기 성남시 분당구 판교로256번길 7 (삼평동) 넥슨코리아</div>
 
 </div>
 <div id="btnArea">
-	<input type="button" id="companyInfoList" value="목록"/>
+<!-- 	<input type="button" id="companyInfoList" value="목록"/>
 	<input type="button" id="recruitmentNotice" value="채용공고 보러가기"/>
-	<input type="button" id="companyReview" value="기업 리뷰"/>
+	<input type="button" id="companyReview" value="기업 리뷰"/> -->
 </div>
    <!--  <script src="//i.jobkorea.kr/content/javascript/pc/dist/corp/info/ui.company.header.min-sv-202009021425.js"
     type="text/javascript"></script> 보류! --> 

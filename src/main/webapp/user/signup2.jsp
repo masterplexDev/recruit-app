@@ -1451,81 +1451,83 @@
 					</div>
 					<div class="css-ng7qrx">
 						<form class="css-1b2vfnn">
-							<div>
-								<div class="css-1ia1k3o">
-									<div class="css-cssveg">
-										<div class="css-env1z2"><label ="Typography"
-												color="rgba(55, 56, 60, 0.61)" for="email"
-												class="css-afh7p0">이메일</label></div>
-												<input type="email" placeholder="이메일을 입력해주세요." id="email" name="email" ="Input_email"
-											autocomplete="new-password" class="css-1sbrczv" value="">
-									</div>
-									<button type="button"  class="css-zzrlz5" disabled="disabled">
-									<span ="Typography" color="#000000" class="css-htgykj" >중복 확인</span></button>
+							<div style="margin-top: 20px; margin-bottom: 5px;"><h1 style="font-size: 15px">기타 인적사항</h1></div>
+							<div class="css-evy94o">
+								<div class="css-env1z2" ><label ="Typography" color="rgba(55, 56, 60, 0.61)"
+										for="birthday" class="css-afh7p0" >성별</label></div>
+								<div class="" style="text-align: center">
+								<span style="margin-right: 10px; font-size: 15px;"><input type="radio" name="gender" class="gender" value="남자" style="width: 15px; height: 15px; margin: 3px;">남자</span>
+								<span style="margin-left: 10px; font-size: 15px;"><input type="radio" name="gender" class="gender" value="여자" style="width: 15px; height: 15px; margin: 3px;">여자</span></div>
+							</div>
+							<div class="css-evy94o" style="margin-top: 20px;">
+								<div class="css-env1z2"><label ="Typography" color="rgba(55, 56, 60, 0.61)"
+										for="birthday" class="css-afh7p0">생년월일</label></div>
+								<div class="input-group" style="text-align: center">
+								<input type="text" class="css-1sbrczv" id="datepicker" style="background-color: #FFFFFF; width: 85%;" placeholder="생년월일을 선택해주세요." readonly>
+								<img src="http://localhost/recruit-app/assets/images/mypage/calenderImg.png" alt="달력 아이콘" class="input-group-text" style="width: 15%; height: 48px;">
 								</div>
-								<div class="css-ut4l54"></div>
 							</div>
 							<div class="css-evy94o">
 								<div class="css-env1z2"><label ="Typography" color="rgba(55, 56, 60, 0.61)"
-										for="username" class="css-afh7p0">이름</label></div><input type="text"
-									placeholder="이름을 입력해주세요." name="username" ="Input_username"
+										for="username" class="css-afh7p0">주소</label></div><input type="text"
+									placeholder="주소를 입력해주세요." name="addr" ="Input_username"
 									autocomplete="new-password" class="css-1sbrczv" value="">
 							</div>
-							<div>
-								<div class="css-env1z2"><label ="Typography" color="rgba(55, 56, 60, 0.61)"
-										for="mobile" class="css-afh7p0">휴대폰 번호</label></div>
-								<div class="css-14o8ny9">
-									<div class="css-gjm025" style="margin-bottom: 20px;"><input type="number" pattern="[0-9]*"
-											placeholder="(예시) 01013245768" name="mobile" ="Input_mobile"
-											autocomplete="on" class="css-1sbrczv" value="">
+							<div class="question-css" style="margin-top: 20px; margin-bottom:30px;">
+								<div style="text-align: center; margin: 15px; ">
+								<p style="font-size: 15px">보안 질문 설정</p>
+								</div>
+								<div class="css-2w308u">
+								
+								<select class="css-14pvjnj">
+									<option>질문선택</option>
+									<option>질문1</option>
+									<option>질문2</option>
+									<option>질문3</option>
+									<option>질문4</option>
+								</select>
+								<div class="css-1px7y17"><span class="css-1ihsymv"><svg viewBox="0 0 24 24" class="css-1h47l4s"><path fill="rgba(55, 56, 60, 0.61)" d="M3.08071 7.58071C3.58839 7.07303 4.41151 7.07303 4.91919 7.58071L12 14.6615L19.0807 7.58071C19.5884 7.07303 20.4115 7.07303 20.9192 7.58071C21.4269 8.08839 21.4269 8.91151 20.9192 9.41919L12.9192 17.4192C12.4115 17.9269 11.5884 17.9269 11.0807 17.4192L3.08071 9.41919C2.57303 8.91151 2.57303 8.08839 3.08071 7.58071Z"></path></svg></span></div>
+								</div>
+								<div class="answer-css" style="margin-top: 10px; ">
+									<input type="text" class="css-1sbrczv" placeholder="내용을 입력해주세요.">
 								</div>
 							</div>
-								<div class="css-env1z2"><label ="Typography" color="rgba(55, 56, 60, 0.61)"
-										for="mobile" class="css-afh7p0">전화번호</label></div>
-								<div class="css-14o8ny9">
-									<div class="css-gjm025" style="margin-bottom: 15px;"><input type="number" pattern="[0-9]*"
-											placeholder="(예시) 021234567" name="mobile" ="Input_mobile"
-											autocomplete="on" class="css-1sbrczv" value="">
+							<div class="css-1n70r34" style="margin-top: 20px; margin-bottom: 30px;">
+								<div class="css-5hccr8" style="margin-bottom:5px;">
+									<input type="checkbox" style="width: 15px; height: 15px; margin-top: 3px;">
+									<div class="css-1smbjja">
+										<p ="Typography" color="#171719" class="css-5iu2fa">전체 동의</p>
+									</div>
 								</div>
+								<div class="css-sfv171">
+									<div class="css-5hccr8">
+											<input type="checkbox" style="width: 15px; height: 15px; margin-top: 3px;">
+										<div class="css-1smbjja">
+											<p ="Typography" color="rgba(55, 56, 60, 0.61)"
+												class="css-12qszhy">만 14세 이상입니다. (필수)</p>
+										</div>
+									</div>
+									<div class="css-5hccr8">
+										<input type="checkbox" style="width: 15px; height: 15px; margin-top: 3px;">
+										<div class="css-1smbjja">
+											<p ="Typography" color="rgba(55, 56, 60, 0.61)"
+												class="css-12qszhy">Goojzzk 이용약관 동의 (필수)</p>
+										</div>
+									</div>
+									<div class="css-5hccr8">
+										<input type="checkbox" style="width: 15px; height: 15px; margin-top: 3px;">
+										<div class="css-1smbjja">
+											<p ="Typography" color="rgba(55, 56, 60, 0.61)"
+												class="css-12qszhy">Goojzzk 개인정보 수집 및 이용 동의 (필수)</p>
+										</div>
+									</div>
 								</div>
 							</div>
-							<div class="css-evy94o">
-								<div class="css-env1z2"><label ="Typography" color="rgba(55, 56, 60, 0.61)"
-										for="password" class="css-afh7p0">비밀번호</label></div>
-								<div class="css-evy94o"><input type="password" placeholder="비밀번호를 입력해주세요."
-										name="password" ="Input_password" autocomplete="on"
-										class="css-1sbrczv" value=""></div><input type="password"
-									placeholder="비밀번호를 다시 한번 입력해주세요." name="passwordConfirm"
-									="Input_passwordConfirm" autocomplete="on" class="css-1sbrczv" value="">
-								<p ="Typography" color="rgba(55, 56, 60, 0.61)" class="css-1eroab9" style="font-size: 12px;">영문 대소문자,
-									숫자, 특수문자를 3가지 이상으로 조합해 8자 이상 16자 이하로 입력해주세요.</p>
-							</div>
-							<script type="text/javascript">
-								$(function(){
-									$("#signup-next").click(function(){
-										var flag = chkNull();
-										if(flag==true){
-											location.href="http://localhost/recruit-app/user/signup2.jsp"
-										}//end if
-									});
-									
-									function chkNull(){
-										var flag=false;
-										if($("#email").val().trim() == ""){
-											alert("이메일을 입력해주세요.");
-											return flag;
-										}
-										flag = true;
-										return flag;
-									}
-								})//ready
-							</script>
 							<div class="css-1tbd2jx">
 								<div class="css-1csonyh"></div>
 								<div class="css-270vek"></div>
-								<button type="button" class="css-1yzn4b" id="signup-next">
-								<span ="Typography" color="#000000" class="css-kfktv3">다음으로</span>
-								</button>
+								<button type="submit" class="css-1yzn4b"><span ="Typography" color="#000000"
+										class="css-kfktv3">가입하기</span></button>
 							</div>
 						</form>
 					</div>

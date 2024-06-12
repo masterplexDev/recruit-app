@@ -11,3 +11,13 @@
 <link id="pagestyle" href="http://localhost/recruit-app/assets/css/material-dashboard.min.css"
 	rel="stylesheet" />
 <link rel="shortcut icon" href="http://demofran.com/data/banner/JnLfWUSUyR6sXJP5n3Re4Fvdc93k93.ico" type="image/x-icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"/>
+<style>
+   body {
+     font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+       Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo",
+       "Noto Sans KR", "Malgun Gothic", sans-serif;
+   }
+</style>

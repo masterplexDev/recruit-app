@@ -90,7 +90,7 @@
 		$(function(){
 			<!-- golgolz start -->
 			$("#modifyUser").click(function(){
-      		  location.href = "checkPass.jsp";
+      		  location.href = "modifyUserInfo.jsp";
       	  });
 			<!-- golgolz end -->
 		});
@@ -114,94 +114,24 @@
               <div
                 class="Grid_Grid__container__J9CcC Grid_Grid__direction_column__jR3AZ Grid_Grid__wrap_nowrap__4r_cp ProfileView_ProfileView__root__eOS_q"
               >
-                <section
-                  class="Grid_Grid__item__FUkSS Grid_Grid__align-items_flex-start__PA0JE"
-                >
-                  <div
-                    class="Grid_Grid__container__J9CcC Grid_Grid__align-items_flex-start__PA0JE ProfileViewHeader_ProfileViewHeader__root__PjH6q"
-                  >
-                    <div
-                      class="Grid_Grid__item__FUkSS Grid_Grid__align-items_flex-start__PA0JE Grid_Grid__align-self_stretch__awciG"
-                    >
-                      <div
-                        class="Grid_Grid__container__J9CcC Grid_Grid__align-items_center__VEikH ProfileViewHeaderAvatar_ProfileViewHeaderAvatar__root__OR4Te"
-                      	style="text-align: center;"
-                      >
-                        <div
-                          class="Grid_Grid__item__FUkSS Grid_Grid__align-items_flex-start__PA0JE"
-                          style="text-align: center;"
-                        >
-                          <div
-                            class="Avatar_Avatar__root__5Xq6z Avatar_Avatar__sizeXlarge__cwS_g ProfileViewHeaderAvatar_ProfileViewHeaderAvatar__avatar__d0_38"
-                          	style="text-align: center;"
-                          >
-                            <div class="Avatar_Avatar__bg__MRkK0" style="text-align: center;">
-                              <img
-                                alt="프로필 이미지"
-                                src="http://localhost/recruit-app/assets/images/mypage/user_default.png"
-                                class="Avatar_Avatar__img__kcubw"
-                                style="text-align: center;"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <div
-                          class="Grid_Grid__item__FUkSS Grid_Grid__align-items_flex-start__PA0JE ProfileViewHeaderAvatar_ProfileViewHeaderAvatar__info__dUe_s"
-                        >
-                          <h4
-                            class="Typography_Typography__root__xYuMs Typography_Typography__heading1__bVyRs Typography_Typography__weightBold__e15ql Typography_Typography__noWrap__ovbzF Typography_Typography__alignLeft__fYbY6 ProfileViewHeaderAvatar_ProfileViewHeaderAvatar__info__title__KuxZF"
-                          >
-                            정명호
-                          </h4>
-                        </div>
-                      </div>
-                    </div>
-                </section>
                 <div class="Grid_Grid__container__J9CcC Grid_Grid__align-items_center__VEikH ProfileViewFollowerFollwingInfo_ProfileViewFollowerFollwingInfo__root__TSJnS" >
                 </div>
                 <section class="Grid_Grid__item__FUkSS Grid_Grid__align-items_flex-start__PA0JE ProfileView_ProfileView__borderSection__VkDe7" style="margin: 30px 0px 30px 0px;">
-                  <h1 style="font-size: 25px;">회원정보 변경</h1>
+                  <h1 style="font-size: 25px;">비밀번호 재설정</h1>
                 </section>
                 <section
                   class="Grid_Grid__item__FUkSS Grid_Grid__align-items_flex-start__PA0JE" style="margin-bottom: 50px;"
                 >
                   <article class="css-dnwsdj">
                   <div class="css-9as5im">
-                  <p data-testid="Typography" color="#000000" class="css-dk1ca0">회원정보</p>
-                  <p data-testid="Typography" color="rgba(55, 56, 60, 0.61)" class="css-1b12nwt">서비스에서 사용하는 내 정보를 변경할 수 있습니다.</p>
+                  <p data-testid="Typography" color="rgba(55, 56, 60, 0.61)" class="css-1b12nwt"><strong>새로운 비밀번호</strong>를 입력해주세요.</p>
                   </div>
                   <ul class="css-14jv0iu">
-                  <li data-list-type="EMAIL_CHANGE" tabindex="0" class="css-1f5onls">
-                  <p data-testid="Typography" color="#000000" class="css-9dug5j">이메일</p>
-                  <input type="email" placeholder="이메일을 입력해주세요." name="email" data-testid="Input_email"
-					autocomplete="on" class="css-1sbrczv" value="jeong@gmail.com">
+                  <li data-list-type="SOCIAL_LINK" tabindex="0" class="css-15hfbq8"><p data-testid="Typography" color="#000000" class="css-9dug5j">새로운 비밀번호</p>
+                  <input type="password" name="password" autocomplete="on" class="css-1sbrczv" value="*********">
                   </li>
-                  <li data-list-type="NAME_CHANGE" tabindex="0" class="css-15hfbq8">
-                  <p data-testid="Typography" color="#000000" class="css-9dug5j">이름</p>
-                  <input type="name" placeholder="이름을 입력해주세요." name="name"
-					autocomplete="on" class="css-1sbrczv" value="정명호">
-                  </li>
-                  <li data-list-type="NAME_CHANGE" tabindex="0" class="css-15hfbq8">
-                  <p data-testid="Typography" color="#000000" class="css-9dug5j">성별</p>
-                  <input type="text" name="gender"
-					autocomplete="on" class="css-1sbrczv" value="남자" readonly="readonly">
-                  </li>
-                  <li data-list-type="PHONE_CHANGE" tabindex="0" class="css-15hfbq8"><p data-testid="Typography" color="#000000" class="css-9dug5j">휴대폰 번호</p>
-                  <input type="text" placeholder="휴대폰 번호를 입력해주세요." name="phone"
-					autocomplete="on" class="css-1sbrczv" value="010-0000-0000">
-                  </li>
-                  <li data-list-type="PHONE_CHANGE" tabindex="0" class="css-15hfbq8"><p data-testid="Typography" color="#000000" class="css-9dug5j">전화번호</p>
-                  <input type="text" placeholder="전화번호를 입력해주세요." name="tel"
-					autocomplete="on" class="css-1sbrczv" value="032-000-0000">
-                  </li>
-                  <li data-list-type="SOCIAL_LINK" tabindex="0" class="css-15hfbq8"><p data-testid="Typography" color="#000000" class="css-9dug5j">주소</p>
-                  <input type="text" placeholder="주소를 입력해주세요." name="addr"
-					autocomplete="on" class="css-1sbrczv" value="인천시 부평구 부평동">
-                  </li>
-                  <li data-list-type="SOCIAL_LINK" tabindex="0" class="css-15hfbq8"><p data-testid="Typography" color="#000000" class="css-9dug5j">비밀번호</p>
-                  <input type="password" name="password" readonly="readonly" style="border: none;"
-					autocomplete="on" class="css-1sbrczv" value="*********">
-                   <input type="button" value="변경" class="button modifyPassBtn">
+                  <li data-list-type="SOCIAL_LINK" tabindex="0" class="css-15hfbq8"><p data-testid="Typography" color="#000000" class="css-9dug5j">비밀번호 확인</p>
+                  <input type="password" name="password" autocomplete="on" class="css-1sbrczv" value="*********">
                   </li>
                    <li data-list-type="SOCIAL_LINK" tabindex="0" style="text-align: center;">
                    <input type="button" value="수정완료" class="button modifyBtn" style="margin: 5px;">

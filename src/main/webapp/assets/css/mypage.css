@@ -1,220 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
-    info=""%>
-<!DOCTYPE html>
-<html>
-<head>
-	<jsp:include page="../../assets/layout/user/lib.jsp" />  
-	<!-- golgolz start -->
-	<link href="https://i.jobkorea.kr/content/css/ver_2/event/banner.promotion-sv-202401301659.css" rel="stylesheet" type="text/css" />
-	<link href="https://i.jobkorea.kr/content/css/ver_2/common-sv-202405271315.css" rel="stylesheet" type="text/css" />
-	<link href="https://i.jobkorea.kr/deploy/pc/dist/css/personal/common/gnb-sv-202405231305.css" rel="stylesheet" type="text/css" />
-	<link href="https://i.jobkorea.kr/content/css/ver_2/mtc/mtc_lounge-sv-202402231655.css" rel="stylesheet" type="text/css" />
-	<link href="https://i.jobkorea.kr/content/css/ver_2/help/help-sv-202402231655.css" rel="stylesheet" type="text/css" />
-	<link href="https://i.jobkorea.kr/deploy/pc/dist/css/personal/layout/footer-sv-202405131313.css" rel="stylesheet" type="text/css" />
-	<link href="https://i.jobkorea.kr/deploy/pc/dist/css/personal/pages/main/auto_search-sv-202405231305.css" rel="stylesheet" type="text/css" />
-	
-	<link rel="canonical" href="https://www.wanted.co.kr/my/profile" />
-    <link rel="canonical" href="https://www.wanted.co.kr/my/profile" />
-    <meta name="next-head-count" content="27" />
-    <link rel="dns-prefetch" href="https://asset.wanted.co.kr/" />
-    <link rel="preconnect" href="https://asset.wanted.co.kr/" />
-    <link rel="dns-prefetch" href="https://image.wanted.co.kr/" />
-    <link rel="preconnect" href="https://image.wanted.co.kr/" />
-    <link rel="dns-prefetch" href="https://static.wanted.co.kr/" />
-    <link rel="preconnect" href="https://static.wanted.co.kr/" />
-    <link rel="dns-prefetch" href="https://www.google-analytics.com/" />
-    <link rel="preconnect" href="https://www.google-analytics.com/" />
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com/" />
-    <link rel="preconnect" href="https://www.googletagmanager.com/" />
-    <link rel="dns-prefetch" href="https://api.amplitude.com/" />
-    <link rel="preconnect" href="https://api.amplitude.com/" />
-    <link rel="dns-prefetch" href="https://api2.amplitude.com/" />
-    <link rel="preconnect" href="https://api2.amplitude.com/" />
-    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net/" />
-    <link rel="preconnect" href="https://cdn.jsdelivr.net/" />
-    <link
-      rel="shortcut icon"
-      href="https://static.wanted.co.kr/favicon/new/favicon.ico"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="https://static.wanted.co.kr/favicon/new/favicon-16x16.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="https://static.wanted.co.kr/favicon/new/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="96x96"
-      href="https://static.wanted.co.kr/favicon/new/favicon-96x96.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="192x192"
-      href="https://static.wanted.co.kr/favicon/new/favicon-192x192.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="57x57"
-      href="https://static.wanted.co.kr/favicon/new/apple-touch-icon-57x57.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="60x60"
-      href="https://static.wanted.co.kr/favicon/new/apple-touch-icon-60x60.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="72x72"
-      href="https://static.wanted.co.kr/favicon/new/apple-touch-icon-72x72.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="76x76"
-      href="https://static.wanted.co.kr/favicon/new/apple-touch-icon-76x76.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="114x114"
-      href="https://static.wanted.co.kr/favicon/new/apple-touch-icon-114x114.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="120x120"
-      href="https://static.wanted.co.kr/favicon/new/apple-touch-icon-120x120.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="144x144"
-      href="https://static.wanted.co.kr/favicon/new/apple-touch-icon-144x144.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="152x152"
-      href="https://static.wanted.co.kr/favicon/new/apple-touch-icon-152x152.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="https://static.wanted.co.kr/favicon/new/apple-touch-icon-180x180.png"
-    />
-    <link
-      rel="preload"
-      as="style"
-      crossorigin="anonymous"
-      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
-    />
-    <link
-      rel="preload"
-      as="style"
-      crossorigin="anonymous"
-      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-jp-dynamic-subset.min.css"
-    />
-    <link rel="stylesheet" href="./myPageFrm_files/slick.css" media="screen" />
-    <link
-      rel="stylesheet"
-      href="https://static.wanted.co.kr/vendor/slick.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
-    />
-    <link
-      rel="search"
-      href="https://www.wanted.co.kr/opensearch.xml"
-      type="application/opensearchdescription+xml"
-      title="Wanted"
-    />
-    <link
-      rel="preload"
-      href="https://asset.wanted.co.kr/userweb/www/_next/static/css/c76e012c05e1318d.css"
-      as="style"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://asset.wanted.co.kr/userweb/www/_next/static/css/c76e012c05e1318d.css"
-      crossorigin="anonymous"
-      data-n-g=""
-    />
-    <link
-      rel="preload"
-      href="https://asset.wanted.co.kr/userweb/www/_next/static/css/285b4a909e2c22ed.css"
-      as="style"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="preload"
-      href="https://asset.wanted.co.kr/userweb/www/_next/static/css/429915951b167b73.css"
-      as="style"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="preload"
-      href="https://asset.wanted.co.kr/userweb/www/_next/static/css/1ccb1c01060bd922.css"
-      as="style"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="preload"
-      href="https://asset.wanted.co.kr/userweb/www/_next/static/css/31749fc30b2cee78.css"
-      as="style"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="preload"
-      href="https://asset.wanted.co.kr/userweb/www/_next/static/css/105b10ca0c5005ca.css"
-      as="style"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="preload"
-      href="https://asset.wanted.co.kr/userweb/www/_next/static/css/d78e318892fb698f.css"
-      as="style"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="preload"
-      href="https://asset.wanted.co.kr/userweb/www/_next/static/css/192c66a473a1a037.css"
-      as="style"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="preload"
-      href="https://asset.wanted.co.kr/userweb/www/_next/static/css/abbebb70674a7a53.css"
-      as="style"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="preload"
-      href="https://asset.wanted.co.kr/userweb/www/_next/static/css/6c9e71f92bc24580.css"
-      as="style"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="preload"
-      href="https://asset.wanted.co.kr/userweb/www/_next/static/css/ab985f016c73d7a3.css"
-      as="style"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="preload"
-      href="https://asset.wanted.co.kr/userweb/www/_next/static/css/6b7b4649561ccba8.css"
-      as="style"
-      crossorigin="anonymous"
-    />
-	<!-- golgolz end -->
-	<style
-      data-n-href="https://asset.wanted.co.kr/userweb/www/_next/static/css/27a8f9d057d5c6ac.css"
-    >
+@charset "UTF-8";
       .Loading_Loading__iN6ne {
         position: relative;
         display: -ms-flexbox;
@@ -234,10 +18,6 @@
         width: calc(var(--size) * 1px);
         height: calc(var(--size) * 1px);
       }
-    </style>
-    <style
-      data-n-href="https://asset.wanted.co.kr/userweb/www/_next/static/css/429915951b167b73.css"
-    >
       .Grid_Grid__container__J9CcC {
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
@@ -702,10 +482,6 @@
           max-width: 100%;
         }
       }
-    </style>
-    <style
-      data-n-href="https://asset.wanted.co.kr/userweb/www/_next/static/css/6a460c3651923474.css"
-    >
       .Skeleton_Skeleton__root__4eP63 {
         display: block;
         height: 1.2em;
@@ -808,10 +584,6 @@
           transform: translateX(100%);
         }
       }
-    </style>
-    <style
-      data-n-href="https://asset.wanted.co.kr/userweb/www/_next/static/css/d78e318892fb698f.css"
-    >
       .Avatar_Avatar__root__5Xq6z {
         position: relative;
         display: -ms-flexbox;
@@ -905,10 +677,6 @@
         object-fit: cover;
         color: transparent;
       }
-    </style>
-    <style
-      data-n-href="https://asset.wanted.co.kr/userweb/www/_next/static/css/10d8480da98a137c.css"
-    >
       .ListItem_ListItem__root__Bje9v {
         display: -ms-flexbox;
         display: flex;
@@ -949,10 +717,6 @@
         gap: 4px;
         color: inherit;
       }
-    </style>
-    <style
-      data-n-href="https://asset.wanted.co.kr/userweb/www/_next/static/css/ab985f016c73d7a3.css"
-    >
       .AvatarGroup_AvatarGroup__root__Pcsuz {
         display: -ms-flexbox;
         display: flex;
@@ -964,10 +728,6 @@
       .AvatarGroup_AvatarGroup__avatar__NXsee:first-child {
         margin-left: 0;
       }
-    </style>
-    <style
-      data-n-href="https://asset.wanted.co.kr/userweb/www/_next/static/css/489f9ce7e19fba30.css"
-    >
       .SocialTeamAvatar_Avatar__wQtel {
         position: relative;
       }
@@ -980,10 +740,6 @@
         border: 1px solid rgba(23, 23, 25, 0.05);
         font-size: 12px;
       }
-    </style>
-    <style
-      data-n-href="https://asset.wanted.co.kr/userweb/www/_next/static/css/499b3461011832ef.css"
-    >
       .SocialAvatar_SocialAvatar__KtP1t {
         display: -ms-flexbox;
         display: flex;
@@ -1574,10 +1330,6 @@
         -ms-flex-positive: 1;
         flex-grow: 1;
       }
-    </style>
-    <style
-      data-n-href="https://asset.wanted.co.kr/userweb/www/_next/static/css/09b692ec022d5d71.css"
-    >
       .SkeletonFeeds_SkeletonFeeds__root__POz_O {
         width: 100%;
         margin-top: 20px;
@@ -1757,10 +1509,6 @@
       .SocialCardActions_SocialCardActions__likersSummary__label__eY4WR:visited {
         color: rgba(55, 56, 60, 0.61);
       }
-    </style>
-    <style
-      data-n-href="https://asset.wanted.co.kr/userweb/www/_next/static/css/d5bc839ba063d374.css"
-    >
       .AppBar_AppBar__root__o81Bi {
         position: relative;
         background-color: #fff;
@@ -1892,10 +1640,6 @@
       .FollowUserListModal_FollowUserList__listItem__job__UAqpe:visited {
         color: rgba(55, 56, 60, 0.61);
       }
-    </style>
-    <style
-      data-n-href="https://asset.wanted.co.kr/userweb/www/_next/static/css/761fb96518cc2ea5.css"
-    >
       .MainLayout_MainLayout__2EBgM {
         background-color: #fff;
         min-height: calc(100vh - 60px);
@@ -2032,10 +1776,6 @@
         color: #171719 !important;
         opacity: 0.8;
       }
-    </style>
-    <style
-      data-n-href="https://asset.wanted.co.kr/userweb/www/_next/static/css/7be81255b3bf3686.css"
-    >
       .ProfileView_ProfileView__root__eOS_q {
         margin-bottom: 32px;
       }
@@ -2352,11 +2092,6 @@
       .ProfileViewFeeds_ProfileViewFeeds__root__TfQz8 {
         margin-top: 56px;
       }
-    </style>
-    <style
-      data-n-href="https://asset.wanted.co.kr/userweb/www/_next/static/css/3d6a46c3c459e073.css"
-      media="x"
-    >
       .Radio_Radio__root__Y3FLg {
         display: -ms-inline-flexbox;
         display: inline-flex;
@@ -2394,11 +2129,6 @@
         opacity: 0.43;
         cursor: not-allowed;
       }
-    </style>
-    <style
-      data-n-href="https://asset.wanted.co.kr/userweb/www/_next/static/css/d5870096e6f616fb.css"
-      media="x"
-    >
       .AvatarEditorModal_AvatarEditorModal__title__9gMFI {
         padding-left: 42px;
       }
@@ -2406,11 +2136,6 @@
         margin-top: 16px;
         margin-bottom: 16px;
       }
-    </style>
-    <style
-      data-n-href="https://asset.wanted.co.kr/userweb/www/_next/static/css/3f0393501a9d64f0.css"
-      media="x"
-    >
       .Switch_Switch__root__PGWcC {
         display: -ms-inline-flexbox;
         display: inline-flex;
@@ -2512,11 +2237,6 @@
         width: 52px;
         height: 32px;
       }
-    </style>
-    <style
-      data-n-href="https://asset.wanted.co.kr/userweb/www/_next/static/css/d0b4dceb1bae586b.css"
-      media="x"
-    >
       .ProfileEdit_ProfileEdit__root__QW8xy {
         margin-top: 40px;
         gap: 28px;
@@ -2919,11 +2639,6 @@
       .ProfileEditPreference_ProfileEditPreference__label__active___KYvz {
         color: #000;
       }
-    </style>
-    <style
-      data-n-href="https://asset.wanted.co.kr/userweb/www/_next/static/css/2be5c3e34f473d55.css"
-      media="x"
-    >
       .Modal_root__aEM8D {
         top: 0;
         left: 0;
@@ -3078,11 +2793,6 @@
         border-top: 1px solid #ececec;
         margin-top: auto;
       }
-    </style>
-    <style
-      data-n-href="https://asset.wanted.co.kr/userweb/www/_next/static/css/50b90d2894506311.css"
-      media="x"
-    >
       .JobSearchStatusModal_JobSearchStatusModal__umnj2 {
         width: 360px;
         padding: 0;
@@ -3115,11 +2825,6 @@
         border-top: 1px solid #f4f4f5;
         padding: 16px 30px;
       }
-    </style>
-    <style
-      data-n-href="https://asset.wanted.co.kr/userweb/www/_next/static/css/10d3513d246c0953.css"
-      media="x"
-    >
       .Badge_Badge__mAg6B {
         position: relative;
         height: 24px;
@@ -3168,11 +2873,6 @@
           display: none;
         }
       }
-    </style>
-    <style
-      data-n-href="https://asset.wanted.co.kr/userweb/www/_next/static/css/19c5cf4d615a6ecf.css"
-      media="x"
-    >
       .ActivityPage_ActivityPage__4zIYE {
         min-width: 468px;
         margin: 40px auto;
@@ -4068,7 +3768,6 @@
         -ms-flex-align: center;
         align-items: center;
       }
-    </style>
     <link
       rel="stylesheet"
       type="text/css"
@@ -4087,7 +3786,6 @@
       href="./myPageFrm_files/27a8f9d057d5c6ac.css"
       crossorigin="anonymous"
     />
-    <style id="ab-iam-css-definitions-4-8-3">
       .ab-pause-scrolling,
       body.ab-pause-scrolling,
       html.ab-pause-scrolling {
@@ -5762,139 +5460,3 @@
 	body {
 	background-color: #FFFFFF;
 	}
-    </style>
-	<style text="text/css">
-		<!-- golgolz start -->
-		
-		<!-- golgolz end -->
-	</style>
-	<script text="text/javascript">
-		$(function(){
-			<!-- golgolz start -->
-			<!-- golgolz end -->
-		});
-	</script>
-</head>
-<body>
-    <div id="__next" data-reactroot="">
-		<jsp:include page="../../assets/layout/user/header.jsp" />
-		<main class="JobsFeed_Jobsfeed__DpeV9">  
-		<section class="Section_Section__P1hhc">
-        <div class="MainLayout_MainLayout__root__p6itg">
-          <div class="Grid_Grid__container__J9CcC Grid_Grid__spacing__5__ZwgDV">
-          <jsp:include page="mypage_layout.jsp"/>
-          <div class="Grid_Grid__item__FUkSS Grid_Grid__justify_center__QJu2X Grid_Grid__align-items_flex-start__PA0JE Grid_Grid__grid__xs__12__rVqKh Grid_Grid__grid__md__6__9g_JE">
-		  <!-- golgolz start -->
-          
-		    <div style="margin:40px auto 0; width:800px">
-			<div class="loungeContent inquiryContent inquiryContent--selection">
-		        <div class="topHdWrap">
-		           <h2 class="lug_hd_2">문의</h2>
-		        </div>
-		        <!--// 문의하기 -->
-		        <div class="inquiryFormWrap">
-				<!--// tap menu -->
-				<div class="mtcTplTab">
-					<ul class="tabItems">
-						<li class="on"><a href="mypageWriteQNA.jsp">문의</a></li>
-						<li class=""><a href="mypageQNAList.jsp">문의 내역</a></li>
-					</ul>
-				</div>
-			<!-- tap menu //-->
-		    <div class="inquiryForm inquiryForm--selection">
-		       <form id="form" action="/Help/Inquiry/Save" method="post">
-		          <input name="__RequestVerificationToken" type="hidden" value="u-pKXJVgM8PjAvtSkvCZ7ESdn7cq1LeUJ_qATcucklnoQplh8nDe7kWvaHm8qc6dJn7DrmDcOMl7MbFsxmCo9wazb4VtlDFSbBX9Mvds3N01" />
-		          <input type="hidden" name="giNo" value="0" />
-		          <input type="hidden" name="coMemId" />
-		          <input type="hidden" name="coMemType" />
-		          <input type="hidden" name="Category" id="Category" value="-1" />
-		          <input type="hidden" name="IsAgree" id="IsAgree" value="false" />
-		       <fieldset>
-		       <legend>문의하기 입력</legend>
-			    <div class="tbInquiryBx">
-			    <div class="tbRow">
-			    <div class="tbCell tbTh">
-			    문의종류 <em>(필수)</em>
-			    </div>
-			    <div class="tbCell">
-			    <div class="mtcSltBx listLenSel">
-			    <label for="lb_view_1" id="lb_type">선택</label>
-			       <select name="" id="lb_view_1" title="문의 종류 선택">
-			          <option value="-1">선택</option>
-			          <option value="0">서비스 이용문의</option>
-			          <option value="699" >불량정보·오류 신고</option>
-			          <option value="2">서비스 제안·칭찬</option>
-			       </select>
-			       </div>
-			       </div>
-			       </div>
-			       <div class="tbRow">
-			                            
-			       <div class="tbCell tbTh">
-			         <label for="lb_inq_2">제목 <em>(필수)</em></label>
-			       </div>
-			       <div class="tbCell">
-			         <textarea name="contents" id="lb_inq_2" title="내용을 입력하세요." class="txArea" style="height:40px"></textarea>
-			       </div>
-			       </div>
-			       <div class="tbRow">
-			       <div class="tbCell tbTh">
-			           <label for="lb_inq_2">내용 <em>(필수)</em></label>
-			       </div>
-			       <div class="tbCell">
-			       <textarea name="contents" id="lb_inq_2" title="내용을 입력하세요." class="txArea"></textarea>
-			       </div>
-			       </div>
-			       <div class="tbRow">
-			       <div class="tbRow tbMail">
-			       <div class="tbCell tbTh">
-			       <label for="lb_inq_4">답변받을 e-메일 <em>(필수)</em></label>
-			       </div>
-			       <div class="tbCell">
-			         <input type="text" id="lb_inq_4" name="emailName" class="mtcIpt" title="이메일 주소 앞부분" /> @ <input type="text" id="lb_inq_5" name="emailDomain" class="mtcIpt" title="이메일 주소 뒷부분" />
-			       <div class="tbCell__dropdown">
-			         <select name="" id="lb_view_2" title="이메일 사업자 입력">
-			             <option value="">직접입력</option>
-			             <option value="naver.com">naver.com</option>
-			             <option value="hanmail.net">hanmail.net</option>
-			             <option value="nate.com">nate.com</option>
-			             <option value="daum.net">daum.net</option>
-			             <option value="gmail.com">gmail.com</option>
-			          </select>
-			        </div>
-			      </div>
-			     </div>
-			     </div>
-			      <div id="privacyBx1" class="privacyBx">
-			      <div class="mtcChk-Bx privacyBx__check-box">
-			        <input type="checkbox" id="lb_agree" name="" value="" />
-			            <label for="lb_agree" class="bxIpt privacyBx__title">개인정보 수집 및 이용에 동의합니다.</label>
-			      </div>
-			       <dl>
-			       <dt class="privacyBx__title" for="lb_agree"></dt>
-			       <dd class="privacyBx__info">
-			       <span class="privacyBx__info privacyBx__info--black">
-			         문의에 대한 처리 및 답변을 위해 아이디, e-메일 정보가 수집
-			      </span>되며, 수집된 정보는
-			      <span class="privacyBx__info privacyBx__info--black">
-			      3년간 보관</span>합니다.<br>회원님은 동의를 거부할 수 있으며, 거부 시 응대지원이 원활하지 않을 수 있습니다.</dd> </dl>
-			      </div>
-			      <div class="inquiryBtn">
-			         <button type="submit" class="btnInq"><span>문의하기</span></button>
-			         <button type="button" class="btnInq btnCancel"><span>취소</span></button>
-			      </div>
-			      </fieldset>
-			      </form>
-			      </div>
-			      </div>
-			</div>
-	          
-		  <!-- golgolz end -->
-          </div>
-        </div>
-			</section>
-			<jsp:include page="../../assets/layout/user/footer.jsp" />
-		</main>
-	</div>
-</body>
-</html>
