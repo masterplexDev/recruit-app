@@ -3,43 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<!--bootstrap 시작-->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-	crossorigin="anonymous">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-	crossorigin="anonymous"></script>
-<!--bootstrap 끝-->
-
-<link
-	href="https://i.jobkorea.kr/content/css/ver_2/event/banner.promotion-sv-202401301659.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="https://i.jobkorea.kr/content/css/ver_2/common-sv-202405271315.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="https://i.jobkorea.kr/deploy/pc/dist/css/personal/common/gnb-sv-202405231305.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="https://i.jobkorea.kr/content/css/ver_2/mtc/mtc_lounge-sv-202402231655.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="https://i.jobkorea.kr/content/css/ver_2/help/help-sv-202402231655.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="https://i.jobkorea.kr/deploy/pc/dist/css/personal/layout/footer-sv-202405131313.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="https://i.jobkorea.kr/deploy/pc/dist/css/personal/pages/main/auto_search-sv-202405231305.css"
-	rel="stylesheet" type="text/css" />
-
-<jsp:include page="../../assets/layout/admin/lib.jsp" />
-
+<link href="http://localhost/recruit-app/assets/css/layout/user/common-sv-202405271315.css" rel="stylesheet" type="text/css" />
+<link href="https://i.jobkorea.kr/deploy/pc/dist/css/personal/common/gnb-sv-202405231305.css" rel="stylesheet" type="text/css" />
+<link href="https://i.jobkorea.kr/content/css/ver_2/mtc/mtc_lounge-sv-202402231655.css" rel="stylesheet" type="text/css" />
+<link href="https://i.jobkorea.kr/content/css/ver_2/help/help-sv-202402231655.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
 #notice_frm {
 	margin: 40px;
@@ -61,14 +28,14 @@
 	margin-left: 10px
 }
 </style>
-
+<!-- golgolz start -->
+<!-- golgolz end -->
+<jsp:include page="../../assets/layout/admin/lib.jsp" />
 <script type="text/javascript">
 	$(function() {
 		$("#notice_menu").addClass("bg-gradient-primary");
 	});
 </script>
-<!-- golgolz start -->
-<!-- golgolz end -->
 </head>
 <body>
 	<jsp:include page="../../assets/layout/admin/header.jsp" />

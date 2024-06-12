@@ -34,7 +34,7 @@
 						<li class="breadcrumb-item text-sm text-dark active"
 							aria-current="page">리뷰 관리</li>
 					</ol>
-					<h5 class="font-weight-bolder mb-0">리뷰 관리</h5>
+					<h6 class="font-weight-bolder mb-0">리뷰 관리</h5>
 				</nav>
 			</div>
 		</nav>

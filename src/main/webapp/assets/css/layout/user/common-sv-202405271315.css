@@ -36,7 +36,7 @@ form, fieldset, iframe, button {border:0 none;}
 label {cursor:pointer; vertical-align:middle;}
 img {border:0 none; vertical-align:top;}
 address, caption, em {font-weight:normal; font-style:normal;}
-hr {display:none;}
+/* hr {display:none;} */
 select, input, option, textarea {vertical-align:middle;font-size:12px;letter-spacing: 0px; color:#666;}
 input, select, button{vertical-align:middle;}
 button {overflow:visible; background:transparent; cursor:pointer;}

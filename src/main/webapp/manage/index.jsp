@@ -34,9 +34,9 @@
 				</nav>
 			</div>
 		</nav>
+		<!-- golgolz start -->
+		대시보드 페이지 입니다.
+		<!-- golgolz end -->
 	</main>
-	<!-- golgolz start -->
-	대시보드 페이지 입니다.
-	<!-- golgolz end -->
 </body>
 </html>

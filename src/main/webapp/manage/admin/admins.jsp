@@ -3,24 +3,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="../../assets/layout/admin/lib.jsp" />
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
 <script type="text/javascript">
 	$(function(){
-    	$("#admin_menu").addClass("bg-gradient-primary");
+		$("#admin_menu").addClass("bg-gradient-primary");
+		
+	    	$("#start_date_first").datepicker({
+	    		showOtherMonths: true,
+	    	    selectOtherMonths: true,
+	    	    showButtonPanel: true,
+	    	    dateFormat: "yy-mm-dd"
+	    	});
+	    	
+	    	$("#end_date_first").datepicker({
+	  	    	showOtherMonths: true,
+	  	    	selectOtherMonths: true,
+	  	    	showButtonPanel: true,
+	  	    	dateFormat: "yy-mm-dd"
+	  		});
+	    	
+	    	$("#start_date_sec").datepicker({
+	    		showOtherMonths: true,
+	    	    selectOtherMonths: true,
+	    	    showButtonPanel: true,
+	    	    dateFormat: "yy-mm-dd"
+	    	});
+	    	
+	    	$("#end_date_sec").datepicker({
+	  	    	showOtherMonths: true,
+	  	    	selectOtherMonths: true,
+	  	    	showButtonPanel: true,
+	  	    	dateFormat: "yy-mm-dd"
+	  		});
 	});
 </script>
 <!-- golgolz start -->
 <link href="http://localhost//recruit-app/assets/css/pagenation.css" rel="stylesheet" />
 <link href="http://localhost//recruit-app/assets/css/manage/order/admin.css" rel="stylesheet" />
 <link href="http://localhost//recruit-app/assets/css/manage/order/reset.css" rel="stylesheet" />
-<link href="http://localhost/recruit-app/assets/css/manage/goods/general.css" rel="stylesheet" />
 <link href="http://localhost/recruit-app/assets/css/manage/goods/goods.css" rel="stylesheet" />
 <link href="http://localhost/recruit-app/assets/css/manage/goods/default.css" rel="stylesheet" />
 <!-- golgolz end -->
+<jsp:include page="../../assets/layout/admin/lib.jsp" />
 </head>
 <body>
 	<jsp:include page="../../assets/layout/admin/header.jsp" />
