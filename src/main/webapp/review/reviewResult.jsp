@@ -158,7 +158,6 @@
                         <div class="value">53</div>
                     </div>
                 </a>
-
                 <a href="/company/1882711/salary" class="company-nav-item ">
                     <div class="name">채용공고</div>
                     <div class="post">
