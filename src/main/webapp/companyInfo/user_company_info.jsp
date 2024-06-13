@@ -5,13 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="../assets/css/company/company-info-list-1.css" rel="stylesheet" type="text/css" />
+<!-- <link href="../assets/css/company/company-info-list-1.css" rel="stylesheet" type="text/css" />
 <link href="../assets/css/company/company-info-list-2.css" rel="stylesheet" type="text/css" />
 <link href="../assets/css/company/company-info-list-3.css" rel="stylesheet" type="text/css" />
 <link href="../assets/css/company/company-info-list-4.css" rel="stylesheet" type="text/css" />
-<link href="../assets/css/company/company-info-list-5.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/company/company-info-list-5.css" rel="stylesheet" type="text/css" /> 헤더 변경됨 -->
+<!-- <link href="../assets/css/company/company-info-list-7.css" rel="stylesheet" type="text/css" /> -->
 <link href="../assets/css/company/company-info-list-6.css" rel="stylesheet" type="text/css" />
-<link href="../assets/css/company/company-info-list-7.css" rel="stylesheet" type="text/css" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <jsp:include page="../assets/layout/user/lib.jsp" />  
@@ -54,44 +54,51 @@
                             </div>
                         </div>
                     </div>
-                    <div style="border:1px solid #333; margin:auto; width:1000px">
-					<table>
-						<tbody>
-							<tr>
-								<th>기업명</th>
-								<td><input type="hidden" name="page" value="1" />
-									<input type="text" name="keyword" value="">
+                    
+                    <div>
+					<table  style="margin:auto; border:1px solid #ccc; width:700px; height:150px">
+						<tbody style="border:1px solid #ccc;">
+							<tr style="border:1px solid #ccc;">
+								<th style="border:1px solid #ccc;">기업명</th>
+								<td style="text-align:left; padding-left:20px">
+									<input type="text" name="company_name" value="" style="border:1px solid #ccc;">
 								</td>
 							</tr>
-							<tr>
-								<th>평균 연봉</th>
-								<td>
-									<input type="text" name="keyword" value=""> 만원 이상
+							<tr style="border:1px solid #ccc;">
+								<th style="border:1px solid #ccc;">평균 연봉</th>
+								<td style="text-align:left; padding-left:20px">
+									<input type="text" name="avg_sal" value="" style="border:1px solid #ccc;"> 만원 이상
 								</td>
 							</tr>
-							<tr>
-								<th>기업 구분</th>
-								<td>
-									<label> 
-										<input type="radio" name="company" value="0" > 전체
-									</label> 
+							<tr style="border:1px solid #ccc;">
+								<th style="border:1px solid #ccc;">기업 구분</th>
+								<td style="text-align:left; padding-left:20px">
 									<label>
-										<input type="radio" name="delivery" value="1" > 대기업
+										<input type="radio" name="company-classification" value="0" > 전체
 									</label>
-									<label> 
-										<input type="radio" name="delivery" value="2" > 중견기업
+									<label style="margin-left:10px">
+										<input type="radio" name="company-classification" value="1" > 대기업
 									</label>
-									<label> 
-										<input type="radio" name="delivery" value="3" > 중소기업
+									<label style="margin-left:10px">
+										<input type="radio" name="company-classification" value="2" > 중견기업
 									</label>
+									<label style="margin-left:10px">
+										<input type="radio" name="company-classification" value="3" > 중소기업
+									</label>
+								</td>
+							</tr>
+							<tr style="border:1px solid #ccc;">
+								<td></td>
+								<td style="text-align:center; margin-right:50px">
+									<input type="submit" value="초기화" class="btn btn-outline-secondary"/>
+									<input type="submit" value="검색" class="btn btn-secondary"/>
 								</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
-				<div class="btn_confirm" style="margin-top:10px">
-					<input type="submit" value="초기화" class="btn btn-outline-dark"/>
-					<input type="submit" value="검색" class="btn btn-dark"/>
+				
+				<div style="margin-top:15px">
 					<!-- <input type="button" value="초기화" id="frmRest" class="btn_medium grey"> -->
 				</div>
                        </div>
@@ -132,13 +139,26 @@
                                 </a>
                             </li>
                     </ul>
-
-                    <div class="paginations" role="navigation" id="listPaging" >
-                        <input type="hidden" id="hidCoPage" name="coPage" value="1" />
-                                                        <strong class="item active">1</strong>
-                    </div>
-
                 </div>
+                
+					<div style="text-align:center;">
+						<nav aria-label="...">
+						  <ul class="pagination" style="width:100px; display: inline-flex;">
+						    <li class="page-item disabled">
+						      <span class="page-link">&lt;</span>
+						    </li>
+						    <li class="page-item"><a class="page-link" href="#">1</a></li>
+						    <li class="page-item active" aria-current="page">
+						      <span class="page-link">2</span>
+						    </li>
+						    <li class="page-item"><a class="page-link" href="#">3</a></li>
+						    <li class="page-item">
+						      <a class="page-link" href="#">&gt;</a>
+						    </li>
+						  </ul>
+						</nav>
+					</div>
+					
             </div>
 </form>
 </div>
