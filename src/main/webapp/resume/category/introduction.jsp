@@ -8,7 +8,7 @@
 	<div class="form formIntroduction">
 		<div id="introduceContainers">
 			<div class="row">
-				<div class="container">
+				<div class="container" style="width:900px;">
 					<input type="hidden" name="ResumeProfile.Index" value="">
 					<div class="input">
 						<label for="ResumeProfile_Header_" class="skip">제목</label> 

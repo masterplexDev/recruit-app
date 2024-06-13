@@ -4,33 +4,19 @@
 	style="display: block">
 	<h2 class="header">스킬</h2>
 	<div class="form">
-		<div class="colum dev-input-skill" style="">
-			<div id="skillAutoComplete" class="input input-search-wrap is-label"
-				data-comp_type="jkAc">
-				<label id="skillSearch" for="skillText">찾으시는 스킬이 있나요?</label> <input
-					type="text" id="skillText" data-type="Skill_Name"
-					data-comp_type="jkAcInput" autocomplete="off" maxlength="50" /> <input
-					type="hidden" data-type="Skill_Name" />
-				<button type="button" class="delete-button">delete</button>
-				<button type="button" class="search-button">search</button>
-				<div id="skillSearchResult" class="autocomplete hidden"
-					aria-hidden="true" data-comp_type="jkAcResultWrap">
-					<div class="list">
-						<ul></ul>
-					</div>
-				</div>
-			</div>
+		<div class="chip-group">
+			<div class="chip" data-value="C">C</div>
+			<div class="chip" data-value="Java">Java</div>
+			<div class="chip" data-value="C++">C++</div>
+			<div class="chip" data-value="C#">C#</div>
+			<div class="chip" data-value="Spring">Spring</div>
+			<div class="chip" data-value="JavaScript">JavaScript</div>
+			<div class="chip" data-value="TypeScript">TypeScript</div>
+			<div class="chip" data-value="React">React</div>
+			<div class="chip" data-value="Vue.js">Vue.js</div>
+			<div class="chip" data-value="Node.js">Node.js</div>
 		</div>
-		<div class="colum dev-input-skill" style="">
-			<div class="plus-keyword-wrap">
-				<div class="tap-list">
-					<button type="button" class="tab-button on" data-code="1000229">
-						백엔드개발자</button>
-				</div>
-				<div class="keyword-list"></div>
-				<button type="button" class="button button-reset">초기화</button>
-			</div>
-		</div>
+		<button id="resetButton">초기화</button>
 	</div>
 	<div class="popup popupSkill hidden" aria-hidden="true">
 		<div class="popupContainerWrap">
