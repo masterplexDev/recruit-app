@@ -50,6 +50,7 @@
 		.chip-group {
             display: flex;
             flex-wrap: wrap; 
+            font-size: 16px;
         }
         .chip {
             padding: 8px 16px; /* 좌우 패딩 16px로 변경 */
@@ -61,6 +62,19 @@
         .chip.active {
             background-color: #007bff;
             color: white;
+        }
+        #resetButton { /* 초기화 버튼 스타일 */
+            padding: 8px 16px; /* 칩과 동일한 패딩 */
+            background-color: #e0e0e0; /* 칩보다 약간 어두운 배경색 */
+            border: none;
+            border-radius: 20px; /* 칩과 동일한 둥근 테두리 */
+            margin: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        #resetButton:hover { /* 호버 효과 */
+            background-color: #bdbdbd; /* 칩보다 약간 더 어두운 배경색 */
         }
 		<!-- golgolz end -->
 	</style>
@@ -77,10 +91,9 @@
 	              return $(this).data("value");
 	            })
 	            .get();
-	          console.log("Selected languages:", selectedValues);
 	        });
 			
-	        $("#resetSkill").click(function(event) {
+	        $("#resetButton").click(function(event) {
                 event.preventDefault(); // 기본 동작 방지
                 $('.chip').removeClass('active'); // 모든 칩 선택 해제
             });
