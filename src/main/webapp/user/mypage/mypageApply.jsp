@@ -10,6 +10,7 @@
     <link rel="shortcut icon" href="https://static.wanted.co.kr/favicon/new/favicon.ico"/>
     <link rel="stylesheet" href="https://asset.wanted.co.kr/userweb/www/_next/static/css/c76e012c05e1318d.css" crossorigin="anonymous" data-n-g=""/>
 	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/mypage.css"/>
+	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/signup.css"/>
 <!-- golgolz end -->
 
 <style>
@@ -76,12 +77,12 @@
     margin:10px;
     margin-top: 30px;
     margin-bottom: 300px;
-    font-size: 18px;
+    font-size: 15px;
 }
 
 .Summary_Summary__AO8Mn {
     margin-bottom: 50px;
-    font-size: 20px;
+    font-size: 15px;
 }
 ol, ul {
     list-style: none;
@@ -113,7 +114,7 @@ ol, ul {
     -ms-flex-pack: justify;
     justify-content: space-between;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 15px;
     height: 32px;
     margin-bottom: 17px;
 }
@@ -159,7 +160,7 @@ svg:not(:root) {
 }
 .Search_Search_search__RaFaG input {
     width: 100%;
-    font-size: 14px;
+    font-size: 15px;
     border: none;
     color: #333;
     padding: 0;
