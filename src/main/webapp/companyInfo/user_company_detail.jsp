@@ -200,10 +200,8 @@
                 </div>                
             </div>
     </div>
-
+    
         <!--복리후생-->
-
-
         <div class="company-infomation-container working-environment-container working-environment-benefit" style="margin:auto; width:1040px">
             <h3 class="header">복리후생</h3>
             <div class="benefit-list">
@@ -216,7 +214,6 @@
                                     <p>경조금 </p>
                                     <p>연차제도</p>
                         </div>
-                        
                     </div>
          	 </div>
           </div>

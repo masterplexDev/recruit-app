@@ -12,6 +12,8 @@
 <link href="../assets/css/company/company-info-list-5.css" rel="stylesheet" type="text/css" />
 <link href="../assets/css/company/company-info-list-6.css" rel="stylesheet" type="text/css" />
 <link href="../assets/css/company/company-info-list-7.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <jsp:include page="../assets/layout/user/lib.jsp" />  
 <!-- golgolz start -->
 	<!-- golgolz end -->
@@ -35,13 +37,7 @@
  <form id="frmSearchCompany" action="/Salary/Index#salarySearchCompany" method="get">
             <div class="row salarySearchCompany" id="salarySearchCompany">
                 <div class="container">
-                    <!-- <i class="icon iconTop" aria-hidden="true"></i> -->
                     <div class="search searchCompany">
-                       <!--  <div class="description"><em><strong>57</strong>만 기업</em>이 등록되어 있습니다.</div> -->
-                       <!--  <div class="input inputSearch" id="searchCommon">
-                            <label for="lbl_search" class="skip">검색</label>
-                            <input id="txtCompanyName" name="coKeyword" placeholder="기업명을 검색해 보세요." type="text" value="" autocomplete="off" />
-                            <button id="btnSearchCompany" type="button" class="button buttonSearch">검색</button> -->
                            <div class="popup" aria-live="polite" aria-hidden="true" id="autocompletePane">
                                 <div class="noResult" id="noResultPane" style="display:none">
                                     <p>검색 결과가 없음.</p>
@@ -58,83 +54,61 @@
                             </div>
                         </div>
                     </div>
-                    <div class="filter" style="display: inline-block; text-align: left;">
-                        <div class="label" style="display: inline-block; text-align: left;">선택조건 검색</div>
-                        <div class="buttons" style="display: inline-block; text-align: left;">
-                            <button type="button" class="button tab tab1 selected" aria-selected="false" data-tab="0"><span>전체</span></button>
-                            <button type="button" class="button tab tab3" aria-selected="true" data-tab="2"><span>직무별</span></button>
-                            <select value="직무 선택" style="margin-left:10px; margin-right:10px; width:100px; height:40px">
-                            	<option name="w1" value="기획">기획</option>
-                            	<option name="w2" value="법무">법무</option>
-                            	<option name="w3" value="인사">인사</option>
-                            	<option name="w4" value="회계">회계</option>
-                            	<option name="w5" value="마케팅">마케팅</option>
-                            </select>
-                            <!-- <input type="hidden" name="tabindex" id="hidTabIndex" value="0" /> -->
-                             <div class="input inputSearch" id="searchCommon" style="width:300px">
-                            <input id="txtCompanyName" name="coKeyword" placeholder="기업명을 검색해 보세요." type="text" value="" autocomplete="off" style="width:300px"/>
-                        	</div>
-                            <input type="button" id="btnSearchCompany" value="검색"/>
+                    <div style="border:1px solid #333; margin:auto; width:1000px">
+					<table>
+						<tbody>
+							<tr>
+								<th>기업명</th>
+								<td><input type="hidden" name="page" value="1" />
+									<input type="text" name="keyword" value="">
+								</td>
+							</tr>
+							<tr>
+								<th>평균 연봉</th>
+								<td>
+									<input type="text" name="keyword" value=""> 만원 이상
+								</td>
+							</tr>
+							<tr>
+								<th>기업 구분</th>
+								<td>
+									<label> 
+										<input type="radio" name="company" value="0" > 전체
+									</label> 
+									<label>
+										<input type="radio" name="delivery" value="1" > 대기업
+									</label>
+									<label> 
+										<input type="radio" name="delivery" value="2" > 중견기업
+									</label>
+									<label> 
+										<input type="radio" name="delivery" value="3" > 중소기업
+									</label>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="btn_confirm" style="margin-top:10px">
+					<input type="submit" value="초기화" class="btn btn-outline-dark"/>
+					<input type="submit" value="검색" class="btn btn-dark"/>
+					<!-- <input type="button" value="초기화" id="frmRest" class="btn_medium grey"> -->
+				</div>
                        </div>
                         <div class="dropdown category3 hidden" id="ddlJobType" aria-hidden="true">
                             <input type="hidden" name="jobTypeCode" id="hidJobTypeCode" value="" />
                             <button type="button" class="buttonChoose " aria-haspopup="true"><span>직무선택</span></button>
-                            <!-- <div class="list" aria-hidden="true">
-                                <ul>
-                                    <li><button type="button"><span data-code="0">직무선택</span></button></li>
-                                        <li><button type="button"><span data-code="10026">기획&#183;전략</span></button></li>
-                                        <li><button type="button"><span data-code="10027">법무&#183;사무&#183;총무</span></button></li>
-                                        <li><button type="button"><span data-code="10028">인사&#183;HR</span></button></li>
-                                        <li><button type="button"><span data-code="10029">회계&#183;세무</span></button></li>
-                                        <li><button type="button"><span data-code="10030">마케팅&#183;광고&#183;MD</span></button></li>
-                                        <li><button type="button"><span data-code="10031">개발&#183;데이터</span></button></li>
-                                        <li><button type="button"><span data-code="10032">디자인</span></button></li>
-                                        <li><button type="button"><span data-code="10033">물류&#183;무역</span></button></li>
-                                        <li><button type="button"><span data-code="10034">운전&#183;운송&#183;배송</span></button></li>
-                                        <li><button type="button"><span data-code="10035">영업</span></button></li>
-                                        <li><button type="button"><span data-code="10036">고객상담&#183;TM</span></button></li>
-                                        <li><button type="button"><span data-code="10037">금융&#183;보험</span></button></li>
-                                        <li><button type="button"><span data-code="10038">식&#183;음료</span></button></li>
-                                        <li><button type="button"><span data-code="10039">고객서비스&#183;리테일</span></button></li>
-                                        <li><button type="button"><span data-code="10040">엔지니어링&#183;설계</span></button></li>
-                                        <li><button type="button"><span data-code="10041">제조&#183;생산</span></button></li>
-                                        <li><button type="button"><span data-code="10042">교육</span></button></li>
-                                        <li><button type="button"><span data-code="10043">건축&#183;시설</span></button></li>
-                                        <li><button type="button"><span data-code="10044">의료&#183;바이오</span></button></li>
-                                        <li><button type="button"><span data-code="10045">미디어&#183;문화&#183;스포츠</span></button></li>
-                                        <li><button type="button"><span data-code="10046">공공&#183;복지</span></button></li>
-                                </ul>
-                            </div> -->
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="row salaryList salaryCompanyList">
+            <div class="row salaryList salaryCompanyList" style="margin-top:30px">
                 <input type="hidden" id="hidMemChk" value="0" />
                 <div class="container">
                     <div class="listHeader">
 
-                        <div class="total">총 <em>7</em>건<span class="subtitle">(전체 평균연봉)</span></div>
-                        <!-- <div class="sort">
-                            <input type="hidden" name="haveAGI" id="hidHaveAGI" value="0" />
-                            <button type="button" class="button buttonViewOnlyCompany " id="btnHaveAGI">
-                                <span>채용중 기업만 보기</span>
-                            </button>
-                            <input type="hidden" name="orderCode" id="hidOrderCode" value="2" />
-                            <div class="dropdown" id="ddlSort">
-                                <button type="button" class="buttonChoose" aria-haspopup="true"><span>인기검색순</span></button>
-                                <div class="list" aria-hidden="true">
-                                    <ul>
-                                        <li><button type="button"><span data-index="2">인기검색순</span></button></li>
-                                        <li><button type="button"><span data-index="1">업데이트순</span></button></li>
-                                        <li><button type="button"><span data-index="3">평균연봉 높은순</span></button></li>
-                                        
-                                        <li><button type="button"><span data-index="5">사원 많은순</span></button></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div> -->
+                        <div class="total">총 <em>1</em>건<span class="subtitle"></span></div>
                     </div>
                     <div class="noData" id="listNoData"   style="display:none"  >
 
@@ -143,133 +117,17 @@
 
                     <ul class="list" id="listCompany" >
                             <li>
-                                <a href="/Company/1696583/Salary?C_IDX=1" target="_blank">
-                                        <div class="thumbnail">
-                                            <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2023/9/09/JK_CO_msyvfp23090915182940.jpg?v=202406041618" onerror="companylogoOnError('/salary/logourl?ucono=1696583' , this)">
-                                            <div class="inner">삼성전자㈜</div>
-                                        </div>
-                                    <div class="headers">
-                                        <div class="text">삼성전자㈜</div>
-                                                                            </div>
-                                    <div class="summary">
-                                                                                    <div class="item">매출액 170조 3천억원</div>
-                                                                                    <div class="item">사원수 124,404명</div>
-                                    </div>
-                                    <div class="salary">
-                                        <div class="inner"><strong>10,377</strong>만원</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/Company/1517115/Salary?C_IDX=2167" target="_blank">
-                                        <div class="thumbnail">
-                                            <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2023/6/23/JK_CO_kXmqMBL23062314335619.png?v=202406041618" onerror="companylogoOnError('/salary/logourl?ucono=1517115' , this)">
-                                            <div class="inner">잡코리아(유)</div>
-                                        </div>
-                                    <div class="headers">
-                                        <div class="text">잡코리아(유)</div>
-                                    </div>
-                                    <div class="summary">
-                                            <div class="item">포털&#183;컨텐츠&#183;커뮤니티</div>
-                                                                                                                            <div class="item">사원수 530명</div>
-                                    </div>
-                                    <div class="salary">
-                                        <div class="inner"><strong>6,132</strong>만원</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/Company/1532033/Salary?C_IDX=6021" target="_blank">
-                                        <div class="thumbnail">
-                                            <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2016/10/2w3bs008Rw_eXiu3zl3d24w0esYbUq_vx2sw.gif?v=202406041618&amp;hash=r&amp;serviceCode=CL" onerror="companylogoOnError('/salary/logourl?ucono=1532033' , this)">
-                                            <div class="inner">쿠팡</div>
-                                        </div>
-                                    <div class="headers">
-                                        <div class="text">쿠팡</div>
-                                    </div>
-                                    <div class="summary">
-                                            <div class="item">쇼핑몰&#183;오픈마켓&#183;소셜커머스</div>
-                                                                                    <div class="item">매출액 4조 4227억원</div>
-                                                                                    <div class="item">사원수 6,372명</div>
-                                    </div>
-                                    <div class="salary">
-                                        <div class="inner"><strong>5,011</strong>만원</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/Company/1385349/Salary?C_IDX=8" target="_blank">
-                                        <div class="thumbnail">
-                                            <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2017/6/2130s008R-_4X9u1963523-0esY8U6_5-2s-.jpg?v=202406041618&amp;hash=r&amp;serviceCode=CL" onerror="companylogoOnError('/salary/logourl?ucono=1385349' , this)">
-                                            <div class="inner">엘지전자㈜</div>
-                                        </div>
-                                    <div class="headers">
-                                        <div class="text">엘지전자㈜</div>
-                                    </div>
-                                    <div class="summary">
-                                            <div class="item">전기&#183;전자&#183;제어</div>
-                                                                                    <div class="item">매출액 28조 8천억원</div>
-                                                                                    <div class="item">사원수 35,055명</div>
-                                    </div>
-                                    <div class="salary">
-                                        <div class="inner"><strong>8,498</strong>만원</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/Company/1834120/Salary?C_IDX=21" target="_blank">
-                                        <div class="thumbnail">
-                                            <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2019/7/2a3fc008Rw_hXifqag3d2ww0ecYrUr_cx2cw.jpg?v=202406041618&amp;hash=r&amp;serviceCode=CL" onerror="companylogoOnError('/salary/logourl?ucono=1834120' , this)">
-                                            <div class="inner">SOIL</div>
-                                        </div>
-                                    <div class="headers">
-                                        <div class="text">SOIL</div>
-                                                                            </div>
-                                    <div class="summary">
-                                            <div class="item">화학&#183;에너지&#183;환경</div>
-                                                                                    <div class="item">매출액 35조 2천억원</div>
-                                                                                    <div class="item">사원수 3,174명</div>
-                                    </div>
-                                    <div class="salary">
-                                        <div class="inner"><strong>17,109</strong>만원</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
                                 <a href="http://localhost/recruit-app/companyInfo/user_company_detail.jsp" target="_blank">
                                         <div class="thumbnail">
                                             <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2011/10/2w1aj007Pm_gWzi2y3i2jm0djMcSj_ldjm.gif?v=202406041618&amp;hash=r&amp;serviceCode=CL" onerror="companylogoOnError('/salary/logourl?ucono=1882711' , this)">
                                             <div class="inner">넥슨코리아</div>
                                         </div>
-                                    <div class="headers">
+                                    <div class="headers" style="text-align:center">
                                         <div class="text">넥슨코리아</div>
                                     </div>
-                                    <div class="summary">
-                                            <div class="item">컴퓨터&#183;하드웨어&#183;장비</div>
-                                                                                    <div class="item">매출액 3조 9000억</div>
-                                                                                    <div class="item">사원수 3,500명</div>
-                                    </div>
-                                    <div class="salary">
-                                        <div class="inner"><strong>6,751</strong>만원</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/Company/1976007/Salary?C_IDX=924" target="_blank">
-                                        <div class="thumbnail">
-                                            <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2020/12/16/2v7pq00aRn_zKldafzno3j2wn0gqYeIm_vpnw2qn.gif?v=202406041618&amp;hash=r&amp;serviceCode=CL" onerror="companylogoOnError('/salary/logourl?ucono=1976007' , this)">
-                                            <div class="inner">카카오</div>
-                                        </div>
-                                    <div class="headers">
-                                        <div class="text">카카오</div>
-                                    </div>
-                                    <div class="summary">
-                                            <div class="item">포털&#183;컨텐츠&#183;커뮤니티</div>
-                                                                                    <div class="item">매출액 2조 4,995억원</div>
-                                                                                    <div class="item">사원수 3,680명</div>
-                                    </div>
-                                    <div class="salary">
-                                        <div class="inner"><strong>10,209</strong>만원</div>
+                                    <div class="summary" style="text-align:center">
+                                            <div class="item">매출액 3조 9000억</div>
+                                            <div class="item">사원수 3,500명</div>
                                     </div>
                                 </a>
                             </li>
@@ -278,24 +136,12 @@
                     <div class="paginations" role="navigation" id="listPaging" >
                         <input type="hidden" id="hidCoPage" name="coPage" value="1" />
                                                         <strong class="item active">1</strong>
-                               <!--  <a href="#" class="item" data-page="2">2</a>
-                                <a href="#" class="item" data-page="3">3</a>
-                                <a href="#" class="item" data-page="4">4</a>
-                                <a href="#" class="item" data-page="5">5</a>
-                                <a href="#" class="item" data-page="6">6</a>
-                                <a href="#" class="item" data-page="7">7</a>
-                                <a href="#" class="item" data-page="8">8</a>
-                                <a href="#" class="item" data-page="9">9</a>
-                                <a href="#" class="item" data-page="10">10</a> -->
-
-                            <!-- <a href="#" class="item next" data-page="11">다음</a> -->
                     </div>
 
                 </div>
             </div>
 </form>
 </div>
-			
 			<!-- golgolz end -->
 			</section>
 			<jsp:include page="../assets/layout/user/footer.jsp" />  
