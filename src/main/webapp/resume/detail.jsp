@@ -38,10 +38,9 @@
     <script src="http://localhost/recruit-app/assets/js/user/resume/jquery"></script>
     <script src="http://localhost/recruit-app/assets/js/user/resume/itemtemplate.js"></script>
     <script src="http://localhost/recruit-app/assets/js/user/resume/JK_Cookie.js"></script>
-    <script src="http://localhost/recruit-app/assets/js/user/resume/JK5cript"></script>
+    <script src="http://localhost/recruit-app/assets/js/user/resume/JK5cript.js"></script>
     <script src="http://localhost/recruit-app/assets/js/user/resume/ResumeReg"></script>
 	<!-- golgolz end -->
-	<jsp:include page="../assets/layout/user/lib.jsp" /> 
 	<style text="text/css">
 		<!-- golgolz start -->
 		.resumeContainer{
@@ -78,11 +77,11 @@
         }
 		<!-- golgolz end -->
 	</style>
+	<jsp:include page="../assets/layout/user/lib.jsp" /> 
 	<script text="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
-			$('.chip[data-value="Vue.js"]').addClass("active"); // select before rendering
-			
+			//$('.chip[data-value="Vue.js"]').addClass("active"); // select before rendering
 	        $(".chip").click(function () {
 	          $(this).toggleClass("active");
 
@@ -97,6 +96,11 @@
                 event.preventDefault(); // 기본 동작 방지
                 $('.chip').removeClass('active'); // 모든 칩 선택 해제
             });
+
+			
+			setTimeout(function() {
+				$("#UserResume_M_Resume_Title").focus(); // myInput은 포커스를 줄 input 요소의 ID
+			}, 1); // 500ms (0.5초) 지연
 			<!-- golgolz end -->
 		});
 	</script>
@@ -117,7 +121,7 @@
 									</div>
 								</div>
 								<div class="resumeTitle">
-									<input id="UserResume_M_Resume_Title" maxlength="100" name="UserResume.M_Resume_Title" placeholder="기업에게 나에 대해 알려줍시다. 강점, 목표, 관심분야도 좋아요." type="text" value="" />
+									<input id="UserResume_M_Resume_Title" maxlength="100" name="UserResume.M_Resume_Title" placeholder="기업에게 나에 대해 알려줍시다. 강점, 목표, 관심분야도 좋아요." type="text" value="" autofocus />
 								</div>
  								<jsp:include page="./category/profile.jsp" />
  								<jsp:include page="./category/skill.jsp" />

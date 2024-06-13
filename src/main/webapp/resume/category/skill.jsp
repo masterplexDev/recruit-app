@@ -17,7 +17,6 @@
 			<div class="chip" data-value="Node.js">Node.js</div>
 		</div>
 		<button id="resetButton">초기화</button>
-		<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 	</div>
 	<div class="popup popupSkill hidden" aria-hidden="true">
 		<div class="popupContainerWrap">
