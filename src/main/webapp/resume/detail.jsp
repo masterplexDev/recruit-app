@@ -41,6 +41,8 @@
     <script src="http://localhost/recruit-app/assets/js/user/resume/JK5cript.js"></script>
     <script src="http://localhost/recruit-app/assets/js/user/resume/ResumeReg"></script>
 	<!-- golgolz end -->
+	<jsp:include page="../assets/layout/user/lib.jsp" /> 
+	<script type="text/javascript" src="http://localhost/recruit-app/assets/js/user/resume/edu.js"></script>
 	<style text="text/css">
 		<!-- golgolz start -->
 		.resumeContainer{
@@ -71,13 +73,18 @@
             cursor: pointer;
             font-size: 14px;
         }
-
         #resetButton:hover { /* 호버 효과 */
             background-color: #bdbdbd; /* 칩보다 약간 더 어두운 배경색 */
         }
+        #school_containers .container{
+            position: relative;
+    		border-top: 1px solid #eee;
+    	}
+    	#container, .container{
+    		width: 940px;
+    	}
 		<!-- golgolz end -->
 	</style>
-	<jsp:include page="../assets/layout/user/lib.jsp" /> 
 	<script text="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
@@ -97,7 +104,6 @@
                 $('.chip').removeClass('active'); // 모든 칩 선택 해제
             });
 
-			
 			setTimeout(function() {
 				$("#UserResume_M_Resume_Title").focus(); // myInput은 포커스를 줄 input 요소의 ID
 			}, 1); // 500ms (0.5초) 지연
