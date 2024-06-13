@@ -212,9 +212,9 @@
 									</td>
 									<td class="box text">
 										<input type="text" name="name" value="" size="50" class="inputbox naver_shopping_prodName" />
-										<input type="button" id="btn-register" class="btn btn-success btn-sm" value="추가" />
-										<input type="button" id="btn-register" class="btn btn-warning btn-sm" value="수정" />
-										<input type="button" id="btn-register" class="btn btn-danger btn-sm" value="삭제" />
+										<input type="button" id="btn-register" class="btn btn-outline-success btn-sm" value="추가" />
+										<input type="button" id="btn-register" class="btn btn-outline-warning btn-sm" value="수정" />
+										<input type="button" id="btn-register" class="btn btn-outline-danger btn-sm" value="삭제" />
 									</td>
 								</tr>
 								<tr>
@@ -254,9 +254,9 @@
 									</td>
 									<td class="box text">
 										<input type="text" name="name" value="" size="50" class="inputbox naver_shopping_prodName" />
-										<input type="button" id="btn-register" class="btn btn-success btn-sm" value="추가" />
-										<input type="button" id="btn-register" class="btn btn-warning btn-sm" value="수정" />
-										<input type="button" id="btn-register" class="btn btn-danger btn-sm" value="삭제" />
+										<input type="button" id="btn-register" class="btn btn-outline-success btn-sm" value="추가" />
+										<input type="button" id="btn-register" class="btn btn-outline-warning btn-sm" value="수정" />
+										<input type="button" id="btn-register" class="btn btn-outline-danger btn-sm" value="삭제" />
 									</td>
 								</tr>
 								<tr>
@@ -275,12 +275,12 @@
 						</table>
 						<div class="alignCenter">
 							<% if(request.getParameter("code") == null){ %>
-								<input type="button" id="btn-register" class="btn btn-success btn-sm detail-control" value="등록하기" />
+								<input type="button" id="btn-register" class="btn btn-outline-success btn-sm detail-control" value="등록하기" />
 							<% } else { %>
-								<input type="button" id="btn-update" class="btn btn-warning btn-sm detail-control" value="수정하기" />
-								<input type="button" id="btn-delete" class="btn btn-danger btn-sm detail-control" value="삭제하기" />
+								<input type="button" id="btn-update" class="btn btn-outline-warning btn-sm detail-control" value="수정하기" />
+								<input type="button" id="btn-delete" class="btn btn-outline-danger btn-sm detail-control" value="삭제하기" />
 							<% } %>
-								<input type="button" id="btn-back" class="btn btn-success btn-sm detail-control" value="뒤로" onClick="javascript:history.back();"/>
+								<input type="button" id="btn-back" class="btn btn-outline-dark btn-sm detail-control" value="뒤로" onClick="javascript:history.back();"/>
 						</div>
 					</form>
 				</div>
