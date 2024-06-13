@@ -41,20 +41,52 @@
     <script src="http://localhost/recruit-app/assets/js/user/resume/JK5cript"></script>
     <script src="http://localhost/recruit-app/assets/js/user/resume/ResumeReg"></script>
 	<!-- golgolz end -->
+	<jsp:include page="../assets/layout/user/lib.jsp" /> 
 	<style text="text/css">
 		<!-- golgolz start -->
 		.resumeContainer{
 			width: 940px;
 		}
+		.chip-group {
+            display: flex;
+            flex-wrap: wrap; 
+        }
+        .chip {
+            padding: 8px 16px; /* 좌우 패딩 16px로 변경 */
+            background-color: #f1f1f1;
+            border-radius: 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .chip.active {
+            background-color: #007bff;
+            color: white;
+        }
 		<!-- golgolz end -->
 	</style>
 	<script text="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
+			$('.chip[data-value="Vue.js"]').addClass("active"); // select before rendering
+			
+	        $(".chip").click(function () {
+	          $(this).toggleClass("active");
+
+	          var selectedValues = $(".chip.active")
+	            .map(function () {
+	              return $(this).data("value");
+	            })
+	            .get();
+	          console.log("Selected languages:", selectedValues);
+	        });
+			
+	        $("#resetSkill").click(function(event) {
+                event.preventDefault(); // 기본 동작 방지
+                $('.chip').removeClass('active'); // 모든 칩 선택 해제
+            });
 			<!-- golgolz end -->
 		});
 	</script>
-	<jsp:include page="../assets/layout/user/lib.jsp" /> 
 </head>
 <body>
     <div id="__next" data-reactroot="">
