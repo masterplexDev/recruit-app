@@ -30,6 +30,7 @@
   <link rel="stylesheet" href="http://localhost/recruit-app/assets/css/main/pretendardvariable-dynamic-subset.min.css">
   <link rel="stylesheet" href="http://localhost/recruit-app/assets/css/main/pretendardvariable-jp-dynamic-subset.min.css">
   <link rel="search" href="/opensearch.xml" type="application/opensearchdescription+xml" title="Wanted">
+  
   <script>
             (function(w,d,s,l,i){w[l]=w[l]||[];
               w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
@@ -38,94 +39,22 @@
               f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-P2J7HJ9');
           </script>
-  <style text="text/css">
-		<!-- golgolz start -->
-		.prev, .next {
-            font-size: 2rem;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            color: #333;
-        }
-        .prev {
-            left: 10px;
-        }
-        .next {
-            right: 10px;
-        }
-        .post-slider {
-            position: relative;
-            max-width: 600px;
-            margin: auto;
-        }
-        .post-wrapper {
-            display: flex;
-        }
-        .post {
-            margin: 10px;
-        }
-        .slider-image {
-            width: 100%;
-            height: auto;
-        }
-		<!-- golgolz end -->
-	</style>
-  <script text="text/javascript">
+
+<script text="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
 			<!-- golgolz end -->
 		});
 	</script>
+	
   <script type="text/javascript" async src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/82734969/?random=1718181155619&amp;cv=11&amp;fst=1718181155619&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=45be46a0z8810020603za201zb810020603&amp;gcd=13l3l3l3l1&amp;dma=0&amp;tag_exp=0&amp;u_w=1920&amp;u_h=1080&amp;url=http%3A%2F%2Flocalhost%2Frecruit-app%2Fmain%2Fmain2.jsp&amp;hn=www.googleadservices.com&amp;frm=0&amp;npa=0&amp;pscdl=noapi&amp;auid=1106614681.1712214601&amp;uaa=x86&amp;uab=64&amp;uafvl=Google%2520Chrome%3B125.0.6422.142%7CChromium%3B125.0.6422.142%7CNot.A%252FBrand%3B24.0.0.0&amp;uamb=0&amp;uam=&amp;uap=Windows&amp;uapv=15.0.0&amp;uaw=0&amp;fledge=1&amp;rfmt=3&amp;fmt=4"></script>
   <script src="blob:http://localhost/722467db-1f4a-4123-bed6-193ee0953be9"></script>
   <link rel="stylesheet" type="text/css" href="http://localhost/recruit-app/assets/css/main/slick.css">
   <link rel="stylesheet" type="text/css" href="http://localhost/recruit-app/assets/css/main/slick-theme.css">
   <link rel="stylesheet" href="http://localhost/recruit-app/assets/css/main/all.min.css">
+  
   <meta charset="utf-8">
   <meta name="next-head-count" content="23">
-  <link rel="dns-prefetch" href="https://asset.wanted.co.kr">
-  <link rel="preconnect" href="https://asset.wanted.co.kr">
-  <link rel="dns-prefetch" href="https://image.wanted.co.kr">
-  <link rel="preconnect" href="https://image.wanted.co.kr">
-  <link rel="dns-prefetch" href="https://static.wanted.co.kr">
-  <link rel="preconnect" href="https://static.wanted.co.kr">
-  <link rel="dns-prefetch" href="https://www.google-analytics.com">
-  <link rel="preconnect" href="https://www.google-analytics.com">
-  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-  <link rel="preconnect" href="https://www.googletagmanager.com">
-  <link rel="dns-prefetch" href="https://api.amplitude.com">
-  <link rel="preconnect" href="https://api.amplitude.com">
-  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
-  <link rel="shortcut icon" href="https://static.wanted.co.kr/favicon/new/favicon.ico">
-  <link rel="icon" type="image/png" sizes="16x16" href="https://static.wanted.co.kr/favicon/new/favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="https://static.wanted.co.kr/favicon/new/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="https://static.wanted.co.kr/favicon/new/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="https://static.wanted.co.kr/favicon/new/favicon-192x192.png">
-  <link rel="apple-touch-icon" sizes="57x57" href="https://static.wanted.co.kr/favicon/new/apple-touch-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="https://static.wanted.co.kr/favicon/new/apple-touch-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="https://static.wanted.co.kr/favicon/new/apple-touch-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="https://static.wanted.co.kr/favicon/new/apple-touch-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="https://static.wanted.co.kr/favicon/new/apple-touch-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="https://static.wanted.co.kr/favicon/new/apple-touch-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="https://static.wanted.co.kr/favicon/new/apple-touch-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="https://static.wanted.co.kr/favicon/new/apple-touch-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="https://static.wanted.co.kr/favicon/new/apple-touch-icon-180x180.png">
-  <link rel="preload" as="style" crossorigin="anonymous" href="http://localhost/recruit-app/assets/css/main/pretendardvariable-dynamic-subset.min.css">
-  <link rel="preload" as="style" crossorigin="anonymous" href="http://localhost/recruit-app/assets/css/main/pretendardvariable-jp-dynamic-subset.min.css">
-  <link rel="stylesheet" href="http://localhost/recruit-app/assets/css/main/slick.css" media="screen">
-  <link rel="stylesheet" href="http://localhost/recruit-app/assets/css/main/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="http://localhost/recruit-app/assets/css/main/pretendardvariable-jp-dynamic-subset.min.css">
-  <link rel="search" href="/opensearch.xml" type="application/opensearchdescription+xml" title="Wanted">
-  <script>
-            (function(w,d,s,l,i){w[l]=w[l]||[];
-              w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
-              var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
-              j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-              f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-P2J7HJ9');
-          </script>
   <style text="text/css">
 		<!-- golgolz start -->
 		.prev, .next {
@@ -134,7 +63,7 @@
             top: 50%;
             transform: translateY(-50%);
             cursor: pointer;
-            color: #333;
+            color: #666666;
         }
         .prev {
             left: 10px;
@@ -157,45 +86,30 @@
             width: 100%;
             height: auto;
         }
-		<!-- golgolz end -->
+		
+        /* 포함된 header.jsp의 스타일 */
+        .Menu_MenuNav__EOf3X {
+            color: #666666; /* 폰트 색상 적용 */
+        }
 	</style>
-  <script text="text/javascript">
-		$(function(){
-			<!-- golgolz start -->
-			<!-- golgolz end -->
-		});
-	</script>
+
+		<!-- golgolz end -->
+	
+	
  </head>
- 
  
   
  <body> 
   <div id="__next" data-reactroot=""> 
-   <div role="presentation" class="NavBar_className__y2qGg" style="position: fixed"> 
-    <div class="NavBar_background__SQmnx"></div> 
-    <div class="MainBar_MainBar__40DX7" role="presentation"> 
-     <nav class="MainBar_MainBarNav__pVhal"> 
-      <div class="MainBar_MainBarNavLogo__caIek"> <a href="https://www.wanted.co.kr/" aria-label="Wanted" data-attribute-id="gnb" data-gnb-kind="jobsfeed"> <img src="http://localhost/recruit-app/assets/images/logo.png" style="max-width: 100%; margin-top: 7px; padding-right: 20px"> </a> 
-      </div> 
-      <ul class="Menu_MenuNav__EOf3X"> 
-       <li class="Menu_MenuItem__wI1yA" data-attribute-id="gnb" data-gnb-kind="event"> <a href="https://www.wanted.co.kr/events"><span>채용공고</span></a> </li> 
-       <li class="Menu_MenuItem__wI1yA" data-attribute-id="gnb" data-gnb-kind="event"> <a href="https://www.wanted.co.kr/events"><span>기업</span></a> </li> 
-       <li class="Menu_MenuItem__wI1yA" data-attribute-id="gnb" data-gnb-kind="community"> <a href="https://www.wanted.co.kr/community"><span>이력서관리</span></a> </li> 
-       <li class="Menu_MenuItem__wI1yA" data-attribute-id="gnb" data-gnb-kind="resume"> <a href="https://www.wanted.co.kr/cv/list"><span>공지사항</span></a> </li> 
-       <li class="Menu_MenuItem__wI1yA" data-attribute-id="gnb" data-gnb-kind="freelancer"> <a href="https://www.wanted.co.kr/gigs/experts" target="_blank" rel="noopener noreferrer"><span>문의사항</span></a> </li> 
-      </ul> 
-      <aside class="Aside_aside__f0SVC"> 
-       <ul class="Aside_asideList__3WNyu"> 
-        <li class="Aside_signUpButtonContainer___0wTS"> <button class="Button_Button__root__V1ie3 Button_Button__outlined__H2mkd Button_Button__outlinedAssistive__mBcQK Button_Button__outlinedSizeSmall__JJmOo Aside_signUpButton__pY721" type="button" data-attribute-id="gnb" data-gnb-kind="signupLogin"> <span class="Button_Button__label__1Kk0v"><span class="Typography_Typography__root__xYuMs Typography_Typography__label2__BRssq Typography_Typography__weightBold__e15ql">회원가입/로그인</span></span><span class="Button_Button__interaction__kkYaa"></span> </button> </li> 
-       </ul> 
-      </aside> 
-     </nav> 
-    </div> 
-   </div> 
-   <div class="Padding_padding___Nyki"></div> 
+   <jsp:include page="../assets/layout/user/header.jsp"  />
+   
    <main class="JobsFeed_Jobsfeed__DpeV9"> 
     <section class="Section_Section__P1hhc" 
-    style="width: 100%; max-width: 1300px; margin: 0 auto;  "> 
+    style="width: 100%; 
+    max-width: 1300px; 
+    margin: 0 auto; 
+    box-sizing: border-box; /* 패딩과 테두리를 요소의 전체 너비에 포함 */
+    padding: 20px;  "> 
     <!-- golgolz start --> 
     <!-- 슬라이드 1 --> 
      <div> 
@@ -275,22 +189,7 @@
 </script> 
      </div> <!-- golgolz end --> 
     </section> 
-    <footer class="Footer_footerClass__OWEZy"> 
-     <div class="Footer_rowClass__bFAtS"> 
-      <div class="BrandNewNavLinks_BrandNewNavLinks__FTT09"> <a class="BrandNewNavLinks_BrandNewNavLinks__logo__oXsxN" aria-label="Footer Home Button" data-attribute-id="fnb" data-fnb-kind="home" data-page-path="/" href="https://www.wanted.co.kr/"> <img src="http://localhost/recruit-app/assets/images/logo.png" style="max-width: 35%"> </a> 
-       <div class="BrandNewNavLinks_BrandNewNavLinks__links__M1n_a"> <a href="https://www.wantedlab.com/" class="" target="_blank" rel="noopener noreferrer" data-attribute-id="fnb" data-fnb-kind="investment"> <p class="Typography_Typography__root__xYuMs Typography_Typography__body1-reading__KvBaS Typography_Typography__weightMedium__O0Rdi"> 공지사항 </p></a><a href="https://ad.wantedlab.com/" class="" target="_blank" rel="noopener noreferrer" data-attribute-id="fnb" data-fnb-kind="AD"><p class="Typography_Typography__root__xYuMs Typography_Typography__body1-reading__KvBaS Typography_Typography__weightMedium__O0Rdi"> 문의하기 </p></a> 
-       </div> 
-      </div> 
-      <div class="Footer_footerText__CTqnd kr"> 
-       <p><span>(주)구지직</span><span>대표이사 우미연</span></p> 
-       <p> <span>서울 강남구 테헤란로 132 8층</span><span>전화번호: 0507-1316-4632</span> </p> 
-       <p> <span>사업자등록번호: 112-34-00056</span><span>유료직업소개사업등록번호: (국내) 제2024-000603-14-5-00018호</span> </p> 
-      </div> 
-      <hr class="Footer_Divider__d8E_Z"> 
-      <div class="Footer_socialClass__TViS2"> <span class="Typography_Typography__root__xYuMs Typography_Typography__label2__BRssq Typography_Typography__weightMedium__O0Rdi">© 2024 GoojzzK Lab, Inc.</span> 
-      </div> 
-     </div> 
-    </footer> 
+    <jsp:include page="../assets/layout/user/footer.jsp" />  
    </main> 
   </div>  
  </body>

@@ -4,7 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- golgolz start -->
+	 <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Styles</title>
+    <!-- 기존 CSS 파일들 -->
     <link href="http://localhost/recruit-app/assets/css/recruit/part-sv-202405271315.css" rel="stylesheet" type="text/css"/>
     <link href="http://localhost/recruit-app/assets/css/recruit/rcr-sv-202405271315.css" rel="stylesheet" type="text/css"/>
     
