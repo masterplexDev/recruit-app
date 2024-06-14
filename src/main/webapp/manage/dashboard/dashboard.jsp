@@ -44,6 +44,7 @@
             </div>
         </nav>
         <!-- golgolz start -->
+		<div class="container-fluid py-4">
        <section class="content">
             <div class="container-fluid">
                 <div class="row">
@@ -133,7 +134,6 @@
             </div>
         </section>
         <!-- golgolz end -->
-        
     <script>
         $(function () {
             var ctxVisitors = document.getElementById('visitors-chart').getContext('2d');
@@ -281,6 +281,7 @@
             
         });
     </script>
-    </main>
+    </div>
+  	</main>
 </body>
 </html>
