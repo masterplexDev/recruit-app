@@ -56,10 +56,6 @@
     display: block;
     overflow: hidden;
 	}
-	a, a:link, a:visited {
-    color: #666666;
-    text-decoration: none;
-	}
 	.salaryCompanyList ul.list .thumbnailText {
     display: table;
     top: 42px;
