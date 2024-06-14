@@ -367,10 +367,10 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 .form .row:nth-child(14) { z-index: 60; }
 .form .row:nth-child(15) { z-index: 50; }
 .form .buttonAddField { display: flex; align-items: center; justify-content: center; width: 100%; height: 50px; border-top: 1px solid #eee; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
-.form .buttonAddField span { position: relative; padding-left: 26px; color: #666;font-size:16px;letter-spacing: 0px; line-height: 48px;}
+.form .buttonAddField span { position: relative; padding-left: 7px; color: #666;font-size:16px;letter-spacing: 0px; line-height: 48px;}
 .form .buttonAddField span:before { content: ''; display: block; position: absolute; left: 0; top: 15px; width: 20px; height: 20px; background: url("/content/images/text_user/resume/write/sprite-icon.png") no-repeat 0 -247px; }
-.form .buttonDeleteField { overflow: hidden; position: absolute; right: 0; top: 0; width: 35px; height: 35px; }
-.form .buttonDeleteField:before { content: ''; display: block; width: 35px; height: 35px; background: url("/content/images/text_user/resume/write/sprite-icon-x.png") no-repeat 0 -270px; }
+.form .buttonDeleteField { position: absolute; right: 0; top: 0; width: 35px; height: 35px; }
+.form .buttonDeleteField:before { content: ''; display: block; width: 35px; height: 35px; background: url("/content/images/text_user/resume/write/sprite-icon.png") no-repeat 0 -270px; }
 .formFooter { position: relative; margin-bottom: 10px; }
 .formFooter .buttons { padding-top: 20px; font-size: 0; }
 .formFooter .buttons .button { display: inline-block; zoom: 1; margin-left: 10px; }
@@ -380,7 +380,7 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 .formFooter .menu .button { position: relative; display: inline-block; zoom: 1; height: 34px; padding: 0 30px 0 11px; margin-left: 10px; border: 1px solid #999; -webkit-box-sizing: border-box; box-sizing: border-box; color: #002aff;font-size:14px;letter-spacing: 0px; }
 .formFooter .menu .button:before { content: ''; position: absolute; right: 11px; top: 12px; width: 9px; height: 9px; background: url("/content/images/text_user/resume/write/sprite-icon.png") no-repeat 0 0; -webkit-transition: -webkit-transform 0.3s ease-in-out; -moz-transition: -moz-transform 0.3s ease-in-out; transition: -webkit-transform 0.3s ease-in-out; -o-transition: transform 0.3s ease-in-out; transition: transform 0.3s ease-in-out; transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out; }
 .formFooter .menu .button:first-child { margin-left: 0; }
-.formFooter .menu .button span {display:inline;  color: #666;font-size:14px;letter-spacing: 0px; } /*240202 padding-top: 5px;제거 display:inline추가 */
+.formFooter .menu .button span {display:inline;  color: #666;font-size:14px;letter-spacing: 0px; } /*240202 padding-top: 5px;�젣嫄� display:inline異붽� */
 .formFooter .menu .button.selected { border-color: #002aff; }
 .formFooter .menu .button.selected:before { right: 10px; top: 11px; width: 11px; height: 11px; background: url("/content/images/text_user/resume/write/sprite-icon.png") no-repeat 0 -19px; }
 .formFooter .menu .button.selected span { color: #002aff; }
@@ -446,7 +446,7 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 .modalAlbamonResume .buttons .buttonYes { background-color: #002aff; border-color: #002aff; color: #fff; }
 .modal-spinner { display: none; z-index: 9998; overflow: hidden; position: fixed; left: 0; top: 0; width: 100%; height: 100%; line-height: 1.33; background: url("/content/images/text_user/resume/write/bg-dimd.png"); }
 .modal-spinner:before { content: ''; position: absolute; left: 50%; top: 50%; width: 160px; height: 160px; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); background: url("/content/images/text_user/resume/write/spinner.gif") no-repeat; background: url("/content/images/text_user/resume/spinner.svg?v=201710231711") no-repeat; }
-/* 건강보험공단 */
+/* 嫄닿컯蹂댄뿕怨듬떒 */
 .modalHealth {display: none; z-index: 9998; overflow: hidden; position: fixed; left: 0; top: 0; width: 100%; height: 100%; line-height: 1.33;background: url(/content/images/text_user/resume/write/bg-dimd.png);}
 .modalHealth.active {display: block;}
 .modalHealth .modalContainer {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 560px; background-color: #fff; text-align: left; box-sizing: border-box; padding: 40px; border-radius: 8px;}
@@ -519,7 +519,7 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 .modalHealth.Career .modalContainer .modalBody .info .infoItem .inputBox input::placeholder {color: #B8B8B8;font-size:16px;letter-spacing: 0px;}
 .modalHealth.Career .modalContainer .modalBody .info .infoItem .inputBox.error input {border: 1px solid #FF0000;}
 .modalHealth.Career .modalContainer .modalBody .info .infoItem .inputBox p {font-size:13px;letter-spacing: 0px; color: #FF0000; margin-top: 8px;}
-/* Input 자동완성 색 변경 */
+/* Input �옄�룞�셿�꽦 �깋 蹂�寃� */
 .modalHealth.Career .modalContainer .modalBody .info .infoItem .inputBox input:-webkit-autofill,
 .modalHealth.Career .modalContainer .modalBody .info .infoItem .inputBox input:-webkit-autofill:hover, 
 .modalHealth.Career .modalContainer .modalBody .info .infoItem .inputBox input:-webkit-autofill:focus,
@@ -534,11 +534,11 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 .modalHealth.SNS .modalContainer .modalBody .notice > p {font-size:13px;letter-spacing: 0px; color: #6A6A6A; margin-bottom: 5px;}
 .modalHealth.SNS .modalContainer .modalBody .notice > a {font-size:14px;letter-spacing: 0px; color: #6A6A6A; font-weight: 500; margin-top: 5px; display: flex; align-items: center; justify-content: center; text-decoration: underline; text-underline-offset: 2px;}
 .modalHealth.SNS .modalContainer .modalBody .notice a::after {content: ''; display: inline-block; width: 7px; height: 13px; background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNyIgaGVpZ2h0PSIxMSIgdmlld0JveD0iMCAwIDcgMTEiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+DQo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTAuODY2MzcyIDAuNDE4MTUzQzEuMDk1NyAwLjE2MDE2NCAxLjQ5MDc0IDAuMTM2OTI2IDEuNzQ4NzMgMC4zNjYyNUw2Ljc0ODczIDQuODEwNjlDNi44Nzk3IDQuOTI3MTIgNi45NTU3OSA1LjA5MzE3IDYuOTU4NDMgNS4yNjgzOUM2Ljk2MTA4IDUuNDQzNjEgNi44OTAwNCA1LjYxMTg5IDYuNzYyNjQgNS43MzIyMUwxLjc2MjY0IDEwLjQ1NDRDMS41MTE2OSAxMC42OTE0IDEuMTE2MTMgMTAuNjgwMSAwLjg3OTEyIDEwLjQyOTJDMC42NDIxMTIgMTAuMTc4MiAwLjY1MzQxNCA5Ljc4MjY3IDAuOTA0MzYzIDkuNTQ1NjZMNS40MDg0NiA1LjI5MTc5TDAuOTE4Mjc1IDEuMzAwNTFDMC42NjAyODYgMS4wNzExOSAwLjYzNzA0OCAwLjY3NjE0MyAwLjg2NjM3MiAwLjQxODE1M1oiIGZpbGw9IiM2QTZBNkEiLz4NCjwvc3ZnPg0K') no-repeat; margin-left: 6px; margin-top: 2px; background-position: center;}
-/* 건강보험공단 alert */
+/* 嫄닿컯蹂댄뿕怨듬떒 alert */
 .modalHealth.alert .modalContainer {width: 400px;}
 .modalHealth.alert .modalContainer .buttonClose {right: 24px; top: 24px;}
 .modalHealth.alert .modalContainer .modalBody {text-align: center;font-size:16px;letter-spacing: 0px; color: #6A6A6A; line-height: 24px;}
-/* 건강보험공단 경력 불러오기 */
+/* 嫄닿컯蹂댄뿕怨듬떒 寃쎈젰 遺덈윭�삤湲� */
 .modalHealth.Load .modalContainer {padding: 40px 0;}
 .modalHealth.Load .modalContainer .modalHeader {padding: 0 40px;}
 .modalHealth.Load .modalContainer .modalHeader > p {font-size:16px;letter-spacing: 0px; color: #171717; font-weight: normal; padding: 10px 0 28px;}
@@ -559,7 +559,7 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 .modalHealth.Load .modalContainer .modalBody .info-section .info-wrap .info-list .label-checkbox::before {content: ''; width: 20px; height: 20px; border-radius: 50%; background: #FFFFFF; border: 1px solid #D2D2D2; position: absolute; left: 0; box-sizing: border-box;}
 .modalHealth.Load .modalContainer .modalBody .info-section .info-wrap .info-list .text {padding-left: 28px; margin-top: 7px;}
 .modalHealth.Load .modalContainer .modalBody .info-section .info-wrap .info-list .text li {display: inline-block;font-size:13px;letter-spacing: 0px; color: #9E9E9E;}
-.modalHealth.Load .modalContainer .modalBody .info-section .info-wrap .info-list .text li:nth-child(2)::before {content: 'ㅣ'; display: inline-block; width: 12px; color: #9E9E9E;}
+.modalHealth.Load .modalContainer .modalBody .info-section .info-wrap .info-list .text li:nth-child(2)::before {content: '�뀭'; display: inline-block; width: 12px; color: #9E9E9E;}
 .modalHealth.Load .modalContainer .modalBody .info-section.DB-section .info-wrap {position: relative; cursor: pointer;}
 .modalHealth.Load .modalContainer .modalBody .info-section.DB-section .info-wrap.on .info-list {border: 1px solid #171717;}
 .modalHealth.Load .modalContainer .modalBody .info-section.DB-section .info-wrap::after {content: ''; position: absolute; right: 23px; top: 20px; width: 15px; height: 9px; background: #3399ff; background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iOSIgdmlld0JveD0iMCAwIDE2IDkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+DQo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTE0Ljk5ODEgMC40Mjk1MjJDMTUuMzU5MiAwLjc1MDU3NiAxNS4zOTE4IDEuMzAzNjQgMTUuMDcwNyAxLjY2NDgyTDguODQ4NSA4LjY2NDgyQzguNjg1NTEgOC44NDgxOSA4LjQ1MzAzIDguOTU0NyA4LjIwNzcyIDguOTU4NDFDNy45NjI0MiA4Ljk2MjExIDcuNzI2ODMgOC44NjI2NiA3LjU1ODM4IDguNjg0M0wwLjk0NzI2NyAxLjY4NDNDMC42MTU0NTcgMS4zMzI5NyAwLjYzMTI3OSAwLjc3OTE3OSAwLjk4MjYwOCAwLjQ0NzM2OEMxLjMzMzk0IDAuMTE1NTU4IDEuODg3NzMgMC4xMzEzODEgMi4yMTk1NCAwLjQ4MjcwOUw4LjE3NDk2IDYuNzg4NDVMMTMuNzYyOCAwLjUwMjE4N0MxNC4wODM4IDAuMTQxMDAyIDE0LjYzNjkgMC4xMDg0NjkgMTQuOTk4MSAwLjQyOTUyMloiIGZpbGw9IiMxNzE3MTciLz4NCjwvc3ZnPg0K') no-repeat;}
@@ -581,22 +581,22 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 .modalHealth.Load .modalContainer .modalBody .info-section.DB-section .info-wrap .hidden-wrap .hidden-area .hidden-list .text {margin-top: 5px; padding-left: 34px;}
 .modalHealth.Load .modalContainer .modalBody .info-section.DB-section .info-wrap .hidden-wrap .hidden-area .hidden-list .text li {font-size:13px;letter-spacing: 0px; color: #9E9E9E; line-height: 20px;}
 .modalHealth.Load .modalContainer .modalBody .info-section.DB-section .info-wrap .hidden-wrap .hidden-area .hidden-list .text .list {display: inline-block;}
-.modalHealth.Load .modalContainer .modalBody .info-section.DB-section .info-wrap .hidden-wrap .hidden-area .hidden-list .text .list:nth-child(2)::before {content: 'ㅣ'; display: inline-block; width: 12px; color: #9E9E9E;}
+.modalHealth.Load .modalContainer .modalBody .info-section.DB-section .info-wrap .hidden-wrap .hidden-area .hidden-list .text .list:nth-child(2)::before {content: '�뀭'; display: inline-block; width: 12px; color: #9E9E9E;}
 .modalHealth.Load .modalContainer .modalBody .info-section.DB-section .info-wrap .hidden-wrap .list-none {display: flex; align-items: center;height: 49px; background: #F8F8F8; padding: 0 16px; border-radius: 0px 0px 8px 8px;}
 .modalHealth.Load .modalContainer .modalBody .info-section.DB-section .info-wrap .hidden-wrap .list-none input[type="radio"] {display: none;}
 .modalHealth.Load .modalContainer .modalBody .info-section.DB-section .info-wrap .hidden-wrap .list-none input[type="radio"]:checked +.label-radiobox::before {background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMiAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGQ9Ik0xIDQuNTgzMTdMNC4zMzMzMyA4LjMzMzE3TDExIDEuNjY2NSIgc3Ryb2tlPSIjMDAyQUZGIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPg0KPC9zdmc+DQo=') no-repeat; background-position: center; background-color: #FFFFFF;}
 .modalHealth.Load .modalContainer .modalBody .info-section.DB-section .info-wrap .hidden-wrap .list-none .label-radiobox {position: relative;font-size:14px;letter-spacing: 0px; color: #171717; padding-left: 28px; width: 100%;}
 .modalHealth.Load .modalContainer .modalBody .info-section.DB-section .info-wrap .hidden-wrap .list-none .label-radiobox::before {content: ''; width: 20px; height: 20px; border-radius: 50%; background: #FFFFFF; border: 1px solid #D2D2D2; position: absolute; left: 0; top: 0;}
-/* 건강보험공단 이력서에 경력이 불러와져있을 경우 비활성화 */
+/* 嫄닿컯蹂댄뿕怨듬떒 �씠�젰�꽌�뿉 寃쎈젰�씠 遺덈윭���졇�엳�쓣 寃쎌슦 鍮꾪솢�꽦�솕 */
 .modalHealth.Load .modalContainer .modalBody .info-section .info-wrap .info-list.complete .label-checkbox {color: #9E9E9E; cursor: default;}
 .modalHealth.Load .modalContainer .modalBody .info-section .info-wrap .info-list.complete .label-checkbox::before {background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_1288_82545)'%3E%3Cg opacity='0.3'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0ZM15.7071 7.37377C16.0976 6.98325 16.0976 6.35008 15.7071 5.95956C15.3166 5.56904 14.6834 5.56904 14.2929 5.95956L8.37615 11.8763L5.74741 8.91897C5.38049 8.50619 4.74842 8.46901 4.33564 8.83592C3.92285 9.20284 3.88567 9.83491 4.25259 10.2477L7.58592 13.9977C7.7689 14.2035 8.02867 14.3248 8.30396 14.3329C8.57925 14.341 8.84569 14.2352 9.04044 14.0404L15.7071 7.37377Z' fill='%23B8B8B8'/%3E%3C/g%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_1288_82545'%3E%3Crect width='20' height='20' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A"); border: none;}
 .modalHealth.Load .modalContainer .modalBody .info-section .info-wrap .info-list.complete .addcomplete {border: 1px solid #D2D2D2;font-size:8px;letter-spacing: 0px; color: #6A6A6A; text-align: center; padding: 4px 6px; border-radius: 10px; position: absolute; right: 16px; bottom: 17px; box-sizing: border-box;}
-/* 건강보험공단 경력 불러오기 없는 경우 */
+/* 嫄닿컯蹂댄뿕怨듬떒 寃쎈젰 遺덈윭�삤湲� �뾾�뒗 寃쎌슦 */
 .modalHealth.Load .modalContainer .modalBody .info-section.DB-section .info-wrap .hidden-wrap.none .hidden-area {height: 95px; text-align: center;}
 .modalHealth.Load .modalContainer .modalBody .info-section.DB-section .info-wrap .hidden-wrap.none .hidden-area .hidden-list {padding: 24px 0;}
 .modalHealth.Load .modalContainer .modalBody .info-section.DB-section .info-wrap .hidden-wrap.none .hidden-area .hidden-list strong {font-size:14px;letter-spacing: 0px; color: #171717; line-height: 22px;}
 .modalHealth.Load .modalContainer .modalBody .info-section.DB-section .info-wrap .hidden-wrap.none .hidden-area .hidden-list p {font-size:13px;letter-spacing: 0px; color: #9E9E9E; line-height: 20px; margin-top: 5px;}
-/* 건강보험공단 경력 불러오기 회사정보매칭 */
+/* 嫄닿컯蹂댄뿕怨듬떒 寃쎈젰 遺덈윭�삤湲� �쉶�궗�젙蹂대ℓ移� */
 .modalHealth.Load.matching .modalContainer {height: 757px;}
 .modalHealth.Load.matching .modalContainer .modalBody .title {display: none;}
 .modalHealth.Load.matching .modalContainer .modalBody .list-wrap {height: 480px; max-height: 480px; overflow-x: hidden; overflow-y: auto; padding-right: 10px;}
@@ -628,7 +628,7 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 .modalHealth.Load.matching .modalContainer .modalBody .list-wrap .list .hidden-wrap .hidden-list .text {padding-left: 34px;}
 .modalHealth.Load.matching .modalContainer .modalBody .list-wrap .list .hidden-wrap .hidden-list .text li {font-weight: 400; color: #9E9E9E;font-size:13px;letter-spacing: 0px; display: block;}
 .label-checkbox input:checked +span::before {background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMiAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGQ9Ik0xIDQuNTgzMTdMNC4zMzMzMyA4LjMzMzE3TDExIDEuNjY2NSIgc3Ryb2tlPSIjMDAyQUZGIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPg0KPC9zdmc+DQo=') no-repeat; background-position: center;}
-/* 건강보험공단 경력 불러오기 회사정보매칭 로딩 */
+/* 嫄닿컯蹂댄뿕怨듬떒 寃쎈젰 遺덈윭�삤湲� �쉶�궗�젙蹂대ℓ移� 濡쒕뵫 */
 .modalHealth .modalContainer .lader {position: fixed; left: 0; top: 0; width: 100%; height: 100%;}
 .modalHealth .modalContainer .lader .loderWrap {width: 259px; left: 50%; top: 50%; background: #FFFFFF; border-radius: 8px; position: absolute; transform: translate(-50%, -50%); padding: 40px 0 42px; border: 1px solid #171717; box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.15); box-sizing: border-box; text-align: center;}
 .modalHealth .modalContainer .lader .loderWrap p {color: #171717;font-size:20px;letter-spacing: -0.5px; font-weight: 700;}
@@ -637,7 +637,7 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
  
 .modalHealth .modalContainer .lader .loderWrap .loading-img-before {width: 128px; height: 108px; background-image: url('/content/images/text_user/resume/write/lader_img01.gif'); background-size: contain; background-repeat: no-repeat; margin: 28px auto 0;}
  
-/* 건강보험공단 경력 불러오기 로딩 리뉴얼 예정 / 하단 스타일 삭제 예정 */
+/* 嫄닿컯蹂댄뿕怨듬떒 寃쎈젰 遺덈윭�삤湲� 濡쒕뵫 由щ돱�뼹 �삁�젙 / �븯�떒 �뒪���씪 �궘�젣 �삁�젙 */
 .modalHealth .modalContainer .lader .loderWrap .loading {height: 12px; text-align: center; margin-top: 28px;}
 .modalHealth .modalContainer .lader .loderWrap .progress-bar {width: 150px; height: 10px; background-color: #E4EDFF; border-radius: 9px; margin: 28px auto 0;}
 .modalHealth .modalContainer .lader .loderWrap .progress-bar .progress {width: 30%; height: 10px; background-color: #002AFF; border-radius: 9px;}
@@ -717,7 +717,7 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 .formProfile .input-profile-email .autocomplete .list li { padding: 0; }
 .formProfile .input-profile-email .autocomplete .list .button { padding: 6px 15px 8px; }
 .formProfile .input-profile-email .autocomplete .list .button:hover { background-color: #f5f5f5; }
-.formProfile .input-profile-addr { width: 401px; }
+.formProfile .input-profile-addr { width: 760px; }
 .formProfile .picture { z-index: 200; overflow: hidden; position: absolute; right: 20px; top: 20px; width: 103px; height: 129px; background: url("/content/images/text_user/resume/write/bg-picture.png") no-repeat; -webkit-box-sizing: border-box; box-sizing: border-box; }
 .formProfile .picture.dropped { border: 1px solid #ddd; background: none; }
 .formProfile .picture .buttonAddFile { overflow: hidden; z-index: 100; display: block; position: absolute; left: 0; top: 0; width: 103px; height: 134px; opacity: 0; }
@@ -887,7 +887,7 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 .formCareer .popupOWorkExperience .input-oWorkExperience-enddate { width: 115px; }
 .formCareer .popupOWorkExperience .input-oWorkExperience-enddate .validation { width: auto; }
 .formCareer .popupOWorkExperience .popupFooter .buttonRegister { display: inline-block; zoom: 1; width: 120px; height: 38px; margin: 0 5px; background-color: #002aff; -webkit-box-sizing: border-box; box-sizing: border-box; }
-.formCareer .popupOWorkExperience .popupFooter .buttonRegister span {display: inline; text-align: center; color: #fff;font-size:15px;letter-spacing: 0px; } /*240202 padding-top: 7px;제거 display:inline추가*/
+.formCareer .popupOWorkExperience .popupFooter .buttonRegister span {display: inline; text-align: center; color: #fff;font-size:15px;letter-spacing: 0px; } /*240202 padding-top: 7px;�젣嫄� display:inline異붽�*/
 .formCareer .is-inoffice { display: inline-block; position: relative; height: 62px; }
 .formCareer .is-inoffice .tooltip { z-index: 9000; position: absolute; right: 0; top: 70px; width: 450px; padding: 23px 19px 22px; -webkit-box-sizing: border-box; box-sizing: border-box; border: 1px solid #565d79; background-color: #fff; line-height: 1.6; color: #666;font-size:15px;letter-spacing: 0px; }
 .formCareer .is-inoffice .tooltip:after { content: ''; position: absolute; right: 10px; top: -19px; width: 21px; height: 19px; background:url("/content/images/text_user/resume/write/sprite-icon-arrow.png?v=201812181400") no-repeat 0 -139px; }
@@ -1163,7 +1163,7 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 .formJobPreference .dropdown7 .buttons .button span { padding-top: 4px; text-align: center; color: #666;font-size:13px;letter-spacing: 0px; }
 .formJobPreference .dropdown7 .buttons .buttonConfirm { border: 0; background-color: #002aff; }
 .formJobPreference .dropdown7 .buttons .buttonConfirm span { color: #fff;}
-/* 취업우대 - 필수 민감정보 수집에 동의합니다. */
+/* 痍⑥뾽�슦�� - �븘�닔 誘쇨컧�젙蹂� �닔吏묒뿉 �룞�쓽�빀�땲�떎. */
 .formJobPreference .agree {padding: 10px 20px 0px;}
 .formJobPreference .agree label {display: inline-flex; align-items: center;font-size:14px;letter-spacing: 0px; color: #6a6a6a;}
 .formJobPreference .agree label .mark {color: #002aff; padding-right: 4px;}
@@ -1204,7 +1204,7 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 .formWrapIntroduction .buttonsCheckSpelling .buttonCheckEnd span { padding: 4px 9px 0; }
 .formWrapIntroduction .buttonsCheckSpelling .buttonCheckEnd span:before { content: ''; display: block; position: absolute; left: 10px; top: 6px; width: 27px; height: 16px; background: url("/content/images/text_user/resume/write/sprite-icon.png") no-repeat 0 -393px; }
 .formWrapIntroduction .buttonsCheckSpelling .buttonChangeList span { padding: 0px 9px 0; }
-/* 맞춤법검사 서비스종료 안내버튼 */
+/* 留욎땄踰뺢��궗 �꽌鍮꾩뒪醫낅즺 �븞�궡踰꾪듉 */
 .formWrapIntroduction .button.closeCheckSpelling {vertical-align: baseline;background: none;border: 0;margin-right: 4px;height: 35px; line-height: 35px;} 
 .formWrapIntroduction .button.closeCheckSpelling::before {content: ''; display: inline-block; width: 20px; height: 20px; vertical-align: middle;margin-right: 4px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cg clip-path='url(%23clip0_1_634)'%3E%3Cpath d='M16.5625 11.875C17.7706 11.875 18.75 10.8956 18.75 9.6875C18.75 8.47938 17.7706 7.5 16.5625 7.5C15.3544 7.5 14.375 8.47938 14.375 9.6875C14.375 10.8956 15.3544 11.875 16.5625 11.875Z' fill='%23FF8700'/%3E%3Cpath d='M1.72867 6.25H5.625V13.75H1.72867C1.4654 13.75 1.25 13.5524 1.25 13.3109V6.68911C1.25 6.4476 1.4654 6.25 1.72867 6.25Z' fill='%23FF8700'/%3E%3Cpath d='M15.3295 18.6374L5.625 13.75V6.25L15.2841 1.36033C16.025 1.00386 16.875 1.55476 16.875 2.38806V17.6513C16.875 18.4568 16.0477 18.9892 15.3341 18.642L15.3295 18.6374Z' fill='%23FFC300'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_1_634'%3E%3Crect width='17.5' height='17.5' fill='white' transform='translate(1.25 1.25)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E") 0 0 no-repeat; }
 .formWrapIntroduction .button.closeCheckSpelling > a{ font-size: 12px; font-weight: 400; line-height: 18px; color: #6a6a6a; border-bottom: 1px solid #6a6a6a;vertical-align: middle; }
@@ -1414,7 +1414,7 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 .formHopework .popupHopeworkPlace .col2 .button.selected span {display:inline-block; border:1px solid #add6ff; border-radius:16px; color:#002aff; font-weight:bold;}
 .formHopework .popupHopeworkPlace .is-message { background-color: #f7f7f7; }
 .formHopework .popupHopeworkPlace .is-message .message { padding: 16px 0 0 19px; -webkit-box-sizing: border-box; box-sizing: border-box; color: #888;font-size:13px;letter-spacing: 0px; }
-/* 직무 */
+/* 吏곷Т */
 .formWrapJob .form {padding: 20px;}
 .formWrap .header .info {font-size:13px;letter-spacing: 0px; color: #000; font-weight: normal; line-height: 18px;}
 .formWrap .header .info::before {content: ''; display: inline-block; width: 18px; height: 18px; vertical-align: bottom; margin-right: 4px; background: url('data:image/svg+xml;base64,DQo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjE3LjUiIGhlaWdodD0iMTcuNSIgdmlld0JveD0iMCAwIDE3LjUgMTcuNSI+DQogIDxnIGlkPSLqt7jro7lfNTgwIiBkYXRhLW5hbWU9Iuq3uOujuSA1ODAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yLjIgLTIuMikiPg0KICAgIDxnIGlkPSLqt7jro7lfNTc2IiBkYXRhLW5hbWU9Iuq3uOujuSA1NzYiPg0KICAgICAgPHBhdGggaWQ9Iu2MqOyKpF85MjMiIGRhdGEtbmFtZT0i7Yyo7IqkIDkyMyIgZD0iTTExLDguNWEuNzg5Ljc4OSwwLDAsMC0uOC44djZhLjc4OS43ODksMCwwLDAsLjguOC43MzYuNzM2LDAsMCwwLC44LS44di02QzExLjcsOC44LDExLjQsOC41LDExLDguNVoiIGZpbGw9IiM5OTkiLz4NCiAgICAgIDxjaXJjbGUgaWQ9Iu2DgOybkF85NSIgZGF0YS1uYW1lPSLtg4Dsm5AgOTUiIGN4PSIwLjgiIGN5PSIwLjgiIHI9IjAuOCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAuMiA2KSIgZmlsbD0iIzk5OSIvPg0KICAgIDwvZz4NCiAgICA8cGF0aCBpZD0i7Yyo7IqkXzkyNCIgZGF0YS1uYW1lPSLtjKjsiqQgOTI0IiBkPSJNMTEsMTkuN0E4Ljc5Miw4Ljc5MiwwLDAsMSwyLjIsMTEsOC44NzgsOC44NzgsMCwwLDEsMTEsMi4yLDguNzI4LDguNzI4LDAsMCwxLDE5LjcsMTEsOC42NDMsOC42NDMsMCwwLDEsMTEsMTkuN1ptMC0xNkE3LjM0MSw3LjM0MSwwLDAsMCwzLjcsMTEsNy4yNSw3LjI1LDAsMSwwLDExLDMuN1oiIGZpbGw9IiM5OTkiLz4NCiAgPC9nPg0KPC9zdmc+DQo=');}
@@ -1445,7 +1445,7 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 .formWrap .form .keyword-wrap .buttonAdd span {font-size:12px;letter-spacing: 0px; color: #002aff; text-decoration: underline;}
 .formWrap .form .invalid {border: 3px solid #ff3232;}
 .formWrap .form .invalid-text {color: #ff3232;font-size:12px;letter-spacing: 0px; padding-top: 7px;}
-/* 스킬 */
+/* �뒪�궗 */
 .formWrapSkill .form {padding: 20px;}
 .formWrapSkill .form .input.is-label.is-value {padding-top: 15px;}
 .formWrapSkill .form .input.focus {border-color: #ddd; padding-top: 15px;}
@@ -1492,7 +1492,7 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 .tap-list .tab-button.on {border: 1px solid #002aff;}
 .tap-list .tab-button .icon-star {display: inline-block; width: 14px; height: 13px; margin-right: 5px; background-size: contain; background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNOCAwLjU3MTI4OUM4LjE1OTg1IDAuNTcxMjg5IDguMzA1OTIgMC42NjAwMTYgOC4zNzcwNiAwLjgwMDMyOUwxMC42MjA5IDUuMjI1OThMMTUuNjM4OSA1LjkzMzkxQzE1Ljc5OCA1Ljk1NjM0IDE1LjkzMDEgNi4wNjU1NiAxNS45Nzk2IDYuMjE1NDFDMTYuMDI5IDYuMzY1MjcgMTUuOTg3MSA2LjUyOTY1IDE1Ljg3MTYgNi42MzkxMUwxMi4yMzcgMTAuMDgzTDEzLjA5MzkgMTQuOTQ1NUMxMy4xMjExIDE1LjEwMDIgMTMuMDU2NCAxNS4yNTY3IDEyLjkyNyAxNS4zNDkyQzEyLjc5NzUgMTUuNDQxNyAxMi42MjU3IDE1LjQ1NDIgMTIuNDgzNyAxNS4zODE0TDguMDA1MDkgMTMuMDg0MUwzLjUxNTkyIDE1LjM4MTZDMy4zNzM5NiAxNS40NTQyIDMuMjAyMjQgMTUuNDQxNiAzLjA3Mjg3IDE1LjM0OTFDMi45NDM1IDE1LjI1NjYgMi44Nzg4NyAxNS4xMDAyIDIuOTA2MTMgMTQuOTQ1NUwzLjc2MzAyIDEwLjA4M0wwLjEyODQxNyA2LjYzOTExQzAuMDEyODg3NyA2LjUyOTY1IC0wLjAyOTAwMjYgNi4zNjUyNyAwLjAyMDQzODggNi4yMTU0MUMwLjA2OTg4MDIgNi4wNjU1NSAwLjIwMjAzMiA1Ljk1NjM0IDAuMzYxMDggNS45MzM5MUw1LjM3OTE0IDUuMjI1OThMNy42MjI5NCAwLjgwMDMyOUM3LjY5NDA4IDAuNjYwMDE2IDcuODQwMTUgMC41NzEyODkgOCAwLjU3MTI4OVoiIGZpbGw9IiNEOUQ5RDkiLz4NCjwvc3ZnPg0K');}
 .tap-list .tab-button.on .icon-star{background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNNyAwLjVDNy4xMzk4NyAwLjUgNy4yNjc2OCAwLjU3NzYzNiA3LjMyOTkzIDAuNzAwNDFMOS4yOTMyNSA0LjU3Mjg1TDEzLjY4NDEgNS4xOTIyOUMxMy44MjMyIDUuMjExOTIgMTMuOTM4OSA1LjMwNzQ4IDEzLjk4MjEgNS40Mzg2MUMxNC4wMjU0IDUuNTY5NzQgMTMuOTg4NyA1LjcxMzU2IDEzLjg4NzYgNS44MDkzNUwxMC43MDc0IDguODIyNzVMMTEuNDU3MSAxMy4wNzc0QzExLjQ4MSAxMy4yMTI4IDExLjQyNDQgMTMuMzQ5OCAxMS4zMTExIDEzLjQzMDdDMTEuMTk3OCAxMy41MTE2IDExLjA0NzUgMTMuNTIyNSAxMC45MjMzIDEzLjQ1ODhMNy4wMDQ0NSAxMS40NDg3TDMuMDc2NDMgMTMuNDU5QzIuOTUyMjEgMTMuNTIyNiAyLjgwMTk2IDEzLjUxMTYgMi42ODg3NiAxMy40MzA2QzIuNTc1NTYgMTMuMzQ5NyAyLjUxOTAxIDEzLjIxMjggMi41NDI4NiAxMy4wNzc0TDMuMjkyNjQgOC44MjI3NUwwLjExMjM2NSA1LjgwOTM1QzAuMDExMjc2NyA1LjcxMzU2IC0wLjAyNTM3NzMgNS41Njk3MyAwLjAxNzg4NCA1LjQzODYxQzAuMDYxMTQ1MiA1LjMwNzQ4IDAuMTc2Nzc4IDUuMjExOTIgMC4zMTU5NDUgNS4xOTIyOUw0LjcwNjc1IDQuNTcyODVMNi42NzAwNyAwLjcwMDQxQzYuNzMyMzIgMC41Nzc2MzYgNi44NjAxMyAwLjUgNyAwLjVaIiBmaWxsPSIjRjdENjQ5Ii8+DQo8L3N2Zz4NCg==');}
-/* 스킬 팝업 */
+/* �뒪�궗 �뙘�뾽 */
 .popupSkill {top: 61px; width: 898px; height: 360px; margin-left: -449px;}
 .popupSkill::after{content: ''; display: block; z-index: 98; overflow: hidden; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: url("/content/images/text_user/resume/write/bg-dimd.png"); }
 .popupSkill .popupHeader {height: 66px; line-height: 66px; padding: 0px 0px 0px 25px; color: #000;font-size:18px;letter-spacing: 0px; background-color: #fff; border-bottom: 1px solid #ddd;}
@@ -1507,7 +1507,7 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 .popupSkill .popupFooter .btn-wrap .btn.check {background: #002aff; color: #fff; border-top: 1px solid #002aff;}
 .popupSkill .buttonClose {top: 15px; right: 25px; width: 36px; height: 36px;}
 .popupSkill .buttonClose:before {width: 100%; height: 100%; background: url('data:image/svg+xml;base64,DQo8c3ZnIGlkPSLqt7jro7lfNTY5NSIgZGF0YS1uYW1lPSLqt7jro7kgNTY5NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMzYiIGhlaWdodD0iMzYiIHZpZXdCb3g9IjAgMCAzNiAzNiI+DQogIDxyZWN0IGlkPSLsgqzqsIHtmJVfMzEzNyIgZGF0YS1uYW1lPSLsgqzqsIHtmJUgMzEzNyIgd2lkdGg9IjM2IiBoZWlnaHQ9IjM2IiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwIi8+DQogIDxwYXRoIGlkPSJjbG9zZSIgZD0iTTE2LjE4NiwxNC42OTIsMjcuODY2LDNhMS4wNjksMS4wNjksMCwwLDAtMS41MTEtMS41MTNMMTQuNjc1LDEzLjE3OSwzLDEuNjIyQTEuMDY5LDEuMDY5LDAsMCwwLDEuNDg0LDMuMTM2TDEzLjE2NCwxNC42OTIsMS40ODQsMjYuMzg2YTEuMDgxLDEuMDgxLDAsMCwwLDAsMS41MTMsMS4wNDksMS4wNDksMCwwLDAsLjY4Ny4yNzUsMS4wNDksMS4wNDksMCwwLDAsLjY4Ny0uMjc1TDE0LjUzOCwxNi4yMDYsMjYuMjE3LDI3LjlhMSwxLDAsMCwwLDEuMzc0LDAsMS4wODEsMS4wODEsMCwwLDAsMC0xLjUxM1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMuODI1IDQuODI1KSIgZmlsbD0iIzU2NWQ3OSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjAuNSIvPg0KPC9zdmc+DQo='); background-size: cover;}
-/* 핵심 역량 */
+/* �빑�떖 �뿭�웾 */
 .formWrapCoreCompetency > div.header {position: relative; z-index: 800; display: flex; align-items: center; margin-bottom: 15px;}
 .formWrapCoreCompetency h2.header {width: 100%; margin-bottom: 0;}
 .formWrapCoreCompetency .guide-box {position: absolute; left: 80px; margin-left: 6px;}
@@ -1522,7 +1522,7 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 .formWrapCoreCompetency .guide-box .btn-close {position: absolute; right: 12px; top: 12px; width: 12px; height: 12px;font-size:1px;letter-spacing: 0px; line-height: 1px; color: transparent; background: url("/content/images/text_user/resume/write/sprite-icon-x.png") no-repeat 0 -353px;}
 .formWrapCoreCompetency .guide-box .btn-close::after {position: absolute; left: -12px; top: -12px; display: inline-block; width: calc(100% + 24px); height: calc(100% + 24px); content: '';}
 .formWrapCoreCompetency .form {padding: 20px;}
-/* 핵심 역량 팝업 */
+/* �빑�떖 �뿭�웾 �뙘�뾽 */
 .popupCoreCompetency {top: 0; width: 898px; margin-left: 0; box-sizing: border-box; transform:translateX(-50%);}
 .popupCoreCompetency .popupHeader h3 {display: inline-block; margin-right: 5px;font-size:16px;letter-spacing: 0px; color: #333; font-weight: bold;}
 .popupCoreCompetency .popupHeader span {font-size:13px;letter-spacing: 0px; color: #666;}
@@ -1681,7 +1681,7 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 @keyframes fadeOut { 0% { z-index: 9999;opacity: 1; }
 100% { z-index: -10;opacity: 0; }
  }
-/* 개인정보 동의 */
+/* 媛쒖씤�젙蹂� �룞�쓽 */
 .job-offer {position:relative; width:940px; padding:20px; background-color:#fffef3; border:1px solid #dce1e9; box-sizing:border-box;}
 .job-offer label {display:block; position:relative; margin-bottom:5px; padding:2px 0 0 34px;font-size:16px;letter-spacing: 0px; font-weight:bold; color:#333;}
 .job-offer label em{font-size:13px;letter-spacing: 0px;}
@@ -1691,7 +1691,7 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 .job-offer .setup-position {position:absolute; right:20px; top:22px; line-height:1;}
 .job-offer .setup-position .button-setup-position {color:#333;font-size:13px;letter-spacing: 0px; line-height:14px;}
 .job-offer .setup-position .button-setup-position::before{content:''; display:inline-block; margin:-2px 7px 0 0; width:14px; height:14px; background:url('/content/images/text_user/resume/write/sprite-icon.png?20070300') no-repeat 0 -1092px; vertical-align:middle;}
-/* 포지션제안 구직의사 */
+/* �룷吏��뀡�젣�븞 援ъ쭅�쓽�궗 */
 .formWrapOffer .form {margin-bottom: 0; padding: 0; border: none;}
 .formWrapOffer .form > div {border: 1px solid #DCE2F0; background-color:#F4F8FF;}
 .formWrapOffer .job-offer-list {display: none;}
@@ -1724,7 +1724,7 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 .formWrapOffer .job-offer .setup-position .button-setup-position {color:#444;font-size:14px;letter-spacing: 0px;}
 .formWrapOffer .job-offer .setup-position .button-setup-position::before{content:''; display:inline-block; width:20px; height:20px; background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.0018 5.65076C7.59914 5.65076 5.65137 7.59853 5.65137 10.0012C5.65137 12.4039 7.59914 14.3517 10.0018 14.3517C12.4046 14.3517 14.3523 12.4039 14.3523 10.0012C14.3523 7.59853 12.4046 5.65076 10.0018 5.65076ZM7.15137 10.0012C7.15137 8.42696 8.42757 7.15076 10.0018 7.15076C11.5761 7.15076 12.8523 8.42696 12.8523 10.0012C12.8523 11.5755 11.5761 12.8517 10.0018 12.8517C8.42757 12.8517 7.15137 11.5755 7.15137 10.0012Z' fill='%236A6A6A'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8.02902 0.855488C7.51379 0.546168 6.87113 0.541412 6.35137 0.843073L3.89586 2.26823C3.37856 2.56846 3.06422 3.12512 3.07428 3.72315L3.10125 5.32618C3.10446 5.51659 3.05583 5.70428 2.96058 5.86918L2.90217 5.97028C2.80687 6.13527 2.66848 6.27122 2.50182 6.36358L1.10224 7.13918C0.576347 7.43061 0.250592 7.98501 0.251957 8.58625L0.258401 11.4233C0.259759 12.0209 0.584102 12.571 1.10632 12.8615L2.49919 13.6364C2.66641 13.7294 2.80504 13.8664 2.9001 14.0324L2.96268 14.1418C3.05659 14.3058 3.10448 14.4922 3.10129 14.6812L3.07434 16.2773C3.06422 16.8772 3.3805 17.4353 3.90035 17.7348L6.36365 19.1543C6.88216 19.4531 7.5218 19.4478 8.03523 19.1403L9.40259 18.3216C9.56562 18.224 9.75209 18.1724 9.94212 18.1724H10.0607C10.2511 18.1724 10.438 18.2242 10.6012 18.3222L11.9749 19.1469C12.4901 19.4562 13.1328 19.461 13.6525 19.1593L16.108 17.7341C16.6254 17.4339 16.9397 16.8772 16.9296 16.2792L16.9027 14.6762C16.8995 14.4858 16.9481 14.2981 17.0433 14.1332L17.1017 14.0321C17.197 13.8671 17.3354 13.7311 17.5021 13.6388L18.9017 12.8632C19.4276 12.5718 19.7533 12.0174 19.7519 11.4161L19.7455 8.5791C19.7441 7.98151 19.4198 7.43135 18.8976 7.14084L17.5014 6.36412C17.3354 6.27177 17.1975 6.13614 17.1025 5.97166L17.0433 5.86918C16.9481 5.70428 16.8995 5.51659 16.9027 5.32618L16.9296 3.72503C16.9397 3.12517 16.6234 2.56709 16.1036 2.26754L13.6403 0.848049C13.1217 0.549258 12.4821 0.554612 11.9687 0.862042L10.6013 1.68078C10.4383 1.7784 10.2518 1.82996 10.0618 1.82996H9.94324C9.7528 1.82996 9.56594 1.77818 9.40267 1.68015L8.02902 0.855488ZM7.10433 2.1404C7.15161 2.11296 7.21008 2.11339 7.25695 2.14153L8.63059 2.96619C9.02707 3.20422 9.4808 3.32996 9.94324 3.32996H10.0618C10.5232 3.32996 10.976 3.20476 11.3719 2.96771L12.7393 2.14898C12.786 2.12101 12.8442 2.12052 12.8913 2.14771L15.3547 3.5672C15.4019 3.59445 15.4307 3.64522 15.4298 3.69979L15.4029 5.30095C15.3951 5.76329 15.5132 6.21905 15.7445 6.61946L15.8037 6.72194C16.0344 7.12135 16.3691 7.4507 16.7722 7.67494L18.1684 8.45166C18.2159 8.47809 18.2454 8.52814 18.2455 8.5825L18.252 11.4195C18.2521 11.4742 18.2224 11.5247 18.1746 11.5512L16.775 12.3268C16.3703 12.551 16.0343 12.8812 15.8029 13.2818L15.7445 13.3829C15.5132 13.7833 15.3951 14.2391 15.4029 14.7014L15.4298 16.3044C15.4308 16.3589 15.4022 16.4095 15.3551 16.4368L12.8996 17.862C12.8523 17.8894 12.7938 17.889 12.747 17.8608L11.3733 17.0362C10.9768 16.7981 10.5231 16.6724 10.0607 16.6724H9.94212C9.48069 16.6724 9.0279 16.7976 8.632 17.0347L7.26465 17.8534C7.21794 17.8814 7.15975 17.8818 7.11258 17.8547L4.64928 16.4352C4.60198 16.4079 4.57321 16.3572 4.57413 16.3026L4.60107 14.7065C4.60882 14.2476 4.49254 13.795 4.2645 13.3966L4.20192 13.2873C3.97109 12.884 3.63446 12.5515 3.2284 12.3256L1.83554 11.5507C1.78803 11.5243 1.75852 11.4742 1.7584 11.4199L1.75195 8.58284C1.75183 8.52814 1.78147 8.4777 1.82931 8.45119L3.22889 7.67559C3.63357 7.45133 3.96962 7.1212 4.20104 6.72058L4.25945 6.61946C4.49074 6.21906 4.60882 5.7633 4.60104 5.30095L4.57407 3.69792C4.57315 3.64351 4.60175 3.59287 4.64881 3.56555L7.10433 2.1404Z' fill='%236A6A6A'/%3E%3C/svg%3E%0A"); background-position: center; margin-right: 4px; vertical-align: middle;}
 
-/* 포지션제안 구직의사 적극구직중 체크영역 */
+/* �룷吏��뀡�젣�븞 援ъ쭅�쓽�궗 �쟻洹밴뎄吏곸쨷 泥댄겕�쁺�뿭 */
 .formWrapOffer .job-offer .input-option:checked ~ label .job-offer-check {display: block; height: 50px;}
 .formWrapOffer .job-offer .job-offer-check {display: none; padding-left: 32px;}
 .formWrapOffer .job-offer .job-offer-check label {min-height: 50px; font-size: 14px; font-weight: 400; color: #222; border: none; background-color: #EEF0F499; margin-top: 8px; padding: 15px 20px;}
@@ -1790,7 +1790,7 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 .popupChangeList .popupFooter .buttons {font-size:0; text-align:center}
 .popupChangeList .popupFooter .buttons .button {display:inline-block;width:120px;height:38px;margin:0 5px;border:1px solid #ccc;background-color:#fff;font-size:15px;letter-spacing: 0px;color:#666;-webkit-box-sizing:border-box;box-sizing:border-box}
 .popupChangeList .popupFooter .buttons .buttonConfirm {border:0;background-color:#002aff;color:#fff}
-/* 개인정보 수집 및 이용 동의 css */
+/* 媛쒖씤�젙蹂� �닔吏� 諛� �씠�슜 �룞�쓽 css */
 .job-offer.policy{padding: 20px !important; background-color: #FFFFFF; margin-top: 20px;}
 .policy-table{border:1px solid #eaeaea; width:100%;font-size:12px;letter-spacing: 0px; color: #888888; line-height: 24px; table-layout: auto; border-top: 1px solid #ddd !important; border-left: 1px solid #ddd; margin: 5px 0 8px 0;background: #fff !important;font-size:12px;letter-spacing: 0px; color: #888888 !important; line-height: 24px;}
 .policy-table caption{text-align:left; padding:0 0 5px 0;}
