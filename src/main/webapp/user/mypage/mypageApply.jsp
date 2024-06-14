@@ -222,10 +222,10 @@ dl {
         flex-basis: 33.3333333333%;
         max-width: 33.3333333333%;
 }
-
+}
 <!--golgolz end-->
 </style>
-<script text="text/javascript">
+<script type="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
 			<!-- golgolz end -->
