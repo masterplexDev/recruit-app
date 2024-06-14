@@ -10,7 +10,6 @@
 	});
 </script>
 <!-- golgolz start -->
-<link href="http://localhost/recruit-app/assets/css/pagenation.css" rel="stylesheet" />
 <link href="http://localhost/recruit-app/assets/css/manage/order/admin.css" rel="stylesheet" />
 <link href="http://localhost/recruit-app/assets/css/manage/order/reset.css" rel="stylesheet" />
 <!-- golgolz end -->
@@ -103,8 +102,8 @@
 					</table>
 				</div>
 				<div class="btn_confirm">
-					<input type="submit" value="검색" class="btn_medium">
-					<!-- <input type="button" value="초기화" id="frmRest" class="btn_medium grey"> -->
+					<input type="submit" value="초기화" class="btn btn-outline-secondary btn-sm"/>
+				    <input type="submit" value="검색" class="btn btn-secondary btn-sm"/>
 				</div>
 			</form>
 			<div class="local_ov mart30">
@@ -142,7 +141,7 @@
 							<td>대기업</td>
 							<td>5,361만</td>
 							<td>
-								<input type="button" value="바로가기" class="btn btn-success btn-small" style="font-weight: bold; margin: 0px auto;" onclick="location.href='http://localhost/recruit-app/manage/company/detail.jsp'"/>
+								<input type="button" value="바로가기" class="btn btn-outline-secondary btn-sm" style="font-weight: bold; margin: 0px auto;" onclick="location.href='http://localhost/recruit-app/manage/company/detail.jsp'"/>
 							</td>
 						</tr>
 						<tr class="list0">
@@ -152,7 +151,7 @@
 							<td>중소기업</td>
 							<td>5,361만</td>
 							<td>
-								<input type="button" value="바로가기" class="btn btn-success btn-small" style="font-weight: bold; margin: 0px auto;" onclick="location.href='http://localhost/recruit-app/manage/company/detail.jsp'"/>
+								<input type="button" value="바로가기" class="btn btn-outline-secondary btn-sm" style="font-weight: bold; margin: 0px auto;" onclick="location.href='http://localhost/recruit-app/manage/company/detail.jsp'"/>
 							</td>
 						</tr>
 						<tr class="list0">
@@ -162,7 +161,7 @@
 							<td>중견기업</td>
 							<td>5,361만</td>
 							<td>
-								<input type="button" value="바로가기" class="btn btn-success btn-small" style="font-weight: bold; margin: 0px auto;" onclick="location.href='http://localhost/recruit-app/manage/company/detail.jsp'"/>
+								<input type="button" value="바로가기" class="btn btn-outline-secondary btn-sm" style="font-weight: bold; margin: 0px auto;" onclick="location.href='http://localhost/recruit-app/manage/company/detail.jsp'"/>
 							</td>
 						</tr>
 					</tbody>
@@ -176,11 +175,30 @@
 								<div id="pageNation"></div>
 							</td>
 							<td align="right">
-								<input type="button" value="등록하기" class="btn btn-success btn-small float-right" style="font-weight: bold; margin: 0px auto;" onclick="location.href='http://localhost/recruit-app/manage/company/detail.jsp'" />
+								<input type="button" value="등록하기" class="btn btn-outline-success btn-sm float-right" style="font-weight: bold; margin: 10px auto;" onclick="location.href='http://localhost/recruit-app/manage/company/detail.jsp'" />
 							</td>
 						</tr>
 					</tbody>
 				</table>
+				<div style="justify-content: center;">
+				<nav aria-label="Page navigation example">
+				  <ul class="pagination" style="justify-content: center;">
+				    <li class="page-item">
+				      <a class="page-link" href="#" aria-label="Previous">
+				        <span aria-hidden="true">&laquo;</span>
+				      </a>
+				    </li>
+				    <li class="page-item"><a class="page-link" href="#">1</a></li>
+				    <li class="page-item"><a class="page-link" href="#">2</a></li>
+				    <li class="page-item"><a class="page-link" href="#">3</a></li>
+				    <li class="page-item">
+				      <a class="page-link" href="#" aria-label="Next">
+				        <span aria-hidden="true">&raquo;</span>
+				      </a>
+				    </li>
+				  </ul>
+				</nav>
+				</div>
 			</div>
 		</div>
 	</main>

@@ -38,7 +38,7 @@
             <div class="row salarySearchCompany" id="salarySearchCompany">
                 <div class="container">
                     <div class="search searchCompany">
-                           <div class="popup" aria-live="polite" aria-hidden="true" id="autocompletePane">
+                           <!-- <div class="popup" aria-live="polite" aria-hidden="true" id="autocompletePane">
                                 <div class="noResult" id="noResultPane" style="display:none">
                                     <p>검색 결과가 없음.</p>
                                 </div>
@@ -51,57 +51,58 @@
                                 <div class="popupFooter" id="recommendButtonPane" style="display:none">
                                     <button type="button" class="button buttonDeleteAll"><span>전체삭제</span></button>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     
                     <div>
-					<table  style="margin:auto; border:1px solid #ccc; width:700px; height:150px">
-						<tbody style="border:1px solid #ccc;">
-							<tr style="border:1px solid #ccc;">
-								<th style="border:1px solid #ccc;">기업명</th>
-								<td style="text-align:left; padding-left:20px">
-									<input type="text" name="company_name" value="" style="border:1px solid #ccc;">
-								</td>
-							</tr>
-							<tr style="border:1px solid #ccc;">
-								<th style="border:1px solid #ccc;">평균 연봉</th>
-								<td style="text-align:left; padding-left:20px">
-									<input type="text" name="avg_sal" value="" style="border:1px solid #ccc;"> 만원 이상
-								</td>
-							</tr>
-							<tr style="border:1px solid #ccc;">
-								<th style="border:1px solid #ccc;">기업 구분</th>
-								<td style="text-align:left; padding-left:20px">
-									<label>
-										<input type="radio" name="company-classification" value="0" > 전체
-									</label>
-									<label style="margin-left:10px">
-										<input type="radio" name="company-classification" value="1" > 대기업
-									</label>
-									<label style="margin-left:10px">
-										<input type="radio" name="company-classification" value="2" > 중견기업
-									</label>
-									<label style="margin-left:10px">
-										<input type="radio" name="company-classification" value="3" > 중소기업
-									</label>
-								</td>
-							</tr>
-							<tr style="border:1px solid #ccc;">
-								<td></td>
-								<td style="text-align:center; margin-right:50px">
-									<input type="submit" value="초기화" class="btn btn-outline-secondary"/>
-									<input type="submit" value="검색" class="btn btn-secondary"/>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+				    <table style="margin:auto; border-collapse:collapse; width:900px; height:170px">
+				        <tbody>
+				            <tr style="border-top:1px solid #ccc; border-bottom:1px solid #ccc;">
+				                <th style="border-left:1px solid transparent; border-right:1px solid transparent; color:black;">기업명</th>
+				                <td style="text-align:left; padding-left:20px; border-left:1px solid transparent; border-right:1px solid transparent;">
+				                    <input type="text" name="company_name" value="" style="border:1px solid #ccc; width:250px">
+				                </td>
+				            </tr>
+				            <tr style="border-bottom:1px solid #ccc;">
+				                <th style="border-left:1px solid transparent; border-right:1px solid transparent; color:black;">평균 연봉</th>
+				                <td style="text-align:left; padding-left:20px; border-left:1px solid transparent; border-right:1px solid transparent;">
+				                    <input type="text" name="avg_sal" value="" style="border:1px solid #ccc; width:100px"> 만원 이상
+				                </td>
+				            </tr>
+				            <tr style="border-bottom:1px solid #ccc;">
+				                <th style="border-left:1px solid transparent; border-right:1px solid transparent; color:black;">기업 구분</th>
+				                <td style="text-align:left; padding-left:20px; border-left:1px solid transparent; border-right:1px solid transparent;">
+				                    <label>
+				                        <input type="radio" name="company-classification" value="0"> 전체
+				                    </label>
+				                    <label style="margin-left:10px">
+				                        <input type="radio" name="company-classification" value="1"> 대기업
+				                    </label>
+				                    <label style="margin-left:10px">
+				                        <input type="radio" name="company-classification" value="2"> 중견기업
+				                    </label>
+				                    <label style="margin-left:10px">
+				                        <input type="radio" name="company-classification" value="3"> 중소기업
+				                    </label>
+				                </td>
+				            </tr>
+				            <tr style="border-bottom:1px solid #ccc;">
+				                <td colspan="2" style="text-align:center; margin-right:50px; border-left:1px solid transparent; border-right:1px solid transparent; border-bottom:1px solid transparent; color:black;">
+				                    <input type="submit" value="초기화" class="btn btn-outline-secondary"/>
+				                    <input type="submit" value="검색" class="btn btn-secondary"/>
+				                </td>
+				            </tr>
+				        </tbody>
+				    </table>
+				    <hr style="width:980px; margin:auto">
 				</div>
 				
-				<div style="margin-top:15px">
-					<!-- <input type="button" value="초기화" id="frmRest" class="btn_medium grey"> -->
-				</div>
-                       </div>
+				<!-- <div style="margin-top:15px">
+					<input type="button" value="초기화" id="frmRest" class="btn_medium grey">
+				</div> -->
+           </div>
+           
                         <div class="dropdown category3 hidden" id="ddlJobType" aria-hidden="true">
                             <input type="hidden" name="jobTypeCode" id="hidJobTypeCode" value="" />
                             <button type="button" class="buttonChoose " aria-haspopup="true"><span>직무선택</span></button>
@@ -117,7 +118,7 @@
 
                         <div class="total">총 <em>1</em>건<span class="subtitle"></span></div>
                     </div>
-                    <div class="noData" id="listNoData"   style="display:none"  >
+                    <div class="noData" id="listNoData" style="display:none">
 
                         <p><strong>‘직무선택’</strong>에 대한 검색결과가 없습니다.<br>다른 검색어로 검색해주세요.</p>
                     </div>
