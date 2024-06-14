@@ -170,6 +170,7 @@ margin: 0 auto;
 box-sizing: border-box;
 padding: 20px;         
           "> 
+          
          <div id="premiumReviewStatistics" class="jpcont_wrap"> 
           <div class="review_stats_wrap review_summary"  "> 
            <div class="review_stats_container"> 
