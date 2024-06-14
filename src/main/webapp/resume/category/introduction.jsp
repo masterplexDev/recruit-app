@@ -8,7 +8,7 @@
 	<div class="form formIntroduction">
 		<div id="introduceContainers">
 			<div class="row">
-				<div class="container" style="width:900px;">
+				<div class="container" style="width:1260px">
 					<input type="hidden" name="ResumeProfile.Index" value="">
 					<div class="input">
 						<label for="ResumeProfile_Header_" class="skip">제목</label> 
@@ -35,10 +35,6 @@
 						<textarea name="ResumeProfile[].Contents" id="ResumeProfile_Contents_" cols="30" rows="10" placeholder="해당내용을 입력하세요." class="spellcheck"></textarea>
 						<div class="validation validation-content hidden">자기소개서 내용을 입력해주세요</div>
 					</div>
-					<div class="counting">
-						<em>0</em>자
-					</div>
-					<button type="button" class="button buttonDelete">단락삭제</button>
 				</div>
 			</div>
 		</div>

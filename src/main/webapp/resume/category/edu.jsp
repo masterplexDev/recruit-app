@@ -11,8 +11,8 @@
 		<div id="school_containers">
 			<!-- content will be added -->
 		</div>
-		<button type="button" class="button buttonAddField"
-			id="school_addbutton">
+		<button type="button" class="button buttonAddField" id="school_addbutton">
+			<img src="http://localhost/recruit-app/assets/images/btns/plus_btn.png"" style="width: 25px; height: 25px;"/>
 			<span>추가</span>
 		</button>
 		<div class="popup popupMajor hidden" aria-hidden="true"
@@ -60,7 +60,7 @@
               <input type="text" id="lbl_education_school">
           </div>
       </div>
-      <button type="button" class="button buttonDeleteField"><span>학교 삭제</span></button>
+      <button type="button" class="button buttonDeleteField"></button>
   </div>
 </script>
 <script type="text/template" id="tplGed">
@@ -107,8 +107,10 @@
               <div class="validation hidden" aria-hidden="true"></div>
           </div>
       </div>
-      <button type="button" class="button buttonDeleteField"><span>삭제</span></button>
+	  <button class="button buttonDeleteField" >
+	  </button>
 </script>
+      <!-- <button type="button" class="button buttonDeleteField"><span>삭제</span></button> -->
 <script type="text/template" id="tplUnivSchool">
     <div class="container container1" data-cid="1">
       <div class="row">
@@ -200,7 +202,6 @@
           </div>
         </div>
         <input type="hidden" name="UnivSchool[1].Schl_Type_Code" value="" />
-		<div class="row" style="margin-top: 10px;">
 			<div class="input input-education-startdate is-label">
             	<label for="UnivSchool_Entc_YM_1" >입학년월 <span class="star">*</span></label >
           		<input type="text" name="UnivSchool[1].Entc_YM" id="UnivSchool_Entc_YM_1" data-format-type="month" value="" placeholder="2012.03" />
@@ -227,7 +228,6 @@
           		</div>
           		<input type="hidden" name="UnivSchool[1].Grad_Type_Code" value="" id="UnivSchool_Grad_Type_Code_1" />
         	</div>
-		</div>
       </div>
       <div class="row">
         <span class="devMainMajorTemplateArea" style="margin-right: 10px;">
@@ -298,9 +298,7 @@
         </div>
       </div>
       <span class="devOtherUnivMajorTemplateArea"></span>
-      <button type="button" class="button buttonDeleteField">
-        <span>삭제</span>
-      </button>
+      <button type="button" class="button buttonDeleteField"></button>
     </div>
 </script>
 <script type="text/template" id="tplUnivMajorItem">

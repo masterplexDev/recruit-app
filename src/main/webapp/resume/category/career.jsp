@@ -14,6 +14,7 @@
 			<!-- content will be added -->
 		</div>
 		<button type="button" class="button buttonAddField">
+			<img src="http://localhost/recruit-app/assets/images/btns/plus_btn.png"" style="width: 25px; height: 25px;"/>
 			<span>추가</span>
 		</button>
 	</div>
@@ -44,8 +45,6 @@
 			<input type="text" name="Career[c14].CEYM" id="Career_CEYM_c14" value="" data-format-type="month" class="devCareerCEYM" placeholder="2016.06" />
 			<div class="validation hidden" aria-hidden="true"></div>
 		</div>
-	</div>
-	<div class="row">
 		<div class="input input-career-duty is-label is-value">
 			<label>포지션</label> 
 			<input type="text" name="Career[c14].M_MainField" id="Career_M_MainPay_User_c14" value="" data-format-type="price" maxlength="7" />
@@ -62,9 +61,7 @@
 			<textarea name="Career[c14].Prfm_Prt" cols="30" rows="2" id="Career_Prfm_Prt_c14" class="textarea-career" placeholder="담당하신 업무와 성과에 대해 간단명료하게 적어주세요." style="height: 40px"></textarea>
 		</div>
 	</div>
-	<button type="button" class="button buttonDeleteField">
-		<span>경력 삭제</span>
-	</button>
+	<button type="button" class="button buttonDeleteField"></button>
 </div>
 </script>
 <script type="text/template" id="tplCompanyAutoComplete"></script>
