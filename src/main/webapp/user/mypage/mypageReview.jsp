@@ -144,7 +144,7 @@
     	$("#qna_menu").addClass("bg-gradient-primary");
 	});
 </script>
-	<script text="text/javascript">
+	<script type="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
 			<!-- golgolz end -->

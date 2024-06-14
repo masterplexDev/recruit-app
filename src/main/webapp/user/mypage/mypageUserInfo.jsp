@@ -15,12 +15,11 @@
 	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/signup.css"/>
 	
 	<!-- golgolz end -->
-	<style text="text/css">
+	<style type="text/css">
 		<!-- golgolz start -->
-		
 		<!-- golgolz end -->
 	</style>
-	<script text="text/javascript">
+	<script type="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
 			$("#modifyUser").click(function(){

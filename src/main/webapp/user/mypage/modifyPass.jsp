@@ -80,12 +80,12 @@
 		    font-weight: 400;
 		}
     </style>
-	<style text="text/css">
+	<style type="text/css">
 		<!-- golgolz start -->
 		
 		<!-- golgolz end -->
 	</style>
-	<script text="text/javascript">
+	<script type="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
 			$("#modifyUser").click(function(){
