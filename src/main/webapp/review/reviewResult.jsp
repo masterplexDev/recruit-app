@@ -19,8 +19,11 @@
     <link href="../assets/css/company/company-info-detail-6.css" rel="stylesheet" type="text/css" />
 	<link href="../assets/css/company/company-info-detail-7.css" rel="stylesheet" type="text/css" /> 
 	<link href="../assets/css/company/company-info-detail-8.css" rel="stylesheet" type="text/css" />
+	
+	<link href="../assets/css/company/company-info-list-6.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   
-   
   <style>
       body {
         font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
@@ -78,43 +81,30 @@
   <meta http-equiv="origin-trial" content="Amm8/NmvvQfhwCib6I7ZsmUxiSCfOxWxHayJwyU1r3gRIItzr7bNQid6O8ZYaE1GSQTa69WwhPC9flq/oYkRBwsAAACCeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3NTgwNjcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ==">
   <meta http-equiv="origin-trial" content="A/ERL66fN363FkXxgDc6F1+ucRUkAhjEca9W3la6xaLnD2Y1lABsqmdaJmPNaUKPKVBRpyMKEhXYl7rSvrQw+AkAAACNeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiRmxlZGdlQmlkZGluZ0FuZEF1Y3Rpb25TZXJ2ZXIiLCJleHBpcnkiOjE3MTkzNTk5OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
   <meta http-equiv="origin-trial" content="A6OdGH3fVf4eKRDbXb4thXA4InNqDJDRhZ8U533U/roYjp4Yau0T3YSuc63vmAs/8ga1cD0E3A7LEq6AXk1uXgsAAACTeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiRmxlZGdlQmlkZGluZ0FuZEF1Y3Rpb25TZXJ2ZXIiLCJleHBpcnkiOjE3MTkzNTk5OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
+  
   <style text="text/css">
 		<!-- golgolz start -->
+		
+		/* 포함된 header.jsp의 스타일 */
+        .Menu_MenuNav__EOf3X {
+            color: #666666; /* 폰트 색상 적용 */
+        }
+		
 		<!-- golgolz end -->
 	</style> 
+ 
   <script text="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
 			<!-- golgolz end -->
 		});
 	</script> 
+	
  </head> 
  <body class="viewReviews before_login schbar_keyword_off chrome fixed_header" data-locale="ko-KR" data-domain="www.jobplanet.co.kr" data-write-guide-enabled="true"> 
   <div id="__next" data-reactroot=""> 
-   <div role="presentation" class="NavBar_className__y2qGg" style="position: fixed"> 
-    <div class="NavBar_background__SQmnx"></div> 
-    <div class="MainBar_MainBar__40DX7" role="presentation"> 
-     <nav class="MainBar_MainBarNav__pVhal"> 
-     
-     
-      <div class="MainBar_MainBarNavLogo__caIek"> <a href="https://www.wanted.co.kr/" aria-label="Wanted" data-attribute-id="gnb" data-gnb-kind="jobsfeed"> <img src="http://localhost/recruit-app/assets/images/logo.png" style="max-width: 100%; margin-top: 7px; padding-right: 20px"> </a> 
-      </div> 
-      <ul class="Menu_MenuNav__EOf3X"> 
-       <li class="Menu_MenuItem__wI1yA" data-attribute-id="gnb" data-gnb-kind="event"> <a href="https://www.wanted.co.kr/events"><span>채용공고</span></a> </li> 
-       <li class="Menu_MenuItem__wI1yA" data-attribute-id="gnb" data-gnb-kind="event"> <a href="https://www.wanted.co.kr/events"><span>기업</span></a> </li> 
-       <li class="Menu_MenuItem__wI1yA" data-attribute-id="gnb" data-gnb-kind="community"> <a href="https://www.wanted.co.kr/community"><span>이력서관리</span></a> </li> 
-       <li class="Menu_MenuItem__wI1yA" data-attribute-id="gnb" data-gnb-kind="resume"> <a href="https://www.wanted.co.kr/cv/list"><span>공지사항</span></a> </li> 
-       <li class="Menu_MenuItem__wI1yA" data-attribute-id="gnb" data-gnb-kind="freelancer"> <a href="https://www.wanted.co.kr/gigs/experts" target="_blank" rel="noopener noreferrer"><span>문의사항</span></a> </li> 
-      </ul> 
-      <aside class="Aside_aside__f0SVC"> 
-       <ul class="Aside_asideList__3WNyu"> 
-        <li class="Aside_signUpButtonContainer___0wTS"> <button class="Button_Button__root__V1ie3 Button_Button__outlined__H2mkd Button_Button__outlinedAssistive__mBcQK Button_Button__outlinedSizeSmall__JJmOo Aside_signUpButton__pY721" type="button" data-attribute-id="gnb" data-gnb-kind="signupLogin"> <span class="Button_Button__label__1Kk0v"><span class="Typography_Typography__root__xYuMs Typography_Typography__label2__BRssq Typography_Typography__weightBold__e15ql">회원가입/로그인</span></span><span class="Button_Button__interaction__kkYaa"></span> </button> </li> 
-       </ul> 
-      </aside> 
-     </nav> 
-    </div> 
-   </div> 
-   <div class="Padding_padding___Nyki"></div> 
+  <jsp:include page="../assets/layout/user/header.jsp" />
+   
    <main class="JobsFeed_Jobsfeed__DpeV9"> 
     <section class="Section_Section__P1hhc"> <!-- golgolz start --> 
      <link rel="stylesheet" media="all" href="http://localhost/recruit-app/assets/css/review/companies-afa4d7b5c5b020895de3ce30935faf8c1cc0ae8954ef59a46484c2edbc9108d5.css" data-turbolinks-track="true"> 
@@ -173,7 +163,14 @@
 </div>
       <div id="contents_wrap" style="background-color: #ffffff;" > 
        <div id="contents" class="jpcont_col2_a"  > 
-        <div id="mainContents" class="jpcont_lft" style=" width: 100%; max-width: 1200px; "> 
+        <div id="mainContents" class="jpcont_lft" style="
+width: 100%; 
+max-width: 1300px; 
+margin: 0 auto; 
+box-sizing: border-box;
+padding: 20px;         
+          "> 
+          
          <div id="premiumReviewStatistics" class="jpcont_wrap"> 
           <div class="review_stats_wrap review_summary"  "> 
            <div class="review_stats_container"> 
@@ -360,8 +357,25 @@
                </div> 
               </section> 
               <div class="pg_bottom um_paginnation"> 
-               <article class="paginnation_new"> <a href="/companies/425230/reviews/%EC%BB%A4%EB%A6%AC%EC%96%B4%EC%95%A4%EC%8A%A4%EC%B9%B4%EC%9A%B0%ED%8A%B8?page=1" class="btn_pgfirst"><span><span class="translation_missing" title="translation missing: ko-KR.button.first">First</span></span></a> <a href="/companies/425230/reviews/%EC%BB%A4%EB%A6%AC%EC%96%B4%EC%95%A4%EC%8A%A4%EC%B9%B4%EC%9A%B0%ED%8A%B8?page=1" class="btn_pgprev"><span><span class="translation_missing" title="translation missing: ko-KR.button.prev">Prev</span></span></a> <strong class="txtlink_page">1</strong> <a href="/companies/425230/reviews/%EC%BB%A4%EB%A6%AC%EC%96%B4%EC%95%A4%EC%8A%A4%EC%B9%B4%EC%9A%B0%ED%8A%B8?page=1" class="btn_pgnext"><span><span class="translation_missing" title="translation missing: ko-KR.button.next">Next</span></span></a> <a href="/companies/425230/reviews/%EC%BB%A4%EB%A6%AC%EC%96%B4%EC%95%A4%EC%8A%A4%EC%B9%B4%EC%9A%B0%ED%8A%B8?page=1" class="btn_pglast"><span><span class="translation_missing" title="translation missing: ko-KR.button.last">Last</span></span></a> 
-               </article> 
+	<div style="text-align:center;">
+	<nav aria-label="...">
+	<ul class="pagination" style="width:100px; display: inline-flex;">
+		<li class="page-item disabled">
+		<span class="page-link">&lt;</span>
+		</li>
+		<li class="page-item"><a class="page-link" href="#">1</a></li>
+		<li class="page-item active" aria-current="page">
+			<span class="page-link">2</span>
+		</li>
+		<li class="page-item"><a class="page-link" href="#">3</a></li>
+		<li class="page-item">
+			<a class="page-link" href="#">&gt;</a>
+		</li>
+	</ul>
+	</nav>
+</div>
+
+
               </div> 
              </div> 
             </div> 
@@ -373,22 +387,7 @@
       </div> 
      <!-- golgolz end --> 
     </section> 
-    <footer class="Footer_footerClass__OWEZy"> 
-     <div class="Footer_rowClass__bFAtS"> 
-      <div class="BrandNewNavLinks_BrandNewNavLinks__FTT09"> <a class="BrandNewNavLinks_BrandNewNavLinks__logo__oXsxN" aria-label="Footer Home Button" data-attribute-id="fnb" data-fnb-kind="home" data-page-path="/" href="https://www.wanted.co.kr/"> <img src="http://localhost/recruit-app/assets/images/logo.png" style="max-width: 35%"> </a> 
-       <div class="BrandNewNavLinks_BrandNewNavLinks__links__M1n_a"> <a href="https://www.wantedlab.com/" class="" target="_blank" rel="noopener noreferrer" data-attribute-id="fnb" data-fnb-kind="investment"> <p class="Typography_Typography__root__xYuMs Typography_Typography__body1-reading__KvBaS Typography_Typography__weightMedium__O0Rdi"> 공지사항 </p></a><a href="https://ad.wantedlab.com/" class="" target="_blank" rel="noopener noreferrer" data-attribute-id="fnb" data-fnb-kind="AD"><p class="Typography_Typography__root__xYuMs Typography_Typography__body1-reading__KvBaS Typography_Typography__weightMedium__O0Rdi"> 문의하기 </p></a> 
-       </div> 
-      </div> 
-      <div class="Footer_footerText__CTqnd kr"> 
-       <p><span>(주)구지직</span><span>대표이사 우미연</span></p> 
-       <p> <span>서울 강남구 테헤란로 132 8층</span><span>전화번호: 0507-1316-4632</span> </p> 
-       <p> <span>사업자등록번호: 112-34-00056</span><span>유료직업소개사업등록번호: (국내) 제2024-000603-14-5-00018호</span> </p> 
-      </div> 
-      <hr class="Footer_Divider__d8E_Z"> 
-      <div class="Footer_socialClass__TViS2"> <span class="Typography_Typography__root__xYuMs Typography_Typography__label2__BRssq Typography_Typography__weightMedium__O0Rdi">© 2024 GoojzzK Lab, Inc.</span> 
-      </div> 
-     </div> 
-    </footer> 
+    <jsp:include page="../assets/layout/user/footer.jsp" /> 
    </main> 
   </div>  
  </body>
