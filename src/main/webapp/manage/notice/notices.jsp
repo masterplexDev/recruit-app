@@ -60,128 +60,130 @@
 		</nav>
 	</main>
 	<!-- golgolz start -->
-	<div class="loungeContent noticeListContent" id="notice_frm">
-		<div class="topHdWrap clear">
-			<h2 class="lug_hd_2">공지사항</h2>
-			<form action="#">
-				<fieldset>
-					<legend>공지사항 검색</legend>
-					<div class="searchBarItem mtcPlaceholder" id="search">
-						<span class="phTx">키워드 검색</span> <input type="text" id="lb_sch"
-							class="mtcSchInp" title="검색어 입력">
-						<button type="button" class="mtcBtnB mtcSchBtn">
-							<span class="skip">검색</span>
-						</button>
+	<div class="container-fluid py-4">
+		<div class="loungeContent noticeListContent" id="notice_frm">
+			<div class="topHdWrap clear">
+				<h2 class="lug_hd_2">공지사항</h2>
+				<form action="#">
+					<fieldset>
+						<legend>공지사항 검색</legend>
+						<div class="searchBarItem mtcPlaceholder" id="search">
+							<span class="phTx">키워드 검색</span> <input type="text" id="lb_sch"
+								class="mtcSchInp" title="검색어 입력">
+							<button type="button" class="mtcBtnB mtcSchBtn">
+								<span class="skip">검색</span>
+							</button>
+						</div>
+					</fieldset>
+					<div id="searchOption">
+						<label for="lb_sel01"></label> <select id="category1" 
+							name="category1" style="height: 30px; width:60px">
+							<option value="제목" selected>제목</option>
+							<option value="내용">내용</option>
+							<!-- <option value="평점높은순">평점높은순</option>
+							<option value="평점낮은순">평점낮은순</option> -->
+						</select>
 					</div>
-				</fieldset>
-				<div id="searchOption">
-					<label for="lb_sel01"></label> <select id="category1" 
-						name="category1" style="height: 30px; width:60px">
-						<option value="제목" selected>제목</option>
-						<option value="내용">내용</option>
-						<!-- <option value="평점높은순">평점높은순</option>
-						<option value="평점낮은순">평점낮은순</option> -->
-					</select>
-				</div>
-			</form>
-		</div>
-
-		<div class="schListWrap">
-			<div class="mtcSchListTb">
-				<table summary="">
-					<caption>공지사항</caption>
-					<colgroup>
-						<col class="col_1">
-						<col class="col_2">
-						<col class="col_3">
-					</colgroup>
-					<thead>
-						<tr>
-							<th>
-								<div class="lyTplArea schItems">
-									<!-- 	<span class="tHd"><button type="button" class="btnListSort mtcBtnA">전체</button></span>
-									<ul class="lyItems">
-										<li><a href="/help/notice?tab=1&SearchWord=">전체</a></li>
-										<li><a href="/help/notice?tab=2&SearchWord=">일반공지</a></li>
-										<li><a href="/help/notice?tab=3&SearchWord=">서비스오픈</a></li>
-									</ul>
-									 -->
-
-										<select>
-											<option value="전체" selected>전체</option>
-											<option value="일반공지">일반공지</option>
-											<option value="서비스">서비스</option>
-											<option value="이벤트">이벤트</option>
-										</select>
-
-
-
-								</div>
-							</th>
-							<th scope="col">제목</th>
-							<th scope="col">날짜</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class="sort">공지</td>
-							<td class="alLeft"><span class="tit"><a
-									href="notices_detail.jsp">[시스템 점검 공지] 3/28(목) AM
-										01시-05시</a></span></td>
-							<td class="date">2024.03.19</td>
-						</tr>
-						<tr>
-							<td class="sort">공지</td>
-							<td class="alLeft"><span class="tit"><a
-									href="/help/notice/view?no=14762">잡코리아 x 우리들파트너스 제휴, 기업회원
-										이벤트</a></span></td>
-							<td class="date">2024.03.11</td>
-						</tr>
-						<tr>
-							<td class="sort">공지</td>
-							<td class="alLeft"><span class="tit"><a
-									href="/help/notice/view?no=14759">[이벤트] 원픽 채용 약정형 상품 출시</a></span></td>
-							<td class="date">2024.02.26</td>
-						</tr>
-						<tr>
-							<td class="sort">공지</td>
-							<td class="alLeft"><span class="tit"><a
-									href="/help/notice/view?no=14756">[시스템 점검 공지] 2/23(금) AM
-										01시-05시</a></span></td>
-							<td class="date">2024.02.19</td>
-						</tr>
-						<tr>
-							<td class="sort">공지</td>
-							<td class="alLeft"><span class="tit"><a
-									href="/help/notice/view?no=14755">[사전공지] 기업회원 인재검색 무료 문자
-										잔여건수 소멸 안내</a></span></td>
-							<td class="date">2024.02.16</td>
-						</tr>
-					</tbody>
-				</table>
-				<!-- 		<div class="listBtmArea">
-                <div class="btnListExDn">
-                    <a href="notice_list.jsp" class="btnMtcTpl">목록</a>
-                </div> -->
-			<input type="button" value="작성" style="margin-top:20px; float:right; width:80px" onclick="location.href='http://localhost/recruit-app/manage/notice/notices_write.jsp'"/>
-
-				<div class="listBtmArea">
-					<div class="tplPagination">
-
-						<ul>
-
-							<li><span class="now">1</span></li>
-							<li><a href="/help/notice?tab=1&amp;Page=2" data-page="2">2</a></li>
-							<li><a href="/help/notice?tab=1&amp;Page=3" data-page="3">3</a></li>
-
-						</ul>
-
-						<p>
-							<a href="/help/notice?tab=2&amp;Page=11"
-								class="tplBtn btnPgnNext" data-page="11"><span>다음 페이지</span></a>
-						</p>
+				</form>
+			</div>
+	
+			<div class="schListWrap">
+				<div class="mtcSchListTb">
+					<table summary="">
+						<caption>공지사항</caption>
+						<colgroup>
+							<col class="col_1">
+							<col class="col_2">
+							<col class="col_3">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>
+									<div class="lyTplArea schItems">
+										<!-- 	<span class="tHd"><button type="button" class="btnListSort mtcBtnA">전체</button></span>
+										<ul class="lyItems">
+											<li><a href="/help/notice?tab=1&SearchWord=">전체</a></li>
+											<li><a href="/help/notice?tab=2&SearchWord=">일반공지</a></li>
+											<li><a href="/help/notice?tab=3&SearchWord=">서비스오픈</a></li>
+										</ul>
+										 -->
+	
+											<select>
+												<option value="전체" selected>전체</option>
+												<option value="일반공지">일반공지</option>
+												<option value="서비스">서비스</option>
+												<option value="이벤트">이벤트</option>
+											</select>
+	
+	
+	
+									</div>
+								</th>
+								<th scope="col">제목</th>
+								<th scope="col">날짜</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="sort">공지</td>
+								<td class="alLeft"><span class="tit"><a
+										href="notices_detail.jsp">[시스템 점검 공지] 3/28(목) AM
+											01시-05시</a></span></td>
+								<td class="date">2024.03.19</td>
+							</tr>
+							<tr>
+								<td class="sort">공지</td>
+								<td class="alLeft"><span class="tit"><a
+										href="/help/notice/view?no=14762">잡코리아 x 우리들파트너스 제휴, 기업회원
+											이벤트</a></span></td>
+								<td class="date">2024.03.11</td>
+							</tr>
+							<tr>
+								<td class="sort">공지</td>
+								<td class="alLeft"><span class="tit"><a
+										href="/help/notice/view?no=14759">[이벤트] 원픽 채용 약정형 상품 출시</a></span></td>
+								<td class="date">2024.02.26</td>
+							</tr>
+							<tr>
+								<td class="sort">공지</td>
+								<td class="alLeft"><span class="tit"><a
+										href="/help/notice/view?no=14756">[시스템 점검 공지] 2/23(금) AM
+											01시-05시</a></span></td>
+								<td class="date">2024.02.19</td>
+							</tr>
+							<tr>
+								<td class="sort">공지</td>
+								<td class="alLeft"><span class="tit"><a
+										href="/help/notice/view?no=14755">[사전공지] 기업회원 인재검색 무료 문자
+											잔여건수 소멸 안내</a></span></td>
+								<td class="date">2024.02.16</td>
+							</tr>
+						</tbody>
+					</table>
+					<!-- 		<div class="listBtmArea">
+	                <div class="btnListExDn">
+	                    <a href="notice_list.jsp" class="btnMtcTpl">목록</a>
+	                </div> -->
+				<input type="button" value="작성" style="margin-top:20px; float:right; width:80px" onclick="location.href='http://localhost/recruit-app/manage/notice/notices_write.jsp'"/>
+	
+					<div class="listBtmArea">
+						<div class="tplPagination">
+	
+							<ul>
+	
+								<li><span class="now">1</span></li>
+								<li><a href="/help/notice?tab=1&amp;Page=2" data-page="2">2</a></li>
+								<li><a href="/help/notice?tab=1&amp;Page=3" data-page="3">3</a></li>
+	
+							</ul>
+	
+							<p>
+								<a href="/help/notice?tab=2&amp;Page=11"
+									class="tplBtn btnPgnNext" data-page="11"><span>다음 페이지</span></a>
+							</p>
+						</div>
+	
 					</div>
-
 				</div>
 			</div>
 		</div>

@@ -38,23 +38,78 @@
     <script src="http://localhost/recruit-app/assets/js/user/resume/jquery"></script>
     <script src="http://localhost/recruit-app/assets/js/user/resume/itemtemplate.js"></script>
     <script src="http://localhost/recruit-app/assets/js/user/resume/JK_Cookie.js"></script>
-    <script src="http://localhost/recruit-app/assets/js/user/resume/JK5cript"></script>
+    <script src="http://localhost/recruit-app/assets/js/user/resume/JK5cript.js"></script>
     <script src="http://localhost/recruit-app/assets/js/user/resume/ResumeReg"></script>
 	<!-- golgolz end -->
+	<jsp:include page="../assets/layout/user/lib.jsp" /> 
+	<script type="text/javascript" src="http://localhost/recruit-app/assets/js/user/resume/edu.js"></script>
 	<style text="text/css">
 		<!-- golgolz start -->
 		.resumeContainer{
 			width: 940px;
 		}
+		.chip-group {
+            display: flex;
+            flex-wrap: wrap; 
+            font-size: 16px;
+        }
+        .chip {
+            padding: 8px 16px; /* 좌우 패딩 16px로 변경 */
+            background-color: #f1f1f1;
+            border-radius: 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .chip.active {
+            background-color: #007bff;
+            color: white;
+        }
+        #resetButton { /* 초기화 버튼 스타일 */
+            padding: 8px 16px; /* 칩과 동일한 패딩 */
+            background-color: #e0e0e0; /* 칩보다 약간 어두운 배경색 */
+            border: none;
+            border-radius: 20px; /* 칩과 동일한 둥근 테두리 */
+            margin: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        #resetButton:hover { /* 호버 효과 */
+            background-color: #bdbdbd; /* 칩보다 약간 더 어두운 배경색 */
+        }
+        #school_containers .container{
+            position: relative;
+    		border-top: 1px solid #eee;
+    	}
+    	#container, .container{
+    		width: 940px;
+    	}
 		<!-- golgolz end -->
 	</style>
 	<script text="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
+			//$('.chip[data-value="Vue.js"]').addClass("active"); // select before rendering
+	        $(".chip").click(function () {
+	          $(this).toggleClass("active");
+
+	          var selectedValues = $(".chip.active")
+	            .map(function () {
+	              return $(this).data("value");
+	            })
+	            .get();
+	        });
+			
+	        $("#resetButton").click(function(event) {
+                event.preventDefault(); // 기본 동작 방지
+                $('.chip').removeClass('active'); // 모든 칩 선택 해제
+            });
+
+			setTimeout(function() {
+				$("#UserResume_M_Resume_Title").focus(); // myInput은 포커스를 줄 input 요소의 ID
+			}, 1); // 500ms (0.5초) 지연
 			<!-- golgolz end -->
 		});
 	</script>
-	<jsp:include page="../assets/layout/user/lib.jsp" /> 
 </head>
 <body>
     <div id="__next" data-reactroot="">
@@ -72,7 +127,7 @@
 									</div>
 								</div>
 								<div class="resumeTitle">
-									<input id="UserResume_M_Resume_Title" maxlength="100" name="UserResume.M_Resume_Title" placeholder="기업에게 나에 대해 알려줍시다. 강점, 목표, 관심분야도 좋아요." type="text" value="" />
+									<input id="UserResume_M_Resume_Title" maxlength="100" name="UserResume.M_Resume_Title" placeholder="기업에게 나에 대해 알려줍시다. 강점, 목표, 관심분야도 좋아요." type="text" value="" autofocus />
 								</div>
  								<jsp:include page="./category/profile.jsp" />
  								<jsp:include page="./category/skill.jsp" />

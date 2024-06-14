@@ -39,38 +39,19 @@
 		</div>
 	</div>
 </div>
-
-              <!-- <li>
-                <button type="button" class="button" data-schltypecode="1">
-                  <span>대학(2,3년)</span>
-                </button>
-              </li>
-              <li>
-                <button type="button" class="button" data-schltypecode="2">
-                  <span>대학교(4년)</span>
-                </button>
-              </li>
-              <li>
-                <button type="button" class="button" data-schltypecode="3">
-                  <span>대학원</span>
-                </button>
-              </li> -->
 <script type="text/template" id="tplSchoolAutoComplete">
 </script>
 <script type="text/template" id="tplOtherMajorDeleteViewItem"></script>
-<script type="text/javascript" src="http://localhost/recruit-app/assets/js/user/resume/edu.js"></script>
 <script type="text/template" id="tplSchool">
   <div class="container container1">
       <div class="row">
-          <div class="dropdown dropdown-education-category">
+          <div class="dropdown dropdown-education-category selected is-label">
               <div class="label" aria-hidden="false">학교구분</div>
-              <button type="button" class="button buttonChoose"><span><span>학교구분 <span class="star">*</span></span></span></button>
-              <div class="list hidden">
+              <button type="button" class="button buttonChoose" aria-haspopup="true"><span id="selectedOption"></span></button>
+              <div class="list hidden" aria-hidden="true">
                   <ul>
-                      <li><button type="button" class="button" data-schltypecode="0"><span>고등학교</span></button></li>
-                      <li><button type="button" class="button" data-schltypecode="1"><span>대학(2,3년)</span></button></li>
-                      <li><button type="button" class="button" data-schltypecode="2"><span>대학교(4년)</span></button></li>
-                      <li><button type="button" class="button" data-schltypecode="3"><span>대학원</span></button></li>
+                      <li><button type="button" class="button eduItem" data-schltypecode="0"><span>고등학교</span></button></li>
+                      <li><button type="button" class="button eduItem" data-schltypecode="1"><span>대학교(원)</span></button></li>
                   </ul>
               </div>
           </div>
@@ -89,13 +70,11 @@
       <div class="row">
           <div class="dropdown dropdown-education-category selected is-label">
               <div class="label" aria-hidden="false">학교구분</div>
-              <button type="button" class="button buttonChoose" aria-haspopup="true"><span>고등학교</span></button>
+              <button type="button" class="button buttonChoose" aria-haspopup="true"><span id="selectedOption">고등학교</span></button>
               <div class="list hidden" aria-hidden="true">
                   <ul>
-                      <li><button type="button" class="button" data-schltypecode="0"><span>고등학교</span></button></li>
-                      <li><button type="button" class="button" data-schltypecode="1"><span>대학(2,3년)</span></button></li>
-                      <li><button type="button" class="button" data-schltypecode="2"><span>대학교(4년)</span></button></li>
-                      <li><button type="button" class="button" data-schltypecode="3"><span>대학원</span></button></li>
+                      <li><button type="button" class="button eduItem" data-schltypecode="0"><span>고등학교</span></button></li>
+                      <li><button type="button" class="button eduItem" data-schltypecode="1"><span>대학교(원)</span></button></li>
                   </ul>
               </div>
           </div>
@@ -136,40 +115,17 @@
         <input type="hidden" name="UnivSchool.index" value="1" />
         <input type="hidden" name="UnivSchool[1].Index_Name" value="1" />
         <div class="dropdown dropdown-education-category selected is-label">
-          <div class="label" aria-hidden="false">학교구분</div>
-          <button
-            type="button"
-            class="button buttonChoose"
-            aria-haspopup="true"
-          >
-            <span>대학(2,3년)</span>
-            <span>대학교(4년)</span>
-            <span>대학원</span>
-          </button>
-          <div class="list hidden" aria-hidden="true">
-            <ul>
-              <li>
-                <button type="button" class="button" data-schltypecode="0">
-                  <span>고등학교</span>
-                </button>
-              </li>
-            </ul>
-            <input
-              type="hidden"
-              name="UnivSchool[1].Schl_Type_Code"
-              id="UnivSchool_Schl_Type_Code_1"
-              value=""
-            />
-          </div>
+              <div class="label" aria-hidden="false">학교구분</div>
+              <button type="button" class="button buttonChoose" aria-haspopup="true"><span id="selectedOption">대학교(원)</span></button>
+              <div class="list hidden" aria-hidden="true">
+                  <ul>
+                      <li><button type="button" class="button eduItem" data-schltypecode="0"><span>고등학교</span></button></li>
+                      <li><button type="button" class="button eduItem" data-schltypecode="1"><span>대학교(원)</span></button></li>
+                  </ul>
+              </div>
         </div>
-        <div
-          class="input input-education-name is-label is-ellipsis"
-          id="UnivSchoolautoComplete_1"
-          data-comp_type="jkAc"
-        >
-          <label for="UnivSchool_Schl_Name_1"
-            >학교명 <span class="star">*</span></label
-          >
+        <div class="input input-education-name is-label is-ellipsis" id="UnivSchoolautoComplete_1" data-comp_type="jkAc" >
+          <label for="UnivSchool_Schl_Name_1" >학교명 <span class="star">*</span></label >
           <input
             type="text"
             id="UnivSchool_Schl_Name_1"
@@ -207,7 +163,7 @@
           />
           <i class="icon icon-search" aria-hidden="true"></i>
         </div>
-        <div class="dropdown dropdown-edcation-degree is-label">
+        <div class="dropdown dropdown-edcation-degree is-label" style="width: 150px;">
           <div class="label hidden" aria-hidden="false">학위</div>
           <button type="button" class="button buttonChoose">
             <span>학위</span>
@@ -216,17 +172,22 @@
             <ul>
               <li>
                 <button type="button" class="button" data-value="2">
-                  <span>석사</span>
+                  <span>(2,3년제)학사</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="button" data-value="2">
+                  <span>(4년제)학사</span>
                 </button>
               </li>
               <li>
                 <button type="button" class="button" data-value="3">
-                  <span>박사</span>
+                  <span>석사</span>
                 </button>
               </li>
               <li>
                 <button type="button" class="button" data-value="1">
-                  <span>석박사</span>
+                  <span>박사</span>
                 </button>
               </li>
             </ul>
@@ -239,86 +200,37 @@
           </div>
         </div>
         <input type="hidden" name="UnivSchool[1].Schl_Type_Code" value="" />
-        <div class="input input-education-startdate is-label">
-          <label for="UnivSchool_Entc_YM_1"
-            >입학년월 <span class="star">*</span></label
-          >
-          <input
-            type="text"
-            name="UnivSchool[1].Entc_YM"
-            id="UnivSchool_Entc_YM_1"
-            data-format-type="month"
-            value=""
-            placeholder="2012.03"
-          />
-          <div class="validation hidden" aria-hidden="true"></div>
-        </div>
-        <div class="input input-education-enddate is-label">
-          <label for="UnivSchool_Grad_YM_1"
-            >졸업년월 <span class="star">*</span></label
-          >
-          <input
-            type="text"
-            name="UnivSchool[1].Grad_YM"
-            id="UnivSchool_Grad_YM_1"
-            data-format-type="month"
-            value=""
-            placeholder="2016.02"
-          />
-          <div class="validation hidden" aria-hidden="true"></div>
-        </div>
-        <input type="hidden" name="UnivSchool[1].Mstr_Dctr_Type_Code" />
-        <div class="dropdown dropdown-edcation-state is-label">
-          <div class="label hidden" aria-hidden="true">졸업상태</div>
-          <button type="button" class="button buttonChoose">
-            <span
-              ><span>졸업상태 <span class="star">*</span></span></span
-            >
-          </button>
-          <div class="list hidden">
-            <ul>
-              <li>
-                <button type="button" class="button" data-value="10">
-                  <span>졸업</span>
-                </button>
-              </li>
-              <li>
-                <button type="button" class="button" data-value="5">
-                  <span>졸업예정</span>
-                </button>
-              </li>
-              <li>
-                <button type="button" class="button" data-value="4">
-                  <span>재학중</span>
-                </button>
-              </li>
-              <li>
-                <button type="button" class="button" data-value="2">
-                  <span>중퇴</span>
-                </button>
-              </li>
-              <li>
-                <button type="button" class="button" data-value="9">
-                  <span>수료</span>
-                </button>
-              </li>
-              <li>
-                <button type="button" class="button" data-value="3">
-                  <span>휴학</span>
-                </button>
-              </li>
-            </ul>
-          </div>
-          <input
-            type="hidden"
-            name="UnivSchool[1].Grad_Type_Code"
-            value=""
-            id="UnivSchool_Grad_Type_Code_1"
-          />
-        </div>
+		<div class="row" style="margin-top: 10px;">
+			<div class="input input-education-startdate is-label">
+            	<label for="UnivSchool_Entc_YM_1" >입학년월 <span class="star">*</span></label >
+          		<input type="text" name="UnivSchool[1].Entc_YM" id="UnivSchool_Entc_YM_1" data-format-type="month" value="" placeholder="2012.03" />
+          		<div class="validation hidden" aria-hidden="true"></div>
+        	</div>
+        	<div class="input input-education-enddate is-label">
+          		<label for="UnivSchool_Grad_YM_1" >졸업년월 <span class="star">*</span></label >
+          		<input type="text" name="UnivSchool[1].Grad_YM" id="UnivSchool_Grad_YM_1" data-format-type="month" value="" placeholder="2016.02" />
+          		<div class="validation hidden" aria-hidden="true"></div>
+        	</div>
+        	<input type="hidden" name="UnivSchool[1].Mstr_Dctr_Type_Code" />
+        	<div class="dropdown dropdown-edcation-state is-label">
+          		<div class="label hidden" aria-hidden="true">졸업상태</div>
+          		<button type="button" class="button buttonChoose"><span><span>졸업상태 <span class="star">*</span></span></span></button>
+          		<div class="list hidden">
+            		<ul>
+              		<li><button type="button" class="button" data-value="10"><span>졸업</span></button></li>
+              		<li><button type="button" class="button" data-value="5"><span>졸업예정</span></button></li>
+              		<li><button type="button" class="button" data-value="4"><span>재학중</span></button></li>
+              		<li><button type="button" class="button" data-value="2"><span>중퇴</span></button></li>
+              		<li><button type="button" class="button" data-value="9"><span>수료</span></button></li>
+              		<li><button type="button" class="button" data-value="3"><span>휴학</span></button></li>
+            		</ul>
+          		</div>
+          		<input type="hidden" name="UnivSchool[1].Grad_Type_Code" value="" id="UnivSchool_Grad_Type_Code_1" />
+        	</div>
+		</div>
       </div>
       <div class="row">
-        <span class="devMainMajorTemplateArea">
+        <span class="devMainMajorTemplateArea" style="margin-right: 10px;">
 			<div
               class="input input-education-major-name-multiple search is-label"
               id="UnivMajorAutoComplete_2_1"
@@ -391,4 +303,5 @@
       </button>
     </div>
 </script>
-<script type="text/template" id="tplUnivMajorItem"></script>
+<script type="text/template" id="tplUnivMajorItem">
+</script>
