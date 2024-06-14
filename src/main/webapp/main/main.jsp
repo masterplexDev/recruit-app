@@ -3,6 +3,8 @@
 <!doctype html>
 <html> 
  <head> <!-- golgolz start --> <!-- CSS 압축--> 
+ 
+ <link rel="stylesheet" href="global_user.css">
   <script type="text/javascript" async src="https://snap.licdn.com/li.lms-analytics/insight.min.js"></script>
   <script async src="https://connect.facebook.net/en_US/fbevents.js"></script> 
   <link rel="preload" href="http://localhost/recruit-app/assets/css/main/c76e012c05e1318d.css" as="style" crossorigin="anonymous"> 

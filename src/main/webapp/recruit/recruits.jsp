@@ -7,6 +7,8 @@
 	<!-- golgolz start -->
     <link href="http://localhost/recruit-app/assets/css/recruit/part-sv-202405271315.css" rel="stylesheet" type="text/css"/>
     <link href="http://localhost/recruit-app/assets/css/recruit/rcr-sv-202405271315.css" rel="stylesheet" type="text/css"/>
+    
+     <link rel="stylesheet" href="http://localhost/recruit-app/assets/css/global_user.css">
 	<!-- golgolz end -->
 	<style text="text/css">
 		<!-- golgolz start -->
