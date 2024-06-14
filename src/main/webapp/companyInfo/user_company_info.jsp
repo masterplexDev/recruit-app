@@ -55,8 +55,8 @@
                         </div>
                     </div>
                     
-                    <div>
-				    <table style="margin:auto; border-collapse:collapse; width:900px; height:170px">
+                    <div style="border:1px solid #ccc; padding-top:40px; padding-bottom:10px; margin:auto; width:650px;">
+				    <table style="margin:auto; border-collapse:collapse; width:500px; height:170px">
 				        <tbody>
 				            <tr style="border-top:1px solid #ccc; border-bottom:1px solid #ccc;">
 				                <th style="border-left:1px solid transparent; border-right:1px solid transparent; color:black;">기업명</th>
@@ -95,7 +95,6 @@
 				            </tr>
 				        </tbody>
 				    </table>
-				    <hr style="width:980px; margin:auto">
 				</div>
 				
 				<!-- <div style="margin-top:15px">
