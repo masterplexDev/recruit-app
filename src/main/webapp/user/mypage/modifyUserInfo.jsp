@@ -60,8 +60,6 @@
 	    height: 100%;
 	    min-width: 320px;
 	    text-rendering: optimizeLegibility;
-	    -webkit-font-smoothing: antialiased;
-	    -webkit-text-size-adjust: none;
 	    word-break: keep-all;
 	    overflow-wrap: anywhere;
 	}
