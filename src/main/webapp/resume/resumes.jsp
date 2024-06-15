@@ -7,12 +7,26 @@
 	<!-- golgolz start -->
     <link href="http://localhost/recruit-app/assets/css/resume/mtu_common-sv-202405081446.css" rel="stylesheet" type="text/css" />
     <link href="http://localhost/recruit-app/assets/css/resume/mtu_style-sv-202405161357.css" rel="stylesheet" type="text/css"  />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 	<!-- golgolz end -->
 	<style text="text/css">
 		<!-- golgolz start -->
 		#container{
 			border: none;
 		}
+        #registerBtn {
+        	font-size: 18px;
+        	width: 112px;
+        	padding: auto 0;
+        	margin: 0px 10px;
+        }
+        .golgolBtn {
+	        height: 40px;
+			padding: 0 16px;
+			font-size: 14px;
+			min-width: 48px;
+        }
 		<!-- golgolz end -->
 	</style>
 	<jsp:include page="../assets/layout/user/lib.jsp" />  
@@ -27,6 +41,8 @@
     <div id="__next" data-reactroot="">
 		<jsp:include page="../assets/layout/user/header.jsp" />
 		<main class="JobsFeed_Jobsfeed__DpeV9">  
+			<div>
+			</div>
 			<section class="Section_Section__P1hhc">
 			<!-- golgolz start -->
 	        	<section id="container">
@@ -36,9 +52,7 @@
 	                			<h2 class="hd_1">이력서 관리</h2>
 	              			</div>
 	              			<div class="btnBx">
-	                			<a href="https://www.jobkorea.co.kr/User/Resume/Write" class="btn btnBl mtuSpImgBefore" target="_blank" >
-	                				<span>이력서 등록</span>
-	                			</a>
+	                			<input type="button" id="registerBtn" class="btn btn-outline-success btn-sm" value="이력서 등록" />
 	              			</div>
 	              			<div>
 	                			<div class="tableList">
@@ -49,24 +63,21 @@
 	                    				</div>
 	                    				<div class="mtuList">
 	                      					<ul>
-	                        					<li class="chk">
-	                    					      	<div class="col col01">
-	                     			       				<div class="positionOffer"></div>
-	                            						<div class="tit">
-	                              							<em class="badge">기본이력서</em>
-	                              							<a href="https://www.jobkorea.co.kr/User/Resume/View?rNo=26408826" target="_blank">이력서</a>
+	                        					<li>
+	                          						<div class="col col01">
+		                            					<div class="tit">
+		                              						<a href="https://www.jobkorea.co.kr/User/Resume/View?rNo=26455495" target="_blank">기본 이력서 2</a>
 	                            						</div>
-	                            						<div class="date">2024.05.22</div>
+	                            						<div class="date">2024.06.02</div>
 	                          						</div>
 	                          						<div class="col col02">
 	                            						<div class="btnCell">
-	                              							<a class="btn" href="https://www.jobkorea.co.kr/User/Resume/Edit?RNo=26408826" target="_blank">수정</a>
+	                              							<input type="button" id="updateBtn" class="golgolBtn btn btn-outline-warning btn-sm" value="수정" />
 	                            						</div>
-	                            						<div class="btnCell">
-	                              							<a class="btn" href="https://www.jobkorea.co.kr/User/Resume/Edit?RNo=26408826" target="_blank">삭제</a>
-	                            						</div>
+		                            					<div class="btnCell">
+															<input type="button" id="removeBtn" class="golgolBtn btn btn-outline-danger btn-sm" value="삭제" />
+		                            					</div>
 	                          						</div>
-	                          						<div class="resume-emphasis-row"></div>
 	                        					</li>
 	                        					<li>
 	                          						<div class="col col01">
@@ -77,10 +88,10 @@
 	                          						</div>
 	                          						<div class="col col02">
 	                            						<div class="btnCell">
-	                              							<a class="btn" href="https://www.jobkorea.co.kr/User/Resume/Edit?RNo=26408826" target="_blank">수정</a>
+	                              							<input type="button" id="updateBtn" class="golgolBtn btn btn-outline-warning btn-sm" value="수정" />
 	                            						</div>
 		                            					<div class="btnCell">
-		                              						<a class="btn" href="https://www.jobkorea.co.kr/User/Resume/Edit?RNo=26408826" target="_blank">삭제</a>
+															<input type="button" id="removeBtn" class="golgolBtn btn btn-outline-danger btn-sm" value="삭제" />
 		                            					</div>
 	                          						</div>
 	                        					</li>

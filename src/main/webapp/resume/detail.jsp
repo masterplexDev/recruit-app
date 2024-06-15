@@ -8,6 +8,7 @@
     <link href="http://localhost/recruit-app/assets/css/resume/write-sv-202405231305.css" rel="stylesheet" type="text/css"/>
     <link href="http://localhost/recruit-app/assets/css/resume/flow.css" />
     <link href="http://localhost/recruit-app/assets/css/resume/layout-sv-202401301659.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="http://localhost/recruit-app/assets/css/layout/user/btn-bootstrap.css" />
     <style>
       .autocomplete .list .hover {
         background-color: #f5f5f5;
@@ -107,6 +108,15 @@
         #resetButton:hover { /* 호버 효과 */
             background-color: #bdbdbd; /* 칩보다 약간 더 어두운 배경색 */
         }
+        #resumeBtns{
+        	text-align: center;
+        }
+        .golgolBtn {
+        	font-size: 20px;
+        	width: 90px;
+        	padding: 8px 0;
+        	margin: 0px 10px;
+        }
 		<!-- golgolz end -->
 	</style>
 	<script text="text/javascript">
@@ -160,6 +170,11 @@
  								<jsp:include page="./category/certification.jsp" />
  								<jsp:include page="./category/language.jsp" />
  								<jsp:include page="./category/introduction.jsp" />
+								<div id="resumeBtns">
+									<input type="button" id="registerBtn" class="golgolBtn btn btn-outline-success btn-sm register-btn" value="등록" />
+									<input type="button" id="registerBtn" class="golgolBtn btn btn-outline-warning btn-sm update-btn" value="수정" />
+									<input type="button" id="registerBtn" class="golgolBtn btn btn-outline-danger btn-sm remove-btn" value="삭제" />
+								</div>
 							</div>
 						</div>
 					</form>
