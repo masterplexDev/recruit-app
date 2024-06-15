@@ -3,17 +3,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="../../assets/layout/admin/lib.jsp" />
-<link href="https://i.jobkorea.kr/content/css/ver_2/event/banner.promotion-sv-202401301659.css" rel="stylesheet" type="text/css" />
-<link href="https://i.jobkorea.kr/content/css/ver_2/common-sv-202405271315.css" rel="stylesheet" type="text/css" />
+<link href="http://localhost/recruit-app/assets/css/layout/user/common-sv-202405271315.css" rel="stylesheet" type="text/css" />
+<link href="//i.jobkorea.kr/content/css/ver_2/event/banner.promotion-sv-202401301659.css" rel="stylesheet" type="text/css" />
+<link href="view-source:https://www.jobkorea.co.kr/help/inquiry" rel="stylesheet" type="text/css" />
 <link href="https://i.jobkorea.kr/deploy/pc/dist/css/personal/common/gnb-sv-202405231305.css" rel="stylesheet" type="text/css" />
 <link href="https://i.jobkorea.kr/content/css/ver_2/mtc/mtc_lounge-sv-202402231655.css" rel="stylesheet" type="text/css" />
 <link href="https://i.jobkorea.kr/content/css/ver_2/help/help-sv-202402231655.css" rel="stylesheet" type="text/css" />
 <link href="https://i.jobkorea.kr/deploy/pc/dist/css/personal/layout/footer-sv-202405131313.css" rel="stylesheet" type="text/css" />
 <link href="https://i.jobkorea.kr/deploy/pc/dist/css/personal/pages/main/auto_search-sv-202405231305.css" rel="stylesheet" type="text/css" />
-
+<link href="https://i.jobkorea.kr/content/css/ver_2/mtc/inquiry_selection.css?v=2024052914000" rel="stylesheet" type="text/css" />
+<jsp:include page="../../assets/layout/admin/lib.jsp" />
 <style type="text/css">
-	#newQnaFrm{margin-left:300px; margin-right:40px}
+	#newQnaFrm{margin:53px 40px 40px 248px; width:1500px; padding-left:28px}
 </style>
 
 <script type="text/javascript">
@@ -58,7 +59,7 @@
 		<div class="mtcTplTab" >
 			<ul class="tabItems">
 			<li class=""><a href="qnas.jsp">문의 내역</a></li>
-			<li class="on"><a href="new_qnas_list.jsp">새로운 문의</a></li>
+			<li class="on"><a href="new_qnas.jsp">새로운 문의</a></li>
 			</ul>
 		</div>
 		<!-- tap menu //-->
@@ -88,13 +89,13 @@
 			<tbody>
 				<tr>
 				<td>79483</td>
-				<td class="alLeft"><span class="tit"><a href="new_qna_detail.jsp">기업 리뷰는 어떻게 확인하는지 궁금합니다.</a></span></td>
+				<td class="alLeft"><span class="tit"><a href="new_detail.jsp">기업 리뷰는 어떻게 확인하는지 궁금합니다.</a></span></td>
 				<td>2024.05.24</td>
 				<td class="">답변대기</td>
 				</tr>
 				</tbody>
 				</table>
-		<div class="listBtmArea">
+	<!-- 	<div class="listBtmArea">
 		<div class="tplPagination">
    		<div class="tplPagination">
         <ul>
@@ -102,8 +103,25 @@
         </ul>
     </div>
 	</div>
-	</div>
-	</div>
+	</div> -->
+
+							<div style="justify-content: center; margin-top: 30px">
+								<nav aria-label="Page navigation example">
+									<ul class="pagination" style="justify-content: center;">
+										<li class="page-item"><a class="page-link" href="#"
+											aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+										</a></li>
+										<li class="page-item"><a class="page-link" href="#">1</a></li>
+										<li class="page-item"><a class="page-link" href="#">2</a></li>
+										<li class="page-item"><a class="page-link" href="#">3</a></li>
+										<li class="page-item"><a class="page-link" href="#"
+											aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+										</a></li>
+									</ul>
+								</nav>
+							</div>
+
+						</div>
 	</div>
 	<!-- List 끝 //-->
 	</div>
