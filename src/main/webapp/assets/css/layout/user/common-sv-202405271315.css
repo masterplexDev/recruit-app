@@ -68,7 +68,7 @@ a.link:visited{color: #999;}
 /* 우측 날개 배너(120x600) */
 #adRightWing {position:absolute; top:52px; right:-130px; width:120px; z-index:2;}
 /* Layout */
-#wrap {position:relative; width:100%; margin:25px auto 0 auto; text-align:left; zoom:1;}
+#wrap {position:relative; width:100%; margin:0px auto 0 auto; text-align:left; zoom:1;}
 #container, .container {position:relative; width:960px; margin:0 auto; zoom:1;}
 #content {width:960px; position:relative; zoom:1;}
 /* Position */

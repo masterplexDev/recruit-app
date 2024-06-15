@@ -10,8 +10,7 @@
     <!-- 기존 CSS 파일들 -->
     <link href="http://localhost/recruit-app/assets/css/recruit/part-sv-202405271315.css" rel="stylesheet" type="text/css"/>
     <link href="http://localhost/recruit-app/assets/css/recruit/rcr-sv-202405271315.css" rel="stylesheet" type="text/css"/>
-    
-     <link rel="stylesheet" href="http://localhost/recruit-app/assets/css/global_user.css">
+    <!--  <link rel="stylesheet" href="http://localhost/recruit-app/assets/css/global_user.css"> -->
 	<!-- golgolz end -->
 	<style text="text/css">
 		<!-- golgolz start -->
@@ -65,7 +64,7 @@
 											<ul class="tplTab clear" id="anchorGICnt_1">
 												<li class="on" data-tab-index="0">
 													<button type="button">
-														<span data-text="전체">전체 <em>(117,341건)</em></span>
+														<span data-text="전체" style="color: #000;">전체 <em>(117,341건)</em></span>
 													</button>
 												</li>
 											</ul>
