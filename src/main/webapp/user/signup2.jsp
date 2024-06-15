@@ -25,11 +25,11 @@
 			 width: 5px;
 			height: 5px;
 			}
-			a{
-			color: #666666;
-			}
 			.css-k88rq {
 			    font-size: 16px;
+			}
+			.css-1b2vfnn {
+				padding: 0;
 			}
 		<!-- golgolz end -->
 	</style>

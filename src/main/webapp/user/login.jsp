@@ -103,8 +103,8 @@
 						<footer class="css-1rhbhpi"></footer>
 				<!-- golgolz end -->
 			</section>
-			<jsp:include page="../assets/layout/user/footer.jsp" />
 		</main>
+			<jsp:include page="../assets/layout/user/footer.jsp" />
 	</div>
 </body>
 </html>

@@ -136,7 +136,7 @@
     font-weight: bold;
 	}
     </style>
-	<style text="text/css">
+	<style type="text/css">
 		<!-- golgolz start -->
 		
 		<!-- golgolz end -->

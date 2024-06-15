@@ -16,22 +16,22 @@
 	<!-- golgolz start -->
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="shortcut icon" href="https://static.wanted.co.kr/favicon/new/favicon.ico">
-	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/signup.css"/>
 	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/user_login.css"/>
 	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/find_user_info.css"/>
+	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/signup.css"/>
 	<!-- golgolz end -->
-	<style text="text/css">
+	<style type="text/css">
 		<!-- golgolz start -->
 			.input-group-text img {
 			 width: 5px;
 			height: 5px;
 			}
-			a{
-			color: #666666;
+			.css-1b2vfnn {
+				padding: 0;
 			}
 		<!-- golgolz end -->
 	</style>
-	<script text="text/javascript">
+	<script type="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
 			$('#datepicker').datepicker({

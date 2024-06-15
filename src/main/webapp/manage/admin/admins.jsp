@@ -97,8 +97,8 @@
 						</table>
 					</div>
 					<div class="btn_confirm">
-						<input type="submit" value="검색" class="btn_medium"> 
-						<!-- <input type="button" value="초기화" id="frmRest" class="btn_medium grey"> -->
+						<input type="button" value="검색" class="btn btn-secondary btn-sm"> 
+						<input type="button" value="초기화" id="frmRest" class="btn btn-outline-secondary btn-sm">
 					</div>
 				</form>
 				<div class="local_ov mart30">
@@ -149,7 +149,7 @@
 								<td>Y</td>
 								<td>Y</td>
 								<td>N</td>
-								<td><input type="button" value="권한설정" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
+								<td><input type="button" value="권한설정" class="btn btn-outline-secondary btn-sm" style="font-weight: bold;margin:0px auto;" /></td>
 							</tr>
 							<tr class="list0">
 								<td>2</td>
@@ -162,7 +162,7 @@
 								<td>Y</td>
 								<td>Y</td>
 								<td>N</td>
-								<td><input type="button" value="권한설정" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
+								<td><input type="button" value="권한설정" class="btn btn-outline-secondary btn-sm" style="font-weight: bold;margin:0px auto;" /></td>
 							</tr>
 							<tr class="list0">
 								<td>3</td>
@@ -175,7 +175,7 @@
 								<td>N</td>
 								<td>N</td>
 								<td>Y</td>
-								<td><input type="button" value="권한설정" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
+								<td><input type="button" value="권한설정" class="btn btn-outline-secondary btn-sm" style="font-weight: bold;margin:0px auto;" /></td>
 							</tr>
 						</tbody>
 					</table>
@@ -195,7 +195,7 @@
 							        </div>		
                 				</td>
                 				<td align="right">
-									<input type="button" value="관리자 등록" class="btn btn-success btn-small float-right" style="font-weight: bold; margin:0px auto;" />
+									<input type="button" value="관리자 등록" class="btn btn-outline-success btn-sm float-right" style="font-weight: bold; margin:0px auto;" />
                 				</td>
               				</tr>
             			</tbody>
