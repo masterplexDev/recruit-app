@@ -12,11 +12,15 @@
 <link href="https://i.jobkorea.kr/deploy/pc/dist/css/personal/layout/footer-sv-202405131313.css" rel="stylesheet" type="text/css" />
 <link href="https://i.jobkorea.kr/deploy/pc/dist/css/personal/pages/main/auto_search-sv-202405231305.css" rel="stylesheet" type="text/css" />
 <link href="https://i.jobkorea.kr/content/css/ver_2/mtc/inquiry_selection.css?v=2024052914000" rel="stylesheet" type="text/css" />
+<!--bootstrap시작-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<!--bootstrap끝-->
 <jsp:include page="../../assets/layout/admin/lib.jsp" />
+
 <style type="text/css">
-	#qnaFrm{
-		margin-left:300px; margin-right:40px
-	}
+	#qnaFrm{margin:30px 40px 40px 236px; width:1500px; padding-left:28px;}
+	탑라바레
 </style>
 <script type="text/javascript">
 	$(function(){
@@ -63,8 +67,8 @@
 					<!--// tap menu -->
 					<div class="mtcTplTab">
 						<ul class="tabItems">
-							<li class="on"><a href="qna_list.jsp">문의 내역</a></li>
-							<li class=""><a href="new_qnas_list.jsp">새로운 문의</a></li>
+							<li class="on"><a href="qnas.jsp">문의 내역</a></li>
+							<li class=""><a href="new_qnas.jsp">새로운 문의</a></li>
 						</ul>
 					</div>
 					<!-- tap menu //-->
@@ -72,7 +76,7 @@
 					<div class="inquiryListWrap">
 						<!--// List 시작 -->
 						<div class="schListWrap">
-							<div class="mtcSchListTb">
+							<div class="mtcSchListTb" >
 								<!--[개발] 문의 내용이 없는 경우 hide 처리 -->
 								<table summary="내 제안내역 보기 목록으로 글번호, 내용, 날짜, 답변여부로 구성되어 있습니다.">
 									<caption>내 제안내역 보기</caption>
@@ -94,14 +98,14 @@
 										<tr>
 											<td>79483</td>
 											<td class="alLeft"><span class="tit"><a
-													href="old_qnas_detail.jsp">기업 리뷰는 어떻게 확인하는 지 궁금합니다.</a></span></td>
+													href="old_detail.jsp">기업 리뷰는 어떻게 확인하는지 궁금합니다.</a></span></td>
 											<td>2024.05.24</td>
 											<td class="">답변완료</td>
 										</tr>
 									</tbody>
 								</table>
 	
-								<div class="listBtmArea">
+							<!-- 	<div class="listBtmArea" >
 									<div class="tplPagination">
 										<div class="tplPagination">
 											<ul>
@@ -109,7 +113,24 @@
 											</ul>
 										</div>
 									</div>
+								</div> -->
+
+								<div style="justify-content: center; margin-top:30px">
+									<nav aria-label="Page navigation example">
+										<ul class="pagination" style="justify-content: center;">
+											<li class="page-item"><a class="page-link" href="#"
+												aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+											</a></li>
+											<li class="page-item"><a class="page-link" href="#">1</a></li>
+											<li class="page-item"><a class="page-link" href="#">2</a></li>
+											<li class="page-item"><a class="page-link" href="#">3</a></li>
+											<li class="page-item"><a class="page-link" href="#"
+												aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+											</a></li>
+										</ul>
+									</nav>
 								</div>
+
 							</div>
 						</div>
 						<!-- List 끝 //-->
