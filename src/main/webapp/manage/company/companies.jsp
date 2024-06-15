@@ -103,8 +103,8 @@
 						</table>
 					</div>
 					<div class="btn_confirm">
-						<input type="submit" value="초기화" class="btn btn-outline-secondary btn-sm"/>
 					    <input type="submit" value="검색" class="btn btn-secondary btn-sm"/>
+						<input type="submit" value="초기화" class="btn btn-outline-secondary btn-sm"/>
 					</div>
 				</form>
 				<div class="local_ov mart30">
