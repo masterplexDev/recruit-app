@@ -48,6 +48,37 @@
 		.resumeContainer{
 			width: 940px;
 		}
+        #school_containers .container{
+            position: relative;
+    		border-top: 1px solid #eee;
+    	}
+        #license_containers .container{
+    		border-top: 1px solid #eee;
+    	}
+        #language_containers .container{
+    		border-top: 1px solid #eee;
+    	}
+    	/* 레이아웃 적용 */
+    	#container, .container{
+    		width: 1300px;
+    	}
+    	.resumeContainer{
+    		width: 1300px;
+    		margin 30px auto;
+    	}
+    	.resumeTitle{
+    		width: 1300px;
+    	}
+    	.formWrap{
+    		width: 1300px;
+    	}
+    	.form{
+    		width: 1300px;
+    	}
+    	.buttonDeleteField {
+			background-image: url("http://localhost/recruit-app/assets/images/btns/remove_btn.png"); /* 이미지 경로 지정 */
+			background-size: contain;
+		}
 		.chip-group {
             display: flex;
             flex-wrap: wrap; 
@@ -76,13 +107,6 @@
         #resetButton:hover { /* 호버 효과 */
             background-color: #bdbdbd; /* 칩보다 약간 더 어두운 배경색 */
         }
-        #school_containers .container{
-            position: relative;
-    		border-top: 1px solid #eee;
-    	}
-    	#container, .container{
-    		width: 940px;
-    	}
 		<!-- golgolz end -->
 	</style>
 	<script text="text/javascript">

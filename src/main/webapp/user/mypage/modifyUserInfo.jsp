@@ -60,8 +60,6 @@
 	    height: 100%;
 	    min-width: 320px;
 	    text-rendering: optimizeLegibility;
-	    -webkit-font-smoothing: antialiased;
-	    -webkit-text-size-adjust: none;
 	    word-break: keep-all;
 	    overflow-wrap: anywhere;
 	}
@@ -82,12 +80,12 @@
 		    font-weight: 400;
 		}
     </style>
-	<style text="text/css">
+	<style type="text/css">
 		<!-- golgolz start -->
 		
 		<!-- golgolz end -->
 	</style>
-	<script text="text/javascript">
+	<script type="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
 			$("#modifyUser").click(function(){

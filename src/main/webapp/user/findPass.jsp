@@ -15,7 +15,7 @@
 		<!-- golgolz start -->
 		<!-- golgolz end -->
 	</style>
-	<script text="text/javascript">
+	<script type="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
 			<!-- golgolz end -->

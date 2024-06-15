@@ -5,7 +5,7 @@ img {border:0 none;}
 button {overflow:visible; margin:0; padding:0; border:0 none; background:transparent; cursor:pointer;}
 .blind {position:absolute; top:-9999em; width:0; height:0; font-size:0; overflow:hidden;}
 a {font-size:12px;letter-spacing: 0px; text-decoration:none;}
-a:link, a:visited {color:#494949; text-decoration:none;}
+a:link, a:visited {color:#666666; text-decoration:none;}
 a:hover, a:active {color:#06c; text-decoration:none;}
 .clear {zoom:1;}
 .clear:after {content:""; display:block; height:0; clear:both;}
