@@ -20,9 +20,9 @@
 <style text="text/css">
 	#btnSearchCompany{width:70px; height:40px; background-color:#FFFFFF; border:1px solid #333; margin-left:5px; font-size:15px}
 	#content{
-			width: 100%; 
-			max-width: 1300px; 
-			margin: 0 auto; 
+			width: 100%;
+			max-width: 1300px;
+			margin: 0 auto;
 			box-sizing: border-box;
 			padding: 20px;
 	}
