@@ -158,12 +158,9 @@ System.out.print("공지사항 아이디: "+notice_id);
 </form>
 
 <div class="ec-base-button ">
-            <span class="gLeft">
-                <input type="button" value="삭제" class="btnNormalFix sizeS" id="btnList" name="btnList" onclick="location.href='http://localhost/recruit-app/manage/notice/notices.jsp'"/>
-            </span>
             <span class="gRight">
-            	<input type="button" value="수정" class="btnSubmitFix sizeS" id="btnWrite" name="btnWrite" onclick="location.href='http://localhost/recruit-app/manage/notice/notices.jsp'"/>
-            	<input type="button" value="취소" class="btnBasicFix sizeS" id="btnCancel" name="btnCancel" onclick="location.href='http://localhost/recruit-app/manage/notice/notices.jsp'"/>
+            	<input type="button" value="수정" class="btn btn-outline-warning btn-sm" id="btnWrite" name="btnWrite" onclick="location.href='http://localhost/recruit-app/manage/notice/notices.jsp'"/>
+            	<input type="button" value="취소" class="btn btn-outline-dark btn-sm detail-control" id="btnCancel" name="btnCancel" onclick="location.href='http://localhost/recruit-app/manage/notice/notices.jsp'"/>
             	
             	
                <!--  <a href="#none" class="btnSubmitFix sizeS" onclick=";">등록</a>
