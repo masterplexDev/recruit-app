@@ -220,7 +220,7 @@
 								<td>2023-12-29</td>
 								<td>떠오르는 백엔드 신입 이명화입니다.</td>
 								<td>신입</td>
-								<td><input type="button" value="바로가기" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
+								<td><input type="button" value="바로가기" class="btn btn-outline-secondary btn-sm" style="font-weight: bold;margin:0px auto;" /></td>
 								<td>최종합격</td>
 							</tr>
 							<tr class="list0">
@@ -229,7 +229,7 @@
 								<td>2023-12-29</td>
 								<td>재능있는 백엔드 신입 장원영입니다.</td>
 								<td>신입</td>
-								<td><input type="button" value="바로가기" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
+								<td><input type="button" value="바로가기" class="btn btn-outline-secondary btn-sm" style="font-weight: bold;margin:0px auto;" /></td>
 								<td>서류지원</td>
 							</tr>
 							<tr class="list0">
@@ -238,7 +238,7 @@
 								<td>2023-12-29</td>
 								<td>센스있는 백엔드 신입 난원영입니다.</td>
 								<td>신입</td>
-								<td><input type="button" value="바로가기" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
+								<td><input type="button" value="바로가기" class="btn btn-outline-secondary btn-sm" style="font-weight: bold;margin:0px auto;" /></td>
 								<td>불합격</td>
 							</tr>
 						</tbody>
@@ -304,12 +304,12 @@
 				</div>
 						<div class="alignCenter">
 							<% if(request.getParameter("code") == null){ %>
-								<input type="button" id="btn-register" class="btn btn-success btn-sm detail-control" value="저장" />
+								<input type="button" id="btn-register" class="btn btn-outline-warning btn-sm" value="저장" />
 							<% } else { %>
-								<input type="button" id="btn-update" class="btn btn-warning btn-sm detail-control" value="수정하기" />
-								<input type="button" id="btn-delete" class="btn btn-danger btn-sm detail-control" value="삭제하기" />
+								<input type="button" id="btn-update" class="btn btn-outline-warning btn-sm" value="수정하기" />
+								<input type="button" id="btn-delete" class="btn btn-outline-danger btn-sm" value="삭제하기" />
 							<% } %>
-								<input type="button" id="btn-back" class="btn btn-success btn-sm detail-control" value="취소" onClick="javascript:history.back();"/>
+								<input type="button" id="btn-back" class="btn btn-outline-dark btn-sm detail-control" value="취소" onClick="javascript:history.back();"/>
 						</div>
 					</form>
 				</div>
