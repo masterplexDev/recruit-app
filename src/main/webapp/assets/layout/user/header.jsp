@@ -28,7 +28,7 @@
                 data-attribute-id="gnb"
                 data-gnb-kind="event"
               >
-                <a href="https://www.wanted.co.kr/events"
+                <a href="http://localhost/recruit-app/recruit/recruits.jsp"
                   ><span>채용공고</span></a
                 >
               </li>
@@ -44,7 +44,7 @@
                 data-attribute-id="gnb"
                 data-gnb-kind="community"
               >
-                <a href="https://www.wanted.co.kr/community"
+                <a href="http://localhost/recruit-app/resume/resumes.jsp"
                   ><span>이력서관리</span></a
                 >
               </li>

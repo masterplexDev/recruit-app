@@ -239,7 +239,7 @@ a.tplBtn_2 span {top:0;}
 .tplIpt {width:100%; height:28px; line-height:32px; padding:0 5px; border:1px solid #ccc; box-sizing:border-box;}
 /* select */
 .tplSltBx {position:relative; display:inline-block;font-size:12px;letter-spacing: 0px; height:28px; background:#fff url("/content/images/ver_1/common/tpl_sp_form.png?2018100414") no-repeat 100% 0; border:1px solid #ccc; vertical-align:middle; z-index:1;}
-.tplSltBx label {position:absolute; color:#999; top:0; left:10px; height:28px; line-height:2.6; z-index:-1;}
+.tplSltBx label {position:absolute; color:#999; top:5px; left:10px; height:28px; line-height:2.6; z-index:-1;}
 .tplSltBx label.chk {color:#333;}
 .tplSltBx select {width:100%; height:28px; padding:0 10px; padding:0 20px 0 0\9; opacity:0; filter:alpha(opacity=0);}
 .tplSltBx select, .tplSltBx option {font-size:12px;letter-spacing: 0px; color:#666;}
@@ -253,21 +253,21 @@ a.tplBtn_2 span {top:0;}
 .tplLyLst li button { color:#666; width:100%; text-align:left;}
 .tplLyLst li button span {position:relative;}
 /* 전체 채용정보 리스트 */
-.tplGiSlt {height:23px; background-position:100% -98px;}
+.tplGiSlt {height:34px; background-position:100% -98px;}
 .tplGiSlt label {height:23px; line-height:23px;}
 .tplGiSlt label.chk {color:#666;}
 .tplGiSlt select {height:23px; line-height:25px; padding:0 0 0 10px;}
 .tplGiSlt.disabled {border:1px solid #e5e5e5; background-position:100% -141px;}
 .tplGiSlt.disabled label {color:#aaa;}
-.tplTabBx {border:1px solid #e6e7e8; border-top-color:#4a577a; }
+.tplTabBx {border-bottom:1px solid #e6e7e8; /* border-top-color:#4a577a; */ }
 .tplTab {height:43px; margin-left:-1px;}
-.tplTab > li {float:left; height:43px; margin-right:-1px; border-right:1px solid #e6e7e8;}
-.tplTab > li > button, .tplTab > li > a {position:relative;font-size:14px;letter-spacing: 0px; color:#666; font-weight:bold; padding:0 10px 4px 10px; line-height:39px;}
+.tplTab > li {float:left; height:43px; margin-right:-1px; /* border-right:1px solid #e6e7e8; */}
+.tplTab > li > button, .tplTab > li > a {position:relative;font-size:18px;letter-spacing: 0px; color:#666; font-weight:bold; /* padding:0 10px 4px 10px; */ line-height:39px;}
 .tplTab > li > button {width:100%; height:100%;}
 .tplTab > li > button span {position:relative;}
 .tplTab > li > a {display:block; text-align:center; line-height:40px;}
 .tplTab > li.on > a, .tplTab li.on > button {color:#fff; background-color:#4a577a;}
-.tplTab > li.on {border-right:none;}
+.tplTab > li.on {/* border-right:none; */}
 .tplTab > li.on:first-child {border-left:none;}
 .tplTabBx_1 .tplTab > li {position:relative; margin-right:0; border-right:0;}
 .tplTabBx_1 .tplTab > li:after {position:absolute; top:15px; right:0; content:""; display:inline-block; width:1px; height:13px; background:#d6d6d6; vertical-align:middle;}
