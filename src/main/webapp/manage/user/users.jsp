@@ -106,8 +106,8 @@
 						</table>
 					</div>
 					<div class="btn_confirm">
-						<input type="submit" value="검색" class="btn_medium"> 
-						<!-- <input type="button" value="초기화" id="frmRest" class="btn_medium grey"> -->
+						<input type="submit" value="검색" class="btn btn-secondary btn-sm"> 
+						<input type="button" value="초기화" id="frmRest" class="btn btn-outline-secondary btn-sm">
 					</div>
 				</form>
 				<div class="local_ov mart30">
@@ -144,7 +144,7 @@
 								<td>w**@naver.com</td>
 								<td>010-****-0000</td>
 								<td>2018-05-01</td>
-								<td><input type="button" value="상세조회" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
+								<td><input type="button" value="상세조회" class="btn btn-outline-secondary btn-sm" style="font-weight: bold;margin:0px auto;" /></td>
 							</tr>
 							<tr class="list0">
 								<td>2</td>
@@ -152,7 +152,7 @@
 								<td>l**@daum.net</td>
 								<td>010-****-1234</td>
 								<td>2021-03-22</td>
-								<td><input type="button" value="상세조회" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
+								<td><input type="button" value="상세조회" class="btn btn-outline-secondary btn-sm" style="font-weight: bold;margin:0px auto;" /></td>
 							</tr>
 							<tr class="list0">
 								<td>3</td>
@@ -160,7 +160,7 @@
 								<td>h****@naver.com </td>
 								<td>010-****-3333</td>
 								<td>2019-12-21</td>
-								<td><input type="button" value="상세조회" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
+								<td><input type="button" value="상세조회" class="btn btn-outline-secondary btn-sm" style="font-weight: bold;margin:0px auto;" /></td>
 							</tr>
 							<tr class="list0">
 								<td>4</td>
@@ -168,7 +168,7 @@
 								<td>p****@gmail.com</td>
 								<td>010-****-5555</td>
 								<td>2022-05-05</td>
-								<td><input type="button" value="상세조회" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
+								<td><input type="button" value="상세조회" class="btn btn-outline-secondary btn-sm" style="font-weight: bold;margin:0px auto;" /></td>
 							</tr>
 							<tr class="list0">
 								<td>5</td>
@@ -176,7 +176,7 @@
 								<td>j****@gmail.com</td>
 								<td>010-****-1111</td>
 								<td>2018-02-11</td>
-								<td><input type="button" value="상세조회" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
+								<td><input type="button" value="상세조회" class="btn btn-outline-secondary btn-sm" style="font-weight: bold;margin:0px auto;" /></td>
 							</tr>
 						</tbody>
 					</table>
