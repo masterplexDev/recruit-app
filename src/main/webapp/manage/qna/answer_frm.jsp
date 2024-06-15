@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="../../assets/layout/admin/lib.jsp" />
 <link rel="stylesheet" type="text/css"
 	href="https://img.echosting.cafe24.com/editors/froala/css/froala_style_ec.min.css?vs=2404180600"
 	charset="UTF-8" />
@@ -11,6 +10,9 @@
 	href="https://insideobject.com/ind-script/optimizer.php?filename=nZExDgIxDAT7KC3vsOAJPIEfOMFwJxJv5DgS_J6jggYJ0o52doulBVVofzBqhqtxJZOOYVko904Xgzpl1AqNG9jRL3nJoaMMX6Eh4T4pDvfZ0cIPsTnVORWZVNFCWVVCYtWv-9waHcF2ptNn3YZjeuGYCvJtVjZpMP_Pft_7BA&type=css&k=ecd691e0c80070ef935d0e961272742f67437a3c&t=1681776733" />
 <link rel="stylesheet" type="text/css"
 	href="https://insideobject.com/ind-script/optimizer_user.php?filename=tZRBbsQgDEX3k257Ds-o6j0q9QTEcYI1gBGGTOf2dTtVq64DO8DwvvX1MXiJBIRTUyoKgVcKbj6_nC-Q2xwYJ19jAF1oWkh5S6BXTpdXQFWIsrRAMIsriz3V-ubw6jZ6suIzdCMruYK-MxRdpSh7717XlrCypGPY4O7SKsxOGb81UGLsDn0cdIYSnmxDp8aDwFUkVM6D6J7CKHQuFhQc5Xd2GyfL9CjX3TyIPLdau0f7Fy4f4wwJo8y2a3gMvaxBpEAOzVJhu1Ohnen2txrUuRWodBupPzKx2YdXL_ndc86ctt4CKGk3ho3tfND3KIXSfn9o9Bja_4GqX7RP&type=css&k=d664d08dad9a7052b47cd7d6e8a0a70935bed9eb&t=1678165953&user=T" />
+<link href="http://localhost/recruit-app/assets/css/layout/user/common-sv-202405271315.css" rel="stylesheet" type="text/css" />
+<jsp:include page="../../assets/layout/admin/lib.jsp" />
+
 
 <!-- summernote -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -42,7 +44,7 @@
 				{
 					placeholder : 'Hello stand alone ui',
 					tabsize : 2,
-					width : 1300,
+					width : 1435,
 					height : 500,
 					toolbar : [ [ 'style', [ 'style' ] ],
 							[ 'font', [ 'bold', 'underline', 'clear' ] ],
@@ -57,8 +59,9 @@
 <!-- golgolz start -->
 <style>
 table{
-	width: 72.5%;
+	width: 97%;
 }
+	#emailFrm{margin:55px 40px 40px 8px; width:1500px; padding-left:28px}
 </style>
 <!-- golgolz end -->
 </head>
@@ -83,6 +86,7 @@ table{
 				</nav>
 			</div>
 		</nav>
+		<div id="emailFrm">
 		<div class="ec-base-table typeWrite ">
 		<table border="1" summary="">
 			<colgroup>
@@ -106,8 +110,11 @@ table{
 		
 		<div id="content" style="margin-left: 600px"></div>
 		<div id="emailButtonArea" style="margin-top: 20px">
-			<input type="button" class="btn btn-info btn-sm" value="전송" /> <input
-				type="button" class="btn btn-info btn-sm" value="취소" />
+			<input type="button" value="취소" class="btn btn-outline-danger " style="float:right ; margin-right : 40px">
+			<input type="button" value="전송하기" class="btn btn-outline-secondary " style="float:right ; margin-right : 10px">
+			<!-- <input type="button" class="btn btn-info btn-sm" value="전송" /> 
+			<input type="button" class="btn btn-info btn-sm" value="취소" /> -->
+		</div>
 		</div>
 	</main>
 	<!-- golgolz start -->

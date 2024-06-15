@@ -7,6 +7,11 @@
 
 <link href="https://i.jobkorea.kr/content/css/ver_2/mtc/mtc_lounge-sv-202402231655.css" rel="stylesheet" type="text/css" /><!--  -->
 <link href="https://i.jobkorea.kr/content/css/ver_2/help/help-sv-202402231655.css" rel="stylesheet" type="text/css" /><!--  -->
+<!-- bootstrap -->
+<link href="../assets/css/company/company-info-list-6.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<!-- bootstrap -->
 	
 	<jsp:include page="../assets/layout/user/lib.jsp" />  
 	<!-- golgolz start -->
@@ -31,15 +36,16 @@
 		<main class="JobsFeed_Jobsfeed__DpeV9">  
 			<section class="Section_Section__P1hhc">
 			<!-- golgolz start -->
-		<div>
-	<div class="loungeContent noticeListContent" style="margin:40px auto 0; width:1300px">
+	<div>
+	<div class="loungeContent noticeListContent" style="width: 100% ; max-width: 1300px; margin: 30px auto; box-sizing: border-box; padding: 20px;">
+	<!-- <div class="loungeContent noticeListContent" style="margin:40px auto 0; width:1300px"> -->
 		<div class="topHdWrap clear">
 			<h2 class="lug_hd_2">공지사항</h2>
 			<form action="#">
 				<fieldset>
 					<legend>공지사항 검색</legend>
-					<div class="searchBarItem mtcPlaceholder" float : right>
-						<span class="phTx">키워드 검색</span>
+					<div class="searchBarItem mtcPlaceholder" style="float : right">
+						<span class="phTx"></span>
 						<input type="text" id="lb_sch" class="mtcSchInp" title="검색어 입력">
 						<!-- <input type="button" class="mtcBtnB mtcSchBtn" value="검색"/> -->
 						<button type="button" class="mtcBtnB mtcSchBtn"><span class="skip">검색</span></button>
@@ -68,12 +74,6 @@
 						<tr>
 							<th scope="col">
 								<div class="lyTplArea schItems">
-									<!-- <span class="tHd"><button type="button" class="btnListSort mtcBtnA">전체</button></span>
-									<ul class="lyItems">
-										<li><a href="/help/notice?tab=1&SearchWord=">전체</a></li>
-										<li><a href="/help/notice?tab=2&SearchWord=">일반공지</a></li>
-										<li><a href="/help/notice?tab=3&SearchWord=">서비스오픈</a></li>
-									</ul> -->
 									<select>
 										<option value="전체" selected>전체</option>
 										<option value="일반공지">일반공지</option>
@@ -89,7 +89,7 @@
 					<tbody>
 								<tr class=primary>
 									<td class="sort">공지</td>
-									<td class="alLeft"><span class="tit"><a href="notice_detail.jsp">[발표] 잡코싶은 커피차 6월 대학교 방문일정 대공개~!</a></span></td>
+									<td class="alLeft"><span class="tit"><a href="detail.jsp">[발표] 잡코싶은 커피차 6월 대학교 방문일정 대공개~!</a></span></td>
 									<td class="date">2024.05.29</td>
 								</tr>
 								<tr class=primary>
@@ -118,10 +118,10 @@
 
 				<div class="listBtmArea" style="margin-bottom:40px">
                 <div class="btnListExDn">
-                    <a href="notice_list.jsp" class="btnMtcTpl">목록</a>
+                  <!-- <a href="notice_list.jsp" class="btnMtcTpl">목록</a> -->
                 </div>
                 
-                
+               <!--  
 					<div class="listBtmArea">
 						            <div class="tplPagination">
 
@@ -136,18 +136,41 @@
                     <p><a href="/help/notice?tab=1&amp;Page=11" class="tplBtn btnPgnNext" data-page="11"><span>다음 페이지</span></a></p>
             </div>
 
+					</div> -->
+					
+					<div style="justify-content: center; margin-top:20px">
+						<nav aria-label="Page navigation example">
+						<ul class="pagination" style="justify-content: center;">
+							<li class="page-item">
+								<a class="page-link" href="#" aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+								</a>
+							</li>
+							<li class="page-item"><a class="page-link" href="#">1</a></li>
+							<li class="page-item"><a class="page-link" href="#">2</a></li>
+							<li class="page-item"><a class="page-link" href="#">3</a></li>
+							<li class="page-item">
+								<a class="page-link" href="#" aria-label="Next">
+									<span aria-hidden="true">&raquo;</span>
+								</a>
+							</li>
+						</ul>
+						</nav>
 					</div>
+					
 			</div>
 		</div>
 	</div>
 </div>
 	</section>
 </div>
+
 			<!-- golgolz end -->
 			</section>
 			<jsp:include page="../assets/layout/user/footer.jsp" />  
 		</main>
 	</div>
+
 </body>
 
 </html>
