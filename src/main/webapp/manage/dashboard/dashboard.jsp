@@ -108,13 +108,6 @@
                             <div class="card-body chart-container">
                                 <canvas id="techStack-chart" height="150"></canvas>
                                 <div class="d-flex flex-row justify-content-end">
-                                    <ul class="chart-legend clearfix">
-                                        <li><i class="far fa-circle text-red"></i> C언어</li>
-                                        <li><i class="far fa-circle text-green"></i> 자료구조</li>
-                                        <li><i class="far fa-circle text-yellow"></i> 알고리즘</li>
-                                        <li><i class="far fa-circle text-blue"></i> 네트워크</li>
-                                        <li><i class="far fa-circle text-orange"></i> 운영체제</li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>

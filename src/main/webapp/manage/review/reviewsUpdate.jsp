@@ -436,10 +436,10 @@
 </div>
 
 <div class="ec-base-button ">
-                <input type="button" class="btnSubmitFix sizeS" id="btnDelete" style="float : left" value="삭제"/>
+                <input type="button" class="btn btn-outline-danger btn-sm" id="btnDelete" style="float : left" value="삭제"/>
             <span class="gRight">
-                <input type="button" class="btnSubmitFix sizeS" id="btnUpdate" value="수정"/>
-                <a href="/board/review/4/" class="btnBasicFix sizeS">취소</a>
+                <input type="button" class="btn btn-outline-warning btn-sm"  value="수정"/>
+                <a href="/board/review/4/" class="btn btn-outline-dark btn-sm detail-controlS">취소</a>
             </span>
         </div>
       
