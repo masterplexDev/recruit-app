@@ -6,6 +6,7 @@
 <jsp:include page="../assets/layout/user/lib.jsp" />
 <!-- golgolz start -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- 파비콘 -->
 <link rel="shortcut icon" href="https://static.wanted.co.kr/favicon/new/favicon.ico">
 <link rel="stylesheet" href="http://localhost/recruit-app/assets/css/user_login.css"/>
@@ -17,7 +18,39 @@
 </style>
 <script type="text/javascript">
 		$(function(){
+			
+			$("#loginBtn").click(function(){
+				alert("로그인 실패!")
+			});
+			
 			<!-- golgolz start -->
+			const emailInput = $('input[name="email"]');
+		    const passwordInput = $('input[name="password"]');
+		    const loginButton = $("#loginBtn");
+
+		    function checkInputs() {
+		        const emailNotEmpty = emailInput.val().trim() !== '';
+		        const passwordNotEmpty = passwordInput.val().trim() !== '';
+
+		        if (emailNotEmpty && passwordNotEmpty) {
+		            loginButton.prop('disabled', false); // 버튼 활성화
+		        } else {
+		            loginButton.prop('disabled', true);  // 버튼 비활성화
+		        }
+		    }
+		    
+		 	// 페이지 로드 시 초기 확인
+		    checkInputs();
+
+		    // 입력 값 변경 시 이벤트 리스너
+		    emailInput.on('input', checkInputs);
+		    passwordInput.on('input', checkInputs);
+		    
+		    
+		    function login(){
+		    	
+		    }
+		    
 			<!-- golgolz end -->
 		});
 </script>
@@ -41,7 +74,7 @@
 										<div class="css-1jxi7lq"></div>
 									</div>
 									<div class="css-ng7qrx">
-										<form class="css-e130a2">
+										<form class="css-e130a2" id="">
 											<div>
 												<div class="css-14o8ny9">
 													<div class="css-cssveg">
@@ -66,8 +99,8 @@
 														autocomplete="on" class="css-1sbrczv" value="">
 													<button type="button" class="css-15fzn57"></button>
 												</div>
-												<button type="submit" disabled="" data-testid="Button"
-													data-attribute-id="signup__email__login" class="css-1yzn4b">
+												<button type="button" data-testid="Button"
+													data-attribute-id="signup__email__login" class="css-1yzn4b" id="loginBtn">
 													<span data-testid="Typography" color="#000000"
 														class="css-kfktv3">로그인</span>
 												</button>
