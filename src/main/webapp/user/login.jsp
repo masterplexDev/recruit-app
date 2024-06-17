@@ -27,8 +27,10 @@
 				loginFlag = checkInputs();
 				if(loginFlag === true){
 					login();
+					$(".resultMsg").hide();
 				}else {
-					alert("로그인 실패! 유효하지 않은 정보입니다.");
+					$(".resultMsg").show(); 
+					/* alert("로그인 실패! 유효하지 않은 정보입니다."); */
 				}
 				
 			});
@@ -120,7 +122,7 @@
 												<div class="css-1dxhdfz">
 													<div class="css-env1z2">
 														<label data-testid="Typography"
-															color="rgba(55, 56, 60, 0.61)" for="email"
+															color="rgba(55, 56, 60, 0.61)" for="password"
 															class="css-afh7p0">비밀번호</label>
 													</div>
 													<input type="password" placeholder="비밀번호를 입력해주세요."
@@ -128,7 +130,7 @@
 														autocomplete="on" class="css-1sbrczv" value="">
 													<button type="button" class="css-15fzn57"></button>
 												</div>
-												<div style="display: none;">
+												<div style="display: none;" class="resultMsg">
 												<p style="font-size: 15px; color: red;">로그인에 실패했습니다. 입력 정보를 확인해주세요.</p>
 												</div>
 												<button type="button" data-testid="Button"
