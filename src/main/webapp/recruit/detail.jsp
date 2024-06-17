@@ -4,14 +4,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<jsp:include page="../assets/layout/user/lib.jsp" />  
 	<!-- golgolz start -->
     <link href="http://localhost/recruit-app/assets/css/recruit/view-sv-202405201324.css" rel="stylesheet" type="text/css"/>
 	<!-- golgolz end -->
 	<style text="text/css">
 		<!-- golgolz start -->
+		#container, .container{
+		    width: 1200px;
+		}
 		<!-- golgolz end -->
 	</style>
-	<jsp:include page="../assets/layout/user/lib.jsp" />  
 	<script text="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
@@ -25,15 +28,15 @@
 		<main class="JobsFeed_Jobsfeed__DpeV9">  
 			<section class="Section_Section__P1hhc">
 			<!-- golgolz start -->
-				<div id="wrap" style="margin-bottom: 30px;">
-					<section id="container">
+				<div id="wrap" style="margin-bottom: 30px; margin-top: 37px;">
+					<section id="container" style="width:1200px;">
 						<h1 class="tpl_hd_1">
 							<span class="blind">아르네코리아㈜</span> 채용정보
 						</h1>
 						<section class="secReadSummary">
 							<h2 class="hd_2 blind">요약정보</h2>
-							<div class="readSumWrap clear" style="width:960px;">
-								<article class="artReadJobSum">
+							<div class="readSumWrap clear" style="width:1200px;">
+								<article class="artReadJobSum" style="width:1200px;">
 									<div class="sumTit">
 										<h3 class="hd_3">
 											<div class="header">
@@ -134,8 +137,8 @@
 							</div>
 						</section>
 						<div id="detailArea" class="divDetailWrap">
-							<div id="menuContainer" class="devTplTabBx">
-								<div id="topMenu" class="tplTabBx readTabBx">
+							<!-- <div id="menuContainer" class="devTplTabBx">
+								<div id="topMenu" class="tplTabBx readTabBx" style="width:1200px;">
 									<ul class="tplTab clear">
 										<li data-target="tab01" class="">
 											<button type="button">
@@ -154,15 +157,18 @@
 										</li>
 									</ul>
 								</div>
-							</div>
+							</div> -->
 							<section id="tab01" class="secReadDetail">
-								<article class="artReadDetail">
-									<h3 class="hd_3 blind">상세요강 정보</h3>
-									<iframe name="gib_frame" id="gib_frame" width="960"
-										scrolling="no" frameborder="0" marginheight="0"
-										marginwidth="0" src="test.html" onload="ifrmNavi(this)"
-										title="상세요강"></iframe>
-								</article>
+								<h2 class="hd_2">상세요강 정보</h2>
+								<div class="divReadBx clear devMakeSameHeight">
+									<article class="artReadDetail">
+										<h3 class="hd_3 blind">상세요강 정보</h3>
+										<iframe name="gib_frame" id="gib_frame" width="1200"
+											scrolling="no" frameborder="0" marginheight="0"
+											marginwidth="0" src="test.html" onload="ifrmNavi(this)"
+											title="상세요강"></iframe>
+									</article>
+								</div>
 							</section>
 							<section id="tab02" class="secReadApply">
 								<h2 class="hd_2">접수기간/방법</h2>

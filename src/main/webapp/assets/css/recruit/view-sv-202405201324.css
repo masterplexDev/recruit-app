@@ -462,7 +462,7 @@ a .girBtn:hover {
   font-size: 27px;
   letter-spacing: -0.5px;
   color: #000;
-  width: 689px;
+  width: 929px;
   padding: 5px 0 20px;
   border-bottom: 1px solid #dde2eb;
   word-break: break-all;
@@ -3359,7 +3359,6 @@ a .girBtn:hover {
 }
 .artReadWork .location .tbRow {
   padding: 12px 0 15px;
-  border-top: 1px solid #f1f2f5;
 }
 .artReadWork .location .tbRow + .tbRow {
   border-top: 1px solid #f1f2f5;

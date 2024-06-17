@@ -57,7 +57,7 @@ body.menuGi .searchGiList h2 {left:4px;}
 body.menuGi .searchWrap h3 {left:auto; right:156px;}
 body.menuGi .searchList ul li a {width:200px;}
 /* 채용정보검색 넓이 변경 */
-.lgiSubMain {background-color:#f3f5f7;}
+/* .lgiSubMain {background-color:#f3f5f7;} */
 .lgiSubMain .header-sub{padding-bottom:0px; border-bottom:none;}
 .lgiSubMain .globalBar .innerBar {position:relative;width: 1200px;height:100%;margin:0 auto;}
 .lgiSubMain #header .section .inner {overflow:visible;position:relative;width:1200px;height:44px;margin:0 auto;zoom:1;}
@@ -96,7 +96,7 @@ body.menuGi .searchList ul li a {width:200px;}
 .lgiSubMain #content .rcr_lnb > .adBnr{width:190px; box-sizing:border-box; padding-left:0px;font-size:15px;letter-spacing: 0px; color:#000; font-weight:bold; height:inherit; line-height:inherit; border:none; display:block; background-color:#fff; margin:6px 9px 6px;}
 /* 채용정보검색 본문 */
 #product {padding-bottom:40px;}
-.lgiSubMain #content .rcr_cnt{width:960px; padding-left:25px; padding-bottom:80px; display:table-cell;}
+.lgiSubMain #content .rcr_cnt{width:1200px; padding-left:25px; padding-bottom:80px; display:table-cell;}
 .lgiSubMain #content .rcr_cnt .advertisement {padding:30px 0 0;}
 .lgiSubMain #content .rcr_cnt .advertisement ~ #dev-gi-list .tplJobListWrap {margin-top:30px;}
 .lgiSubMain #content .rcr_cnt .titDetailSch{font-size:22px;letter-spacing: -0.5px; font-weight:bold; color:#333; margin:33px 0 17px; float:left;}
@@ -109,7 +109,7 @@ body.menuGi .searchList ul li a {width:200px;}
 .lgiSubMain #content .rcr_cnt .detail-search-button .recentSetting .ly_rs{position:absolute; top:37px; right:-1px; display:block; background-color:#FFF; z-index:11; border:1px solid #565d79;}
 .lgiSubMain #content .rcr_cnt .detail-search-button .button-recruit-home{float:left; margin-left: 15px; color:#333333; font-weight:bold;font-size:14px;letter-spacing: 0px; border: 1px solid #d5d5d7; background-color: #f3f5f7; padding: 10px 15px; position: relative; top: -10px;}
 .lgiSubMain #content .rcr_cnt .detail-search-button .button-recruit-home:hover{border-color: #666666;}
-.lgiSubMain #content .rcr_cnt .cntWrap{width:960px;}
+.lgiSubMain #content .rcr_cnt .cntWrap{width:1200px;}
 /* 채용정보검색 내용 - 최근 검색한 조건 */
 .ly_rs .lyHd {font-size:17px;letter-spacing: 0px; color:#333; padding:28px 0 0 30px; border-bottom:0;}
 .ly_rs .lyHd em {font-size:12px;letter-spacing: 0px; color:#888;}
@@ -470,8 +470,8 @@ body.menuGi .searchList ul li a {width:200px;}
 .tplGiSlt:first-child select{width:125px;}
 .tplGiSlt select{width:84px;height:34px; padding:0 14px}
 .tplSltBx{height:34px; border:1px solid #ddd; box-sizing: border-box;}
-.tplJobListFunc{padding:17px 0 22px 19px; border-left:1px solid #e5e5e5; border-right:1px solid #e5e5e5; background-color:#fff; box-sizing:border-box;}
-.tplJobListFunc .tplJobManBtn{top:20px; right:19px;}
+.tplJobListFunc{padding: 0px 0 22px 0px; /* border-left:1px solid #e5e5e5; border-right:1px solid #e5e5e5; */ background-color:#fff; box-sizing:border-box;}
+.tplJobListFunc .tplJobManBtn{top:20px; right:0px;}
 .tplJobListWrap .tplList{margin:0; border-color:#e5e5e5;}
 .tplJobListWrap .tplList table{border-collapse: separate; border-spacing: 0px;}
 .tplJobListWrap .tplList thead {display: none;}
@@ -489,13 +489,13 @@ body.menuGi .searchList ul li a {width:200px;}
 .inp_imtWrap:first-child {margin-left:0;}
 .inp_imtWrap label{color:#000;font-size:13px;letter-spacing: 0px; margin-top:5px; display:inline-block;}
 /* Tab */
-.jobListTab {position:relative; width:960px; border:0; background:#fafafa;}
-.jobListTab .tplTab {width:100%; height:50px; margin:0; border-bottom:1px solid #000;}
-.jobListTab .tplTab li {width: calc( 21% - 9px ); height:50px; border:1px solid #dcdcdc; border-bottom:0; box-sizing: border-box;}
+.jobListTab {position:relative; width:1200px; border:0; /* background:#fafafa; */}
+.jobListTab .tplTab {width:100%; height:50px; margin:0; /* border-bottom:1px solid #000; */}
+.jobListTab .tplTab li {width: calc( 21% - 9px ); height:50px; /* border:1px solid #dcdcdc; border-bottom:0; */ box-sizing: border-box;}
 .jobListTab .tplTab li:first-child {width: calc( 21% - 7px );}
 .jobListTab .tplTab li button {font-size:15px;letter-spacing: 0px; color:#000; font-weight:normal; width:100%; height:100%; padding:4px 0 3px 0; z-index:1; outline:none;}
 .jobListTab .tplTab li button em {color:#39f;}
-.jobListTab .tplTab li.on {position:relative; border:1px solid #000;}
+.jobListTab .tplTab li.on {position:relative; /* border:1px solid #000; */}
 .jobListTab .tplTab li.on button {height:51px; padding:4px 0 4px 0; background-color:#fff; z-index:2;}
 .tplJobListTit{display:block; position:relative; height:47px; border-bottom:1px solid #999;}
 .tplJobListTit p{font-size:22px;letter-spacing: -0.5px; display:inline-block; color:#333;}
@@ -506,13 +506,13 @@ body.menuGi .searchList ul li a {width:200px;}
 .tplJobListTit p .num em {color:#39f;}
 .tplJobListTit .exceptSec{display:inline-block; float:right; margin-left:3px;}
 .tplJobListTit .exceptSec .tplGiSlt {margin-left:4px;}
-.tplJobListFunc .exceptSec .tplSltBx {border-right:0; width: 112px; background: transparent;}
+.tplJobListFunc .exceptSec .tplSltBx {/* border-right:0;  */width: 112px; background: transparent; margin-right: 10px;}
 .tplJobListFunc .exceptSec .tplSltBx::before,
 .tplJobListWrap .tplJobListFunc .tplJobManBtn .tplSltBx-wrap .tplSltBx::before {content: ''; position: absolute; right: 10px; top: 0; bottom: 0; margin: auto; width: 9px; height: 8px; margin-left: 68px; background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOSIgaGVpZ2h0PSI4IiB2aWV3Qm94PSIwIDAgOSA4IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPg0KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0wIDAuNUwxIDAuNUwxIDEuNUwyIDEuNUwyIDIuNUwzIDIuNUwzIDMuNUw0IDMuNUw0IDQuNUw1IDQuNUw1IDMuNUw2IDMuNUw2IDIuNUw3IDIuNUw3IDEuNUw4IDEuNUw4IDAuNTAwMDAxTDkgMC41MDAwMDJMOSAzLjVMOCAzLjVMOCA0LjVMNyA0LjVMNyA1LjVMNiA1LjVMNiA2LjVMNSA2LjVMNSA3LjVMNCA3LjVMNCA2LjVMMyA2LjVMMyA1LjVMMiA1LjVMMiA0LjVMMC45OTk5OTkgNC41TDAuOTk5OTk5IDMuNUwtNS4yNDUzN2UtMDcgMy41TDAgMC41WiIgZmlsbD0iIzY2NjY2NiIvPg0KPC9zdmc+DQo=') no-repeat;}
 .tplJobListFunc .exceptSec .tplSltBx select {width:112px; padding:0 18px 0 10px;}
 .tplJobListFunc .exceptSec .exceptWord{position:relative; display:inline-block; margin-left:-3px;}
 .tplJobListFunc .exceptSec .exceptWord:before {content:""; position:absolute; left:0; top:50%; display:inline-block; width:1px; height:15px; margin-top:-7px; background-color:#ddd; vertical-align:middle;}
-.tplJobListFunc .exceptSec .exceptWord input{width:320px; height:34px; border:1px solid #e5e5e5; border-left:0; padding:0 38px 0 10px; padding-bottom:2px; color:#333;font-size:13px;letter-spacing: 0px; outline:none; box-sizing:border-box;}
+.tplJobListFunc .exceptSec .exceptWord input{width:320px; height:34px; border:1px solid #e5e5e5; /* border-left:0; */ padding:0 38px 0 10px; padding-bottom:2px; color:#333;font-size:13px;letter-spacing: 0px; outline:none; box-sizing:border-box;}
 .tplJobListFunc .exceptSec .exceptWord label{position:absolute; top:10px; left:10px;font-size:13px;letter-spacing: 0px; color:#b0b0b0;}
 .tplJobListFunc .exceptSec .exceptWord button{position:absolute; top:0px; right:0px; width:38px; height:34px; text-indent:-9999px; overflow:hidden;}
 .tplJobListFunc .exceptSec .exceptWord button:before {content:""; display:block; width:17px; height:17px; margin:0 auto; background:url(/content/images/ver_1/list/spr.png?2018082214) no-repeat -59px 0;}
@@ -623,10 +623,10 @@ body.menuGi .searchList ul li a {width:200px;}
 #frmError{display:none;}
 /* 채용공고리스트 개선 - 20181004 */
 .tplJobList {position:relative;}
-.tplJobListWrap .tplJobListFunc {position: relative; height: 111px;}
-.tplJobListWrap .tplJobListFunc .tplJobManBtn {display: flex; justify-content: space-between; left: 20px; top: 61px;}
+.tplJobListWrap .tplJobListFunc {position: relative; height: 74px;}
+.tplJobListWrap .tplJobListFunc .tplJobManBtn {display: flex; justify-content: space-between; left: 0px; top: 20px;}
 .tplJobListWrap .tplJobListFunc .tplJobManBtn .tplSltBx-wrap div {background: transparent;}
-.tplJobListWrap .tplJobListFunc .tplJobManBtn .tplSltBx-wrap div:first-child {margin-right: 6px;}
+/* .tplJobListWrap .tplJobListFunc .tplJobManBtn .tplSltBx-wrap div:first-child {margin-right: 6px;} */
 .tplJobListWrap .tplJobList thead th {width:100%; height:65px;}
 .tplJobList tbody th, .tplJobList tbody td {padding:26px 0 30px 0;}
 .tplJobList tbody th {padding:28px 0 0 19px;}
@@ -638,9 +638,9 @@ body.menuGi .searchList ul li a {width:200px;}
 .tplJobList .tplTit .link {font-size:17px;letter-spacing: 0px; max-width:485px; line-height: 21px;}
 .tplJobList .tplCo .link {overflow:hidden; display:inline-block; margin-right:3px; text-overflow:ellipsis; white-space:nowrap; max-width:125px; line-height:23px;}
 .tplJobList .tplTit a.link:visited,
-.tplJobList .tplTit a.link.on{color:#999;}
+.tplJobList .tplTit a.link.on{/* color:#999; */}
 .tplJobList .tplTit {padding:0;}
-.tplJobList .tplTit .titBx {position:relative; min-height:92px; padding:0 0 0 20px; margin:26px 0 30px 0;}
+.tplJobList .tplTit .titBx {position:relative; min-height:92px; padding:0 0 0 20px; margin:26px 0 30px 0; color:#000;}
 .tplJobList .tplTit .titBx:before {content:""; position:absolute; left:0; top:0; display:block; width:1px; height:100%; background-color:#e5e5e5;}
 .tplJobList .tplTit .titBx .badge-wrap {display: flex; align-items: center;}
 .tplJobList .celebrate-badge {display: block;}

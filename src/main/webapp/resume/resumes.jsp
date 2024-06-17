@@ -66,7 +66,7 @@
 	                        					<li>
 	                          						<div class="col col01">
 		                            					<div class="tit">
-		                              						<a href="https://www.jobkorea.co.kr/User/Resume/View?rNo=26455495" target="_blank">기본 이력서 2</a>
+		                              						<a href="http://localhost/recruit-app/resume/detail.jsp" target="_blank">기본 이력서 2</a>
 	                            						</div>
 	                            						<div class="date">2024.06.02</div>
 	                          						</div>
@@ -82,7 +82,7 @@
 	                        					<li>
 	                          						<div class="col col01">
 		                            					<div class="tit">
-		                              						<a href="https://www.jobkorea.co.kr/User/Resume/View?rNo=26455495" target="_blank">기본 이력서 2</a>
+		                              						<a href="http://localhost/recruit-app/resume/detail.jsp" target="_blank">기본 이력서 2</a>
 	                            						</div>
 	                            						<div class="date">2024.06.02</div>
 	                          						</div>

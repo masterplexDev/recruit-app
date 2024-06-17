@@ -73,7 +73,7 @@
 					<thead>
 						<tr>
 							<th scope="col">
-								<div class="lyTplArea schItems">
+								<div class="lyTplArea schItems" style="float:left; pasdding-left:20px">
 									<select>
 										<option value="전체" selected>전체</option>
 										<option value="일반공지">일반공지</option>

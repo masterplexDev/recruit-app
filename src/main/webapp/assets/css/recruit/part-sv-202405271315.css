@@ -61,7 +61,7 @@
 .tplJobList .tplTit .link {overflow:hidden; display:inline-block;font-size:16px;letter-spacing: 0px; color:#000; max-width:435px; padding-right:1px; text-overflow:ellipsis; white-space:nowrap; vertical-align:-1px;}
 .tplJobList .tplTit .link.on{color: #999;}
 .tplJobList .tplTit .link strong {color:#39f; font-weight:normal;}
-.tplJobList .tplTit .link:visited {color:#999;}
+.tplJobList .tplTit .link:visited {/* color:#999; */}
 .tplJobList .tplTit .dsc {overflow:hidden; color:#666; margin-top:10px; max-width:465px; text-overflow:ellipsis; white-space:nowrap;}
 .tplJobList .tplTit .tplIcnTy {vertical-align:4px;}
 .tplJobList .tplTit .tplIcnGjob {vertical-align:2px;}

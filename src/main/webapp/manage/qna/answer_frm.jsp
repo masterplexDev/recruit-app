@@ -26,15 +26,7 @@
 <!-- summernote -->
 
 <!--bootstrap시작-->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-	crossorigin="anonymous">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-	crossorigin="anonymous"></script>
+<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/layout/user/btn-bootstrap.css" />
 <!--bootstrap끝-->
 
 <script type="text/javascript">
@@ -58,15 +50,33 @@
 </script>
 <!-- golgolz start -->
 <style>
-table{
-	width: 97%;
-}
-	#emailFrm{margin:55px 40px 40px 8px; width:1500px; padding-left:28px}
+	table{
+		width: 100%;
+	}
+	#emailFrm{
+		margin:55px 40px 40px 8px; width:1500px; padding-left:28px
+	}
+	.note-editor{
+		margin-top: 10px;
+	}
+	.typeWrite{
+		width: 1435px;
+	}
+	tbody{
+		border: 1px solid #e9e9e9;
+	}
+	.ec-base-table table:before{
+		border: 1px solid #e9e9e9;
+		width: 1px;
+	}
+	th{
+		font-size: 14px;
+	}
 </style>
 <!-- golgolz end -->
 </head>
 <body>
-	<jsp:include page="../../assets/layout/admin/header.jsp" />
+		<jsp:include page="../../assets/layout/admin/header.jsp" />
 	<main
 		class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ps ps--active-y">
 		<nav
@@ -77,7 +87,8 @@ table{
 					<ol
 						class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
 						<li class="breadcrumb-item text-sm"><a
-							class="opacity-5 text-dark" href="javascript:;"> 관리자 기능</a></li>
+							class="opacity-5 text-dark" href="javascript:;">
+							관리자 기능</a></li>
 						<!-- 하단의 대시보드 텍스트를 본인 기능으로 변경 필요  -->
 						<li class="breadcrumb-item text-sm text-dark active"
 							aria-current="page">문의 관리</li>
@@ -95,9 +106,11 @@ table{
 			</colgroup>
 			<tbody>
 				<tr>
+				</tr>
+				<tr>
 					<th scope="row">제목</th>
 					<td><input id="title" name="title" class="inputTypeText"
-						placeholder="" maxLength="125" value="" type="text" /></td>
+						placeholder="" maxLength="300" size="125" value="" type="text" /></td>
 				</tr>
 				<tr>
 					<th scope="row">송신 이메일</th>
@@ -120,5 +133,6 @@ table{
 	<!-- golgolz start -->
 
 	<!-- golgolz end -->
+
 </body>
 </html>
