@@ -195,6 +195,7 @@
         });
     });
 </script> 
+
      </div> <!-- golgolz end --> 
     </section> 
     <jsp:include page="../assets/layout/user/footer.jsp" />  
