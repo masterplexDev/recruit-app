@@ -3,56 +3,131 @@
 <!DOCTYPE html>
 <html>
 <head>
+<jsp:include page="../../assets/layout/admin/lib.jsp" />
 <!-- golgolz start -->
 <link href="http://localhost/recruit-app/assets/css/manage/goods/general.css" rel="stylesheet" />
 <link href="http://localhost/recruit-app/assets/css/manage/goods/goods.css" rel="stylesheet" />
 <link href="http://localhost/recruit-app/assets/css/manage/goods/default.css" rel="stylesheet" />
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+<style>
+		.subtitle{
+			padding: 0px;
+			margin-top: 20px;
+			margin-bottom: 5px;
+		}
+		.container-fluid py-4 {
+			padding-top: 0px;!important
+		}
+		.detail-control {
+			font-size: 15px;
+			margin-right: 2px;
+		}
+		#benefits li{
+			font-size: 15px;
+			height: 30px;
+			list-style-type: decimal;
+			list-style-position: inside;
+			display: flex;
+		    align-items: center; /* 세로 중앙 정렬 */
+		}
+		#benefits li:hover{
+			background-color: #DDD;
+		}
+		.chip-group {
+            display: flex;
+            flex-wrap: wrap; 
+            font-size: 13px;
+        }
+        .chip {
+            padding: 8px 16px; /* 좌우 패딩 16px로 변경 */
+            background-color: #f1f1f1;
+            border-radius: 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .chip.active {
+            background-color: #007bff;
+            color: white;
+        }
+        #resetButton { /* 초기화 버튼 스타일 */
+            padding: 8px 16px; /* 칩과 동일한 패딩 */
+            background-color: #e0e0e0; /* 칩보다 약간 어두운 배경색 */
+            border: none;
+            border-radius: 20px; /* 칩과 동일한 둥근 테두리 */
+            margin: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        #resetButton:hover { /* 호버 효과 */
+            background-color: #bdbdbd; /* 칩보다 약간 더 어두운 배경색 */
+        }
+        .ui-timepicker-standard{
+        	font-size: 12px;
+        }
+        .ui-timepicker{
+        	text-align: left;
+        }
+        .tbstyleB .label{
+			border-top: solid 1px #c8c8c8;        
+        }
+</style>
 <script type="text/javascript">
-	$(function(){
+	
+	$(function() {
 		$("#recruit_menu").addClass("bg-gradient-primary");
 
-	    $('#summernote').summernote({
-	        tabsize: 2,
-	        height: 300
+		$('#summernote').summernote({
+			tabsize : 2,
+			height : 300
+		});
+
+		$(".chip").click(function() {
+			$('.chip').removeClass('active'); // 모든 칩 비활성화
+	        $(this).addClass('active');      // 클릭된 칩 활성화
+
+	        // 선택된 값 처리 (필요하다면)
+	        var selectedValue = $(this).data('value');
+	        /* console.log("Selected language:", selectedValue);
+			$(this).toggleClass("active");
+
+			var selectedValues = $(".chip.active").map(function() {
+				return $(this).data("value");
+			}).get(); */
+		});
+
+		$("#resetButton").click(function(event) {
+			event.preventDefault(); // 기본 동작 방지
+			$('.chip').removeClass('active'); // 모든 칩 선택 해제
+		});
+		
+		$('#startTime').timepicker({
+		    timeFormat: 'H:mm',
+		    interval: 30,
+		    minTime: '00:00',
+		    maxTime: '23:30',
+		    defaultTime: '8',
+		    startTime: '8:00',
+		    dynamic: false,
+		    dropdown: true,
+		    scrollbar: true
+	    });
+		
+		$('#endTime').timepicker({
+		    timeFormat: 'H:mm',
+		    interval: 30,
+		    minTime: '00:00',
+		    maxTime: '23:30',
+		    defaultTime: '17',
+		    startTime: '17:00',
+		    dynamic: false,
+		    dropdown: true,
+		    scrollbar: true
 	    });
 	});
 </script>
-<style>
-.subtitle{
-	padding: 0px;
-	margin-top: 20px;
-}
-
-#dataForm div:first-child{
-	margin-top: 0px;
-}
-
-.container-fluid py-4 {
-	padding-top: 0px;!important
-}
-
-.detail-control {
-	font-size: 15px;
-	margin-right: 2px;
-}
-
-#benefits li{
-	font-size: 15px;
-	height: 30px;
-	list-style-type: decimal;
-	list-style-position: inside;
-	display: flex;
-    align-items: center; /* 세로 중앙 정렬 */
-}
-
-#benefits li:hover{
-	background-color: #DDD;
-}
-</style>
 <!-- golgolz end -->
-<jsp:include page="../../assets/layout/admin/lib.jsp" />
 </head>
 <body>
 	<jsp:include page="../../assets/layout/admin/header.jsp" />
@@ -113,14 +188,21 @@
 								<tr>
 									<td class="label">모집 포지션</td>
 									<td class="box text">
-										<input type="text" name="name" value="" size="50" class="inputbox naver_shopping_prodName" />
-										<input type="button" id="btn-register" class="btn btn-success btn-sm" value="조회" />
+										<div class="chip-group">
+											<div class="chip" data-value="백엔드">백엔드</div>
+											<div class="chip" data-value="프론트엔드">프론트엔드</div>
+											<div class="chip" data-value="임베디드">임베디드</div>
+											<div class="chip" data-value="QA">QA</div>
+											<div class="chip" data-value="인프라">인프라</div>
+											<div class="chip" data-value="DevOps">DevOps</div>
+											<!-- <button id="resetButton">초기화</button> -->
+										</div>
 									</td>
 								</tr>
 								<tr>
 									<td class="label">모집 인원</td>
 									<td class="box text">
-										<input type="text" name="name" value="" size="10" class="inputbox naver_shopping_prodName" />명
+										<input type="text" name="name" value="" size="10" class="inputbox naver_shopping_prodName" /> 명
 									</td>
 								</tr>
 							</tbody>
@@ -146,13 +228,20 @@
 								<tr>
 									<td class="label">근무 요일</td>
 									<td class="box text">
-										<input type="text" name="name" value="" size="50" class="inputbox naver_shopping_prodName" />
+										<div class="chip-group">
+											<div class="chip" data-value="백엔드">주5일(월-금)</div>
+											<div class="chip" data-value="프론트엔드">주5일(스케줄)</div>
+											<div class="chip" data-value="임베디드">주4일</div>
+											<!-- <button id="resetButton">초기화</button> -->
+										</div>
 									</td>
 								</tr>
 								<tr>
-									<td class="label">근무 시간</td>
+									<td class="label">근무 시간(시간 선택)</td>
 									<td class="box text">
-										<input type="text" name="name" value="" size="50" class="inputbox naver_shopping_prodName" />
+										<!-- <input type="text" name="name" value="" size="50" class="inputbox naver_shopping_prodName" /> -->
+										<input type="text" id="startTime" size="9" class="inputbox"/> -
+										<input type="text" id="endTime" size="9" class="inputbox"/>
 									</td>
 								</tr>
 								<tr>
@@ -224,5 +313,6 @@
 			<!-- golgolz end -->
 		</div>
 	</main>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
+<jsp:include page="../../assets/layout/admin/lib.jsp" />
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
 <script type="text/javascript">
@@ -38,6 +38,14 @@
   	    	showButtonPanel: true,
   	    	dateFormat: "yy-mm-dd"
   		});
+    	
+    	$(".goResumes").click(function(){
+    		location.href = "http://localhost/recruit-app/manage/recruit/resume/resumes.jsp";
+    	});
+    	
+    	$(".goRegist").click(function(){
+    		location.href = "http://localhost/recruit-app/manage/recruit/detail.jsp";
+    	});
 	});
 </script>
 <!-- golgolz start -->
@@ -45,7 +53,6 @@
 <link href="http://localhost//recruit-app/assets/css/manage/order/admin.css" rel="stylesheet" />
 <link href="http://localhost//recruit-app/assets/css/manage/order/reset.css" rel="stylesheet" />
 <!-- golgolz end -->
-<jsp:include page="../../assets/layout/admin/lib.jsp" />
 </head>
 <body>
 	<jsp:include page="../../assets/layout/admin/header.jsp" />
@@ -141,8 +148,8 @@
 						</table>
 					</div>
 					<div class="btn_confirm">
-						<input type="submit" value="검색" class="btn_medium"> 
-						<!-- <input type="button" value="초기화" id="frmRest" class="btn_medium grey"> -->
+					    <input type="submit" value="검색" class="btn btn-secondary btn-sm"/>
+						<input type="submit" value="초기화" class="btn btn-outline-secondary btn-sm"/>
 					</div>
 				</form>
 				<div class="local_ov mart30">
@@ -190,7 +197,9 @@
 								<td>신입</td>
 								<td>정규직</td>
 								<td>경기도 수원</td>
-								<td><input type="button" value="바로가기" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
+								<td>
+									<input type="button" value="바로가기" class="btn btn-outline-secondary btn-sm goResumes" style="font-weight: bold; margin: 0px auto;"  />
+								</td>
 							</tr>
 							<tr class="list0">
 								<td>2</td>
@@ -202,7 +211,9 @@
 								<td>경력</td>
 								<td>정규직</td>
 								<td>경기도 수원</td>
-								<td><input type="button" value="바로가기" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
+								<td>
+									<input type="button" value="바로가기" class="btn btn-outline-secondary btn-sm goResumes" style="font-weight: bold; margin: 0px auto;"  />
+								</td>
 							</tr>
 							<tr class="list0">
 								<td>3</td>
@@ -214,7 +225,9 @@
 								<td>신입</td>
 								<td>정규직</td>
 								<td>경기도 수원</td>
-								<td><input type="button" value="바로가기" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
+								<td>
+									<input type="button" value="바로가기" class="btn btn-outline-secondary btn-sm goResumes" style="font-weight: bold; margin: 0px auto;"  />
+								</td>
 							</tr>
 						</tbody>
 					</table>
@@ -223,16 +236,22 @@
           			<table cellpadding="0" cellspacing="0" border="0" width="100%">
             			<tbody>
               				<tr>
-                				<td align="center">
-						        	<div id="pageNation">
-							        </div>		
-                				</td>
                 				<td align="right">
-									<input type="button" value="등록하기" class="btn btn-success btn-small float-right" style="font-weight: bold; margin:0px auto;" />
+									<input type="button" value="등록하기" class="btn btn-outline-success btn-sm float-right goRegist" style="font-weight: bold; margin: 10px auto;" 
+									onclick="location.href='http://localhost/recruit-app/manage/recruit/resume/detail.jsp'"/>
                 				</td>
               				</tr>
             			</tbody>
           			</table>
+					<div id="pageNation">
+						<ul class="pagination" style="justify-content: center;">
+							<li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+							<li class="page-item"><a class="page-link" href="#">1</a></li>
+							<li class="page-item"><a class="page-link" href="#">2</a></li>
+							<li class="page-item"><a class="page-link" href="#">3</a></li>
+							<li class="page-item"><a class="page-link" href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span></a></li>
+						</ul>
+					</div>
         		</div>	
 			</div>
 		</div>
