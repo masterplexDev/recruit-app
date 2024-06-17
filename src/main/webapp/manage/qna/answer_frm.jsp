@@ -26,15 +26,7 @@
 <!-- summernote -->
 
 <!--bootstrap시작-->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-	crossorigin="anonymous">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-	crossorigin="anonymous"></script>
+<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/layout/user/btn-bootstrap.css" />
 <!--bootstrap끝-->
 
 <script type="text/javascript">
@@ -58,10 +50,28 @@
 </script>
 <!-- golgolz start -->
 <style>
-table{
-	width: 97%;
-}
-	#emailFrm{margin:55px 40px 40px 8px; width:1500px; padding-left:28px}
+	table{
+		width: 100%;
+	}
+	#emailFrm{
+		margin:55px 40px 40px 8px; width:1500px; padding-left:28px
+	}
+	.note-editor{
+		margin-top: 10px;
+	}
+	.typeWrite{
+		width: 1435px;
+	}
+	tbody{
+		border: 1px solid #e9e9e9;
+	}
+	.ec-base-table table:before{
+		border: 1px solid #e9e9e9;
+		width: 1px;
+	}
+	th{
+		font-size: 14px;
+	}
 </style>
 <!-- golgolz end -->
 </head>
@@ -96,9 +106,11 @@ table{
 			</colgroup>
 			<tbody>
 				<tr>
+				</tr>
+				<tr>
 					<th scope="row">제목</th>
 					<td><input id="title" name="title" class="inputTypeText"
-						placeholder="" maxLength="125" value="" type="text" /></td>
+						placeholder="" maxLength="300" size="125" value="" type="text" /></td>
 				</tr>
 				<tr>
 					<th scope="row">송신 이메일</th>
