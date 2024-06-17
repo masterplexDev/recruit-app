@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="https://asset.wanted.co.kr/userweb/www/_next/static/css/c76e012c05e1318d.css" crossorigin="anonymous" data-n-g=""/>
 	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/mypage.css"/>
 	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/signup.css"/>
+	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/layout/user/btn-bootstrap.css" />
 	<!-- golgolz end -->
 	<style>
 	@media (min-width: 1000px) {
@@ -204,6 +205,13 @@
 					.container{
 					margin-bottom: 100px;
 					}
+					 .btn{
+			         width: 70px; height: 30px; font-size: 15px;
+			         }
+					 .btn:hover{
+					 color: white;
+			         }
+			         
 				</style>
 				<div class="container">
 					<table>
@@ -216,7 +224,7 @@
 								<li class="reviewContent">신입사원 초봉이 높아요. 좋아요.</li>
 							</ul>
 							</td>
-							<td class="tableHeader"><input type="button" value="상세보기"></td>
+							<td class="tableHeader"><input type="button" class="btn btn-outline-info btn-sm" value="상세보기"></td>
 						</tr>
 						<tr>
 							<td class="tableHeader"><h1 style="font-size: 15px;">배달의 민족</h1></td>
@@ -227,7 +235,7 @@
 								<li class="reviewContent">일은 힘든데, 성과급을 잘 챙겨줘요.</li>
 							</ul>
 							</td>
-							<td class="tableHeader"><input type="button" value="상세보기"></td>
+							<td class="tableHeader"><input type="button" class="btn btn-outline-info btn-sm" value="상세보기"></td>
 						</tr>
 						<tr">
 							<td class="tableHeader"><h1 style="font-size: 15px;">티모넷</h1></td>
@@ -238,7 +246,7 @@
 								<li class="reviewContent">워라벨이 보장돼요.</li>
 							</ul>
 							</td>
-							<td class="tableHeader"><input type="button" value="상세보기"></td>
+							<td class="tableHeader"><input type="button" class="btn btn-outline-info btn-sm" value="상세보기"></td>
 						</tr>
 					</table>
                 </div>

@@ -14,7 +14,7 @@
 <link href="https://i.jobkorea.kr/content/css/ver_2/mtc/inquiry_selection.css?v=2024052914000" rel="stylesheet" type="text/css" />
 <jsp:include page="../../assets/layout/admin/lib.jsp" />
 <style type="text/css">
-	#newQnaFrm{margin:53px 40px 40px 248px; width:1500px; padding-left:28px}
+	#newQnaFrm{margin:54px 40px 40px 248px; width:1500px; padding-left:28px}
 </style>
 
 <script type="text/javascript">

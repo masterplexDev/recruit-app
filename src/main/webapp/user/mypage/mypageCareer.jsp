@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="https://asset.wanted.co.kr/userweb/www/_next/static/css/c76e012c05e1318d.css" crossorigin="anonymous" data-n-g=""/>
 	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/mypage.css"/>
 	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/signup.css"/>
+	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/layout/user/btn-bootstrap.css" />
 	<!-- golgolz end -->
 	<style>
 	@media (min-width: 1000px) {
@@ -136,9 +137,8 @@
     font-weight: bold;
 	}
     </style>
-	<style type="text/css">
+	<style>
 		<!-- golgolz start -->
-		
 		<!-- golgolz end -->
 	</style>
 	<style type="text/css">
@@ -206,6 +206,9 @@
 					.container{
 					margin-bottom: 100px;
 					}
+					.btn{
+			         width: 70px; height: 30px; font-size: 15px;
+			         }
 				</style>
 				<div class="container">
 					<table>
@@ -218,7 +221,7 @@
 								<li>사원수 6372명</li>
 							</ul>
 							</td>
-							<td class="tableHeader"><input type="button" value="리뷰 작성"></td>
+							<td class="tableHeader"><input type="button" class="btn btn-outline-success btn-sm register-btn" value="리뷰 작성"></td>
 						</tr>
 						<tr class="tableMiddle">
 							<td class="tableHeader"><img src="http://localhost/recruit-app/assets/images/mypage/user_default.png" style="width: 70px; height: 70px;"></td>
@@ -229,7 +232,7 @@
 								<li>사원수 6372명</li>
 							</ul>
 							</td>
-							<td class="tableHeader"><input type="button" value="리뷰 작성"></td>
+							<td class="tableHeader"><input type="button" class="btn btn-outline-success btn-sm register-btn" value="리뷰 작성"></td>
 						</tr>
 						<tr class="tableMiddle">
 							<td class="tableHeader"><img src="http://localhost/recruit-app/assets/images/mypage/user_default.png" style="width: 70px; height: 70px;"></td>
@@ -240,7 +243,7 @@
 								<li>사원수 6372명</li>
 							</ul>
 							</td>
-							<td class="tableHeader"><input type="button" value="리뷰 작성"></td>
+							<td class="tableHeader"><input type="button" class="btn btn-outline-success btn-sm register-btn" value="리뷰 작성"></td>
 						</tr>
 						<tr class="tableMiddle">
 							<td class="tableHeader"><img src="http://localhost/recruit-app/assets/images/mypage/user_default.png" style="width: 70px; height: 70px;"></td>
@@ -251,7 +254,7 @@
 								<li>사원수 6372명</li>
 							</ul>
 							</td>
-							<td class="tableHeader"><input type="button" value="리뷰 작성"></td>
+							<td class="tableHeader"><input type="button" class="btn btn-outline-success btn-sm register-btn" value="리뷰 작성"></td>
 						</tr>
 					</table>
                 </div>

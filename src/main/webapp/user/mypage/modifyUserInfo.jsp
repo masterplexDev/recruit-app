@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://asset.wanted.co.kr/userweb/www/_next/static/css/c76e012c05e1318d.css" crossorigin="anonymous" data-n-g=""/>
 	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/mypage.css"/>
 	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/signup.css"/>
+	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/layout/user/btn-bootstrap.css" />
 	<!-- golgolz end -->
 <style>
 	@media (max-width: 767px) {
@@ -180,9 +181,10 @@
                   <input type="name" placeholder="이름을 입력해주세요." name="name"
 					autocomplete="on" class="css-1sbrczv" value="정명호">
                   </li>
-                  <li data-list-type="NAME_CHANGE" tabindex="0" class="css-15hfbq8">
+                  <li data-list-type="NAME_CHANGE" tabindex="0" class="css-15hfbq8" style="height: 79px;">
                   <p data-testid="Typography" color="#000000" class="css-9dug5j">성별</p>
-                  <input type="text" name="gender"
+                  <p style="padding-left: 15px; font-size: 15px;">남자</p>
+                  <input type="hidden" name="gender"
 					autocomplete="on" class="css-1sbrczv" value="남자" readonly="readonly">
                   </li>
                   <li data-list-type="PHONE_CHANGE" tabindex="0" class="css-15hfbq8"><p data-testid="Typography" color="#000000" class="css-9dug5j">휴대폰 번호</p>
@@ -197,20 +199,24 @@
                   <input type="text" placeholder="주소를 입력해주세요." name="addr"
 					autocomplete="on" class="css-1sbrczv" value="인천시 부평구 부평동">
                   </li>
-                  <li data-list-type="SOCIAL_LINK" tabindex="0" class="css-15hfbq8"><p data-testid="Typography" color="#000000" class="css-9dug5j">비밀번호</p>
-                  <input type="password" name="password" readonly="readonly" style="border: none;"
-					autocomplete="on" class="css-1sbrczv" value="*********">
-                   <input type="button" value="변경" class="button modifyPassBtn">
+                  <li data-list-type="SOCIAL_LINK" tabindex="0" class="css-15hfbq8" style="height: 79px;">
+                  <p data-testid="Typography" color="#000000" class="css-9dug5j" style="font-size: 15px;">
+                  <a href="http://localhost/recruit-app/user/mypage/modifyPass.jsp">비밀번호 변경</a>
+                  </p>
+                  
                   </li>
                    <li data-list-type="SOCIAL_LINK" tabindex="0" style="text-align: center;">
-                   <input type="button" value="수정완료" class="button modifyBtn" style="margin: 5px;">
-                   <input type="button" value="취소" class="button" style="margin: 5px;">
+                   <input type="button" value="수정완료" class="btn btn-outline-warning btn-sm update-btn" style="margin: 5px;">
+                   <input type="button" value="취소" class="btn btn-outline-danger btn-sm remove-btn" style="margin: 5px;">
                    </li>
                   </ul></article>
                 </section>
                 <style>
                 	.button{
                 		width: 120px; height: 40px; border: 1px solid rgba(112, 115, 124, 0.22); border-radius: 10px;
+                	}
+                	.btn{
+                		width: 120px; height: 40px; font-size: 15px;
                 	}
                 	.modifyPassBtn{
                 		background-color: grey;

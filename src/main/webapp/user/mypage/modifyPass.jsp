@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://asset.wanted.co.kr/userweb/www/_next/static/css/c76e012c05e1318d.css" crossorigin="anonymous" data-n-g=""/>
 	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/mypage.css"/>
 	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/signup.css"/>
+	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/layout/user/btn-bootstrap.css" />
 	<!-- golgolz end -->
 <style>
 	@media (max-width: 767px) {
@@ -133,14 +134,17 @@
                   <input type="password" name="password" autocomplete="on" class="css-1sbrczv" value="*********">
                   </li>
                    <li data-list-type="SOCIAL_LINK" tabindex="0" style="text-align: center;">
-                   <input type="button" value="수정완료" class="button modifyBtn" style="margin: 5px;">
-                   <input type="button" value="취소" class="button" style="margin: 5px;">
+                   <input type="button" value="수정완료" class="btn btn-outline-warning btn-sm update-btn" style="margin: 5px;">
+                   <input type="button" value="취소" class="btn btn-outline-danger btn-sm remove-btn" style="margin: 5px;">
                    </li>
                   </ul></article>
                 </section>
                 <style>
                 	.button{
                 		width: 120px; height: 40px; border: 1px solid rgba(112, 115, 124, 0.22); border-radius: 10px;
+                	}
+                	.btn{
+                		width: 120px; height: 40px; font-size: 15px;
                 	}
                 	.modifyPassBtn{
                 		background-color: grey;
