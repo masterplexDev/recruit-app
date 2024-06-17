@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<jsp:include page="../../../assets/layout/admin/lib.jsp" />
 <!-- golgolz start -->
 <link href="http://localhost/recruit-app/assets/css/manage/goods/general.css" rel="stylesheet" />
 <link href="http://localhost/recruit-app/assets/css/manage/goods/goods.css" rel="stylesheet" />
@@ -51,7 +52,6 @@ table{
 }
 </style>
 <!-- golgolz end -->
-<jsp:include page="../../../assets/layout/admin/lib.jsp" />
 </head>
 <body>
 	<jsp:include page="../../../assets/layout/admin/header.jsp" />
@@ -309,7 +309,10 @@ table{
 						</div>
 						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="border: 1px solid #333;">열정맨 우미연입니다.</textarea>
 						<div class="alignCenter">
-							<input type="button" id="btn-back" class="btn btn-success btn-sm detail-control" value="뒤로" onClick="javascript:history.back();"/>
+							서류 합격 여부 : <span style="font-weight: bold;">불합격</span><br>
+							면접 합격 여부 : <span style="font-weight: bold;">해당없음</span><br>
+							<input type="button" value="서류합격처리" class="btn btn-outline-success btn-sm goRegist" style="font-weight: bold; margin: 10px auto;"/>
+							<input type="button" value="불합격처리" class="btn btn-outline-danger btn-sm" style="font-weight: bold; margin: 10px auto;"/>
 						</div>
 					</form>
 				</div>

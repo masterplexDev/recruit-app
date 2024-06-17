@@ -145,8 +145,8 @@
 						</table>
 					</div>
 					<div class="btn_confirm">
-						<input type="submit" value="검색" class="btn_medium"> 
-						<!-- <input type="button" value="초기화" id="frmRest" class="btn_medium grey"> -->
+					    <input type="submit" value="검색" class="btn btn-secondary btn-sm"/>
+						<input type="submit" value="초기화" class="btn btn-outline-secondary btn-sm"/>
 					</div>
 				</form>
 				<div class="local_ov mart30">
@@ -177,9 +177,9 @@
 							<th scope="col">제목</th>
 							<th scope="col">경력</th>
 							<th scope="col">거주지</th>
-							<th scope="col">이력서 상세</th>
 							<th scope="col">서류합격여부</th>
 							<th scope="col">최종합격여부</th>
+							<th scope="col">이력서 상세</th>
 						</tr>
 						</thead>
 						<tbody>
@@ -190,9 +190,12 @@
 								<td>떠오르는 백엔드 신입 이명화입니다.</td>
 								<td>신입</td>
 								<td>경기도</td>
-								<td><input type="button" value="바로가기" class="btn btn-info btn-small" style="font-weight: bold;margin:0px auto;" /></td>
-								<td><input type="button" value="합격" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
-								<td><input type="button" value="합격" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
+								<td>합격</td>
+								<td>합격</td>
+								<td>
+									<input type="button" value="바로가기" class="btn btn-outline-secondary btn-sm" style="font-weight: bold; margin: 0px auto;" 
+									onclick="location.href='http://localhost/recruit-app/manage/recruit/resume/detail.jsp'" />
+								</td>
 							</tr>
 							<tr class="list0">
 								<td>2</td>
@@ -201,9 +204,12 @@
 								<td>재능있는 백엔드 신입 장원영입니다.</td>
 								<td>경력</td>
 								<td>경기도</td>
-								<td><input type="button" value="바로가기" class="btn btn-info btn-small" style="font-weight: bold;margin:0px auto;" /></td>
-								<td><input type="button" value="합격" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
-								<td><input type="button" value="합격" class="btn btn-success btn-small" style="font-weight: bold;margin:0px auto;" /></td>
+								<td>합격</td>
+								<td>합격</td>
+								<td>
+									<input type="button" value="바로가기" class="btn btn-outline-secondary btn-sm" style="font-weight: bold; margin: 0px auto;" 
+									onclick="location.href='http://localhost/recruit-app/manage/recruit/resume/detail.jsp'" />
+								</td>
 							</tr>
 							<tr class="list0">
 								<td>3</td>
@@ -212,28 +218,39 @@
 								<td>센스있는 백엔드 신입 난원영입니다.</td>
 								<td>신입</td>
 								<td>경기도</td>
-								<td><input type="button" value="바로가기" class="btn btn-info btn-small" style="font-weight: bold;margin:0px auto;" /></td>
-								<td><input type="button" value="불합격" class="btn btn-danger btn-small" style="font-weight: bold;margin:0px auto;" /></td>
-								<td><input type="button" value="불합격" class="btn btn-danger btn-small" style="font-weight: bold;margin:0px auto;" /></td>
+								<td>합격</td>
+								<td>합격</td>
+								<td>
+									<input type="button" value="바로가기" class="btn btn-outline-secondary btn-sm" style="font-weight: bold; margin: 0px auto;" 
+									onclick="location.href='http://localhost/recruit-app/manage/recruit/resume/detail.jsp'" />
+								</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 				<div class="alignCenter">
-          			<table cellpadding="0" cellspacing="0" border="0" width="100%">
+          			<!-- <table cellpadding="0" cellspacing="0" border="0" width="100%">
             			<tbody>
               				<tr>
-                				<td align="center">
-						        	<div id="pageNation">
-							        </div>		
+                				<td align="center">	
                 				</td>
                 				<td align="right">
-									<input type="button" value="등록하기" class="btn btn-success btn-small float-right" style="font-weight: bold; margin:0px auto;" />
+									<input type="button" value="등록하기" class="btn btn-outline-success btn-sm float-right" style="font-weight: bold; margin: 10px auto;" 
+									onclick="location.href='http://localhost/recruit-app/manage/recruit/resume/detail.jsp'" />
                 				</td>
               				</tr>
             			</tbody>
-          			</table>
-        		</div>	
+          			</table> -->
+					<div id="pageNation">
+						<ul class="pagination" style="justify-content: center;">
+							<li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+							<li class="page-item"><a class="page-link" href="#">1</a></li>
+							<li class="page-item"><a class="page-link" href="#">2</a></li>
+							<li class="page-item"><a class="page-link" href="#">3</a></li>
+							<li class="page-item"><a class="page-link" href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span></a></li>
+						</ul>
+					</div>
+				</div>	
 			</div>
 		</div>
 	</main>
