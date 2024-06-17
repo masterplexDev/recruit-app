@@ -66,7 +66,7 @@
 	</table>
 </div>
 <div class="btn_confirm">
-	<input type="submit" value="검색" class="btn_medium">
+	<input type="submit" value="검색" class="btn btn-secondary btn-sm">
 </div>
 </form>
 

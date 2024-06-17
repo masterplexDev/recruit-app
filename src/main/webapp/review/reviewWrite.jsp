@@ -12,8 +12,13 @@
 
 <link rel="canonical" href="https://insideobject.com/board/product/write.html" />
 <link rel="alternate" href="https://m.insideobject.com/board/product/write.html" />
+	<!-- 버튼 클래스 -->
+	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/layout/user/btn-bootstrap.css" />
+<!-- 버튼 클래스 end -->
 	<!-- golgolz end -->
 	<style text="text/css">
+
+	
 		<!-- golgolz start -->
 		<!-- golgolz end -->
 	</style>
@@ -430,6 +435,7 @@
 </div>
 
 <div class="ec-base-button ">
+			<input type="button" class="btnSubmitFix sizeS" id="btnDelete" style="float : left" value="삭제"/>
             <span class="gRight">
                 <input type="button" class="btnSubmitFix sizeS" id="btnWrite" value="등록"/>
                 <a href="/board/review/4/" class="btnBasicFix sizeS">취소</a>
