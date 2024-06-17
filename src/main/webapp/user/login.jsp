@@ -18,24 +18,35 @@
 </style>
 <script type="text/javascript">
 		$(function(){
+			<!-- golgolz start -->
+			var emailInput = $('input[name="email"]');
+		    var passwordInput = $('input[name="password"]');
+		    var loginButton = $("#loginBtn");
 			
 			$("#loginBtn").click(function(){
-				alert("로그인 실패!")
+				loginFlag = checkInputs();
+				if(loginFlag === true){
+					login();
+				}else {
+					alert("로그인 실패! 유효하지 않은 정보입니다.");
+				}
+				
 			});
 			
-			<!-- golgolz start -->
-			const emailInput = $('input[name="email"]');
-		    const passwordInput = $('input[name="password"]');
-		    const loginButton = $("#loginBtn");
 
+		    // 로그인 조건 충족 여부 확인 / 로그인 버튼 활성화, 비활성화
 		    function checkInputs() {
-		        const emailNotEmpty = emailInput.val().trim() !== '';
-		        const passwordNotEmpty = passwordInput.val().trim() !== '';
+		        var emailNotEmpty = emailInput.val().trim() !== '';
+		        var passwordNotEmpty = passwordInput.val().trim() !== '';
+		        var isValidateEmail = validateEmail();
+		        var isValidatePass = validatePass();
 
-		        if (emailNotEmpty && passwordNotEmpty) {
+		        if (emailNotEmpty && passwordNotEmpty && isValidateEmail && isValidatePass) {
 		            loginButton.prop('disabled', false); // 버튼 활성화
+		            return true;
 		        } else {
 		            loginButton.prop('disabled', true);  // 버튼 비활성화
+		            return false;
 		        }
 		    }
 		    
@@ -47,9 +58,27 @@
 		    passwordInput.on('input', checkInputs);
 		    
 		    
-		    function login(){
+		 	// 이메일 유효성 검증
+		    function validateEmail() {
+		    	  var email = emailInput.val().trim();
+		    	  // 이메일 유효성 정규식
+		    	  var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,30}$/;
+		    	  return emailRegex.test(email);
+		    	}//function
+		    
+		     // 비밀번호 유효성 검증
+		     function validatePass(){
+		    	 var pass = passwordInput.val().trim();
+		    	 // 비밀번호 유효성 정규식
+		    	 var passRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()])[a-zA-Z\d!@#$%^&*()]{8,16}$/;
+		    	 return passRegex.test(pass);
+		    	}
+		    
 		    	
-		    }
+		     function login(){
+		    	 	$("#loginFrm").submit();
+			    	alert("로그인에 성공 했습니다.");
+			    }
 		    
 			<!-- golgolz end -->
 		});
@@ -74,7 +103,7 @@
 										<div class="css-1jxi7lq"></div>
 									</div>
 									<div class="css-ng7qrx">
-										<form class="css-e130a2" id="">
+										<form class="css-e130a2" id="loginFrm">
 											<div>
 												<div class="css-14o8ny9">
 													<div class="css-cssveg">
@@ -85,7 +114,7 @@
 														</div>
 														<input type="email" placeholder="이메일을 입력해주세요."
 															name="email" data-testid="Input_email" autofocus=""
-															autocomplete="on" class="css-1sbrczv" value="">
+															autocomplete="on" class="css-1sbrczv" value="" maxlength="30">
 													</div>
 												</div>
 												<div class="css-1dxhdfz">
@@ -98,6 +127,9 @@
 														name="password" data-testid="Input_password"
 														autocomplete="on" class="css-1sbrczv" value="">
 													<button type="button" class="css-15fzn57"></button>
+												</div>
+												<div style="display: none;">
+												<p style="font-size: 15px; color: red;">로그인에 실패했습니다. 입력 정보를 확인해주세요.</p>
 												</div>
 												<button type="button" data-testid="Button"
 													data-attribute-id="signup__email__login" class="css-1yzn4b" id="loginBtn">
