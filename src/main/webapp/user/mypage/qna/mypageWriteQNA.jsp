@@ -14,9 +14,7 @@
 	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/mypage.css"/>
 	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/signup.css"/>
 	<!-- bootstrap -->
-	<link href="../assets/css/company/company-info-list-6.css" rel="stylesheet" type="text/css" />
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/layout/user/btn-bootstrap.css" />
 	<!-- bootstrap -->
 	
 	<!-- golgolz end -->
@@ -103,7 +101,7 @@
 			       <textarea name="contents" id="lb_inq_2" title="내용을 입력하세요." class="txArea"></textarea>
 			       </div>
 			       </div>
-			       <div class="tbRow">
+			       <!-- <div class="tbRow">
 			       <div class="tbRow tbMail">
 			       <div class="tbCell tbTh">
 			       <label for="lb_inq_4">답변받을 e-메일 <em>(필수)</em></label>
@@ -122,7 +120,7 @@
 			        </div>
 			      </div>
 			     </div>
-			     </div>
+			     </div> -->
 			      <div id="privacyBx1" class="privacyBx" >
 			      <div class="mtcChk-Bx privacyBx__check-box" >
 			        <input type="checkbox" id="lb_agree" name="" value="" />
