@@ -56,42 +56,49 @@
   <meta charset="utf-8">
   <meta name="next-head-count" content="23">
   <style text="text/css">
-		<!-- golgolz start -->
-		.prev, .next {
-            font-size: 2rem;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            color: #666666;
-        }
-        .prev {
-            left: 10px;
-        }
-        .next {
-            right: 10px;
-        }
-        .post-slider {
-            position: relative;
-            max-width: 600px;
-            margin: auto;
-        }
-        .post-wrapper {
-            display: flex;
-        }
-        .post {
-            margin: 10px;
-        }
-        .slider-image {
-            width: 100%;
-            height: auto;
-        }
-		
-        /* 포함된 header.jsp의 스타일 */
-        .Menu_MenuNav__EOf3X {
-            color: #666666; /* 폰트 색상 적용 */
-        }
-	</style>
+    /* golgolz start */
+    .prev, .next {
+        font-size: 2rem;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #666666;
+        z-index: 2; /* 화살표가 이미지 위에 위치하도록 */
+    }
+    .prev {
+        left: 10px;
+    }
+    .next {
+        right: 10px;
+    }
+    .post-slider {
+        position: relative;
+        width: 100%;
+        max-width: 750px;
+        max-height: 205px;
+        margin: auto;
+        overflow: hidden; /* 부모 요소를 벗어나는 콘텐츠를 숨깁니다. */
+    }
+    .post-wrapper {
+        display: flex;
+    }
+    .post {
+        flex: 1 0 auto; /* 플렉스 요소가 자신의 크기를 유지하도록 */
+        margin: 10px;
+    }
+    .slider-image {
+        width: 100%;
+        height: 100%;
+        max-height: 205px;
+    }
+
+    /* 포함된 header.jsp의 스타일 */
+    .Menu_MenuNav__EOf3X {
+        color: #666666; /* 폰트 색상 적용 */
+    }
+</style>
+</style>
 
 		<!-- golgolz end -->
 	
@@ -163,13 +170,14 @@
         <h1 class="silder-title">기업 홍보란</h1> <i class="fas fa-chevron-left prev"></i> <i class="fas fa-chevron-right next"></i> 
         <div class="post-wrapper"> 
          <div class="post"> 
-          <img src="" class="slider-image"> 
+          <img src="../assets/images/ads/1.webp" class="slider-image"> 
           <div class="post-info"> 
-           <h4><a href="#" class="post-subject">Lorem ipsu eiusmod tempor incididunt ut </a></h4> <i class="far fa-user" style="height:10%;">Awa Melvine</i> 
+           <h4><a href="#" class="post-subject">Lorem ipsu eiusmod tempor incididunt ut </a></h4>
+            <i class="far fa-user" style="height:10%;">Awa Melvine</i> 
           </div> 
          </div> 
          <div class="post"> 
-          <img src="" class="slider-image"> 
+          <img src="../assets/images/ads/2.webp" class="slider-image"> 
           <div class="post-info"> 
            <h4><a href="#"> Commodo odio aenean sed </a></h4> <i class="far fa-user" style="height:10%;">Awa Melvine</i> 
           </div> 
