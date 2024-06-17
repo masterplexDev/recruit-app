@@ -29,6 +29,14 @@
 			.css-1b2vfnn {
 				padding: 0;
 			}
+			
+			.passConResult.success {
+			  color: green;
+			}
+			
+			.passConResult.error {
+			  color: red;
+			}
 		<!-- golgolz end -->
 	</style>
 	<script type="text/javascript">
@@ -39,6 +47,77 @@
 				autoclose: true, // 날짜 선택 후 자동으로 닫힘
 				language: 'ko' // 한국어 설정
 			});
+			
+			
+			var inputEmail = $("#email");
+			var name = $("#name");
+			var phone = $("#phone");
+			var tel = $("#tel");
+			var inputPass = $("#pass");
+			var inputPassConfirm = $("#passConfirm");
+			
+			//이메일 유효성 체크
+			function chkEmail() {
+				var emailNotEmpty = inputEmail.val().trim() !== '';
+				var isValidateEmail = validateEmail();
+				var duplBtn = $("#duplBtn");
+				
+				if(emailNotEmpty && isValidateEmail){
+					duplBtn.prop('disabled',false);
+				}else {
+					duplBtn.prop('disabled',true);
+				}
+				
+			}//chkEmail
+			
+			// 비밀번호 확인 체크
+			function chkPassCon() {
+				var msg = '';
+				var pass = inputPass.val().trim();
+				var passCon = inputPassConfirm.val().trim();
+				
+				if(pass==='' || passCon===''){
+					$(".passConResult").hide();
+					return;
+				}
+				
+				if(pass===passCon){
+					msg = '비밀번호가 동일합니다.';
+					$(".passConResult").text(msg);
+					$(".passConResult").removeClass("error").addClass("success");
+					$(".passConResult").show();
+				}else {
+					msg = '비밀번호가 다릅니다.';
+					$(".passConResult").text(msg);
+					$(".passConResult").removeClass("success").addClass("error");
+					$(".passConResult").show();
+				}
+			}//chkPassCon
+			
+			// 초기 로딩
+			chkEmail();
+			chkPassCon();
+			
+			// 이벤트 리스너
+			inputEmail.on('input',chkEmail);
+			inputPass.on('input', chkPassCon);
+			inputPassConfirm.on('input', chkPassCon);
+			
+			// 이메일 유효성 검증 형식
+		    function validateEmail() {
+		    	  var email = inputEmail.val().trim();
+		    	  // 이메일 유효성 정규식
+		    	  var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,30}$/;
+		    	  return emailRegex.test(email);
+		    	}//function
+		    
+		     // 비밀번호 유효성 검증 형식
+		     function validatePass(){
+		    	 var pass = inputPass.val().trim();
+		    	 // 비밀번호 유효성 정규식
+		    	 var passRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()])[a-zA-Z\d!@#$%^&*()]{8,16}$/;
+		    	 return passRegex.test(pass);
+		    	}
 			<!-- golgolz end -->
 		});//ready
 	</script>
@@ -73,37 +152,38 @@
 							<div>
 								<div class="css-1ia1k3o">
 									<div class="css-cssveg">
-										<div class="css-env1z2"><label ="Typography"
+										<div class="css-env1z2">
+										<label ="Typography"
 												color="rgba(55, 56, 60, 0.61)" for="email"
 												class="css-afh7p0">이메일</label></div>
-												<input type="email" placeholder="이메일을 입력해주세요." id="email" name="email" ="Input_email"
+												<input type="email" placeholder="이메일을 입력해주세요." id="email" name="email"
 											autocomplete="new-password" class="css-1sbrczv" value="">
 									</div>
-									<button type="button"  class="css-zzrlz5" disabled="disabled">
-									<span ="Typography" color="#000000" class="css-htgykj" >중복 확인</span></button>
+									<button type="button"  class="css-zzrlz5" id="duplBtn">
+									<span color="#000000" class="css-htgykj" >중복 확인</span></button>
 								</div>
 								<div class="css-ut4l54"></div>
 							</div>
 							<div class="css-evy94o">
 								<div class="css-env1z2"><label ="Typography" color="rgba(55, 56, 60, 0.61)"
-										for="username" class="css-afh7p0">이름</label></div><input type="text"
-									placeholder="이름을 입력해주세요." name="username" ="Input_username"
+										for="username" class="css-afh7p0">이름</label></div>
+										<input type="text" placeholder="이름을 입력해주세요." name="username" id="name"
 									autocomplete="new-password" class="css-1sbrczv" value="">
 							</div>
 							<div>
 								<div class="css-env1z2"><label ="Typography" color="rgba(55, 56, 60, 0.61)"
 										for="mobile" class="css-afh7p0">휴대폰 번호</label></div>
 								<div class="css-14o8ny9">
-									<div class="css-gjm025" style="margin-bottom: 20px;"><input type="number" pattern="[0-9]*"
-											placeholder="(예시) 01013245768" name="mobile" ="Input_mobile"
+									<div class="css-gjm025" style="margin-bottom: 20px;">
+									<input type="number" pattern="[0-9]*" placeholder="(예시) 01013245768" name="phone" id="phone"
 											autocomplete="on" class="css-1sbrczv" value="">
 								</div>
 							</div>
 								<div class="css-env1z2"><label ="Typography" color="rgba(55, 56, 60, 0.61)"
 										for="mobile" class="css-afh7p0">전화번호</label></div>
 								<div class="css-14o8ny9">
-									<div class="css-gjm025" style="margin-bottom: 15px;"><input type="number" pattern="[0-9]*"
-											placeholder="(예시) 021234567" name="mobile" ="Input_mobile"
+									<div class="css-gjm025" style="margin-bottom: 15px;">
+									<input type="number" pattern="[0-9]*" placeholder="(예시) 021234567" name="tel" id="tel" 
 											autocomplete="on" class="css-1sbrczv" value="">
 								</div>
 								</div>
@@ -111,12 +191,14 @@
 							<div class="css-evy94o">
 								<div class="css-env1z2"><label ="Typography" color="rgba(55, 56, 60, 0.61)"
 										for="password" class="css-afh7p0">비밀번호</label></div>
-								<div class="css-evy94o"><input type="password" placeholder="비밀번호를 입력해주세요."
-										name="password" ="Input_password" autocomplete="on"
-										class="css-1sbrczv" value=""></div><input type="password"
-									placeholder="비밀번호를 다시 한번 입력해주세요." name="passwordConfirm"
-									="Input_passwordConfirm" autocomplete="on" class="css-1sbrczv" value="">
-								<p ="Typography" color="rgba(55, 56, 60, 0.61)" class="css-1eroab9" style="font-size: 12px;">영문 대소문자,
+								<div class="css-evy94o">
+								<input type="password" placeholder="비밀번호를 입력해주세요." name="password" id="pass"
+								 autocomplete="on" class="css-1sbrczv" value=""></div>
+								<input type="password" placeholder="비밀번호를 다시 한번 입력해주세요." name="passwordConfirm" id="passConfirm"
+								 autocomplete="on" class="css-1sbrczv" value="">
+								<div class="passConResult" style="display: none">
+								</div>
+								<p ="Typography" color="rgba(55, 56, 60, 0.61)" class="css-1eroab9" style="font-size: 14px;">영문 대소문자,
 									숫자, 특수문자를 3가지 이상으로 조합해 8자 이상 16자 이하로 입력해주세요.</p>
 							</div>
 							<script type="text/javascript">
@@ -143,7 +225,7 @@
 								<div class="css-1csonyh"></div>
 								<div class="css-270vek"></div>
 								<button type="button" class="css-1yzn4b" id="signup-next">
-								<span ="Typography" color="#000000" class="css-kfktv3">다음으로</span>
+								<span color="#000000" class="css-kfktv3">다음으로</span>
 								</button>
 							</div>
 						</form>

@@ -4,6 +4,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
+<jsp:include page="../../assets/layout/admin/lib.jsp" />
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
@@ -47,7 +48,7 @@
 <link href="http://localhost/recruit-app/assets/css/manage/goods/goods.css" rel="stylesheet" />
 <link href="http://localhost/recruit-app/assets/css/manage/goods/default.css" rel="stylesheet" />
 <!-- golgolz end -->
-<jsp:include page="../../assets/layout/admin/lib.jsp" />
+
 </head>
 <body>
 	<jsp:include page="../../assets/layout/admin/header.jsp" />
