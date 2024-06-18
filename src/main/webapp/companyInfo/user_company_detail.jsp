@@ -65,21 +65,21 @@
             </div>
             <div class="company-nav" role="navigation">
                 <div class="company-nav-container">
-                    <a href="/company/1882711" class="company-nav-item active">
+                    <a href="http://localhost/recruit-app/companyInfo/user_company_detail.jsp" class="company-nav-item active">
                         <div class="name">기업정보</div>
                         <div class="post">
                             <div class="header screen-out">게시물</div>
                             <div class="value"></div>
                         </div>
                     </a>
-                    <a href="/company/1882711/PassAssay" class="company-nav-item ">
+                    <a href="http://localhost/recruit-app/review/reviewResult.jsp" class="company-nav-item ">
                         <div class="name">기업리뷰</div>
                         <div class="post">
                             <div class="header screen-out">게시물</div>
                             <div class="value">53</div>
                         </div>
                     </a>
-                    <a href="/company/1882711/salary" class="company-nav-item ">
+                    <a href="http://localhost/recruit-app/recruit/detail.jsp" class="company-nav-item ">
                         <div class="name">채용공고</div>
                         <div class="post">
                             <div class="header screen-out">게시물</div>

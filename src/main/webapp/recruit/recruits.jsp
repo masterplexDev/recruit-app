@@ -6,7 +6,6 @@
 <head>
 	 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Styles</title>
     <!-- 기존 CSS 파일들 -->
     <link href="http://localhost/recruit-app/assets/css/recruit/part-sv-202405271315.css" rel="stylesheet" type="text/css"/>
     <link href="http://localhost/recruit-app/assets/css/recruit/rcr-sv-202405271315.css" rel="stylesheet" type="text/css"/>
@@ -44,7 +43,7 @@
 								<div class="cntWrap clear" id="devSearchForm"
 									data-value-json='{"dutyCtgr":0,"duty":null,"dkwrd":null,"local":null,"subwayUpp":null,"subway":null,"career":null,"careerStart":null,"careerEnd":null,"edu":null,"cotype":null,"jobtype":null,"industryCtgr":0,"industry":null,"ikwrd":null,"position":null,"age":null,"pay":null,"paytype":null,"payinput":null,"sex":null,"majorCtgr":null,"major":null,"license":null,"pref":null,"wel":null,"textinclude":null,"textexclude":null,"IncludeAgeZero":false,"IncludeGenderIrrelevant":false,"iframeFlag":false,"monJobType":null,"monJobTypeArray":null,"monLocalArray":null,"menucode":"local","searchtype":"B","hasSubwayOnlyCache":false,"hasLocalOnlyCache":null,"dutyArr":null,"dkwrdArr":null,"localArr":null,"subwayUppArr":null,"subwayArr":null,"careerArr":null,"eduArr":null,"cotypeArr":null,"jobtypeArr":null,"industryArr":null,"ikwrdArr":null,"positionArr":null,"payArr":null,"majorCtgrArr":null,"majorArr":null,"licenseArr":null,"prefArr":null,"welArr":null,"textincludeArr":null,"textexcludeArr":null,"dutyCtgrSelect":null,"IndustryCtgrSelect":null,"dutySelect":null,"IndustrySelect":null,"localCtgrSelect":null,"majorCtgrSelect":null,"isAllDutySearch":false,"isAllLocalSearch":true}'
 									data-search-type="">
-									<h2 class="titDetailSch">채용공고 상세검색</h2>
+									<h2 class="titDetailSch" style="font-size:36px; margin-top:42px;" >채용공고 상세검색</h2>
 									<!-- 최근 검색한 조건 -->
 									<div class="detail-search-button">
 										<div class="recentSetting">

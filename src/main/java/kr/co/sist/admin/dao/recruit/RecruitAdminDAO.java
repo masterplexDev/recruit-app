@@ -15,11 +15,21 @@ public class RecruitAdminDAO {
         this.myBatis = myBatis;
     }
 
-    public List<RecruitDomain> test() {
+    public List<RecruitDomain> selectRecruits() {
         SqlSession session = myBatis.getMyBatisHandler(false);
         List<RecruitDomain> recruits = new ArrayList<RecruitDomain>();
         recruits = session.selectList("kr.co.sist.recruit.admin.selectRecruits");
+        myBatis.closeHandler(session);
 
         return recruits;
+    }
+
+    public RecruitDomain selectOneRecruit(int recruitNum) {
+        SqlSession session = myBatis.getMyBatisHandler(false);
+        RecruitDomain recruit =
+                session.selectOne("kr.co.sist.recruit.admin.selectOneRecruit", recruitNum);
+        myBatis.closeHandler(session);
+        System.out.println(recruit.toString());
+        return recruit;
     }
 }

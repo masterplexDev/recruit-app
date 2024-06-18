@@ -16,7 +16,13 @@ public class RecruitAdminService {
 
     public List<RecruitDomain> searchRecruits() {
         List<RecruitDomain> recruits = new ArrayList<RecruitDomain>();
-        recruits = recruitAdminDAO.test();
+        recruits = recruitAdminDAO.selectRecruits();
         return recruits;
+    }
+
+    public RecruitDomain searchOneRecruit(int recruitId) {
+        RecruitDomain recruit = null;
+        recruit = recruitAdminDAO.selectOneRecruit(recruitId);
+        return recruit;
     }
 }
