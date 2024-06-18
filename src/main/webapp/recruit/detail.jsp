@@ -30,9 +30,9 @@
 			<!-- golgolz start -->
 				<div id="wrap" style="margin-bottom: 30px; margin-top: 37px;">
 					<section id="container" style="width:1200px;">
-						<h1 class="tpl_hd_1">
-							<span class="blind">아르네코리아㈜</span> 채용정보
-						</h1>
+						<h2 class="tpl_hd_1" style="font-size: 36px; margin-top: 42px; font-weight: bold;">
+							채용정보
+						</h2>
 						<section class="secReadSummary">
 							<h2 class="hd_2 blind">요약정보</h2>
 							<div class="readSumWrap clear" style="width:1200px;">
