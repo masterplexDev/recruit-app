@@ -155,6 +155,7 @@
 					<form action="https://www.jobkorea.co.kr/User/Resume/Save" method="post" id="frm1">
 						<div class="resumeWrapper">
 							<div class="resumeContainer">
+								<h2 style="font-size: 36px; color:#000; margin-bottom: 20px; font-weight: bold;">이력서 등록</h2>
 								<div class="formWrap formWrapCareer" id="formCareer" style="">
 									<div class="header">
 										<h2 class="header">제목</h2>

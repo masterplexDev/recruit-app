@@ -3,6 +3,7 @@ package kr.co.sist.admin.controller.recruit;
 import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import kr.co.sist.admin.domain.recruit.RecruitDomain;
 import kr.co.sist.admin.service.recruit.RecruitAdminService;
@@ -19,5 +20,10 @@ public class RecruitAdminController {
     @GetMapping("/manage/recruits.do")
     public List<RecruitDomain> searchRecruits() {
         return recruitAdminService.searchRecruits();
+    }
+
+    @GetMapping("/manage/recruit.do")
+    public RecruitDomain searchOneRecruit(@RequestParam("id") int recruitId) {
+        return recruitAdminService.searchOneRecruit(recruitId);
     }
 }
