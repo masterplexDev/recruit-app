@@ -17,3 +17,10 @@
           "Noto Sans KR", "Malgun Gothic", sans-serif;
       }
     </style>
+    <script type="text/javascript">
+	    const button = document.getElementById('signupBtn');
+	
+	    button.addEventListener('click', function() {
+	        window.location.href = 'http://localhost/recruit-app/user/login.jsp'; // 이동할 페이지 URL
+	    });
+    </script>

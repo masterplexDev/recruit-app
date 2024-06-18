@@ -11,7 +11,7 @@
           <nav class="MainBar_MainBarNav__pVhal">
             <div class="MainBar_MainBarNavLogo__caIek">
               <a
-                href="https://www.wanted.co.kr/"
+                href="http://localhost/recruit-app/main/main.jsp"
                 aria-label="Wanted"
                 data-attribute-id="gnb"
                 data-gnb-kind="jobsfeed"
@@ -76,8 +76,10 @@
                   <button
                     class="Button_Button__root__V1ie3 Button_Button__outlined__H2mkd Button_Button__outlinedAssistive__mBcQK Button_Button__outlinedSizeSmall__JJmOo Aside_signUpButton__pY721"
                     type="button"
+                    id = "signupBtn"
                     data-attribute-id="gnb"
                     data-gnb-kind="signupLogin"
+                    onclick="location.href = 'http://localhost/recruit-app/user/login.jsp'"
                   >
                     <span class="Button_Button__label__1Kk0v"
                       ><span
