@@ -7,6 +7,8 @@
 
 <link href="https://i.jobkorea.kr/content/css/ver_2/mtc/mtc_lounge-sv-202402231655.css" rel="stylesheet" type="text/css" /><!--  -->
 <link href="https://i.jobkorea.kr/content/css/ver_2/help/help-sv-202402231655.css" rel="stylesheet" type="text/css" /><!--  -->
+<!-- 파비콘 -->
+<link rel="shortcut icon" href="https://static.wanted.co.kr/favicon/new/favicon.ico"/>
 <!-- bootstrap -->
 <link href="../assets/css/company/company-info-list-6.css" rel="stylesheet" type="text/css" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -73,7 +75,7 @@
 					<thead>
 						<tr>
 							<th scope="col">
-								<div class="lyTplArea schItems" style="float:left; pasdding-left:20px">
+								<div class="lyTplArea schItems" style="float:left; padding-left:10px">
 									<select>
 										<option value="전체" selected>전체</option>
 										<option value="일반공지">일반공지</option>

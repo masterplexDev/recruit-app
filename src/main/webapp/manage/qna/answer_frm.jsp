@@ -110,7 +110,7 @@
 				<tr>
 					<th scope="row">제목</th>
 					<td><input id="title" name="title" class="inputTypeText"
-						placeholder="" maxLength="300" size="125" value="" type="text" /></td>
+						placeholder="" maxLength="125" value="" type="text" /></td>
 				</tr>
 				<tr>
 					<th scope="row">송신 이메일</th>
