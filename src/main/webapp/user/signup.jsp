@@ -63,20 +63,29 @@
 				var mailFlag = chkEmail();
 				var isValidateEmail = validateEmail();
 				var isValidatePass = validatePass();
+				var isValidatePhone = validatePhoneNumber();
+				var isValidateTel = validateTelNumber(); 
 				var resultFlag = duplFlag && nullFlag && passFlag && mailFlag;
+				
 				if(!isValidateEmail){
 					alert('잘못된 이메일 형식입니다.');
 					return;
-				}
-				if(!isValidatePass){
+				}else if(!isValidatePass){
 					alert('잘못된 비밀번호 형식입니다.');
 					return;
+				}else if(!isValidatePhone){
+					alert('잘못된 휴대폰번호 형식입니다.');
+					return;
+				}else if(!isValidateTel){
+					alert('잘못된 전화번호 형식입니다.');
+					return;
 				}
+				
 				if(resultFlag){
 					location.href="http://localhost/recruit-app/user/signup2.jsp"
-				}
-				else{
+				}else{
 					alert('입력 정보를 다시 확인해주세요.');
+					return;
 				}
 			});//click
 			
@@ -197,7 +206,7 @@
 			// 이메일 유효성 검증 형식
 		    function validateEmail() {
 		    	  var email = inputEmail.val().trim();
-		    	  // 이메일 유효성 정규식
+		    	  // 이메일 유효성 정규식 : 이메일 형식@,'.'
 		    	  var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,30}$/;
 		    	  return emailRegex.test(email);
 		    	}//function
@@ -205,10 +214,26 @@
 		     // 비밀번호 유효성 검증 형식
 		     function validatePass(){
 		    	 var pass = inputPass.val().trim();
-		    	 // 비밀번호 유효성 정규식
+		    	 // 비밀번호 유효성 정규식 :8-16자리 구성, 영문 대소문자, 숫자, 특수문자 포함
 		    	 var passRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()])[a-zA-Z\d!@#$%^&*()]{8,16}$/;
 		    	 return passRegex.test(pass);
 		    	}
+		    	
+		    //휴대폰번호 유효성 검증 형식
+		    function validatePhoneNumber() {
+				  var chkPhoneNumber = inputPhone.val().trim().replace(/-/g, '');
+				  // 휴대폰번호 유효성 정규식 : 시작문자 010/011, 숫자 10-11자로 구성
+				  var isValid = /^(010|011)\d{7,8}$/.test(chkPhoneNumber); 
+				  return isValid;
+			}//function
+
+			//전화번호 유효성 검증 형식
+		    function validateTelNumber() {
+				  var chkTelNumber = inputTel.val().trim().replace(/-/g, '');
+				  // 전화번호 유효성 정규식 : 숫자 10-11자로 구성
+				  var isValid = /^\d{10,11}$/.test(chkTelNumber); 
+				  return isValid;
+			}//function
 			<!-- golgolz end -->
 		});//ready
 	</script>
@@ -265,19 +290,19 @@
 							</div>
 							<div>
 								<div class="css-env1z2"><label color="rgba(55, 56, 60, 0.61)"
-										for="phone" class="css-afh7p0">휴대폰 번호</label></div>
+										for="phone" class="css-afh7p0">휴대폰 번호(-제외)</label></div>
 								<div class="css-14o8ny9">
 									<div class="css-gjm025" style="margin-bottom: 20px;">
 									<input type="tel" pattern="[0-9]*" placeholder="(예시) 01013245768" name="phone" id="phone"
-											autocomplete="on" class="css-1sbrczv" value="" maxlength="13">
+											autocomplete="on" class="css-1sbrczv" value="" maxlength="11">
 								</div>
 							</div>
 								<div class="css-env1z2"><label ="Typography" color="rgba(55, 56, 60, 0.61)"
-										for="tel" class="css-afh7p0">전화번호</label></div>
+										for="tel" class="css-afh7p0">전화번호(-제외)</label></div>
 								<div class="css-14o8ny9">
 									<div class="css-gjm025" style="margin-bottom: 15px;">
 									<input type="tel" pattern="[0-9]*" placeholder="(예시) 021234567" name="tel" id="tel" 
-											autocomplete="on" class="css-1sbrczv" value="" maxlength="13">
+											autocomplete="on" class="css-1sbrczv" value="" maxlength="11">
 								</div>
 								</div>
 							</div>
