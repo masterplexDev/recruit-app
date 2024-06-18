@@ -4,7 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<jsp:include page="../assets/layout/user/lib.jsp" />  
+	<jsp:include page="../assets/layout/user/lib.jsp" />
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<!-- golgolz start -->
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="shortcut icon" href="https://static.wanted.co.kr/favicon/new/favicon.ico">
@@ -18,6 +19,9 @@
 	<script type="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
+			$('#mainBtn').click(function(){
+				location.href='http://localhost/recruit-app/main/main.jsp';
+			});//click
 			<!-- golgolz end -->
 		});
 	</script>
@@ -49,7 +53,7 @@
 							<div style="padding: 13px 0px; width: 100%; height: 50px; background-color: rgb(244, 244, 245); text-align: center;">
 								<p class="css-14qpgc6" style="font-size: 16px; font-weight: normal;">sist@gmail.com</p>										
 							</div>
-							<button type="button" data-testid="Button" class="css-1w1wifl"><span
+							<button type="button" id="mainBtn" class="css-1w1wifl"><span
 									data-testid="Typography" color="#000000" class="css-kfktv3">메인으로 돌아가기</span></button>
 						</div>
 					</div>
