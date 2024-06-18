@@ -167,7 +167,7 @@
 <main class="form-signin w-100 m-auto">
   <form>
     <img class="mb-4" src="http://localhost/recruit-app/assets/images/admin/adminLoginIcoNight.png" alt="" width="80" height="80">
-    <h1 class="h3 mb-3 fw-normal">Admin Login</h1>
+    <h1 class="h3 mb-3 fw-normal"><strong>Admin Login</strong></h1>
 
     <div class="form-floating">
       <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
@@ -183,7 +183,7 @@
         관리자 인증이 필요합니다.
       </label>
     </div>
-    <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+    <button class="btn btn-primary w-100 py-2" type="button" onclick="location.href='http://localhost/recruit-app/manage/dashboard/dashboard.jsp';">로그인</button>
     <p class="mt-5 mb-3 text-body-secondary">By. GolGolZ</p>
   </form>
 </main>

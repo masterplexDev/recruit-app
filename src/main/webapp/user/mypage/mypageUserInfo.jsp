@@ -124,22 +124,20 @@
                   <p data-testid="Typography" color="#000000" class="css-9dug5j">성별</p>
                   <p data-testid="Typography" color="#171719" class="css-j2itip">남자</p>
                   </li>
-                  <li data-list-type="PHONE_CHANGE" tabindex="0" class="css-xr5rwo"><p data-testid="Typography" color="#000000" class="css-9dug5j">휴대폰 번호</p>
+                  <li data-list-type="PHONE_CHANGE" tabindex="0" class="css-xr5rwo"><p color="#000000" class="css-9dug5j">휴대폰 번호</p>
                   <p data-testid="Typography" color="#171719" class="css-j2itip">010-4017-8712</p>
                   </li>
-                  <li data-list-type="PHONE_CHANGE" tabindex="0" class="css-xr5rwo"><p data-testid="Typography" color="#000000" class="css-9dug5j">전화번호</p>
+                  <li data-list-type="PHONE_CHANGE" tabindex="0" class="css-xr5rwo"><p color="#000000" class="css-9dug5j">전화번호</p>
                   <p data-testid="Typography" color="#171719" class="css-j2itip">012-456-7890</p>
                   </li>
-                  <li data-list-type="SOCIAL_LINK" tabindex="0" class="css-15hfbq8"><p data-testid="Typography" color="#000000" class="css-9dug5j">주소</p>
+                  <li data-list-type="SOCIAL_LINK" tabindex="0" class="css-15hfbq8"><p color="#000000" class="css-9dug5j">주소</p>
                   <p data-testid="Typography" color="#171719" class="css-j2itip">인천시 부평구 부평 1동</p>
                   </li>
                   </ul></article>
                 </section>
               </div>
             </div>
-            <div
-              class="Grid_Grid__item__FUkSS Grid_Grid__align-items_flex-start__PA0JE Grid_Grid__grid__md__1__aOHPk MainLayout_MainLayout__space__8eQvZ"
-            ></div>
+            <div class="Grid_Grid__item__FUkSS Grid_Grid__align-items_flex-start__PA0JE Grid_Grid__grid__md__1__aOHPk MainLayout_MainLayout__space__8eQvZ"></div>
           </div>
         </div>
 			<!-- golgolz end -->

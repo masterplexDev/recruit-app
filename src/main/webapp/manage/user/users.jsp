@@ -145,7 +145,8 @@
 								<td>w**@naver.com</td>
 								<td>010-****-0000</td>
 								<td>2018-05-01</td>
-								<td><input type="button" value="상세조회" class="btn btn-outline-secondary btn-sm" style="font-weight: bold;margin:0px auto;" /></td>
+								<td><input type="button" value="상세조회" class="btn btn-outline-secondary btn-sm" 
+									style="font-weight: bold;margin:0px auto;" onclick="location.href='http://localhost/recruit-app/manage/user/detail.jsp';"/></td>
 							</tr>
 							<tr class="list0">
 								<td>2</td>
@@ -153,7 +154,8 @@
 								<td>l**@daum.net</td>
 								<td>010-****-1234</td>
 								<td>2021-03-22</td>
-								<td><input type="button" value="상세조회" class="btn btn-outline-secondary btn-sm" style="font-weight: bold;margin:0px auto;" /></td>
+								<td><input type="button" value="상세조회" class="btn btn-outline-secondary btn-sm" 
+									style="font-weight: bold;margin:0px auto;" onclick="location.href='http://localhost/recruit-app/manage/user/detail.jsp';"/></td>
 							</tr>
 							<tr class="list0">
 								<td>3</td>
@@ -161,7 +163,8 @@
 								<td>h****@naver.com </td>
 								<td>010-****-3333</td>
 								<td>2019-12-21</td>
-								<td><input type="button" value="상세조회" class="btn btn-outline-secondary btn-sm" style="font-weight: bold;margin:0px auto;" /></td>
+								<td><input type="button" value="상세조회" class="btn btn-outline-secondary btn-sm" 
+									style="font-weight: bold;margin:0px auto;" onclick="location.href='http://localhost/recruit-app/manage/user/detail.jsp';"/></td>
 							</tr>
 							<tr class="list0">
 								<td>4</td>
@@ -169,7 +172,8 @@
 								<td>p****@gmail.com</td>
 								<td>010-****-5555</td>
 								<td>2022-05-05</td>
-								<td><input type="button" value="상세조회" class="btn btn-outline-secondary btn-sm" style="font-weight: bold;margin:0px auto;" /></td>
+								<td><input type="button" value="상세조회" class="btn btn-outline-secondary btn-sm" 
+									style="font-weight: bold;margin:0px auto;" onclick="location.href='http://localhost/recruit-app/manage/user/detail.jsp';"/></td>
 							</tr>
 							<tr class="list0">
 								<td>5</td>
@@ -177,7 +181,8 @@
 								<td>j****@gmail.com</td>
 								<td>010-****-1111</td>
 								<td>2018-02-11</td>
-								<td><input type="button" value="상세조회" class="btn btn-outline-secondary btn-sm" style="font-weight: bold;margin:0px auto;" /></td>
+								<td><input type="button" value="상세조회" class="btn btn-outline-secondary btn-sm" 
+									style="font-weight: bold;margin:0px auto;" onclick="location.href='http://localhost/recruit-app/manage/user/detail.jsp';"/></td>
 							</tr>
 						</tbody>
 					</table>
