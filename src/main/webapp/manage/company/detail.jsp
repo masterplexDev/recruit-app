@@ -47,13 +47,23 @@
 #companyIntro{
 	border:1px solid #dedede;
 }
+/* body, html {
+	height: 100% !important;
+	margin: 0 !important;
+	overflow: hidden !important;
+}
+
+main {
+	height: 100% !important;
+	overflow-y: auto !important;
+} */
 </style>
 <!-- golgolz end -->
 </head>
 <body>
 	<jsp:include page="../../assets/layout/admin/header.jsp" />
 	<main
-		class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ps ps--active-y">
+		class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ps ps--active-y" style="height: 100%; overflow-y: scroll">
 		<nav
 			class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl"
 			id="navbarBlur" data-scroll="true">
