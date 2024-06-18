@@ -15,7 +15,8 @@ import lombok.ToString;
 @ToString
 public class RecruitDomain {
     private int id;
-    private String company;
+    private String companyCode;
+    private String companyName;
     private String position;
     private String title;
     private String content;
@@ -29,6 +30,6 @@ public class RecruitDomain {
     private String salaryCategory;
     private int salary;
     private String careerStandard;
-    private int careerStandardSum;
+    private String careerStandardSum;
     private String eduStandard;
 }
