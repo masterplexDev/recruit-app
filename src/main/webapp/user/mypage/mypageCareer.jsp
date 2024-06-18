@@ -11,7 +11,6 @@
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-	<link href="view-source:https://www.jobkorea.co.kr/help/inquiry" rel="stylesheet" type="text/css" />
 	<link href="https://i.jobkorea.kr/content/css/ver_2/mtc/mtc_lounge-sv-202402231655.css" rel="stylesheet" type="text/css" />
 	<link href="https://i.jobkorea.kr/content/css/ver_2/help/help-sv-202402231655.css" rel="stylesheet" type="text/css" />
 	
@@ -151,7 +150,7 @@
     	$("#qna_menu").addClass("bg-gradient-primary");
 	});
 </script>
-	<script text="text/javascript">
+	<script type="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
 			<!-- golgolz end -->
@@ -221,7 +220,8 @@
 								<li>사원수 6372명</li>
 							</ul>
 							</td>
-							<td class="tableHeader"><input type="button" class="btn btn-outline-success btn-sm register-btn" value="리뷰 작성"></td>
+							<td class="tableHeader"><input type="button" name="writeRivew" class="btn btn-outline-success btn-sm register-btn" 
+								value="리뷰 작성" onclick="location.href='http://localhost/recruit-app/review/reviewWrite.jsp';"></td>
 						</tr>
 						<tr class="tableMiddle">
 							<td class="tableHeader"><img src="http://localhost/recruit-app/assets/images/mypage/user_default.png" style="width: 70px; height: 70px;"></td>
@@ -232,7 +232,8 @@
 								<li>사원수 6372명</li>
 							</ul>
 							</td>
-							<td class="tableHeader"><input type="button" class="btn btn-outline-success btn-sm register-btn" value="리뷰 작성"></td>
+							<td class="tableHeader"><input type="button" name="writeRivew" class="btn btn-outline-success btn-sm register-btn" 
+								value="리뷰 작성" onclick="location.href='http://localhost/recruit-app/review/reviewWrite.jsp';"></td>
 						</tr>
 						<tr class="tableMiddle">
 							<td class="tableHeader"><img src="http://localhost/recruit-app/assets/images/mypage/user_default.png" style="width: 70px; height: 70px;"></td>
@@ -243,7 +244,8 @@
 								<li>사원수 6372명</li>
 							</ul>
 							</td>
-							<td class="tableHeader"><input type="button" class="btn btn-outline-success btn-sm register-btn" value="리뷰 작성"></td>
+							<td class="tableHeader"><input type="button" name="writeRivew" class="btn btn-outline-success btn-sm register-btn" 
+								value="리뷰 작성" onclick="location.href='http://localhost/recruit-app/review/reviewWrite.jsp';"></td>
 						</tr>
 						<tr class="tableMiddle">
 							<td class="tableHeader"><img src="http://localhost/recruit-app/assets/images/mypage/user_default.png" style="width: 70px; height: 70px;"></td>
@@ -254,7 +256,8 @@
 								<li>사원수 6372명</li>
 							</ul>
 							</td>
-							<td class="tableHeader"><input type="button" class="btn btn-outline-success btn-sm register-btn" value="리뷰 작성"></td>
+							<td class="tableHeader"><input type="button" name="writeRivew" class="btn btn-outline-success btn-sm register-btn" 
+								value="리뷰 작성" onclick="location.href='http://localhost/recruit-app/review/reviewWrite.jsp';"></td>
 						</tr>
 					</table>
                 </div>

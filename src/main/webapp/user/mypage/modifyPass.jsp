@@ -83,15 +83,36 @@
     </style>
 	<style type="text/css">
 		<!-- golgolz start -->
-		
+			.button{
+            width: 120px; height: 40px; border: 1px solid rgba(112, 115, 124, 0.22); border-radius: 10px;
+            }
+            .btn{
+            width: 120px; height: 40px; font-size: 15px;
+            }
+            .modifyPassBtn{
+            background-color: grey;
+            color: #FFFFFF;
+            }
+            .modifyBtn{
+            background-color: skyblue;
+            color: #FFFFFF;
+            }
 		<!-- golgolz end -->
 	</style>
 	<script type="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
-			$("#modifyUser").click(function(){
-      		  location.href = "modifyUserInfo.jsp";
-      	  });
+				$("#modifyUser").click(function(){
+	      		  location.href = "modifyUserInfo.jsp";
+	      	  	});//click
+				$('#cancleBtn').click(function(){
+	      	  	  alert('비밀번호 변경이 취소 되었습니다.');
+	      	  	  location.href='mypageUserInfo.jsp';		
+	      	  	});//click	
+	      	  	$('#modifyBtn').click(function(){
+	      	  	  alert('비밀번호 변경이 완료 되었습니다.');
+	      	  	  location.href='mypageUserInfo.jsp';
+	      	  	});//click
 			<!-- golgolz end -->
 		});
 	</script>
@@ -134,27 +155,11 @@
                   <input type="password" name="password" autocomplete="on" class="css-1sbrczv" value="*********">
                   </li>
                    <li data-list-type="SOCIAL_LINK" tabindex="0" style="text-align: center;">
-                   <input type="button" value="수정완료" class="btn btn-outline-warning btn-sm update-btn" style="margin: 5px;">
-                   <input type="button" value="취소" class="btn btn-outline-danger btn-sm remove-btn" style="margin: 5px;">
+                   <input type="button" id="modifyBtn" value="수정완료" class="btn btn-outline-warning btn-sm update-btn" style="margin: 5px;">
+                   <input type="button" id="cancleBtn" value="취소" class="btn btn-outline-danger btn-sm remove-btn" style="margin: 5px;">
                    </li>
                   </ul></article>
                 </section>
-                <style>
-                	.button{
-                		width: 120px; height: 40px; border: 1px solid rgba(112, 115, 124, 0.22); border-radius: 10px;
-                	}
-                	.btn{
-                		width: 120px; height: 40px; font-size: 15px;
-                	}
-                	.modifyPassBtn{
-                		background-color: grey;
-                		color: #FFFFFF;
-                	}
-                	.modifyBtn{
-                		background-color: skyblue;
-                		color: #FFFFFF;
-                	}
-                </style>
               </div>
             </div>
             <div

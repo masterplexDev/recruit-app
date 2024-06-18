@@ -244,24 +244,24 @@ dl {
 					<section class="Body_Body__MlgY5">
 					<div style="text-align: left;  margin-bottom:15px; margin-left:15px;"><h1 style="font-size: 25px;"><strong>지원 현황</strong></h1></div>
 						<ul class="Summary_Summary__AO8Mn" >
-							<li class="Summary_Summary_list__AyGdy" style="padding-right: 15px;"><a
-								href="/status/applications/applied" class=""><dl>
+							<li class="Summary_Summary_list__AyGdy" style="padding-right: 15px;">
+							<a href="#void" class="Summary_Summary_list__AyGdy Summary_Summary_list_active__qwfF0"><dl>
 										<dt>0</dt>
 										<dd>전체</dd>
 									</dl></a></li>
 							<li class="Summary_Summary_list__AyGdy" ><a
-								href="/status/applications/applied?status=complete" class=""><dl>
+								href="#void" class=""><dl>
 										<dt>0</dt>
 										<dd>지원 완료</dd>
 									</dl></a></li>
 							<li
-								class="Summary_Summary_list__AyGdy Summary_Summary_list_active__qwfF0"><a
-								href="/status/applications/applied?status=hire" class=""><dl>
+								class="Summary_Summary_list__AyGdy"><a
+								href="#void" class=""><dl>
 										<dt>0</dt>
 										<dd>면접 합격</dd>
 									</dl></a></li>
 							<li class="Summary_Summary_list__AyGdy"><a
-								href="/status/applications/applied?status=reject" class=""><dl>
+								href="#void" class=""><dl>
 										<dt>0</dt>
 										<dd>불합격</dd>
 									</dl></a></li>
