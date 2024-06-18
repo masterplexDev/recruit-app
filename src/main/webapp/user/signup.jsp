@@ -48,6 +48,9 @@
 				language: 'ko' // 한국어 설정
 			});
 			
+			$('#backBtn').click(function(){
+				location.href='http://localhost/recruit-app/user/login.jsp';
+			});
 			
 			$('#duplBtn').click(function(){
 				duplEmail();
@@ -61,7 +64,6 @@
 				var isValidateEmail = validateEmail();
 				var isValidatePass = validatePass();
 				var resultFlag = duplFlag && nullFlag && passFlag && mailFlag;
-				
 				if(!isValidateEmail){
 					alert('잘못된 이메일 형식입니다.');
 					return;
@@ -131,7 +133,7 @@
 			function duplEmail(){
 				var isDuplMail = 1==1;
 				var msg ='';
-				var flag= !isDuplMail
+				var flag= isDuplMail
 				
 				if(isDuplMail){
 					msg='사용 가능한 이메일입니다.';
@@ -217,7 +219,8 @@
 		<main class="JobsFeed_Jobsfeed__DpeV9">  
 			<section class="Section_Section__P1hhc">
 			<!-- golgolz start -->
-							<div class="css-hpuads"><button type="button" class="css-dkzxe">
+							<div class="css-hpuads">
+							<button type="button" class="css-dkzxe" id="backBtn">
 								<span class="css-1ihsymv"><svg
 								viewBox="0 0 24 24" color="rgba(55, 56, 60, 0.61)" class="css-1h47l4s">
 								<path fill-rule="evenodd" clip-rule="evenodd" fill="rgba(55, 56, 60, 0.61)"
@@ -258,23 +261,23 @@
 								<div class="css-env1z2"><label ="Typography" color="rgba(55, 56, 60, 0.61)"
 										for="username" class="css-afh7p0">이름</label></div>
 										<input type="text" placeholder="이름을 입력해주세요." name="username" id="name"
-									autocomplete="new-password" class="css-1sbrczv" value="">
+									autocomplete="new-password" class="css-1sbrczv" value="" maxlength="10">
 							</div>
 							<div>
-								<div class="css-env1z2"><label ="Typography" color="rgba(55, 56, 60, 0.61)"
-										for="mobile" class="css-afh7p0">휴대폰 번호</label></div>
+								<div class="css-env1z2"><label color="rgba(55, 56, 60, 0.61)"
+										for="phone" class="css-afh7p0">휴대폰 번호</label></div>
 								<div class="css-14o8ny9">
 									<div class="css-gjm025" style="margin-bottom: 20px;">
-									<input type="number" pattern="[0-9]*" placeholder="(예시) 01013245768" name="phone" id="phone"
-											autocomplete="on" class="css-1sbrczv" value="">
+									<input type="tel" pattern="[0-9]*" placeholder="(예시) 01013245768" name="phone" id="phone"
+											autocomplete="on" class="css-1sbrczv" value="" maxlength="13">
 								</div>
 							</div>
 								<div class="css-env1z2"><label ="Typography" color="rgba(55, 56, 60, 0.61)"
-										for="mobile" class="css-afh7p0">전화번호</label></div>
+										for="tel" class="css-afh7p0">전화번호</label></div>
 								<div class="css-14o8ny9">
 									<div class="css-gjm025" style="margin-bottom: 15px;">
-									<input type="number" pattern="[0-9]*" placeholder="(예시) 021234567" name="tel" id="tel" 
-											autocomplete="on" class="css-1sbrczv" value="">
+									<input type="tel" pattern="[0-9]*" placeholder="(예시) 021234567" name="tel" id="tel" 
+											autocomplete="on" class="css-1sbrczv" value="" maxlength="13">
 								</div>
 								</div>
 							</div>
