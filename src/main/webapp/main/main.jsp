@@ -238,6 +238,7 @@
     </div> 
   </article>
   
+  
   <!-- 기업 홍보란 -->
       <div class="page-wrapper" style="position:relative;"> <!--page slider --> 
   <div class="post-slider"> 
