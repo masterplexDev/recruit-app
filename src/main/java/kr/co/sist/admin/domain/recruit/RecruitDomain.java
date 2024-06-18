@@ -1,6 +1,7 @@
 package kr.co.sist.admin.domain.recruit;
 
 import java.sql.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,7 @@ public class RecruitDomain {
     private String title;
     private String content;
     private int peopleNum;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
     private Date endDate;
     private String hireCategory;
     private String workDay;

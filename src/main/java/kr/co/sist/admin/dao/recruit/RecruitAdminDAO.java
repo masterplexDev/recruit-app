@@ -20,6 +20,9 @@ public class RecruitAdminDAO {
         List<RecruitDomain> recruits = new ArrayList<RecruitDomain>();
         recruits = session.selectList("kr.co.sist.recruit.admin.selectRecruits");
 
+        for (RecruitDomain recruit : recruits) {
+            System.out.println(recruit.toString());
+        }
         return recruits;
     }
 }
