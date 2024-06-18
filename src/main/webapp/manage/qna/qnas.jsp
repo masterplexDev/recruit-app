@@ -108,7 +108,7 @@
 							<!-- 	<div class="listBtmArea" >
 									<div class="tplPagination">
 										<div class="tplPagination">
-											<ul>
+											<ul>  
 												<li><span class="now">1</span></li>
 											</ul>
 										</div>
