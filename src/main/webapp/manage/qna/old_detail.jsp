@@ -15,7 +15,7 @@
 <jsp:include page="../../assets/layout/admin/lib.jsp" />
 
 <style type="text/css">
-	#qnaDetailFrm{margin:54px 40px 40px 280px; width:1465px; padding-left:28px;}
+	#qnaDetailFrm{margin:54px 40px 40px 280px; width:1614px; padding-left:28px;}
 </style>
 
 <script type="text/javascript">
@@ -77,7 +77,7 @@
 						<div class="listBtmArea">
 							<div class="btnListExDn">
 								<!-- <a href="qnas.jsp" class="btnMtcTpl">목록</a> -->
-								<input type="button" value="목록" class="btn btn-outline-dark btn-sm detail-control" >
+								<input type="button" value="목록" class="btn btn-outline-dark btn-sm detail-control" onclick="location.href='http://localhost/recruit-app/manage/qna/qnas.jsp'">
 							</div>
 							<!-- <button type="button" onclick="javascript:window.scrollTo(0,0);" class="btnMtcTpl">TOP</button> -->
 						</div>
