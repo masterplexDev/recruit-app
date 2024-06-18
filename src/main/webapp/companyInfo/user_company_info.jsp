@@ -61,6 +61,7 @@
                     </div> -->
                 </div>
                 <div style="border:1px solid #ccc; padding-top:40px; padding-bottom:10px; margin:auto; width:650px;">
+                <div class="total">기업 검색<span class="subtitle"></span></div>
                     <table style="margin:auto; border-collapse:collapse; width:500px; height:170px">
                         <tbody>
                             <tr style="border-top:1px solid #ccc; border-bottom:1px solid #ccc;">

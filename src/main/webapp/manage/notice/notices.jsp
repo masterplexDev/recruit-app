@@ -6,6 +6,7 @@
 <style type="text/css">
 </style>
 <!-- golgolz start -->
+<link href="http://localhost/recruit-app/assets/css/material-dashboard.min.css" rel="stylesheet" />
 <link href="http://localhost/recruit-app/assets/css/manage/order/admin.css" rel="stylesheet" />
 <link href="http://localhost/recruit-app/assets/css/manage/order/reset.css" rel="stylesheet" />
 <!-- golgolz end -->
@@ -153,15 +154,15 @@
 					<div style="justify-content: center;">
 					<nav aria-label="Page navigation example">
 					  <ul class="pagination" style="justify-content: center;">
-					    <li class="page-item">
+					    <li>
 					      <a class="page-link" href="#" aria-label="Previous">
 					        <span aria-hidden="true">&laquo;</span>
 					      </a>
 					    </li>
-					    <li class="page-item"><a class="page-link" href="#">1</a></li>
-					    <li class="page-item"><a class="page-link" href="#">2</a></li>
-					    <li class="page-item"><a class="page-link" href="#">3</a></li>
-					    <li class="page-item">
+					    <li><a class="page-link" href="#">1</a></li>
+					    <li><a class="page-link" href="#">2</a></li>
+					    <li><a class="page-link" href="#">3</a></li>
+					    <li>
 					      <a class="page-link" href="#" aria-label="Next">
 					        <span aria-hidden="true">&raquo;</span>
 					      </a>
