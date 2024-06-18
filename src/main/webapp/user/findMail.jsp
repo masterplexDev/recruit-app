@@ -4,7 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<jsp:include page="../assets/layout/user/lib.jsp" />  
+	<jsp:include page="../assets/layout/user/lib.jsp" />
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<!-- golgolz start -->
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="shortcut icon" href="https://static.wanted.co.kr/favicon/new/favicon.ico">
@@ -18,6 +19,57 @@
 	<script type="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
+			inputPhone = $('#phone');
+			inputName = $('#name');
+			findBtn = $('#findBtn');
+			
+			findBtn.click(function(){
+				var valiPhone = validatePhoneNumber();
+				var nullFlag = chkNull();
+				if( valiPhone && nullFlag ){
+					alert('계정 찾기 성공!');
+					location.href='http://localhost/recruit-app/user/findMailComplete.jsp';
+				}else{
+					alert('입력하신 휴대폰번호의 형식이 잘못 되었습니다.');
+				}
+			});//click
+			
+			function chkPhoneLength(){
+				var phoneLength = inputPhone.val().trim().length;
+				var maxLength = 11;
+				if(phoneLength > maxLength){
+					inputPhone.val(inputPhone.val().substring(0,maxLength));
+				}
+			}//function
+			
+			function chkNull(){
+				phoneNotEmpty = inputPhone.val().trim() !== '';
+				nameNotEmpty = inputName.val().trim() != '';
+				isNullFlag = phoneNotEmpty && nameNotEmpty;
+				
+				if(isNullFlag){
+					findBtn.prop('disabled',false);
+				}else{
+					findBtn.prop('disabled',true);
+				}
+				
+				return isNullFlag;
+			}//function
+			
+			function validatePhoneNumber() {
+				  var chkPhoneNumber = inputPhone.val().trim().replace(/-/g, '');
+				  // 시작문자 010/011, 숫자로만 구성, 길이 유효성 검증
+				  var isValid = /^(010|011)\d{7,8}$/.test(chkPhoneNumber); 
+				  return isValid;
+			}//function
+			
+			//초기 로딩
+			chkNull();
+			
+			inputPhone.on('input',chkPhoneLength);
+			inputPhone.on('input',chkNull);
+			inputName.on('input',chkNull);
+			
 			<!-- golgolz end -->
 		});
 	</script>
@@ -49,18 +101,19 @@
 							<div class="css-env1z2"><label data-testid="Typography" color="rgba(55, 56, 60, 0.61)"
 									for="mobile" class="css-afh7p0">이름</label></div>
 							<div class="css-14o8ny9">
-								<div class="css-gjm025"><input type="text"
-										placeholder="이름을 입력해주세요" name="name" class="css-1sbrczv" value=""></div>
+								<div class="css-gjm025">
+							<input type="text" placeholder="이름을 입력해주세요" id="name" class="css-1sbrczv" value="" maxlength="10"></div>
 							</div>
 							<br/>
-							<div class="css-env1z2"><label data-testid="Typography" color="rgba(55, 56, 60, 0.61)"
-									for="mobile" class="css-afh7p0">휴대폰 번호</label></div>
+							<div class="css-env1z2"><label color="rgba(55, 56, 60, 0.61)"
+									for="phone" class="css-afh7p0">휴대폰 번호(-제외)</label></div>
 							<div class="css-14o8ny9">
-								<div class="css-gjm025"><input type="number" pattern="[0-9]*"
+								<div class="css-gjm025">
+							<input type="tel" pattern="[0-9]*" id="phone"
 										placeholder="(예시) 01013245768" name="phone" class="css-1sbrczv" value=""></div>
 							</div>
-							<button type="button" disabled="" data-testid="Button" class="css-1w1wifl"><span
-									data-testid="Typography" color="#000000" class="css-kfktv3">계속</span></button>
+							<button type="button" id="findBtn" class="css-1w1wifl"><span
+									data-testid="Typography" color="#000000" class="css-kfktv3">계정 찾기</span></button>
 						</div>
 					</div>
 				</div>

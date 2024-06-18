@@ -75,11 +75,12 @@
 			    <div class="tbCell">
 			    <div class="mtcSltBx listLenSel">
 			    <label for="lb_view_1" id="lb_type">선택</label>
-			       <select name="" id="lb_view_1" title="문의 종류 선택">
-			          <option value="-1">선택</option>
-			          <option value="0">서비스 이용문의</option>
-			          <option value="699" >불량정보·오류 신고</option>
-			          <option value="2">서비스 제안·칭찬</option>
+			    <select>
+			       <!-- <select name="" id="lb_view_1" title="문의 종류 선택"> -->
+			          <option value="선택">선택</option>
+			          <option value="서비스 이용문의">서비스 이용문의</option>
+			          <option value="불량정보·오류 신고" >불량정보·오류 신고</option>
+			          <option value="서비스 제안·칭찬">서비스 제안·칭찬</option>
 			       </select>
 			       </div>
 			       </div>
@@ -136,7 +137,8 @@
 			      3년간 보관</span>합니다.<br>회원님은 동의를 거부할 수 있으며, 거부 시 응대지원이 원활하지 않을 수 있습니다.</dd> </dl>
 			      </div>
 			      <div class="inquiryBtn" style="margin-bottom:30px">
-			         <button type="submit" class="btnInq"><span>문의하기</span></button>
+			       <!--   <button type="submit" class="btnInq"><span>문의하기</span></button> -->
+			         <button type="button" class="btnInq"><span>문의하기</span></button>
 			         <button type="button" class="btnInq btnCancel"><span>취소</span></button>
 			      </div>
 			      </fieldset>

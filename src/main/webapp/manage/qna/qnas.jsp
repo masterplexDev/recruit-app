@@ -19,7 +19,7 @@
 <jsp:include page="../../assets/layout/admin/lib.jsp" />
 
 <style type="text/css">
-	#qnaFrm{margin:30px 40px 40px 236px; width:1500px; padding-left:28px;}
+	#qnaFrm{margin:30px 40px 40px 236px; width:1648px; padding-left:28px;}
 	탑라바레
 </style>
 <script type="text/javascript">
@@ -108,7 +108,7 @@
 							<!-- 	<div class="listBtmArea" >
 									<div class="tplPagination">
 										<div class="tplPagination">
-											<ul>
+											<ul>  
 												<li><span class="now">1</span></li>
 											</ul>
 										</div>

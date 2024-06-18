@@ -23,7 +23,7 @@
 		    var passwordInput = $('input[name="password"]');
 		    var loginButton = $("#loginBtn");
 			
-			$("#loginBtn").click(function(){
+			$('#loginBtn').click(function(){
 				loginFlag = checkInputs();
 				if(loginFlag === true){
 					login();
@@ -35,6 +35,10 @@
 				
 			});
 			
+			// 회원가입 페이지 이동
+			$('#signupBtn').click(function(){
+				location.href='http://localhost/recruit-app/user/signup.jsp';
+			});
 
 		    // 로그인 조건 충족 여부 확인 / 로그인 버튼 활성화, 비활성화
 		    function checkInputs() {
@@ -79,6 +83,7 @@
 		    	
 		     function login(){
 		    	 	$("#loginFrm").submit();
+			    	location.href='http://localhost/recruit-app/main/main.jsp';
 			    	alert("로그인에 성공 했습니다.");
 			    }
 		    
@@ -143,8 +148,7 @@
 												<p data-testid="Typography" color="#000000"
 													class="css-1q5pm8j">또는</p>
 												<div class="button-group" style="margin-bottom: 80px;">
-													<button type="button" data-testid="Button"
-														class="css-1akojk6">
+													<button type="button" class="css-1akojk6" id="signupBtn">
 														<span data-testid="Typography" color="#000000"
 															class="css-kfktv3">
 															<a href="http://localhost/recruit-app/user/signup.jsp">회원가입</a></span>

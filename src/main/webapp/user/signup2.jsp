@@ -31,16 +31,92 @@
 			.css-1b2vfnn {
 				padding: 0;
 			}
+			option{
+				font-size: 15px;
+			}
 		<!-- golgolz end -->
 	</style>
 	<script type="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
-			$('#datepicker').datepicker({
+			/* $('#datepicker').datepicker({
 				format: 'yyyy-mm-dd', // 날짜 형식 지정
 				autoclose: true, // 날짜 선택 후 자동으로 닫힘
 				language: 'ko' // 한국어 설정
+			}); */
+			
+			$('#backBtn').click(function(){
+				location.href='http://localhost/recruit-app/user/login.jsp';
+			});//click
+			
+			// 전체 동의 체크박스 상태 업데이트
+			$("#chkAll").change(function() {
+				$("input[name='chkbox']").prop('checked', this.checked);
+				chkNull();
+			});//change
+			
+			// 개별 체크박스 변경 시 전체 동의 체크박스 상태 업데이트
+			$("input[name='chkbox']").not("#chkAll").change(function() {
+			    var allChecked = $("input[name='chkbox']").not("#chkAll").length === $("input[name='chkbox']:checked").not("#chkAll").length;
+			    $("#chkAll").prop('checked', allChecked);
+			    chkNull();
 			});
+			
+			
+			var signupBtn = $('#signupBtn');
+			var selectQuestion = $('#question');
+			var inputAnswer = $('#answer');
+			var inputBirth = $('#birthday');
+			var inputAddr = $('#addr');
+			var chkGender = $('input[name="gender"]:checked');
+			
+			
+			signupBtn.click(function(){
+				var flag = chkNull();
+				if(flag){ // 성공 시 메인 페이지로 이동
+					$('#signupFrm').submit();
+					location.href='http://localhost/recruit-app/main/main.jsp';
+					alert('회원가입 성공!');
+				}else {
+					alert('회원가입에 실패했습니다. 입력 정보를 다시 확인해주세요.');
+				}
+			});//click
+			
+			function chkNull(){
+				var genderNotEmpty = chkGender.val() !== '';
+				var birthNotEmpty = inputBirth.val().trim() !== '';
+				var addrNotEmpty = inputAddr.val().trim() !== '';
+				var questionFlag = selectQuestion.val() !== '' && selectQuestion.val() !== '0';
+				var answerNotEmpty = inputAnswer.val().trim() !== '';
+				var allCheckeFlag = $("input[name='chkbox']:checked").length === 4;
+				var notNullFlag = genderNotEmpty && birthNotEmpty && addrNotEmpty && questionFlag && answerNotEmpty && allCheckeFlag;
+				
+				if(notNullFlag){
+					signupBtn.prop('disabled',false);
+				}else{
+					signupBtn.prop('disabled',true);
+				}
+				return notNullFlag;
+			}//function
+			
+			function chkDate(){
+				var today = new Date();
+				var selectDay = new Date(inputBirth.val());
+				if(selectDay > today){
+					alert('잘못된 형식의 생년월일입니다.');
+					inputBirth.val('');
+				}
+			}//function
+			
+			//초기 로딩
+			chkNull();
+			
+			inputBirth.on('input',chkNull);
+			inputBirth.on('input',chkDate);
+			inputAnswer.on('input',chkNull);
+			inputAddr.on('input',chkNull);
+			selectQuestion.on('click',chkNull);
+			
 			<!-- golgolz end -->
 		});//ready
 	</script>
@@ -51,7 +127,8 @@
 		<main class="JobsFeed_Jobsfeed__DpeV9">  
 			<section class="Section_Section__P1hhc">
 			<!-- golgolz start -->
-							<div class="css-hpuads"><button type="button" class="css-dkzxe">
+							<div class="css-hpuads">
+							<button type="button" class="css-dkzxe" id="backBtn">
 								<span class="css-1ihsymv"><svg
 								viewBox="0 0 24 24" color="rgba(55, 56, 60, 0.61)" class="css-1h47l4s">
 								<path fill-rule="evenodd" clip-rule="evenodd" fill="rgba(55, 56, 60, 0.61)"
@@ -71,28 +148,28 @@
 						<div class="css-1jxi7lq"></div>
 					</div>
 					<div class="css-ng7qrx">
-						<form class="css-1b2vfnn">
+						<form class="css-1b2vfnn" id='signupFrm'>
 							<div style="margin-top: 20px; margin-bottom: 5px;"><h1 style="font-size: 15px">기타 인적사항</h1></div>
 							<div class="css-evy94o">
-								<div class="css-env1z2" ><label ="Typography" color="rgba(55, 56, 60, 0.61)"
-										for="birthday" class="css-afh7p0" >성별</label></div>
+								<div class="css-env1z2" >
+								<label color="rgba(55, 56, 60, 0.61)" for="birthday" class="css-afh7p0" >성별</label></div>
 								<div class="" style="text-align: center">
-								<span style="margin-right: 10px; font-size: 15px;"><input type="radio" name="gender" class="gender" value="남자" style="width: 15px; height: 15px; margin: 3px;">남자</span>
-								<span style="margin-left: 10px; font-size: 15px;"><input type="radio" name="gender" class="gender" value="여자" style="width: 15px; height: 15px; margin: 3px;">여자</span></div>
+								<span style="margin-right: 10px; font-size: 15px;">
+								<input type="radio" name="gender" class="gender" value="남자" style="width: 15px; height: 15px; margin: 3px;" checked>남자</span>
+								<span style="margin-left: 10px; font-size: 15px;">
+								<input type="radio" name="gender" class="gender" value="여자" style="width: 15px; height: 15px; margin: 3px;">여자</span></div>
 							</div>
 							<div class="css-evy94o" style="margin-top: 20px;">
-								<div class="css-env1z2"><label ="Typography" color="rgba(55, 56, 60, 0.61)"
-										for="birthday" class="css-afh7p0">생년월일</label></div>
+								<div class="css-env1z2">
+								<label color="rgba(55, 56, 60, 0.61)" for="birthday" class="css-afh7p0">생년월일</label></div>
 								<div class="input-group" style="text-align: center">
-								<input type="text" class="css-1sbrczv" id="datepicker" style="background-color: #FFFFFF; width: 85%;" placeholder="생년월일을 선택해주세요." readonly>
-								<img src="http://localhost/recruit-app/assets/images/mypage/calenderImg.png" alt="달력 아이콘" class="input-group-text" style="width: 15%; height: 48px;">
+								<input type="date" class="css-1sbrczv" id="birthday" style="background-color: #FFFFFF; width: 100%;" placeholder="생년월일을 선택해주세요." >
 								</div>
 							</div>
 							<div class="css-evy94o">
-								<div class="css-env1z2"><label ="Typography" color="rgba(55, 56, 60, 0.61)"
-										for="username" class="css-afh7p0">주소</label></div><input type="text"
-									placeholder="주소를 입력해주세요." name="addr" ="Input_username"
-									autocomplete="new-password" class="css-1sbrczv" value="">
+								<div class="css-env1z2">
+								<label color="rgba(55, 56, 60, 0.61)" for="username" class="css-afh7p0">주소</label></div>
+								<input type="text" placeholder="주소를 입력해주세요." id="addr" autocomplete="" class="css-1sbrczv" value="" maxlength="100">
 							</div>
 							<div class="question-css" style="margin-top: 20px; margin-bottom:30px;">
 								<div style="text-align: center; margin: 15px; ">
@@ -100,45 +177,46 @@
 								</div>
 								<div class="css-2w308u">
 								
-								<select class="css-14pvjnj">
-									<option>질문선택</option>
-									<option>질문1</option>
-									<option>질문2</option>
-									<option>질문3</option>
-									<option>질문4</option>
+								<select class="css-14pvjnj" id="question">
+									<option value="0">질문선택</option>
+									<option value="1">당신이 가장 좋아하는 영화 이름은 무엇인가요?</option>
+									<option value="2">당신의 별명은 무엇인가요?</option>
+									<option value="3">가장 친한 친구 이름은 무엇인가요?</option>
+									<option value="4">당신이 태어난 도시 이름은 무엇인가요?</option>
+									<option value="5">당신이 가장 좋아하는 색깔은 무엇인가요?</option>
 								</select>
 								<div class="css-1px7y17"><span class="css-1ihsymv"><svg viewBox="0 0 24 24" class="css-1h47l4s"><path fill="rgba(55, 56, 60, 0.61)" d="M3.08071 7.58071C3.58839 7.07303 4.41151 7.07303 4.91919 7.58071L12 14.6615L19.0807 7.58071C19.5884 7.07303 20.4115 7.07303 20.9192 7.58071C21.4269 8.08839 21.4269 8.91151 20.9192 9.41919L12.9192 17.4192C12.4115 17.9269 11.5884 17.9269 11.0807 17.4192L3.08071 9.41919C2.57303 8.91151 2.57303 8.08839 3.08071 7.58071Z"></path></svg></span></div>
 								</div>
 								<div class="answer-css" style="margin-top: 10px; ">
-									<input type="text" class="css-1sbrczv" placeholder="내용을 입력해주세요.">
+									<input type="text" id="answer" class="css-1sbrczv" placeholder="내용을 입력해주세요." maxlength="160">
 								</div>
 							</div>
 							<div class="css-1n70r34" style="margin-top: 20px; margin-bottom: 30px;">
 								<div class="css-5hccr8" style="margin-bottom:5px;">
-									<input type="checkbox" style="width: 15px; height: 15px; margin-top: 3px;">
+									<input type="checkbox" style="width: 15px; height: 15px; margin-top: 3px;" id="chkAll" name="chkbox">
 									<div class="css-1smbjja">
-										<p ="Typography" color="#171719" class="css-5iu2fa">전체 동의</p>
+										<p color="#171719" class="css-5iu2fa">전체 동의</p>
 									</div>
 								</div>
 								<div class="css-sfv171">
 									<div class="css-5hccr8">
-											<input type="checkbox" style="width: 15px; height: 15px; margin-top: 3px;">
+											<input type="checkbox" style="width: 15px; height: 15px; margin-top: 3px;" name="chkbox">
 										<div class="css-1smbjja">
-											<p ="Typography" color="rgba(55, 56, 60, 0.61)"
+											<p color="rgba(55, 56, 60, 0.61)"
 												class="css-12qszhy">만 14세 이상입니다. (필수)</p>
 										</div>
 									</div>
 									<div class="css-5hccr8">
-										<input type="checkbox" style="width: 15px; height: 15px; margin-top: 3px;">
+										<input type="checkbox" style="width: 15px; height: 15px; margin-top: 3px;" name="chkbox">
 										<div class="css-1smbjja">
-											<p ="Typography" color="rgba(55, 56, 60, 0.61)"
+											<p color="rgba(55, 56, 60, 0.61)"
 												class="css-12qszhy">Goojzzk 이용약관 동의 (필수)</p>
 										</div>
 									</div>
 									<div class="css-5hccr8">
-										<input type="checkbox" style="width: 15px; height: 15px; margin-top: 3px;">
+										<input type="checkbox" style="width: 15px; height: 15px; margin-top: 3px;" name="chkbox">
 										<div class="css-1smbjja">
-											<p ="Typography" color="rgba(55, 56, 60, 0.61)"
+											<p color="rgba(55, 56, 60, 0.61)"
 												class="css-12qszhy">Goojzzk 개인정보 수집 및 이용 동의 (필수)</p>
 										</div>
 									</div>
@@ -147,7 +225,7 @@
 							<div class="css-1tbd2jx">
 								<div class="css-1csonyh"></div>
 								<div class="css-270vek"></div>
-								<button type="submit" class="css-1yzn4b"><span ="Typography" color="#000000"
+								<button type="button" class="css-1yzn4b" id="signupBtn"><span color="#000000"
 										class="css-kfktv3">가입하기</span></button>
 							</div>
 						</form>
