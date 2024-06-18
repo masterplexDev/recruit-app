@@ -27,11 +27,19 @@
 	});
 </script>
 <!-- golgolz start -->
+<jsp:include page="../../../assets/layout/admin/lib.jsp" />
 <link href="http://localhost//recruit-app/assets/css/pagenation.css" rel="stylesheet" />
 <link href="http://localhost//recruit-app/assets/css/manage/order/admin.css" rel="stylesheet" />
 <link href="http://localhost//recruit-app/assets/css/manage/order/reset.css" rel="stylesheet" />
+<style>
+	#status{
+		margin-top : 5px;
+		font-size: 13px;
+		font-weight: bold;
+		font-color: #999;
+	}
+</style>
 <!-- golgolz end -->
-<jsp:include page="../../../assets/layout/admin/lib.jsp" />
 </head>
 <body>
 	<jsp:include page="../../../assets/layout/admin/header.jsp" />
@@ -53,8 +61,8 @@
 					</ol>
 					<h6 class="font-weight-bolder mb-0">지원자 이력서 리스트 관리</h6>
 					<div id="status">
-						<div>기업명 : 삼성전자</div>
-						<div>공고명 : 24년 상반기 백엔드 엔지니어</div>
+						<div style="font-weight: bold;">기업명 : 삼성전자</div>
+						<div style="font-weight: bold;">공고명 : 24년 상반기 백엔드 엔지니어</div>
 					</div>
 				</nav>
 			</div>
