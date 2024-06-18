@@ -37,7 +37,7 @@
                 data-attribute-id="gnb"
                 data-gnb-kind="event"
               >
-                <a href="https://www.wanted.co.kr/events"><span>기업</span></a>
+                <a href="http://localhost/recruit-app/companyInfo/user_company_info.jsp"><span>기업</span></a>
               </li>
               <li
                 class="Menu_MenuItem__wI1yA"

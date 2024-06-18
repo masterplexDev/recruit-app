@@ -60,7 +60,8 @@
                         </div>
                     </div> -->
                 </div>
-                <div style="border:1px solid #ccc; padding-top:40px; padding-bottom:10px; margin:auto; width:650px;">
+                <div style="border:1px solid #ccc; padding-top:30px; padding-bottom:10px; margin:auto; width:650px;">
+                <div style="margin-bottom:18px; font-size:20px"><strong>기업 검색</strong></div>
                     <table style="margin:auto; border-collapse:collapse; width:500px; height:170px">
                         <tbody>
                             <tr style="border-top:1px solid #ccc; border-bottom:1px solid #ccc;">

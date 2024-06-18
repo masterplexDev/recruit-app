@@ -53,7 +53,12 @@
 			});
 			
 			$('#duplBtn').click(function(){
-				duplEmail();
+				var mailFlag = chkEmail();
+				if(mailFlag){
+					duplEmail();
+				}else{
+					alert('잘못된 접근입니다.');
+				}
 			});//click
 			
 			$("#signup-next").click(function(){
@@ -65,19 +70,27 @@
 				var isValidatePass = validatePass();
 				var isValidatePhone = validatePhoneNumber();
 				var isValidateTel = validateTelNumber(); 
+				var isValidateName = validateName(); 
 				var resultFlag = duplFlag && nullFlag && passFlag && mailFlag;
 				
 				if(!isValidateEmail){
 					alert('잘못된 이메일 형식입니다.');
 					return;
-				}else if(!isValidatePass){
-					alert('잘못된 비밀번호 형식입니다.');
+				}
+				else if(!isValidateName){
+					alert('이름은 한글 또는 영문으로 최대 10자까지만 입력이 가능합니다.');
 					return;
-				}else if(!isValidatePhone){
+				}
+				else if(!isValidatePhone){
 					alert('잘못된 휴대폰번호 형식입니다.');
 					return;
-				}else if(!isValidateTel){
-					alert('잘못된 전화번호 형식입니다.');
+				}
+				else if(!isValidateTel){
+					alert('전화번호는 숫자로 최대 11자까지만 입력이 가능합니다.');
+					return;
+				}
+				else if(!isValidatePass){
+					alert('잘못된 비밀번호 형식입니다.');
 					return;
 				}
 				
@@ -234,6 +247,15 @@
 				  var isValid = /^\d{10,11}$/.test(chkTelNumber); 
 				  return isValid;
 			}//function
+			
+			// 이름 유효성 검증
+			function validateName() {
+				var name = inputName.val().trim();
+				// 이름 유효성 정규식: 10자 이내, 한글 또는 영문만 허용
+				var nameRegex = /^[가-힣a-zA-Z]{1,10}$/;
+
+				return nameRegex.test(name);
+				}//function
 			<!-- golgolz end -->
 		});//ready
 	</script>
@@ -257,10 +279,10 @@
 				<div class="css-1ktsezg">
 					<div class="css-1nm9gyu">
 						<div class="css-oan6e"><button type="button" class="css-1krggrv">
-								<p ="Typography" color="#000000" class="css-1ub1oa4">취소</p>
+								<p color="#000000" class="css-1ub1oa4">취소</p>
 							</button></div>
 						<div class="css-1iooy02">
-							<p ="Typography" color="#000000" class="css-14qpgc6">회원가입</p>
+							<p color="#000000" class="css-14qpgc6">회원가입</p>
 						</div>
 						<div class="css-1jxi7lq"></div>
 					</div>

@@ -51,7 +51,7 @@
 								<p class="css-14qpgc6" style="font-size: 16px; font-weight: normal;">l240523@Njh#</p>										
 							</div>
 							<div data-testid="Typography" color="#000000" class="css-ng7qrx" style="text-align: center;">
-								<a href="#void"><strong>비밀번호 변경하러 가기</strong></a>
+								<a href="http://localhost/recruit-app/user/mypage/modifyPass.jsp"><strong>비밀번호 변경하러 가기</strong></a>
 							</div>
 						</div>
 					</div>

@@ -14,33 +14,55 @@
 	<!-- golgolz end -->
 	<style>
 		<!-- golgolz start -->
+		.findResult.success {
+			  color: green;
+			}
+			
+		.findResult.error {
+			  color: red;
+			}
 		<!-- golgolz end -->
 	</style>
 	<script type="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
-			inputPhone = $('#phone');
-			inputName = $('#name');
-			findBtn = $('#findBtn');
+			var inputPhone = $('#phone');
+			var inputName = $('#name');
+			var findBtn = $('#findBtn');
+			var findResult = $('.findResult');
 			
 			findBtn.click(function(){
+				var msg = '';
 				var valiPhone = validatePhoneNumber();
 				var nullFlag = chkNull();
-				if( valiPhone && nullFlag ){
-					alert('계정 찾기 성공!');
-					location.href='http://localhost/recruit-app/user/findMailComplete.jsp';
+				var ResultFlag = valiPhone && nullFlag;
+				if(!valiPhone){
+					msg = '휴대폰 번호는 숫자로 최대 11자까지만 입력이 가능합니다.';
+					findResult.text(msg);
+					findResult.addClass('error');
+					findResult.show();
+					return;
+				}
+				
+				if(ResultFlag){
+					var isMailFlag = searchMail();
+					if(isMailFlag){
+						findResult.hide();
+						alert('계정 찾기 성공!');
+						location.href='http://localhost/recruit-app/user/findMailComplete.jsp';
+					}else {
+						msg = '입력하신 정보로 조회되는 정보가 없습니다.';
+						findResult.text(msg);
+						findResult.addClass('error');
+						findResult.show();
+					}
+					return;
 				}else{
-					alert('입력하신 휴대폰번호의 형식이 잘못 되었습니다.');
+					alert('문제가 발생 했습니다. 잠시 후 다시 시도해주세요.');
+					return;
 				}
 			});//click
 			
-			function chkPhoneLength(){
-				var phoneLength = inputPhone.val().trim().length;
-				var maxLength = 11;
-				if(phoneLength > maxLength){
-					inputPhone.val(inputPhone.val().substring(0,maxLength));
-				}
-			}//function
 			
 			function chkNull(){
 				phoneNotEmpty = inputPhone.val().trim() !== '';
@@ -63,15 +85,22 @@
 				  return isValid;
 			}//function
 			
+			function searchMail(){
+				
+				//DB 조회 결과 확인
+				var flag = true; // 임시 설정
+				
+				return flag;
+			}
+			
 			//초기 로딩
 			chkNull();
 			
-			inputPhone.on('input',chkPhoneLength);
 			inputPhone.on('input',chkNull);
 			inputName.on('input',chkNull);
 			
 			<!-- golgolz end -->
-		});
+		});//ready
 	</script>
 </head>
 <body>
@@ -96,8 +125,9 @@
 							<div class="css-1jxi7lq"></div>
 						</div>
 						<div class="css-ng7qrx">
-							<p data-testid="Typography" color="rgba(55, 56, 60, 0.61)" class="css-d08m0c" >계정을 찾기 위해
+							<p data-testid="Typography" color="rgba(55, 56, 60, 0.61)" class="css-d08m0c" style="margin-bottom: 5px;">계정을 찾기 위해
 								이름과 전화번호를 입력해주세요.</p>
+							<div class="findResult" style="display: none; text-align: center;"></div>
 							<div class="css-env1z2"><label data-testid="Typography" color="rgba(55, 56, 60, 0.61)"
 									for="mobile" class="css-afh7p0">이름</label></div>
 							<div class="css-14o8ny9">
@@ -110,7 +140,7 @@
 							<div class="css-14o8ny9">
 								<div class="css-gjm025">
 							<input type="tel" pattern="[0-9]*" id="phone"
-										placeholder="(예시) 01013245768" name="phone" class="css-1sbrczv" value=""></div>
+										placeholder="(예시) 01013245768" name="phone" class="css-1sbrczv" value="" maxlength="11"></div>
 							</div>
 							<button type="button" id="findBtn" class="css-1w1wifl"><span
 									data-testid="Typography" color="#000000" class="css-kfktv3">계정 찾기</span></button>
