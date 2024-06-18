@@ -16,7 +16,7 @@
 
 
 <style type="text/css">
-	#newQnaFrm{margin:54px 40px 40px 280px; width:1465px; padding-left:28px;}
+	#newQnaFrm{margin:54px 40px 40px 280px; width:1614px; padding-left:28px;}
 </style>
 
 <script type="text/javascript">
@@ -77,8 +77,8 @@
 
 						
 							<div class="btnListExDn">
-							<input type="button" value="목록" class="btn btn-outline-dark btn-sm detail-control" >
-							<input type="button" value="답변하기" class="btn btn-outline-secondary btn-sm" style="float:right">
+							<input type="button" value="목록" class="btn btn-outline-dark btn-sm detail-control" onclick="location.href='http://localhost/recruit-app/manage/qna/new_qnas.jsp'">
+							<input type="button" value="답변하기" class="btn btn-outline-success btn-sm float-right" onclick="location.href='http://localhost/recruit-app/manage/qna/answer_frm.jsp'"style="float:right">
 								<!-- <a href="new_qnas.jsp" class="btnMtcTpl">목록</a>  -->
 								<!-- <a href="answer_frm.jsp" class="btnMtcTpl">답변하기</a> -->
 							</div>
