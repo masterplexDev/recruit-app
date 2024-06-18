@@ -20,7 +20,7 @@
 
 <style type="text/css">
 	#qnaFrm{margin:30px 40px 40px 236px; width:1648px; padding-left:28px;}
-	탑라바레
+	
 </style>
 <script type="text/javascript">
 	$(function(){
@@ -33,7 +33,7 @@
 <body>
 	<jsp:include page="../../assets/layout/admin/header.jsp" />
 	<main
-		class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ps ps--active-y">
+		class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ps--active-y">
 		<nav
 			class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl"
 			id="navbarBlur" data-scroll="true">
@@ -105,27 +105,17 @@
 									</tbody>
 								</table>
 	
-							<!-- 	<div class="listBtmArea" >
-									<div class="tplPagination">
-										<div class="tplPagination">
-											<ul>  
-												<li><span class="now">1</span></li>
-											</ul>
-										</div>
-									</div>
-								</div> -->
-
-								<div style="justify-content: center; margin-top:30px">
+								<div style="justify-content: center;margin-top: 30px">
 									<nav aria-label="Page navigation example">
 										<ul class="pagination" style="justify-content: center;">
-											<li class="page-item"><a class="page-link" href="#"
-												aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+											<li><a class="page-link" href="#" aria-label="Previous">
+													<span aria-hidden="true">&laquo;</span>
 											</a></li>
-											<li class="page-item"><a class="page-link" href="#">1</a></li>
-											<li class="page-item"><a class="page-link" href="#">2</a></li>
-											<li class="page-item"><a class="page-link" href="#">3</a></li>
-											<li class="page-item"><a class="page-link" href="#"
-												aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+											<li><a class="page-link" href="#">1</a></li>
+											<li><a class="page-link" href="#">2</a></li>
+											<li><a class="page-link" href="#">3</a></li>
+											<li><a class="page-link" href="#" aria-label="Next">
+													<span aria-hidden="true">&raquo;</span>
 											</a></li>
 										</ul>
 									</nav>
