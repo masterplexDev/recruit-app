@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8" info=""%>
 
 <aside
-	class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-gradient-dark ps bg-white"
+	class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl fixed-start bg-gradient-dark ps bg-white"
 	id="sidenav-main">
 	<div class="sidenav-header">
 		<a class="navbar-brand m-0" href="http://localhost/recruit-app/manage/dashboard/dashboard.jsp">
