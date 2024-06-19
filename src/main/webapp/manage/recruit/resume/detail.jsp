@@ -13,44 +13,7 @@
     	$("#recruit_menu").addClass("bg-gradient-primary");
 	});
 </script>
-<style>
-.subtitle{
-	padding: 0px;
-	margin-top: 20px;
-}
-
-#dataForm div:first-child{
-	margin-top: 0px;
-}
-
-.container-fluid py-4 {
-	padding-top: 0px;!important
-}
-
-.detail-control {
-	font-size: 15px;
-	margin-right: 2px;
-}
-#school_table{
-	font-size: 14px;
-}
-#certification_table{
-	width: 70%;
-	font-size: 14px;
-}
-.horizontal_arrange{
-	text-align: center;
-}
-table{
-	width: 70%;
-}
-#status{
-	margin-top : 5px;
-	font-size: 13px;
-	font-weight: bold;
-	font-color: #999;
-}
-</style>
+<link href="http://localhost/recruit-app/assets/css/manage/resume/detail.css" rel="stylesheet" />
 <!-- golgolz end -->
 </head>
 <body>
@@ -61,22 +24,32 @@ table{
 			class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl"
 			id="navbarBlur" data-scroll="true" style="position:fixed; background-color: #FFFFFF; width:100%">
 			<div class="container-fluid py-1 px-3">
-				<nav aria-label="breadcrumb">
-					<ol
-						class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-						<li class="breadcrumb-item text-sm"><a
-							class="opacity-5 text-dark" href="javascript:;">
-							관리자 기능</a></li>
-						<!-- 하단의 대시보드 텍스트를 본인 기능으로 변경 필요  -->
-						<li class="breadcrumb-item text-sm text-dark active"
-							aria-current="page">지원 현황 관리</li>
-					</ol>
-					<h6 class="font-weight-bolder mb-0">지원자 이력서 상세보기</h6>
-					<div id="status">
-						<div>공고명 : 24년 상반기 백엔드 엔지니어</div>
-						<div>지원 현황 : 서류 불합격</div>
+				<div style="display:flex;">
+					<nav aria-label="breadcrumb">
+						<ol
+							class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+							<li class="breadcrumb-item text-sm"><a
+								class="opacity-5 text-dark" href="javascript:;">
+								관리자 기능</a></li>
+							<!-- 하단의 대시보드 텍스트를 본인 기능으로 변경 필요  -->
+							<li class="breadcrumb-item text-sm text-dark active"
+								aria-current="page">지원 현황 관리</li>
+						</ol>
+						<h6 class="font-weight-bolder mb-0">지원자 이력서 상세보기</h6>
+						<div id="status">
+							<div>공고명 : 24년 상반기 백엔드 엔지니어</div>
+							<div>지원 현황 : 서류 진행중</div>
+						</div>
+					</nav>
+					<div id="results">
+						서류 합격 여부 : <span style="font-weight: bold;">불합격</span><br>
+						면접 합격 여부 : <span style="font-weight: bold;">해당없음</span><br>
 					</div>
-				</nav>
+					<div id="resumeBtnContainer">
+						<input type="button" value="서류합격처리" class="btn btn-outline-success btn-sm goRegist resumeBtns" />
+						<input type="button" value="불합격처리" class="btn btn-outline-danger btn-sm resumeBtns" />
+					</div>
+				</div>
 			</div>
 		</nav>
 		<!-- golgolz start -->
@@ -307,12 +280,9 @@ table{
 								src="http://localhost/recruit-app/assets/images/manage/common/bul_subtitle.gif" />
 							자기소개서
 						</div>
-						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="border: 1px solid #333;">열정맨 우미연입니다.</textarea>
+						<p id="introduceContent">열정맨 우미연입니다.</p>
 						<div class="alignCenter">
-							서류 합격 여부 : <span style="font-weight: bold;">불합격</span><br>
-							면접 합격 여부 : <span style="font-weight: bold;">해당없음</span><br>
-							<input type="button" value="서류합격처리" class="btn btn-outline-success btn-sm goRegist" style="font-weight: bold; margin: 10px auto;"/>
-							<input type="button" value="불합격처리" class="btn btn-outline-danger btn-sm" style="font-weight: bold; margin: 10px auto;"/>
+							<input type="button" id="btn-back" class="btn btn-outline-dark btn-sm detail-control" value="뒤로" onClick="javascript:history.back();"/>
 						</div>
 					</form>
 				</div>

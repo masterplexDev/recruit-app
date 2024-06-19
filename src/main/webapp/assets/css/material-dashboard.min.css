@@ -16309,7 +16309,7 @@ fieldset:disabled .btn {
   text-transform: uppercase;
 }
 .btn {
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
   letter-spacing: 0;
   background-size: 150%;
   background-position-x: 25%;
