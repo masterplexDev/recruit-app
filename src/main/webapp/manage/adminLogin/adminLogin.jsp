@@ -105,6 +105,16 @@
       .bd-mode-toggle .dropdown-menu .active .bi {
         display: block !important;
       }
+      
+    /* light 모드 이미지 */
+	img.mb-4 {
+	  content: url("http://localhost/recruit-app/assets/images/admin/adminLoginIcoDay.png");
+	}
+	
+	/* dark 모드 이미지 */
+	[data-bs-theme="dark"] img.mb-4 {
+	  content: url("http://localhost/recruit-app/assets/images/admin/adminLoginIcoNight.png");
+	} 
     </style>
 
     
@@ -170,11 +180,11 @@
     <h1 class="h3 mb-3 fw-normal"><strong>Admin Login</strong></h1>
 
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" maxlength="30" style="font-size: 15px;">
       <label for="floatingInput">ID</label>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" maxlength="30" style="font-size: 15px;">
       <label for="floatingPassword">Password</label>
     </div>
 
@@ -183,7 +193,7 @@
         관리자 인증이 필요합니다.
       </label>
     </div>
-    <button class="btn btn-primary w-100 py-2" type="button" onclick="location.href='http://localhost/recruit-app/manage/dashboard/dashboard.jsp';">로그인</button>
+    <button class="btn btn-primary w-100 py-2" type="button" onclick="location.href='http://localhost/recruit-app/manage/dashboard/dashboard.do';">로그인</button>
     <p class="mt-5 mb-3 text-body-secondary">By. GolGolZ</p>
   </form>
 </main>
