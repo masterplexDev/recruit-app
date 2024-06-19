@@ -2,9 +2,8 @@
     pageEncoding="UTF-8"%>
 <!doctype html>
 <html> 
- <head> <!-- golgolz start --> <!-- CSS 압축--> 
- 
- <link rel="stylesheet" href="global_user.css">
+ <head>
+  <link rel="stylesheet" href="global_user.css">
   <script type="text/javascript" async src="https://snap.licdn.com/li.lms-analytics/insight.min.js"></script>
   <script async src="https://connect.facebook.net/en_US/fbevents.js"></script> 
   <link rel="preload" href="http://localhost/recruit-app/assets/css/main/c76e012c05e1318d.css" as="style" crossorigin="anonymous"> 
@@ -39,24 +38,7 @@
               f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-P2J7HJ9');
           </script>
-
-<script text="text/javascript">
-		$(function(){
-			<!-- golgolz start -->
-			<!-- golgolz end -->
-		});
-	</script>
-	
-  <script type="text/javascript" async src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/82734969/?random=1718181155619&amp;cv=11&amp;fst=1718181155619&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=45be46a0z8810020603za201zb810020603&amp;gcd=13l3l3l3l1&amp;dma=0&amp;tag_exp=0&amp;u_w=1920&amp;u_h=1080&amp;url=http%3A%2F%2Flocalhost%2Frecruit-app%2Fmain%2Fmain2.jsp&amp;hn=www.googleadservices.com&amp;frm=0&amp;npa=0&amp;pscdl=noapi&amp;auid=1106614681.1712214601&amp;uaa=x86&amp;uab=64&amp;uafvl=Google%2520Chrome%3B125.0.6422.142%7CChromium%3B125.0.6422.142%7CNot.A%252FBrand%3B24.0.0.0&amp;uamb=0&amp;uam=&amp;uap=Windows&amp;uapv=15.0.0&amp;uaw=0&amp;fledge=1&amp;rfmt=3&amp;fmt=4"></script>
-  <script src="blob:http://localhost/722467db-1f4a-4123-bed6-193ee0953be9"></script>
-  <link rel="stylesheet" type="text/css" href="http://localhost/recruit-app/assets/css/main/slick.css">
-  <link rel="stylesheet" type="text/css" href="http://localhost/recruit-app/assets/css/main/slick-theme.css">
-  <link rel="stylesheet" href="http://localhost/recruit-app/assets/css/main/all.min.css">
-  
-  <meta charset="utf-8">
-  <meta name="next-head-count" content="23">
-  <style text="text/css">
-    /* golgolz start */
+  <style>
     .prev, .next {
         font-size: 2rem;
         position: absolute;
@@ -72,56 +54,13 @@
     .next {
         right: 10px;
     }
-    .post-slider {
-        position: relative;
-        width: 100%;
-        max-width: 750px;
-        max-height: 205px;
-        margin: auto;
-        overflow: hidden; /* 부모 요소를 벗어나는 콘텐츠를 숨깁니다. */
+    .slick-slide {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
     }
-    .post-wrapper {
-        display: flex;
-    }
-    .post {
-        flex: 1 0 auto; /* 플렉스 요소가 자신의 크기를 유지하도록 */
-        margin: 10px;
-    }
-
-    /* 포함된 header.jsp의 스타일 */
-    .Menu_MenuNav__EOf3X {
-        color: #666666; /* 폰트 색상 적용 */
-    }
-    
-    .slider-image {
-        width: 100%;
-        height: 100%;
-        max-height: 205px;
-    }
-.slider-image-container {
-  position: relative;
-  width: 100%;
-}
-
-.image-text {
-  position: absolute;
-  top: 10px; /* 이미지의 좌측 상단에 위치 */
-  left: 20px;
-  color: white;
-  font-size: 1.75em; /* h3 크기 */
-  text-align: left;
-  z-index: 1; /* 텍스트가 이미지 위에 보이도록 설정 */
-}
-.image-text h4 {
-  margin: 0;
-}
-</style>
-
-		<!-- golgolz end -->
-	
-	
+  </style>
  </head>
- 
   
  <body> 
   <div id="__next" data-reactroot=""> 
@@ -134,61 +73,86 @@
     margin: 0 auto; 
     box-sizing: border-box; /* 패딩과 테두리를 요소의 전체 너비에 포함 */
     padding: 20px;  "> 
-    <!-- golgolz start --> 
     <!-- 슬라이드 1 --> 
      <div> 
-      <section class="Section_Section__P1hhc"> 
       
-        <!-- 첫 번째 테마: 최근 등록된 공고 -->
-       <article class="MatchedJobArea_MatchedJobArea__vFPPT"> 
-        <div class="CarouselContainer_CarouselContainer__95CM6"> 
-         <aside class="CarouselHeader_CarouselHeader__d4DeW"> 
-          <h4 class="Typography_Typography__root__xYuMs Typography_Typography__heading1__bVyRs Typography_Typography__weightBold__e15ql ">최근 등록된 공고</h4> 
-          <div class="CarouselHeader_CarouselHeader__action__C_6l_">
-           <a href="" class="CarouselHeader_CarouselHeader__link__WWKP1" data-attribute-id="jobs__seeMore" data-domain="recommendPosition">전체보기<span class="CarouselHeader_CarouselHeader__link__interaction__RUr0k"></span></a> 
-           <div class="CarouselNavigation_CarouselNavigation__V89Z_">
-            <button class="IconButton_IconButton__root__dO2x7 IconButton_IconButton__normal__O3ySx IconButton_IconButton__normalDisabled__qd8D_ IconButton_IconButton__disabled__C0cqb CarouselNavigation_CarouselNavigation__left__MtZCF" aria-label="이전" disabled style="font-size: 15px;"><span class="IconButton_IconButton__label__ZcWfp">
-              <svg width="12" height="12" viewbox="0 0 12 12"> <path fill="#e1e2e4" d="M3.345 9.72a.75.75 0 0 0 1.06 1.06l4.25-4.25a.75.75 0 0 0 0-1.06l-4.25-4.25a.75.75 0 0 0-1.06 1.06L7.065 6l-3.72 3.72z"></path> 
-              </svg></span></button><button class="IconButton_IconButton__root__dO2x7 IconButton_IconButton__normal__O3ySx CarouselNavigation_CarouselNavigation__right__2qsYe" aria-label="다음" style="font-size: 15px;"><span class="IconButton_IconButton__label__ZcWfp">
-              <svg width="12" height="12" viewbox="0 0 12 12"> <path fill="#70737C" d="M3.345 9.72a.75.75 0 0 0 1.06 1.06l4.25-4.25a.75.75 0 0 0 0-1.06l-4.25-4.25a.75.75 0 0 0-1.06 1.06L7.065 6l-3.72 3.72z"></path> 
-              </svg></span><span class="IconButton_IconButton__interaction__I48Mv"></span></button>
-           </div> 
-          </div> 
-         </aside> 
-         <div class="CarouselContainer_CarouselContainer__slider__zf_Yl"> 
-        <div class="slick-slider slick-initialized" dir="ltr"> 
-          <div class="slick-list"> 
-            <div class="slick-track" style="width: 3700px; opacity: 1; transform: translate3d(0px, 0px, 0px);"> 
-              <!-- 첫 번째 객체 -->
-              <div data-index="0" class="slick-slide slick-active slick-current" tabindex="-1" aria-hidden="false" style="outline: none; width: 185px; margin-right: 30px;"> 
-                <a href="../recruit/detail.jsp">
-                  <div class="JobCard_JobCard__thumb__iNW6E"> 
-                    <img src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F25068%2Flvirf1oy7utk2ghu__400_400.jpg&amp;w=400&amp;q=75">
-                  </div> 
-                  <div> 
-                    <p class="Typography_Typography__root__xYuMs Typography_Typography__body1__UmyQW Typography_Typography__weightBold__e15ql JobCard_JobCard__body__position__P8R0W">Django 백엔드 개발자</p>
-                    <span class="Typography_Typography__root__xYuMs Typography_Typography__label2__BRssq Typography_Typography__weightMedium__O0Rdi JobCard_JobCard__body__company__F6XoH">유에이치씨</span> 
-                  </div> 
-                </a>
-              </div> 
-              <!-- 두 번째 객체 -->
-              <div data-index="1" class="slick-slide slick-active slick-current" tabindex="-1" aria-hidden="false" style="outline: none; width: 185px; margin-right: 30px;"> 
-                <a href="../recruit/detail.jsp">
-                  <div class="JobCard_JobCard__thumb__iNW6E"> 
-                    <img src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F25068%2Flvirf1oy7utk2ghu__400_400.jpg&amp;w=400&amp;q=75">
-                  </div> 
-                  <div> 
-                    <p class="Typography_Typography__root__xYuMs Typography_Typography__body1__UmyQW Typography_Typography__weightBold__e15ql JobCard_JobCard__body__position__P8R0W">Django 백엔드 개발자</p>
-                    <span class="Typography_Typography__root__xYuMs Typography_Typography__label2__BRssq Typography_Typography__weightMedium__O0Rdi JobCard_JobCard__body__company__F6XoH">유에이치씨</span> 
-                  </div>
-                </a>
-              </div> 
-            </div> 
+<section class="Section_Section__P1hhc">
+
+<!-- 첫 번째 테마: 최근 등록된 공고 -->
+<article class="MatchedJobArea_MatchedJobArea__vFPPT"> 
+  <div class="CarouselContainer_CarouselContainer__95CM6"> 
+    <aside class="CarouselHeader_CarouselHeader__d4DeW"> 
+      <h4 class="Typography_Typography__root__xYuMs Typography_Typography__heading1__bVyRs Typography_Typography__weightBold__e15ql">최근 등록된 공고</h4> 
+      <div class="CarouselHeader_CarouselHeader__action__C_6l_">
+        <a href="" class="CarouselHeader_CarouselHeader__link__WWKP1" data-attribute-id="jobs__seeMore" data-domain="recommendPosition">전체보기<span class="CarouselHeader_CarouselHeader__link__interaction__RUr0k"></span></a> 
+        <div class="CarouselNavigation_CarouselNavigation__V89Z_">
+  <button class="IconButton_IconButton__root__dO2x7 IconButton_IconButton__normal__O3ySx prev-1 CarouselNavigation_CarouselNavigation__left__MtZCF" aria-label="이전" style="font-size: 15px;">
+    <span class="IconButton_IconButton__label__ZcWfp">
+      <svg width="12" height="12" viewBox="0 0 12 12"> 
+        <path fill="#70737C" d="M3.345 9.72a.75.75 0 0 0 1.06 1.06l4.25-4.25a.75.75 0 0 0 0-1.06l-4.25-4.25a.75.75 0 0 0-1.06 1.06L7.065 6l-3.72 3.72z"></path> 
+      </svg>
+    </span>
+    <span class="IconButton_IconButton__interaction__7RjPt"></span>
+  </button>
+  <button class="IconButton_IconButton__root__dO2x7 IconButton_IconButton__normal__O3ySx next-1 CarouselNavigation_CarouselNavigation__right__2qsYe" aria-label="다음" style="font-size: 15px;">
+    <span class="IconButton_IconButton__label__ZcWfp">
+      <svg width="12" height="12" viewBox="0 0 12 12"> 
+        <path fill="#70737C" d="M3.345 9.72a.75.75 0 0 0 1.06 1.06l4.25-4.25a.75.75 0 0 0 0-1.06l-4.25-4.25a.75.75 0 0 0-1.06 1.06L7.065 6l-3.72 3.72z"></path> 
+      </svg>
+    </span>
+    <span class="IconButton_IconButton__interaction__7RjPt"></span>
+  </button>
+</div>
+      </div> 
+    </aside> 
+    <div class="CarouselContainer_CarouselContainer__slider__zf_Yl"> 
+      <div class="slick-slider slick-initialized" dir="ltr"> 
+        <div class="slick-list"> 
+          <div class="slick-track" id="slick-track-1" style="width: 100%; opacity: 1; transform: translate3d(0px, 0px, 0px);"> 
+            <!-- 동적으로 추가될 객체들 -->
           </div> 
         </div> 
-      </div>
-    </div> 
-  </article>
+      </div> 
+    </div>
+  </div> 
+</article>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+$(document).ready(function(){
+  // 첫 번째 테마
+  var htmlContent1 = '';
+  for (var i = 0; i < 5; i++) {
+    htmlContent1 += `
+      <div data-index="${i}" class="slick-slide" tabindex="-1" aria-hidden="false" style="outline: none; width: calc(25% - 10px); margin-right: 10px;"> 
+        <a href="../recruit/detail.jsp">
+          <div class="JobCard_JobCard__thumb__iNW6E" style="height: 100px;"> 
+            <img src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F25068%2Flvirf1oy7utk2ghu__400_400.jpg&amp;w=400&amp;q=75" style="width: 100%; height: 100%; object-fit: cover;">
+          </div> 
+          <div> 
+            <p class="Typography_Typography__root__xYuMs Typography_Typography__body1__UmyQW Typography_Typography__weightBold__e15ql JobCard_JobCard__body__position__P8R0W" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Django 백엔드 개발자</p>
+            <span class="Typography_Typography__root__xYuMs Typography_Typography__label2__BRssq Typography_Typography__weightMedium__O0Rdi JobCard_JobCard__body__company__F6XoH" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">유에이치씨</span> 
+          </div> 
+        </a>
+      </div>`;
+  }
+  $('#slick-track-1').html(htmlContent1);
+
+  $('#slick-track-1').slick({
+    prevArrow: '.prev-1',
+    nextArrow: '.next-1',
+    slidesToShow: 4, // 한번에 보여질 슬라이드 수
+    slidesToScroll: 4, // 한번에 스크롤될 슬라이드 수
+    infinite: false, // 무한 스크롤 여부
+    adaptiveHeight: true // 슬라이드 높이 자동 조정 여부
+  });
+});
+</script>
+
+
+
+  
   
   <!-- 두 번째 테마: 내가 관심있을만한 기업 -->
   <article class="MatchedJobArea_MatchedJobArea__vFPPT"> 
@@ -198,7 +162,7 @@
         <div class="CarouselHeader_CarouselHeader__action__C_6l_">
           <a href="" class="CarouselHeader_CarouselHeader__link__WWKP1" data-attribute-id="jobs__seeMore" data-domain="recommendPosition">전체보기<span class="CarouselHeader_CarouselHeader__link__interaction__RUr0k"></span></a> 
           <div class="CarouselNavigation_CarouselNavigation__V89Z_">
-            <button class="IconButton_IconButton__root__dO2x7 IconButton_IconButton__normal__O3ySx IconButton_IconButton__normalDisabled__qd8D_ IconButton_IconButton__disabled__C0cqb CarouselNavigation_CarouselNavigation__left__MtZCF" aria-label="이전" disabled style="font-size: 15px;">
+            <button class="IconButton_IconButton__root__dO2x7 IconButton_IconButton__normal__O3ySx IconButton_IconButton__normalDisabled__qd8D_ IconButton_IconButton__disabled__C0cqb " aria-label="이전" disabled style="font-size: 15px;">
               <span class="IconButton_IconButton__label__ZcWfp">
                 <svg width="12" height="12" viewBox="0 0 12 12"> 
                   <path fill="#e1e2e4" d="M3.345 9.72a.75.75 0 0 0 1.06 1.06l4.25-4.25a.75.75 0 0 0 0-1.06l-4.25-4.25a.75.75 0 0 0-1.06 1.06L7.065 6l-3.72 3.72z"></path> 
@@ -296,7 +260,7 @@ $(document).ready(function(){
         <div class="CarouselHeader_CarouselHeader__action__C_6l_">
           <a href="" class="CarouselHeader_CarouselHeader__link__WWKP1" data-attribute-id="jobs__seeMore" data-domain="recommendPosition">전체보기<span class="CarouselHeader_CarouselHeader__link__interaction__RUr0k"></span></a> 
           <div class="CarouselNavigation_CarouselNavigation__V89Z_">
-            <button class="IconButton_IconButton__root__dO2x7 IconButton_IconButton__normal__O3ySx IconButton_IconButton__normalDisabled__qd8D_ IconButton_IconButton__disabled__C0cqb CarouselNavigation_CarouselNavigation__left__MtZCF" aria-label="이전" disabled style="font-size: 15px;">
+            <button class="IconButton_IconButton__root__dO2x7 IconButton_IconButton__normal__O3ySx IconButton_IconButton__normalDisabled__qd8D_ IconButton_IconButton__disabled__C0cqb " aria-label="이전" disabled style="font-size: 15px;">
               <span class="IconButton_IconButton__label__ZcWfp">
                 <svg width="12" height="12" viewBox="0 0 12 12"> 
                   <path fill="#e1e2e4" d="M3.345 9.72a.75.75 0 0 0 1.06 1.06l4.25-4.25a.75.75 0 0 0 0-1.06l-4.25-4.25a.75.75 0 0 0-1.06 1.06L7.065 6l-3.72 3.72z"></path> 
