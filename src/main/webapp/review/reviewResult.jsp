@@ -89,7 +89,6 @@
         .Menu_MenuNav__EOf3X {
             color: #666666; /* 폰트 색상 적용 */
         }
-		
 		<!-- golgolz end -->
 	</style> 
  
