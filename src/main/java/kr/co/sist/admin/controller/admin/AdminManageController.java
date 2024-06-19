@@ -13,13 +13,14 @@ public class AdminManageController {
         this.ams = ams;
     }
 
-    @GetMapping("/manage/dashboard/dashboard.do")
+    @GetMapping("/manage/dashboard.do")
     public String adminLogin(LoginVO lVO) {
-        String adminId = "";
+        // String adminId = "";
+        //
+        // adminId = ams.adminLogin(lVO);
+        //
 
-        adminId = ams.adminLogin(lVO);
-
-
-        return "dashboard/dashboard";
+        // return "dashboard/dashboard";
+        return "test";
     }
 }

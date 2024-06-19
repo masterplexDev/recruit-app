@@ -120,6 +120,16 @@
     
     <!-- Custom styles for this template -->
     <link href="https://getbootstrap.com/docs/5.3/examples/sign-in/sign-in.css" rel="stylesheet">
+    <script type="text/javascript">
+	    $(function(){
+	    	loginFrm = $('#loginFrm');
+	    	
+	    	$('#loginBtn').click(function(){
+	    		loginFrm.attr("action","../dashboard.do").submit();
+	    		
+	    	});//click
+	    });//ready
+    </script>
   </head>
   <body class="d-flex align-items-center py-4 bg-body-tertiary">
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -175,16 +185,16 @@
 
     
 <main class="form-signin w-100 m-auto">
-  <form>
+  <form id="loginFrm">
     <img class="mb-4" src="http://localhost/recruit-app/assets/images/admin/adminLoginIcoNight.png" alt="" width="80" height="80">
     <h1 class="h3 mb-3 fw-normal"><strong>Admin Login</strong></h1>
 
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" maxlength="30" style="font-size: 15px;">
+      <input type="email" class="form-control" name="id" id="floatingInput" placeholder="name@example.com" maxlength="30" style="font-size: 15px;">
       <label for="floatingInput">ID</label>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" maxlength="30" style="font-size: 15px;">
+      <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password" maxlength="30" style="font-size: 15px;">
       <label for="floatingPassword">Password</label>
     </div>
 
@@ -193,7 +203,7 @@
         관리자 인증이 필요합니다.
       </label>
     </div>
-    <button class="btn btn-primary w-100 py-2" type="button" onclick="location.href='http://localhost/recruit-app/manage/dashboard/dashboard.do';">로그인</button>
+    <button class="btn btn-primary w-100 py-2" type="button" id="loginBtn">로그인</button>
     <p class="mt-5 mb-3 text-body-secondary">By. GolGolZ</p>
   </form>
 </main>
