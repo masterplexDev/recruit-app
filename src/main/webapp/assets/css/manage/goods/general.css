@@ -810,7 +810,7 @@ select {
 }
 
 #contentcolumn .contents {
-  padding: 0 15px;
+  padding: 0 1.5rem;
 }
 
 #leftcolumn {

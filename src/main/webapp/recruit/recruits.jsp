@@ -70,10 +70,10 @@
 											<div class="tplJobManBtn" id="toolGI">
 												<div class="exceptSec">
 													<div class="tplSltBx tplGiSlt devTplSltBx">
-														<label for="sortTab">포함단어</label> 
+														<label for="sortTab">검색기준</label> 
 														<select name="sortTab" id="sortTab" class="tplSlt" title="공고 정렬순 선택">
-															<option value="1" selected="">포함단어</option>
-															<option value="2">제외단어</option>
+															<option value="1" selected="">기업명</option>
+															<option value="2">공고명</option>
 														</select>
 													</div>
 													<div class="exceptWord">

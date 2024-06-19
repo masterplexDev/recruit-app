@@ -83,7 +83,7 @@ table{
 		<div class="container-fluid py-4" id="container">
 			<!-- golgolz start -->
 			<div id="contentcolumn" class="">
-				<div class="contents" style="margin-top: 105px;">
+				<div class="contents" style="margin-top: 125px;">
 					<form id="dataForm" name="dataForm" action="http://localhost/recruit-app/manage/common_process.jsp" method="post" enctype="multipart/form-data">
 						<div class="subtitle">
 							<img

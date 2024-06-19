@@ -8506,7 +8506,7 @@ fieldset:disabled .btn {
   padding-bottom: 1rem !important;
 }
 .py-4 {
-  padding-top: 1.5rem !important;
+  /* padding-top: 1.5rem !important; */
   padding-bottom: 1.5rem !important;
 }
 .py-5 {
@@ -18092,7 +18092,7 @@ body.dark-version {
 label {
   font-size: 0.875rem;
   font-weight: 400;
-  margin-bottom: 0.5rem;
+  /* margin-bottom: 0.5rem; */
   color: #7b809a;
   margin-left: 0.25rem;
 }
@@ -21729,6 +21729,7 @@ p {
   font-weight: 600 !important;
 }
 .font-weight-bolder {
+  font-size: 18pt;
   font-weight: 700 !important;
 }
 .font-italic {
