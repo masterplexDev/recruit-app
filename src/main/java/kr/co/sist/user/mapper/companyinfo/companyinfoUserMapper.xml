@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.sist.user.companyinfo">
+    <select id="selectAllCompanyinfo" resultType="kr.co.sist.user.domain.CompanyinfoDomain">
+    	SELECT COMPANY_CODE, COMPANY_NAME, LOGO, REVENUE, HEADCOUNT, INPUT_DATE
+		FROM COMPANYINFO
+    </select>
+    <select id="selectCompanyinfo" resultType="kr.co.sist.user.domain.CompanyinfoDomain">
+    	SELECT COMPANY_CODE, COMPANY_NAME, LOGO, REVENUE, HEADCOUNT, INPUT_DATE
+		FROM COMPANYINFO
+    </select>
+    <select id="selectCompanyinfoDetail" resultType="kr.co.sist.user.domain.CompanyinfoDomain" parameterType="String">
+    	SELECT
+		    ci.COMPANY_CODE,
+		    ci.COMPANY_NAME,
+		    ci.DESCRIPTION,
+		    ci.HEADCOUNT,
+		    ci.COMPANY_CLASSIFICATION,
+		    ci.REVENUE,
+		    ci.CEO_NAME,
+		    ci.ADDR,
+		    ci.ESTABLISHMENT_DATE,
+		    w.CATEGORY,
+		    w.CONTENT AS WELFARE_CONTENT,
+		    h.BASE_DATE,
+		    h.CONTENT AS HISTORY_CONTENT
+		FROM
+		    COMPANYINFO ci
+		LEFT JOIN
+		    WELFARE w ON ci.COMPANY_CODE = w.COMPANY_CODE
+		LEFT JOIN
+		    HISTORY h ON ci.COMPANY_CODE = h.COMPANY_CODE
+    </select>
+</mapper>
