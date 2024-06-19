@@ -67,7 +67,7 @@
 				</nav>
 			</div>
 		</nav>
-		<div class="container-fluid py-4">
+		<div class="container-fluid">
 			<!-- golgolz start -->
 			<div class="s_wrap">
 				<form name="fsearch" id="fsearch">

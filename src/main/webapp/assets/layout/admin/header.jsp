@@ -75,5 +75,14 @@
 					<span class="nav-link-text ms-1">공지사항 관리</span>
 				</a>
 			</li>
+			<li class="nav-item" style="padding-top: 350px;">
+				<a
+					id="dashboard_menu"
+					class="nav-link text-white"
+					style="justify-content: center; font-weight: 500;"
+					href="http://localhost/recruit-app/manage/dashboard/dashboard.jsp">
+					<span class="nav-link-text ms-1">로그아웃</span>
+				</a>
+			</li>
 		</ul>
 </aside>
