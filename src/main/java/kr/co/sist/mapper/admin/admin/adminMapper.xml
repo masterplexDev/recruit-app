@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="kr.co.sist.admin.admin">
+  <select id="selectLogin" resultType="String" parameterType="kr.co.sist.admin.vo.admin.LoginVO">
+  		select admin_id,password
+		from admin
+		where admin_id=#{ admin_id } and password=#{ password }
+  </select>
+ </mapper>

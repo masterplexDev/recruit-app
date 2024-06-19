@@ -200,7 +200,6 @@
 							<col class="w90">
 							<col class="w90">
 							<col class="w90">
-							<col class="w90">
 						</colgroup>
 						<thead>
 						<tr>
@@ -208,7 +207,6 @@
 							<th scope="col">기업명</th>
 							<th scope="col">지원일자</th>
 							<th scope="col">제목</th>
-							<th scope="col">경력</th>
 							<th scope="col">이력서상세</th>
 							<th scope="col">지원상태</th>
 						</tr>
@@ -219,7 +217,6 @@
 								<td>SIST</td>
 								<td>2023-12-29</td>
 								<td>떠오르는 백엔드 신입 이명화입니다.</td>
-								<td>신입</td>
 								<td><input type="button" value="바로가기" class="btn btn-outline-secondary btn-sm" style="font-weight: bold;margin:0px auto;" /></td>
 								<td>최종합격</td>
 							</tr>
@@ -228,7 +225,6 @@
 								<td>삼성전자</td>
 								<td>2023-12-29</td>
 								<td>재능있는 백엔드 신입 장원영입니다.</td>
-								<td>신입</td>
 								<td><input type="button" value="바로가기" class="btn btn-outline-secondary btn-sm" style="font-weight: bold;margin:0px auto;" /></td>
 								<td>서류지원</td>
 							</tr>
@@ -237,7 +233,6 @@
 								<td>야놀자</td>
 								<td>2023-12-29</td>
 								<td>센스있는 백엔드 신입 난원영입니다.</td>
-								<td>신입</td>
 								<td><input type="button" value="바로가기" class="btn btn-outline-secondary btn-sm" style="font-weight: bold;margin:0px auto;" /></td>
 								<td>불합격</td>
 							</tr>
