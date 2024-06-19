@@ -50,7 +50,7 @@ input, textarea{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-siz
 button{background-color:transparent;cursor:pointer;border:0;}
 legend{position:absolute;width:0;height:0;font-size:0;line-height:0;text-indent:-9999em;overflow:hidden;}
 /* hr{display:none;} */
-select{font-size:12px;height:23px;padding:1px;border:1px solid #ccc;background:#fff;}
+select{font-size:14px;height:25px;padding:1px;border:1px solid #ccc;background:#fff;}
 ol, li, ul, dl, dt, dd{list-style-type:none;list-style:none;text-align: center;position:static;overflow:hidden;}
 a:link, a:visited{color:#454545;text-decoration:none;}
 a:hover, a:focus, a:active{color:#454545;text-decoration:underline;}

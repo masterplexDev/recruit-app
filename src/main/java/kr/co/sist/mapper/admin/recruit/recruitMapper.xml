@@ -22,7 +22,7 @@
 	    <result property="careerStandardSum" column="years"/>
 	    <result property="eduStandard" column="education_base_code"/>
 	</resultMap>
-    <select id="selectRecruits" resultMap="recruitResultMap">
+    <select id="selectRecruits" resultMap="recruitResultMap" parameterType="kr.co.sist.admin.vo.recruit.SearchVO">
 	  	SELECT
 		    recruit_num,
 		    r.company_code,

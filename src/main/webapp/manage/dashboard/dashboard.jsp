@@ -44,7 +44,7 @@
             </div>
         </nav>
         <!-- golgolz start -->
-		<div class="container-fluid py-4">
+		<div class="container-fluid">
        <section class="content">
             <div class="container-fluid">
                 <div class="row">

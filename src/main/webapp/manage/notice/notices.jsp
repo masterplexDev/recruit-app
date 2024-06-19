@@ -39,7 +39,7 @@
 			</div>
 		</nav>
 	<!-- golgolz start -->
-	<div class="container-fluid py-4">
+	<div class="container-fluid">
 			<div class="s_wrap">
 				<form name="fsearch" id="fsearch">
 					<input type="hidden" name="code" value="list">

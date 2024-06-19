@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8" info=""%>
 
 <aside
-	class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-gradient-dark ps bg-white"
+	class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl fixed-start bg-gradient-dark ps bg-white"
 	id="sidenav-main">
 	<div class="sidenav-header">
 		<a class="navbar-brand m-0" href="http://localhost/recruit-app/manage/dashboard/dashboard.jsp">
@@ -73,6 +73,15 @@
 					class="nav-link text-white"
 					href="http://localhost/recruit-app/manage/notice/notices.jsp">
 					<span class="nav-link-text ms-1">공지사항 관리</span>
+				</a>
+			</li>
+			<li class="nav-item" style="padding-top: 350px;">
+				<a
+					id="dashboard_menu"
+					class="nav-link text-white"
+					style="justify-content: center; font-weight: 500;"
+					href="http://localhost/recruit-app/manage/dashboard/dashboard.jsp">
+					<span class="nav-link-text ms-1">로그아웃</span>
 				</a>
 			</li>
 		</ul>
