@@ -713,7 +713,7 @@ select {
 .ui_user_link {
 }
 
-/* �럹�씠吏� */
+/* 占쎈읂占쎌뵠筌욑옙 */
 .paging {
   clear: both;
   text-align: center;
@@ -772,7 +772,7 @@ select {
   background: url("/admin/images/common/bul_04.gif") 3px 8px no-repeat;
 }
 
-/* �쟾泥대같寃�*/
+/* 占쎌읈筌ｋ�媛쇿칰占�*/
 .mainlayout {
   overflow-y: scroll;
 }
@@ -783,7 +783,7 @@ select {
 }
 
 /*  layout */
-/* 20140321 異붽�*/
+/* 20140321 �빊遺쏙옙*/
 
 #wrraper {
   width: 100%;
@@ -935,13 +935,13 @@ select {
   box-shadow: 0 3px 5px #ddd;
 }
 
-/*�븯�떒 /*�궘�젣// 229 footer�� 以묐났*/
+/*占쎈릭占쎈뼊 /*占쎄텣占쎌젫// 229 footer占쏙옙 餓λ쵎�궗*/
 .bottomlayout {
   width: 100%;
   background: url("/admin/images/common/bg_bottom.gif") 0 top repeat-x;
 }
 
-/*�쇊履쎄났�넻硫붾돱�뒪���씪*/
+/*占쎌뇢筌잛럡�궗占쎈꽰筌롫뗀�뤀占쎈뮞占쏙옙占쎌뵬*/
 .manager_welcom_message {
   position: relative;
   background: url("/admin/images/common/mleft_loginadmin_bg.gif") repeat-x;
@@ -990,7 +990,7 @@ select {
   float: right;
 }
 
-/*硫붿씤 �꽌鍮꾩뒪硫붾돱_01*/
+/*筌롫뗄�뵥 占쎄퐣�뜮袁⑸뮞筌롫뗀�뤀_01*/
 .left_sevice_box {
   margin: 10px 15px 5px 15px;
 }
@@ -1014,7 +1014,7 @@ select {
   line-height: 13px;
 }
 
-/*硫붿씤 �꽌鍮꾩뒪硫붾돱_02*/
+/*筌롫뗄�뵥 占쎄퐣�뜮袁⑸뮞筌롫뗀�뤀_02*/
 #service_box {
   position: relative;
   margin-top: 20px;
@@ -1057,7 +1057,7 @@ select {
   padding-bottom: 5px;
 }
 
-/*�꽌釉�_�쇊履쎈찓�돱*/
+/*占쎄퐣�뇡占�_占쎌뇢筌잛럥李볩옙�뤀*/
 
 .mainmenu_title {
   width: 157px;
@@ -1158,7 +1158,7 @@ select {
   letter-spacing: -1px;
 }
 
-/* 濡쒓렇�씤 */
+/* 嚥≪뮄�젃占쎌뵥 */
 #admin_login {
   position: relative;
   width: 100%;
@@ -1167,7 +1167,7 @@ select {
 }
 
 #admin_login_box {
-  /*�솕硫� 以묒븰�뿉 諛곗튂�븯湲�*/
+  /*占쎌넅筌롳옙 餓λ쵐釉곤옙肉� 獄쏄퀣�뒄占쎈릭疫뀐옙*/
   width: 643px;
   height: 351px;
   background: url("/admin/images/login/admin_login_box.png") no-repeat;
@@ -1208,9 +1208,9 @@ select {
   background: url("/admin/images/login/admin_login_bg.gif");
 }
 
-/* 鍮꾨�踰덊샇 �옱�꽕�젙 */
+/* �뜮袁⑨옙甕곕뜇�깈 占쎌삺占쎄퐬占쎌젟 */
 #admin_passwd_box {
-  /*�솕硫� 以묒븰�뿉 諛곗튂�븯湲�*/
+  /*占쎌넅筌롳옙 餓λ쵐釉곤옙肉� 獄쏄퀣�뒄占쎈릭疫뀐옙*/
   width: 643px;
   height: 351px;
   background: url("/admin/images/login/admin_passwd_box.png") no-repeat;
@@ -1222,7 +1222,7 @@ select {
   clear: both;
 }
 
-/*���씠��(硫붿씤,�꽌釉�)*/
+/*占쏙옙占쎌뵠占쏙옙(筌롫뗄�뵥,占쎄퐣�뇡占�)*/
 .maintitle {
   height: 26px;
   width: 98%;
@@ -1279,7 +1279,7 @@ select {
   font-weight: bold;
 }
 
-/*�쁺�뿭�꽕�젙(硫붿씤,�꽌釉�)*/
+/*占쎌겫占쎈열占쎄퐬占쎌젟(筌롫뗄�뵥,占쎄퐣�뇡占�)*/
 .AreaW80 {
   width: 80%;
 }
@@ -1296,7 +1296,7 @@ select {
   width: 100%;
 }
 
-/*�뙘�뾽bg*/
+/*占쎈솚占쎈씜bg*/
 #popupbodyContainer {
   padding: 0px;
   margin: 0 10px 0 10px;
@@ -1352,10 +1352,10 @@ select {
   font-weight: bold;
 }
 
-/*�옄二쇱벐�뒗 �뒪���씪*/
+/*占쎌쁽雅뚯눘踰먲옙�뮉 占쎈뮞占쏙옙占쎌뵬*/
 .inputbox {
   border: solid 1px #ccc;
-  height: 23px;
+  height: 30px;
   text-align: left !important;
   background-color: whitesmoke;
   font-size: 14px;
@@ -1415,7 +1415,7 @@ select {
   height: 1px;
 }
 
-/*踰꾪듉�쐞移섏젙�젹*/
+/*甕곌쑵�뱣占쎌맄燁살꼷�젟占쎌졊*/
 .alignCenter {
   clear: both;
   padding: 10px 0 10px 0;
@@ -1501,7 +1501,7 @@ select {
   margin: 20px 0 0 0;
 }
 
-/*�씪�씤�엳�뒗 踰꾪듉�뱾*/
+/*占쎌뵬占쎌뵥占쎌뿳占쎈뮉 甕곌쑵�뱣占쎈굶*/
 .alignCenterLT {
   clear: both;
   padding: 10px 0 10px 0;
@@ -1517,7 +1517,7 @@ select {
   border-top: solid 1px #e3e3e3;
 }
 
-/*�뙆�씪 �뾽濡쒕뱶 踰꾪듉 css 異붽� 2019.09.02 sjlee*/
+/*占쎈솁占쎌뵬 占쎈씜嚥≪뮆諭� 甕곌쑵�뱣 css �빊遺쏙옙 2019.09.02 sjlee*/
 .btn_file_upload {
   background-color: #fff;
   border: 1px solid #afafaf;
@@ -1600,7 +1600,7 @@ select {
   background: none;
 }
 
-/*�쉶�깋�씪�슫�뱶諛뺤뒪*/
+/*占쎌돳占쎄퉳占쎌뵬占쎌뒲占쎈굡獄쏅벡�뮞*/
 .rbox {
   clear: both;
   margin: 0;
@@ -1658,7 +1658,7 @@ select {
   background: url("/admin/images/common/box_R_RightMiddle.gif") right 0 repeat-y;
 }
 
-/*諛뺤뒪 YEL�뒪���씪*/
+/*獄쏅벡�뮞 YEL占쎈뮞占쏙옙占쎌뵬*/
 .boxYel .tl {
   height: 12px;
   width: 12px;
@@ -1718,7 +1718,7 @@ select {
   background: url("/admin/images/common/boxyel_br.gif") 0px no-repeat;
 }
 
-/*諛뺤뒪 YEL2 - �븞履쎈씪�씤 �뾾�쓬.*/
+/*獄쏅벡�뮞 YEL2 - 占쎈툧筌잛럥�뵬占쎌뵥 占쎈씨占쎌벉.*/
 .boxYel2 .tl {
   height: 12px;
   width: 12px;
@@ -1772,7 +1772,7 @@ select {
   background: url("/admin/images/common/ul_dot.gif") left bottom repeat-x;
 }
 
-/*諛뺤뒪 sourcebox �뒪���씪*/
+/*獄쏅벡�뮞 sourcebox 占쎈뮞占쏙옙占쎌뵬*/
 .sourcebox .tl {
   height: 50px;
   width: 10px;
@@ -1820,7 +1820,7 @@ select {
   background: url("/admin/images/common/source_br.gif") 0px no-repeat;
 }
 
-/*�뀒�씠釉붿뒪���씪01*/
+/*占쎈�믭옙�뵠�뇡遺용뮞占쏙옙占쎌뵬01*/
 .tbstyle01 {
   background-color: #d8d8d8;
 }
@@ -1960,7 +1960,7 @@ select {
   border-left: solid 1px #d8d8d8;
 }
 
-/*�뀒�씠釉붿뒪���씪02*/
+/*占쎈�믭옙�뵠�뇡遺용뮞占쏙옙占쎌뵬02*/
 .tbstyle02 {
   table-layout: fixed;
   background-color: #c8c8c8;
@@ -2195,7 +2195,7 @@ select {
   color: #777;
 }
 
-/*�뀒�씠釉붿뒪���씪03*/
+/*占쎈�믭옙�뵠�뇡遺용뮞占쏙옙占쎌뵬03*/
 .tbstyle03 {
   background-color: #c9d2e6;
   table-layout: fixed;
@@ -2228,7 +2228,7 @@ select {
   background-color: #fff;
 }
 
-/*�뀒�씠釉붿뒪���씪04*/
+/*占쎈�믭옙�뵠�뇡遺용뮞占쏙옙占쎌뵬04*/
 .tbstyle04 {
   border-top: solid 2px #484a5c;
 }
@@ -2247,7 +2247,7 @@ select {
   border-bottom: solid 1px #d9d9d9;
 }
 
-/*�뀒�씠釉� �뒪���씪05*/
+/*占쎈�믭옙�뵠�뇡占� 占쎈뮞占쏙옙占쎌뵬05*/
 .tbstyle05 {
   background-color: #dddddd;
 }
@@ -2306,7 +2306,7 @@ select {
   line-height: 24px;
 }
 
-/*�뀒�씠釉붿뒪���씪06*/
+/*占쎈�믭옙�뵠�뇡遺용뮞占쏙옙占쎌뵬06*/
 .tbstyle06 {
   table-layout: fixed;
   background-color: #c8c8c8;
@@ -2354,7 +2354,7 @@ select {
   border: solid 1px #d8d8d8;
 }
 
-/*�뀒�씠釉� �뒪���씪07*/
+/*占쎈�믭옙�뵠�뇡占� 占쎈뮞占쏙옙占쎌뵬07*/
 .tbstyle07 {
   background-color: #dddddd;
 }
@@ -2410,7 +2410,7 @@ select {
   line-height: 24px;
 }
 
-/*�뀒�씠釉붿뒪���씪B*/
+/*占쎈�믭옙�뵠�뇡遺용뮞占쏙옙占쎌뵬B*/
 
 .tbstyleB .top0 {
   height: 3px;
@@ -2558,7 +2558,7 @@ select {
   border: 1px solid #3274d2;
 }
 
-/*硫붿씤_�씪�젙�벑濡앹뒪���씪*/
+/*筌롫뗄�뵥_占쎌뵬占쎌젟占쎈쾻嚥≪빘�뮞占쏙옙占쎌뵬*/
 .sdbox {
   border: 4px solid #eff1f5;
 }
@@ -2591,7 +2591,7 @@ select {
   font-size: 11px;
 }
 
-/*�뀒�씠釉붾━�뒪�듃�뒪���씪*/
+/*占쎈�믭옙�뵠�뇡遺얄봺占쎈뮞占쎈뱜占쎈뮞占쏙옙占쎌뵬*/
 .bgtbheader {
   clear: both;
   background: url("/admin/images/common/table_header_M_41.gif") 0 0 repeat-x;
@@ -2816,7 +2816,7 @@ select {
   background-color: #fff;
 }
 
-/*�뀒�씠釉붾━�뒪�듃�뒪���씪01*/
+/*占쎈�믭옙�뵠�뇡遺얄봺占쎈뮞占쎈뱜占쎈뮞占쏙옙占쎌뵬01*/
 .tbliststyle01 th {
   height: 33px;
   border-top: solid 2px #333;
@@ -2830,7 +2830,7 @@ select {
   padding: 5px 0 5px 0;
 }
 
-/*諛뺤뒪紐⑥뼇�뒪���씪*/
+/*獄쏅벡�뮞筌뤴뫁堉뉛옙�뮞占쏙옙占쎌뵬*/
 .boxContainer {
   clear: both;
   padding: 2px;
@@ -2892,13 +2892,13 @@ select {
   padding: 0px;
 }
 
-/*bullet�뒪���씪*/
+/*bullet占쎈뮞占쏙옙占쎌뵬*/
 .bul04 {
   padding: 0 0 0 7px;
   background: url("/admin/images/common/bul_04.gif") 0 6px no-repeat;
 }
 
-/* �럹�씠吏� �뒪�겕濡ㅻ윭 */
+/* 占쎈읂占쎌뵠筌욑옙 占쎈뮞占쎄쾿嚥▲끇�쑎 */
 .page_controller2 {
   clear: both;
   width: 100%;
@@ -2950,7 +2950,7 @@ select {
   vertical-align: middle;
 }
 
-/*�꺆�씠誘몄�*/
+/*占쎄틙占쎌뵠沃섎챷占�*/
 .imgtab {
   padding: 20px 0 0px 0;
 }
@@ -2963,7 +2963,7 @@ select {
   text-decoration: none;
 }
 
-/*�젅�씠�븘�썐�렪吏�*/
+/*占쎌쟿占쎌뵠占쎈툡占쎌뜍占쎈젶筌욑옙*/
 .imgtab .clearimg img {
   margin: 0 3px 0 0;
 }
@@ -3053,7 +3053,7 @@ select {
   background: url("/admin/images/common/tab_select_RR.gif") 0 0 no-repeat;
 }
 
-/*TIP諛뺤뒪*/
+/*TIP獄쏅벡�뮞*/
 .TIPContainer {
   margin: 25px 0 0 0;
   padding: 10px 5px 7px 5px;
@@ -3083,7 +3083,7 @@ select {
   padding: 0px;
 }
 
-/* �쉶�깋諛뺤뒪 */
+/* 占쎌돳占쎄퉳獄쏅벡�뮞 */
 .graybg {
   background-color: #f4f4f4;
   line-height: 16px;
@@ -3279,7 +3279,7 @@ select {
   font-weight: bold;
 }
 
-/*SMS-誘몄쟻�슜*/
+/*SMS-沃섎챷�읅占쎌뒠*/
 .smsbgx {
   width: 160px;
   height: 270px;
@@ -3332,7 +3332,7 @@ select {
   vertical-align: top;
 }
 
-/*�옄�룞SMS�꽕�젙*/
+/*占쎌쁽占쎈짗SMS占쎄퐬占쎌젟*/
 .padTLB {
   padding: 7px 0 7px 0;
   border-bottom: solid 1px #e3e3e3;
@@ -3365,7 +3365,7 @@ select {
   background-color: #efefef;
 }
 
-/*�듅�닔臾몄옄*/
+/*占쎈뱟占쎈땾�눧紐꾩쁽*/
 .specialTab {
   width: 200px;
   table-layout: fixed;
@@ -3467,12 +3467,12 @@ select {
   background-color: #cccccc;
 }
 
-/*ftp �젣紐� ui 源⑥쭚 �삤瑜� */
+/*ftp 占쎌젫筌륅옙 ui 繹먥뫁彛� 占쎌궎�몴占� */
 .ftp_title {
   width: 200px;
 }
 
-/* 二쇰Ц�닔�젙 */
+/* 雅뚯눖揆占쎈땾占쎌젟 */
 #pop_style01 {
   width: 98%;
   padding: 1%;
@@ -3518,7 +3518,7 @@ select {
 
 /*#pop_deposit_table01 td{width:50%;  padding:5px;}*/
 
-/* �눥�븨紐� 湲곕낯�꽕�젙 �뀒�씠釉�*/
+/* 占쎈닪占쎈릅筌륅옙 疫꿸퀡�궚占쎄퐬占쎌젟 占쎈�믭옙�뵠�뇡占�*/
 .shop_basic_setting {
   margin-top: 10px;
   border-top: 1px solid #c6c7cb;
@@ -3553,7 +3553,7 @@ select {
   float: left;
 }
 
-/*二쇰Ц�긽�뭹 異붽�*/
+/*雅뚯눖揆占쎄맒占쎈�� �빊遺쏙옙*/
 #categorize_search {
   border: 2px solid #cbcdd2;
   width: 100%;
@@ -3608,7 +3608,7 @@ select {
   margin-top: 10px;
 }
 
-/* 遺�媛�湲덉븸 �닔�젙  �뀒�씠釉�*/
+/* �겫占썲첎占썸묾�뜆釉� 占쎈땾占쎌젟  占쎈�믭옙�뵠�뇡占�*/
 .shop_basic_setting2 {
   margin-top: 10px;
   border-top: 1px solid #c6c7cb;
@@ -3633,7 +3633,7 @@ select {
   width: 80%;
 }
 
-/* 遺�媛�湲덉븸 �닔�젙  �뀒�씠釉�*/
+/* �겫占썲첎占썸묾�뜆釉� 占쎈땾占쎌젟  占쎈�믭옙�뵠�뇡占�*/
 .shop_basic_setting3 {
   margin-top: 10px;
   border-top: 1px solid #c6c7cb;
@@ -3674,7 +3674,7 @@ select {
   line-height: 18px;
 }
 
-/* 二쇰Ц濡쒓렇 �뀒�씠釉� */
+/* 雅뚯눖揆嚥≪뮄�젃 占쎈�믭옙�뵠�뇡占� */
 .shop_basic_setting5 {
   border-top: 1px solid #c6c7cb;
   border-left: 1px solid #c6c7cb;
@@ -3697,7 +3697,7 @@ select {
   padding: 10px;
 }
 
-/* �씪�떒 �뜲�씠�꽣 �뀒�씠釉� */
+/* 占쎌뵬占쎈뼊 占쎈쑓占쎌뵠占쎄숲 占쎈�믭옙�뵠�뇡占� */
 .shop_basic_setting6 {
   border-top: 1px solid #c6c7cb;
   border-left: 1px solid #c6c7cb;
@@ -3720,7 +3720,7 @@ select {
   padding: 5px;
 }
 
-/* �씪�떒 �뜲�씠�꽣 �뀒�씠釉� (Print) */
+/* 占쎌뵬占쎈뼊 占쎈쑓占쎌뵠占쎄숲 占쎈�믭옙�뵠�뇡占� (Print) */
 .shop_basic_setting7 {
   border-top: 1px solid #c6c7cb;
   border-left: 1px solid #c6c7cb;
@@ -3743,7 +3743,7 @@ select {
   padding: 2px 5px;
 }
 
-/* �븣�븘�몢湲� �똻*/
+/* 占쎈르占쎈툡占쎈あ疫뀐옙 占쎈샍*/
 #tip_box {
   width: 98%;
   padding: 1%;
@@ -3780,7 +3780,7 @@ select {
   cursor: pointer;
 }
 
-/* ���씠�� 諛� �꽌泥� 怨듯넻*/
+/* 占쏙옙占쎌뵠占쏙옙 獄쏉옙 占쎄퐣筌ｏ옙 �⑤벏�꽰*/
 .sub_title_1deph {
   border-bottom: 1px solid #bfbfbf;
   height: 25px;
@@ -3847,7 +3847,7 @@ select {
   padding: 7px 7px;
 }
 
-/*�썝�겢由��뵒�옄�씤�쟻�슜*/
+/*占쎌뜚占쎄깻�뵳占쏙옙逾믭옙�쁽占쎌뵥占쎌읅占쎌뒠*/
 .linebox {
   border: solid 1px #d7d7d7;
   background-color: #efefef;
@@ -3894,7 +3894,7 @@ select {
   background: url("/admin/images/common/page_btn_nSelbg.gif") 0 0 no-repeat;
 }
 
-/* 泥댄겕�븘�썐愿��젴 css */
+/* 筌ｋ똾寃뺧옙釉섓옙�뜍�꽴占쏙옙�졃 css */
 button.btn_nc {
   background-image: -webkit-linear-gradient(top, #f9fafa, #efefef);
   background-image: -moz-linear-gradient(top, #f9fafa, #efefef);
@@ -3955,7 +3955,7 @@ button.btn_nc_submit:active {
   font-weight: bold;
 }
 
-/* 愿�由ъ옄 湲덉븸�몴�떆 */
+/* �꽴占썹뵳�딆쁽 疫뀀뜆釉몌옙紐댐옙�뻻 */
 .admin_pay_black {
   font-weight: bold;
   letter-spacing: -1px;
@@ -4097,7 +4097,7 @@ button.btn_nc_submit:active {
   font-weight: bold;
 }
 
-/* �넻怨� */
+/* 占쎈꽰�⑨옙 */
 .log_Ymd {
   margin: 10px 0;
   padding: 20px;
@@ -4191,7 +4191,7 @@ button.btn_nc_submit:active {
   color: gray;
 }
 
-/* 遺�媛��꽌鍮꾩뒪 �뿉�뒪�겕濡� */
+/* �겫占썲첎占쏙옙苑뚪뜮袁⑸뮞 占쎈퓠占쎈뮞占쎄쾿嚥∽옙 */
 #escrow {
   width: 900px;
 }

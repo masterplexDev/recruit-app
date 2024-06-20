@@ -1,4 +1,4 @@
-package kr.co.admin.service.notice;
+package kr.co.sist.admin.service.notice;
 
 public class NoticeAdminService {
 

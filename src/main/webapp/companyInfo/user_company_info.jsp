@@ -26,10 +26,19 @@
 			box-sizing: border-box;
 			padding: 20px;
 	}
+	#companyinfoList{ display:none; }
 </style>
 <script text="text/javascript">
 	$(function(){
 		<!-- golgolz start -->
+		$("li").slice(0, 5).show(); // 초기갯수
+	    $("#load").click(function(e){ // 클릭시 more
+	        e.preventDefault();
+	        $("li:hidden").slice(0, 5).show(); // 클릭시 more 갯수 지저정
+	        if($("li:hidden").length == 0){ // 컨텐츠 남아있는지 확인
+	        	$("#load").hide(); // 더 보기 버튼 숨기기
+	        }
+	    });
 		<!-- golgolz end -->
 	});
 </script>
@@ -118,7 +127,7 @@
                     <p><strong>‘직무선택’</strong>에 대한 검색결과가 없습니다.<br>다른 검색어로 검색해주세요.</p>
                 </div>
                 <ul class="list" id="listCompany" >
-                    <li>
+                    <li id="companyinfoList_1">
                         <a href="http://localhost/recruit-app/companyInfo/user_company_detail.jsp" target="_blank">
                             <div class="thumbnail">
                                 <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2011/10/2w1aj007Pm_gWzi2y3i2jm0djMcSj_ldjm.gif?v=202406041618&amp;hash=r&amp;serviceCode=CL" onerror="companylogoOnError('/salary/logourl?ucono=1882711' , this)">
@@ -136,9 +145,301 @@
                             </div>
                         </a>
                     </li>
+                    <li id="companyinfoList_2">
+                        <a href="http://localhost/recruit-app/companyInfo/user_company_detail.jsp" target="_blank">
+                            <div class="thumbnail">
+                                <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2011/10/2w1aj007Pm_gWzi2y3i2jm0djMcSj_ldjm.gif?v=202406041618&amp;hash=r&amp;serviceCode=CL" onerror="companylogoOnError('/salary/logourl?ucono=1882711' , this)">
+                                <div class="inner">넥슨코리아</div>
+                            </div>
+                            <div class="headers">
+                                <div class="text">넥슨코리아</div>
+                            </div>
+                            <div class="summary">
+                                <div class="item">매출액 3조 9000억</div>
+                                <div class="item">사원수 3,500명</div>
+                            </div>
+                            <div class="salary">
+                                <div class="inner"><strong>2,847</strong>만원</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li id="companyinfoList_3">
+                        <a href="http://localhost/recruit-app/companyInfo/user_company_detail.jsp" target="_blank">
+                            <div class="thumbnail">
+                                <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2011/10/2w1aj007Pm_gWzi2y3i2jm0djMcSj_ldjm.gif?v=202406041618&amp;hash=r&amp;serviceCode=CL" onerror="companylogoOnError('/salary/logourl?ucono=1882711' , this)">
+                                <div class="inner">넥슨코리아</div>
+                            </div>
+                            <div class="headers">
+                                <div class="text">넥슨코리아</div>
+                            </div>
+                            <div class="summary">
+                                <div class="item">매출액 3조 9000억</div>
+                                <div class="item">사원수 3,500명</div>
+                            </div>
+                            <div class="salary">
+                                <div class="inner"><strong>2,847</strong>만원</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li id="companyinfoList_4">
+                        <a href="http://localhost/recruit-app/companyInfo/user_company_detail.jsp" target="_blank">
+                            <div class="thumbnail">
+                                <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2011/10/2w1aj007Pm_gWzi2y3i2jm0djMcSj_ldjm.gif?v=202406041618&amp;hash=r&amp;serviceCode=CL" onerror="companylogoOnError('/salary/logourl?ucono=1882711' , this)">
+                                <div class="inner">넥슨코리아</div>
+                            </div>
+                            <div class="headers">
+                                <div class="text">넥슨코리아</div>
+                            </div>
+                            <div class="summary">
+                                <div class="item">매출액 3조 9000억</div>
+                                <div class="item">사원수 3,500명</div>
+                            </div>
+                            <div class="salary">
+                                <div class="inner"><strong>2,847</strong>만원</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li id="companyinfoList_5">
+                        <a href="http://localhost/recruit-app/companyInfo/user_company_detail.jsp" target="_blank">
+                            <div class="thumbnail">
+                                <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2011/10/2w1aj007Pm_gWzi2y3i2jm0djMcSj_ldjm.gif?v=202406041618&amp;hash=r&amp;serviceCode=CL" onerror="companylogoOnError('/salary/logourl?ucono=1882711' , this)">
+                                <div class="inner">넥슨코리아</div>
+                            </div>
+                            <div class="headers">
+                                <div class="text">넥슨코리아</div>
+                            </div>
+                            <div class="summary">
+                                <div class="item">매출액 3조 9000억</div>
+                                <div class="item">사원수 3,500명</div>
+                            </div>
+                            <div class="salary">
+                                <div class="inner"><strong>2,847</strong>만원</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li id="companyinfoList">
+                        <a href="http://localhost/recruit-app/companyInfo/user_company_detail.jsp" target="_blank">
+                            <div class="thumbnail">
+                                <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2011/10/2w1aj007Pm_gWzi2y3i2jm0djMcSj_ldjm.gif?v=202406041618&amp;hash=r&amp;serviceCode=CL" onerror="companylogoOnError('/salary/logourl?ucono=1882711' , this)">
+                                <div class="inner">넥슨코리아</div>
+                            </div>
+                            <div class="headers">
+                                <div class="text">넥슨코리아</div>
+                            </div>
+                            <div class="summary">
+                                <div class="item">매출액 3조 9000억</div>
+                                <div class="item">사원수 3,500명</div>
+                            </div>
+                            <div class="salary">
+                                <div class="inner"><strong>2,847</strong>만원</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li id="companyinfoList">
+                        <a href="http://localhost/recruit-app/companyInfo/user_company_detail.jsp" target="_blank">
+                            <div class="thumbnail">
+                                <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2011/10/2w1aj007Pm_gWzi2y3i2jm0djMcSj_ldjm.gif?v=202406041618&amp;hash=r&amp;serviceCode=CL" onerror="companylogoOnError('/salary/logourl?ucono=1882711' , this)">
+                                <div class="inner">넥슨코리아</div>
+                            </div>
+                            <div class="headers">
+                                <div class="text">넥슨코리아</div>
+                            </div>
+                            <div class="summary">
+                                <div class="item">매출액 3조 9000억</div>
+                                <div class="item">사원수 3,500명</div>
+                            </div>
+                            <div class="salary">
+                                <div class="inner"><strong>2,847</strong>만원</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li id="companyinfoList">
+                        <a href="http://localhost/recruit-app/companyInfo/user_company_detail.jsp" target="_blank">
+                            <div class="thumbnail">
+                                <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2011/10/2w1aj007Pm_gWzi2y3i2jm0djMcSj_ldjm.gif?v=202406041618&amp;hash=r&amp;serviceCode=CL" onerror="companylogoOnError('/salary/logourl?ucono=1882711' , this)">
+                                <div class="inner">넥슨코리아</div>
+                            </div>
+                            <div class="headers">
+                                <div class="text">넥슨코리아</div>
+                            </div>
+                            <div class="summary">
+                                <div class="item">매출액 3조 9000억</div>
+                                <div class="item">사원수 3,500명</div>
+                            </div>
+                            <div class="salary">
+                                <div class="inner"><strong>2,847</strong>만원</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li id="companyinfoList">
+                        <a href="http://localhost/recruit-app/companyInfo/user_company_detail.jsp" target="_blank">
+                            <div class="thumbnail">
+                                <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2011/10/2w1aj007Pm_gWzi2y3i2jm0djMcSj_ldjm.gif?v=202406041618&amp;hash=r&amp;serviceCode=CL" onerror="companylogoOnError('/salary/logourl?ucono=1882711' , this)">
+                                <div class="inner">넥슨코리아</div>
+                            </div>
+                            <div class="headers">
+                                <div class="text">넥슨코리아</div>
+                            </div>
+                            <div class="summary">
+                                <div class="item">매출액 3조 9000억</div>
+                                <div class="item">사원수 3,500명</div>
+                            </div>
+                            <div class="salary">
+                                <div class="inner"><strong>2,847</strong>만원</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li id="companyinfoList">
+                        <a href="http://localhost/recruit-app/companyInfo/user_company_detail.jsp" target="_blank">
+                            <div class="thumbnail">
+                                <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2011/10/2w1aj007Pm_gWzi2y3i2jm0djMcSj_ldjm.gif?v=202406041618&amp;hash=r&amp;serviceCode=CL" onerror="companylogoOnError('/salary/logourl?ucono=1882711' , this)">
+                                <div class="inner">넥슨코리아</div>
+                            </div>
+                            <div class="headers">
+                                <div class="text">넥슨코리아</div>
+                            </div>
+                            <div class="summary">
+                                <div class="item">매출액 3조 9000억</div>
+                                <div class="item">사원수 3,500명</div>
+                            </div>
+                            <div class="salary">
+                                <div class="inner"><strong>2,847</strong>만원</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li id="companyinfoList">
+                        <a href="http://localhost/recruit-app/companyInfo/user_company_detail.jsp" target="_blank">
+                            <div class="thumbnail">
+                                <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2011/10/2w1aj007Pm_gWzi2y3i2jm0djMcSj_ldjm.gif?v=202406041618&amp;hash=r&amp;serviceCode=CL" onerror="companylogoOnError('/salary/logourl?ucono=1882711' , this)">
+                                <div class="inner">넥슨코리아</div>
+                            </div>
+                            <div class="headers">
+                                <div class="text">넥슨코리아</div>
+                            </div>
+                            <div class="summary">
+                                <div class="item">매출액 3조 9000억</div>
+                                <div class="item">사원수 3,500명</div>
+                            </div>
+                            <div class="salary">
+                                <div class="inner"><strong>2,847</strong>만원</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li id="companyinfoList">
+                        <a href="http://localhost/recruit-app/companyInfo/user_company_detail.jsp" target="_blank">
+                            <div class="thumbnail">
+                                <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2011/10/2w1aj007Pm_gWzi2y3i2jm0djMcSj_ldjm.gif?v=202406041618&amp;hash=r&amp;serviceCode=CL" onerror="companylogoOnError('/salary/logourl?ucono=1882711' , this)">
+                                <div class="inner">넥슨코리아</div>
+                            </div>
+                            <div class="headers">
+                                <div class="text">넥슨코리아</div>
+                            </div>
+                            <div class="summary">
+                                <div class="item">매출액 3조 9000억</div>
+                                <div class="item">사원수 3,500명</div>
+                            </div>
+                            <div class="salary">
+                                <div class="inner"><strong>2,847</strong>만원</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li id="companyinfoList">
+                        <a href="http://localhost/recruit-app/companyInfo/user_company_detail.jsp" target="_blank">
+                            <div class="thumbnail">
+                                <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2011/10/2w1aj007Pm_gWzi2y3i2jm0djMcSj_ldjm.gif?v=202406041618&amp;hash=r&amp;serviceCode=CL" onerror="companylogoOnError('/salary/logourl?ucono=1882711' , this)">
+                                <div class="inner">넥슨코리아</div>
+                            </div>
+                            <div class="headers">
+                                <div class="text">넥슨코리아</div>
+                            </div>
+                            <div class="summary">
+                                <div class="item">매출액 3조 9000억</div>
+                                <div class="item">사원수 3,500명</div>
+                            </div>
+                            <div class="salary">
+                                <div class="inner"><strong>2,847</strong>만원</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li id="companyinfoList">
+                        <a href="http://localhost/recruit-app/companyInfo/user_company_detail.jsp" target="_blank">
+                            <div class="thumbnail">
+                                <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2011/10/2w1aj007Pm_gWzi2y3i2jm0djMcSj_ldjm.gif?v=202406041618&amp;hash=r&amp;serviceCode=CL" onerror="companylogoOnError('/salary/logourl?ucono=1882711' , this)">
+                                <div class="inner">넥슨코리아</div>
+                            </div>
+                            <div class="headers">
+                                <div class="text">넥슨코리아</div>
+                            </div>
+                            <div class="summary">
+                                <div class="item">매출액 3조 9000억</div>
+                                <div class="item">사원수 3,500명</div>
+                            </div>
+                            <div class="salary">
+                                <div class="inner"><strong>2,847</strong>만원</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li id="companyinfoList">
+                        <a href="http://localhost/recruit-app/companyInfo/user_company_detail.jsp" target="_blank">
+                            <div class="thumbnail">
+                                <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2011/10/2w1aj007Pm_gWzi2y3i2jm0djMcSj_ldjm.gif?v=202406041618&amp;hash=r&amp;serviceCode=CL" onerror="companylogoOnError('/salary/logourl?ucono=1882711' , this)">
+                                <div class="inner">넥슨코리아</div>
+                            </div>
+                            <div class="headers">
+                                <div class="text">넥슨코리아</div>
+                            </div>
+                            <div class="summary">
+                                <div class="item">매출액 3조 9000억</div>
+                                <div class="item">사원수 3,500명</div>
+                            </div>
+                            <div class="salary">
+                                <div class="inner"><strong>2,847</strong>만원</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li id="companyinfoList">
+                        <a href="http://localhost/recruit-app/companyInfo/user_company_detail.jsp" target="_blank">
+                            <div class="thumbnail">
+                                <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2011/10/2w1aj007Pm_gWzi2y3i2jm0djMcSj_ldjm.gif?v=202406041618&amp;hash=r&amp;serviceCode=CL" onerror="companylogoOnError('/salary/logourl?ucono=1882711' , this)">
+                                <div class="inner">넥슨코리아</div>
+                            </div>
+                            <div class="headers">
+                                <div class="text">넥슨코리아</div>
+                            </div>
+                            <div class="summary">
+                                <div class="item">매출액 3조 9000억</div>
+                                <div class="item">사원수 3,500명</div>
+                            </div>
+                            <div class="salary">
+                                <div class="inner"><strong>2,847</strong>만원</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li id="companyinfoList">
+                        <a href="http://localhost/recruit-app/companyInfo/user_company_detail.jsp" target="_blank">
+                            <div class="thumbnail">
+                                <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2011/10/2w1aj007Pm_gWzi2y3i2jm0djMcSj_ldjm.gif?v=202406041618&amp;hash=r&amp;serviceCode=CL" onerror="companylogoOnError('/salary/logourl?ucono=1882711' , this)">
+                                <div class="inner">넥슨코리아</div>
+                            </div>
+                            <div class="headers">
+                                <div class="text">넥슨코리아</div>
+                            </div>
+                            <div class="summary">
+                                <div class="item">매출액 3조 9000억</div>
+                                <div class="item">사원수 3,500명</div>
+                            </div>
+                            <div class="salary">
+                                <div class="inner"><strong>2,847</strong>만원</div>
+                            </div>
+                        </a>
+                    </li>
+                    
+                    <div style="/* border-top:1px solid #ccc; */ height:50px; width:100%; text-align:center;font-size:18px; padding-top:12px">
+                    	<a href="#" id="load">더 보기 +</a>
+                    </div>
                 </ul>
             </div>
-            <div style="text-align:center;">
+            <!-- <div style="text-align:center;">
                 <nav aria-label="...">
                     <ul class="pagination pagination-lg" style="display: inline-flex;">
                         <li class="page-item disabled">
@@ -154,7 +455,7 @@
                         </li>
                     </ul>
                 </nav>
-            </div>
+            </div> -->
         </div>
     </form>
 </div>
