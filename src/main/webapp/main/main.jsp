@@ -78,6 +78,54 @@
       
 <section class="Section_Section__P1hhc">
 
+<!-- 기업 홍보란 -->
+<div class="custom-page-wrapper" style="position:relative;"> <!--page slider --> 
+  <div class="custom-post-slider"> 
+    <i class="fas fa-chevron-left custom-prev"></i> 
+    <i class="fas fa-chevron-right custom-next"></i> 
+    <div class="custom-post-wrapper"> 
+    
+      <div class="custom-post"> 
+        <div class="custom-slider-image-container">
+          <img src="../assets/images/ads/1.webp" class="custom-slider-image"> 
+          <div class="custom-image-text">
+           <strong>클라썸은 지금도 전 직원 채용중.</strong> <br/>
+            <span style="font-size: 15px;">어서 지원하세요!</span>
+          </div>
+        </div>
+        <div class="custom-post-info"> 
+        </div> 
+      </div> 
+      
+      <div class="custom-post"> 
+        <div class="custom-slider-image-container">
+          <img src="../assets/images/ads/3.webp" class="custom-slider-image">
+          <div class="custom-image-text">
+           <strong>인공지능 (AI)포지션.</strong> <br/>
+            <span style="font-size: 15px;">눈여겨볼 인공지능 (AI) 공고를 소개합니다</span>
+          </div> 
+        </div>
+        <div class="custom-post-info"> 
+        </div> 
+      </div> 
+    </div> 
+  </div> <!--post slider--> 
+</div> 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> 
+<script>
+$(document).ready(function(){
+    $('.custom-post-wrapper').slick({
+        prevArrow: $('.custom-prev'),
+        nextArrow: $('.custom-next'),
+        slidesToShow: 1, // 한번에 보여질 슬라이드 수
+        slidesToScroll: 1, // 한번에 스크롤될 슬라이드 수
+        infinite: true, // 무한 스크롤 여부
+        adaptiveHeight: true // 슬라이드 높이 자동 조정 여부
+    });
+});
+</script>
+
 <!-- 첫 번째 테마: 최근 등록된 공고 -->
 <article class="MatchedJobArea_MatchedJobArea__vFPPT"> 
   <div class="CarouselContainer_CarouselContainer__95CM6"> 
@@ -127,7 +175,7 @@ $(document).ready(function(){
     htmlContent1 += `
       <div data-index="${i}" class="slick-slide" tabindex="-1" aria-hidden="false" style="outline: none; width: calc(25% - 10px); margin-right: 10px;"> 
         <a href="../recruit/detail.jsp">
-          <div class="JobCard_JobCard__thumb__iNW6E" style="height: 100px;"> 
+          <div class="JobCard_JobCard__thumb__iNW6E" style="height: 100px; width : 200px"> 
             <img src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F25068%2Flvirf1oy7utk2ghu__400_400.jpg&amp;w=400&amp;q=75" style="width: 100%; height: 100%; object-fit: cover;">
           </div> 
           <div> 
@@ -202,55 +250,6 @@ $(document).ready(function(){
     </div> 
   </article>
   
-  
-  <!-- 기업 홍보란 -->
-      <div class="page-wrapper" style="position:relative;"> <!--page slider --> 
-  <div class="post-slider"> 
-    <h1 class="silder-title">기업 홍보란</h1> 
-    <i class="fas fa-chevron-left prev"></i> 
-    <i class="fas fa-chevron-right next"></i> 
-    <div class="post-wrapper"> 
-      <div class="post"> 
-        <div class="slider-image-container">
-          <img src="../assets/images/ads/1.webp" class="slider-image"> 
-          <div class="image-text">
-            클라썸은 지금도 전 직원 채용중.<br/>
-            <span style="font-size: 0.7em;">어서 지원하세요!</span>
-            
-          </div>
-        </div>
-        <div class="post-info"> 
-          <h4><a href="#" class="post-subject">당신의 꿈을 펼ㅊ </a></h4>
-          <i class="far fa-user" style="height:10%;">Awa Melvine</i> 
-        </div> 
-      </div> 
-      <div class="post"> 
-        <div class="slider-image-container">
-          <img src="../assets/images/ads/2.webp" class="slider-image"> 
-          <div class="image-overlay">
-            <h4>Commodo odio aenean sed</h4>
-          </div>
-        </div>
-        <div class="post-info"> 
-          <h4><a href="#">Commodo odio aenean sed</a></h4> 
-          <i class="far fa-user" style="height:10%;">Awa Melvine</i> 
-        </div> 
-      </div> 
-    </div> 
-  </div> <!--post slider--> 
-</div> 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
-<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> 
-<script>
-$(document).ready(function(){
-    $('.post-wrapper').slick({
-        prevArrow: $('.prev'),
-        nextArrow: $('.next')
-    });
-});
-</script>
-
-
   
   <!-- 세 번째 테마: 고연봉 포지션 -->
   <article class="MatchedJobArea_MatchedJobArea__vFPPT"> 
