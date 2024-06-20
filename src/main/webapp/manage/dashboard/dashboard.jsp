@@ -5,12 +5,27 @@
 	<style>
     .chart-container 
     {
-        position: relative;
-        height: 400px; /* Adjust this value as needed */
+        height: 320px;
+        margin-bottom: 10px; 
     }
     .bg-gradient-primary{
     	background-image: linear-gradient(195deg, #ec407a, #d81b60) !important;
     }
+    
+    .chart.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    background: white;
+}
+
+.chart.fullscreen + .card-body {
+    display: none;
+}
+
     </style>
     <!-- AdminLTE CSS -->
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css"> -->
@@ -45,88 +60,80 @@
         </nav>
         <!-- golgolz start -->
 		<div class="container-fluid">
-       <section class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex">
-                                    <p class="d-flex flex-column">
-                                        <span>회원 가입자 수</span>
-                                        <span class="text-bold text-lg">820 명</span>
-                                    </p>
-                                </div>
-                                <!-- /.d-flex -->
-                                <div class="position-relative mb-4">
-                                    <canvas id="visitors-chart"></canvas>
-                                </div>
-                                <div class="d-flex flex-row justify-content-end">
-                                    <span class="mr-2">
-                                        <i class="fas fa-square text-primary"></i> 이번 주
-                                    </span>
-                                    <span>
-                                        <i class="fas fa-square text-gray"></i> 지난 주
-                                    </span>
-                                </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 chart-container">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <p class="d-flex flex-column">
+                                    <span>회원 가입자 수</span>
+                                    <span class="text-bold text-lg">820 명</span>
+                                </p>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex">
-                                    <p class="d-flex flex-column">
-                                        <span>등록 기업 수</span>
-                                        <span class="text-bold text-lg">150 개</span>
-                                    </p>
-                                </div>
-                                <!-- /.d-flex -->
-                                <div class="position-relative mb-4">
-                                    <canvas id="companies-chart" ></canvas>
-                                </div>
-                                <div class="d-flex flex-row justify-content-end">
-                                    <span class="mr-2">
-                                        <i class="fas fa-square text-primary"></i> 이번 주
-                                    </span>
-                                    <span>
-                                        <i class="fas fa-square text-gray"></i> 지난 주
-                                    </span>
-                                </div>
+                            <div class="position-relative mb-4">
+                                <canvas id="visitors-chart"></canvas>
+                            </div>
+                            <div class="d-flex flex-row justify-content-end">
+                                <span class="mr-2">
+                                    <i class="fas fa-square text-primary"></i> 이번 주
+                                </span>
+                                <span>
+                                    <i class="fas fa-square text-gray"></i> 지난 주
+                                </span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- /.row -->
-                <!-- 기술 스택 원형 그래프 -->
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">기술 스택</h3>
+                <div class="col-lg-6 col-md-12 chart-container">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <p class="d-flex flex-column">
+                                    <span>등록 기업 수</span>
+                                    <span class="text-bold text-lg">150 개</span>
+                                </p>
                             </div>
-                            <div class="card-body chart-container">
-                                <canvas id="techStack-chart" height="150"></canvas>
-                                <div class="d-flex flex-row justify-content-end">
-                                </div>
+                            <div class="position-relative mb-4">
+                                <canvas id="companies-chart"></canvas>
                             </div>
-                        </div>
-                    </div>
-                     <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">등록 리뷰 수</h3>
-                            </div>
-                            <div class="card-body chart-container">
-                                <canvas id="reviewCount-chart" height="150"></canvas>
+                            <div class="d-flex flex-row justify-content-end">
+                                <span class="mr-2">
+                                    <i class="fas fa-square text-primary"></i> 이번 주
+                                </span>
+                                <span>
+                                    <i class="fas fa-square text-gray"></i> 지난 주
+                                </span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- /.row -->
             </div>
-        </section>
-        <!-- golgolz end -->
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">기술 스택</h3>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="techStack-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">등록 리뷰 수</h3>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="reviewCount-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <script>
         $(function () {
             var ctxVisitors = document.getElementById('visitors-chart').getContext('2d');
@@ -186,13 +193,13 @@
                     labels: ['18th', '20th', '22nd', '24th', '26th', '28th', '30th'],
                     datasets: [{
                         label: '이번 주',
-                        backgroundColor: 'rgba(60,141,188,0.1)',
-                        borderColor: 'rgba(60,141,188,1)',
+                        backgroundColor: 'rgba(0,128,0,0.1)',
+                        borderColor: 'rgba(0,128,0,1)',
                         pointRadius: false,
-                        pointColor: '#3b8bba',
-                        pointStrokeColor: 'rgba(60,141,188,1)',
+                        pointColor: '#008000',
+                        pointStrokeColor: 'rgba(0,128,0,1)',
                         pointHighlightFill: '#fff',
-                        pointHighlightStroke: 'rgba(60,141,188,1)',
+                        pointHighlightStroke: 'rgba(0,128,0,1)',
                         data: [50, 60, 70, 80, 90, 100, 110]
                     },
                     {
@@ -242,7 +249,6 @@
                 },
                 options: {
                     responsive: true,
-                    
                     legend: {
                         position: 'right'
                     }
@@ -257,8 +263,8 @@
                     datasets: [{
                         label: '리뷰 수',
                         data: [12, 19, 3, 5, 2, 3],
-                        backgroundColor: 'rgba(60,141,188,0.5)',
-                        borderColor: 'rgba(60,141,188,1)',
+                        backgroundColor: 'rgba(255,215,0,0.5)',
+                        borderColor: 'rgba(255,215,0,1)',
                         borderWidth: 1
                     }]
                 },
@@ -271,7 +277,6 @@
                     }
                 }
             });
-            
         });
     </script>
     </div>

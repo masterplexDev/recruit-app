@@ -6,6 +6,9 @@
 <jsp:include page="../../assets/layout/user/lib.jsp" />
 <!-- golgolz start -->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<link href="../assets/css/company/company-info-list-6.css" rel="stylesheet" type="text/css" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 	<!-- 파비콘 -->
     <link rel="shortcut icon" href="https://static.wanted.co.kr/favicon/new/favicon.ico"/>
     <link rel="stylesheet" href="https://asset.wanted.co.kr/userweb/www/_next/static/css/c76e012c05e1318d.css" crossorigin="anonymous" data-n-g=""/>
@@ -223,6 +226,28 @@ dl {
         max-width: 33.3333333333%;
 }
 }
+
+.apply_table {
+	border-top: 1px solid #dedede;
+	border-bottom: 1px solid #dedede;
+	width: 100%;
+	text-align: center;
+	height: 200px;
+	font-size: 15px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+.apply_table th {
+	background-color: #dedede;
+	border: 1px solid #dedede;
+	width: 20%;
+	height: 50px;
+	font-size: 15px;
+}
+.apply_table td {
+	border-bottom: 1px solid #dedede;
+	font-size: 15px;
+}
 <!--golgolz end-->
 </style>
 <script type="text/javascript">
@@ -269,38 +294,71 @@ dl {
 						<div class="Search_Search__MeaMt" >
 							<div>
 								<div>
-									<div class="Search_Search_search__RaFaG">
-										<span class="SvgIcon_SvgIcon__root__8vwon"><svg
-												class="SvgIcon_SvgIcon__root__svg__DKYBi"
-												viewBox="0 0 24 24">
-												<path fill-rule="evenodd" clip-rule="evenodd"
-													d="M9.99961 2.1001C5.63656 2.1001 2.09961 5.63705 2.09961 10.0001C2.09961 14.3631 5.63656 17.9001 9.99961 17.9001C11.8569 17.9001 13.5645 17.2592 14.9133 16.1864L19.8634 21.1365C20.2148 21.4879 20.7847 21.4879 21.1362 21.1365C21.4876 20.785 21.4876 20.2151 21.1362 19.8637L16.1861 14.9136C17.2587 13.5648 17.8996 11.8573 17.8996 10.0001C17.8996 5.63705 14.3627 2.1001 9.99961 2.1001ZM3.89961 10.0001C3.89961 6.63116 6.63067 3.9001 9.99961 3.9001C13.3685 3.9001 16.0996 6.63116 16.0996 10.0001C16.0996 13.369 13.3685 16.1001 9.99961 16.1001C6.63067 16.1001 3.89961 13.369 3.89961 10.0001Z"></path></svg></span><input
-											type="text" placeholder="검색" value="">
-									</div>
-									<div class="CalendarBtn_CalendarBtn__tKe6N">
-										<button type="button">
-											<span class="SvgIcon_SvgIcon__root__8vwon"><svg
-													class="SvgIcon_SvgIcon__root__svg__DKYBi"
-													viewBox="0 0 24 24">
-													<path d="M17.9999 14H14.9999V17H17.9999V14Z"></path>
-													<path fill-rule="evenodd" clip-rule="evenodd"
-														d="M16.1997 4.1H6.79983V1H4.99983V4.10078C4.75618 4.10244 4.53518 4.10758 4.34125 4.12343C4.03546 4.14841 3.71861 4.20442 3.41016 4.36158C2.95857 4.59168 2.59141 4.95883 2.36132 5.41042C2.20415 5.71888 2.14814 6.03573 2.12316 6.34151C2.0997 6.62867 2.09971 6.97516 2.09973 7.36667V17.6333C2.09971 18.0248 2.0997 18.3713 2.12316 18.6585C2.14814 18.9643 2.20415 19.2811 2.36132 19.5896C2.59141 20.0412 2.95857 20.4083 3.41016 20.6384C3.71861 20.7956 4.03546 20.8516 4.34125 20.8766C4.62838 20.9 4.97483 20.9 5.3663 20.9H18.6331C19.0245 20.9 19.3711 20.9 19.6582 20.8766C19.964 20.8516 20.2809 20.7956 20.5893 20.6384C21.0409 20.4083 21.4081 20.0412 21.6381 19.5896C21.7953 19.2811 21.8513 18.9643 21.8763 18.6585C21.8998 18.3713 21.8998 18.0248 21.8997 17.6333V7.36666C21.8998 6.97518 21.8998 6.62865 21.8763 6.34151C21.8513 6.03573 21.7953 5.71888 21.6381 5.41042C21.4081 4.95883 21.0409 4.59168 20.5893 4.36158C20.2809 4.20442 19.964 4.14841 19.6582 4.12343C19.3711 4.09996 19.0246 4.09998 18.6331 4.1L17.9997 4.1V1H16.1997V4.1ZM4.48782 5.91745C4.29335 5.93334 4.23975 5.95907 4.22734 5.9654C4.11444 6.02292 4.02265 6.11471 3.96513 6.22761C3.9588 6.24002 3.93307 6.29362 3.91718 6.48809C3.90043 6.69307 3.89973 6.96511 3.89973 7.4V9.2001H20.0997V7.4C20.0997 6.96511 20.099 6.69307 20.0823 6.48809C20.0664 6.29362 20.0407 6.24002 20.0343 6.22761C19.9768 6.11471 19.885 6.02292 19.7721 5.9654C19.7597 5.95907 19.7061 5.93334 19.5116 5.91745C19.3067 5.9007 19.0346 5.9 18.5997 5.9H5.39973C4.96484 5.9 4.6928 5.9007 4.48782 5.91745ZM3.89973 17.6V11.0001H20.0997V17.6C20.0997 18.0349 20.099 18.3069 20.0823 18.5119C20.0664 18.7064 20.0407 18.76 20.0343 18.7724C19.9768 18.8853 19.885 18.9771 19.7721 19.0346C19.7597 19.0409 19.7061 19.0667 19.5116 19.0826C19.3067 19.0993 19.0346 19.1 18.5997 19.1H5.39973C4.96484 19.1 4.6928 19.0993 4.48782 19.0826C4.29335 19.0667 4.23975 19.0409 4.22734 19.0346C4.11444 18.9771 4.02265 18.8853 3.96513 18.7724C3.9588 18.76 3.93307 18.7064 3.91718 18.5119C3.90043 18.3069 3.89973 18.0349 3.89973 17.6Z"></path></svg></span>
-											<p>전체 기간</p>
-										</button>
-										<div></div>
+									<div class="Search_Search_search__RaFaG" style="width: 200px;">
+										<span class="SvgIcon_SvgIcon__root__8vwon" >
+										<svg class="SvgIcon_SvgIcon__root__svg__DKYBi" viewBox="0 0 24 24">
+										<path fill-rule="evenodd" clip-rule="evenodd" 
+											d="M9.99961 2.1001C5.63656 2.1001 2.09961 5.63705 2.09961 10.0001C2.09961 14.3631 5.63656 17.9001 9.99961 17.9001C11.8569 17.9001 13.5645 17.2592 14.9133 16.1864L19.8634 21.1365C20.2148 21.4879 20.7847 21.4879 21.1362 21.1365C21.4876 20.785 21.4876 20.2151 21.1362 19.8637L16.1861 14.9136C17.2587 13.5648 17.8996 11.8573 17.8996 10.0001C17.8996 5.63705 14.3627 2.1001 9.99961 2.1001ZM3.89961 10.0001C3.89961 6.63116 6.63067 3.9001 9.99961 3.9001C13.3685 3.9001 16.0996 6.63116 16.0996 10.0001C16.0996 13.369 13.3685 16.1001 9.99961 16.1001C6.63067 16.1001 3.89961 13.369 3.89961 10.0001Z"></path></svg>
+											</span>
+										<input type="text" placeholder="회사명 검색" value="" style="width: 145px;" maxlength="10">
 									</div>
 								</div>
 							</div>
 						</div>
 						<div>
-							<div class="List_List_table__K2VFf">
+							<div class="List_List_table__K2VFf" style="display: none;">
 								<ul>
 									<dl class="List_List_empty__pphW6">
 										<dd>요청하신 결과가 없습니다.</dd>
 									</dl>
 								</ul>
 							</div>
+							<table class="apply_table" id="applyTable">
+								<tr>
+									<th>지원회사</th>
+									<th>지원공고</th>
+									<th>지원일자</th>
+									<th>진행상태</th>
+								</tr>
+								<tr>
+									<td>배달의 민족</td>
+									<td>배민B마트 캡틴 모집</td>
+									<td>2023-08-11</td>
+									<td>지원완료</td>
+								</tr>
+								<tr>
+									<td>쿠팡</td>
+									<td>쿠팡 인프라 엔지니어 채용</td>
+									<td>2023-07-22</td>
+									<td>면접 합격</td>
+								</tr>
+								<tr>
+									<td>LG</td>
+									<td>LG 모바일캠프리더 채용</td>
+									<td>2023-06-03</td>
+									<td>면접 불합격</td>
+								</tr>
+							</table>
 						</div>
+						<!-- 페이지네이션 시작 -->
+						<div style="text-align:center;">
+					        <nav aria-label="...">
+					                <ul class="pagination pagination-lg" style="display: inline-flex;">
+					                       <li class="page-item disabled">
+					                            <span class="page-link">&lt;</span>
+					                        </li>
+					                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+					                        <li class="page-item active" aria-current="page">
+					                            <span class="page-link">2</span>
+					                        </li>
+					                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+					                        <li class="page-item">
+					                            <a class="page-link" href="#">&gt;</a>
+					                        </li>
+						                 </ul>
+							         </nav>
+								</div>
+						<!-- 페이지네이션 끝 -->
 					</section>
 				</div>
           </div>

@@ -190,21 +190,39 @@
 				<div style="text-align: center; display: none;">
 					<h4><strong>검색결과가 존재하지 않습니다.</strong></h4>
 				</div>
-				<div class="modal">
-				
-				</div>				
+				<!-- 관리자 페이지네이션 시작 -->
 				<div class="alignCenter">
           			<table cellpadding="0" cellspacing="0" border="0" width="100%">
             			<tbody>
               				<tr>
                 				<td align="center">
 						        	<div id="pageNation">
+										<div style="justify-content: center;">
+											<nav aria-label="Page navigation example">
+												<ul class="pagination" style="justify-content: center;">
+													<li>
+														<a class="page-link" href="#" aria-label="Previous">
+														<span aria-hidden="true">&laquo;</span>
+														</a>
+													</li>
+													<li><a class="page-link" href="#">1</a></li>
+													<li><a class="page-link" href="#">2</a></li>
+													<li><a class="page-link" href="#">3</a></li>
+													<li>
+														<a class="page-link" href="#" aria-label="Next">
+														<span aria-hidden="true">&raquo;</span>
+														</a>
+													</li>
+												</ul>
+											</nav>
+										</div>	
 							        </div>		
                 				</td>
               				</tr>
             			</tbody>
           			</table>
         		</div>	
+				<!-- 관리자 페이지네이션 끝 -->
 			</div>
 		</div>
 	</main>

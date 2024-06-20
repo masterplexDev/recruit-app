@@ -355,27 +355,11 @@ padding: 20px;
                 </div> 
                </div> 
               </section> 
-              <div class="pg_bottom um_paginnation"> 
-	<div style="text-align:center;">
-	<nav aria-label="...">
-	<ul class="pagination" style="width:100px; display: inline-flex;">
-		<li class="page-item disabled">
-		<span class="page-link">&lt;</span>
-		</li>
-		<li class="page-item"><a class="page-link" href="#">1</a></li>
-		<li class="page-item active" aria-current="page">
-			<span class="page-link">2</span>
-		</li>
-		<li class="page-item"><a class="page-link" href="#">3</a></li>
-		<li class="page-item">
-			<a class="page-link" href="#">&gt;</a>
-		</li>
-	</ul>
-	</nav>
+				<div class="pg_bottom um_pagination"> 
+  <div style="text-align:center;">
+    <button id="load-more-btn" class="load-more">더보기...</button>
+  </div>
 </div>
-
-
-              </div> 
              </div> 
             </div> 
            </div> 
