@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import kr.co.sist.admin.dao.recruit.RecruitAdminDAO;
 import kr.co.sist.admin.domain.recruit.RecruitDomain;
+import kr.co.sist.admin.vo.recruit.SearchVO;
 
 @Service
 public class RecruitAdminService {
@@ -14,9 +15,9 @@ public class RecruitAdminService {
         this.recruitAdminDAO = recruitAdminDAO;
     }
 
-    public List<RecruitDomain> searchRecruits() {
+    public List<RecruitDomain> searchRecruits(SearchVO searchVO) {
         List<RecruitDomain> recruits = new ArrayList<RecruitDomain>();
-        recruits = recruitAdminDAO.selectRecruits();
+        recruits = recruitAdminDAO.selectRecruits(searchVO);
         return recruits;
     }
 
