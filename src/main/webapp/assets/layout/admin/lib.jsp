@@ -14,6 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"/>
+<!-- <script type="text/javascript" src="http://localhost/recruit-app/assets/js/admin/datepicker-ko.js"</script>> -->
 <style>
    body {
      font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
