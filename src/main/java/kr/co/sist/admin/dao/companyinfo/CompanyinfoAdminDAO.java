@@ -1,4 +1,4 @@
-package kr.co.admin.dao.companyinfo;
+package kr.co.sist.admin.dao.companyinfo;
 
 public class CompanyinfoAdminDAO {
 

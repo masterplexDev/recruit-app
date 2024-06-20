@@ -1,4 +1,4 @@
-package kr.co.admin.domain.notice;
+package kr.co.sist.admin.domain.notice;
 
 public class NoticeAdminDomain {
 
