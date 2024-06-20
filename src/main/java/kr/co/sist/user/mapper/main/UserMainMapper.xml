@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.sist.mapper.user.main.UserMainMapper">
+<mapper namespace="kr.co.sist.user.mapper.main.UserMainMapper">
   <select id="selectRecentJobPosts" resultType="map">
     --메인화면
     --1. 최근 등록된 공고(1달 내)

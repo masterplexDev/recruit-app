@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.sist.admin.mapper.dashboard.AdminDashboardMapper">
+
+  <!-- 대시보드 최신 데이터 불러오기 -->
+  <select id="getLatestDashboardData" resultType="map">
+    SELECT
+        BASE_DATE,
+        REGISTERCOMPANY_CNT,
+        QNA_CNT,
+        SIGNUP_CNT,
+        REVIEW_CNT
+    FROM
+        DASHBOARD
+    WHERE
+        BASE_DATE = (SELECT MAX(BASE_DATE) FROM DASHBOARD)
+  </select>
+
+  <!-- 모든 회원 가입자 수 -->
+  <select id="getAllSignupCounts" resultType="map">
+    SELECT
+        TRUNC(SIGNUP_DATE) AS SIGNUP_DATE,
+        COUNT(*) AS SIGNUP_CNT
+    FROM
+        USERS
+    GROUP BY
+        TRUNC(SIGNUP_DATE)
+    ORDER BY
+        TRUNC(SIGNUP_DATE)
+  </select>
+
+  <!-- 오늘을 기준으로 일주일 전까지의 회원 가입자 수 -->
+  <select id="getSignupCountsForLastWeek" resultType="map">
+    SELECT
+        TRUNC(SIGNUP_DATE) AS SIGNUP_DATE,
+        COUNT(*) AS SIGNUP_CNT
+    FROM
+        USERS
+    WHERE
+        SIGNUP_DATE &gt;= TRUNC(SYSDATE) - 7 AND SIGNUP_DATE &lt; TRUNC(SYSDATE)
+    GROUP BY
+        TRUNC(SIGNUP_DATE)
+    ORDER BY
+        TRUNC(SIGNUP_DATE)
+  </select>
+
+  <!-- 일주일 전부터 그 전주까지의 회원 가입자 수 -->
+  <select id="getSignupCountsForWeekBeforeLast" resultType="map">
+    SELECT
+        TRUNC(SIGNUP_DATE) AS SIGNUP_DATE,
+        COUNT(*) AS SIGNUP_CNT
+    FROM
+        USERS
+    WHERE
+        SIGNUP_DATE &gt;= TRUNC(SYSDATE) - 14 AND SIGNUP_DATE &lt; TRUNC(SYSDATE) - 7
+    GROUP BY
+        TRUNC(SIGNUP_DATE)
+    ORDER BY
+        TRUNC(SIGNUP_DATE)
+  </select>
+
+  <!-- 모든 등록 기업 수 -->
+  <select id="getAllRegisteredCompanyCounts" resultType="map">
+    SELECT
+        TRUNC(ESTABLISHMENT_DATE) AS ESTABLISHMENT_DATE,
+        COUNT(*) AS REGISTERCOMPANY_CNT
+    FROM
+        COMPANYINFO
+    GROUP BY
+        TRUNC(ESTABLISHMENT_DATE)
+    ORDER BY
+        TRUNC(ESTABLISHMENT_DATE)
+  </select>
+
+  <!-- 오늘을 기준으로 일주일 전까지의 등록 기업 수 -->
+  <select id="getRegisteredCompanyCountsForLastWeek" resultType="map">
+    SELECT
+        TRUNC(ESTABLISHMENT_DATE) AS ESTABLISHMENT_DATE,
+        COUNT(*) AS REGISTERCOMPANY_CNT
+    FROM
+        COMPANYINFO
+    WHERE
+        ESTABLISHMENT_DATE &gt;= TRUNC(SYSDATE) - 7 AND ESTABLISHMENT_DATE &lt; TRUNC(SYSDATE)
+    GROUP BY
+        TRUNC(ESTABLISHMENT_DATE)
+    ORDER BY
+        TRUNC(ESTABLISHMENT_DATE)
+  </select>
+
+  <!-- 일주일 전부터 그 전주까지의 등록 기업 수 -->
+  <select id="getRegisteredCompanyCountsForWeekBeforeLast" resultType="map">
+    SELECT
+        TRUNC(ESTABLISHMENT_DATE) AS ESTABLISHMENT_DATE,
+        COUNT(*) AS REGISTERCOMPANY_CNT
+    FROM
+        COMPANYINFO
+    WHERE
+        ESTABLISHMENT_DATE &gt;= TRUNC(SYSDATE) - 14 AND ESTABLISHMENT_DATE &lt; TRUNC(SYSDATE) - 7
+    GROUP BY
+        TRUNC(ESTABLISHMENT_DATE)
+    ORDER BY
+        TRUNC(ESTABLISHMENT_DATE)
+  </select>
+
+  <!-- 기술 스택 -->
+  <select id="getAllSkills" resultType="map">
+    SELECT * FROM SKILL
+  </select>
+
+  <!-- 기술 스택 수 -->
+  <select id="getSkillCounts" resultType="map">
+    SELECT
+        SKILL_CODE,
+        COUNT(*) AS SKILL_COUNT
+    FROM
+        SKILL
+    GROUP BY
+        SKILL_CODE
+    ORDER BY
+        SKILL_COUNT DESC
+  </select>
+</mapper>
