@@ -81,7 +81,7 @@ input{
 				<div class="contents">
 					<form id="dataForm" name="dataForm" action="http://localhost/online-shop/manage/goods/register_process.jsp" method="post" enctype="multipart/form-data">
 						<div class="subtitle">
-							<!-- <img src="http://localhost/online-shop/assets/images/manage/goods/register/bul_subtitle.gif" /> -->
+							<img src="http://localhost/recruit-app/assets/images/manage/common/bul_subtitle.gif" />
 							기업정보
 						</div>
 						<table class="tbstyleB" width="100%">
@@ -131,7 +131,7 @@ input{
 						</table>
 						<!--이미지등록-->
 						<div class="subtitle">
-							<!-- <img src="http://localhost/online-shop/assets/images/manage/goods/register/bul_subtitle.gif" /> -->
+							<img src="http://localhost/recruit-app/assets/images/manage/common/bul_subtitle.gif" />
 							기업 로고 이미지
 						</div>
 						<div id="area_file" style="display: block">
@@ -160,7 +160,7 @@ input{
 						</div>
 						<!--이미지등록-->
 						<div class="subtitle">
-							<!-- <img src="http://localhost/online-shop/assets/images/manage/goods/register/bul_subtitle.gif" /> -->
+							<img src="http://localhost/recruit-app/assets/images/manage/common/bul_subtitle.gif" />
 							기업 프로필 대표 이미지
 						</div>
 
@@ -188,7 +188,7 @@ input{
 							</table>
 						</div>
 						<div class="subtitle">
-							<!-- <img src="http://localhost/online-shop/assets/images/manage/goods/register/bul_subtitle.gif" /> -->
+							<img src="http://localhost/recruit-app/assets/images/manage/common/bul_subtitle.gif" />
 							연혁
 						</div>
 						<table class="tbstyleB" width="100%">
@@ -230,7 +230,7 @@ input{
 							</tbody>
 						</table>
 						<div class="subtitle">
-							<!-- <img src="http://localhost/online-shop/assets/images/manage/goods/register/bul_subtitle.gif" /> -->
+							<img src="http://localhost/recruit-app/assets/images/manage/common/bul_subtitle.gif" />
 							복리후생
 						</div>
 						<table class="tbstyleB" width="100%">
