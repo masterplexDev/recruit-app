@@ -119,7 +119,11 @@
 	    	loginFrm = $('#loginFrm');
 	    	
 	    	$('#loginBtn').click(function(){
-	    		loginFrm.attr("action","../dashboard.do").submit();
+	    		/* loginFrm.attr("action","../dashboard.do").submit(); */
+	    		
+	    		//location.href="../dashboard.do";
+	    		
+	    		loginFrm.submit();
 	    		
 	    	});//click
 	    });//ready
@@ -179,7 +183,7 @@
 
     
 <main class="form-signin w-100 m-auto">
-  <form id="loginFrm">
+  <form id="loginFrm" action="../dashboard.do" method="post">
     <img class="mb-4" src="http://localhost/recruit-app/assets/images/admin/adminLoginIcoNight.png" alt="" width="80" height="80">
     <h1 class="h3 mb-3 fw-normal"><strong>Admin Login</strong></h1>
 
