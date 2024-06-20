@@ -7,6 +7,7 @@
 <script type="text/javascript">
 	$(function(){
     	$("#dashboard_menu").addClass("bg-gradient-primary");
+    	location.href="http://localhost/recruit-app/manage/dashboard/dashboard.jsp";
 	});
 </script>
 <!-- golgolz start -->

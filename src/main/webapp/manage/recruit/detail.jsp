@@ -11,68 +11,7 @@
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
-<style>
-		.subtitle{
-			padding: 0px;
-			margin-top: 20px;
-			margin-bottom: 5px;
-		}
-		.container-fluid py-4 {
-			padding-top: 0px;!important
-		}
-		.detail-control {
-			font-size: 15px;
-			margin-right: 2px;
-		}
-		#benefits li{
-			font-size: 15px;
-			height: 30px;
-			list-style-type: decimal;
-			list-style-position: inside;
-			display: flex;
-		    align-items: center; /* 세로 중앙 정렬 */
-		}
-		#benefits li:hover{
-			background-color: #DDD;
-		}
-		.chip-group {
-            display: flex;
-            flex-wrap: wrap; 
-            font-size: 13px;
-        }
-        .chip {
-            padding: 8px 16px; /* 좌우 패딩 16px로 변경 */
-            background-color: #f1f1f1;
-            border-radius: 20px;
-            margin: 5px;
-            cursor: pointer;
-        }
-        .chip.active {
-            background-color: #007bff;
-            color: white;
-        }
-        #resetButton { /* 초기화 버튼 스타일 */
-            padding: 8px 16px; /* 칩과 동일한 패딩 */
-            background-color: #e0e0e0; /* 칩보다 약간 어두운 배경색 */
-            border: none;
-            border-radius: 20px; /* 칩과 동일한 둥근 테두리 */
-            margin: 5px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        #resetButton:hover { /* 호버 효과 */
-            background-color: #bdbdbd; /* 칩보다 약간 더 어두운 배경색 */
-        }
-        .ui-timepicker-standard{
-        	font-size: 12px;
-        }
-        .ui-timepicker{
-        	text-align: left;
-        }
-        .tbstyleB .label{
-			border-top: solid 1px #c8c8c8;        
-        }
-</style>
+<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/manage/recruit/recruit.css">
 <script type="text/javascript">
 	
 	$(function() {
@@ -84,47 +23,36 @@
 		});
 
 		$(".chip").click(function() {
-			$('.chip').removeClass('active'); // 모든 칩 비활성화
-	        $(this).addClass('active');      // 클릭된 칩 활성화
-
-	        // 선택된 값 처리 (필요하다면)
-	        var selectedValue = $(this).data('value');
-	        /* console.log("Selected language:", selectedValue);
 			$(this).toggleClass("active");
 
 			var selectedValues = $(".chip.active").map(function() {
 				return $(this).data("value");
-			}).get(); */
+			}).get();
 		});
 
-		$("#resetButton").click(function(event) {
-			event.preventDefault(); // 기본 동작 방지
-			$('.chip').removeClass('active'); // 모든 칩 선택 해제
-		});
-		
 		$('#startTime').timepicker({
-		    timeFormat: 'H:mm',
-		    interval: 30,
-		    minTime: '00:00',
-		    maxTime: '23:30',
-		    defaultTime: '8',
-		    startTime: '8:00',
-		    dynamic: false,
-		    dropdown: true,
-		    scrollbar: true
-	    });
-		
+			timeFormat : 'H:mm',
+			interval : 30,
+			minTime : '00:00',
+			maxTime : '23:30',
+			defaultTime : '8',
+			startTime : '8:00',
+			dynamic : false,
+			dropdown : true,
+			scrollbar : true
+		});
+
 		$('#endTime').timepicker({
-		    timeFormat: 'H:mm',
-		    interval: 30,
-		    minTime: '00:00',
-		    maxTime: '23:30',
-		    defaultTime: '17',
-		    startTime: '17:00',
-		    dynamic: false,
-		    dropdown: true,
-		    scrollbar: true
-	    });
+			timeFormat : 'H:mm',
+			interval : 30,
+			minTime : '00:00',
+			maxTime : '23:30',
+			defaultTime : '17',
+			startTime : '17:00',
+			dynamic : false,
+			dropdown : true,
+			scrollbar : true
+		});
 	});
 </script>
 <!-- golgolz end -->
@@ -151,7 +79,7 @@
 				</nav>
 			</div>
 		</nav>
-		<div class="container-fluid py-4">
+		<div class="container-fluid">
 			<!-- golgolz start -->
 			<div id="contentcolumn" class="">
 				<div class="contents">
@@ -170,7 +98,8 @@
 									<td class="label">기업명</td>
 									<td class="box text">
 										<input type="text" name="name" value="" size="50" class="inputbox naver_shopping_prodName" />
-										<input type="button" id="btn-register" class="btn btn-success btn-sm" value="조회" />
+										<!-- <input type="button" id="btn-register" class="btn btn-success btn-sm" value="조회" /> -->
+										<input type="button" id="btn-register" class="btn btn-outline-success btn-sm" value="추가" />
 									</td>
 								</tr>
 								<tr>
@@ -229,9 +158,9 @@
 									<td class="label">근무 요일</td>
 									<td class="box text">
 										<div class="chip-group">
-											<div class="chip" data-value="백엔드">주5일(월-금)</div>
-											<div class="chip" data-value="프론트엔드">주5일(스케줄)</div>
-											<div class="chip" data-value="임베디드">주4일</div>
+											<div class="chip" data-value="주5일(월-금)">주5일(월-금)</div>
+											<div class="chip" data-value="주5일(스케줄)">주5일(스케줄)</div>
+											<div class="chip" data-value="주4일">주4일</div>
 											<!-- <button id="resetButton">초기화</button> -->
 										</div>
 									</td>
@@ -278,7 +207,7 @@
 										<input type="radio" name="career" value="경력무관" /><label>경력무관</label>
 										<input type="radio" name="career" value="신입" /><label>신입</label>
 										<input type="radio" name="career" value="신입" /><label>경력 (</label>
-										<input type="text" name="name" value="" size="5" class="inputbox naver_shopping_prodName" />년)
+										<input type="text" name="name" value="" size="5" class="inputbox naver_shopping_prodName" /> 년)
 									</td>
 								</tr>
 								<tr>
@@ -300,12 +229,12 @@
 						<div id="summernote"></div>
 						<div class="alignCenter">
 							<% if(request.getParameter("code") == null){ %>
-								<input type="button" id="btn-register" class="btn btn-success btn-sm detail-control" value="등록하기" />
+								<input type="button" id="btn-register" class="btn btn-outline-success btn-sm detail-control" value="등록하기" />
 							<% } else { %>
-								<input type="button" id="btn-update" class="btn btn-warning btn-sm detail-control" value="수정하기" />
-								<input type="button" id="btn-delete" class="btn btn-danger btn-sm detail-control" value="삭제하기" />
+								<input type="button" id="btn-update" class="btn btn-outline-warning btn-sm detail-control" value="수정하기" />
+								<input type="button" id="btn-delete" class="btn btn-outline-danger btn-sm detail-control" value="삭제하기" />
 							<% } %>
-								<input type="button" id="btn-back" class="btn btn-success btn-sm detail-control" value="뒤로" onClick="javascript:history.back();"/>
+								<input type="button" id="btn-back" class="btn btn-outline-dark btn-sm detail-control" value="뒤로" onClick="javascript:history.back();"/>
 						</div>
 					</form>
 				</div>

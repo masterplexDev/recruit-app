@@ -1355,10 +1355,10 @@ select {
 /*�옄二쇱벐�뒗 �뒪���씪*/
 .inputbox {
   border: solid 1px #ccc;
-  height: 18px;
+  height: 23px;
   text-align: left !important;
   background-color: whitesmoke;
-  font-size: 13px;
+  font-size: 14px;
   padding: 0px 3px;
 }
 
@@ -2480,7 +2480,7 @@ select {
   padding: 0px 10px 0 10px;
   background-color: #f4f4f4;
   color: #5e5e5e;
-  height: 30px;
+  height: 40px;
   border-bottom: solid 1px #c8c8c8;
 }
 
@@ -2541,6 +2541,7 @@ select {
 
 .tbstyleB .box {
   padding: 3px 10px 3px 10px;
+  height: 40px;
 }
 
 .tr_h37 tr {
