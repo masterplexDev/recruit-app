@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <style>
       body {
         font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
@@ -18,9 +19,11 @@
       }
     </style>
     <script type="text/javascript">
-	    const button = document.getElementById('signupBtn');
-	
-	    button.addEventListener('click', function() {
-	        window.location.href = 'http://localhost/recruit-app/user/login.jsp'; // 이동할 페이지 URL
+	    document.addEventListener('DOMContentLoaded', function() {
+		    const button = document.getElementById('signupBtn');
+		
+		    button.addEventListener('click', function() {
+		        window.location.href = 'http://localhost/recruit-app/user/login.jsp'; // 이동할 페이지 URL
+		    });
 	    });
     </script>

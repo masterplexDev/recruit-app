@@ -6,7 +6,6 @@
   	<script src="https://getbootstrap.com/docs/5.3/assets/js/color-modes.js"></script>
 	<link rel="shortcut icon" href="http://demofran.com/data/banner/JnLfWUSUyR6sXJP5n3Re4Fvdc93k93.ico" type="image/x-icon">
 	<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
-	<link rel="stylesheet" href="/resources/demos/style.css">
 	<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
     <meta charset="utf-8">
@@ -16,17 +15,12 @@
     <meta name="generator" content="Hugo 0.122.0">
     <title>Signin Template · Bootstrap v5.3</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sign-in/">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-<link href="https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<link href="https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <!-- Favicons -->
-<link rel="manifest" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/manifest.json">
-<link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico">
-<meta name="theme-color" content="#712cf9">
-
+	<link rel="manifest" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/manifest.json">
+	<meta name="theme-color" content="#712cf9">
 
     <style>
       .bd-placeholder-img {
@@ -120,6 +114,16 @@
     
     <!-- Custom styles for this template -->
     <link href="https://getbootstrap.com/docs/5.3/examples/sign-in/sign-in.css" rel="stylesheet">
+    <script type="text/javascript">
+	    $(function(){
+	    	loginFrm = $('#loginFrm');
+	    	
+	    	$('#loginBtn').click(function(){
+	    		loginFrm.attr("action","../dashboard.do").submit();
+	    		
+	    	});//click
+	    });//ready
+    </script>
   </head>
   <body class="d-flex align-items-center py-4 bg-body-tertiary">
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -175,16 +179,16 @@
 
     
 <main class="form-signin w-100 m-auto">
-  <form>
+  <form id="loginFrm">
     <img class="mb-4" src="http://localhost/recruit-app/assets/images/admin/adminLoginIcoNight.png" alt="" width="80" height="80">
     <h1 class="h3 mb-3 fw-normal"><strong>Admin Login</strong></h1>
 
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" maxlength="30" style="font-size: 15px;">
+      <input type="email" class="form-control" name="id" id="floatingInput" placeholder="name@example.com" maxlength="30" style="font-size: 15px;">
       <label for="floatingInput">ID</label>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" maxlength="30" style="font-size: 15px;">
+      <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password" maxlength="30" style="font-size: 15px;">
       <label for="floatingPassword">Password</label>
     </div>
 
@@ -193,7 +197,7 @@
         관리자 인증이 필요합니다.
       </label>
     </div>
-    <button class="btn btn-primary w-100 py-2" type="button" onclick="location.href='http://localhost/recruit-app/manage/dashboard/dashboard.do';">로그인</button>
+    <button class="btn btn-primary w-100 py-2" type="button" id="loginBtn">로그인</button>
     <p class="mt-5 mb-3 text-body-secondary">By. GolGolZ</p>
   </form>
 </main>

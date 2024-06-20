@@ -60,43 +60,40 @@
                         </div>
                     </div> -->
                 </div>
-                <div style="border:1px solid #ccc; padding-top:30px; padding-bottom:10px; margin:auto; width:650px;">
-                <div style="margin-bottom:18px; font-size:20px"><strong>기업 검색</strong></div>
-                    <table style="margin:auto; border-collapse:collapse; width:500px; height:170px">
+                <div style="border:1px solid #ccc; padding-top:30px; padding-bottom:20px; margin:auto; width:950px;">
+                <div style="margin-bottom:18px; font-size:22px; color:#333"><strong>기업 검색</strong></div>
+                    <table style="margin:auto; border-collapse:collapse; width:500px; height:180px">
                         <tbody>
                             <tr style="border-top:1px solid #ccc; border-bottom:1px solid #ccc;">
-                                <th style="border-left:1px solid transparent; border-right:1px solid transparent; color:black;">기업명</th>
+                                <th style="border-left:1px solid transparent; font-size:15px; border-right:1px solid transparent; color:black;">기업명</th>
                                 <td style="text-align:left; padding-left:20px; border-left:1px solid transparent; border-right:1px solid transparent;">
                                     <input type="text" name="company_name" value="" style="border:1px solid #ccc; width:250px">
                                 </td>
                             </tr>
                             <tr style="border-bottom:1px solid #ccc;">
-                                <th style="border-left:1px solid transparent; border-right:1px solid transparent; color:black;">평균 연봉</th>
+                                <th style="border-left:1px solid transparent; font-size:15px; border-right:1px solid transparent; color:black;">평균 연봉</th>
                                 <td style="text-align:left; padding-left:20px; border-left:1px solid transparent; border-right:1px solid transparent;">
                                     <input type="text" name="avg_sal" value="" style="border:1px solid #ccc; width:100px"> 만원 이상
                                 </td>
                             </tr>
                             <tr style="border-bottom:1px solid #ccc;">
-                                <th style="border-left:1px solid transparent; border-right:1px solid transparent; color:black;">기업 구분</th>
+                                <th style="border-left:1px solid transparent; font-size:15px; border-right:1px solid transparent; color:black;">기업 구분</th>
                                 <td style="text-align:left; padding-left:20px; border-left:1px solid transparent; border-right:1px solid transparent;">
-                                    <label>
-                                        <input type="radio" name="company-classification" value="0"> 전체
+                                    <label style="margin-left:10px">
+                                        <input type="radio" name="company-classification" value="0"> 대기업
                                     </label>
                                     <label style="margin-left:10px">
-                                        <input type="radio" name="company-classification" value="1"> 대기업
+                                        <input type="radio" name="company-classification" value="1"> 중견기업
                                     </label>
                                     <label style="margin-left:10px">
-                                        <input type="radio" name="company-classification" value="2"> 중견기업
-                                    </label>
-                                    <label style="margin-left:10px">
-                                        <input type="radio" name="company-classification" value="3"> 중소기업
+                                        <input type="radio" name="company-classification" value="2"> 중소기업
                                     </label>
                                 </td>
                             </tr>
                             <tr style="border-bottom:1px solid #ccc;">
                                 <td colspan="2" style="text-align:center; margin-right:50px; border-left:1px solid transparent; border-right:1px solid transparent; border-bottom:1px solid transparent; color:black;">
-                                    <input type="submit" value="초기화" class="btn btn-outline-secondary"/>
-                                    <input type="submit" value="검색" class="btn btn-secondary"/>
+                                    <input type="submit" value="검색" class="btn btn-secondary btn-lg"/>
+                                    <input type="submit" value="초기화" class="btn btn-outline-secondary btn-lg"/>
                                 </td>
                             </tr>
                         </tbody>
@@ -127,12 +124,15 @@
                                 <img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2011/10/2w1aj007Pm_gWzi2y3i2jm0djMcSj_ldjm.gif?v=202406041618&amp;hash=r&amp;serviceCode=CL" onerror="companylogoOnError('/salary/logourl?ucono=1882711' , this)">
                                 <div class="inner">넥슨코리아</div>
                             </div>
-                            <div class="headers" style="text-align:center">
+                            <div class="headers">
                                 <div class="text">넥슨코리아</div>
                             </div>
-                            <div class="summary" style="text-align:center">
+                            <div class="summary">
                                 <div class="item">매출액 3조 9000억</div>
                                 <div class="item">사원수 3,500명</div>
+                            </div>
+                            <div class="salary">
+                                <div class="inner"><strong>2,847</strong>만원</div>
                             </div>
                         </a>
                     </li>
@@ -140,7 +140,7 @@
             </div>
             <div style="text-align:center;">
                 <nav aria-label="...">
-                    <ul class="pagination" style="width:100px; display: inline-flex;">
+                    <ul class="pagination pagination-lg" style="display: inline-flex;">
                         <li class="page-item disabled">
                             <span class="page-link">&lt;</span>
                         </li>
