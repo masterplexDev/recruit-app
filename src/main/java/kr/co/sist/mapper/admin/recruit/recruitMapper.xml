@@ -23,19 +23,59 @@
 	    <result property="eduStandard" column="education_base_code"/>
 	</resultMap>
     <select id="selectRecruits" resultMap="recruitResultMap" parameterType="kr.co.sist.admin.vo.recruit.SearchVO">
-	  	SELECT
-		    recruit_num,
-		    r.company_code,
-		    ci.company_name,
-		    input_date,
-		    end_date,
-		    title,
-		    career_condition,
-		    years,
-		    employment_type,
-		    work_place
-		FROM recruit r
-		LEFT JOIN companyinfo ci ON r.company_code = ci.company_code
+    	SELECT 
+    		rnum,
+    		recruit_num,
+			company_code,
+			company_name,
+			input_date,
+			end_date,
+			title,
+			career_condition,
+			years,
+			employment_type,
+			work_place	
+    	FROM
+		  	(SELECT
+		  		row_number() over(order by recruit_num desc) as rnum,
+			    recruit_num,
+			    r.company_code,
+			    ci.company_name,
+			    r.input_date,
+			    end_date,
+			    title,
+			    career_condition,
+			    years,
+			    employment_type,
+			    work_place
+			FROM recruit r
+			LEFT JOIN companyinfo ci ON r.company_code = ci.company_code
+			<where>
+				<if test="id != 0">
+					and r.recruit_num = #{id}
+				</if>
+				<if test="companyCode != null">
+					and ci.company_code = #{companyCode}
+				</if>
+				<if test="inputDate != null">
+					and r.input_date > #{inputDate}
+				</if>
+				<if test="endDate != null">
+					and end_date <![CDATA[ < ]]> #{endDate}
+				</if>
+				<if test="career != null">
+					and career_condition = #{career}
+				</if>
+				<if test="employmentType != null">
+					and employment_type = #{employmentType}
+				</if>
+			</where>
+			)
+		<where>
+			<if test="startNum != 0 and endNum !=0">
+				and rnum between #{startNum} and #{endNum}
+			</if>
+		</where>
     </select>
     <select id="selectOneRecruit" parameterType="int" resultMap="recruitResultMap">
     	SELECT

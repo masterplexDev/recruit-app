@@ -1,6 +1,7 @@
 package kr.co.sist.admin.vo.recruit;
 
-import java.sql.Date;
+import java.time.LocalDate;
+import org.springframework.format.annotation.DateTimeFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,8 +16,10 @@ import lombok.ToString;
 public class SearchVO {
     private int id;
     private String companyCode;
-    private Date inputDate;
-    private Date endDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate inputDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate endDate;
     private String career;
     private String employmentType;
     private int startNum;

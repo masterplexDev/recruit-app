@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 import kr.co.sist.admin.domain.recruit.RecruitDomain;
+import kr.co.sist.admin.vo.recruit.SearchVO;
 import kr.co.sist.properties.MyBatisConfig;
 
 @Component
@@ -15,10 +16,10 @@ public class RecruitAdminDAO {
         this.myBatis = myBatis;
     }
 
-    public List<RecruitDomain> selectRecruits() {
+    public List<RecruitDomain> selectRecruits(SearchVO searchVO) {
         SqlSession session = myBatis.getMyBatisHandler(false);
         List<RecruitDomain> recruits = new ArrayList<RecruitDomain>();
-        recruits = session.selectList("kr.co.sist.recruit.admin.selectRecruits");
+        recruits = session.selectList("kr.co.sist.recruit.admin.selectRecruits", searchVO);
         myBatis.closeHandler(session);
 
         return recruits;
