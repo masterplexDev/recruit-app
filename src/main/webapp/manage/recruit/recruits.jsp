@@ -7,8 +7,10 @@
 <jsp:include page="../../assets/layout/admin/lib.jsp" />
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
+<script src="http://localhost/recruit-app/assets/js/admin/datepicker-ko.js"></script>
 <script type="text/javascript">
 	$(function(){
+		$.datepicker.setDefaults($.datepicker.regional['ko']);
     	$("#recruit_menu").addClass("bg-gradient-primary");
     	
     	$("#start_date_first").datepicker({
