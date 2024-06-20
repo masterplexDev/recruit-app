@@ -47,16 +47,9 @@
 #companyIntro{
 	border:1px solid #dedede;
 }
-/* body, html {
-	height: 100% !important;
-	margin: 0 !important;
-	overflow: hidden !important;
+input{
+	background-color: white !important;
 }
-
-main {
-	height: 100% !important;
-	overflow-y: auto !important;
-} */
 </style>
 <!-- golgolz end -->
 </head>
@@ -88,7 +81,7 @@ main {
 				<div class="contents">
 					<form id="dataForm" name="dataForm" action="http://localhost/online-shop/manage/goods/register_process.jsp" method="post" enctype="multipart/form-data">
 						<div class="subtitle">
-							<img src="http://localhost/online-shop/assets/images/manage/goods/register/bul_subtitle.gif" />
+							<!-- <img src="http://localhost/online-shop/assets/images/manage/goods/register/bul_subtitle.gif" /> -->
 							기업정보
 						</div>
 						<table class="tbstyleB" width="100%">
@@ -104,27 +97,27 @@ main {
 									</td>
 								</tr>
 								<tr>
-									<td class="label">사업자번호</td>
+									<td class="label">사업자등록번호</td>
 									<td class="box text">
-										<input type="text" name="name" value="" size="13" class="inputbox naver_shopping_prodName" />만원
+										<input type="text" name="name" value="" size="20" class="inputbox naver_shopping_prodName" /> 입력 예시) 123-45-67890
 									</td>
 								</tr>
 								<tr>
 									<td class="label">사원수(명)</td>
 									<td class="box text">
-										<input type="text" name="name" value="" size="13" class="inputbox naver_shopping_prodName" />명
+										<input type="text" name="name" value="" size="13" class="inputbox naver_shopping_prodName" /> 명
 									</td>
 								</tr>
 								<tr>
 									<td class="label">설립년도(년)</td>
 									<td class="box text">
-										<input type="text" name="name" value="" size="13" class="inputbox naver_shopping_prodName" />년
+										<input type="text" name="name" value="" size="13" class="inputbox naver_shopping_prodName" /> 년
 									</td>
 								</tr>
 								<tr>
 									<td class="label">매출액(만원)</td>
 									<td class="box text">
-										<input type="text" name="name" value="" size="13" class="inputbox naver_shopping_prodName" />만원
+										<input type="text" name="name" value="" size="13" class="inputbox naver_shopping_prodName" /> 만원
 									</td>
 								</tr>
 								<tr>
@@ -138,8 +131,7 @@ main {
 						</table>
 						<!--이미지등록-->
 						<div class="subtitle">
-							<img
-								src="http://localhost/online-shop/assets/images/manage/goods/register/bul_subtitle.gif" />
+							<!-- <img src="http://localhost/online-shop/assets/images/manage/goods/register/bul_subtitle.gif" /> -->
 							기업 로고 이미지
 						</div>
 						<div id="area_file" style="display: block">
@@ -168,8 +160,7 @@ main {
 						</div>
 						<!--이미지등록-->
 						<div class="subtitle">
-							<img
-								src="http://localhost/online-shop/assets/images/manage/goods/register/bul_subtitle.gif" />
+							<!-- <img src="http://localhost/online-shop/assets/images/manage/goods/register/bul_subtitle.gif" /> -->
 							기업 프로필 대표 이미지
 						</div>
 
@@ -197,7 +188,7 @@ main {
 							</table>
 						</div>
 						<div class="subtitle">
-							<img src="http://localhost/online-shop/assets/images/manage/goods/register/bul_subtitle.gif" />
+							<!-- <img src="http://localhost/online-shop/assets/images/manage/goods/register/bul_subtitle.gif" /> -->
 							연혁
 						</div>
 						<table class="tbstyleB" width="100%">
@@ -239,7 +230,7 @@ main {
 							</tbody>
 						</table>
 						<div class="subtitle">
-							<img src="http://localhost/online-shop/assets/images/manage/goods/register/bul_subtitle.gif" />
+							<!-- <img src="http://localhost/online-shop/assets/images/manage/goods/register/bul_subtitle.gif" /> -->
 							복리후생
 						</div>
 						<table class="tbstyleB" width="100%">

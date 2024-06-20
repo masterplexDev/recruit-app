@@ -1,4 +1,4 @@
-package kr.co.sist.admin.vo.admin;
+package kr.co.sist.admin.vo.notice;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,12 +6,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @ToString
-public class LoginVO {
-    private String adminId;
-    private String password;
+public class SearchVO {
+  private String field, keyword;
+  private String currentPage;
+  private int startNum, endNum;
 }

@@ -2,10 +2,21 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
- <mapper namespace="kr.co.sist.admin.admin">
-  <select id="selectLogin" resultType="String" parameterType="kr.co.sist.admin.vo.admin.LoginVO">
-  		select admin_id,password
+ <mapper namespace="kr.co.sist.mapper.admin.admin.adminMapper">
+	<resultMap id="adminInfoResultMap" type="kr.co.sist.admin.domain.admin.AdminInfoDomain">
+	    <result property="position" column="position"/>
+	    <result property="adminId" column="admin_id"/>
+	    <result property="authority" column="authority"/>
+	</resultMap>
+  <select id="selectLogin" resultType="kr.co.sist.admin.domain.admin.LoginDomain" parameterType="kr.co.sist.admin.vo.admin.LoginVO">
+  		select admin_id,password,position,authority
 		from admin
 		where admin_id=#{ admin_id } and password=#{ password }
+  </select>
+  <select id="selectAdminList" resultMap="adminInfoResultMap">
+  		select position,admin_id,authority
+		from admin
+		where 1=1 and position!='슈퍼'
+		OFFSET 0 ROWS FETCH NEXT 10 ROWS ONLY
   </select>
  </mapper>

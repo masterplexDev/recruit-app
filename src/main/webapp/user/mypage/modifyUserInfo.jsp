@@ -106,7 +106,7 @@
 				font-size: 15px;
 			}
 			body.modal-open {
-		  		padding-right: 0 !important; /* !important를 사용하여 우선순위 높임 */
+		  		padding-right: 0 !important;
 			}
 		<!-- golgolz end -->
 	</style>

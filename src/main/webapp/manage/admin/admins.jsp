@@ -11,7 +11,7 @@
 <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
 <style type="text/css">
 	body.modal-open {
-  		padding-right: 0 !important; /* !important를 사용하여 우선순위 높임 */
+  		padding-right: 0 !important;
 }
 </style>
 <script type="text/javascript">

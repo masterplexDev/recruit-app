@@ -1,4 +1,4 @@
-package kr.co.admin.controller.notice;
+package kr.co.sist.admin.controller.notice;
 
 public class NoticeAdminController {
 

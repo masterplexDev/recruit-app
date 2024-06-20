@@ -69,16 +69,16 @@
 									<th scope="row">기업 구분</th>
 									<td>
 										<label class="od_status"> 
-											<input type="radio" name="delivery" value="0" ${param.delivery eq '0' ? " checked" : "" }> 전체
+											<input type="radio" name="compC" value="0" ${param.delivery eq '0' ? " checked" : "" }> 전체
 										</label> 
 										<label class="od_status">
-											<input type="radio" name="delivery" value="1" ${param.delivery eq '1' ? " checked" : "" }> 대기업
+											<input type="radio" name="compC" value="1" ${param.delivery eq '1' ? " checked" : "" }> 대기업
 										</label>
 										<label class="od_status"> 
-											<input type="radio" name="delivery" value="2" ${param.delivery eq '2' ? " checked" : "" }> 중견기업
+											<input type="radio" name="compC" value="2" ${param.delivery eq '2' ? " checked" : "" }> 중견기업
 										</label>
 										<label class="od_status"> 
-											<input type="radio" name="delivery" value="2" ${param.delivery eq '2' ? " checked" : "" }> 중소기업
+											<input type="radio" name="compC" value="2" ${param.delivery eq '2' ? " checked" : "" }> 중소기업
 										</label>
 									</td>
 								</tr>
@@ -86,16 +86,16 @@
 									<th scope="row">사원수</th>
 									<td>
 										<label class="od_status"> 
-											<input type="radio" name="delivery" value="0" ${param.delivery eq '0' ? " checked" : "" }> 전체
+											<input type="radio" name="headC" value="0" ${param.delivery eq '0' ? " checked" : "" }> 전체
 										</label> 
 										<label class="od_status">
-											<input type="radio" name="delivery" value="1" ${param.delivery eq '1' ? " checked" : "" }> 5인 미만
+											<input type="radio" name="headC" value="1" ${param.delivery eq '1' ? " checked" : "" }> 5인 미만
 										</label>
 										<label class="od_status"> 
-											<input type="radio" name="delivery" value="2" ${param.delivery eq '2' ? " checked" : "" }> 50인 미만
+											<input type="radio" name="headC" value="2" ${param.delivery eq '2' ? " checked" : "" }> 50인 미만
 										</label>
 										<label class="od_status"> 
-											<input type="radio" name="delivery" value="2" ${param.delivery eq '2' ? " checked" : "" }> 50인 이상
+											<input type="radio" name="headC" value="2" ${param.delivery eq '2' ? " checked" : "" }> 50인 이상
 										</label>
 									</td>
 								</tr>
