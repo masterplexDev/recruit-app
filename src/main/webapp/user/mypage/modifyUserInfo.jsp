@@ -139,11 +139,16 @@
 	      	    console.log("답변:", answer);
 	      	    
 	      	    // 데이터베이스 조회 결과와 비교
+	      	    var flag = false;
 	      	    
 	      	    // 필드 초기화 후 닫기
 				$("#questionSelect").val('0');
 				$("#answerInput").val('');
 	      	    $("#securityQuestionModal").modal("hide");
+	      	    
+	      	    if(!flag){
+	      	    	location.href='http://localhost/recruit-app/user/mypage/modifyPass.jsp';
+	      	    }
 	      	});//click
 	      	
 	      	$("#cancleModal").click(function(){
