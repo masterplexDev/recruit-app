@@ -3,41 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
 <script type="text/javascript">
 	$(function(){
 		$("#user_menu").addClass("bg-gradient-primary");
 		
-	    	$("#start_date_first").datepicker({
-	    		showOtherMonths: true,
-	    	    selectOtherMonths: true,
-	    	    showButtonPanel: true,
-	    	    dateFormat: "yy-mm-dd"
-	    	});
-	    	
-	    	$("#end_date_first").datepicker({
-	  	    	showOtherMonths: true,
-	  	    	selectOtherMonths: true,
-	  	    	showButtonPanel: true,
-	  	    	dateFormat: "yy-mm-dd"
-	  		});
-	    	
-	    	$("#start_date_sec").datepicker({
-	    		showOtherMonths: true,
-	    	    selectOtherMonths: true,
-	    	    showButtonPanel: true,
-	    	    dateFormat: "yy-mm-dd"
-	    	});
-	    	
-	    	$("#end_date_sec").datepicker({
-	  	    	showOtherMonths: true,
-	  	    	selectOtherMonths: true,
-	  	    	showButtonPanel: true,
-	  	    	dateFormat: "yy-mm-dd"
-	  		});
 	});
 </script>
 <!-- golgolz start -->
@@ -126,31 +97,36 @@
 								<tr>
 									<td class="label">회원명</td>
 									<td class="box text">
-										<input type="text" name="name" value="이*화" size="20" class="inputbox naver_shopping_prodName" />
+										이*화
+										<!-- <input type="text" name="name" value="이*화" size="20" class="inputbox naver_shopping_prodName" /> -->
 									</td>
 								</tr>
 								<tr>
 									<td class="label">성별</td>
 									<td class="box text">
-										<input type="text" name="name" value="여자" size="20" class="inputbox naver_shopping_prodName" />
+										여자
+										<!-- <input type="text" name="name" value="여자" size="20" class="inputbox naver_shopping_prodName" /> -->
 									</td>
 								</tr>
 								<tr>
 									<td class="label">아이디</td>
 									<td class="box text">
-										<input type="text" name="name" value="l**@daum.net" size="20" class="inputbox naver_shopping_prodName" />
+										l**@daum.net
+										<!-- <input type="text" name="name" value="l**@daum.net" size="20" class="inputbox naver_shopping_prodName" /> -->
 									</td>
 								</tr>
 								<tr>
 									<td class="label">휴대폰번호</td>
 									<td class="box text">
-										<input type="text" name="name" value="010-****-1234" size="20" class="inputbox naver_shopping_prodName" />
+									010-****-1234
+										<!-- <input type="text" name="name" value="010-****-1234" size="20" class="inputbox naver_shopping_prodName" /> -->
 									</td>
 								</tr>
 								<tr>
 									<td class="label">전화번호</td>
 									<td class="box text">
-										<input type="text" name="name" value="02-***-5678" size="20" class="inputbox naver_shopping_prodName" />
+									02-***-5678
+										<!-- <input type="text" name="name" value="02-***-5678" size="20" class="inputbox naver_shopping_prodName" /> -->
 									</td>
 								</tr>
 							</tbody>
@@ -168,19 +144,20 @@
 								<tr>
 									<td class="label">가입일자</td>
 									<td class="box text">
-										<input type="text" name="name" value="2021-03-22" size="20" class="inputbox naver_shopping_prodName" />
+									2021-03-22
+										<!-- <input type="text" name="name" value="2021-03-22" size="20" class="inputbox naver_shopping_prodName" /> -->
 									</td>
 								</tr>
 								<tr>
 									<td class="label">생년월일</td>
 									<td class="box text">
-										<input type="text" name="name" value="" size="20" class="inputbox naver_shopping_prodName" />
+										<!-- <input type="text" name="name" value="" size="20" class="inputbox naver_shopping_prodName" /> -->
 									</td>
 								</tr>
 								<tr>
 									<td class="label">주소</td>
 									<td class="box text">
-										<input type="text" name="name" value="" size="20" class="inputbox naver_shopping_prodName" />
+										<!-- <input type="text" name="name" value="" size="20" class="inputbox naver_shopping_prodName" /> -->
 									</td>
 								</tr>
 							</tbody>

@@ -164,7 +164,7 @@
 									<th scope="row">검색어</th>
 									<td>
 										<input type="hidden" name="page" value="1" />
-										<select name="category">
+										<select name="category" style="width: 87px;">
 												<option value="1"${param.category eq '1' ? " selected" : "" }>아이디</option>
 										</select> 
 										<input type="text" name="keyword" value="${ param.keyword }" class="frm_input" size="30">
