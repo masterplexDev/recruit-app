@@ -275,11 +275,15 @@
 				        <form>
 				          <div class="mb-3">
 				            <label for="adminId" class="form-label">관리자 ID</label>
-				            <input type="text" class="form-control" id="adminId" maxlength="30" style="margin-left: 5px;">
+				            <input type="text" class="form-control" id="adminId" maxlength="30" style="margin-right:5px; border: 1px solid #dedede; font-size: 15px;">
 				          </div>
 				          <div class="mb-3">
 				            <label for="adminPassword" class="form-label">비밀번호</label>
-				            <input type="password" class="form-control" id="adminPassword" maxlength="30" style="margin-left: 5px;">
+				            <input type="password" class="form-control" id="adminPassword" maxlength="30" style="margin-right:5px; border: 1px solid #dedede; font-size: 15px;">
+				          </div>
+				          <div class="mb-3">
+				            <label for="adminPassword" class="form-label">비밀번호 확인</label>
+				            <input type="password" class="form-control" id="adminPasswordCon" maxlength="30" style="margin-right:5px; border: 1px solid #dedede; font-size: 15px;">
 				          </div>
 				          <div class="mb-3">
 				            <label class="form-label">권한 부여</label>
@@ -335,7 +339,7 @@
 				        <form>
 				          <div class="mb-3">
 				            <label for="adminId" class="form-label">관리자 ID</label>
-				            <input type="text" class="form-control" id="adminId2" maxlength="30" style="margin-left: 5px;">
+				            <input type="text" class="form-control" id="adminId2" maxlength="30" style="margin-right:5px; border: 1px solid #dedede; font-size: 15px;">
 				          </div>
 				          <div class="mb-3">
 				            <label class="form-label">권한 부여</label>
