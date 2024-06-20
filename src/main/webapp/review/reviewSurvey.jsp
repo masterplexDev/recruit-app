@@ -6,6 +6,7 @@
 <head>
 	<jsp:include page="../assets/layout/user/lib.jsp" />  
 	<!-- golgolz start -->
+	
 	<!-- golgolz end -->
 	<style text="text/css">
 		<!-- golgolz start -->
@@ -23,14 +24,15 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            font-size: 18px;
+            font-size: 15px;
             width: 500px; /* 폼의 너비 설정 */
             margin: 0 auto; /* 좌우 가운데 정렬 */
         }
         h1 {
             text-align: center;
-            font-size: 24px;
+            font-size: 25px;
             margin-bottom: 20px;
+            
         }
         .item {
             margin-bottom: 20px;
@@ -132,4 +134,5 @@
 		</main>
 	</div>
 </body>
+
 </html>
