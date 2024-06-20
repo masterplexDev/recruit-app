@@ -105,6 +105,9 @@
             option{
 				font-size: 15px;
 			}
+			body.modal-open {
+		  		padding-right: 0 !important; /* !important를 사용하여 우선순위 높임 */
+			}
 		<!-- golgolz end -->
 	</style>
 	<script type="text/javascript">
@@ -156,6 +159,11 @@
 				$("#answerInput").val('');
 				$("#securityQuestionModal").modal("hide");
 	      	});//click
+	      	
+	      	$('#securityQuestionModal').on('hidden.bs.modal', function () {
+	      		$("#questionSelect").val('0');
+				$("#answerInput").val('');
+	    	});//click
 			<!-- golgolz end -->
 		});
 	</script>
@@ -304,8 +312,8 @@
 				        </form>
 				      </div>
 				      <div class="modal-footer">
-				        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancleModal">취소</button>
 				        <button type="button" class="btn btn-primary" id="confirmAnswer">확인</button>
+				        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancleModal">취소</button>
 				      </div>
 				    </div>
 				  </div>

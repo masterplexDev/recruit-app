@@ -32,10 +32,23 @@
 				
 			$(function(){
 				
-				$('.css-1w1wifl').click(function(){
+				$("#nextBtn").click(function(){
+					isNull = chkNull();
+					isValidatePass = validatePass();
 					
-					location.href='modifyUserInfo.jsp';
+					if(!isNull){
+						alert('비밀번호를 입력해주세요.');
+						return;
+					}else if(!isValidatePass){
+						alert('잘못된 비밀번호 형식입니다.');
+						inputPass.val('');
+						$("#nextBtn").prop("disabled",true);
+						return;
+					}
 					
+					if(isNull && isValidatePass){
+						location.href='modifyUserInfo.jsp';
+					}
 				});//click
 				
 				var inputPass = $("#inputPass");
@@ -45,17 +58,30 @@
 					var isNotEmptyPass = inputPass.val().trim() !== '';
 					
 					if(isNotEmptyPass){
-						
+						$("#nextBtn").prop("disabled",false);
+					}else{
+						$("#nextBtn").prop("disabled",true);
 					}
-				}
+					
+					return isNotEmptyPass;
+				}//function
 				
-				// 비밀번호 유효성 검증
-			     function validatePass(){
+				
+			    function validatePass(){
 			    	 var pass = inputPass.val().trim();
-			    	 // 비밀번호 유효성 정규식
 			    	 var passRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()])[a-zA-Z\d!@#$%^&*()]{8,16}$/;
 			    	 return passRegex.test(pass);
-			    }
+			    }//function
+			    
+			    // 데이터 베이스 조회 후 입력한 비밀번호와 비교하는 로직 추가 예정
+			    function chkUserPass(){
+			    	
+			    }//function
+				
+				// 초기 로딩
+			    chkNull();
+				
+			    inputPass.on("input",chkNull);
 				
 			});//ready
 			<!-- golgolz end -->
@@ -87,12 +113,14 @@
 							<div class="css-env1z2"><label data-testid="Typography" color="rgba(55, 56, 60, 0.61)"
 									for="mobile" class="css-afh7p0">비밀번호</label></div>
 							<div class="css-14o8ny9">
-								<div class="css-gjm025"><input type="password" id="inputPass"
+								<div class="css-gjm025">
+							<input type="password" id="inputPass"
 										placeholder="비밀번호를 입력해주세요" name="password" class="css-1sbrczv" value=""></div>
 							</div>
 							<br/>
-							<button type="button" data-testid="Button" class="css-1w1wifl"><span
-									data-testid="Typography" color="#000000" class="css-kfktv3">계속</span></button>
+							<button type="button" id="nextBtn" class="css-1w1wifl">
+								<span color="#000000" class="css-kfktv3">계속</span>
+							</button>
 						</div>
 					</div>
 				</div>
