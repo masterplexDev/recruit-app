@@ -14,9 +14,9 @@ public class QnaAdminService {
         this.qnaAdminDAO = qnaAdminDAO;
     }
 
-    public List<QnaDomain> searchQnas() {
+    public List<QnaDomain> searchNewQnas() {
         List<QnaDomain> qnas = new ArrayList<QnaDomain>();
-        qnas = qnaAdminDAO.test();
+        qnas = qnaAdminDAO.selectNewQnas();
         return qnas;
     }
 }

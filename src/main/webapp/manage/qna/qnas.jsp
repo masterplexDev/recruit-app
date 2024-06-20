@@ -105,18 +105,22 @@
 									</tbody>
 								</table>
 	
-								<div style="justify-content: center;margin-top: 30px">
+								<div style="justify-content: center; margin-top : 30px">
 									<nav aria-label="Page navigation example">
 										<ul class="pagination" style="justify-content: center;">
-											<li><a class="page-link" href="#" aria-label="Previous">
+											<li>
+												<a class="page-link" href="#" aria-label="Previous">
 													<span aria-hidden="true">&laquo;</span>
-											</a></li>
+												</a>
+											</li>
 											<li><a class="page-link" href="#">1</a></li>
 											<li><a class="page-link" href="#">2</a></li>
 											<li><a class="page-link" href="#">3</a></li>
-											<li><a class="page-link" href="#" aria-label="Next">
+											<li>
+												<a class="page-link" href="#" aria-label="Next">
 													<span aria-hidden="true">&raquo;</span>
-											</a></li>
+												</a>
+											</li>
 										</ul>
 									</nav>
 								</div>

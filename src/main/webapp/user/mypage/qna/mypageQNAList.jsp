@@ -5,6 +5,11 @@
 <html>
 <head>
 	<jsp:include page="../../../assets/layout/user/lib.jsp" />  
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/layout/user/btn-bootstrap.css" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+	<!-- bootstrap -->
 	<!-- golgolz start -->
 	<link href="https://i.jobkorea.kr/content/css/ver_2/mtc/mtc_lounge-sv-202402231655.css" rel="stylesheet" type="text/css" />
 	<link href="https://i.jobkorea.kr/content/css/ver_2/help/help-sv-202402231655.css" rel="stylesheet" type="text/css" />
@@ -13,9 +18,6 @@
     <link rel="stylesheet" href="https://asset.wanted.co.kr/userweb/www/_next/static/css/c76e012c05e1318d.css" crossorigin="anonymous" data-n-g=""/>
 	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/mypage.css"/>
 	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/signup.css"/>
-	<!-- bootstrap -->
-	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/layout/user/btn-bootstrap.css" />
-	<!-- bootstrap -->
 	
 	<!-- golgolz end -->
 	<style type="text/css">
@@ -103,24 +105,24 @@ td{
 			</div>
 			</div> -->
 			
-			<div style="text-align:center; margin-top:30px">
-				<nav aria-label="...">
-				<ul class="pagination" style="width:100px; display: inline-flex;">
-					<li class="page-item disabled">
-					<span class="page-link">&lt;</span>
-					</li>
-					<li class="page-item"><a class="page-link" href="#">1</a></li>
-					<li class="page-item active" aria-current="page">
-						<span class="page-link">2</span>
-					</li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item">
-						<a class="page-link" href="#">&gt;</a>
-					</li>
-				</ul>
-				</nav>
+				<div style="text-align:center; margin-top:30px">
+			        <nav aria-label="...">
+			                <ul class="pagination pagination-lg" style="display: inline-flex;">
+			                       <li class="page-item disabled">
+			                            <span class="page-link">&lt;</span>
+			                        </li>
+			                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+			                        <li class="page-item active" aria-current="page">
+			                            <span class="page-link">2</span>
+			                        </li>
+			                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+			                        <li class="page-item">
+			                            <a class="page-link" href="#">&gt;</a>
+			                        </li>
+			                 </ul>
+			         </nav>
 			</div>
-			
+				
 			</div>
 			</div>
 			</div>
