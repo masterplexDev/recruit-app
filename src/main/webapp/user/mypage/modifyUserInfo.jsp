@@ -7,8 +7,10 @@
 	<jsp:include page="../../assets/layout/user/lib.jsp" />  
 	<!-- golgolz start -->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- 파비콘 -->
     <link rel="shortcut icon" href="https://static.wanted.co.kr/favicon/new/favicon.ico"/>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://asset.wanted.co.kr/userweb/www/_next/static/css/c76e012c05e1318d.css" crossorigin="anonymous" data-n-g=""/>
 	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/mypage.css"/>
 	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/signup.css"/>
@@ -97,6 +99,12 @@
             background-color: skyblue;
             color: #FFFFFF;
             }
+            #modifyPassBtn:hover{
+            	color: blue;
+            }
+            option{
+				font-size: 15px;
+			}
 		<!-- golgolz end -->
 	</style>
 	<script type="text/javascript">
@@ -115,6 +123,34 @@
       	  	  alert('회원정보 수정이 완료 되었습니다.');
       	  	  location.href='mypageUserInfo.jsp';
       	  	});//click
+      	  	
+      	  	$('#modifyPassBtn').click(function(){
+      	  		$("#securityQuestionModal").modal("show");
+      	  	});//click
+      	  	
+	      	$("#confirmAnswer").click(function() {
+	      	    const selectedQuestion = $("#questionSelect").val();
+	      	    const answer = $("#answerInput").val();
+	      	    
+	      	    // 답변 유효성 검사 (필요한 경우 추가)
+	
+	      	    // 유효한 답변일 경우 처리 로직 추가
+	      	    console.log("선택된 질문:", selectedQuestion);
+	      	    console.log("답변:", answer);
+	      	    
+	      	    // 데이터베이스 조회 결과와 비교
+	      	    
+	      	    // 필드 초기화 후 닫기
+				$("#questionSelect").val('0');
+				$("#answerInput").val('');
+	      	    $("#securityQuestionModal").modal("hide");
+	      	});//click
+	      	
+	      	$("#cancleModal").click(function(){
+	      		$("#questionSelect").val('0');
+				$("#answerInput").val('');
+				$("#securityQuestionModal").modal("hide");
+	      	});//click
 			<!-- golgolz end -->
 		});
 	</script>
@@ -196,8 +232,9 @@
                   <ul class="css-14jv0iu">
                   <li data-list-type="EMAIL_CHANGE" tabindex="0" class="css-1f5onls">
                   <p data-testid="Typography" color="#000000" class="css-9dug5j">이메일</p>
-                  <input type="email" placeholder="이메일을 입력해주세요." name="email" data-testid="Input_email"
-					autocomplete="on" class="css-1sbrczv" value="jeong@gmail.com">
+                  <p style="padding-left: 15px; font-size: 15px;">jeong@gmail.com</p>
+                  <input type="hidden" name="email" data-testid="Input_email"
+					autocomplete="on" class="css-1sbrczv" value="jeong@gmail.com" readyonly>
                   </li>
                   <li data-list-type="NAME_CHANGE" tabindex="0" class="css-15hfbq8">
                   <p data-testid="Typography" color="#000000" class="css-9dug5j">이름</p>
@@ -224,7 +261,7 @@
                   </li>
                   <li data-list-type="SOCIAL_LINK" tabindex="0" class="css-15hfbq8" style="height: 79px;">
                   <p data-testid="Typography" color="#000000" class="css-9dug5j" style="font-size: 15px;">
-                  <a href="http://localhost/recruit-app/user/mypage/modifyPass.jsp">비밀번호 변경</a>
+                  <button id="modifyPassBtn"><p>비밀번호 변경</p></button>
                   </p>
                   
                   </li>
@@ -233,6 +270,42 @@
                    <input type="button" id="cancleBtn" value="취소" class="btn btn-outline-danger btn-sm remove-btn" style="margin: 5px;">
                    </li>
                   </ul></article>
+				  
+				  <!-- 모달 창 시작 -->
+                  <div class="modal fade" id="securityQuestionModal" tabindex="-1" aria-labelledby="securityQuestionModalLabel" aria-hidden="true">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="securityQuestionModalLabel">보안 질문</h5>
+				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				      </div>
+				      <div class="modal-body">
+				        <form id="securityQuestionForm">
+				          <div class="mb-3">
+				            <label for="questionSelect" class="form-label">질문 선택</label>
+				            <select class="form-select" id="questionSelect" style="font-size: 15px;">
+				              <option value="0">질문을 선택하세요</option>
+							  <option value="1">당신이 가장 좋아하는 영화 이름은 무엇인가요?</option>
+							  <option value="2">당신의 별명은 무엇인가요?</option>
+							  <option value="3">가장 친한 친구 이름은 무엇인가요?</option>
+							  <option value="4">당신이 태어난 도시 이름은 무엇인가요?</option>
+							  <option value="5">당신이 가장 좋아하는 색깔은 무엇인가요?</option>
+				            </select>
+				          </div>
+				          <div class="mb-3">
+				            <label for="answerInput" class="form-label">답변</label>
+				            <input type="text" class="form-control" id="answerInput" style="font-size: 15px;">
+				          </div>
+				        </form>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancleModal">취소</button>
+				        <button type="button" class="btn btn-primary" id="confirmAnswer">확인</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				  <!-- 모달 창 끝 -->
                 </section>
               </div>
             </div>
