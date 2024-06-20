@@ -14,6 +14,7 @@
 	<script text="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
+			location.href="http://localhost/recruit-app/main/main.jsp";
 			<!-- golgolz end -->
 		});
 	</script>
