@@ -140,25 +140,23 @@
 
 					</div> -->
 					
-					<div style="justify-content: center; margin-top:20px">
-						<nav aria-label="Page navigation example">
-						<ul class="pagination" style="justify-content: center;">
-							<li class="page-item">
-								<a class="page-link" href="#" aria-label="Previous">
-									<span aria-hidden="true">&laquo;</span>
-								</a>
-							</li>
-							<li class="page-item"><a class="page-link" href="#">1</a></li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item">
-								<a class="page-link" href="#" aria-label="Next">
-									<span aria-hidden="true">&raquo;</span>
-								</a>
-							</li>
-						</ul>
-						</nav>
-					</div>
+				<div style="text-align:center; margin-top:30px">
+			        <nav aria-label="...">
+			                <ul class="pagination pagination-lg" style="display: inline-flex;">
+			                       <li class="page-item disabled">
+			                            <span class="page-link">&lt;</span>
+			                        </li>
+			                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+			                        <li class="page-item active" aria-current="page">
+			                            <span class="page-link">2</span>
+			                        </li>
+			                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+			                        <li class="page-item">
+			                            <a class="page-link" href="#">&gt;</a>
+			                        </li>
+			                 </ul>
+			         </nav>
+			</div>
 					
 			</div>
 		</div>

@@ -114,7 +114,7 @@
 				<div class="contents">
 					<form id="dataForm" name="dataForm" action="http://localhost/online-shop/manage/goods/register_process.jsp" method="post" enctype="multipart/form-data">
 						<div class="subtitle">
-							<img src="http://localhost/online-shop/assets/images/manage/goods/register/bul_subtitle.gif" />
+							<img src="http://localhost/recruit-app/assets/images/manage/common/bul_subtitle.gif" />
 							기본정보
 						</div>
 						<table class="tbstyleB" width="100%">
@@ -156,7 +156,7 @@
 							</tbody>
 						</table>
 						<div class="subtitle">
-							<img src="http://localhost/online-shop/assets/images/manage/goods/register/bul_subtitle.gif" />
+							<img src="http://localhost/recruit-app/assets/images/manage/common/bul_subtitle.gif" />
 							기타 인적사항
 						</div>
 						<table class="tbstyleB" width="100%">
