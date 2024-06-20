@@ -6,7 +6,6 @@
 <style type="text/css">
 </style>
 <!-- golgolz start -->
-<link href="http://localhost/recruit-app/assets/css/material-dashboard.min.css" rel="stylesheet" />
 <link href="http://localhost/recruit-app/assets/css/manage/order/admin.css" rel="stylesheet" />
 <link href="http://localhost/recruit-app/assets/css/manage/order/reset.css" rel="stylesheet" />
 <!-- golgolz end -->
