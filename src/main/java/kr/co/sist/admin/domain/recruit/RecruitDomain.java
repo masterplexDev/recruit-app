@@ -22,6 +22,8 @@ public class RecruitDomain {
     private String content;
     private int peopleNum;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
+    private Date inputDate;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
     private Date endDate;
     private String hireCategory;
     private String workDay;
@@ -32,4 +34,9 @@ public class RecruitDomain {
     private String careerStandard;
     private String careerStandardSum;
     private String eduStandard;
+
+    // for company info
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
+    private Date establishDate;
+    private int companyPeopleNum;
 }
