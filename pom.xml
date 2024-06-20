@@ -161,6 +161,21 @@
 		    <version>2.15.2</version>
 		</dependency>
 		<!-- 240618 미연 - JSON 사용을 위한 추가 end -->
+		
+		<!-- 240620 명호 - 비밀번호 암호화를 위한 추가 start -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-core</artifactId>
+		    <version>5.7.6</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-crypto -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-crypto</artifactId>
+		    <version>5.8.0</version>
+		</dependency>
+		<!-- 240620 명호 - 비밀번호 암호화를 위한 추가 end -->
 	</dependencies>
 	<build>
 		<plugins>
