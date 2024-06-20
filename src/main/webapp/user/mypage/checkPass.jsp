@@ -19,7 +19,7 @@
 	</style>
 	<script type="text/javascript">
 			<!-- golgolz start -->
-			document.addEventListener('DOMContentLoaded', function() {
+			/* document.addEventListener('DOMContentLoaded', function() {
 				  const elements = document.querySelectorAll('.css-1w1wifl'); // 클래스가 css-1w1wifl인 모든 요소 선택
 
 				  elements.forEach(element => {
@@ -28,7 +28,36 @@
 				      window.location.href = "modifyUserInfo.jsp";
 				    });
 				  });
-				});
+				}); */
+				
+			$(function(){
+				
+				$('.css-1w1wifl').click(function(){
+					
+					location.href='modifyUserInfo.jsp';
+					
+				});//click
+				
+				var inputPass = $("#inputPass");
+				
+				function chkNull(){
+					
+					var isNotEmptyPass = inputPass.val().trim() !== '';
+					
+					if(isNotEmptyPass){
+						
+					}
+				}
+				
+				// 비밀번호 유효성 검증
+			     function validatePass(){
+			    	 var pass = inputPass.val().trim();
+			    	 // 비밀번호 유효성 정규식
+			    	 var passRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()])[a-zA-Z\d!@#$%^&*()]{8,16}$/;
+			    	 return passRegex.test(pass);
+			    }
+				
+			});//ready
 			<!-- golgolz end -->
 	</script>
 </head>
@@ -58,7 +87,7 @@
 							<div class="css-env1z2"><label data-testid="Typography" color="rgba(55, 56, 60, 0.61)"
 									for="mobile" class="css-afh7p0">비밀번호</label></div>
 							<div class="css-14o8ny9">
-								<div class="css-gjm025"><input type="password"
+								<div class="css-gjm025"><input type="password" id="inputPass"
 										placeholder="비밀번호를 입력해주세요" name="password" class="css-1sbrczv" value=""></div>
 							</div>
 							<br/>
