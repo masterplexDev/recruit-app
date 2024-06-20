@@ -1,4 +1,4 @@
-package kr.co.sist.admin.controller.recruit;
+package kr.co.sist.user.controller.recruit;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,26 +8,27 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import kr.co.sist.admin.domain.recruit.RecruitDomain;
-import kr.co.sist.admin.service.recruit.RecruitAdminService;
-import kr.co.sist.admin.vo.recruit.SearchVO;
+import kr.co.sist.user.service.recruit.RecruitUserService;
+import kr.co.sist.user.vo.recruit.SearchVO;
 
 @Controller
 @ResponseBody
-public class RecruitAdminController {
-    private final RecruitAdminService recruitAdminService;
+public class RecruitUserController {
+    private final RecruitUserService recruitUserService;
 
     @Autowired(required = false)
-    public RecruitAdminController(RecruitAdminService recruitAdminService) {
-        this.recruitAdminService = recruitAdminService;
+    public RecruitUserController(RecruitUserService recruitUserService) {
+        this.recruitUserService = recruitUserService;
     }
 
-    @GetMapping("/manage/recruits.do")
+    @GetMapping("/recruits.do")
     public List<RecruitDomain> searchRecruits(@ModelAttribute SearchVO searchVO) {
-        return recruitAdminService.searchRecruits(searchVO);
+        // System.out.println(searchVO.toString());
+        return recruitUserService.searchRecruits(searchVO);
     }
 
-    @GetMapping("/manage/recruit.do")
+    @GetMapping("/recruit.do")
     public RecruitDomain searchOneRecruit(@RequestParam("id") int recruitId) {
-        return recruitAdminService.searchOneRecruit(recruitId);
+        return recruitUserService.searchOneRecruit(recruitId);
     }
 }

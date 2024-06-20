@@ -10,7 +10,8 @@
 	    <result property="position" column="position_code"/>
 	    <result property="title" column="title"/>
 	    <result property="content" column="content"/>
-	    <result property="peopleNum" column="headcount"/>
+	    <result property="peopleNum" column="recruit_count"/>
+	    <result property="inputDate" column="input_date"/>
 	    <result property="endDate" column="end_date"/>
 	    <result property="hireCategory" column="employment_type"/>
 	    <result property="workDay" column="work_day"/>
@@ -21,6 +22,8 @@
 	    <result property="careerStandard" column="career_condition"/>
 	    <result property="careerStandardSum" column="years"/>
 	    <result property="eduStandard" column="education_base_code"/>
+	    <result property="companyPeopleNum" column="headcount"/>
+	    <result property="establishDate" column="establishment_date"/>
 	</resultMap>
     <select id="selectRecruits" resultMap="recruitResultMap" parameterType="kr.co.sist.admin.vo.recruit.SearchVO">
     	SELECT 

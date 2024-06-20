@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.sist.recruit.user">
+	<resultMap id="recruitResultMap" type="kr.co.sist.admin.domain.recruit.RecruitDomain">
+	    <id property="id" column="recruit_num"/> 
+	    <result property="companyName" column="company_name"/>
+	    <result property="companyCode" column="company_code"/>
+	    <result property="position" column="position_code"/>
+	    <result property="title" column="title"/>
+	    <result property="content" column="content"/>
+	    <result property="peopleNum" column="recruit_count"/>
+	    <result property="inputDate" column="input_date"/>
+	    <result property="endDate" column="end_date"/>
+	    <result property="hireCategory" column="employment_type"/>
+	    <result property="workDay" column="work_day"/>
+	    <result property="workTime" column="work_time"/>
+	    <result property="workPlace" column="work_place"/>
+	    <result property="salaryCategory" column="sal_type"/>
+	    <result property="salary" column="sal"/>
+	    <result property="careerStandard" column="career_condition"/>
+	    <result property="careerStandardSum" column="years"/>
+	    <result property="eduStandard" column="education_base_code"/>
+	    <result property="companyPeopleNum" column="headcount"/>
+	    <result property="establishDate" column="establishment_date"/>
+	</resultMap>
+	<select id="selectRecruits" resultMap="recruitResultMap" parameterType="kr.co.sist.user.vo.recruit.SearchVO">
+	    SELECT
+	        rnum,
+	        recruit_num,
+	        company_name,
+	        title,
+	        career_condition,
+	        years,
+	        education_base_code,
+	        work_place,
+	        employment_type,
+	        content,
+	        end_date
+	    FROM (
+	        SELECT
+	            ROW_NUMBER() OVER (ORDER BY r.input_date ASC) AS rnum,
+	            recruit_num,
+	            ci.company_name,
+	            title,
+	            career_condition,
+	            years,
+	            education_base_code,
+	            work_place,
+	            employment_type,
+	            content,
+	            end_date
+	        FROM recruit r
+	        LEFT JOIN companyinfo ci ON r.company_code = ci.company_code
+	        <where>
+	            <if test="title != null and title != ''">
+	                AND title LIKE '%' || #{title} || '%'
+	            </if>
+	            <if test="companyName != null and companyName != ''">
+	                AND ci.company_name LIKE '%' || #{companyName} || '%'
+	            </if>
+	            <if test="career != null and career != ''">
+	                AND career_condition = #{career}
+	            </if>
+	            <if test="employmentType != null and employmentType != ''">
+	                AND employment_type = #{employmentType}
+	            </if>
+	            <if test="eduStandard != null and eduStandard != ''">
+	                AND edu_standard = #{eduStandard}
+	            </if>
+	            <if test="workLocation != null and workLocation != ''">
+	                AND work_place LIKE '%' || #{workLocation} || '%'
+	            </if>
+	            <if test="position != null and position != ''">
+	                AND position LIKE '%' || #{position} || '%'  
+	            </if>
+	            <if test="endDate != null">
+	                AND end_date &lt; #{endDate} 
+	            </if>
+	        </where>
+	    )
+	    <where>
+	        <if test="startNum != 0 and endNum != 0">
+	            AND rnum BETWEEN #{startNum} AND #{endNum}
+	        </if>
+	    </where>
+	</select>
+	<select id="selectOneRecruit" parameterType="int" resultMap="recruitResultMap">
+	    SELECT
+	    	r.recruit_num,
+	        r.company_code,
+	        ci.company_name,
+	        title,
+	        career_condition,
+	        years,
+	        education_base_code,
+	        employment_type,
+	        sal,
+	        sal_type,
+	        work_place,
+	        work_time,
+	        work_day,
+	        r.headcount as recruit_count,
+	        ci.headcount,
+	        ci.establishment_date,
+	        content,
+	        r.input_date,
+	        end_date,
+	        position.position_code,
+	        position_name
+	    FROM
+	        recruit r
+	        LEFT JOIN companyinfo ci ON r.company_code = ci.company_code
+	        LEFT JOIN position_list position ON position.position_code = r.position_code
+	    WHERE 
+	        r.recruit_num = #{recruit_num}
+	</select>
+</mapper>
