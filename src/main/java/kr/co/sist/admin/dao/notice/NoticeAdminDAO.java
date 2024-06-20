@@ -1,4 +1,4 @@
-package kr.co.admin.dao.notice;
+package kr.co.sist.admin.dao.notice;
 
 public class NoticeAdminDAO {
 

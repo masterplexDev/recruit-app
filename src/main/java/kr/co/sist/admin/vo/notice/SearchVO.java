@@ -1,4 +1,4 @@
-package kr.co.admin.vo.notice;
+package kr.co.sist.admin.vo.notice;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
