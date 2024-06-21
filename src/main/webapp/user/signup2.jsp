@@ -63,7 +63,7 @@
 			});
 			
 			
-			var signupBtn = $('#signupBtn');
+			var addUserBtn = $('#addUserBtn');
 			var selectQuestion = $('#question');
 			var inputAnswer = $('#answer');
 			var inputBirth = $('#birthday');
@@ -71,7 +71,7 @@
 			var chkGender = $('input[name="gender"]:checked');
 			
 			
-			signupBtn.click(function(){
+			addUserBtn.click(function(){
 				var flag = chkNull();
 				if(flag){ // 성공 시 메인 페이지로 이동
 					$('#signupFrm').submit();
@@ -92,9 +92,9 @@
 				var notNullFlag = genderNotEmpty && birthNotEmpty && addrNotEmpty && questionFlag && answerNotEmpty && allCheckeFlag;
 				
 				if(notNullFlag){
-					signupBtn.prop('disabled',false);
+					addUserBtn.prop('disabled',false);
 				}else{
-					signupBtn.prop('disabled',true);
+					addUserBtn.prop('disabled',true);
 				}
 				return notNullFlag;
 			}//function
@@ -225,7 +225,7 @@
 							<div class="css-1tbd2jx">
 								<div class="css-1csonyh"></div>
 								<div class="css-270vek"></div>
-								<button type="button" class="css-1yzn4b" id="signupBtn"><span color="#000000"
+								<button type="button" class="css-1yzn4b" id="addUserBtn"><span color="#000000"
 										class="css-kfktv3">가입하기</span></button>
 							</div>
 						</form>
