@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import kr.co.sist.user.main.service.MainService;
+import kr.co.sist.user.service.main.MainService;
 
 @Controller
 public class MainController {
