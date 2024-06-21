@@ -67,7 +67,7 @@
 	                			<h2 class="hd_1" style="font-weight: bold;">이력서 관리</h2>
 	              			</div>
 	              			<div class="btnBx">
-	                			<input type="button" id="registerBtn" class="btn btn-outline-success btn-sm" value="이력서 등록" />
+	                			<input type="button" id="registerBtn" class="btn btn-outline-primary btn-sm" value="이력서 등록" />
 	              			</div>
 	              			<div>
 	                			<div class="tableList">
@@ -87,10 +87,10 @@
 	                          						</div>
 	                          						<div class="col col02">
 	                            						<div class="btnCell">
-	                              							<input type="button" id="updateBtn" class="golgolBtn btn btn-outline-warning btn-sm" value="수정" />
+	                              							<input type="button" id="updateBtn" class="golgolBtn btn btn-outline-primary btn-sm" value="수정" />
 	                            						</div>
 		                            					<div class="btnCell">
-															<input type="button" id="removeBtn" class="golgolBtn btn btn-outline-danger btn-sm" value="삭제" />
+															<input type="button" id="removeBtn" class="golgolBtn btn btn-outline-primary btn-sm" value="삭제" />
 		                            					</div>
 	                          						</div>
 	                        					</li>
@@ -103,10 +103,10 @@
 	                          						</div>
 	                          						<div class="col col02">
 	                            						<div class="btnCell">
-	                              							<input type="button" id="updateBtn" class="golgolBtn btn btn-outline-warning btn-sm" value="수정" />
+	                              							<input type="button" id="updateBtn" class="golgolBtn btn btn-outline-primary btn-sm" value="수정" />
 	                            						</div>
 		                            					<div class="btnCell">
-															<input type="button" id="removeBtn" class="golgolBtn btn btn-outline-danger btn-sm" value="삭제" />
+															<input type="button" id="removeBtn" class="golgolBtn btn btn-outline-primary btn-sm" value="삭제" />
 		                            					</div>
 	                          						</div>
 	                        					</li>
