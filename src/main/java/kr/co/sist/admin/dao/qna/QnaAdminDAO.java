@@ -9,16 +9,16 @@ import kr.co.sist.properties.MyBatisConfig;
 
 @Component
 public class QnaAdminDAO {
-    private final MyBatisConfig myBatis;
+    private MyBatisConfig myBatis;
 
     public QnaAdminDAO(MyBatisConfig myBatis) {
         this.myBatis = myBatis;
     }
 
-    public List<QnaDomain> test() {
+    public List<QnaDomain> selectNewQnas() {
         SqlSession session = myBatis.getMyBatisHandler(false);
         List<QnaDomain> qnas = new ArrayList<QnaDomain>();
-        qnas = session.selectList("kr.co.sist.qna.admin.selectQna");
+        qnas = session.selectList("kr.co.sist.qna.admin.selectNewQnas");
         return qnas;
     }
 }

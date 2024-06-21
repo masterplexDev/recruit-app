@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.sist.recruit.admin">
-  <select id="selectQna" resultType="kr.co.sist.admin.domain.qna.QnaDomain">
+<mapper namespace="kr.co.sist.qna.admin">
+  <select id="selectNewQnas" resultType="kr.co.sist.admin.domain.qna.QnaDomain">
   	select qna_num, category, title, content, user_id, input_date
 	from ( select qna_num, category, title, content, user_id, input_date
                   row_number() over (order by input_date desc) as rnum

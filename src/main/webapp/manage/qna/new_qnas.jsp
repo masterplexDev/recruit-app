@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" info=""%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +15,7 @@
 <link href="https://i.jobkorea.kr/content/css/ver_2/mtc/inquiry_selection.css?v=2024052914000" rel="stylesheet" type="text/css" />
 <jsp:include page="../../assets/layout/admin/lib.jsp" />
 <style type="text/css">
-	#newQnaFrm{margin:54px 40px 40px 248px; width:1648px; padding-left:28px}
+	#newQnaFrm{margin:30px 40px 40px 248px; width:1648px; padding-left:28px}
 </style>
 
 <script type="text/javascript">
@@ -87,14 +88,17 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-				<td>79483</td>
-				<td class="alLeft"><span class="tit"><a href="new_detail.jsp">기업 리뷰는 어떻게 확인하는지 궁금합니다.</a></span></td>
-				<td>2024.05.24</td>
-				<td class="">답변대기</td>
-				</tr>
+				<c:forEach var="qna" items="${qnaNewList}">
+					<tr>
+					<td>79483</td>
+					<td class="alLeft"><span class="tit"><a href="new_detail.jsp">기업 리뷰는 어떻게 확인하는지 궁금합니다.</a></span></td>
+					<!-- <td>2024.05.24</td> -->
+					<td><c:out value="${qna.input_date}"/></td>
+					<td class="">답변대기</td>
+					</tr>
+				</c:forEach>
 				</tbody>
-				</table>
+			</table>
 	<!-- 	<div class="listBtmArea">
 		<div class="tplPagination">
    		<div class="tplPagination">
@@ -105,22 +109,27 @@
 	</div>
 	</div> -->
 
-							<div style="justify-content: center;margin-top: 30px">
-									<nav aria-label="Page navigation example">
-										<ul class="pagination" style="justify-content: center;">
-											<li><a class="page-link" href="#" aria-label="Previous">
-													<span aria-hidden="true">&laquo;</span>
-											</a></li>
-											<li><a class="page-link" href="#">1</a></li>
-											<li><a class="page-link" href="#">2</a></li>
-											<li><a class="page-link" href="#">3</a></li>
-											<li><a class="page-link" href="#" aria-label="Next">
-													<span aria-hidden="true">&raquo;</span>
-											</a></li>
-										</ul>
-									</nav>
-								</div>
+						<div style="justify-content: center; margin-top:30px">
+							<nav aria-label="Page navigation example">
+								<ul class="pagination" style="justify-content: center;">
+									<li>
+										<a class="page-link" href="#" aria-label="Previous">
+											<span aria-hidden="true">&laquo;</span>
+										</a>
+									</li>
+									<li><a class="page-link" href="#">1</a></li>
+									<li><a class="page-link" href="#">2</a></li>
+									<li><a class="page-link" href="#">3</a></li>
+									<li>
+										<a class="page-link" href="#" aria-label="Next">
+											<span aria-hidden="true">&raquo;</span>
+										</a>
+									</li>
+								</ul>
+							</nav>
 						</div>
+						
+					</div>
 	</div>
 	<!-- List 끝 //-->
 	</div>

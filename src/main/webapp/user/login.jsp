@@ -83,7 +83,6 @@
 		    	
 		     function login(){
 		    	 	$("#loginFrm").submit();
-			    	location.href='http://localhost/recruit-app/main/main.jsp';
 			    	alert("로그인에 성공 했습니다.");
 			    }
 		    
@@ -110,7 +109,7 @@
 										<div class="css-1jxi7lq"></div>
 									</div>
 									<div class="css-ng7qrx">
-										<form class="css-e130a2" id="loginFrm">
+										<form class="css-e130a2" action="http://localhost/recruit-app/user/mypage/mypageUserInfo.jsp" id="loginFrm" method="post">
 											<div>
 												<div class="css-14o8ny9">
 													<div class="css-cssveg">

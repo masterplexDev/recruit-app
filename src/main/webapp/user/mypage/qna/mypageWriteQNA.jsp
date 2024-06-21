@@ -82,6 +82,7 @@
 			          <option value="불량정보·오류 신고" >불량정보·오류 신고</option>
 			          <option value="서비스 제안·칭찬">서비스 제안·칭찬</option>
 			       </select>
+			    
 			       </div>
 			       </div>
 			       </div>
@@ -102,7 +103,8 @@
 			       <textarea name="contents" id="lb_inq_2" title="내용을 입력하세요." class="txArea"></textarea>
 			       </div>
 			       </div>
-			       <!-- <div class="tbRow">
+			       <!-- 이메일 어느 이메일 주소로 발송할 것인지 입력은 하지 않아도 인지시키기 readonly? -->
+			       <div class="tbRow">
 			       <div class="tbRow tbMail">
 			       <div class="tbCell tbTh">
 			       <label for="lb_inq_4">답변받을 e-메일 <em>(필수)</em></label>
@@ -110,18 +112,18 @@
 			       <div class="tbCell">
 			         <input type="text" id="lb_inq_4" name="emailName" class="mtcIpt" title="이메일 주소 앞부분" /> @ <input type="text" id="lb_inq_5" name="emailDomain" class="mtcIpt" title="이메일 주소 뒷부분" />
 			       <div class="tbCell__dropdown">
-			         <select name="" id="lb_view_2" title="이메일 사업자 입력">
+			        <!--  <select name="" id="lb_view_2" title="이메일 사업자 입력">
 			             <option value="">직접입력</option>
 			             <option value="naver.com">naver.com</option>
 			             <option value="hanmail.net">hanmail.net</option>
 			             <option value="nate.com">nate.com</option>
 			             <option value="daum.net">daum.net</option>
 			             <option value="gmail.com">gmail.com</option>
-			          </select>
+			          </select> -->
 			        </div>
 			      </div>
 			     </div>
-			     </div> -->
+			     </div>
 			      <div id="privacyBx1" class="privacyBx" >
 			      <div class="mtcChk-Bx privacyBx__check-box" >
 			        <input type="checkbox" id="lb_agree" name="" value="" />
