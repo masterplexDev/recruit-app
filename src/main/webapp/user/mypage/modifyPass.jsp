@@ -99,23 +99,51 @@
             }
 		<!-- golgolz end -->
 	</style>
+	<!-- golgolz start -->
 	<script type="text/javascript">
 		$(function(){
-			<!-- golgolz start -->
-				$("#modifyUser").click(function(){
-	      		  location.href = "modifyUserInfo.jsp";
-	      	  	});//click
+			
+				var newPass = $("#newPass");
+				var newPassCon = $("#newPassCon");
+				
 				$('#cancleBtn').click(function(){
 	      	  	  alert('비밀번호 변경이 취소 되었습니다.');
 	      	  	  location.href='mypageUserInfo.jsp';		
 	      	  	});//click	
+	      	  	
 	      	  	$('#modifyBtn').click(function(){
-	      	  	  alert('비밀번호 변경이 완료 되었습니다.');
-	      	  	  location.href='mypageUserInfo.jsp';
+	      	  	  var isEmptyPass = newPass.val().trim() !== '';
+	      	  	  var isEmptyPassCon = newPassCon.val().trim() !== '';
+				  var isValidatePass = validatePass();
+				  var isConfirmPass = newPass.val().trim() === newPassCon.val().trim()
+				  var chkPassFlag = isEmptyPass && isEmptyPassCon && isValidatePass && isConfirmPass
+				  
+				  if(chkPassFlag){
+		      	  	  alert('비밀번호 변경이 완료 되었습니다.');
+		      	  	  location.href='mypageUserInfo.jsp';
+				  }else if(!isEmptyPass || !isEmptyPassCon) {
+					  alert('변경할 비밀번호를 입력해주세요.');
+					  return;
+				  }else if(!isValidatePass){
+					  alert('잘못된 비밀번호 형식입니다.');
+					  return;
+				  }else if(!isConfirmPass){
+					  alert('비밀번호가 동일하지 않습니다.');
+					  return;
+				  }
 	      	  	});//click
-			<!-- golgolz end -->
-		});
+	      	  	
+	      		// 비밀번호 유효성 검증 형식
+			    function validatePass(){
+			    	 var pass = newPass.val().trim();
+			    	 // 비밀번호 유효성 정규식 :8-16자리 구성, 영문 대소문자, 숫자, 특수문자 포함
+			    	 var passRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()])[a-zA-Z\d!@#$%^&*()]{8,16}$/;
+			    	 return passRegex.test(pass);
+			    }//function
+			   
+		});//ready
 	</script>
+	<!-- golgolz end -->
 </head>
 <body>
     <div id="__next" data-reactroot="">
@@ -149,10 +177,10 @@
                   </div>
                   <ul class="css-14jv0iu">
                   <li data-list-type="SOCIAL_LINK" tabindex="0" class="css-15hfbq8"><p data-testid="Typography" color="#000000" class="css-9dug5j">새로운 비밀번호</p>
-                  <input type="password" name="password" autocomplete="on" class="css-1sbrczv" value="*********">
+                  <input type="password" id="newPass" name="password" autocomplete="on" class="css-1sbrczv" value="">
                   </li>
                   <li data-list-type="SOCIAL_LINK" tabindex="0" class="css-15hfbq8"><p data-testid="Typography" color="#000000" class="css-9dug5j">비밀번호 확인</p>
-                  <input type="password" name="password" autocomplete="on" class="css-1sbrczv" value="*********">
+                  <input type="password" id="newPassCon" name="password" autocomplete="on" class="css-1sbrczv" value="">
                   </li>
                    <li data-list-type="SOCIAL_LINK" tabindex="0" style="text-align: center;">
                    <input type="button" id="modifyBtn" value="수정완료" class="btn btn-outline-warning btn-sm update-btn" style="margin: 5px;">
