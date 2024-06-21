@@ -67,7 +67,6 @@
 			var selectQuestion = $('#question');
 			var inputAnswer = $('#answer');
 			var inputBirth = $('#birthday');
-			var inputAddr = $('#addr');
 			var chkGender = $('input[name="gender"]:checked');
 			
 			
@@ -85,11 +84,10 @@
 			function chkNull(){
 				var genderNotEmpty = chkGender.val() !== '';
 				var birthNotEmpty = inputBirth.val().trim() !== '';
-				var addrNotEmpty = inputAddr.val().trim() !== '';
 				var questionFlag = selectQuestion.val() !== '' && selectQuestion.val() !== '0';
 				var answerNotEmpty = inputAnswer.val().trim() !== '';
 				var allCheckeFlag = $("input[name='chkbox']:checked").length === 4;
-				var notNullFlag = genderNotEmpty && birthNotEmpty && addrNotEmpty && questionFlag && answerNotEmpty && allCheckeFlag;
+				var notNullFlag = genderNotEmpty && birthNotEmpty && questionFlag && answerNotEmpty && allCheckeFlag;
 				
 				if(notNullFlag){
 					addUserBtn.prop('disabled',false);
@@ -114,7 +112,6 @@
 			inputBirth.on('input',chkNull);
 			inputBirth.on('input',chkDate);
 			inputAnswer.on('input',chkNull);
-			inputAddr.on('input',chkNull);
 			selectQuestion.on('click',chkNull);
 			
 			<!-- golgolz end -->
@@ -165,11 +162,6 @@
 								<div class="input-group" style="text-align: center">
 								<input type="date" class="css-1sbrczv" id="birthday" style="background-color: #FFFFFF; width: 100%;" placeholder="생년월일을 선택해주세요." >
 								</div>
-							</div>
-							<div class="css-evy94o">
-								<div class="css-env1z2">
-								<label color="rgba(55, 56, 60, 0.61)" for="username" class="css-afh7p0">주소</label></div>
-								<input type="text" placeholder="주소를 입력해주세요." id="addr" autocomplete="" class="css-1sbrczv" value="" maxlength="100">
 							</div>
 							<div class="question-css" style="margin-top: 20px; margin-bottom:30px;">
 								<div style="text-align: center; margin: 15px; ">

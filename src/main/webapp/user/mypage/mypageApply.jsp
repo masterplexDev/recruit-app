@@ -6,7 +6,7 @@
 <jsp:include page="../../assets/layout/user/lib.jsp" />
 <!-- golgolz start -->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<link href="../assets/css/company/company-info-list-6.css" rel="stylesheet" type="text/css" />
+	<link href="../../assets/css/company/company-info-list-6.css" rel="stylesheet" type="text/css" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 	<!-- 파비콘 -->
@@ -230,7 +230,7 @@ dl {
 .apply_table {
 	border-top: 1px solid #dedede;
 	border-bottom: 1px solid #dedede;
-	width: 100%;
+	width: 95%;
 	text-align: center;
 	height: 200px;
 	font-size: 15px;
