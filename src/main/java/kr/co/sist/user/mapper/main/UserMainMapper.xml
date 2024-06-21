@@ -3,13 +3,11 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.sist.user.mapper.main.UserMainMapper">
-  <select id="selectRecentJobPosts" resultType="map">
-    --메인화면
-    --1. 최근 등록된 공고(1달 내)
+   <select id="selectRecentJobPosts" resultType="kr.co.sist.user.vo.MainVO">
     SELECT
-        R.TITLE AS 공고_타이틀,
-        C.COMPANY_NAME AS 회사_이름,
-        C.COMPANY_IMG AS 회사_이미지
+        R.TITLE AS title,
+        C.COMPANY_NAME AS companyName,
+        C.COMPANY_IMG AS companyImage
     FROM
         RECRUIT R
     JOIN
@@ -20,15 +18,14 @@
         R.INPUT_DATE DESC
   </select>
   
-  <select id="selectInterestingPositions" parameterType="String" resultType="map">
-    --2. 내가 관심있을만한 포지션 (내 스택과 공고 비교)
+  <select id="selectInterestingPositions" parameterType="String" resultType="kr.co.sist.user.vo.MainVO">
     SELECT
-        R.TITLE AS 공고_타이틀,
-        C.COMPANY_NAME AS 회사_이름,
-        C.COMPANY_IMG AS 회사_이미지,
-        R.INPUT_DATE AS 공고_등록일자,
-        P.POSITION_NAME,
-        CR.JOB_DESCRIPTION
+        R.TITLE AS title,
+        C.COMPANY_NAME AS companyName,
+        C.COMPANY_IMG AS companyImage,
+        R.INPUT_DATE AS inputDate,
+        P.POSITION_NAME AS positionName,
+        CR.JOB_DESCRIPTION AS jobDescription
     FROM
         RECRUIT R
     JOIN
@@ -45,12 +42,11 @@
         R.INPUT_DATE DESC
   </select>
 
-  <select id="selectHighSalaryPositions" resultType="map">
-    --3. 고연봉 포지션
+  <select id="selectHighSalaryPositions" resultType="kr.co.sist.user.vo.MainVO">
     SELECT
-        C.COMPANY_IMG AS 회사_이미지,
-        P.POSITION_NAME AS 포지션_이름,
-        C.COMPANY_NAME AS 회사_이름
+        C.COMPANY_IMG AS companyImage,
+        P.POSITION_NAME AS positionName,
+        C.COMPANY_NAME AS companyName
     FROM
         RECRUIT R
     JOIN
@@ -62,25 +58,24 @@
     FETCH FIRST 4 ROWS ONLY
   </select>
 
-  <select id="selectViewHistory" parameterType="String" resultType="map">
-    --4. 조회 기록
+  <select id="selectViewHistory" parameterType="String" resultType="kr.co.sist.user.vo.MainVO">
     SELECT
-        C.COMPANY_IMG AS 회사_이미지, -- 회사 이미지
-        P.POSITION_NAME AS 포지션_이름, -- 포지션 이름
-        C.COMPANY_NAME AS 회사_이름, -- 회사 이름
-        PVH.VIEW_DATE AS 조회일자 -- 조회일자
+        C.COMPANY_IMG AS companyImage,
+        P.POSITION_NAME AS positionName,
+        C.COMPANY_NAME AS companyName,
+        PVH.VIEW_DATE AS viewDate
     FROM
-        POSITION_VIEW_HISTORY PVH -- 조회 기록 테이블
+        POSITION_VIEW_HISTORY PVH
     JOIN
-        RECRUIT R ON PVH.RECRUIT_NUM = R.RECRUIT_NUM -- 조회 기록과 공고 테이블을 공고 식별번호로 조인
+        RECRUIT R ON PVH.RECRUIT_NUM = R.RECRUIT_NUM
     JOIN
-        COMPANYINFO C ON R.COMPANY_CODE = C.COMPANY_CODE -- 공고와 회사 정보를 회사 코드로 조인
+        COMPANYINFO C ON R.COMPANY_CODE = C.COMPANY_CODE
     JOIN
-        POSITION_LIST P ON R.POSITION_CODE = P.POSITION_CODE -- 공고와 포지션 정보를 포지션 코드로 조인
+        POSITION_LIST P ON R.POSITION_CODE = P.POSITION_CODE
     WHERE
-        PVH.USER_ID = #{userId} -- 특정 사용자ID의 조회 기록을 선택
+        PVH.USER_ID = #{userId}
     ORDER BY
-        PVH.VIEW_DATE DESC -- 조회일자를 기준으로 내림차순 정렬
-    FETCH FIRST 5 ROWS ONLY -- 상위 5개의 조회 기록만 선택
+        PVH.VIEW_DATE DESC
+    FETCH FIRST 5 ROWS ONLY
   </select>
 </mapper>
