@@ -35,6 +35,7 @@
         })(window, "_LA");
       };
     </script>
+	<jsp:include page="../assets/layout/user/lib.jsp" /> 
     <script src="http://localhost/recruit-app/assets/js/user/resume/json2.js"></script>
     <script src="http://localhost/recruit-app/assets/js/user/resume/jquery"></script>
     <script src="http://localhost/recruit-app/assets/js/user/resume/itemtemplate.js"></script>
@@ -42,81 +43,10 @@
     <script src="http://localhost/recruit-app/assets/js/user/resume/JK5cript.js"></script>
     <script src="http://localhost/recruit-app/assets/js/user/resume/ResumeReg"></script>
 	<!-- golgolz end -->
-	<jsp:include page="../assets/layout/user/lib.jsp" /> 
 	<script type="text/javascript" src="http://localhost/recruit-app/assets/js/user/resume/edu.js"></script>
+    <link rel="stylesheet" href="http://localhost/recruit-app/assets/css/resume/detail.css" />
 	<style text="text/css">
 		<!-- golgolz start -->
-		.resumeContainer{
-			width: 940px;
-		}
-        #school_containers .container{
-            position: relative;
-    		border-top: 1px solid #eee;
-    	}
-        #license_containers .container{
-    		border-top: 1px solid #eee;
-    	}
-        #language_containers .container{
-    		border-top: 1px solid #eee;
-    	}
-    	/* 레이아웃 적용 */
-    	#container, .container{
-    		width: 1300px;
-    	}
-    	.resumeContainer{
-    		width: 1300px;
-    		margin 30px auto;
-    	}
-    	.resumeTitle{
-    		width: 1300px;
-    	}
-    	.formWrap{
-    		width: 1300px;
-    	}
-    	.form{
-    		width: 1300px;
-    	}
-    	.buttonDeleteField {
-			background-image: url("http://localhost/recruit-app/assets/images/btns/remove_btn.png"); /* 이미지 경로 지정 */
-			background-size: contain;
-		}
-		.chip-group {
-            display: flex;
-            flex-wrap: wrap; 
-            font-size: 16px;
-        }
-        .chip {
-            padding: 8px 16px; /* 좌우 패딩 16px로 변경 */
-            background-color: #f1f1f1;
-            border-radius: 20px;
-            margin: 5px;
-            cursor: pointer;
-        }
-        .chip.active {
-            background-color: #007bff;
-            color: white;
-        }
-        #resetButton { /* 초기화 버튼 스타일 */
-            padding: 8px 16px; /* 칩과 동일한 패딩 */
-            background-color: #e0e0e0; /* 칩보다 약간 어두운 배경색 */
-            border: none;
-            border-radius: 20px; /* 칩과 동일한 둥근 테두리 */
-            margin: 5px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        #resetButton:hover { /* 호버 효과 */
-            background-color: #bdbdbd; /* 칩보다 약간 더 어두운 배경색 */
-        }
-        #resumeBtns{
-        	text-align: center;
-        }
-        .golgolBtn {
-        	font-size: 20px;
-        	width: 90px;
-        	padding: 8px 0;
-        	margin: 0px 10px;
-        }
 		<!-- golgolz end -->
 	</style>
 	<script text="text/javascript">
