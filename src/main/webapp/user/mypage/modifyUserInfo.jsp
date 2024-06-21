@@ -123,8 +123,33 @@
       	  	});//click	
       	  	
       	  	$('#modifyBtn').click(function(){
-      	  	  alert('회원정보 수정이 완료 되었습니다.');
-      	  	  location.href='mypageUserInfo.jsp';
+      	  	  var notNullFlag = chkNull();
+    		  var isValidateName = validateName();
+      	  	  var isValidatePhone = validatePhoneNumber();
+    		  var isValidateTel = validateTelNumber();
+    		  var isValidateAddr = validateAddr();
+    		  var validateFlag = isValidateName && isValidatePhone && isValidateTel && isValidateAddr;
+      	  	  
+      	  	  if(notNullFlag && validateFlag){
+	      	  	  alert('회원정보 수정이 완료 되었습니다.');
+	      	  	  location.href='mypageUserInfo.jsp';
+      	  	  }else if(!notNullFlag) {
+      	  		  alert('회원정보를 입력해주세요.');
+      	  		  return;
+      	  	  }else if(!isValidateName){
+			      alert('이름은 한글 또는 영문으로 최대 10자까지만 입력이 가능합니다.');
+				  return;
+			  }else if(!isValidatePhone){
+				  alert('잘못된 휴대폰번호 형식입니다.');
+				  return;
+			  }else if(!isValidateTel){
+			      alert('전화번호는 숫자로 최대 11자까지만 입력이 가능합니다.');
+				  return;
+			  }else if(!isValidateAddr){
+				  alert('주소는 한글 또는 영문으로 최대 100자까지만 입력이 가능합니다.');
+				  return;
+			  }
+      	  	  
       	  	});//click
       	  	
       	  	$('#modifyPassBtn').click(function(){
@@ -132,10 +157,13 @@
       	  	});//click
       	  	
 	      	$("#confirmAnswer").click(function() {
-	      	    const selectedQuestion = $("#questionSelect").val();
-	      	    const answer = $("#answerInput").val();
+	      	    var selectedQuestion = $("#questionSelect").val();
+	      	    var answer = $("#answerInput").val();
 	      	    
-	      	    // 답변 유효성 검사 (필요한 경우 추가)
+	      	    // 답변 유효성 검사
+	      	    isSelectQuestion = selectedQuestion !== '0';
+	      	    isNotEmptyAnswer = answer.trim() !== '';
+	      	    chkAll =  isSelectQuestion && isNotEmptyAnswer;
 	
 	      	    // 유효한 답변일 경우 처리 로직 추가
 	      	    console.log("선택된 질문:", selectedQuestion);
@@ -144,13 +172,16 @@
 	      	    // 데이터베이스 조회 결과와 비교
 	      	    var flag = false;
 	      	    
-	      	    // 필드 초기화 후 닫기
-				$("#questionSelect").val('0');
-				$("#answerInput").val('');
-	      	    $("#securityQuestionModal").modal("hide");
-	      	    
-	      	    if(!flag){
+	      	    if(chkAll){
 	      	    	location.href='http://localhost/recruit-app/user/mypage/modifyPass.jsp';
+		      	    // 필드 초기화 후 닫기
+					$("#questionSelect").val('0');
+					$("#answerInput").val('');
+		      	    $("#securityQuestionModal").modal("hide");
+	      	    }else if(!isSelectQuestion) {
+	      	    	alert('질문을 선택해주세요.');
+	      	    }else if(!isNotEmptyAnswer) {
+	      	    	alert('답변을 작성해주세요.');
 	      	    }
 	      	});//click
 	      	
@@ -164,6 +195,59 @@
 	      		$("#questionSelect").val('0');
 				$("#answerInput").val('');
 	    	});//click
+	    	
+	    	var email = $("#email");
+	    	var name = $("#name");
+	    	var gender = $("#gender");
+	    	var phone = $("#phone");
+	    	var tel = $("#tel");
+	    	var addr = $("#addr");
+	    	
+	    	function chkNull(){
+	    		var isEmptyEmail = email.val().trim() !== '';
+	    		var isEmptyName = name.val().trim() !== '';
+	    		var isEmptyGender = gender.val().trim() !== '';
+	    		var isEmptyPhone = phone.val().trim() !== '';
+	    		var isEmptyTel = tel.val().trim() !== '';
+	    		var emptyFlag = isEmptyEmail && isEmptyName && isEmptyGender && isEmptyPhone && isEmptyTel && isEmptyTel
+	    		
+	    		return emptyFlag;
+	    	}//function
+	    	
+	    	//휴대폰번호 유효성 검증 형식
+		    function validatePhoneNumber() {
+				  var chkPhoneNumber = phone.val().trim().replace(/-/g, '');
+				  // 휴대폰번호 유효성 정규식 : 시작문자 010/011, 숫자 10-11자로 구성
+				  var isValid = /^(010|011)\d{7,8}$/.test(chkPhoneNumber); 
+				  return isValid;
+			}//function
+
+			//전화번호 유효성 검증 형식
+		    function validateTelNumber() {
+				  var chkTelNumber = tel.val().trim().replace(/-/g, '');
+				  // 전화번호 유효성 정규식 : 숫자 10-11자로 구성
+				  var isValid = /^\d{10,11}$/.test(chkTelNumber); 
+				  return isValid;
+			}//function
+			
+			// 이름 유효성 검증
+			function validateName() {
+				var chkName = name.val().trim();
+				// 이름 유효성 정규식: 최대 10자, 한글 또는 영문만 허용
+				var nameRegex = /^[가-힣a-zA-Z]{1,10}$/;
+
+				return nameRegex.test(chkName);
+			}//function
+			
+			// 주소 유효성 검증
+			function validateAddr() {
+				var chkAddr = addr.val().trim();
+				// 주소 유효성 정규식: 최대 100자 이내, 한/영문,숫자,특수문자,공백 포함하여 허용
+				var addrRegex = /^[가-힣a-zA-Z0-9\s.,()-]{1,100}$/;
+				
+				return addrRegex.test(chkAddr);
+			}//function
+	    	
 			<!-- golgolz end -->
 		});
 	</script>
@@ -246,31 +330,31 @@
                   <li data-list-type="EMAIL_CHANGE" tabindex="0" class="css-1f5onls">
                   <p data-testid="Typography" color="#000000" class="css-9dug5j">이메일</p>
                   <p style="padding-left: 15px; font-size: 15px;">jeong@gmail.com</p>
-                  <input type="hidden" name="email" data-testid="Input_email"
+                  <input type="hidden" name="email" data-testid="Input_email" id="email"
 					autocomplete="on" class="css-1sbrczv" value="jeong@gmail.com" readyonly>
                   </li>
                   <li data-list-type="NAME_CHANGE" tabindex="0" class="css-15hfbq8">
                   <p data-testid="Typography" color="#000000" class="css-9dug5j">이름</p>
-                  <input type="name" placeholder="이름을 입력해주세요." name="name"
+                  <input type="name" placeholder="이름을 입력해주세요." id="name" name="name" maxlength="10"
 					autocomplete="on" class="css-1sbrczv" value="정명호">
                   </li>
                   <li data-list-type="NAME_CHANGE" tabindex="0" class="css-15hfbq8" style="height: 79px;">
                   <p data-testid="Typography" color="#000000" class="css-9dug5j">성별</p>
                   <p style="padding-left: 15px; font-size: 15px;">남자</p>
-                  <input type="hidden" name="gender"
+                  <input type="hidden" name="gender" id="gender"
 					autocomplete="on" class="css-1sbrczv" value="남자" readonly="readonly">
                   </li>
                   <li data-list-type="PHONE_CHANGE" tabindex="0" class="css-15hfbq8"><p data-testid="Typography" color="#000000" class="css-9dug5j">휴대폰 번호</p>
-                  <input type="text" placeholder="휴대폰 번호를 입력해주세요." name="phone"
-					autocomplete="on" class="css-1sbrczv" value="010-0000-0000">
+                  <input type="tel" placeholder="휴대폰 번호를 입력해주세요." id="phone" name="phone" maxlength="11"
+					autocomplete="on" class="css-1sbrczv" value="01000000000">
                   </li>
                   <li data-list-type="PHONE_CHANGE" tabindex="0" class="css-15hfbq8"><p data-testid="Typography" color="#000000" class="css-9dug5j">전화번호</p>
-                  <input type="text" placeholder="전화번호를 입력해주세요." name="tel"
-					autocomplete="on" class="css-1sbrczv" value="032-000-0000">
+                  <input type="tel" placeholder="전화번호를 입력해주세요." id="tel" name="tel" maxlength="11"
+					autocomplete="on" class="css-1sbrczv" value="0320000000">
                   </li>
                   <li data-list-type="SOCIAL_LINK" tabindex="0" class="css-15hfbq8"><p data-testid="Typography" color="#000000" class="css-9dug5j">주소</p>
-                  <input type="text" placeholder="주소를 입력해주세요." name="addr"
-					autocomplete="on" class="css-1sbrczv" value="인천시 부평구 부평동">
+                  <input type="text" placeholder="주소를 입력해주세요." id="addr" name="addr"
+					autocomplete="on" class="css-1sbrczv" value="인천시 부평구 부평동" maxlength="100">
                   </li>
                   <li data-list-type="SOCIAL_LINK" tabindex="0" class="css-15hfbq8" style="height: 79px;">
                   <p data-testid="Typography" color="#000000" class="css-9dug5j" style="font-size: 15px;">
