@@ -72,7 +72,8 @@
             </ul>
             <aside class="Aside_aside__f0SVC">
               <ul class="Aside_asideList__3WNyu">
-                <li class="Aside_signUpButtonContainer___0wTS">
+              <!-- 로그인 되지 않았을 때 보여줄 버튼 -->
+                <li class="Aside_signUpButtonContainer___0wTS" id="signupLi">
                   <button
                     class="Button_Button__root__V1ie3 Button_Button__outlined__H2mkd Button_Button__outlinedAssistive__mBcQK Button_Button__outlinedSizeSmall__JJmOo Aside_signUpButton__pY721"
                     type="button"
@@ -89,6 +90,33 @@
                     ><span class="Button_Button__interaction__kkYaa"></span>
                   </button>
                 </li>
+              <!-- 로그인 되지 않았을 때 보여줄 버튼 -->
+               
+               <!-- 로그인 되었을 때 보여줄 버튼 -->
+               <li
+                id="mypageLi"
+                class="Menu_MenuItem__wI1yA"
+                data-attribute-id="gnb"
+                data-gnb-kind="freelancer"
+                style="margin-right: 20px;"
+              	>
+              	<button type="button" id="moveMypageBtn">
+               		<span style="color: #666666">마이페이지</span>
+              	</button>
+              </li>
+               <li
+                id="logoutLi"
+                class="Menu_MenuItem__wI1yA"
+                data-attribute-id="gnb"
+                data-gnb-kind="freelancer"
+                style="margin-right: 15px;"
+              	>
+                <button type="button" id="logoutBtn">
+               		<span style="color: #666666">로그아웃</span>
+              	</button>
+              </li>
+              <!-- 로그인 되었을 때 보여줄 버튼 -->
+              
               </ul>
             </aside>
           </nav>
