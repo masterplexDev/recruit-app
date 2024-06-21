@@ -164,7 +164,7 @@
           <div class="Grid_Grid__container__J9CcC Grid_Grid__spacing__5__ZwgDV">
           <jsp:include page="mypage_layout.jsp"/>
             <div class="Grid_Grid__item__FUkSS Grid_Grid__justify_center__QJu2X Grid_Grid__align-items_flex-start__PA0JE Grid_Grid__grid__xs__12__rVqKh Grid_Grid__grid__md__6__9g_JE">
-            <div style="margin: 30px;">
+            <div style="margin: 30px; margin-right: 50px;">
             <h1 style="font-size: 25px;"><strong>리뷰</strong></h1>
 			<!--// tap menu -->
 			<div class="mtcTplTab" >
