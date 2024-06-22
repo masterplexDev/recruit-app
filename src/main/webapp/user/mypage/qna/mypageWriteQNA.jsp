@@ -73,55 +73,65 @@
 			    문의종류 <em>(필수)</em>
 			    </div>
 			    <div class="tbCell">
-			    <div class="mtcSltBx listLenSel">
-			    <label for="lb_view_1" id="lb_type">선택</label>
-			    <select>
+			    <!-- <div class="mtcSltBx listLenSel"> -->
+			    <div >
+			    <label for="lb_view_1" id="lb_type"></label>
+			    <select style="width:180px; height:35px">
 			       <!-- <select name="" id="lb_view_1" title="문의 종류 선택"> -->
 			          <option value="선택">선택</option>
 			          <option value="서비스 이용문의">서비스 이용문의</option>
 			          <option value="불량정보·오류 신고" >불량정보·오류 신고</option>
 			          <option value="서비스 제안·칭찬">서비스 제안·칭찬</option>
 			       </select>
-			    
 			       </div>
 			       </div>
 			       </div>
 			       <div class="tbRow">
 			                            
 			       <div class="tbCell tbTh">
-			         <label for="lb_inq_2">제목 <em>(필수)</em></label>
+			         <label for="lb_inq_1">제목 <em>(필수)</em></label>
 			       </div>
+			       <!-- <div class="tbCell"> -->
 			       <div class="tbCell">
-			         <textarea name="contents" id="lb_inq_2" title="내용을 입력하세요." class="txArea" style="height:45px"></textarea>
+			         <textarea name="title" id="lb_inq_2" title="내용을 입력하세요." style="height:35px; width:400px ;font-size:15px"></textarea>
+			         <!-- <textarea name="contents" id="lb_inq_2" title="내용을 입력하세요." class="txArea" style="height:45px"></textarea> -->
 			       </div>
 			       </div>
 			       <div class="tbRow">
 			       <div class="tbCell tbTh">
 			           <label for="lb_inq_2">내용 <em>(필수)</em></label>
 			       </div>
-			       <div class="tbCell">
-			       <textarea name="contents" id="lb_inq_2" title="내용을 입력하세요." class="txArea"></textarea>
+<!-- 			       <div class="tbCell">
+			       <textarea name="contents" id="lb_inq_2" title="내용을 입력하세요." class="txArea"></textarea> -->
+			       <div>
+			       <textarea name="contents" id="lb_inq_2" title="내용을 입력하세요." style="height:350px; width:400px"></textarea>
 			       </div>
 			       </div>
-			       <!-- 이메일 어느 이메일 주소로 발송할 것인지 입력은 하지 않아도 인지시키기 readonly? -->
+			       
+			       <!-- <div class="tbCell tbTh">
+			         <label for="lb_inq_2">답변 email <em>(필수)</em></label><br/>
+			         <textarea name="email"  title="내용을 입력하세요." style="height:45px; width:400px"></textarea>
+			       </div> -->
+			       
 			       <div class="tbRow">
-			       <div class="tbRow tbMail">
-			       <div class="tbCell tbTh">
-			       <label for="lb_inq_4">답변받을 e-메일 <em>(필수)</em></label>
-			       </div>
-			       <div class="tbCell">
-			         <input type="text" id="lb_inq_4" name="emailName" class="mtcIpt" title="이메일 주소 앞부분" /> @ <input type="text" id="lb_inq_5" name="emailDomain" class="mtcIpt" title="이메일 주소 뒷부분" />
-			       <div class="tbCell__dropdown">
-			        <!--  <select name="" id="lb_view_2" title="이메일 사업자 입력">
+			       <!-- <div class="tbRow tbMail"> -->
+			         <div class="tbCell tbTh">
+                                    <label for="lb_inq_4">답변 e-메일 <em>(필수)</em></label>
+                                </div>
+                                <div class="tbCell">
+                         	        <textarea name="email"  title="내용을 입력하세요." style="height:35px; width:400px" class="vertical-center-textarea" readonly="readonly"></textarea>
+                                    <!-- <input type="text" id="lb_inq_4" name="emailName" class="mtcIpt" title="이메일 주소 앞부분" /> -->
+			      <!-- <div class="tbCell__dropdown">
+			         <select name="" id="lb_view_2" title="이메일 사업자 입력">
 			             <option value="">직접입력</option>
 			             <option value="naver.com">naver.com</option>
 			             <option value="hanmail.net">hanmail.net</option>
 			             <option value="nate.com">nate.com</option>
 			             <option value="daum.net">daum.net</option>
 			             <option value="gmail.com">gmail.com</option>
-			          </select> -->
-			        </div>
-			      </div>
+			          </select>
+			      </div> -->
+			    <!--  </div> -->
 			     </div>
 			     </div>
 			      <div id="privacyBx1" class="privacyBx" >
