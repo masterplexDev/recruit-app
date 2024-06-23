@@ -210,10 +210,6 @@ $(document).ready(function(){
   });
 });
 </script>
-
-
-
-  
   
   <!-- 두 번째 테마: 내가 관심있을만한 기업 -->
   <article class="MatchedJobArea_MatchedJobArea__vFPPT"> 
