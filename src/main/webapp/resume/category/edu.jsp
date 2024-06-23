@@ -50,8 +50,8 @@
               <button type="button" class="button buttonChoose" aria-haspopup="true"><span id="selectedOption"></span></button>
               <div class="list hidden" aria-hidden="true">
                   <ul>
-                      <li><button type="button" class="button eduItem" data-schltypecode="0"><span>고등학교</span></button></li>
                       <li><button type="button" class="button eduItem" data-schltypecode="1"><span>대학교(원)</span></button></li>
+                      <li><button type="button" class="button eduItem" data-schltypecode="0"><span>고등학교</span></button></li>
                   </ul>
               </div>
           </div>
@@ -73,8 +73,8 @@
               <button type="button" class="button buttonChoose" aria-haspopup="true"><span id="selectedOption">고등학교</span></button>
               <div class="list hidden" aria-hidden="true">
                   <ul>
-                      <li><button type="button" class="button eduItem" data-schltypecode="0"><span>고등학교</span></button></li>
                       <li><button type="button" class="button eduItem" data-schltypecode="1"><span>대학교(원)</span></button></li>
+                      <li><button type="button" class="button eduItem" data-schltypecode="0"><span>고등학교</span></button></li>
                   </ul>
               </div>
           </div>
@@ -121,8 +121,8 @@
               <button type="button" class="button buttonChoose" aria-haspopup="true"><span id="selectedOption">대학교(원)</span></button>
               <div class="list hidden" aria-hidden="true">
                   <ul>
-                      <li><button type="button" class="button eduItem" data-schltypecode="0"><span>고등학교</span></button></li>
                       <li><button type="button" class="button eduItem" data-schltypecode="1"><span>대학교(원)</span></button></li>
+                      <li><button type="button" class="button eduItem" data-schltypecode="0"><span>고등학교</span></button></li>
                   </ul>
               </div>
         </div>
@@ -270,11 +270,6 @@
               <li>
                 <button type="button" class="button" data-value="4.5">
                   <span>4.5</span>
-                </button>
-              </li>
-              <li>
-                <button type="button" class="button" data-value="4.3">
-                  <span>4.3</span>
                 </button>
               </li>
               <li>

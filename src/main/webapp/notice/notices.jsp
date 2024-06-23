@@ -44,6 +44,7 @@
 		<div class="topHdWrap clear">
 			<h2 class="lug_hd_2">공지사항</h2>
 			<form action="#">
+		
 				<fieldset>
 					<legend>공지사항 검색</legend>
 					<div class="searchBarItem mtcPlaceholder" style="float : right">
@@ -52,15 +53,16 @@
 						<!-- <input type="button" class="mtcBtnB mtcSchBtn" value="검색"/> -->
 						<button type="button" class="mtcBtnB mtcSchBtn"><span class="skip">검색</span></button>
 					</div>
-				</fieldset>
-				<div class="lyTplArea schItems" style="float : right; margin-right : 10px">
-                            <label for="lb_sel01"></label>
-                            <select>
-                                <option value="내용+제목" selected>내용+제목</option>
-								<option value="내용">내용</option>
-								<option value="제목">제목</option>
-                            </select>
-                        </div>
+
+									<select
+										style="width: 100px; height: 36px; border: 0.2px solid #ced4da; margin-right: 10px">
+										<!-- <select name="" id="lb_view_1" title="문의 종류 선택"> -->
+										<option value="선택" selected>선택</option>
+										<option value="내용+제목">내용+제목</option>
+										<option value="내용">내용</option>
+										<option value="제목">제목</option>
+									</select>
+								</fieldset>
 			</form>
 		</div>
 		<div class="schListWrap">
@@ -75,8 +77,9 @@
 					<thead>
 						<tr>
 							<th scope="col">
-								<div class="lyTplArea schItems" style="float:left; padding-left:10px">
-									<select>
+								<div  style="float:left; padding-left:15px">
+									<select
+										style="width: 80px; height: 36px; border: 0.2px solid #FFFFFF;">
 										<option value="전체" selected>전체</option>
 										<option value="일반공지">일반공지</option>
 										<option value="서비스">서비스</option>
