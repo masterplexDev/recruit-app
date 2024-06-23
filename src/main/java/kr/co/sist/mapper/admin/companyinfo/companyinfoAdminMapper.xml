@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.sist.admin.companyinfo">
+    <select id="selectAllCompanyinfo" resultType="kr.co.sist.user.domain.CompanyinfoDomain">
+	    SELECT COMPANY_CODE, COMPANY_NAME, LOGO, REVENUE, HEADCOUNT, INPUT_DATE
+		FROM COMPANYINFO
+    </select>
+    
+    <select id="selectCompanyinfo" resultType="kr.co.sist.user.domain.CompanyinfoDomain" parameterType="String">
+    	SELECT COMPANY_CODE, COMPANY_NAME, LOGO, REVENUE, HEADCOUNT, INPUT_DATE, ADDR
+		FROM COMPANYINFO
+		<where>
+	        <if test="company_code != null and company_code != ''">
+	            COMPANY_CODE LIKE '%' || #{company_code} || '%'
+	        </if>
+	        <if test="company_name != null and company_name != ''">
+	            COMPANY_NAME LIKE '%' || #{company_name} || '%'
+	        </if>
+	        <if test="addr != null and addr != ''">
+	            ADDR LIKE '%' || #{addr} || '%'
+	        </if>
+	        <if test="avg_sal != null">
+	            AND AVG_SAL >= #{avg_sal}
+	        </if>
+	        <if test="company_classification != null">
+	            AND COMPANY_CLASSIFICATION = #{company_classification}
+	        </if>
+	        <if test="headcount != null">
+	            AND HEADCOUNT between 0 and #{headcount}
+	        </if>
+    	</where>
+    </select>
+    
+    
+    
+</mapper>
