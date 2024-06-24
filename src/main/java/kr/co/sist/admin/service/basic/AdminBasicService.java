@@ -1,18 +1,18 @@
-package kr.co.sist.admin.service.admin;
+package kr.co.sist.admin.service.basic;
 
 import java.util.List;
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.springframework.stereotype.Service;
-import kr.co.sist.admin.dao.admin.AdminManageDAO;
-import kr.co.sist.admin.domain.admin.AdminInfoDomain;
-import kr.co.sist.admin.domain.admin.LoginDomain;
-import kr.co.sist.admin.vo.admin.LoginVO;
+import kr.co.sist.admin.dao.basic.AdminBasicDAO;
+import kr.co.sist.admin.domain.basic.AdminInfoDomain;
+import kr.co.sist.admin.domain.basic.LoginDomain;
+import kr.co.sist.admin.vo.basic.LoginVO;
 
 @Service
-public class AdminManageService {
-    private final AdminManageDAO amDAO;
+public class AdminBasicService {
+    private final AdminBasicDAO amDAO;
 
-    public AdminManageService(AdminManageDAO amDAO) {
+    public AdminBasicService(AdminBasicDAO amDAO) {
         this.amDAO = amDAO;
     }
 

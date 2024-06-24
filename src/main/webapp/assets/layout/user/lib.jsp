@@ -19,43 +19,32 @@
       }
     </style>
     <script type="text/javascript">
+	    <%
+		String userId = (String)session.getAttribute("userId");
+		String name = (String)session.getAttribute("name");
+	 	%>	
 	    document.addEventListener('DOMContentLoaded', function() {
+	    	<% if(userId != null && !userId.isEmpty()){%>
+	    	
+	    	    const moveMypageBtn = document.getElementById('moveMypageBtn');
+			    const logoutBtn = document.getElementById('logoutBtn');
+			    
+			    moveMypageBtn.addEventListener('click',function(){
+			    	window.location.href = 'http://localhost/recruit-app/user/mypage/mypageUserInfo.jsp';
+			    });
+			    
+			    logoutBtn.addEventListener('click',function(){
+			    	alert('로그아웃 되었습니다.');
+			    	window.location.href = '../user/logout.do';
+			    });
+			    
+	    	<%}else {%>
 		    const signupBtn = document.getElementById('signupBtn');
 		    
 		    signupBtn.addEventListener('click', function() {
 		        window.location.href = 'http://localhost/recruit-app/user/login.jsp'; // 이동할 페이지 URL
 		    });
+		    <%}//end else%>
 		    
-		    
-			const moveMypageBtn = document.getElementById('moveMypageBtn');
-		    const logoutBtn = document.getElementById('logoutBtn');
-		    const signupLi = document.getElementById('signupLi');
-		    const mypageLi = document.getElementById('mypageLi');
-		    const logoutLi = document.getElementById('logoutLi');
-		    
-		    var loginStatus = false; // 로그인 상태(false : 로그인 되지 않음, true : 로그인 됨)
-		    
-		    function loginCheck(){
-		    	if (loginStatus) {
-		    		signupLi.style.display = "none";
-		    		mypageLi.style.display = "block";
-		    		logoutLi.style.display = "block";
-		    	  } else {
-		    		signupLi.style.display = "block";
-		    		mypageLi.style.display = "none";
-		    		logoutLi.style.display = "none";
-		    	  }
-		    }
-		    
-		    moveMypageBtn.addEventListener('click',function(){
-		    	window.location.href = 'http://localhost/recruit-app/user/mypage/mypageUserInfo.jsp';
-		    });
-		    
-		    logoutBtn.addEventListener('click',function(){
-		    	alert('로그아웃 되었습니다.');
-		    	window.location.href = 'http://localhost/recruit-app/main/main.jsp';
-		    });
-		    
-		    loginCheck();
 	    });
     </script>
