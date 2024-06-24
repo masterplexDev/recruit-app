@@ -4,6 +4,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import kr.co.sist.admin.dao.resume.ResumeAdminDAO;
 import kr.co.sist.admin.domain.resume.ResumeDomain;
+import kr.co.sist.admin.domain.resume.ResumeListDomain;
+import kr.co.sist.admin.vo.resume.SearchVO;
 
 @Service
 public class ResumeAdminService {
@@ -13,8 +15,8 @@ public class ResumeAdminService {
         this.resumeAdminDAO = resumeAdminDAO;
     }
 
-    public List<ResumeDomain> searchResumes() {
-        List<ResumeDomain> resumes = resumeAdminDAO.selectResumes();
+    public List<ResumeListDomain> searchResumes(SearchVO searchVO) {
+        List<ResumeListDomain> resumes = resumeAdminDAO.selectResumes(searchVO);
 
         return resumes;
     }
