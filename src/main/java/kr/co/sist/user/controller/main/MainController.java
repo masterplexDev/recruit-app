@@ -1,24 +1,30 @@
 package kr.co.sist.user.controller.main;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import kr.co.sist.user.service.main.MainService;
+import kr.co.sist.user.vo.main.MainVO;
 
 @Controller
 public class MainController {
-
     @Autowired(required = false)
     private MainService mainService;
 
-    @GetMapping("/main")
-    public String main(Model model, @RequestParam String userId) {
-        model.addAttribute("recentJobPosts", mainService.getRecentJobPosts());
-        model.addAttribute("interestingPositions", mainService.getInterestingPositions(userId));
-        model.addAttribute("highSalaryPositions", mainService.getHighSalaryPositions());
-        model.addAttribute("viewHistory", mainService.getViewHistory(userId));
-        return "main";
+    @GetMapping("/mainTest.do")
+    public String mainTest(Model model) {
+        List<MainVO> recentJobPosts = mainService.getRecentJobPosts();
+        model.addAttribute("recentJobPosts", recentJobPosts);
+        return "mainTest";
     }
+    
+    @GetMapping("/main.do")
+    public String main(Model model) {
+        List<MainVO> recentJobPosts = mainService.getRecentJobPosts();
+        model.addAttribute("recentJobPosts", recentJobPosts);
+        return "main/main";  // "main/main" 경로로 수정
+    }
+    
 }
