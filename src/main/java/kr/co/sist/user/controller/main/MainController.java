@@ -19,12 +19,13 @@ public class MainController {
         model.addAttribute("recentJobPosts", recentJobPosts);
         return "mainTest";
     }
+   
     
     @GetMapping("/main.do")
     public String main(Model model) {
         List<MainVO> recentJobPosts = mainService.getRecentJobPosts();
         model.addAttribute("recentJobPosts", recentJobPosts);
-        return "main/main";  // "main/main" 경로로 수정
+        return "main/main"; // "/WEB-INF/views/main/main.jsp" 경로에 매핑
     }
     
 }
