@@ -1,4 +1,4 @@
-package kr.co.sist.admin.vo.admin;
+package kr.co.sist.admin.vo.basic;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,10 +8,11 @@ import lombok.ToString;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
 @Setter
+@Getter
 @ToString
 public class LoginVO {
     private String adminId;
     private String password;
+
 }

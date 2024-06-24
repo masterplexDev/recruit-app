@@ -6,6 +6,7 @@
   <properties resource="kr/co/sist/properties/database.properties" />
   <typeAliases>
   	<!-- example ) <typeAlias type="kr.co.sist.domain.EmpDomain" alias="ed" /> -->
+  	<typeAlias type="kr.co.sist.admin.domain.basic.LoginDomain" alias="adminLoginResultMap" />
   </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -21,7 +22,8 @@
   <mappers>
     <mapper resource="kr/co/sist/mapper/exampleMapper.xml"/>
     <mapper resource="kr/co/sist/mapper/admin/recruit/recruitMapper.xml"/>
-    <mapper resource="kr/co/sist/mapper/admin/admin/adminMapper.xml"/>
+    <mapper resource="kr/co/sist/mapper/admin/basic/adminMapper.xml"/>
+    <mapper resource="kr/co/sist/mapper/user/basic/userBasicMapper.xml"/>
     <mapper resource="kr/co/sist/mapper/user/recruit/recruitMapper.xml"/>
     <mapper resource="kr/co/sist/mapper/admin/resume/resumeMapper.xml"/>
   </mappers>

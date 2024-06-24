@@ -70,28 +70,15 @@
                 >
               </li>
             </ul>
+            <%
+            	String userId = (String)session.getAttribute("userId");
+            	String name = (String)session.getAttribute("name");
+            %>
             <aside class="Aside_aside__f0SVC">
               <ul class="Aside_asideList__3WNyu">
-              <!-- 로그인 되지 않았을 때 보여줄 버튼 -->
-                <li class="Aside_signUpButtonContainer___0wTS" id="signupLi">
-                  <button
-                    class="Button_Button__root__V1ie3 Button_Button__outlined__H2mkd Button_Button__outlinedAssistive__mBcQK Button_Button__outlinedSizeSmall__JJmOo Aside_signUpButton__pY721"
-                    type="button"
-                    id = "signupBtn"
-                    data-attribute-id="gnb"
-                    data-gnb-kind="signupLogin"
-                    onclick="location.href = 'http://localhost/recruit-app/user/login.jsp'"
-                  >
-                    <span class="Button_Button__label__1Kk0v"
-                      ><span
-                        class="Typography_Typography__root__xYuMs Typography_Typography__label2__BRssq Typography_Typography__weightBold__e15ql"
-                        >회원가입/로그인</span
-                      ></span
-                    ><span class="Button_Button__interaction__kkYaa"></span>
-                  </button>
-                </li>
-              <!-- 로그인 되지 않았을 때 보여줄 버튼 -->
-               
+              <%
+              if(userId != null && !userId.isEmpty()){
+              %>
                <!-- 로그인 되었을 때 보여줄 버튼 -->
                <li
                 id="mypageLi"
@@ -117,6 +104,30 @@
               </li>
               <!-- 로그인 되었을 때 보여줄 버튼 -->
               
+              <!-- 로그인 되지 않았을 때 보여줄 버튼 -->
+                <%
+              }else {
+                %>
+               
+                <li class="Aside_signUpButtonContainer___0wTS" id="signupLi">
+                  <button
+                    class="Button_Button__root__V1ie3 Button_Button__outlined__H2mkd Button_Button__outlinedAssistive__mBcQK Button_Button__outlinedSizeSmall__JJmOo Aside_signUpButton__pY721"
+                    type="button"
+                    id = "signupBtn"
+                    data-attribute-id="gnb"
+                    data-gnb-kind="signupLogin"
+                    onclick="location.href = 'http://localhost/recruit-app/user/loginPage.do'"
+                  >
+                    <span class="Button_Button__label__1Kk0v"
+                      ><span
+                        class="Typography_Typography__root__xYuMs Typography_Typography__label2__BRssq Typography_Typography__weightBold__e15ql"
+                        >회원가입/로그인</span
+                      ></span
+                    ><span class="Button_Button__interaction__kkYaa"></span>
+                  </button>
+                </li>
+              <% } %>
+              <!-- 로그인 되지 않았을 때 보여줄 버튼 -->
               </ul>
             </aside>
           </nav>
