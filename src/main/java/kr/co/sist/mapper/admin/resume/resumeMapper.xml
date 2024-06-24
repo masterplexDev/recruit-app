@@ -70,12 +70,39 @@
 	            FROM career
 	            GROUP BY resume_num
 	        ) c ON apply.resume_num = c.resume_num
+	        <where>
+			    <if test="keyword != null and keyword != ''">
+			        AND self_introduction LIKE '%' || #{keyword} || '%'
+			    </if>
+	        </where>
 	    )
 	    <where>
-	        <if test="startNum != 0 and endNum !=0">
+		    <if test="name != null and name != ''">
+		        AND name LIKE '%' || #{name} || '%'
+		    </if>
+		    <if test="title != null and title != ''">
+		        AND resume_title LIKE '%' || #{title} || '%'
+		    </if>
+		    <if test="startApplyDate != null">
+		        AND apply_date >= #{startApplyDate}
+		    </if>
+		    <if test="endApplyDate != null">
+		        AND apply_date <![CDATA[ <= ]]> #{endApplyDate}
+		    </if>
+		    <if test="career != null and career != ''">
+		        AND career LIKE '%' || #{career} || '%'
+		    </if>
+		    <!-- <if test="endSchool != null and endSchool != ''">
+		        AND r.end_school = #{endSchool}
+		    </if> -->
+		    <if test="addr != null and addr != ''">
+		        AND addr LIKE '%' || #{addr} || '%'
+		    </if>
+	        <if test="startNum != 0 and endNum != 0">
 	            AND rnum BETWEEN #{startNum} AND #{endNum}
 	        </if>
 	    </where>
+	    
 	</select>
     <!-- <select id="selectOneResume" parameterType="int" resultMap="recruitResultMap">
     	
