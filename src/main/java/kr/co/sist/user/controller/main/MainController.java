@@ -10,7 +10,7 @@ import kr.co.sist.user.service.main.MainService;
 @Controller
 public class MainController {
 
-    @Autowired
+    @Autowired(required = false)
     private MainService mainService;
 
     @GetMapping("/main")
