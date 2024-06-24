@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.sist.user.companyinfo">
+    <select id="selectAllCompanyinfo" resultType="kr.co.sist.domain.CompanyinfoDomain">
+    	SELECT COMPANY_CODE, COMPANY_NAME, LOGO, REVENUE, HEADCOUNT, INPUT_DATE
+		FROM COMPANYINFO
+    </select>
+    
+    <select id="selectCompanyinfo" resultType="kr.co.sist.domain.CompanyinfoDomain" parameterType="kr.co.sist.vo.CompanyinfoVO">
+    	SELECT COMPANY_CODE, COMPANY_NAME, LOGO, REVENUE, HEADCOUNT, INPUT_DATE
+		FROM COMPANYINFO
+		<where>
+	        <if test="company_name != null and company_name != ''">
+	            COMPANY_NAME LIKE '%' || #{company_name} || '%'
+	        </if>
+	        <if test="avg_sal != null">
+	            AND AVG_SAL >= #{avg_sal} 
+	        </if>
+	        <if test="company_classification != null">
+	            AND COMPANY_CLASSIFICATION = #{company_classification} 
+	        </if>
+    	</where>
+    </select>
+    
+    <resultMap id="companyInfoResultMap" type="kr.co.sist.domain.companyinfo.CompanyinfoDomain">
+	    <id property="company_code" column="COMPANY_CODE" />
+	    <result property="company_name" column="COMPANY_NAME" />
+	    <result property="description" column="DESCRIPTION" />
+	    <result property="headcount" column="HEADCOUNT" />
+	    <result property="company_classification" column="COMPANY_CLASSIFICATION" />
+	    <result property="revenue" column="REVENUE" />
+	    <result property="ceo_name" column="CEO_NAME" />
+	    <result property="addr" column="ADDR" />
+	    <result property="establishment_date" column="ESTABLISHMENT_DATE" />
+	
+	    <collection property="welfareList" ofType="kr.co.sist.domain.companyinfo.WelfareDomain">
+	        <result property="category" column="CATEGORY" />
+	        <result property="content" column="WELFARE_CONTENT" />
+	    </collection>
+	
+	    <collection property="historyList" ofType="kr.co.sist.domain.companyinfo.HistoryDomain">
+	        <result property="baseDate" column="BASE_DATE" />
+	        <result property="content" column="HISTORY_CONTENT" />
+	    </collection>
+	</resultMap>
+    <select id="selectCompanyinfoDetail" resultMap="companyInfoResultMap" parameterType="String">
+    	SELECT
+		    ci.COMPANY_CODE,
+		    ci.COMPANY_NAME,
+		    ci.DESCRIPTION,
+		    ci.HEADCOUNT,
+		    ci.COMPANY_CLASSIFICATION,
+		    ci.REVENUE,
+		    ci.CEO_NAME,
+		    ci.ADDR,
+		    ci.ESTABLISHMENT_DATE,
+		    w.CATEGORY,
+		    w.CONTENT AS WELFARE_CONTENT,
+		    h.BASE_DATE,
+		    h.CONTENT AS HISTORY_CONTENT
+		FROM
+		    COMPANYINFO ci
+		LEFT JOIN
+		    WELFARE w ON ci.COMPANY_CODE = w.COMPANY_CODE
+		LEFT JOIN
+		    HISTORY h ON ci.COMPANY_CODE = h.COMPANY_CODE
+		WHERE    
+			ci.COMPANY_CODE = #{company_code}
+    </select>
+</mapper>
