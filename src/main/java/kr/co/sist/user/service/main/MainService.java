@@ -9,7 +9,7 @@ import kr.co.sist.user.vo.main.MainVO;
 @Service
 public class MainService {
 
-    @Autowired
+    @Autowired(required = false)
     private UserMainDAO userMainDAO;
 
     public List<MainVO> getRecentJobPosts() {

@@ -6,6 +6,7 @@ import kr.co.sist.admin.domain.resume.ResumeDomain;
 import kr.co.sist.properties.MyBatisConfig;
 
 public class ResumeUserDAO {
+
     private final MyBatisConfig myBatis;
 
     @Autowired(required = false)

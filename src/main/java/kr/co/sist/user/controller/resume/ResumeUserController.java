@@ -1,6 +1,7 @@
 package kr.co.sist.user.controller.resume;
 
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
 import kr.co.sist.admin.domain.resume.ResumeDomain;
@@ -9,6 +10,7 @@ import kr.co.sist.user.service.resume.ResumeUserService;
 @Controller
 @ResponseBody
 public class ResumeUserController {
+    @Autowired(required = false)
     private final ResumeUserService resumeUserService;
 
     public ResumeUserController(ResumeUserService resumeUserService) {
