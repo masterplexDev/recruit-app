@@ -1,4 +1,4 @@
-package kr.co.sist.admin.domain.admin;
+package kr.co.sist.admin.domain.basic;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
