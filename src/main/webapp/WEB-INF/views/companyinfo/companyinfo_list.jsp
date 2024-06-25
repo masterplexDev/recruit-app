@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     info="부서별 사원정보 조회"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%-- fn 태그 라이브러리 추가 --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,6 +46,8 @@
 <th style="width: 200px">등록일</th>
 <th style="width: 200px">등록일</th>
 <th style="width: 200px">등록일</th>
+<th style="width: 200px">등록일</th>
+<th style="width: 200px">등록일</th>
 </tr>
 <c:if test="${ empty requestScope.companyDetail }">
 <tr>
@@ -53,6 +56,27 @@
 </td>
 </tr>
 </c:if>
+<c:forEach var="company" items="${requestScope.companyDetail}" varStatus="status">
+    <c:if test="${status.index < fn:length(requestScope.companyDetail)}"> <%-- 리스트 크기만큼만 반복 --%>
+    <tr>
+        <td><c:out value="${company.companyCode}"/></td>
+        <td><c:out value="${company.companyName}"/></td>
+        <td><c:out value="${company.logo}"/></td>
+        <td><c:out value="${company.companyImg}"/></td>
+        <td><c:out value="${company.description}"/></td>
+        <td><c:out value="${company.headcount}"/></td>
+        <td><c:out value="${company.revenue}"/></td>
+        <td><c:out value="${company.ceoName}"/></td>
+        <td><c:out value="${company.addr}"/></td>
+        <td><c:out value="${company.establishmentDate}"/></td>
+        <td><c:out value="${company.inputDate}"/></td>
+        <td><c:out value="${company.category}"/></td>
+        <td><c:out value="${company.welfareContent}"/></td>
+        <td><c:out value="${company.baseDate}"/></td>
+        <td><c:out value="${company.historyContent}"/></td>
+    </tr>
+    </c:if>
+</c:forEach>
 <tr>
 <%-- <td><c:out value="${ company.companyCode }"/></td> requestScope.listCompanyinfo
 <td><c:out value="${ company.companyName }"/></td>
@@ -60,7 +84,7 @@
 <td><c:out value="${ company.revenue }"/></td>
 <td><c:out value="${ company.headcount }"/></td>
 <td><c:out value="${ company.inputDate }"/></td> --%>
-<td><c:out value="${ companyDetail[0].companyCode }"/></td>
+<%-- <td><c:out value="${ companyDetail[0].companyCode }"/></td>
 <td><c:out value="${ companyDetail[0].companyName }"/></td>
 <td><c:out value="${ companyDetail[0].logo }"/></td>
 <td><c:out value="${ companyDetail[0].companyImg }"/></td>
@@ -70,10 +94,46 @@
 <td><c:out value="${ companyDetail[0].ceoName }"/></td>
 <td><c:out value="${ companyDetail[0].addr }"/></td>
 <td><c:out value="${ companyDetail[0].establishmentDate }"/></td>
+<td><c:out value="${ companyDetail[0].inputDate }"/></td>
+<td><c:out value="${ companyDetail[0].category }"/></td>
 <td><c:out value="${ companyDetail[0].welfareContent }"/></td>
 <td><c:out value="${ companyDetail[0].baseDate }"/></td>
 <td><c:out value="${ companyDetail[0].historyContent }"/></td>
 </tr>
+<tr>
+<td><c:out value="${ companyDetail[1].companyCode }"/></td>
+<td><c:out value="${ companyDetail[1].companyName }"/></td>
+<td><c:out value="${ companyDetail[1].logo }"/></td>
+<td><c:out value="${ companyDetail[1].companyImg }"/></td>
+<td><c:out value="${ companyDetail[1].description }"/></td>
+<td><c:out value="${ companyDetail[1].headcount }"/></td>
+<td><c:out value="${ companyDetail[1].revenue }"/></td>
+<td><c:out value="${ companyDetail[1].ceoName }"/></td>
+<td><c:out value="${ companyDetail[1].addr }"/></td>
+<td><c:out value="${ companyDetail[1].establishmentDate }"/></td>
+<td><c:out value="${ companyDetail[1].inputDate }"/></td>
+<td><c:out value="${ companyDetail[1].category }"/></td>
+<td><c:out value="${ companyDetail[1].welfareContent }"/></td>
+<td><c:out value="${ companyDetail[1].baseDate }"/></td>
+<td><c:out value="${ companyDetail[1].historyContent }"/></td>
+</tr>
+<tr>
+<td><c:out value="${ companyDetail[2].companyCode }"/></td>
+<td><c:out value="${ companyDetail[2].companyName }"/></td>
+<td><c:out value="${ companyDetail[2].logo }"/></td>
+<td><c:out value="${ companyDetail[2].companyImg }"/></td>
+<td><c:out value="${ companyDetail[2].description }"/></td>
+<td><c:out value="${ companyDetail[2].headcount }"/></td>
+<td><c:out value="${ companyDetail[2].revenue }"/></td>
+<td><c:out value="${ companyDetail[2].ceoName }"/></td>
+<td><c:out value="${ companyDetail[2].addr }"/></td>
+<td><c:out value="${ companyDetail[2].establishmentDate }"/></td>
+<td><c:out value="${ companyDetail[2].inputDate }"/></td>
+<td><c:out value="${ companyDetail[2].category }"/></td>
+<td><c:out value="${ companyDetail[2].welfareContent }"/></td>
+<td><c:out value="${ companyDetail[2].baseDate }"/></td>
+<td><c:out value="${ companyDetail[2].historyContent }"/></td>
+</tr> --%>
 <%-- </c:forEach> --%>
 </table>
 </c:catch>
