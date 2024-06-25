@@ -1,0 +1,73 @@
+.subtitle {
+	padding: 0px;
+	margin-top: 20px;
+}
+
+#dataForm div:first-child {
+	margin-top: 0px;
+}
+
+.container-fluid py-4 {
+	padding-top: 0px;
+	!
+	important
+}
+
+.detail-control {
+	font-size: 15px;
+	margin-right: 2px;
+}
+
+#school_table {
+	font-size: 14px;
+}
+
+#certification_table {
+	width: 70%;
+	font-size: 14px;
+}
+
+.horizontal_arrange {
+	text-align: center;
+}
+
+table {
+	width: 70%;
+}
+
+#status {
+	margin-top: 5px;
+	font-size: 13px;
+	font-weight: bold;
+	font-color: #999;
+}
+
+#results {
+	width: 170px;
+	margin-top: 70px;
+	margin-right: 20px;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+#resumeBtnContainer {
+	margin-top: 67px;
+}
+
+#resumeBtnContainer>*:first-child {
+	margin-right: 17px;
+}
+
+.resumeBtns {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+#introduceContent {
+	border-top: 0.5px solid #f0f2f5;
+	border-bottom: 0.5px solid #f0f2f5;
+	padding: 5px;
+	margin-top: 5px;
+	font-size: 0.9rem;
+	font-weight: 400;
+}
