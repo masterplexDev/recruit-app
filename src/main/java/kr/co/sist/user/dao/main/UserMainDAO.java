@@ -15,7 +15,7 @@ public class UserMainDAO {
 
     public List<MainVO> selectRecentJobPosts() {
         SqlSession ss = myBatis.getMyBatisHandler(false);
-        return ss.selectList("kr.co.sist.mapper.main.UserMainMapper.selectRecentJobPosts");
+        return ss.selectList("kr.co.sist.user.dao.main.UserMainDAO.selectRecentJobPosts");
     }
     
     public List<MainVO> selectInterestedPositions() {

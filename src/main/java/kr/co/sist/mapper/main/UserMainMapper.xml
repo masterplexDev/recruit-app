@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.sist.mapper.main.UserMainMapper">
+<mapper namespace="kr.co.sist.user.dao.main.UserMainDAO">
 
     <!-- 1. 최근 등록된 공고(1달 내) -->
     <select id="selectRecentJobPosts" resultType="kr.co.sist.user.vo.main.MainVO">
@@ -22,7 +22,7 @@
 
     <!-- 2. 내가 관심있을만한 포지션 (내 스택과 공고 비교) -->
     <select id="selectInterestedPositions" resultType="kr.co.sist.user.vo.main.MainVO">
-        SELECT
+        SELECT DISTINCT
             R.TITLE AS title,
             C.COMPANY_NAME AS companyName,
             C.COMPANY_IMG AS companyImage,
