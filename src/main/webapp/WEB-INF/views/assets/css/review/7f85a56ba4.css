@@ -1,0 +1,42 @@
+/*!
+ *  Font Awesome v4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+ */
+@import url('http://localhost/recruit-app/assets/css/review/font-awesome-css.min.css');
+/* FONT PATH
+ * -------------------------- */
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('http://localhost/recruit-app/assets/css/review/fontawesome-webfont.eot');
+  src: url('http://localhost/recruit-app/assets/css/review/fontawesome-webfont.eot?#iefix') format('embedded-opentype'),
+       url('http://localhost/recruit-app/assets/css/review/fontawesome-webfont.woff2') format('woff2'),
+       url('http://localhost/recruit-app/assets/css/review/fontawesome-webfont.woff') format('woff'),
+       url('http://localhost/recruit-app/assets/css/review/fontawesome-webfont.ttf') format('truetype'),
+       url('http://localhost/recruit-app/assets/css/review/fontawesome-webfont.svg#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/*
+Embed code 7f85a56ba4
+*/
+
+/* 더보기 버튼  */
+.load-more {
+  font-size: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: opacity 0.3s ease;
+}
+
+.load-more:hover {
+  opacity: 0.7;
+}
+
+.pg_bottom {
+  text-align: center;
+  margin-top: 10px; /* 필요한 경우 간격을 조정하세요 */
+  margin-bottom: 10px; /* 필요한 경우 간격을 조정하세요 */
+}
+/* 더보기 버튼 end */
