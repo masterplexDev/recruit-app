@@ -18,7 +18,7 @@ public class SearchDomain {
   private int startNum, endNum;
   private int avgSal, revenue, headcount;
   private String companyCode, companyName, description, logo, companyImg, businessNumber, addr, ceoName, companyClassification;
-  private Date inputDate;
+  private Date establishmentDate, inputDate;
   private String historyContent, welfareContent;
   private Date baseDate;
   private String category;
