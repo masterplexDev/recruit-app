@@ -1,6 +1,5 @@
 package kr.co.sist.admin.dao.qna;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +18,17 @@ public class QnaAdminDAO {
 
     public List<QnaDomain> selectNewQnas() {
         SqlSession session = myBatis.getMyBatisHandler(false);
-        List<QnaDomain> qnas = new ArrayList<QnaDomain>();
+        List<QnaDomain> qnas = null;
         qnas = session.selectList("kr.co.sist.qna.admin.selectNewQnas");
         myBatis.closeHandler(session);
         return qnas;
     }
 
+    public QnaDomain selectOneNewQna(int qna_num) {
+        SqlSession session = myBatis.getMyBatisHandler(false);
+        QnaDomain newDetail = session.selectOne("kr.co.sist.qna.admin.selectOneNewQna", qna_num);
+        return newDetail;
+    }
     // public static void main (String[] args) {
     // QnaAdminDAO qd=new QnaAdminDAO();
     // }
