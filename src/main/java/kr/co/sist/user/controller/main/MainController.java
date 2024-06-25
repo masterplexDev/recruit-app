@@ -21,11 +21,21 @@ public class MainController {
     }
    
     
-    @GetMapping("/main.do")
+    
+    @GetMapping("/main/main.do")
     public String main(Model model) {
         List<MainVO> recentJobPosts = mainService.getRecentJobPosts();
+        List<MainVO> interestedPositions = mainService.getInterestedPositions();
+        List<MainVO> highSalaryPositions = mainService.getHighSalaryPositions();
+        List<MainVO> viewHistory = mainService.getViewHistory();
+        
         model.addAttribute("recentJobPosts", recentJobPosts);
-        return "main/main"; // "/WEB-INF/views/main/main.jsp" 경로에 매핑
+        model.addAttribute("interestedPositions", interestedPositions);
+        model.addAttribute("highSalaryPositions", highSalaryPositions);
+        model.addAttribute("viewHistory", viewHistory);
+        return "main/main"; // "WEB-INF/views/main/main.jsp" 경로에 매핑
     }
+    
+    
     
 }
