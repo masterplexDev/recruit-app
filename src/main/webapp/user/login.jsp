@@ -19,7 +19,7 @@
 <script type="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
-			var emailInput = $('input[name="email"]');
+			var emailInput = $('#email');
 		    var passwordInput = $('input[name="password"]');
 		    var loginButton = $("#loginBtn");
 			
@@ -109,7 +109,7 @@
 										<div class="css-1jxi7lq"></div>
 									</div>
 									<div class="css-ng7qrx">
-										<form class="css-e130a2" action="http://localhost/recruit-app/user/mypage/mypageUserInfo.jsp" id="loginFrm" method="post">
+										<form class="css-e130a2" action="../user/login.do" id="loginFrm" method="post">
 											<div>
 												<div class="css-14o8ny9">
 													<div class="css-cssveg">
@@ -118,8 +118,8 @@
 																color="rgba(55, 56, 60, 0.61)" for="email"
 																class="css-afh7p0">이메일</label>
 														</div>
-														<input type="email" placeholder="이메일을 입력해주세요."
-															name="email" data-testid="Input_email" autofocus=""
+														<input type="email" placeholder="이메일을 입력해주세요." id="email"
+															name="userId" data-testid="Input_email" autofocus=""
 															autocomplete="on" class="css-1sbrczv" value="" maxlength="30">
 													</div>
 												</div>

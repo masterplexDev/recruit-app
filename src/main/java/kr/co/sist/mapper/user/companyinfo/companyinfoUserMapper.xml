@@ -3,12 +3,37 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.sist.user.companyinfo">
-    <select id="selectAllCompanyinfo" resultType="kr.co.sist.domain.CompanyinfoDomain">
-    	SELECT COMPANY_CODE, COMPANY_NAME, LOGO, REVENUE, HEADCOUNT, INPUT_DATE
+    <resultMap id="companyInfoResultMap" type="kr.co.sist.domain.companyinfo.SearchDomain">
+    <result property="field" column="FIELD" />
+    <result property="keyword" column="KEYWORD" />
+    <result property="currentPage" column="CURRENT_PAGE" />
+    <result property="startNum" column="START_NUM" />
+    <result property="endNum" column="END_NUM" />
+    <result property="avgSal" column="AVG_SAL" />
+    <result property="revenue" column="REVENUE" />
+    <result property="headcount" column="HEADCOUNT" />
+    <result property="companyCode" column="COMPANY_CODE" />
+    <result property="companyName" column="COMPANY_NAME" />
+    <result property="description" column="DESCRIPTION" />
+    <result property="logo" column="LOGO" />
+    <result property="companyImg" column="COMPANY_IMG" />
+    <result property="businessNumber" column="BUSINESS_NUMBER" />
+    <result property="addr" column="ADDR" />
+    <result property="ceoName" column="CEO_NAME" />
+    <result property="companyClassification" column="COMPANY_CLASSIFICATION" />
+    <result property="inputDate" column="INPUT_DATE" />
+    <result property="historyContent" column="HISTORY_CONTENT" />
+    <result property="welfareContent" column="WELFARE_CONTENT" />
+    <result property="baseDate" column="BASE_DATE" />
+    <result property="category" column="CATEGORY" />
+</resultMap>
+	
+    <select id="selectAllCompanyinfo" resultMap="companyInfoResultMap">
+    	SELECT COMPANY_CODE, COMPANY_NAME, LOGO, REVENUE, HEADCOUNT, AVG_SAL, INPUT_DATE
 		FROM COMPANYINFO
     </select>
     
-    <select id="selectCompanyinfo" resultType="kr.co.sist.domain.CompanyinfoDomain" parameterType="kr.co.sist.vo.CompanyinfoVO">
+    <select id="selectCompanyinfo" resultMap="companyInfoResultMap" parameterType="kr.co.sist.vo.companyinfo.SearchVO">
     	SELECT COMPANY_CODE, COMPANY_NAME, LOGO, REVENUE, HEADCOUNT, INPUT_DATE
 		FROM COMPANYINFO
 		<where>
@@ -24,31 +49,12 @@
     	</where>
     </select>
     
-    <resultMap id="companyInfoResultMap" type="kr.co.sist.domain.companyinfo.CompanyinfoDomain">
-	    <id property="company_code" column="COMPANY_CODE" />
-	    <result property="company_name" column="COMPANY_NAME" />
-	    <result property="description" column="DESCRIPTION" />
-	    <result property="headcount" column="HEADCOUNT" />
-	    <result property="company_classification" column="COMPANY_CLASSIFICATION" />
-	    <result property="revenue" column="REVENUE" />
-	    <result property="ceo_name" column="CEO_NAME" />
-	    <result property="addr" column="ADDR" />
-	    <result property="establishment_date" column="ESTABLISHMENT_DATE" />
-	
-	    <collection property="welfareList" ofType="kr.co.sist.domain.companyinfo.WelfareDomain">
-	        <result property="category" column="CATEGORY" />
-	        <result property="content" column="WELFARE_CONTENT" />
-	    </collection>
-	
-	    <collection property="historyList" ofType="kr.co.sist.domain.companyinfo.HistoryDomain">
-	        <result property="baseDate" column="BASE_DATE" />
-	        <result property="content" column="HISTORY_CONTENT" />
-	    </collection>
-	</resultMap>
     <select id="selectCompanyinfoDetail" resultMap="companyInfoResultMap" parameterType="String">
     	SELECT
 		    ci.COMPANY_CODE,
 		    ci.COMPANY_NAME,
+		    ci.LOGO,
+		    ci.COMPANY_IMG,
 		    ci.DESCRIPTION,
 		    ci.HEADCOUNT,
 		    ci.COMPANY_CLASSIFICATION,
@@ -57,9 +63,9 @@
 		    ci.ADDR,
 		    ci.ESTABLISHMENT_DATE,
 		    w.CATEGORY,
-		    w.CONTENT AS WELFARE_CONTENT,
+		    w.WELFARE_CONTENT,
 		    h.BASE_DATE,
-		    h.CONTENT AS HISTORY_CONTENT
+		    h.HISTORY_CONTENT
 		FROM
 		    COMPANYINFO ci
 		LEFT JOIN
@@ -67,6 +73,6 @@
 		LEFT JOIN
 		    HISTORY h ON ci.COMPANY_CODE = h.COMPANY_CODE
 		WHERE    
-			ci.COMPANY_CODE = #{company_code}
+			ci.COMPANY_CODE = #{companyCode}
     </select>
 </mapper>

@@ -3,24 +3,36 @@ package kr.co.sist.user.controller.companyinfo;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import kr.co.sist.domain.companyinfo.CompanyinfoDomain;
+import kr.co.sist.domain.companyinfo.SearchDomain;
 import kr.co.sist.user.service.companyinfo.CompanyinfoUserService;
 
 @Controller
-@ResponseBody
 public class CompanyinfoUserController {
-    private final CompanyinfoUserService companyinfoUserService;
+     @Autowired(required=false)
+     private CompanyinfoUserService companyinfoUserService;
+//    private final CompanyinfoUserService companyinfoUserService;
+//
+//    @Autowired(required = false)
+//    public CompanyinfoUserController(CompanyinfoUserService companyinfoUserService) {
+//        this.companyinfoUserService = companyinfoUserService;
+//    }
 
-    @Autowired(required = false)
-    public CompanyinfoUserController(CompanyinfoUserService companyinfoUserService) {
-        this.companyinfoUserService = companyinfoUserService;
+    @GetMapping("/companyinfo/companyinfoList.do")
+    public String searchAllCompanyinfo(Model model) {
+        System.out.println("이건 컨트롤러야");
+        List<SearchDomain> list=companyinfoUserService.searchAllCompanyinfo();
+        model.addAttribute("listCompanyinfo",list);
+//        return "companyinfo/companyinfo_list";
+        return "companyinfo/user_company_info";
     }
-
-    @GetMapping("/companyinfoList.do")
-    public List<CompanyinfoDomain> searchAllCompanyinfo() {
-        return companyinfoUserService.searchAllCompanyinfo();
+    @GetMapping("/companyinfo/companyinfoDetail.do")
+    public String searchCompanyinfoDetail(String companyCode, Model model) {
+        List<SearchDomain> list=companyinfoUserService.searchCompanyinfoDetail(companyCode);
+        model.addAttribute("companyDetail",list);
+        return "companyinfo/companyinfo_list";
+//        return "companyinfo/user_company_detail";
     }
 
 //    @GetMapping("/recruit.do")

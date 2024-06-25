@@ -2,19 +2,82 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.sist.recruit.admin">
-	<resultMap id="recruitResultMap" type="kr.co.sist.admin.domain.recruit.RecruitDomain">
-	    <id property="id" column="recruit_num"/> 
-	    <result property="companyName" column="company_name"/>
+<mapper namespace="kr.co.sist.resume.admin">
+	<resultMap id="resumeListResultMap" type="kr.co.sist.admin.domain.resume.ResumeListDomain">
+	    <result property="resumeId" column="resume_num"/>
+	    <result property="recruitTitle" column="recruit_title"/>
+	    <result property="userName" column="name"/>
+	    <result property="applyDate" column="apply_date" javaType="java.sql.Date"/>
+	    <result property="resumeTitle" column="resume_title"/>
+	    <result property="career" column="career"/>
+	    <result property="addr" column="addr"/>
+	    <result property="docPass" column="doc_pass_flag"/>
+	    <result property="finalPass" column="final_pass_flag"/>
 	</resultMap>
-    <select id="selectResumes" resultMap="resumeResultMap" parameterType="kr.co.sist.admin.vo.recruit.SearchVO">
-		<where>
-			<if test="startNum != 0 and endNum !=0">
-				and rnum between #{startNum} and #{endNum}
-			</if>
-		</where>
-    </select>
-    <select id="selectOneResume" parameterType="int" resultMap="recruitResultMap">
+    <select id="selectResumes" resultMap="resumeListResultMap" parameterType="kr.co.sist.admin.vo.resume.SearchVO">
+	    SELECT resume_num, recruit_title, name, apply_date, resume_title, career, addr, doc_pass_flag, final_pass_flag
+	    FROM (
+	        SELECT ROW_NUMBER() OVER (ORDER BY apply.apply_date ASC) AS rnum,
+	               recruit.title AS recruit_title,
+	               resume.resume_num,
+	               users.name,
+	               apply.apply_date,
+	               resume.title AS resume_title,
+	               CASE
+	                   WHEN c.total_days IS NULL THEN '신입'
+	                   ELSE '경력(' ||
+	                        CASE
+	                            WHEN FLOOR(c.total_days / 365) > 0 THEN FLOOR(c.total_days / 365) || '년'
+	                            ELSE ''
+	                        END ||
+	                        CASE
+	                            WHEN FLOOR(c.total_days / 365) > 0 AND FLOOR(MOD(c.total_days, 365) / 30) > 0 THEN ' '
+	                            ELSE ''
+	                        END ||
+	                        CASE
+	                            WHEN FLOOR(MOD(c.total_days, 365) / 30) > 0 THEN FLOOR(MOD(c.total_days, 365) / 30) || '개월'
+	                            WHEN c.total_days > 0 AND FLOOR(MOD(c.total_days, 365) / 30) = 0 THEN
+	                                CASE
+	                                    WHEN FLOOR(c.total_days / 365) = 0 THEN '1개월 미만'
+	                                    ELSE ''
+	                                END
+	                            ELSE ''
+	                        END || ')'
+	               END AS career,
+	               resume.addr,
+	               CASE
+	                   WHEN apply.progress_state = '지원완료' THEN '미정'
+	                   WHEN apply.progress_state = '불합격' THEN '불합격'
+	                   ELSE '합격'
+	               END AS doc_pass_flag,
+	               CASE
+	                   WHEN apply.progress_state = '불합격' THEN '불합격'
+	                   WHEN apply.progress_state = '최종합격' THEN '합격'
+	                   ELSE '미정'
+	               END AS final_pass_flag
+	        FROM apply
+	                 LEFT JOIN resume ON apply.resume_num = resume.resume_num
+	                 LEFT JOIN recruit ON recruit.recruit_num = apply.recruit_num
+	                 LEFT JOIN users ON resume.user_id = users.user_id
+	                 LEFT JOIN (
+	            SELECT resume_num,
+	                   SUM(
+	                           CASE
+	                               WHEN resignation_date IS NULL THEN TRUNC(CURRENT_DATE) - join_date
+	                               ELSE resignation_date - join_date
+	                           END
+	                       ) AS total_days
+	            FROM career
+	            GROUP BY resume_num
+	        ) c ON apply.resume_num = c.resume_num
+	    )
+	    <where>
+	        <if test="startNum != 0 and endNum !=0">
+	            AND rnum BETWEEN #{startNum} AND #{endNum}
+	        </if>
+	    </where>
+	</select>
+    <!-- <select id="selectOneResume" parameterType="int" resultMap="recruitResultMap">
     	
-    </select>
+    </select> -->
 </mapper>

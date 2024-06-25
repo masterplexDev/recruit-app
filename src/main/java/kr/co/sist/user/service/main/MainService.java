@@ -6,25 +6,27 @@ import org.springframework.stereotype.Service;
 import kr.co.sist.user.dao.main.UserMainDAO;
 import kr.co.sist.user.vo.main.MainVO;
 
+ 
 @Service
 public class MainService {
-
+    
     @Autowired(required = false)
     private UserMainDAO userMainDAO;
+
 
     public List<MainVO> getRecentJobPosts() {
         return userMainDAO.selectRecentJobPosts();
     }
-
-    public List<MainVO> getInterestingPositions(String userId) {
-        return userMainDAO.selectInterestingPositions(userId);
+    
+    public List<MainVO> getInterestedPositions() {
+        return userMainDAO.selectInterestedPositions();
     }
-
+    
     public List<MainVO> getHighSalaryPositions() {
         return userMainDAO.selectHighSalaryPositions();
     }
-
-    public List<MainVO> getViewHistory(String userId) {
-        return userMainDAO.selectViewHistory(userId);
+    
+    public List<MainVO> getViewHistory() {
+        return userMainDAO.selectViewHistory();
     }
 }
