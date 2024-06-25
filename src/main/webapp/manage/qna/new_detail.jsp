@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" info=""%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,8 +63,9 @@
 						<div class="inquiryView">
 							<div class="viewCont">
 								<dl class="inqCont">
-									<dt><strong>[제안/문의]</strong> 2024.05.24</dt>
-									<dd>기업 리뷰는 어떻게 확인하는지 궁금합니다.</dd>
+									<dt><strong><c:out value="${newDetail.category}"/></strong> <c:out value="${newDetail.input_date}"/></dt>
+									<dd><c:out value="${newDetail.title}"/></dd><br/>
+									<c:out value="${newDetail.content}"/>
 								</dl>
 							</div>
 
