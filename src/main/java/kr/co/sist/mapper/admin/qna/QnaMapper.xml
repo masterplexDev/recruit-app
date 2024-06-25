@@ -7,6 +7,11 @@
   	select qna_num, category, title, content, user_id, input_date
 	from qna
 	where flag='N'
-
+  </select>
+  
+  <select id="selectOneNewQna" resultType="kr.co.sist.admin.domain.qna.QnaDomain">
+  	select qna_num, category, title, content, user_id, input_date
+	from qna
+	where qna_num= #{qna_num}
   </select>
 </mapper>

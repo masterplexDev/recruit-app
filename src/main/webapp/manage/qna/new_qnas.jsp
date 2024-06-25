@@ -88,10 +88,10 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="qna" items="${qnaNewList}">
+				<c:forEach var="qna" items="${newQnas}">
 					<tr>
-					<td>79483</td>
-					<td class="alLeft"><span class="tit"><a href="new_detail.jsp">기업 리뷰는 어떻게 확인하는지 궁금합니다.</a></span></td>
+					<td><c:out value="${qna.qna_num}"/></td>
+					<td class="alLeft"><span class="tit"><a href="new_detail.jsp"><c:out value="${qna.title}"/></a></span></td>
 					<!-- <td>2024.05.24</td> -->
 					<td><c:out value="${qna.input_date}"/></td>
 					<td class="">답변대기</td>
