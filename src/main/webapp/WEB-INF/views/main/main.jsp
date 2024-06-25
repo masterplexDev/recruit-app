@@ -276,6 +276,59 @@
         </div>
     </div>
 </article>
+
+<!--  세 번째 테마: 조회 기록 -->
+
+<article class="ViewHistory_ViewHistory__xyz">
+    <div class="CarouselContainer_CarouselContainer__95CM6">
+        <aside class="CarouselHeader_CarouselHeader__d4DeW">
+            <h4 class="Typography_Typography__root__xYuMs Typography_Typography__heading1__bVyRs Typography_Typography__weightBold__e15ql">조회 기록</h4>
+            <div class="CarouselHeader_CarouselHeader__action__C_6l_">
+                <a href="" class="CarouselHeader_CarouselHeader__link__WWKP1" data-attribute-id="jobs__seeMore" data-domain="recommendPosition">전체보기<span class="CarouselHeader_CarouselHeader__link__interaction__RUr0k"></span></a>
+                <div class="CarouselNavigation_CarouselNavigation__V89Z_">
+                    <button class="IconButton_IconButton__root__dO2x7 IconButton_IconButton__normal__O3ySx prev-3 CarouselNavigation_CarouselNavigation__left__MtZCF" aria-label="이전" style="font-size: 15px;">
+                        <span class="IconButton_IconButton__label__ZcWfp">
+                            <svg width="12" height="12" viewBox="0 0 12 12">
+                                <path fill="#70737C" d="M3.345 9.72a.75.75 0 0 0 1.06 1.06l4.25-4.25a.75.75 0 0 0 0-1.06l-4.25-4.25a.75.75 0 0 0-1.06 1.06L7.065 6l-3.72 3.72z"></path>
+                            </svg>
+                        </span>
+                        <span class="IconButton_IconButton__interaction__7RjPt"></span>
+                    </button>
+                    <button class="IconButton_IconButton__root__dO2x7 IconButton_IconButton__normal__O3ySx next-3 CarouselNavigation_CarouselNavigation__right__2qsYe" aria-label="다음" style="font-size: 15px;">
+                        <span class="IconButton_IconButton__label__ZcWfp">
+                            <svg width="12" height="12" viewBox="0 0 12 12">
+                                <path fill="#70737C" d="M3.345 9.72a.75.75 0 0 0 1.06 1.06l4.25-4.25a.75.75 0 0 0 0-1.06l-4.25-4.25a.75.75 0 0 0-1.06 1.06L7.065 6l-3.72 3.72z"></path>
+                            </svg>
+                        </span>
+                        <span class="IconButton_IconButton__interaction__7RjPt"></span>
+                    </button>
+                </div>
+            </div>
+        </aside>
+        <div class="CarouselContainer_CarouselContainer__slider__zf_Yl">
+            <div class="slick-slider slick-initialized" dir="ltr">
+                <div class="slick-list">
+                    <div class="slick-track" id="slick-track-3" style="width: 100%; opacity: 1; transform: translate3d(0px, 0px, 0px);">
+                        <c:forEach var="post" items="${viewHistory}">
+                            <div class="slick-slide" tabindex="-1" aria-hidden="false" style="outline: none; width: calc(25% - 10px); margin-right: 10px;">
+                                <a href="../recruit/detail.jsp">
+                                    <div class="JobCard_JobCard__thumb__iNW6E" style="height: 100px; width: 200px;">
+                                        <img src="<c:url value='../assets/images/company/${post.companyImage}' />" alt="${post.companyName}" style="width: 100%; height: 100%; object-fit: cover;">
+                                    </div>
+                                    <div>
+                                        <p style="margin-bottom: 4px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; text-overflow: ellipsis; font-weight: 600; font-size: 16px; letter-spacing: .0057em; line-height: 24px;">${post.positionName}</p>
+                                        <p>${post.companyName}</p>
+                                        <p>${post.viewDate}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
       
     </section>
   </main>
