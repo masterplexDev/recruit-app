@@ -28,7 +28,7 @@
 </head>
 <body>
 <div>
-입력하신 부서번호 <%-- [<strong><c:out value="${ param.deptno }"/></strong>번] --%>의 사원정보 검색결과<br>
+입력하신 부서번호 [<strong><c:out value="${ param.companyCode }"/></strong>번]의 사원정보 검색결과<br>
 <c:catch var="e">
 <table class="table table-hover">
 <tr>
@@ -46,14 +46,13 @@
 <th style="width: 200px">등록일</th>
 <th style="width: 200px">등록일</th>
 </tr>
-<c:if test="${ empty requestScope.companyinfoDetail }">
+<c:if test="${ empty requestScope.companyDetail }">
 <tr>
 <td colspan="5" style="text-align:center">
 사원이 존재하지 않는 부서
 </td>
 </tr>
 </c:if>
-<c:forEach var="company" items="${ requestScope.companyinfoDetail }" varStatus="i">
 <tr>
 <%-- <td><c:out value="${ company.companyCode }"/></td> requestScope.listCompanyinfo
 <td><c:out value="${ company.companyName }"/></td>
@@ -61,21 +60,21 @@
 <td><c:out value="${ company.revenue }"/></td>
 <td><c:out value="${ company.headcount }"/></td>
 <td><c:out value="${ company.inputDate }"/></td> --%>
-<td><c:out value="${ company.companyCode }"/></td>
-<td><c:out value="${ company.companyName }"/></td>
-<td><c:out value="${ company.logo }"/></td>
-<td><c:out value="${ company.companyImg }"/></td>
-<td><c:out value="${ company.description }"/></td>
-<td><c:out value="${ company.headcount }"/></td>
-<td><c:out value="${ company.revenue }"/></td>
-<td><c:out value="${ company.ceoName }"/></td>
-<td><c:out value="${ company.addr }"/></td>
-<td><c:out value="${ company.establishmentDate }"/></td>
-<td><c:out value="${ company.welfareContent }"/></td>
-<td><c:out value="${ company.baseDate }"/></td>
-<td><c:out value="${ company.historyContent }"/></td>
+<td><c:out value="${ companyDetail[0].companyCode }"/></td>
+<td><c:out value="${ companyDetail[0].companyName }"/></td>
+<td><c:out value="${ companyDetail[0].logo }"/></td>
+<td><c:out value="${ companyDetail[0].companyImg }"/></td>
+<td><c:out value="${ companyDetail[0].description }"/></td>
+<td><c:out value="${ companyDetail[0].headcount }"/></td>
+<td><c:out value="${ companyDetail[0].revenue }"/></td>
+<td><c:out value="${ companyDetail[0].ceoName }"/></td>
+<td><c:out value="${ companyDetail[0].addr }"/></td>
+<td><c:out value="${ companyDetail[0].establishmentDate }"/></td>
+<td><c:out value="${ companyDetail[0].welfareContent }"/></td>
+<td><c:out value="${ companyDetail[0].baseDate }"/></td>
+<td><c:out value="${ companyDetail[0].historyContent }"/></td>
 </tr>
-</c:forEach>
+<%-- </c:forEach> --%>
 </table>
 </c:catch>
 <c:if test="${not empty e }">
