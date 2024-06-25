@@ -22,7 +22,8 @@
     <result property="ceoName" column="CEO_NAME" />
     <result property="companyClassification" column="COMPANY_CLASSIFICATION" />
     <result property="inputDate" column="INPUT_DATE" />
-    <result property="content" column="CONTENT" />
+    <result property="historyContent" column="HISTORY_CONTENT" />
+    <result property="welfareContent" column="WELFARE_CONTENT" />
     <result property="baseDate" column="BASE_DATE" />
     <result property="category" column="CATEGORY" />
 </resultMap>
@@ -52,6 +53,8 @@
     	SELECT
 		    ci.COMPANY_CODE,
 		    ci.COMPANY_NAME,
+		    ci.LOGO,
+		    ci.COMPANY_IMG,
 		    ci.DESCRIPTION,
 		    ci.HEADCOUNT,
 		    ci.COMPANY_CLASSIFICATION,
@@ -60,9 +63,9 @@
 		    ci.ADDR,
 		    ci.ESTABLISHMENT_DATE,
 		    w.CATEGORY,
-		    w.CONTENT AS WELFARE_CONTENT,
+		    w.WELFARE_CONTENT,
 		    h.BASE_DATE,
-		    h.CONTENT AS HISTORY_CONTENT
+		    h.HISTORY_CONTENT
 		FROM
 		    COMPANYINFO ci
 		LEFT JOIN
@@ -70,6 +73,6 @@
 		LEFT JOIN
 		    HISTORY h ON ci.COMPANY_CODE = h.COMPANY_CODE
 		WHERE    
-			ci.COMPANY_CODE = #{company_code}
+			ci.COMPANY_CODE = #{companyCode}
     </select>
 </mapper>

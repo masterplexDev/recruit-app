@@ -25,9 +25,13 @@ public class CompanyinfoUserDAO {
         return list;
     }
     
-//    public static void main(String[] args) {
-//        CompanyinfoUserDAO ciuDAO=new CompanyinfoUserDAO();
-//        List<CompanyinfoDomain> list = ciuDAO.selectAllCompanyinfo();
-//        System.out.println(list);
-//      }
+    public List<SearchDomain> selectCompanyinfoDetail(String companyCode)throws PersistenceException{
+        List<SearchDomain> list=null;
+        SqlSession ss=mbConfig.getMyBatisHandler(false);
+        list=ss.selectList("kr.co.sist.user.companyinfo.selectCompanyinfoDetail", companyCode);
+        mbConfig.closeHandler(ss);
+        
+        return list;
+    }
+    
 }
