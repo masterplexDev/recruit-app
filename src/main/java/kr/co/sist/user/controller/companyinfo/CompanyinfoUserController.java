@@ -27,6 +27,13 @@ public class CompanyinfoUserController {
 //        return "companyinfo/companyinfo_list";
         return "companyinfo/user_company_info";
     }
+    @GetMapping("/companyinfo/companyinfoDetail.do")
+    public String searchCompanyinfoDetail(String companyCode, Model model) {
+        List<SearchDomain> list=companyinfoUserService.searchCompanyinfoDetail(companyCode);
+        model.addAttribute("companyDetail",list);
+        return "companyinfo/companyinfo_list";
+//        return "companyinfo/user_company_detail";
+    }
 
 //    @GetMapping("/recruit.do")
 //    public RecruitDomain searchOneRecruit(@RequestParam("id") int recruitId) {

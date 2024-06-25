@@ -38,22 +38,42 @@
 <th style="width: 120px">매출액</th>
 <th style="width: 200px">사원수</th>
 <th style="width: 200px">등록일</th>
+<th style="width: 200px">등록일</th>
+<th style="width: 200px">등록일</th>
+<th style="width: 200px">등록일</th>
+<th style="width: 200px">등록일</th>
+<th style="width: 200px">등록일</th>
+<th style="width: 200px">등록일</th>
+<th style="width: 200px">등록일</th>
 </tr>
-<c:if test="${ empty requestScope.listCompanyinfo }">
+<c:if test="${ empty requestScope.companyinfoDetail }">
 <tr>
 <td colspan="5" style="text-align:center">
 사원이 존재하지 않는 부서
 </td>
 </tr>
 </c:if>
-<c:forEach var="company" items="${ requestScope.listCompanyinfo }" varStatus="i">
+<c:forEach var="company" items="${ requestScope.companyinfoDetail }" varStatus="i">
 <tr>
-<td><c:out value="${ company.companyCode }"/></td>
+<%-- <td><c:out value="${ company.companyCode }"/></td> requestScope.listCompanyinfo
 <td><c:out value="${ company.companyName }"/></td>
 <td><c:out value="${ company.logo }"/></td>
 <td><c:out value="${ company.revenue }"/></td>
 <td><c:out value="${ company.headcount }"/></td>
-<td><c:out value="${ company.inputDate }"/></td>
+<td><c:out value="${ company.inputDate }"/></td> --%>
+<td><c:out value="${ company.companyCode }"/></td>
+<td><c:out value="${ company.companyName }"/></td>
+<td><c:out value="${ company.logo }"/></td>
+<td><c:out value="${ company.companyImg }"/></td>
+<td><c:out value="${ company.description }"/></td>
+<td><c:out value="${ company.headcount }"/></td>
+<td><c:out value="${ company.revenue }"/></td>
+<td><c:out value="${ company.ceoName }"/></td>
+<td><c:out value="${ company.addr }"/></td>
+<td><c:out value="${ company.establishmentDate }"/></td>
+<td><c:out value="${ company.welfareContent }"/></td>
+<td><c:out value="${ company.baseDate }"/></td>
+<td><c:out value="${ company.historyContent }"/></td>
 </tr>
 </c:forEach>
 </table>
