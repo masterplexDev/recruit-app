@@ -1,4 +1,4 @@
-package kr.co.sist.user.controller.user;
+package kr.co.sist.user.controller.basic;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,18 +33,16 @@ public class UserBasicController {
         LoginDomain ld = ubs.userLogin(lVO);
         String resultMsg = "";
 
-
         if (ld != null) {
-            resultMsg = "로그인에 성공 했습니다.";
             model.addAttribute("userId", ld.getUserId());
             model.addAttribute("name", ld.getName());
         } else {
-            resultMsg = "로그인에 실패했습니다. 다시 시도해주세요.";
+            resultMsg = "로그인에 실패했습니다. 입력 정보를 확인해주세요.";
+            model.addAttribute("resultMsg", resultMsg);
+            return "user/login";
         }
 
-        model.addAttribute("resultMsg", resultMsg);
-
-        return "user/mypage/mypageUserInfo";
+        return "main/main";
     }
 
     @GetMapping("/user/logout.do")
@@ -54,5 +52,33 @@ public class UserBasicController {
 
         return "user/login";
     }
+
+    @GetMapping("/user/signupPage.do")
+    public String signupPage() {
+        return "user/signup";
+    }
+
+    @GetMapping("/user/signupPage2.do")
+    public String signupPage2() {
+        return "user/signup2";
+    }
+
+    @GetMapping("/user/findMail.do")
+    public String findMailPage() {
+        return "user/findMail";
+    }
+
+    @GetMapping("/user/findPass.do")
+    public String findPassPage() {
+        return "user/findPass";
+    }
+
+    @PostMapping("/user/addUser.do")
+    public String addUser() {
+
+        return "main/main";
+    }
+
+
 
 }

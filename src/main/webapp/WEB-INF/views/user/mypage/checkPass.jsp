@@ -47,7 +47,7 @@
 					}
 					
 					if(isNull && isValidatePass){
-						location.href='modifyUserInfo.jsp';
+						location.href='http://localhost/recruit-app/user/mypage/modifyUserInfo.do';
 					}
 				});//click
 				

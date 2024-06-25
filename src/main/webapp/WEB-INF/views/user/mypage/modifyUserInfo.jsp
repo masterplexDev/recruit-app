@@ -113,13 +113,10 @@
 	<script type="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
-			$('#modifyUser').click(function(){
-      		  location.href = 'checkPass.jsp';
-      	  	});//click
       	  
       	  	$('#cancleBtn').click(function(){
       	  	  alert('회원정보 변경이 취소 되었습니다.');
-      	  	  location.href='mypageUserInfo.jsp';		
+      	  	  location.href='mypageUserInfo.do';		
       	  	});//click	
       	  	
       	  	$('#modifyBtn').click(function(){
@@ -132,7 +129,7 @@
       	  	  
       	  	  if(notNullFlag && validateFlag){
 	      	  	  alert('회원정보 수정이 완료 되었습니다.');
-	      	  	  location.href='mypageUserInfo.jsp';
+	      	  	  location.href='mypageUserInfo.do';
       	  	  }else if(!notNullFlag) {
       	  		  alert('회원정보를 입력해주세요.');
       	  		  return;
@@ -173,7 +170,7 @@
 	      	    var flag = false;
 	      	    
 	      	    if(chkAll){
-	      	    	location.href='http://localhost/recruit-app/user/mypage/modifyPass.jsp';
+	      	    	location.href='http://localhost/recruit-app/user/mypage/modifyPass.do';
 		      	    // 필드 초기화 후 닫기
 					$("#questionSelect").val('0');
 					$("#answerInput").val('');

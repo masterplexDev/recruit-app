@@ -49,7 +49,7 @@
 			});
 			
 			$('#backBtn').click(function(){
-				location.href='http://localhost/recruit-app/user/login.jsp';
+				location.href ='http://localhost/recruit-app/user/loginPage.do';
 			});
 			
 			$('#duplBtn').click(function(){
@@ -95,7 +95,7 @@
 				}
 				
 				if(resultFlag){
-					location.href="http://localhost/recruit-app/user/signup2.jsp"
+					location.href="http://localhost/recruit-app/user/signup2.do"
 				}else{
 					alert('입력 정보를 다시 확인해주세요.');
 					return;
