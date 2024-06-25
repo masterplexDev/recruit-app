@@ -176,6 +176,23 @@
 		    <version>5.8.0</version>
 		</dependency>
 		<!-- 240620 명호 - 비밀번호 암호화를 위한 추가 end -->
+		<!-- 240625 명호 - JWT를 사용하기 위한 추가 start -->
+		<dependency>
+		    <groupId>io.jsonwebtoken</groupId>
+		    <artifactId>jjwt-api</artifactId>
+		    <version>0.11.5</version></dependency>
+		<dependency>
+		    <groupId>io.jsonwebtoken</groupId>
+		    <artifactId>jjwt-jackson</artifactId> 
+		    <version>0.11.5</version>
+		    <scope>runtime</scope>
+		</dependency>
+		<dependency>
+		    <groupId>io.jsonwebtoken</groupId>
+		    <artifactId>jjwt-impl</artifactId>
+		    <version>0.11.5</version> <scope>runtime</scope>
+		</dependency>
+		<!-- 240625 명호 - JWT를 사용하기 위한 추가 end -->
 	</dependencies>
 	<build>
 		<plugins>
