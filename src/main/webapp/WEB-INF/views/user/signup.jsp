@@ -95,7 +95,8 @@
 				}
 				
 				if(resultFlag){
-					location.href="http://localhost/recruit-app/user/signup2.do"
+					$("#signupFrm").submit();
+					//location.href="http://localhost/recruit-app/user/signup2.do"
 				}else{
 					alert('입력 정보를 다시 확인해주세요.');
 					return;
@@ -103,7 +104,7 @@
 			});//click
 			
 			
-			var inputEmail = $('#email');
+			var inputEmail = $('#userId');
 			var inputName = $('#name');
 			var inputPhone = $('#phone');
 			var inputTel = $('#tel');
@@ -287,7 +288,7 @@
 						<div class="css-1jxi7lq"></div>
 					</div>
 					<div class="css-ng7qrx">
-						<form class="css-1b2vfnn">
+						<form class="css-1b2vfnn" id="signupFrm" name="signupFrm" action="../user/nextSignup.do" method="post">
 							<div>
 								<div class="css-1ia1k3o">
 									<div class="css-cssveg">
@@ -295,7 +296,7 @@
 										<label ="Typography"
 												color="rgba(55, 56, 60, 0.61)" for="email"
 												class="css-afh7p0">이메일</label></div>
-												<input type="email" placeholder="이메일을 입력해주세요." id="email" name="email"
+												<input type="email" placeholder="이메일을 입력해주세요." id="userId" name="userId"
 											autocomplete="new-password" class="css-1sbrczv" value="">
 									</div>
 									<button type="button"  class="css-zzrlz5" id="duplBtn">
@@ -306,8 +307,8 @@
 							</div>
 							<div class="css-evy94o">
 								<div class="css-env1z2"><label ="Typography" color="rgba(55, 56, 60, 0.61)"
-										for="username" class="css-afh7p0">이름</label></div>
-										<input type="text" placeholder="이름을 입력해주세요." name="username" id="name"
+										for="name" class="css-afh7p0">이름</label></div>
+										<input type="text" placeholder="이름을 입력해주세요." name="name" id="name"
 									autocomplete="new-password" class="css-1sbrczv" value="" maxlength="10">
 							</div>
 							<div>
