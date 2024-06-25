@@ -108,7 +108,7 @@
 				
 				$('#cancleBtn').click(function(){
 	      	  	  alert('비밀번호 변경이 취소 되었습니다.');
-	      	  	  location.href='mypageUserInfo.jsp';		
+	      	  	  location.href='mypageUserInfo.do';		
 	      	  	});//click	
 	      	  	
 	      	  	$('#modifyBtn').click(function(){
@@ -120,7 +120,7 @@
 				  
 				  if(chkPassFlag){
 		      	  	  alert('비밀번호 변경이 완료 되었습니다.');
-		      	  	  location.href='mypageUserInfo.jsp';
+		      	  	  location.href='mypageUserInfo.do';
 				  }else if(!isEmptyPass || !isEmptyPassCon) {
 					  alert('변경할 비밀번호를 입력해주세요.');
 					  return;

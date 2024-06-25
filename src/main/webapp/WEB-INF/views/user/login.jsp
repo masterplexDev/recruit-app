@@ -16,6 +16,10 @@
 <!-- golgolz start -->
 <!-- golgolz end-->
 </style>
+<%
+	String resultMsg = (String)request.getAttribute("resultMsg");
+	
+%>
 <script type="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
@@ -24,8 +28,8 @@
 		    var loginButton = $("#loginBtn");
 			
 			$('#loginBtn').click(function(){
-				loginFlag = checkInputs();
-				if(loginFlag === true){
+				chkInput = checkInputs();
+				if(chkInput === true){
 					login();
 					$(".resultMsg").hide();
 				}else {
@@ -37,7 +41,7 @@
 			
 			// 회원가입 페이지 이동
 			$('#signupBtn').click(function(){
-				location.href='http://localhost/recruit-app/user/signup.jsp';
+				location.href='http://localhost/recruit-app/user/signupPage.do';
 			});
 
 		    // 로그인 조건 충족 여부 확인 / 로그인 버튼 활성화, 비활성화
@@ -83,7 +87,6 @@
 		    	
 		     function login(){
 		    	 	$("#loginFrm").submit();
-			    	alert("로그인에 성공 했습니다.");
 			    }
 		    
 			<!-- golgolz end -->
@@ -134,9 +137,11 @@
 														autocomplete="on" class="css-1sbrczv" value="">
 													<button type="button" class="css-15fzn57"></button>
 												</div>
-												<div style="display: none;" class="resultMsg">
-												<p style="font-size: 15px; color: red;">로그인에 실패했습니다. 입력 정보를 확인해주세요.</p>
+												<% if(resultMsg != null){ %>
+												<div class="resultMsg">
+												<p style="font-size: 15px; color: red;"><%= resultMsg %></p>
 												</div>
+												<%} %>
 												<button type="button" data-testid="Button"
 													data-attribute-id="signup__email__login" class="css-1yzn4b" id="loginBtn">
 													<span data-testid="Typography" color="#000000"
@@ -150,19 +155,19 @@
 													<button type="button" class="css-1akojk6" onclick="location.href='http://localhost/recruit-app/user/signup.jsp'">
 														<span data-testid="Typography" color="#000000"
 															class="css-kfktv3">
-															<a href="http://localhost/recruit-app/user/signup.jsp">회원가입</a></span>
+															<a href="http://localhost/recruit-app/user/signupPage.do">회원가입</a></span>
 													</button>
 													<button type="button" data-testid="Button"
 														class="css-zzrlz5">
 														<span data-testid="Typography" color="#000000"
 															class="css-1nosfqs">
-															<a href="http://localhost/recruit-app/user/findMail.jsp">계정 찾기</a></span>
+															<a href="http://localhost/recruit-app/user/findMail.do">계정 찾기</a></span>
 													</button>
 													<button type="button" data-testid="Button"
 														class="css-zzrlz5">
 														<span data-testid="Typography" color="#000000"
 															class="css-1nosfqs">
-															<a href="http://localhost/recruit-app/user/findPass.jsp">비밀번호 찾기</a></span>
+															<a href="http://localhost/recruit-app/user/findPass.do">비밀번호 찾기</a></span>
 													</button>
 												</div>
 											</div>

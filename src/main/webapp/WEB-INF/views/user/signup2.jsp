@@ -46,7 +46,7 @@
 			}); */
 			
 			$('#backBtn').click(function(){
-				location.href='http://localhost/recruit-app/user/login.jsp';
+				location.href='http://localhost/recruit-app/user/loginPage.do';
 			});//click
 			
 			// 전체 동의 체크박스 상태 업데이트
@@ -74,7 +74,6 @@
 				var flag = chkNull();
 				if(flag){ // 성공 시 메인 페이지로 이동
 					$('#signupFrm').submit();
-					location.href='http://localhost/recruit-app/main/main.jsp';
 					alert('회원가입 성공!');
 				}else {
 					alert('회원가입에 실패했습니다. 입력 정보를 다시 확인해주세요.');
@@ -145,7 +144,7 @@
 						<div class="css-1jxi7lq"></div>
 					</div>
 					<div class="css-ng7qrx">
-						<form class="css-1b2vfnn" id='signupFrm'>
+						<form class="css-1b2vfnn" id='signupFrm' action="../user/addUser.do" method="post">
 							<div style="margin-top: 20px; margin-bottom: 5px;"><h1 style="font-size: 15px">기타 인적사항</h1></div>
 							<div class="css-evy94o">
 								<div class="css-env1z2" >

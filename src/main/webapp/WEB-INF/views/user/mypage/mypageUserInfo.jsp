@@ -23,7 +23,7 @@
 		$(function(){
 			<!-- golgolz start -->
 			$("#modifyUser").click(function(){
-      		  location.href = "checkPass.jsp";
+      		  location.href = "http://localhost/recruit-app/user/mypage/checkPass.do";
       	  });
 			<!-- golgolz end -->
 		});

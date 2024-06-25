@@ -30,19 +30,19 @@
 			    const logoutBtn = document.getElementById('logoutBtn');
 			    
 			    moveMypageBtn.addEventListener('click',function(){
-			    	window.location.href = 'http://localhost/recruit-app/user/mypage/mypageUserInfo.jsp';
+			    	window.location.href = 'http://localhost/recruit-app/user/mypage/mypageUserInfo.do';
 			    });
 			    
 			    logoutBtn.addEventListener('click',function(){
 			    	alert('로그아웃 되었습니다.');
-			    	window.location.href = '../user/logout.do';
+			    	window.location.href = 'http://localhost/recruit-app/user/logout.do';
 			    });
 			    
 	    	<%}else {%>
 		    const signupBtn = document.getElementById('signupBtn');
 		    
 		    signupBtn.addEventListener('click', function() {
-		        window.location.href = 'http://localhost/recruit-app/user/login.jsp'; // 이동할 페이지 URL
+		        window.location.href = 'http://localhost/recruit-app/user/loginPage.do'; // 이동할 페이지 URL
 		    });
 		    <%}//end else%>
 		    
