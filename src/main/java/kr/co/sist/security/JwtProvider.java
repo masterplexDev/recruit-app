@@ -4,6 +4,7 @@ import java.time.Instant;
 import java.util.Date;
 import javax.crypto.SecretKey;
 import org.springframework.stereotype.Component;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jws;
@@ -33,7 +34,10 @@ public class JwtProvider {
             Jws<Claims> claimsJws =
                     Jwts.parserBuilder().setSigningKey(secretKey).build().parseClaimsJws(jwt);
 
-            return claimsJws.getBody().get("userData", SignupVO.class);
+            Claims claims = claimsJws.getBody();
+            ObjectMapper objectMapper = new ObjectMapper();
+
+            return objectMapper.convertValue(claims.get("userData"), SignupVO.class);
         } catch (ExpiredJwtException e) {
             // 유효 기간 만료 예외 처리
             e.printStackTrace();

@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 import kr.co.sist.user.dao.basic.UserBasicDAO;
 import kr.co.sist.user.domain.basic.LoginDomain;
 import kr.co.sist.user.vo.basic.LoginVO;
+import kr.co.sist.user.vo.signup.Signup2VO;
+import kr.co.sist.user.vo.signup.SignupVO;
 
 @Service
 public class UserBasicService {
@@ -17,6 +19,12 @@ public class UserBasicService {
         LoginDomain ld = ubDAO.selectLogin(lVO);
 
         return ld;
+    }
+
+    public int addUser(SignupVO sVO, Signup2VO s2VO) {
+        int cnt = ubDAO.insertUser(sVO, s2VO);
+
+        return cnt;
     }
 
 }

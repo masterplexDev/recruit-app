@@ -74,7 +74,6 @@
 				var flag = chkNull();
 				if(flag){ // 성공 시 메인 페이지로 이동
 					$('#signupFrm').submit();
-					alert('회원가입 성공!');
 				}else {
 					alert('회원가입에 실패했습니다. 입력 정보를 다시 확인해주세요.');
 				}
@@ -148,7 +147,7 @@
 							<div style="margin-top: 20px; margin-bottom: 5px;"><h1 style="font-size: 15px">기타 인적사항</h1></div>
 							<div class="css-evy94o">
 								<div class="css-env1z2" >
-								<label color="rgba(55, 56, 60, 0.61)" for="birthday" class="css-afh7p0" >성별</label></div>
+								<label color="rgba(55, 56, 60, 0.61)" for="gender" class="css-afh7p0" >성별</label></div>
 								<div class="" style="text-align: center">
 								<span style="margin-right: 10px; font-size: 15px;">
 								<input type="radio" name="gender" class="gender" value="남자" style="width: 15px; height: 15px; margin: 3px;" checked>남자</span>
@@ -159,7 +158,7 @@
 								<div class="css-env1z2">
 								<label color="rgba(55, 56, 60, 0.61)" for="birthday" class="css-afh7p0">생년월일</label></div>
 								<div class="input-group" style="text-align: center">
-								<input type="date" class="css-1sbrczv" id="birthday" style="background-color: #FFFFFF; width: 100%;" placeholder="생년월일을 선택해주세요." >
+								<input type="date" class="css-1sbrczv" id="birthday" name="birthDate" style="background-color: #FFFFFF; width: 100%;" placeholder="생년월일을 선택해주세요." >
 								</div>
 							</div>
 							<div class="question-css" style="margin-top: 20px; margin-bottom:30px;">
@@ -168,7 +167,7 @@
 								</div>
 								<div class="css-2w308u">
 								
-								<select class="css-14pvjnj" id="question">
+								<select class="css-14pvjnj" id="question" name="qNum">
 									<option value="0">질문선택</option>
 									<option value="1">당신이 가장 좋아하는 영화 이름은 무엇인가요?</option>
 									<option value="2">당신의 별명은 무엇인가요?</option>
@@ -179,7 +178,7 @@
 								<div class="css-1px7y17"><span class="css-1ihsymv"><svg viewBox="0 0 24 24" class="css-1h47l4s"><path fill="rgba(55, 56, 60, 0.61)" d="M3.08071 7.58071C3.58839 7.07303 4.41151 7.07303 4.91919 7.58071L12 14.6615L19.0807 7.58071C19.5884 7.07303 20.4115 7.07303 20.9192 7.58071C21.4269 8.08839 21.4269 8.91151 20.9192 9.41919L12.9192 17.4192C12.4115 17.9269 11.5884 17.9269 11.0807 17.4192L3.08071 9.41919C2.57303 8.91151 2.57303 8.08839 3.08071 7.58071Z"></path></svg></span></div>
 								</div>
 								<div class="answer-css" style="margin-top: 10px; ">
-									<input type="text" id="answer" class="css-1sbrczv" placeholder="내용을 입력해주세요." maxlength="160">
+									<input type="text" id="answer" name="qAnswer" class="css-1sbrczv" placeholder="내용을 입력해주세요." maxlength="160">
 								</div>
 							</div>
 							<div class="css-1n70r34" style="margin-top: 20px; margin-bottom: 30px;">
@@ -213,6 +212,10 @@
 									</div>
 								</div>
 							</div>
+							<%-- <div>
+								<h2>세션에 JWT 값</h2>
+								<p>"${ sessionScope.jwt }"</p>
+							</div> --%>
 							<div class="css-1tbd2jx">
 								<div class="css-1csonyh"></div>
 								<div class="css-270vek"></div>
