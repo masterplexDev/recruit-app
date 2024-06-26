@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" info=""%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,15 +62,17 @@
 						<div class="inquiryView">
 							<div class="viewCont">
 								<dl class="inqCont">
-									<dt><strong>[제안/문의]</strong> 2024.05.24</dt>
-									<dd>기업 리뷰는 어떻게 확인하는 지 궁금합니다.</dd>
+									<dt><strong>[<c:out value="${oldDetail.category}"/>]</strong><c:out value="${oldDetail.input_date}"/></dt>
+									<dd><strong><c:out value="${oldDetail.title}"/></strong></dd><br/>
+									<c:out value="${oldDetail.content}"/>
 								</dl>
 							</div>
 
 							<div class="viewCont">
 								<dl class="inqCont">
-									<dt><strong>[답변]</strong> 2024.05.24</dt>
-									<dd>안녕하세요? 회원님, 잡코리아 고객센터입니다.<br/>언제나 잡코리아를 믿고 이용해 주시는 회원님께 진심으로 감사의 마음을 전합니다.<br/><br/>회원님, MY기업 리뷰에서 작성하신 내용은 통계 자료로 반영 되는 부분이며 작성하신 리뷰 문장 자체가 노출되는 것은 아닙니다. (기업에서도 어느분이 작성하셨는지 확인 불가)<br/>자세한 리뷰 현황은 아래 페이지를 참고 부탁 드리겠습니다.<br/><br/>https://www.jobkorea.co.kr/Review/Home<br/><br/>잡코리아를 믿고 이용해 주시는 만큼 회원님의 기대에 어긋나지 않도록 최선을 다하겠습니다.<br/>이용해 보시고 이외 다른 문의사항이 있으시면 언제든지 말씀 남겨주세요.<br/>친절하고 신속하게 답변드리겠습니다.<br/><br/>감사합니다.</dd>
+									<dt><strong>[답변]</strong><c:out value="${oldDetail.reply_date}"/></dt>
+									<dd><strong><c:out value="${oldDetail.ans_title}"/></strong><br/></dd><br/>
+									<c:out value="${oldDetail.ans_content}"/>
 								</dl>
 							</div>
 						</div>
