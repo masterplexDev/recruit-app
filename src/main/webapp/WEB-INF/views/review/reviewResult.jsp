@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
     
 <!doctype html>
 <html class="no-js win ko-KR" lang="ko-KR" xmlns="http://www.w3.org/1999/xhtml" prefix="og:http://ogp.me/ns#" xml:lang="ko-KR" foxified=""> 
@@ -125,81 +126,102 @@ box-sizing: border-box;
 padding: 20px;         
           "> 
           
-         <div id="premiumReviewStatistics" class="jpcont_wrap"> 
-          <div class="review_stats_wrap review_summary"  "> 
-           <div class="review_stats_container"> 
-            <div class="review_stats_wrapper total"> 
-             <div class="stats_hd"> 
-              <h2 class="stats_ttl"> <em>전체 리뷰</em> 통계 </h2> 
-             </div> 
-             <div class="stats_smr_sec left_sec "> 
-              <div class="rate_star_top"> 
-               <div class="rate_star_wrap type2">
-                <span class="rate_point">5.0</span> 
-                <div class="rate_star_ty1">
-                 <span class="bg_rate_star"><span class="val_starmark" style="width: 100%;"><span class="alt_txt">5.0</span></span></span>
-                </div> 
-               </div> 
-              </div> 
-              <div class="rate_bar_set barfill total"> 
-               <div class="job_tooltip_box hover block"> 
-                <div class="rate_bar_group"> 
-                 <div class="rate_bar_title">
-                  이직시 나의 커리어에 도움이 될까요?
-                 </div> 
-                 <div class="rate_bar_unit">
-                  <span class="rate_bar_val" style="max-width: 100%;"></span><span class="txt_point">5.0</span>
-                 </div> 
-                </div> 
-               </div> 
-               <div class="job_tooltip_box hover block"> 
-                <div class="rate_bar_group"> 
-                 <div class="rate_bar_title">
-                  연차를 자유롭게 사용해도 될까요?
-                 </div> 
-                 <div class="rate_bar_unit">
-                  <span class="rate_bar_val" style="max-width: 100%;"></span><span class="txt_point">5.0</span>
-                 </div> 
-                </div> 
-               </div> 
-               <div class="job_tooltip_box hover block"> 
-                <div class="rate_bar_group"> 
-                 <div class="rate_bar_title">
-                  급여는 만족스럽나요?
-                 </div> 
-                 <div class="rate_bar_unit">
-                  <span class="rate_bar_val" style="max-width: 100%;"></span><span class="txt_point">5.0</span>
-                 </div> 
-                </div> 
-               </div> 
-               <div class="job_tooltip_box hover block"> 
-                <div class="rate_bar_group"> 
-                 <div class="rate_bar_title">
-                  복지 혜택이 충분한가요?
-                 </div> 
-                 <div class="rate_bar_unit">
-                  <span class="rate_bar_val" style="max-width: 100%;"></span><span class="txt_point">5.0</span>
-                 </div> 
-                </div> 
-               </div> 
-              </div> 
-             </div> 
-            </div> 
-           </div> 
-          </div> 
-         </div> 
-         <div id="premiumReviewChart" class="jpcont_wrap"></div><!-- 프리미엄 --> <!--<div class="jpcont_wrap">
-      </div>--> 
-         <div id="reviewsContainer" class="jpcont_wrap"> 
-         
-         
-          <article id="viewReviewsFilter" class="filter"> 
-           <div class="col1Wrap jply_review_filter"> 
-           </div> 
-           <div id="viewReviewsTitle" class="result">
-             총 <span class="num">리뷰 총 갯수</span>개의 기업리뷰 
-           </div> 
-          </article> 
+         <div id="premiumReviewStatistics" class="jpcont_wrap">
+    <div class="review_stats_wrap review_summary">
+        <div class="review_stats_container">
+            <div class="review_stats_wrapper total">
+                <div class="stats_hd">
+                    <h2 class="stats_ttl"> <em>전체 리뷰</em> 통계 </h2>
+                </div>
+                
+           <div class="stats_smr_sec left_sec ">
+    <c:set var="totalAvg" value="0"/>
+    <c:set var="count" value="0"/>
+    <c:forEach var="review" items="${reviewScreenOutput}">
+        <c:set var="avg" value="${(review.avgQuestion1 + review.avgQuestion2 + review.avgQuestion3 + review.avgQuestion4) / 4}"/>
+        <c:set var="totalAvg" value="${totalAvg + avg}"/>
+        <c:set var="count" value="${count + 1}"/>
+    </c:forEach>
+    <c:choose>
+        <c:when test="${count > 0}">
+            <c:set var="overallAvg" value="${totalAvg / count}"/>
+        </c:when>
+        <c:otherwise>
+            <c:set var="overallAvg" value="0"/>
+        </c:otherwise>
+    </c:choose>
+    <span class="rate_point"><fmt:formatNumber value="${overallAvg}" type="number" maxFractionDigits="1"/></span>
+    <div class="rate_star_wrap type2">
+        <div class="rate_star_ty1">
+            <span class="bg_rate_star">
+                <span class="val_starmark" style="width: ${overallAvg * 20}%;"><span class="alt_txt"><fmt:formatNumber value="${overallAvg}" type="number" maxFractionDigits="1"/></span></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+                    <div class="rate_bar_set barfill total">
+                        <div class="job_tooltip_box hover block">
+                            <div class="rate_bar_group">
+                                <div class="rate_bar_title">
+                                    이직시 나의 커리어에 도움이 될까요?
+                                </div>
+                                <div class="rate_bar_unit">
+                                    <span class="rate_bar_val" style="max-width: ${reviewScreenOutput[0].avgQuestion1 * 20}%;"></span>
+                                    <span class="txt_point">${reviewScreenOutput[0].avgQuestion1}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job_tooltip_box hover block">
+                            <div class="rate_bar_group">
+                                <div class="rate_bar_title">
+                                    연차를 자유롭게 사용해도 될까요?
+                                </div>
+                                <div class="rate_bar_unit">
+                                    <span class="rate_bar_val" style="max-width: ${reviewScreenOutput[0].avgQuestion2 * 20}%;"></span>
+                                    <span class="txt_point">${reviewScreenOutput[0].avgQuestion2}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job_tooltip_box hover block">
+                            <div class="rate_bar_group">
+                                <div class="rate_bar_title">
+                                    급여는 만족스럽나요?
+                                </div>
+                                <div class="rate_bar_unit">
+                                    <span class="rate_bar_val" style="max-width: ${reviewScreenOutput[0].avgQuestion3 * 20}%;"></span>
+                                    <span class="txt_point">${reviewScreenOutput[0].avgQuestion3}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job_tooltip_box hover block">
+                            <div class="rate_bar_group">
+                                <div class="rate_bar_title">
+                                    복지 혜택이 충분한가요?
+                                </div>
+                                <div class="rate_bar_unit">
+                                    <span class="rate_bar_val" style="max-width: ${reviewScreenOutput[0].avgQuestion4 * 20}%;"></span>
+                                    <span class="txt_point">${reviewScreenOutput[0].avgQuestion4}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<div id="premiumReviewChart" class="jpcont_wrap"></div><!-- 프리미엄 -->
+<div id="reviewsContainer" class="jpcont_wrap">
+    <article id="viewReviewsFilter" class="filter">
+        <div class="col1Wrap jply_review_filter">
+        </div>
+        <div id="viewReviewsTitle" class="result">
+            총 <span class="num">${fn:length(reviewScreenOutput)}</span>개의 기업리뷰
+        </div>
+    </article>
+</div>
           
           
          <article id="viewReviewsList" class="article_ty1"> 
