@@ -2,12 +2,14 @@ package kr.co.sist.user.dao.companyinfo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import kr.co.sist.domain.companyinfo.SearchDomain;
 import kr.co.sist.properties.MyBatisConfig;
+import kr.co.sist.vo.companyinfo.SearchVO;
 
 @Component
 public class CompanyinfoUserDAO {
@@ -25,6 +27,25 @@ public class CompanyinfoUserDAO {
         return list;
     }
     
+    public List<SearchDomain> selectCompanyinfoList(SearchVO sVO)throws PersistenceException{
+        List<SearchDomain> list=null;
+        SqlSession ss=mbConfig.getMyBatisHandler(false);
+        list=ss.selectList("kr.co.sist.user.companyinfo.selectAllCompanyinfo", sVO);
+        mbConfig.closeHandler(ss);
+        
+        return list;
+    }
+    
+    public List<SearchDomain> selectCompanyinfo(Map<String, Object> params)throws PersistenceException{
+        List<SearchDomain> list=null;
+        SqlSession ss=mbConfig.getMyBatisHandler(false);
+        list=ss.selectList("kr.co.sist.user.companyinfo.selectCompanyinfo", params);
+        mbConfig.closeHandler(ss);
+        System.out.println("이것은 params야 : "+params);
+        System.out.println("이것은 list야 : "+list);
+        return list;
+    }
+
     public List<SearchDomain> selectCompanyinfoDetail(String companyCode)throws PersistenceException{
         List<SearchDomain> list=null;
         SqlSession ss=mbConfig.getMyBatisHandler(false);
