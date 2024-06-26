@@ -7,7 +7,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
     $(function() {
-    	<c:set var="resultMsg" value="${sessionScope.resultMsg}"/>
         <c:if test="${not empty resultMsg}">
             alert("${resultMsg}");
             
@@ -26,4 +25,5 @@
         </c:if>
     });
 </script>
+
 </html>

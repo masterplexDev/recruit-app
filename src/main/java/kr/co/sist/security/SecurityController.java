@@ -1,6 +1,8 @@
 package kr.co.sist.security;
 
 import javax.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,11 +21,15 @@ public class SecurityController {
     private final JwtProvider jwtProvider;
     private final UserBasicService ubs;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
 
     public SecurityController(JwtProvider jwtProvider, UserBasicService ubs) {
         this.jwtProvider = jwtProvider;
         this.ubs = ubs;
     }
+
 
     @PostMapping("/user/nextSignup.do")
     public String securitySignData(@Validated SignupVO signupVO, BindingResult bindingResult,
@@ -52,6 +58,11 @@ public class SecurityController {
             return "error";
         }
 
+        String password = signupVO.getPassword();
+        String cipherPass = passwordEncoder.encode(password);
+        System.out.println(cipherPass);
+        signupVO.setPassword(cipherPass);
+
         try {
 
             int cnt = ubs.addUser(signupVO, signup2VO);
@@ -73,6 +84,7 @@ public class SecurityController {
 
         return "user/signupResult";
     }
+
 
 
     // @PostMapping("manage/adminLogin.do")
