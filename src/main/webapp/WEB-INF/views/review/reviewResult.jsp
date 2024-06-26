@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -38,10 +38,10 @@
                         <tbody>
                             <c:forEach var="review" items="${reviewScreenOutput}">
                                 <tr>
-                                    <td>${review.writer}</td>
+                                    <td>${review.userId}</td>
                                     <td>${review.content}</td>
-                                    <td>${review.rating}</td>
-                                    <td>${review.createdDate}</td>
+                                    <td>${review.recommend}</td>
+                                    <td>${review.inputDate}</td>
                                 </tr>
                             </c:forEach>
                         </tbody>
