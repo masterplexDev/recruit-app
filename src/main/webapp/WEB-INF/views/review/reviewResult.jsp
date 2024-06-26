@@ -113,6 +113,8 @@
     
     </div>
 </div>
+
+
       <div id="contents_wrap" style="background-color: #ffffff;" > 
        <div id="contents" class="jpcont_col2_a"  > 
         <div id="mainContents" class="jpcont_lft" style="
@@ -189,6 +191,8 @@ padding: 20px;
          <div id="premiumReviewChart" class="jpcont_wrap"></div><!-- 프리미엄 --> <!--<div class="jpcont_wrap">
       </div>--> 
          <div id="reviewsContainer" class="jpcont_wrap"> 
+         
+         
           <article id="viewReviewsFilter" class="filter"> 
            <div class="col1Wrap jply_review_filter"> 
            </div> 
