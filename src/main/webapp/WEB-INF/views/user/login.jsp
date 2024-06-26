@@ -152,7 +152,7 @@
 												<p data-testid="Typography" color="#000000"
 													class="css-1q5pm8j">또는</p>
 												<div class="button-group" style="margin-bottom: 80px;">
-													<button type="button" class="css-1akojk6" onclick="location.href='http://localhost/recruit-app/user/signup.jsp'">
+													<button type="button" class="css-1akojk6" onclick="location.href='http://localhost/recruit-app/user/signupPage.do'">
 														<span data-testid="Typography" color="#000000"
 															class="css-kfktv3">
 															<a href="http://localhost/recruit-app/user/signupPage.do">회원가입</a></span>
