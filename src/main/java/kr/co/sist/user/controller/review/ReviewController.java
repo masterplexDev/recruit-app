@@ -16,10 +16,9 @@ public class ReviewController {
     private ReviewService reviewService;
 
     @GetMapping("/review/reviewResult.do")
-    public String reviewScreen(@RequestParam("companyCode") String companyCode, Model model) {
+    public String reviewScreen(@RequestParam(value = "companyCode", defaultValue = "comp_0001") String companyCode, Model model) {
         List<ReviewVO> reviewScreenOutput = reviewService.getReviewScreenOutput(companyCode);
         model.addAttribute("reviewScreenOutput", reviewScreenOutput);
         return "review/reviewResult";
     }
 }
-
