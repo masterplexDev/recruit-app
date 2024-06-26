@@ -58,11 +58,6 @@ public class UserBasicController {
         return "user/signup";
     }
 
-    @GetMapping("/user/signupPage2.do")
-    public String signupPage2() {
-        return "user/signup2";
-    }
-
     @GetMapping("/user/findMail.do")
     public String findMailPage() {
         return "user/findMail";
@@ -72,13 +67,5 @@ public class UserBasicController {
     public String findPassPage() {
         return "user/findPass";
     }
-
-    @PostMapping("/user/addUser.do")
-    public String addUser() {
-
-        return "main/main";
-    }
-
-
 
 }

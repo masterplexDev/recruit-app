@@ -1,9 +1,54 @@
 package kr.co.sist.security;
 
+import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import kr.co.sist.user.vo.signup.SignupVO;
 
+@SessionAttributes({"jwt"})
 @Controller
 public class SecurityController {
+
+    private final JwtProvider jwtProvider;
+
+    public SecurityController(JwtProvider jwtProvider) {
+        this.jwtProvider = jwtProvider;
+    }
+
+    @PostMapping("/user/nextSignup.do")
+    public String securitySignData(@Validated SignupVO signupVO, BindingResult bindingResult,
+            HttpSession session) {
+
+        if (bindingResult.hasErrors()) { // 유효성
+            return "user/signup";
+        }
+
+        String jwt = jwtProvider.generateJwt(signupVO);
+
+        session.setAttribute("jwt", jwt);
+
+        return "user/signup2";
+    }
+
+    @GetMapping("/user/signup2.do")
+    public String signup2(HttpSession session, Model model) {
+        String jwt = (String) session.getAttribute("jwt"); // 세션에서 JWT 가져오기
+        SignupVO signupVO = jwtProvider.validateJwtAndExtractUserData(jwt);
+        if (signupVO == null) {
+            // SignupVO 검증 실패 시 에러 처리
+            return "error";
+        }
+
+        model.addAttribute("signupVO", signupVO);
+
+        return "user/signup2";
+    }
+
 
     // @PostMapping("manage/adminLogin.do")
     // public String adminLoginProcess(AdminLoginVO lVO, Model model) {
