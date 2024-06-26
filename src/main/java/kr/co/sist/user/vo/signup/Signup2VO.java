@@ -1,5 +1,6 @@
 package kr.co.sist.user.vo.signup;
 
+import java.sql.Date;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,10 +12,9 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class SignupVO {
-    private String userId;
-    private String name;
-    private String phone;
-    private String tel;
-    private String password;
+public class Signup2VO {
+    private String gender;
+    private Date birthDate;
+    private String qNum;
+    private String qAnswer;
 }

@@ -68,4 +68,9 @@ public class UserBasicController {
         return "user/findPass";
     }
 
+    @GetMapping("/main/mainPage.do")
+    public String mainPage() {
+        return "main/main";
+    }
+
 }

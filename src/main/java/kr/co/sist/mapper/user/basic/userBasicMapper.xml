@@ -8,4 +8,8 @@
 		from users
 		where user_id=#{ userId } and password=#{ password }
   </select>
+  <insert id="insertUser" parameterType="map">
+  	insert into users(user_id,password,name,birth_date,gender,tel,phone,q_num,q_answer) 
+  	values(#{sVO.userId}, #{sVO.password}, #{sVO.name}, #{s2VO.birthDate}, #{s2VO.gender},#{sVO.phone}, #{sVO.tel}, #{s2VO.qNum}, #{s2VO.qAnswer})
+  </insert>
  </mapper>
