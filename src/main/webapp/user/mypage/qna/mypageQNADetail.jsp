@@ -41,7 +41,7 @@
           <div class="Grid_Grid__item__FUkSS Grid_Grid__justify_center__QJu2X Grid_Grid__align-items_flex-start__PA0JE Grid_Grid__grid__xs__12__rVqKh Grid_Grid__grid__md__6__9g_JE" style="margin-left:30px">
 		  <!-- golgolz start -->
           
-			<div style="margin:30px auto 0; width:621px"> 
+			<div style="margin:30px auto 0; width:731px"> 
 			<div class="loungeContent inquiryContent" id="form">
 			<div class="topHdWrap">
 				<h1 style="font-size: 25px;"><strong>문의</strong></h1>
@@ -52,7 +52,7 @@
 				<div class="viewCont">
 				<dl class="inqCont">
 				<dt><strong>[제안/문의]</strong> 2024.05.24</dt>
-					<dd>기업 리뷰는 어떻게 확인하는 지 궁금합니다.</dd>
+					<dd>기업 리뷰는 어떻게 확인하는지 궁금합니다.</dd>
 				</dl>
 				</div>
 		
