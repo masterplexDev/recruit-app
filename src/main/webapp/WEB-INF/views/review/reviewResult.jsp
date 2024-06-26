@@ -142,6 +142,7 @@ padding: 20px;
         <c:set var="totalAvg" value="${totalAvg + avg}"/>
         <c:set var="count" value="${count + 1}"/>
     </c:forEach>
+    
     <c:choose>
         <c:when test="${count > 0}">
             <c:set var="overallAvg" value="${totalAvg / count}"/>
