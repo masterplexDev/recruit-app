@@ -4,9 +4,14 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="kr.co.sist.mapper.user.basic.userBasicMapper">
   <select id="selectLogin" resultType="kr.co.sist.user.domain.basic.LoginDomain" parameterType="kr.co.sist.user.vo.basic.LoginVO">
-  		select user_id userId,name
+  		select user_id userId,name,password
 		from users
-		where user_id=#{ userId } and password=#{ password }
+		where user_id=#{ userId }
+  </select>
+  <select id="selectDuplicationId" resultType="String" parameterType="String">
+  		select user_id userId
+		from users
+		where user_id=#{ userId }
   </select>
   <insert id="insertUser" parameterType="map">
   	insert into users(user_id,password,name,birth_date,gender,tel,phone,q_num,q_answer) 

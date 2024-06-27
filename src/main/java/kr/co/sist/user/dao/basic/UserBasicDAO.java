@@ -2,7 +2,6 @@ package kr.co.sist.user.dao.basic;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.apache.ibatis.exceptions.PersistenceException;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
@@ -22,8 +21,9 @@ public class UserBasicDAO {
         this.myBatis = myBatis;
     }
 
-    public LoginDomain selectLogin(LoginVO lVO) throws PersistenceException {
+    public LoginDomain selectLogin(LoginVO lVO) {
         SqlSession ss = myBatis.getMyBatisHandler(false);
+
 
         LoginDomain ld =
                 ss.selectOne("kr.co.sist.mapper.user.basic.userBasicMapper.selectLogin", lVO);
@@ -32,6 +32,17 @@ public class UserBasicDAO {
         return ld;
     }// selectLogin
 
+    public String selectDuplicationId(String userId) {
+        SqlSession ss = myBatis.getMyBatisHandler(false);
+
+        String checkId = ss.selectOne(
+                "kr.co.sist.mapper.user.basic.userBasicMapper.selectDuplicationId", userId);
+
+        myBatis.closeHandler(ss);
+
+        return checkId;
+    }
+
 
     public int insertUser(SignupVO sVO, Signup2VO s2VO) {
         SqlSession ss = myBatis.getMyBatisHandler(false);
@@ -39,25 +50,16 @@ public class UserBasicDAO {
         Map<Object, Object> params = new HashMap<Object, Object>();
         params.put("sVO", sVO);
         params.put("s2VO", s2VO);
-        int result = 0;
+        int cnt = 0;
 
-        try {
-            result = ss.insert("kr.co.sist.mapper.user.basic.userBasicMapper.insertUser", params);
-            if (result > 0) {
-                ss.commit();
-            } else {
-                ss.rollback();
-                throw new RuntimeException("회원가입 실패");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        cnt = ss.insert("kr.co.sist.mapper.user.basic.userBasicMapper.insertUser", params);
+        if (cnt > 0) {
+            ss.commit();
+        } else {
             ss.rollback();
-        } finally {
-            myBatis.closeHandler(ss);
-        } // end finally
-
-        return result;
-
+        }
+        myBatis.closeHandler(ss);
+        return cnt;
     }// insertUser
 
 }

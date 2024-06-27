@@ -21,6 +21,12 @@ public class UserBasicService {
         return ld;
     }
 
+    public String checkDuplicationId(String userId) {
+        String checkId = ubDAO.selectDuplicationId(userId);
+
+        return checkId;
+    }
+
     public int addUser(SignupVO sVO, Signup2VO s2VO) {
         int cnt = ubDAO.insertUser(sVO, s2VO);
 
