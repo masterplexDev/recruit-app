@@ -35,7 +35,7 @@
     </select>
     
     <select id="selectCompanyinfo" resultMap="companyInfoResultMap" parameterType="map">
-    	SELECT COMPANY_CODE, COMPANY_NAME, LOGO, REVENUE, HEADCOUNT, INPUT_DATE
+    	SELECT COMPANY_CODE, COMPANY_NAME, LOGO, REVENUE, HEADCOUNT, INPUT_DATE, AVG_SAL
 		FROM COMPANYINFO
 		<where>
 	        <if test="companyName != 'null'">
