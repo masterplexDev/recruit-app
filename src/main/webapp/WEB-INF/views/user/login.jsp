@@ -18,7 +18,6 @@
 </style>
 <%
 	String resultMsg = (String)request.getAttribute("resultMsg");
-	
 %>
 <script type="text/javascript">
 		$(function(){
@@ -31,10 +30,6 @@
 				chkInput = checkInputs();
 				if(chkInput === true){
 					login();
-					$(".resultMsg").hide();
-				}else {
-					$(".resultMsg").show(); 
-					/* alert("로그인 실패! 유효하지 않은 정보입니다."); */
 				}
 				
 			});

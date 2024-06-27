@@ -1,14 +1,12 @@
 package kr.co.sist.user.controller.basic;
 
+import java.util.HashMap;
+import java.util.Map;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
-import kr.co.sist.user.domain.basic.LoginDomain;
 import kr.co.sist.user.service.basic.UserBasicService;
-import kr.co.sist.user.vo.basic.LoginVO;
 
 @SessionAttributes({"userId", "name"})
 @Controller
@@ -20,36 +18,8 @@ public class UserBasicController {
         this.ubs = ubs;
     }
 
-
     @GetMapping("/user/loginPage.do")
     public String LoginPage() {
-        return "user/login";
-    }
-
-
-    @PostMapping("/user/login.do")
-    public String login(LoginVO lVO, Model model) {
-
-        LoginDomain ld = ubs.userLogin(lVO);
-        String resultMsg = "";
-
-        if (ld != null) {
-            model.addAttribute("userId", ld.getUserId());
-            model.addAttribute("name", ld.getName());
-        } else {
-            resultMsg = "로그인에 실패했습니다. 입력 정보를 확인해주세요.";
-            model.addAttribute("resultMsg", resultMsg);
-            return "user/login";
-        }
-
-        return "main/main";
-    }
-
-    @GetMapping("/user/logout.do")
-    public String logout(SessionStatus ss) {
-
-        ss.setComplete();
-
         return "user/login";
     }
 
@@ -71,6 +41,24 @@ public class UserBasicController {
     @GetMapping("/main/mainPage.do")
     public String mainPage() {
         return "main/main";
+    }
+
+    @GetMapping("/user/checkDuplId.do")
+    public @ResponseBody Map<String, String> checkDuplId(String userId) {
+
+        String checkId = ubs.checkDuplicationId(userId);
+
+        Map<String, String> response = new HashMap<String, String>();
+
+        if (checkId == null || checkId.isEmpty()) {
+            response.put("result", "success");
+            response.put("chkMsg", "가입 가능한 이메일입니다.");
+        } else {
+            response.put("result", "fail");
+            response.put("chkMsg", "이미 가입된 이메일입니다.");
+        }
+
+        return response;
     }
 
 }
