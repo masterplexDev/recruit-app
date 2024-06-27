@@ -98,7 +98,7 @@
                     <div class="name">기업리뷰</div>
                     <div class="post">
                         <div class="header screen-out">게시물</div>
-                        <div class="value">53</div>
+                        <div class="value">${fn:length(reviewScreenOutput)}</div>
                     </div>
                 </a>
                 <a href="../recruit/recruits.jsp" class="company-nav-item ">
@@ -161,52 +161,52 @@ padding: 20px;
     </div>
 </div>
 
-                    <div class="rate_bar_set barfill total">
-                        <div class="job_tooltip_box hover block">
-                            <div class="rate_bar_group">
-                                <div class="rate_bar_title">
-                                    이직시 나의 커리어에 도움이 될까요?
-                                </div>
-                                <div class="rate_bar_unit">
-                                    <span class="rate_bar_val" style="max-width: ${reviewScreenOutput[0].avgQuestion1 * 20}%;"></span>
-                                    <span class="txt_point">${reviewScreenOutput[0].avgQuestion1}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="job_tooltip_box hover block">
-                            <div class="rate_bar_group">
-                                <div class="rate_bar_title">
-                                    연차를 자유롭게 사용해도 될까요?
-                                </div>
-                                <div class="rate_bar_unit">
-                                    <span class="rate_bar_val" style="max-width: ${reviewScreenOutput[0].avgQuestion2 * 20}%;"></span>
-                                    <span class="txt_point">${reviewScreenOutput[0].avgQuestion2}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="job_tooltip_box hover block">
-                            <div class="rate_bar_group">
-                                <div class="rate_bar_title">
-                                    급여는 만족스럽나요?
-                                </div>
-                                <div class="rate_bar_unit">
-                                    <span class="rate_bar_val" style="max-width: ${reviewScreenOutput[0].avgQuestion3 * 20}%;"></span>
-                                    <span class="txt_point">${reviewScreenOutput[0].avgQuestion3}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="job_tooltip_box hover block">
-                            <div class="rate_bar_group">
-                                <div class="rate_bar_title">
-                                    복지 혜택이 충분한가요?
-                                </div>
-                                <div class="rate_bar_unit">
-                                    <span class="rate_bar_val" style="max-width: ${reviewScreenOutput[0].avgQuestion4 * 20}%;"></span>
-                                    <span class="txt_point">${reviewScreenOutput[0].avgQuestion4}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   <div class="rate_bar_set barfill total">
+    <div class="job_tooltip_box hover block">
+        <div class="rate_bar_group">
+            <div class="rate_bar_title">
+                이직시 나의 커리어에 도움이 될까요?
+            </div>
+            <div class="rate_bar_unit">
+                <span class="rate_bar_val" style="max-width: ${reviewScreenOutput[0].avgQuestion1 * 20}%;"></span>
+                <span class="txt_point"><fmt:formatNumber value="${reviewScreenOutput[0].avgQuestion1}" type="number" maxFractionDigits="1"/></span>
+            </div>
+        </div>
+    </div>
+    <div class="job_tooltip_box hover block">
+        <div class="rate_bar_group">
+            <div class="rate_bar_title">
+                연차를 자유롭게 사용해도 될까요?
+            </div>
+            <div class="rate_bar_unit">
+                <span class="rate_bar_val" style="max-width: ${reviewScreenOutput[0].avgQuestion2 * 20}%;"></span>
+                <span class="txt_point"><fmt:formatNumber value="${reviewScreenOutput[0].avgQuestion2}" type="number" maxFractionDigits="1"/></span>
+            </div>
+        </div>
+    </div>
+    <div class="job_tooltip_box hover block">
+        <div class="rate_bar_group">
+            <div class="rate_bar_title">
+                급여는 만족스럽나요?
+            </div>
+            <div class="rate_bar_unit">
+                <span class="rate_bar_val" style="max-width: ${reviewScreenOutput[0].avgQuestion3 * 20}%;"></span>
+                <span class="txt_point"><fmt:formatNumber value="${reviewScreenOutput[0].avgQuestion3}" type="number" maxFractionDigits="1"/></span>
+            </div>
+        </div>
+    </div>
+    <div class="job_tooltip_box hover block">
+        <div class="rate_bar_group">
+            <div class="rate_bar_title">
+                복지 혜택이 충분한가요?
+            </div>
+            <div class="rate_bar_unit">
+                <span class="rate_bar_val" style="max-width: ${reviewScreenOutput[0].avgQuestion4 * 20}%;"></span>
+                <span class="txt_point"><fmt:formatNumber value="${reviewScreenOutput[0].avgQuestion4}" type="number" maxFractionDigits="1"/></span>
+            </div>
+        </div>
+    </div>
+</div>
                 </div>
                 
             </div>
@@ -290,11 +290,9 @@ padding: 20px;
                         </div> 
                     </section> 
                 </c:forEach>
-                <div class="pg_bottom um_pagination"> 
-                    <div style="text-align:center;">
-                        <button id="load-more-btn" class="load-more">더보기...</button>
+                    <div style="height:50px; width:100%; text-align:center;font-size:18px; padding-top:5px">
+                        <a href="#" id="load">더 보기 +</a>
                     </div>
-                </div>
             </div> 
         </div> 
     </div> 

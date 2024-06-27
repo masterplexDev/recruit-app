@@ -2,11 +2,10 @@ package kr.co.sist.user.service.review;
 
 import java.util.List;
 import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import kr.co.sist.user.dao.review.UserReviewDAO;
+import kr.co.sist.user.domain.review.ReviewSurveyDomain;
 import kr.co.sist.user.vo.review.ReviewVO;
 
 @Service
@@ -19,10 +18,11 @@ public class ReviewService {
         return userReviewDAO.selectReviewScreenOutput(companyCode);
     }
 
-    public int addReviewSurvey(Map<String, Object> params) {
-        return userReviewDAO.insertReviewSurvey(params);
+    public void insertReviewSurvey(ReviewSurveyDomain reviewSurveyDomain) {
+        userReviewDAO.insertReviewSurvey(reviewSurveyDomain);
     }
-
+    
+    
     public int addReview(Map<String, Object> params) {
         return userReviewDAO.insertReview(params);
     }

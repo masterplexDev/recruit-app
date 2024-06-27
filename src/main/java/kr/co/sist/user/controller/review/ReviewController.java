@@ -5,7 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import kr.co.sist.user.domain.review.ReviewSurveyDomain;
 import kr.co.sist.user.service.review.ReviewService;
 import kr.co.sist.user.vo.review.ReviewVO;
 
@@ -20,5 +23,24 @@ public class ReviewController {
         List<ReviewVO> reviewScreenOutput = reviewService.getReviewScreenOutput(companyCode);
         model.addAttribute("reviewScreenOutput", reviewScreenOutput);
         return "review/reviewResult";
+    }
+    
+
+    @GetMapping("/review/reviewSurvey.do")
+    public String reviewSurveyForm() {
+        return "review/reviewSurvey";
+    }
+    
+    @PostMapping("/review/reviewSurvey.do")
+    public String submitSurvey(
+        @RequestParam("companyCode") String companyCode,
+        @RequestParam("userId") String userId,
+        @ModelAttribute ReviewSurveyDomain reviewSurveyDomain) {
+
+        reviewSurveyDomain.setCompanyCode(companyCode);
+        reviewSurveyDomain.setUserId(userId);
+
+        reviewService.insertReviewSurvey(reviewSurveyDomain);
+        return "redirect:/review/reviewResult.do?companyCode=" + companyCode; // 성공 후 리디렉션할 페이지 설정
     }
 }

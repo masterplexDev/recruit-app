@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import kr.co.sist.properties.MyBatisConfig;
+import kr.co.sist.user.domain.review.ReviewSurveyDomain;
 import kr.co.sist.user.vo.review.ReviewVO;
 
 @Component
@@ -18,6 +19,7 @@ public class UserReviewDAO {
         this.myBatis = myBatis;
     }
 
+    // 리뷰 화면 출력
     public List<ReviewVO> selectReviewScreenOutput(String companyCode) {
         SqlSession ss = myBatis.getMyBatisHandler(false);
         List<ReviewVO> result = 
@@ -26,13 +28,15 @@ public class UserReviewDAO {
         return result;
     }
 
-    public int insertReviewSurvey(Map<String, Object> params) {
+    //리뷰 설문 작성
+    public int insertReviewSurvey(ReviewSurveyDomain reviewSurveyDomain) {
         SqlSession ss = myBatis.getMyBatisHandler(true);
-        int result = 
-                ss.insert("kr.co.sist.user.mapper.review.UserReviewMapper.insertReviewSurvey", params);
+        int result = ss.insert("kr.co.sist.user.mapper.review.UserReviewMapper.insertReviewSurvey", reviewSurveyDomain);
         myBatis.closeHandler(ss);
         return result;
     }
+    
+    
 
     public int insertReview(Map<String, Object> params) {
         SqlSession ss = myBatis.getMyBatisHandler(true);

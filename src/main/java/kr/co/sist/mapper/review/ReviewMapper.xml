@@ -45,10 +45,10 @@
         R.INPUT_DATE DESC
   </select>
 
-  <insert id="insertReviewSurvey">
+  <insert id="insertReviewSurvey" parameterType="kr.co.sist.user.domain.review.ReviewSurveyDomain">
     -- 리뷰 설문
-    INSERT INTO REVIEW_SURVEY (SURVEY_NUM, REVIEW_NUM, USER_ID, COMPANY_CODE, QUESTION1, QUESTION2, QUESTION3, QUESTION4)
-    VALUES (REVIEW_SURVEY_SEQ.NEXTVAL, #{reviewNum}, #{userId}, #{companyCode}, #{question1}, #{question2}, #{question3}, #{question4});
+      INSERT INTO REVIEW_SURVEY (SURVEY_NUM, REVIEW_NUM, USER_ID, COMPANY_CODE, QUESTION1, QUESTION2, QUESTION3, QUESTION4)
+    VALUES (REVIEW_SURVEY_SEQ.NEXTVAL, #{reviewNum}, #{userId}, #{companyCode}, #{question1}, #{question2}, #{question3}, #{question4})
   </insert>
 
   <insert id="insertReview">
