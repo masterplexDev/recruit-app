@@ -23,17 +23,14 @@ import kr.co.sist.user.vo.signup.SignupVO;
 public class SecurityController {
 
     private final JwtSignupProvider jwtSignupProvider;
-    private final JwtLoginProvider jwtLoginProvider;
     private final UserBasicService ubs;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
 
-    public SecurityController(JwtSignupProvider jwtSignupProvider,
-            JwtLoginProvider jwtLoginProvider, UserBasicService ubs) {
+    public SecurityController(JwtSignupProvider jwtSignupProvider, UserBasicService ubs) {
         this.jwtSignupProvider = jwtSignupProvider;
-        this.jwtLoginProvider = jwtLoginProvider;
         this.ubs = ubs;
     }
 
