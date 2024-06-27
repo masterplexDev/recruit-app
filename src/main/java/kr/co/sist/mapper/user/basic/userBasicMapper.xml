@@ -3,6 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="kr.co.sist.mapper.user.basic.userBasicMapper">
+ 	<resultMap id="passwordQuestion" type="kr.co.sist.user.domain.basic.QuestionDomain">
+	    <result property="qNum" column="q_num"/>
+	    <result property="content" column="content"/>
+	</resultMap>
   <select id="selectLogin" resultType="kr.co.sist.user.domain.basic.LoginDomain" parameterType="kr.co.sist.user.vo.basic.LoginVO">
   		select user_id userId,name,password
 		from users
@@ -14,7 +18,16 @@
 		where user_id=#{ userId }
   </select>
   <insert id="insertUser" parameterType="map">
-  	insert into users(user_id,password,name,birth_date,gender,tel,phone,q_num,q_answer) 
-  	values(#{sVO.userId}, #{sVO.password}, #{sVO.name}, #{s2VO.birthDate}, #{s2VO.gender},#{sVO.phone}, #{sVO.tel}, #{s2VO.qNum}, #{s2VO.qAnswer})
+	  	insert into users(user_id,password,name,birth_date,gender,tel,phone,q_num,q_answer) 
+	  	values(#{sVO.userId}, #{sVO.password}, #{sVO.name}, #{s2VO.birthDate}, #{s2VO.gender}, #{sVO.tel}, #{sVO.phone}, #{s2VO.qNum}, #{s2VO.qAnswer})
   </insert>
+  <select id="selectUserId" resultType="String" parameterType="kr.co.sist.user.vo.basic.FindMailVO">
+	  	select user_id userId
+		from users
+		where name=#{ name } and phone=#{ phone }
+  </select>
+  <select id="selectPasswordQList" resultMap="passwordQuestion">
+  		select q_num,content
+		from password_q
+  </select>
  </mapper>

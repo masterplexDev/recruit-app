@@ -1,6 +1,7 @@
 package kr.co.sist.user.dao.basic;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.LogManager;
@@ -8,6 +9,8 @@ import org.apache.logging.log4j.core.Logger;
 import org.springframework.stereotype.Component;
 import kr.co.sist.properties.MyBatisConfig;
 import kr.co.sist.user.domain.basic.LoginDomain;
+import kr.co.sist.user.domain.basic.QuestionDomain;
+import kr.co.sist.user.vo.basic.FindMailVO;
 import kr.co.sist.user.vo.basic.LoginVO;
 import kr.co.sist.user.vo.signup.Signup2VO;
 import kr.co.sist.user.vo.signup.SignupVO;
@@ -21,9 +24,14 @@ public class UserBasicDAO {
         this.myBatis = myBatis;
     }
 
+    /**
+     * 로그인
+     * 
+     * @param lVO
+     * @return
+     */
     public LoginDomain selectLogin(LoginVO lVO) {
         SqlSession ss = myBatis.getMyBatisHandler(false);
-
 
         LoginDomain ld =
                 ss.selectOne("kr.co.sist.mapper.user.basic.userBasicMapper.selectLogin", lVO);
@@ -32,6 +40,12 @@ public class UserBasicDAO {
         return ld;
     }// selectLogin
 
+    /**
+     * 아이디 중복 확인
+     * 
+     * @param userId
+     * @return
+     */
     public String selectDuplicationId(String userId) {
         SqlSession ss = myBatis.getMyBatisHandler(false);
 
@@ -41,9 +55,31 @@ public class UserBasicDAO {
         myBatis.closeHandler(ss);
 
         return checkId;
-    }
+    }// selectDuplicationId
 
+    /**
+     * 보안 질문 리스트 전체 조회
+     * 
+     * @return
+     */
+    public List<QuestionDomain> selectPasswordQList() {
+        SqlSession ss = myBatis.getMyBatisHandler(false);
 
+        List<QuestionDomain> list =
+                ss.selectList("kr.co.sist.mapper.user.basic.userBasicMapper.selectPasswordQList");
+
+        myBatis.closeHandler(ss);
+
+        return list;
+    }// selectPasswordQ
+
+    /**
+     * 회원가입
+     * 
+     * @param sVO
+     * @param s2VO
+     * @return
+     */
     public int insertUser(SignupVO sVO, Signup2VO s2VO) {
         SqlSession ss = myBatis.getMyBatisHandler(false);
 
@@ -61,5 +97,22 @@ public class UserBasicDAO {
         myBatis.closeHandler(ss);
         return cnt;
     }// insertUser
+
+    /**
+     * 계정 찾기
+     * 
+     * @param fmVO
+     * @return
+     */
+    public String selectUserId(FindMailVO fmVO) {
+        SqlSession ss = myBatis.getMyBatisHandler(false);
+
+        String userId =
+                ss.selectOne("kr.co.sist.mapper.user.basic.userBasicMapper.selectUserId", fmVO);
+
+        myBatis.closeHandler(ss);
+
+        return userId;
+    }// selectUserId
 
 }

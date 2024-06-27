@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     info=""%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-	<jsp:include page="../../../assets/layout/user/lib.jsp" />
+	<jsp:include page="../assets/layout/user/lib.jsp" />
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<!-- golgolz start -->
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -30,6 +31,7 @@
 			var inputName = $('#name');
 			var findBtn = $('#findBtn');
 			var findResult = $('.findResult');
+			var findMailFrm = $('#findMailFrm');
 			
 			findBtn.click(function(){
 				var msg = '';
@@ -45,16 +47,18 @@
 				}
 				
 				if(ResultFlag){
-					var isMailFlag = searchMail();
-					if(isMailFlag){
-						findResult.hide();
-						alert('계정 찾기 성공!');
-						location.href='http://localhost/recruit-app/user/findMailComplete.jsp';
-					}else {
-						msg = '입력하신 정보로 조회되는 정보가 없습니다.';
+					findMailFrm.submit();
+					findResult.hide();
+					// 메일 조회 결과에 따른 처리 로직 추가 예정
+					//var isMailFlag = searchMail();
+					var resultMsg = <%= (String)request.getAttribute("resultMsg")%>
+					if(resultMsg !== null || userId !==''){
+						msg = resultMsg;
 						findResult.text(msg);
 						findResult.addClass('error');
 						findResult.show();
+						/* alert('계정 찾기 성공!');
+						location.href='http://localhost/recruit-app/user/findMailComplete.jsp'; */
 					}
 					return;
 				}else{
@@ -85,13 +89,13 @@
 				  return isValid;
 			}//function
 			
-			function searchMail(){
+			/* function searchMail(){
 				
 				//DB 조회 결과 확인
 				var flag = true; // 임시 설정
 				
 				return flag;
-			}
+			} */
 			
 			//초기 로딩
 			chkNull();
@@ -105,7 +109,7 @@
 </head>
 <body>
     <div id="__next" data-reactroot="">
-		<jsp:include page="../../../assets/layout/user/header.jsp" />
+		<jsp:include page="../assets/layout/user/header.jsp" />
 		<main class="JobsFeed_Jobsfeed__DpeV9">  
 			<section class="Section_Section__P1hhc">
 			<!-- golgolz start -->
@@ -124,33 +128,35 @@
 							</div>
 							<div class="css-1jxi7lq"></div>
 						</div>
-						<div class="css-ng7qrx">
-							<p data-testid="Typography" color="rgba(55, 56, 60, 0.61)" class="css-d08m0c" style="margin-bottom: 5px;">계정을 찾기 위해
-								이름과 전화번호를 입력해주세요.</p>
-							<div class="findResult" style="display: none; text-align: center;"></div>
-							<div class="css-env1z2"><label data-testid="Typography" color="rgba(55, 56, 60, 0.61)"
-									for="mobile" class="css-afh7p0">이름</label></div>
-							<div class="css-14o8ny9">
-								<div class="css-gjm025">
-							<input type="text" placeholder="이름을 입력해주세요" id="name" class="css-1sbrczv" value="" maxlength="10"></div>
+						<form id="findMailFrm" action="../user/findMailComplete.do" method="post">
+							<div class="css-ng7qrx">
+								<p data-testid="Typography" color="rgba(55, 56, 60, 0.61)" class="css-d08m0c" style="margin-bottom: 5px;">계정을 찾기 위해
+									이름과 전화번호를 입력해주세요.</p>
+								<div class="findResult" style="display: none; text-align: center;"></div>
+								<div class="css-env1z2"><label data-testid="Typography" color="rgba(55, 56, 60, 0.61)"
+										for="mobile" class="css-afh7p0">이름</label></div>
+								<div class="css-14o8ny9">
+									<div class="css-gjm025">
+								<input type="text" placeholder="이름을 입력해주세요" id="name" class="css-1sbrczv" value="" maxlength="10"></div>
+								</div>
+								<br/>
+								<div class="css-env1z2"><label color="rgba(55, 56, 60, 0.61)"
+										for="phone" class="css-afh7p0">휴대폰 번호(-제외)</label></div>
+								<div class="css-14o8ny9">
+									<div class="css-gjm025">
+								<input type="tel" pattern="[0-9]*" id="phone"
+											placeholder="(예시) 01013245768" name="phone" class="css-1sbrczv" value="" maxlength="11"></div>
+								</div>
+								<button type="button" id="findBtn" class="css-1w1wifl"><span
+										data-testid="Typography" color="#000000" class="css-kfktv3">계정 찾기</span></button>
 							</div>
-							<br/>
-							<div class="css-env1z2"><label color="rgba(55, 56, 60, 0.61)"
-									for="phone" class="css-afh7p0">휴대폰 번호(-제외)</label></div>
-							<div class="css-14o8ny9">
-								<div class="css-gjm025">
-							<input type="tel" pattern="[0-9]*" id="phone"
-										placeholder="(예시) 01013245768" name="phone" class="css-1sbrczv" value="" maxlength="11"></div>
-							</div>
-							<button type="button" id="findBtn" class="css-1w1wifl"><span
-									data-testid="Typography" color="#000000" class="css-kfktv3">계정 찾기</span></button>
-						</div>
+						</form>
 					</div>
 				</div>
 			</div>
 			<!-- golgolz end -->
 			</section>
-			<jsp:include page="../../../assets/layout/user/footer.jsp" />  
+			<jsp:include page="../assets/layout/user/footer.jsp" />  
 		</main>
 	</div>
 </body>
