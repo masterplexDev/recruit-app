@@ -22,6 +22,11 @@ public class ReviewService {
         userReviewDAO.insertReviewSurvey(reviewSurveyDomain);
     }
     
+    // 추천수 증가
+    public void updateRecommend(int reviewNum) {
+        userReviewDAO.updateRecommend(reviewNum);
+    }
+    
     
     public int addReview(Map<String, Object> params) {
         return userReviewDAO.insertReview(params);

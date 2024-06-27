@@ -43,4 +43,10 @@ public class ReviewController {
         reviewService.insertReviewSurvey(reviewSurveyDomain);
         return "redirect:/review/reviewResult.do?companyCode=" + companyCode; // 성공 후 리디렉션할 페이지 설정
     }
+    
+    @PostMapping("/review/updateRecommend.do")
+    public String updateRecommend(@RequestParam("reviewNum") int reviewNum) {
+        reviewService.updateRecommend(reviewNum);
+        return "redirect:/review/reviewResult.do"; // 적절한 페이지로 리디렉션
+    }
 }

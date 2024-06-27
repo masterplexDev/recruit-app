@@ -36,6 +36,14 @@ public class UserReviewDAO {
         return result;
     }
     
+    // 추천수 증가
+    public int updateRecommend(int reviewNum) {
+        SqlSession ss = myBatis.getMyBatisHandler(true);
+        int result = ss.update("kr.co.sist.user.mapper.review.UserReviewMapper.updateRecommend", reviewNum);
+        myBatis.closeHandler(ss);
+        return result;
+    }
+    
     
 
     public int insertReview(Map<String, Object> params) {
