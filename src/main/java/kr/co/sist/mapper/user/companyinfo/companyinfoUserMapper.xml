@@ -34,18 +34,18 @@
 		FROM COMPANYINFO
     </select>
     
-    <select id="selectCompanyinfo" resultMap="companyInfoResultMap" parameterType="kr.co.sist.vo.companyinfo.SearchVO">
+    <select id="selectCompanyinfo" resultMap="companyInfoResultMap" parameterType="map">
     	SELECT COMPANY_CODE, COMPANY_NAME, LOGO, REVENUE, HEADCOUNT, INPUT_DATE
 		FROM COMPANYINFO
 		<where>
-	        <if test="company_name != null and company_name != ''">
-	            COMPANY_NAME LIKE '%' || #{company_name} || '%'
+	        <if test="companyName != 'null'">
+	            COMPANY_NAME LIKE '%' || #{companyName} || '%'
 	        </if>
-	        <if test="avg_sal != null">
-	            AND AVG_SAL >= #{avg_sal} 
+	        <if test="avgSal != null">
+	            AND AVG_SAL >= #{avgSal}
 	        </if>
-	        <if test="company_classification != null">
-	            AND COMPANY_CLASSIFICATION = #{company_classification} 
+	        <if test="companyClassification != '선택안함'">
+	            AND COMPANY_CLASSIFICATION = #{companyClassification} 
 	        </if>
     	</where>
     </select>

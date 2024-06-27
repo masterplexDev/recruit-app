@@ -3,17 +3,17 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.sist.user.mapper.review.UserReviewMapper">
-  <select id="selectReviewScreenOutput" parameterType="String" resultType="map">
+  <select id="selectReviewScreenOutput" parameterType="String" resultType="kr.co.sist.user.vo.review.ReviewVO">
     -- 리뷰 화면 출력
     WITH SurveyStats AS (
         SELECT
-            RS.COMPANY_CODE,
-            CI.COMPANY_NAME,
-            COUNT(RS.SURVEY_NUM) AS TOTAL_SURVEYS,
-            AVG(CASE RS.QUESTION1 WHEN 2 THEN 5 WHEN 1 THEN 2.5 ELSE 0 END) AS AVG_QUESTION1,
-            AVG(CASE RS.QUESTION2 WHEN 2 THEN 5 WHEN 1 THEN 2.5 ELSE 0 END) AS AVG_QUESTION2,
-            AVG(CASE RS.QUESTION3 WHEN 2 THEN 5 WHEN 1 THEN 2.5 ELSE 0 END) AS AVG_QUESTION3,
-            AVG(CASE RS.QUESTION4 WHEN 2 THEN 5 WHEN 1 THEN 2.5 ELSE 0 END) AS AVG_QUESTION4
+            RS.COMPANY_CODE AS companyCode,
+            CI.COMPANY_NAME AS companyName,
+            COUNT(RS.SURVEY_NUM) AS totalSurveys,
+            AVG(CASE RS.QUESTION1 WHEN 2 THEN 5 WHEN 1 THEN 2.5 ELSE 0 END) AS avgQuestion1,
+            AVG(CASE RS.QUESTION2 WHEN 2 THEN 5 WHEN 1 THEN 2.5 ELSE 0 END) AS avgQuestion2,
+            AVG(CASE RS.QUESTION3 WHEN 2 THEN 5 WHEN 1 THEN 2.5 ELSE 0 END) AS avgQuestion3,
+            AVG(CASE RS.QUESTION4 WHEN 2 THEN 5 WHEN 1 THEN 2.5 ELSE 0 END) AS avgQuestion4
         FROM
             REVIEW_SURVEY RS
         JOIN
@@ -25,24 +25,24 @@
             CI.COMPANY_NAME
     )
     SELECT
-        S.COMPANY_CODE,
-        S.COMPANY_NAME,
-        S.TOTAL_SURVEYS,
-        S.AVG_QUESTION1,
-        S.AVG_QUESTION2,
-        S.AVG_QUESTION3,
-        S.AVG_QUESTION4,
-        R.TITLE,
-        R.CONTENT,
-        R.USER_ID,
-        R.INPUT_DATE,
-        R.RECOMMEND
+        S.companyCode,
+        S.companyName,
+        S.totalSurveys,
+        S.avgQuestion1,
+        S.avgQuestion2,
+        S.avgQuestion3,
+        S.avgQuestion4,
+        R.TITLE AS title,
+        R.CONTENT AS content,
+        R.USER_ID AS userId,     -- 별칭 추가
+        R.INPUT_DATE AS inputDate, -- 별칭 추가
+        R.RECOMMEND AS recommend
     FROM
         SurveyStats S
     LEFT JOIN
-        REVIEW R ON S.COMPANY_CODE = R.COMPANY_CODE
+        REVIEW R ON S.companyCode = R.COMPANY_CODE
     ORDER BY
-        R.INPUT_DATE DESC;
+        R.INPUT_DATE DESC
   </select>
 
   <insert id="insertReviewSurvey">
@@ -64,7 +64,7 @@
         SYSDATE, -- 작성일은 현재 날짜로 설정
         0, -- 추천수 초기값은 0
         'N' -- 삭제 플래그 초기값은 'N'
-    );
+    )
   </insert>
   
   <!--  admin -->
@@ -135,10 +135,10 @@
   <!-- 리뷰 업데이트 위한 조회 -->
   <select id="getReviewDetailsForUpdate" parameterType="int" resultType="map">
     SELECT
-        R.TITLE,
-        R.CONTENT,
-        C.COMPANY_NAME,
-        C.LOGO
+        R.TITLE AS title,
+        R.CONTENT AS content,
+        C.COMPANY_NAME AS companyName,
+        C.LOGO AS logo
     FROM
         REVIEW R
     JOIN

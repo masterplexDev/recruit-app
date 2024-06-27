@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" info=""%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -110,12 +111,12 @@
 				<tr>
 					<th scope="row">제목</th>
 					<td><input id="title" name="title" class="inputTypeText"
-						placeholder="" maxLength="125" value="" type="text" /></td>
+						placeholder="" maxLength="125" value="${qnaAnswer.title}" type="text" /></td> <!--qna title에서 re:가 붙어야 함. -->
 				</tr>
 				<tr>
 					<th scope="row">송신 이메일</th>
 					<td><input id="title" name="title" class="inputTypeText"
-						placeholder="" maxLength="125" value="" type="text" /></td>
+						placeholder="" maxLength="125" value="" type="text" /></td> <!-- request.Scope.어쩌구 ??? -->
 				</tr>
 			</tbody>
 		</table>

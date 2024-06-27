@@ -48,7 +48,7 @@ td{
           <div class="Grid_Grid__item__FUkSS Grid_Grid__justify_center__QJu2X Grid_Grid__align-items_flex-start__PA0JE Grid_Grid__grid__xs__12__rVqKh Grid_Grid__grid__md__6__9g_JE" style="margin-left:30px">
 		  <!-- golgolz start -->
           
-		          <div style="margin:30px auto 0; width:621px">
+		          <div style="margin:30px auto 0; width:731px">
 			<section class="content helpSecCont">
 			<div class="loungeContent inquiryContent">
 			<div class="topHdWrap">
@@ -88,7 +88,7 @@ td{
 						<tbody>
 							<tr>
 							<td>0001</td>
-							<td class="alLeft"><span class="tit"><a href="mypageQNADetail.jsp">기업 리뷰는 어떻게 확인하는 지 궁금합니다.</a></span></td>
+							<td class="alLeft"><span class="tit"><a href="mypageQNADetail.jsp">기업 리뷰는 어떻게 확인하는지 궁금합니다.</a></span></td>
 							<td>24.05.24</td>
 							<td class="">답변완료</td>
 							</tr>

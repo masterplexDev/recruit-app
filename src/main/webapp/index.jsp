@@ -26,8 +26,10 @@
 			<section class="Section_Section__P1hhc">
 			<!-- golgolz start -->
 			<a href="http://localhost/recruit-app/companyinfo/companyinfoList.do">기업리스트</a>
+			<a href="http://localhost/recruit-app/companyinfo/search_test.do">테스트</a>
 			<a href="http://localhost/recruit-app/companyinfo/companyinfoDetail.do?companyCode=comp_0002">기업상세보기</a>
 			<a href="http://localhost/recruit-app/main/main.do">메인 페이지</a>
+			<a href="http://localhost/recruit-app/review/reviewResult.do">리뷰 페이지</a>
 			
 			<!-- golgolz end -->
 			</section>
