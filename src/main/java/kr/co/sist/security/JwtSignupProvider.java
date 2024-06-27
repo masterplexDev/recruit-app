@@ -14,17 +14,17 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import kr.co.sist.user.vo.signup.SignupVO;
 
 @Component
-public class JwtProvider {
+public class JwtSignupProvider {
     private final SecretKey secretKey;
 
-    public JwtProvider() {
+    public JwtSignupProvider() {
         this.secretKey = JwtSecretKeyGenerator.getSecretKey();
     }
 
     // JWT 생성 및 서명
     public String generateJwt(SignupVO signupVO) {
         return Jwts.builder().setSubject(signupVO.getUserId()).claim("userData", signupVO)
-                .setExpiration(Date.from(Instant.now().plusSeconds(3600))) // 1시간 유효
+                .setExpiration(Date.from(Instant.now().plusSeconds(600))) // 10분 유효
                 .signWith(secretKey, SignatureAlgorithm.HS256).compact();
     }
 

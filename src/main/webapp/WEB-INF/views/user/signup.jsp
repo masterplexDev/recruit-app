@@ -52,17 +52,9 @@
 				location.href ='http://localhost/recruit-app/user/loginPage.do';
 			});
 			
-			$('#duplBtn').click(function(){
-				var mailFlag = chkEmail();
-				if(mailFlag){
-					duplEmail();
-				}else{
-					alert('잘못된 접근입니다.');
-				}
-			});//click
 			
 			$("#signup-next").click(function(){
-				var duplFlag = duplEmail(); // 임시 추후 수정 예정
+				var duplFlag = $('.duplResult').text() === '가입 가능한 이메일입니다.'; // 임시 추후 수정 예정
 				var nullFlag = chkNull();
 				var passFlag = chkPassCon();
 				var mailFlag = chkEmail();
@@ -152,26 +144,6 @@
 				return mailFlag;
 			}//chkEmail
 			
-			// 이메일 중복 체크 (추후 수정 필요)
-			function duplEmail(){
-				var isDuplMail = 1==1;
-				var msg ='';
-				var flag= isDuplMail
-				
-				if(isDuplMail){
-					msg='사용 가능한 이메일입니다.';
-					$('.duplResult').text(msg);
-					$('.duplResult').removeClass('error').addClass('success');
-					$('.duplResult').show();
-				}else{
-					msg='이미 가입된 이메일입니다.';
-					$('.duplResult').text(msg);
-					$('.duplResult').removeClass('success').addClass('error');
-					$('.duplResult').show();
-				}
-				return flag;
-			}//duplEmail
-			
 			
 			// 비밀번호 확인 체크
 			function chkPassCon() {
@@ -257,6 +229,37 @@
 
 				return nameRegex.test(name);
 				}//function
+				
+			
+				 // 이메일 중복 확인
+				 $('#duplBtn').click(function() {
+				        var userId = $('#userId').val();
+				        
+				        $.ajax({
+				            url: '../user/checkDuplId.do',
+				            type: 'GET',
+				            data: {userId: userId},
+				            success: function(response) {
+				                if (response.result === 'success') {
+				                    // 아이디 사용 가능 처리 (가입 가능한 이메일)
+				                    $('.duplResult').text(response.chkMsg);
+									$('.duplResult').removeClass('error').addClass('success');
+									$('.duplResult').show();
+				                } else {
+				                    // 아이디 사용 불가 처리 (이미 가입된 이메일)
+				                    $('.duplResult').text(response.chkMsg);
+									$('.duplResult').removeClass('success').addClass('error');
+									$('.duplResult').show();
+				                }
+				            },
+				            error: function(xhr) {
+				                //alert(xhr.status);
+				                alert('중복 확인 중 오류가 발생했습니다.');
+				            }
+				        });//ajax
+				    });//click
+				
+			
 			<!-- golgolz end -->
 		});//ready
 	</script>
