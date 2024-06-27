@@ -11,8 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class LoginDomain {
-    private String userId;
-    private String name;
-    private String password;
+public class QuestionDomain {
+    private int qNum;
+    private String content;
 }

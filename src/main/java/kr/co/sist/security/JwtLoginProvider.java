@@ -11,25 +11,25 @@ import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import kr.co.sist.user.vo.signup.SignupVO;
+import kr.co.sist.user.domain.basic.LoginDomain;
 
 @Component
-public class JwtProvider {
+public class JwtLoginProvider {
     private final SecretKey secretKey;
 
-    public JwtProvider() {
+    public JwtLoginProvider() {
         this.secretKey = JwtSecretKeyGenerator.getSecretKey();
     }
 
     // JWT 생성 및 서명
-    public String generateJwt(SignupVO signupVO) {
-        return Jwts.builder().setSubject(signupVO.getUserId()).claim("userData", signupVO)
+    public String generateJwt(LoginDomain loginDomain) {
+        return Jwts.builder().setSubject(loginDomain.getUserId()).claim("loginData", loginDomain)
                 .setExpiration(Date.from(Instant.now().plusSeconds(3600))) // 1시간 유효
                 .signWith(secretKey, SignatureAlgorithm.HS256).compact();
     }
 
     // JWT 검증 및 사용자 정보 추출
-    public SignupVO validateJwtAndExtractUserData(String jwt) {
+    public LoginDomain validateJwtAndExtractUserData(String jwt) {
         try {
             Jws<Claims> claimsJws =
                     Jwts.parserBuilder().setSigningKey(secretKey).build().parseClaimsJws(jwt);
@@ -37,7 +37,7 @@ public class JwtProvider {
             Claims claims = claimsJws.getBody();
             ObjectMapper objectMapper = new ObjectMapper();
 
-            return objectMapper.convertValue(claims.get("userData"), SignupVO.class);
+            return objectMapper.convertValue(claims.get("loginData"), LoginDomain.class);
         } catch (ExpiredJwtException e) {
             // 유효 기간 만료 예외 처리
             e.printStackTrace();
