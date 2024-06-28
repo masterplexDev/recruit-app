@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import kr.co.sist.admin.domain.qna.QnaDomain;
 import kr.co.sist.admin.service.qna.QnaAdminService;
 import kr.co.sist.admin.vo.qna.QnaVO;
@@ -32,6 +31,8 @@ public class QnaAdminController {
         int qna_num = qVO.getQna_num();
         // System.out.println(qVO.toString());
         QnaDomain newDetail = qnaAdminService.searchOneNewQna(qna_num);
+
+        System.out.println("----------" + qVO);
         model.addAttribute("newDetail", newDetail);
         return "new_detail";
     } // 새 문의사항 상세조회
@@ -49,6 +50,8 @@ public class QnaAdminController {
         // System.out.println(qVO.toString());
         QnaDomain oldDetail = qnaAdminService.searchOneOldQna(qna_num);
         model.addAttribute("oldDetail", oldDetail);
+
+        System.out.println("------" + oldDetail);
         return "old_detail";
     } // 답변 완료된 문의사항 상세조회
 
@@ -61,17 +64,11 @@ public class QnaAdminController {
     // return "qnaAnswer";
     // }
 
-    @PostMapping("/manage/answer_frm.do")
-    public String addQnaAnswer(@RequestParam("user_id") int user_id,
-            @RequestParam("qnaNum") int qna_num, @RequestParam("content") String content,
-            Model model) {
-        QnaVO qVO = new QnaVO();
-        qVO.setQna_num(qna_num);
-        qVO.setContent(content);
-        QnaVO qnaAnswer = null;
-        qnaAnswer = qnaAdminService.addQnaAnswer(qVO);
-        model.addAttribute("qnaAnswer", qnaAnswer);
-        return "answer_frm";
+    @PostMapping("/manage/qnas.do")
+    public String addQnaAnswer(QnaVO qVO, Model model) {
+        qnaAdminService.addQnaAnswer(qVO);
+        model.addAttribute("qnaAnswer", qVO);
+        return "qnas";
     }
 
 }

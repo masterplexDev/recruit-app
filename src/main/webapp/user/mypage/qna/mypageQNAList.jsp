@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     info=""%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,12 +87,14 @@ td{
 						</tr>
 						</thead>
 						<tbody>
+						<c:forEach var="qna" items="${mypageQnaList}">
 							<tr>
-							<td>0001</td>
-							<td class="alLeft"><span class="tit"><a href="mypageQNADetail.jsp">기업 리뷰는 어떻게 확인하는지 궁금합니다.</a></span></td>
-							<td>24.05.24</td>
+							<td><c:out value="${qna.qna_num}"/></td>
+							<td class="alLeft"><span class="tit"><a href="mypageQNADetail.jsp"><c:out value="${qna.qna_title}"/> </a></span></td>
+							<td><c:out value="${qna.input_date}"/></td>
 							<td class="">답변완료</td>
 							</tr>
+						</c:forEach>
 						</tbody>
 						</table>
 		
