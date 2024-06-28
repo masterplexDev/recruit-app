@@ -1,5 +1,6 @@
 package kr.co.sist.security;
 
+import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import kr.co.sist.user.domain.basic.LoginDomain;
+import kr.co.sist.user.domain.basic.QuestionDomain;
 import kr.co.sist.user.service.basic.UserBasicService;
 import kr.co.sist.user.vo.basic.LoginVO;
 import kr.co.sist.user.vo.signup.Signup2VO;
@@ -37,7 +39,7 @@ public class SecurityController {
 
     @PostMapping("/user/nextSignup.do")
     public String securitySignData(@Validated SignupVO signupVO, BindingResult bindingResult,
-            HttpSession session) {
+            HttpSession session, Model model) {
 
         if (bindingResult.hasErrors()) { // 유효성
             return "user/signup";
@@ -46,6 +48,16 @@ public class SecurityController {
         String jwtSignup = jwtSignupProvider.generateJwt(signupVO);
 
         session.setAttribute("jwtSignup", jwtSignup);
+
+        List<QuestionDomain> list = ubs.searchPasswordQList();
+        String resultMsg = "";
+        if (list == null) {
+            resultMsg = "리스트 조회 실패";
+            System.out.println(resultMsg);
+            return "user/signup";
+        } else {
+            model.addAttribute("questionList", list);
+        }
 
         return "user/signup2";
     }
@@ -56,10 +68,9 @@ public class SecurityController {
         String jwtSignup = (String) session.getAttribute("jwtSignup"); // 세션에서 JWT 가져오기
         SignupVO signupVO = jwtSignupProvider.validateJwtAndExtractUserData(jwtSignup);
         // 검증 실패 시 에러 처리(추후 에러 페이지 추가 고민해보기)
-        if (signupVO == null) {
-            return "error";
-        } else if (signup2VO == null) {
-            return "error";
+        if (signupVO == null || signup2VO == null) {
+            session.removeAttribute("jwtSignup");
+            return "user/login";
         }
 
         String password = signupVO.getPassword();
@@ -72,7 +83,7 @@ public class SecurityController {
         String resultMsg = "";
         if (cnt > 0) {
             session.removeAttribute("jwtSignup");
-            resultMsg = "회원가입에 성공 하셨습니다. 감사합니다.";
+            resultMsg = "회원가입이 완료 되었습니다. 감사합니다.";
             System.out.println(resultMsg);
             model.addAttribute("resultMsg", resultMsg);
         } else {
@@ -98,13 +109,17 @@ public class SecurityController {
                     passwordEncoder.matches(loginVO.getPassword(), loginDomain.getPassword());
             if (loginResult) {
                 // 로그인 성공 시
-
-                model.addAttribute("userId", loginDomain.getUserId());
-                model.addAttribute("name", loginDomain.getName());
-                return "main/main";
+                int cnt = ubs.newLoginTime(loginVO.getUserId());
+                if (cnt > 0) {
+                    model.addAttribute("userId", loginDomain.getUserId());
+                    model.addAttribute("name", loginDomain.getName());
+                    return "main/main";
+                } else {
+                    resultMsg = "로그인 작업 수행 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.";
+                } // end else
             } else {
                 resultMsg = "비밀번호가 일치하지 않습니다. 다시 시도해주세요.";
-            }
+            } // end else
         } // end else
           // resultMsg = "로그인 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.";
 

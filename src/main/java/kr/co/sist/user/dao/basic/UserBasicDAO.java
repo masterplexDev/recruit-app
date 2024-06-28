@@ -40,6 +40,28 @@ public class UserBasicDAO {
         return ld;
     }// selectLogin
 
+
+    /**
+     * 마지막 로그인 일시 업데이트
+     * 
+     * @param userId
+     * @return
+     */
+    public int updateLoginTime(String userId) {
+        SqlSession ss = myBatis.getMyBatisHandler(false);
+
+        int cnt = ss.update("kr.co.sist.mapper.user.basic.userBasicMapper.updateLoginTime", userId);
+        if (cnt > 0) {
+            ss.commit();
+        } else {
+            ss.rollback();
+        }
+        myBatis.closeHandler(ss);
+
+        return cnt;
+    }// updateLoginTime
+
+
     /**
      * 아이디 중복 확인
      * 
@@ -87,6 +109,7 @@ public class UserBasicDAO {
         params.put("sVO", sVO);
         params.put("s2VO", s2VO);
         int cnt = 0;
+        System.out.println(s2VO.getQNum());
 
         cnt = ss.insert("kr.co.sist.mapper.user.basic.userBasicMapper.insertUser", params);
         if (cnt > 0) {

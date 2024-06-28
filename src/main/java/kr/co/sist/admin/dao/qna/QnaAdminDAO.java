@@ -65,8 +65,14 @@ public class QnaAdminDAO {
 
     public void insertQnaAnswer(QnaVO qVO) {
         SqlSession session = myBatis.getMyBatisHandler(true);
-
+        System.out.println(qVO);
         session.insert("kr.co.sist.qna.admin.insertQnaAnswer", qVO);
+        myBatis.closeHandler(session);
+    }
+
+    public void updateQnaFlag(int qna_num) {
+        SqlSession session = myBatis.getMyBatisHandler(true);
+        session.update("kr.co.sist.qna.admin.updateQnaFlag", qna_num);
         myBatis.closeHandler(session);
     }
 

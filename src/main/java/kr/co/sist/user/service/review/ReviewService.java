@@ -22,9 +22,19 @@ public class ReviewService {
         userReviewDAO.insertReviewSurvey(reviewSurveyDomain);
     }
     
-    // 추천수 증가
-    public void updateRecommend(int reviewNum) {
-        userReviewDAO.updateRecommend(reviewNum);
+ // 추천수 증가
+    public boolean updateRecommend(String userId, int reviewNum) {
+        ReviewVO reviewVO = new ReviewVO();
+        reviewVO.setUserId(userId);
+        reviewVO.setReviewNum(reviewNum);
+
+        if (userReviewDAO.checkIfRecommended(reviewVO)) {
+            return false; // 이미 추천했음
+        }
+
+        userReviewDAO.updateRecommend(reviewVO);
+        userReviewDAO.insertReviewRecommend(reviewVO);
+        return true;
     }
     
     

@@ -99,6 +99,7 @@
 			</div>
 		</nav>
 		<div id="emailFrm">
+		<form action="${pageContext.request.contextPath}/manage/answer_frm.do" method="post">
 		<div class="ec-base-table typeWrite ">
 		<table border="1" summary="">
 			<colgroup>
@@ -115,9 +116,11 @@
 				</tr>
 				<tr>
 					<th scope="row">송신 이메일</th>
-					<td><input id="title" name="title" class="inputTypeText"
-						placeholder="" maxLength="125" value="" type="text" /></td> <!-- request.Scope.어쩌구 ??? -->
+					<td><input id="user_id" name="user_id" class="inputTypeText"
+						placeholder="" maxLength="125" value="${qnaAnswer.user_id}" type="text" /></td> <!-- requestScope.어쩌구 ??? -->
 				</tr>
+					<input id="reply_date" name="reply_date" class="inputTypeText" placeholder="" maxLength="125" value="${requestScope.reply_date}" type="hidden" /> <!-- sysdate-->
+					<input id="reply_date" name="qna_num" class="inputTypeText" placeholder="" maxLength="125" value="${requestScope.qna_num}" type="hidden" /> <!-- sysdate-->
 			</tbody>
 		</table>
 		</div>

@@ -1,4 +1,4 @@
-package kr.co.sist.user.vo.basic;
+package kr.co.sist.user.vo.review;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class FindMailVO {
-    private String name;
-    private String phone;
+public class ReviewRecommendVO {
+    private String userId;
+    private int reviewNum;
 }
