@@ -1,6 +1,7 @@
 package kr.co.sist.user.controller.review;
 
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,8 +46,20 @@ public class ReviewController {
     }
     
     @PostMapping("/review/updateRecommend.do")
-    public String updateRecommend(@RequestParam("reviewNum") int reviewNum) {
-        reviewService.updateRecommend(reviewNum);
-        return "redirect:/review/reviewResult.do"; // 적절한 페이지로 리디렉션
+    public String updateRecommend(
+        @RequestParam("reviewNum") int reviewNum,
+        HttpSession session, Model model) {
+
+        String userId = (String) session.getAttribute("userId");
+        if (userId == null || userId.isEmpty()) {
+            return "redirect:/user/loginPage.do"; // 로그인 페이지로 리디렉션
+        }
+
+        boolean isRecommended = reviewService.updateRecommend(userId, reviewNum);
+        if (!isRecommended) {
+            model.addAttribute("recommendMsg", "이미 추천했습니다.");
+        }
+
+        return "redirect:/review/reviewResult.do"; // 성공 후 리뷰 결과 페이지로 리디렉션
     }
 }

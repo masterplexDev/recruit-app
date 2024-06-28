@@ -25,4 +25,5 @@ public class ReviewVO {
     private String userId;          // 사용자 ID
     private Date inputDate;         // 작성일
     private int recommend;          // 추천수
+    private int reviewNum;          // 리뷰 번호 추가
 }

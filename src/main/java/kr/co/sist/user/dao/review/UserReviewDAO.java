@@ -43,7 +43,22 @@ public class UserReviewDAO {
         myBatis.closeHandler(ss);
         return result;
     }
-    
+
+    // 추천 기록 추가
+    public int insertReviewRecommend(Map<String, Object> params) {
+        SqlSession ss = myBatis.getMyBatisHandler(true);
+        int result = ss.insert("kr.co.sist.user.mapper.review.UserReviewMapper.insertReviewRecommend", params);
+        myBatis.closeHandler(ss);
+        return result;
+    }
+
+    // 이미 추천했는지 확인
+    public boolean checkIfRecommended(Map<String, Object> params) {
+        SqlSession ss = myBatis.getMyBatisHandler(false);
+        int count = ss.selectOne("kr.co.sist.user.mapper.review.UserReviewMapper.checkIfRecommended", params);
+        myBatis.closeHandler(ss);
+        return count > 0;
+    }
     
 
     public int insertReview(Map<String, Object> params) {

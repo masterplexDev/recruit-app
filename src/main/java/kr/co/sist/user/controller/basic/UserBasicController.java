@@ -57,10 +57,10 @@ public class UserBasicController {
 
         if (checkId == null || checkId.isEmpty()) {
             response.put("result", "success");
-            response.put("chkMsg", "가입 가능한 이메일입니다.");
+            response.put("chkMsg", "媛��엯 媛��뒫�븳 �씠硫붿씪�엯�땲�떎.");
         } else {
             response.put("result", "fail");
-            response.put("chkMsg", "이미 가입된 이메일입니다.");
+            response.put("chkMsg", "�씠誘� 媛��엯�맂 �씠硫붿씪�엯�땲�떎.");
         }
 
         return response;
@@ -71,7 +71,7 @@ public class UserBasicController {
         List<QuestionDomain> list = ubs.searchPasswordQList();
         String resultMsg = "";
         if (list == null) {
-            resultMsg = "리스트 조회 실패";
+            resultMsg = "由ъ뒪�듃 議고쉶 �떎�뙣";
             System.out.println(resultMsg);
             model.addAttribute("resultMsg", resultMsg);
         } else {
@@ -87,11 +87,11 @@ public class UserBasicController {
         String userId = ubs.findUserId(fmVO);
         String resultMsg = "";
         if (userId == null || userId.isEmpty()) {
-            resultMsg = "입력하신 정보로 조회되는 정보가 없습니다.";
+            resultMsg = "�엯�젰�븯�떊 �젙蹂대줈 議고쉶�릺�뒗 �젙蹂닿� �뾾�뒿�땲�떎.";
             model.addAttribute("resultMsg", resultMsg);
             return "user/findMail";
         } else {
-            resultMsg = "입력하신 정보로 조회된 계정 정보입니다.";
+            resultMsg = "�엯�젰�븯�떊 �젙蹂대줈 議고쉶�맂 怨꾩젙 �젙蹂댁엯�땲�떎.";
             model.addAttribute("resultMsg", resultMsg);
             model.addAttribute("userId", userId);
         }

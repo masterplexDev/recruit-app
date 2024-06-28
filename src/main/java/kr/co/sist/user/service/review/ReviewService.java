@@ -1,5 +1,6 @@
 package kr.co.sist.user.service.review;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,18 @@ public class ReviewService {
     }
     
     // 추천수 증가
-    public void updateRecommend(int reviewNum) {
+    public boolean updateRecommend(String userId,int reviewNum) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("reviewNum", reviewNum);
+        params.put("userId", userId);
+
+        if (userReviewDAO.checkIfRecommended(params)) {
+            return false; // 이미 추천했음
+        }
+
         userReviewDAO.updateRecommend(reviewNum);
+        userReviewDAO.insertReviewRecommend(params);
+        return true;
     }
     
     
