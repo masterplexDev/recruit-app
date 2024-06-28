@@ -1,3 +1,5 @@
+<%@page import="kr.co.sist.user.domain.basic.QuestionDomain"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     info=""%>
@@ -168,14 +170,22 @@
 								<p style="font-size: 15px">보안 질문 설정</p>
 								</div>
 								<div class="css-2w308u">
-								
-								<select class="css-14pvjnj" id="question">
+								<%
+									List<QuestionDomain> list = (List)request.getAttribute("questionList");
+								%>
+								<select class="css-14pvjnj" id="question" name="qNum">
 									<option value="0">질문선택</option>
-									<option value="1">당신이 가장 좋아하는 영화 이름은 무엇인가요?</option>
+									<!-- <option value="1">당신이 가장 좋아하는 영화 이름은 무엇인가요?</option>
 									<option value="2">당신의 별명은 무엇인가요?</option>
 									<option value="3">가장 친한 친구 이름은 무엇인가요?</option>
 									<option value="4">당신이 태어난 도시 이름은 무엇인가요?</option>
-									<option value="5">당신이 가장 좋아하는 색깔은 무엇인가요?</option>
+									<option value="5">당신이 가장 좋아하는 색깔은 무엇인가요?</option> -->
+									<% if(list != null){
+									    for(QuestionDomain qd : list){
+									    %>
+									<option value="<%=qd.getQNum()%>"><%= qd.getContent() %></option>
+									<%}//endfor
+									}//end if%>
 								</select>
 								<div class="css-1px7y17"><span class="css-1ihsymv"><svg viewBox="0 0 24 24" class="css-1h47l4s"><path fill="rgba(55, 56, 60, 0.61)" d="M3.08071 7.58071C3.58839 7.07303 4.41151 7.07303 4.91919 7.58071L12 14.6615L19.0807 7.58071C19.5884 7.07303 20.4115 7.07303 20.9192 7.58071C21.4269 8.08839 21.4269 8.91151 20.9192 9.41919L12.9192 17.4192C12.4115 17.9269 11.5884 17.9269 11.0807 17.4192L3.08071 9.41919C2.57303 8.91151 2.57303 8.08839 3.08071 7.58071Z"></path></svg></span></div>
 								</div>

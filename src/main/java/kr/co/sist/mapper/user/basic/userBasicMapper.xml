@@ -12,6 +12,11 @@
 		from users
 		where user_id=#{ userId }
   </select>
+  <update id="updateLoginTime" parameterType="String">
+  		update users
+		set recentlogin_date=sysdate
+		where user_id=#{ userId }
+  </update>
   <select id="selectDuplicationId" resultType="String" parameterType="String">
   		select user_id userId
 		from users

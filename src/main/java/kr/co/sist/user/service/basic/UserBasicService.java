@@ -24,6 +24,12 @@ public class UserBasicService {
         return ld;
     }
 
+    public int newLoginTime(String userId) {
+        int cnt = ubDAO.updateLoginTime(userId);
+
+        return cnt;
+    }
+
     public String checkDuplicationId(String userId) {
         String checkId = ubDAO.selectDuplicationId(userId);
 
@@ -37,6 +43,12 @@ public class UserBasicService {
     }
 
     public int addUser(SignupVO sVO, Signup2VO s2VO) {
+        // 전화번호 format 후 insert
+        String formatTel = formatNumber(sVO.getTel());
+        String formatPhone = formatNumber(sVO.getPhone());
+
+        sVO.setTel(formatTel);
+        sVO.setPhone(formatPhone);
 
         int cnt = ubDAO.insertUser(sVO, s2VO);
 
@@ -48,5 +60,12 @@ public class UserBasicService {
 
         return userId;
     }
+
+    private String formatNumber(String phoneNumber) {
+        // 전화번호 하이픈 추가
+        String formatNum = phoneNumber.replaceFirst("(\\d{3})(\\d{3,4})(\\d{4})", "$1-$2-$3");
+        return formatNum;
+    }
+
 
 }
