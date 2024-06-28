@@ -7,18 +7,29 @@
   	select qna_num, category, title, content, user_id, input_date
 	from qna
 	where flag='N'
+	order by qna_num desc
   </select>
   
   <select id="selectOneNewQna" resultType="kr.co.sist.admin.domain.qna.QnaDomain">
-  	select qna_num, category, title, content, user_id, input_date
-	from qna
-	where qna_num= #{qna_num}
+  select 
+	    qna.category,
+	    qna.input_date,
+	    qna.title,
+	    qna.content,
+	    qna_answer.ans_title,
+	    qna_answer.reply_date,
+	    qna_answer.ans_content
+	from 
+	    qna, qna_answer 
+	where 
+	     ( qna_answer.qna_num(+) = qna.qna_num ) and qna.qna_num = #{qna_num}
   </select>
   
   <select id="selectOldQnas" resultType="kr.co.sist.admin.domain.qna.QnaDomain">
   	select qna_num, title, input_date
   	from qna 
   	where flag='Y'
+  	order by qna_num desc
   </select>
   
   <select id="selectOneOldQna" resultType="kr.co.sist.admin.domain.qna.QnaDomain">
@@ -39,17 +50,14 @@
   </select>
   
   <insert id="insertQnaAnswer" parameterType="kr.co.sist.admin.vo.qna.QnaVO">
-	insert into qna_answer (user_id, title, content, reply_date)
-	select 
-		 u.user_id,
-		 q.title,
-		 #{content},
-		 #{reply_date}
-	from 
-		 users u, 
-		 qna q
-	where 
-		 u.user_id = #{userid}
-		 and q.qna_num = #{qnanum};
+	insert into qna_answer(ans_content, qna_num, ans_title)
+	values (#{ans_content},  #{qna_num}, #{ans_title} )
   </insert>
+  
+  <update id="updateQnaFlag" parameterType="int">
+    update qna
+    set flag = 'y'
+    where qna_num = #{qna_num} and flag = 'n'
+  </update>
+	
 </mapper>

@@ -43,7 +43,7 @@ public class CompanyinfoUserController {
     }
     
     @ResponseBody
-    @PostMapping("/companyinfo/search_test.do")
+    @PostMapping("/companyinfo/companySearchList.do")
     public Map<String, Object> companyinfoSearchList(Model model, @RequestParam(name = "companyName" , defaultValue ="null")String companyName, @RequestParam(name = "avgSal" , defaultValue ="0")String strAvgSal, @RequestParam(name = "selectedValue" , defaultValue ="선택안함")String selectedValue) {
         int avgSal=Integer.parseInt(strAvgSal);
      // 검색 조건을 HashMap에 저장

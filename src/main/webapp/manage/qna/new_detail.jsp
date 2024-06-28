@@ -6,7 +6,7 @@
 <head>
 <link href="http://localhost/recruit-app/assets/css/layout/user/common-sv-202405271315.css" rel="stylesheet" type="text/css" />
 <link href="//i.jobkorea.kr/content/css/ver_2/event/banner.promotion-sv-202401301659.css" rel="stylesheet" type="text/css" />
-<link href="view-source:https://www.jobkorea.co.kr/help/inquiry" rel="stylesheet" type="text/css" />
+<!-- <link href="view-source:https://www.jobkorea.co.kr/help/inquiry" rel="stylesheet" type="text/css" /> -->
 <link href="https://i.jobkorea.kr/deploy/pc/dist/css/personal/common/gnb-sv-202405231305.css" rel="stylesheet" type="text/css" />
 <link href="https://i.jobkorea.kr/content/css/ver_2/mtc/mtc_lounge-sv-202402231655.css" rel="stylesheet" type="text/css" />
 <link href="https://i.jobkorea.kr/content/css/ver_2/help/help-sv-202402231655.css" rel="stylesheet" type="text/css" />
@@ -15,6 +15,17 @@
 <link href="https://i.jobkorea.kr/content/css/ver_2/mtc/inquiry_selection.css?v=2024052914000" rel="stylesheet" type="text/css" />
 <jsp:include page="../../assets/layout/admin/lib.jsp" />
 
+
+<!-- summernote -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+	integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+	crossorigin="anonymous"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<!-- summernote -->
 
 <style type="text/css">
 	#newQnaFrm{margin:54px 40px 40px 280px; width:1614px; padding-left:28px;}
@@ -26,6 +37,55 @@
 	});
 </script>
 <!-- golgolz start -->
+<script type="text/javascript">
+	$(function() {
+		$("#qna_menu").addClass("bg-gradient-primary");
+		$('#ans_content').summernote(
+				{
+					placeholder : 'Hello stand alone ui',
+					tabsize : 2,
+					width : 1435,
+					height : 500,
+					toolbar : [ [ 'style', [ 'style' ] ],
+							[ 'font', [ 'bold', 'underline', 'clear' ] ],
+							[ 'color', [ 'color' ] ],
+							[ 'para', [ 'ul', 'ol', 'paragraph' ] ],
+							[ 'table', [ 'table' ] ],
+							[ 'insert', [ 'link', 'picture', 'video' ] ],
+							[ 'view', [ 'fullscreen', 'codeview', 'help' ] ] ]
+				});//summernote
+		$("#btnSend").click(function(){
+			//alert("fffff")
+			$("#answerPost").submit();
+		}); //click
+	});//ready
+</script>
+
+<style>
+	table{
+		width: 100%;
+	}
+	#emailFrm{
+		margin:55px 40px 40px 8px; width:1500px; padding-left:28px
+	}
+	.note-editor{
+		margin-top: 10px;
+	}
+	.typeWrite{
+		width: 1435px;
+	}
+	tbody{
+		border: 1px solid #e9e9e9;
+	}
+	.ec-base-table table:before{
+		border: 1px solid #e9e9e9;
+		width: 1px;
+	}
+	th{
+		font-size: 14px;
+	}
+</style>
+
 <!-- golgolz end -->
 </head>
 <body>
@@ -51,6 +111,7 @@
 			</div>
 		</nav>
 	</main>
+	
 	<!-- golgolz start -->
 	<div>
 	<div class="loungeContent inquiryContent" id="newQnaFrm">
@@ -66,6 +127,7 @@
 									<dt><strong><c:out value="${newDetail.category}"/></strong> <c:out value="${newDetail.input_date}"/></dt>
 									<dd><c:out value="${newDetail.title}"/></dd><br/>
 									<c:out value="${newDetail.content}"/>
+									<%-- <c:out value="${newDetail.ans_content}"/> --%>
 								</dl>
 							</div>
 
@@ -85,11 +147,47 @@
 								<!-- <a href="answer_frm.jsp" class="btnMtcTpl">답변하기</a> -->
 							</div>
 							<!-- <button type="button" onclick="javascript:window.scrollTo(0,0);" class="btnMtcTpl">TOP</button> -->
-						
+
 					</div>
+				<div id="emailFrm">
+		<form action="${pageContext.request.contextPath}/manage/qnas.do" method="post" id="answerPost">
+		<div class="ec-base-table typeWrite ">
+		<table border="1" summary="">
+			<colgroup>
+				<col style="width: 130px;" />
+				<col style="width: auto;" />
+			</colgroup>
+			<tbody>
+				<tr>
+				</tr>
+				<tr>
+					<th scope="row">제목</th>
+					<td><input id="title" name="ans_title" class="inputTypeText"
+						placeholder="" maxLength="125" style="width: 100%"  value="${newDetail.ans_title}" type="text" /></td> <!--qna title에서 re:가 붙어야 함. -->
+				</tr>
+				<tr>
+					<th scope="row">송신 이메일</th>
+					<td><input id="user_id" name="user_id" class="inputTypeText"
+						style="width: 100%" placeholder="" maxLength="125" value="${newDetail.user_id}" type="text" />
+					<input id="reply_date" name="qna_num"  value="${param.qna_num}" type="hidden" /> <!-- sysdate-->
+						</td> <!-- requestScope.어쩌구 ??? -->
+				</tr>
+			</tbody>
+		</table>
+		</div>
+		
+		<textarea  id="ans_content" name="ans_content" style="margin-left: 600px">${newDetail.ans_content}</textarea>
+		<div id="emailButtonArea" style="margin-top: 20px">
+			<input type="button" value="취소" class="btn btn-outline-danger " style="float:right ; margin-right : 40px">
+			<input type="button" value="전송하기" class="btn btn-outline-secondary " style="float:right ; margin-right : 10px" id="btnSend">
+			<!-- <input type="button" class="btn btn-info btn-sm" value="전송" /> 
+			<input type="button" class="btn btn-info btn-sm" value="취소" /> -->
+		</div>
+		</div>
 					<!-- 내 제안내역 보기 상세 //-->
 				</div>
 		</div>
+		
 	<!-- golgolz end -->
 </body>
 </html>

@@ -55,26 +55,26 @@
 									"<td>" + company.inputDate + "</td>" +
 									"</tr>";
 								$tableBody.append(row);
-							});
+							});//each
 						} else {
 							var noResultRow = "<tr><td colspan='6' style='text-align:center'>검색 결과가 없습니다.</td></tr>";
 							$tableBody.append(noResultRow);
 						}
 					} else {
 						alert("검색 중 오류가 발생했습니다.");
-					}
+					}//success
 				},
 				error:function(xhr){
 					console.log(xhr);
-				}
-			});
-		});
+				}//error
+			});//ajax
+		});//click
 		
 		$("#initialization").click(function() {
-            $("#companyName").val(''); // 기업명 필드 초기화
-            $("#avgSal").val(''); // 평균 연봉 필드 초기화
-            $('input[name="company-classification"]').prop('checked', false); // 라디오 버튼 초기화
-        });
+            $("#companyName").val('');
+            $("#avgSal").val('');
+            $('input[name="company-classification"]').prop('checked', false);
+        });//click
 
 	});//ready
 </script>
