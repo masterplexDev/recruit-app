@@ -20,7 +20,7 @@
 		$(function(){
 			<!-- golgolz start -->
 			$('#mainBtn').click(function(){
-				location.href='http://localhost/recruit-app/main/main.jsp';
+				location.href='http://localhost/recruit-app/main/main.do';
 			});//click
 			<!-- golgolz end -->
 		});
@@ -51,7 +51,7 @@
 							<h3 data-testid="Typography" color="#000000" class="css-1qgiy3i" style="text-align: center; margin-bottom: 20px;">계정을 찾았어요</h3>
 							<p data-testid="Typography" color="rgba(55, 56, 60, 0.61)" class="css-d08m0c">입력하신 회원정보로 가입된 계정을 알려드려요.</p>
 							<div style="padding: 13px 0px; width: 100%; height: 50px; background-color: rgb(244, 244, 245); text-align: center;">
-								<p class="css-14qpgc6" style="font-size: 16px; font-weight: normal;">sist@gmail.com</p>										
+								<p class="css-14qpgc6" style="font-size: 16px; font-weight: normal;">${ requestScope.findUserId }</p>										
 							</div>
 							<button type="button" id="mainBtn" class="css-1w1wifl"><span
 									data-testid="Typography" color="#000000" class="css-kfktv3">메인으로 돌아가기</span></button>
