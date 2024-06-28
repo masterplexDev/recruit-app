@@ -51,15 +51,15 @@
 					findResult.hide();
 					// 메일 조회 결과에 따른 처리 로직 추가 예정
 					//var isMailFlag = searchMail();
-					var resultMsg = <%= (String)request.getAttribute("resultMsg")%>
-					if(resultMsg !== null || userId !==''){
+					/* var resultMsg = '${ requestScope.resultMsg }';
+					if(resultMsg !== null || resultMsg !==''){
 						msg = resultMsg;
 						findResult.text(msg);
 						findResult.addClass('error');
 						findResult.show();
 						/* alert('계정 찾기 성공!');
-						location.href='http://localhost/recruit-app/user/findMailComplete.jsp'; */
-					}
+						location.href='http://localhost/recruit-app/user/findMailComplete.jsp'; 
+					}*/
 					return;
 				}else{
 					alert('문제가 발생 했습니다. 잠시 후 다시 시도해주세요.');
@@ -102,7 +102,6 @@
 			
 			inputPhone.on('input',chkNull);
 			inputName.on('input',chkNull);
-			
 			<!-- golgolz end -->
 		});//ready
 	</script>
@@ -132,12 +131,19 @@
 							<div class="css-ng7qrx">
 								<p data-testid="Typography" color="rgba(55, 56, 60, 0.61)" class="css-d08m0c" style="margin-bottom: 5px;">계정을 찾기 위해
 									이름과 전화번호를 입력해주세요.</p>
-								<div class="findResult" style="display: none; text-align: center;"></div>
+								<%
+								String resultMsg = (String)request.getAttribute("resultMsg");
+								if(resultMsg != null && resultMsg != ""){
+								%>
+								<div class="findResult error" style="text-align: center;">${ requestScope.resultMsg }</div>
+								<%
+								}
+								%>
 								<div class="css-env1z2"><label data-testid="Typography" color="rgba(55, 56, 60, 0.61)"
 										for="mobile" class="css-afh7p0">이름</label></div>
 								<div class="css-14o8ny9">
 									<div class="css-gjm025">
-								<input type="text" placeholder="이름을 입력해주세요" id="name" class="css-1sbrczv" value="" maxlength="10"></div>
+								<input type="text" placeholder="이름을 입력해주세요" id="name" name="name" class="css-1sbrczv" value="" maxlength="10"></div>
 								</div>
 								<br/>
 								<div class="css-env1z2"><label color="rgba(55, 56, 60, 0.61)"

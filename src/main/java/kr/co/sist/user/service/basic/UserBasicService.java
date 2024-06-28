@@ -56,6 +56,8 @@ public class UserBasicService {
     }
 
     public String findUserId(FindMailVO fmVO) {
+        String formatPhone = formatNumber(fmVO.getPhone());
+        fmVO.setPhone(formatPhone);
         String userId = ubDAO.selectUserId(fmVO);
 
         return userId;
@@ -66,6 +68,5 @@ public class UserBasicService {
         String formatNum = phoneNumber.replaceFirst("(\\d{3})(\\d{3,4})(\\d{4})", "$1-$2-$3");
         return formatNum;
     }
-
 
 }
