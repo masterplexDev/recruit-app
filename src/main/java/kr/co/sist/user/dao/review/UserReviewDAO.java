@@ -23,7 +23,7 @@ public class UserReviewDAO {
     public List<ReviewVO> selectReviewScreenOutput(String companyCode) {
         SqlSession ss = myBatis.getMyBatisHandler(false);
         List<ReviewVO> result = 
-                ss.selectList("kr.co.sist.user.mapper.review.UserReviewMapper.selectReviewScreenOutput", companyCode);
+                ss.selectList("kr.co.sist.user.mapper.review.ReviewMapper.selectReviewScreenOutput", companyCode);
         myBatis.closeHandler(ss);
         return result;
     }
@@ -31,19 +31,34 @@ public class UserReviewDAO {
     //리뷰 설문 작성
     public int insertReviewSurvey(ReviewSurveyDomain reviewSurveyDomain) {
         SqlSession ss = myBatis.getMyBatisHandler(true);
-        int result = ss.insert("kr.co.sist.user.mapper.review.UserReviewMapper.insertReviewSurvey", reviewSurveyDomain);
+        int result = ss.insert("kr.co.sist.user.mapper.review.ReviewMapper.insertReviewSurvey", reviewSurveyDomain);
         myBatis.closeHandler(ss);
         return result;
     }
     
-    // 추천수 증가
-    public int updateRecommend(int reviewNum) {
+ // 추천수 증가
+    public int updateRecommend(ReviewVO reviewVO) {
         SqlSession ss = myBatis.getMyBatisHandler(true);
-        int result = ss.update("kr.co.sist.user.mapper.review.UserReviewMapper.updateRecommend", reviewNum);
+        int result = ss.update("kr.co.sist.user.mapper.review.ReviewMapper.updateRecommend", reviewVO);
         myBatis.closeHandler(ss);
         return result;
     }
-    
+
+    // 추천 기록 추가
+    public int insertReviewRecommend(ReviewVO reviewVO) {
+        SqlSession ss = myBatis.getMyBatisHandler(true);
+        int result = ss.insert("kr.co.sist.user.mapper.review.ReviewMapper.insertReviewRecommend", reviewVO);
+        myBatis.closeHandler(ss);
+        return result;
+    }
+
+    // 이미 추천했는지 확인
+    public boolean checkIfRecommended(ReviewVO reviewVO) {
+        SqlSession ss = myBatis.getMyBatisHandler(false);
+        int count = ss.selectOne("kr.co.sist.user.mapper.review.ReviewMapper.checkIfRecommended", reviewVO);
+        myBatis.closeHandler(ss);
+        return count > 0;
+    }
     
 
     public int insertReview(Map<String, Object> params) {

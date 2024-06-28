@@ -4,6 +4,10 @@
     <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
     
+    <% 
+    String userId = (String) session.getAttribute("userId");
+%>
+    
 <!doctype html>
 <html class="no-js win ko-KR" lang="ko-KR" xmlns="http://www.w3.org/1999/xhtml" prefix="og:http://ogp.me/ns#" xml:lang="ko-KR" foxified=""> 
  <head> 
@@ -273,26 +277,49 @@ padding: 20px;
                                         </div> 
                                     </dd> 
                                 </dl> 
+                                
+                               
                                 <div class="content_body_ty1"> 
-                                    <div class="us_label_wrap"> 
-                                        <h2 class="us_label "> <span class="us_label_box">BEST</span> ${review.title} </h2> 
-                                    </div> 
-                                    <dl class="tc_list"> 
-                                        <dd>
-                                            ${review.content}
-                                        </dd>
-                                        <dd style="display: flex; justify-content: flex-end; margin-top: 20px;"> 
-                                            <button type="button" class="btn btn-dark">추천 ${review.recommend}</button> 
-                                        </dd> 
-                                    </dl> 
-                                </div> 
+    <div class="us_label_wrap"> 
+        <h2 class="us_label "> <span class="us_label_box">BEST</span> ${review.title} </h2> 
+    </div> 
+    <dl class="tc_list"> 
+        <dd>
+            ${review.content}
+        </dd>
+    </dl> 
+    <div style="display: flex; justify-content: flex-end; margin-top: 20px;"> 
+        <form action="${pageContext.request.contextPath}/review/updateRecommend.do" method="post" onsubmit="return checkLoginAndSubmit(this);">
+    <input type="hidden" name="reviewNum" value="${review.reviewNum}">
+    <input type="hidden" name="userId" value="${sessionScope.userId}"> <!-- 유저 ID를 넘기도록 설정 -->
+    <button type="submit" class="btn btn-dark">추천 ${review.recommend}</button>
+</form>
+    </div>
+</div> 
+
+<script>
+    function checkLoginAndSubmit(form) {
+        var userId = form.userId.value;
+        if (!userId) {
+            alert("로그인해주세요.");
+            window.location.href = '${pageContext.request.contextPath}/user/loginPage.do'; // 로그인 페이지로 리다이렉션
+            return false; // 폼 제출 중단
+        }
+        return true; // 로그인된 경우 폼 제출
+    }
+
+    // 추천 메시지 표시
+    <c:if test="${not empty recommendMsg}">
+        alert('${recommendMsg}');
+    </c:if>
+</script>
                             </div> 
                         </div> 
                     </section> 
                 </c:forEach>
-                    <div style="height:50px; width:100%; text-align:center;font-size:18px; padding-top:5px">
-                        <a href="#" id="load">더 보기 +</a>
-                    </div>
+                <div style="height:50px; width:100%; text-align:center;font-size:18px; padding-top:5px">
+                    <a href="#" id="load">더 보기 +</a>
+                </div>
             </div> 
         </div> 
     </div> 

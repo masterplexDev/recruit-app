@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.sist.user.mapper.review.UserReviewMapper">
+<mapper namespace="kr.co.sist.user.mapper.review.ReviewMapper">
   <select id="selectReviewScreenOutput" parameterType="String" resultType="kr.co.sist.user.vo.review.ReviewVO">
     -- 리뷰 화면 출력
     WITH SurveyStats AS (
@@ -51,26 +51,26 @@
     VALUES (REVIEW_SURVEY_SEQ.NEXTVAL, #{reviewNum}, #{userId}, #{companyCode}, #{question1}, #{question2}, #{question3}, #{question4})
   </insert>
   
-  <!-- 리뷰 추천 -->
-  <update id="updateRecommend" parameterType="int">
+ <!-- 리뷰 추천 -->
+<update id="updateRecommend" parameterType="kr.co.sist.user.vo.review.ReviewVO">
     UPDATE REVIEW
     SET RECOMMEND = RECOMMEND + 1
     WHERE REVIEW_NUM = #{reviewNum}
-  </update>
-  
-  <!-- 추천 기록 추가 -->
-    <insert id="insertReviewRecommend" parameterType="map">
-        INSERT INTO REVIEW_RECOMMEND (USER_ID, REVIEW_NUM)
-        VALUES (#{userId}, #{reviewNum})
-    </insert>
+</update>
 
-    <!-- 이미 추천했는지 확인 -->
-    <select id="checkIfRecommended" parameterType="map" resultType="int">
-        SELECT COUNT(*)
-        FROM REVIEW_RECOMMEND
-        WHERE USER_ID = #{userId}
-          AND REVIEW_NUM = #{reviewNum}
-    </select>
+<!-- 추천 기록 추가 -->
+<insert id="insertReviewRecommend" parameterType="kr.co.sist.user.vo.review.ReviewVO">
+    INSERT INTO REVIEW_RECOMMEND (USER_ID, REVIEW_NUM)
+    VALUES (#{userId}, #{reviewNum})
+</insert>
+
+<!-- 이미 추천했는지 확인 -->
+<select id="checkIfRecommended" parameterType="kr.co.sist.user.vo.review.ReviewVO" resultType="int">
+    SELECT COUNT(*)
+    FROM REVIEW_RECOMMEND
+    WHERE USER_ID = #{userId}
+      AND REVIEW_NUM = #{reviewNum}
+</select>
 
 
   <insert id="insertReview">
