@@ -34,8 +34,12 @@
 			    });
 			    
 			    logoutBtn.addEventListener('click',function(){
-			    	alert('로그아웃 되었습니다.');
-			    	window.location.href = '../user/logout.do';
+			    	var conResult = confirm('로그아웃 하시겠습니까?');
+			    	if(conResult){
+				    	window.location.href = '../user/logout.do';
+			    	}else{
+			    		return;
+			    	}//end else
 			    });
 			    
 	    	<%}else {%>
