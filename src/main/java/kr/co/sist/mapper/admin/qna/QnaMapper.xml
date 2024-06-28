@@ -56,8 +56,8 @@
   
   <update id="updateQnaFlag" parameterType="int">
     update qna
-    set flag = 'y'
-    where qna_num = #{qna_num} and flag = 'n'
+    set flag = 'Y'
+    where qna_num = #{qna_num} and flag = 'N'
   </update>
 	
 </mapper>
