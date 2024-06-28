@@ -41,15 +41,16 @@ public class QnaAdminService {
         return oneOldQna;
     }
 
-    // public QnaVO addQnaAnswer(int user_id, int qna_num, String content) {
+    // public QnaVO addQnaAnswer(String user_id, int qna_num, String content) {
     // QnaVO qnaAnswer = null;
     // qnaAnswer = qnaAdminDAO.insertQnaAnswer(user_id, qna_num, content);
     // return qnaAnswer;
     // }
 
-    public QnaVO addQnaAnswer(QnaVO qVO) {
+    public void addQnaAnswer(QnaVO qVO) {
         qnaAdminDAO.insertQnaAnswer(qVO);
-        return qVO;
+        qnaAdminDAO.updateQnaFlag(qVO.getQna_num());
     }
+
 
 }
