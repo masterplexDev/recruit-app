@@ -277,39 +277,42 @@ padding: 20px;
                                         </div> 
                                     </dd> 
                                 </dl> 
-                                <c:if test="${not empty recommendMsg}">
-							        <script>
-							            alert("${recommendMsg}");
-							        </script>
-							    </c:if>
+                                
+                               
                                 <div class="content_body_ty1"> 
-                                    <div class="us_label_wrap"> 
-                                        <h2 class="us_label "> <span class="us_label_box">BEST</span> ${review.title} </h2> 
-                                    </div> 
-                                    <dl class="tc_list"> 
-                                        <dd>
-                                            ${review.content}
-                                        </dd>
-                                    </dl> 
-                                    <div style="display: flex; justify-content: flex-end; margin-top: 20px;"> 
-								        <form action="${pageContext.request.contextPath}/review/updateRecommend.do" method="post" onsubmit="return checkLoginAndSubmit(this);">
-								            <input type="hidden" name="reviewNum" value="${review.reviewNum}">
-								            <input type="hidden" name="userId" value="${sessionScope.userId}"> <!-- 유저 ID를 넘기도록 설정 -->
-								            <button type="submit" class="btn btn-dark">추천 ${review.recommend}</button>
-								        </form>
-								    </div>
-                                </div> 
-								<script>
-								    function checkLoginAndSubmit(form) {
-								        var userId = form.userId.value;
-								        if (!userId) {
-								            alert("로그인해주세요.");
-								            window.location.href = '${pageContext.request.contextPath}/user/loginPage.do'; // 로그인 페이지로 리다이렉션
-								            return false; // 폼 제출 중단
-								        }
-								        return true; // 로그인된 경우 폼 제출
-								    }
-								</script>
+    <div class="us_label_wrap"> 
+        <h2 class="us_label "> <span class="us_label_box">BEST</span> ${review.title} </h2> 
+    </div> 
+    <dl class="tc_list"> 
+        <dd>
+            ${review.content}
+        </dd>
+    </dl> 
+    <div style="display: flex; justify-content: flex-end; margin-top: 20px;"> 
+        <form action="${pageContext.request.contextPath}/review/updateRecommend.do" method="post" onsubmit="return checkLoginAndSubmit(this);">
+    <input type="hidden" name="reviewNum" value="${review.reviewNum}">
+    <input type="hidden" name="userId" value="${sessionScope.userId}"> <!-- 유저 ID를 넘기도록 설정 -->
+    <button type="submit" class="btn btn-dark">추천 ${review.recommend}</button>
+</form>
+    </div>
+</div> 
+
+<script>
+    function checkLoginAndSubmit(form) {
+        var userId = form.userId.value;
+        if (!userId) {
+            alert("로그인해주세요.");
+            window.location.href = '${pageContext.request.contextPath}/user/loginPage.do'; // 로그인 페이지로 리다이렉션
+            return false; // 폼 제출 중단
+        }
+        return true; // 로그인된 경우 폼 제출
+    }
+
+    // 추천 메시지 표시
+    <c:if test="${not empty recommendMsg}">
+        alert('${recommendMsg}');
+    </c:if>
+</script>
                             </div> 
                         </div> 
                     </section> 
