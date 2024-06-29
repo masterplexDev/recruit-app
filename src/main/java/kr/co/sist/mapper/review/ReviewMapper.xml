@@ -74,6 +74,28 @@
       AND REVIEW_NUM = #{reviewNum}
 </select>
 
+<!-- 특정 리뷰의 질문들 가져오기 -->
+  <select id="selectReviewQuestions" parameterType="int" resultType="kr.co.sist.user.vo.review.ReviewQuestionsVO">
+     SELECT
+        CASE RS.QUESTION1 WHEN 2 THEN 5 WHEN 1 THEN 2.5 ELSE 0 END AS question1,
+        CASE RS.QUESTION2 WHEN 2 THEN 5 WHEN 1 THEN 2.5 ELSE 0 END AS question2,
+        CASE RS.QUESTION3 WHEN 2 THEN 5 WHEN 1 THEN 2.5 ELSE 0 END AS question3,
+        CASE RS.QUESTION4 WHEN 2 THEN 5 WHEN 1 THEN 2.5 ELSE 0 END AS question4
+    FROM (
+        SELECT DISTINCT
+            REVIEW_NUM,
+            QUESTION1,
+            QUESTION2,
+            QUESTION3,
+            QUESTION4
+        FROM
+            REVIEW_SURVEY
+        WHERE
+            REVIEW_NUM = #{reviewNum}
+    ) RS
+    WHERE ROWNUM = 1
+  </select>
+
 
   <insert id="insertReview">
     -- 리뷰 작성

@@ -1,6 +1,8 @@
 package kr.co.sist.user.controller.review;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kr.co.sist.user.domain.review.ReviewSurveyDomain;
 import kr.co.sist.user.service.review.ReviewService;
 import kr.co.sist.user.vo.review.RecommendVO;
+import kr.co.sist.user.vo.review.ReviewQuestionsVO;
 import kr.co.sist.user.vo.review.ReviewVO;
 
 @Controller
@@ -28,9 +31,19 @@ public class ReviewController {
     @GetMapping("/review/reviewResult.do")
     public String reviewScreen(@RequestParam(value = "companyCode", defaultValue = "comp_0001") String companyCode, Model model) {
         List<ReviewVO> reviewScreenOutput = reviewService.getReviewScreenOutput(companyCode);
+
+        // 각 리뷰에 대해 개별적인 리뷰 통계 값을 가져와 모델에 추가
+        Map<Integer, ReviewQuestionsVO> reviewQuestionsMap = new HashMap<>();
+        for (ReviewVO review : reviewScreenOutput) {
+            ReviewQuestionsVO reviewQuestions = reviewService.getReviewQuestions(review.getReviewNum());
+            reviewQuestionsMap.put(review.getReviewNum(), reviewQuestions);
+        }
+
         model.addAttribute("reviewScreenOutput", reviewScreenOutput);
+        model.addAttribute("reviewQuestionsMap", reviewQuestionsMap);
         return "review/reviewResult";
     }
+    
     
 
     @GetMapping("/review/reviewSurvey.do")

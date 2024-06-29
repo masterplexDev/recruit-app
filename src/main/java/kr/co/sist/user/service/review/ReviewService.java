@@ -1,7 +1,6 @@
 package kr.co.sist.user.service.review;
 
 import java.util.List;
-import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,6 +11,7 @@ import kr.co.sist.properties.MyBatisConfig;
 import kr.co.sist.user.dao.review.UserReviewDAO;
 import kr.co.sist.user.domain.review.ReviewSurveyDomain;
 import kr.co.sist.user.vo.review.RecommendVO;
+import kr.co.sist.user.vo.review.ReviewQuestionsVO;
 import kr.co.sist.user.vo.review.ReviewVO;
 
 @Service
@@ -38,6 +38,10 @@ public class ReviewService {
         userReviewDAO.insertReviewSurvey(reviewSurveyDomain);
     }
     
+ // 개별 리뷰 통계 값 가져오기
+    public ReviewQuestionsVO getReviewQuestions(int reviewNum) {
+        return userReviewDAO.selectReviewQuestions(reviewNum);
+    }
 
     
  // 추천수 증가 (이미 추천 여부 확인 로직 제거)
@@ -63,33 +67,4 @@ public class ReviewService {
         return userReviewDAO.checkIfRecommended(recommendVO);
     }
     
-        
-    
-    public int addReview(Map<String, Object> params) {
-        return userReviewDAO.insertReview(params);
-    }
-    
-    public List<Map<String, Object>> searchReviewById(String userId) {
-        return userReviewDAO.searchReviewById(userId);
-    }
-    
-    public List<Map<String, Object>> searchReviewByName(String name) {
-        return userReviewDAO.searchReviewByName(name);
-    }
-    
-    public List<Map<String, Object>> searchReviewByTitleOrContent(String keyword) {
-        return userReviewDAO.searchReviewByTitleOrContent(keyword);
-    }
-    
-    public Map<String, Object> getReviewDetailsForUpdate(int reviewNum) {
-        return userReviewDAO.getReviewDetailsForUpdate(reviewNum);
-    }
-    
-    public int updateReview(Map<String, Object> params) {
-        return userReviewDAO.updateReview(params);
-    }
-    
-    public int deleteReview(int reviewNum) {
-        return userReviewDAO.deleteReview(reviewNum);
-    }
 }
