@@ -193,6 +193,12 @@
 		    <version>0.11.5</version> <scope>runtime</scope>
 		</dependency>
 		<!-- 240625 명호 - JWT를 사용하기 위한 추가 end -->
+		<!-- 240629 성강 - 트랜잭션 처리 위한 추가 -->
+		<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-tx</artifactId>
+    <version>5.3.23</version> </dependency>
+		<!-- 240629 성강 - 트랜잭션 처리 위한 추가 end -->
 	</dependencies>
 	<build>
 		<plugins>

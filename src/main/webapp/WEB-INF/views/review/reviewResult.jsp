@@ -234,7 +234,7 @@ padding: 20px;
         <div class="section_body"> 
             <div class="section_group"> 
                 <c:forEach var="review" items="${reviewScreenOutput}">
-                    <section class="content_ty4 video_ad_content" data-content_type="review" data-content_id="${review.companyCode}" data-company_id="${review.companyCode}"> 
+                    <section class="content_ty4 video_ad_content" data-content_type="review" data-content_id="${review.reviewNum}" data-company_id="${review.companyCode}"> 
                         <div class="content_wrap"> 
                             <div class="content_top_ty2">
                                 <span class="ico_pers"></span>
@@ -243,76 +243,79 @@ padding: 20px;
                                 <span class="txt1"><fmt:formatDate value="${review.inputDate}" pattern="yyyy-MM-dd"/></span> 
                             </div> 
                             <div class="ctbody_col2"> 
+                                  <!-- 개별 리뷰 통계 값 그래프 -->
+                                <c:set var="reviewQuestions" value="${reviewQuestionsMap[review.reviewNum]}"/>
                                 <dl class="ctbody_lft"> 
                                     <dt class="df_tit">
-                                        커리어
+                                        커리어 (개별)
                                     </dt> 
                                     <dd class="blo_box1"> 
                                         <div class="us_bl_s"> 
-                                            <div class="bl_score" style="width:${review.avgQuestion1 * 20}%;"></div> 
+                                            <div class="bl_score" style="width:${reviewQuestions.question1 * 20}%;"></div> 
                                         </div> 
                                     </dd> 
                                     <dt class="df_tit">
-                                        휴가 및 연차
+                                        휴가 및 연차 (개별)
                                     </dt> 
                                     <dd class="blo_box1"> 
                                         <div class="us_bl_s"> 
-                                            <div class="bl_score" style="width:${review.avgQuestion2 * 20}%;"></div> 
+                                            <div class="bl_score" style="width:${reviewQuestions.question2 * 20}%;"></div> 
                                         </div> 
                                     </dd> 
                                     <dt class="df_tit">
-                                        연봉
+                                        연봉 (개별)
                                     </dt> 
                                     <dd class="blo_box1"> 
                                         <div class="us_bl_s"> 
-                                            <div class="bl_score" style="width:${review.avgQuestion3 * 20}%;"></div> 
+                                            <div class="bl_score" style="width:${reviewQuestions.question3 * 20}%;"></div> 
                                         </div> 
                                     </dd> 
                                     <dt class="df_tit">
-                                        복지 혜택
+                                        복지 혜택 (개별)
                                     </dt> 
                                     <dd class="blo_box1"> 
                                         <div class="us_bl_s"> 
-                                            <div class="bl_score" style="width:${review.avgQuestion4 * 20}%;"></div> 
+                                            <div class="bl_score" style="width:${reviewQuestions.question4 * 20}%;"></div> 
                                         </div> 
                                     </dd> 
                                 </dl> 
                                 
-                               
                                 <div class="content_body_ty1"> 
-    <div class="us_label_wrap"> 
-        <h2 class="us_label "> <span class="us_label_box">BEST</span> ${review.title} </h2> 
-    </div> 
-    <dl class="tc_list"> 
-        <dd>
-            ${review.content}
-        </dd>
-    </dl> 
-    <div style="display: flex; justify-content: flex-end; margin-top: 20px;"> 
-        <form action="${pageContext.request.contextPath}/review/updateRecommend.do" method="post" onsubmit="return checkLoginAndSubmit(this);">
-    <input type="hidden" name="reviewNum" value="${review.reviewNum}">
-    <input type="hidden" name="userId" value="${sessionScope.userId}"> <!-- 유저 ID를 넘기도록 설정 -->
-    <button type="submit" class="btn btn-dark">추천 ${review.recommend}</button>
-</form>
-    </div>
-</div> 
+                                    <div class="us_label_wrap"> 
+                                        <h2 class="us_label "> <span class="us_label_box">BEST</span> ${review.title} </h2> 
+                                    </div> 
+                                    <dl class="tc_list"> 
+                                        <dd>
+                                            ${review.content}
+                                        </dd>
+                                    </dl> 
+                                    <div style="display: flex; justify-content: flex-end; margin-top: 20px;"> 
+                                        <form action="${pageContext.request.contextPath}/review/updateRecommend.do" method="post" onsubmit="return checkLoginAndSubmit(this);">
+                                            <input type="hidden" name="reviewNum" value="${review.reviewNum}">
+                                            <input type="hidden" name="userId" value="${sessionScope.userId}"> <!-- 유저 ID를 넘기도록 설정 -->
+                                            <button type="submit" class="btn btn-dark">추천 ${review.recommend}</button>
+                                        </form>
+                                    </div>
+                                </div> 
 
-<script>
-    function checkLoginAndSubmit(form) {
-        var userId = form.userId.value;
-        if (!userId) {
-            alert("로그인해주세요.");
-            window.location.href = '${pageContext.request.contextPath}/user/loginPage.do'; // 로그인 페이지로 리다이렉션
-            return false; // 폼 제출 중단
-        }
-        return true; // 로그인된 경우 폼 제출
-    }
-
-    // 추천 메시지 표시
-    <c:if test="${not empty recommendMsg}">
-        alert('${recommendMsg}');
-    </c:if>
-</script>
+                                <script>
+                                    function checkLoginAndSubmit(form) {
+                                        var userId = form.userId.value;
+                                        if (!userId) {
+                                            alert("로그인해주세요.");
+                                            window.location.href = '${pageContext.request.contextPath}/user/loginPage.do'; // 로그인 페이지로 리다이렉션
+                                            return false; // 폼 제출 중단
+                                        }
+                                        return true; // 로그인된 경우 폼 제출
+                                    }
+                                </script>
+                                <script>
+                                  // 추천 메시지 표시 (서버에서 전달된 메시지 사용)
+                                  var recommendMsg = '${recommendMsg}';
+                                  if (recommendMsg) {
+                                    alert(recommendMsg);
+                                  }
+                                </script>
                             </div> 
                         </div> 
                     </section> 
