@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
-    info=""%>
+    pageEncoding="UTF-8" info="" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -87,14 +86,14 @@ td{
 						</tr>
 						</thead>
 						<tbody>
-						<c:forEach var="qna" items="${mypageQnaList}">
-							<tr>
-							<td><c:out value="${qna.qna_num}"/></td>
-							<td class="alLeft"><span class="tit"><a href="mypageQNADetail.jsp"><c:out value="${qna.qna_title}"/> </a></span></td>
-							<td><c:out value="${qna.input_date}"/></td>
-							<td class="">답변완료</td>
-							</tr>
-						</c:forEach>
+							<c:forEach var="uesrqna" items="${qnaList}">
+								<tr>
+								<td><c:out value="${uesrqna.qna_num}"/></td>
+								<td class="alLeft"><span class="tit"><a href="mypageQNADetail.jsp"><c:out value="${uesrqna.title}"/></a></span></td>
+								<td><c:out value="${uesrqna.input_date}"/></td>
+								<td class="">답변완료</td>
+								</tr>
+							</c:forEach>
 						</tbody>
 						</table>
 		

@@ -17,10 +17,15 @@ public class QnaUserController {
         this.qnaUserService = qnaUserService;
     }
 
-    @GetMapping("/user/mypage/qna/mypageQnaList.do")
+    @GetMapping("/user/mypage/qna/mypageQNAList.do")
     public String searchMyQnaList(Model model) {
-        List<UserQnaDomain> mypageQnaList = qnaUserService.searchMyQnaList();
-        model.addAttribute("mypageQnaList", mypageQnaList);
-        return "user/mypage/qna/mypageQnaList";
+        List<UserQnaDomain> qnaList = qnaUserService.searchMyQnaList();
+        model.addAttribute("qnaList", qnaList);
+        return "user/mypage/qna/mypageQNAList";
+    }
+
+    @GetMapping("/user/mypage/qna/mypageQNADetail.do")
+    public String searchMyQna() {
+        return "user/mypage/qna/mypageQNADetail.do";
     }
 }

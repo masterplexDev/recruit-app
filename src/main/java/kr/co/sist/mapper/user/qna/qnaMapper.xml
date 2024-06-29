@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.sist.qna.user">
+
 	<select id="selectMyQnas" resultType="kr.co.sist.user.domain.qna.UserQnaDomain">
 		select qna_num, title, input_date
 		from qna

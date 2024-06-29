@@ -1,6 +1,6 @@
 package kr.co.sist.user.vo.qna;
 
-import java.sql.Date;
+import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,10 +9,10 @@ import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-public class QnaVO {
+public class UserQnaVO {
 
     private int qna_num;
     private String category, title, content, user_id, flag;
@@ -21,3 +21,4 @@ public class QnaVO {
     private String ans_title, ans_content, admin_id, reciever;
     private Date reply_date;
 }
+
