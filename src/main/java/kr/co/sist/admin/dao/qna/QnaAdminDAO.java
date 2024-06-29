@@ -63,17 +63,23 @@ public class QnaAdminDAO {
     // return qnaAnswer;
     // }
 
-    public void insertQnaAnswer(QnaVO qVO) {
+
+
+    public int insertQnaAnswer(QnaVO qVO) {
         SqlSession session = myBatis.getMyBatisHandler(true);
-        System.out.println(qVO);
-        session.insert("kr.co.sist.qna.admin.insertQnaAnswer", qVO);
+        // System.out.println(qVO);
+        int result = session.insert("kr.co.sist.qna.admin.insertQnaAnswer", qVO);
         myBatis.closeHandler(session);
+        return result;
     }
 
-    public void updateQnaFlag(int qna_num) {
+    public int updateQnaFlag(int qna_num) {
         SqlSession session = myBatis.getMyBatisHandler(true);
-        session.update("kr.co.sist.qna.admin.updateQnaFlag", qna_num);
+        int result2 = session.update("kr.co.sist.qna.admin.updateQnaFlag", qna_num);
+        System.out.println("-------------업데이트플래그 돼쓰까??" + qna_num);
+        session.commit();
+        System.out.println("-------------커밋" + qna_num);
         myBatis.closeHandler(session);
+        return result2;
     }
-
 }

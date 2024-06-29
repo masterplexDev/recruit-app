@@ -66,7 +66,15 @@ public class QnaAdminController {
 
     @PostMapping("/manage/qnas.do")
     public String addQnaAnswer(QnaVO qVO, Model model) {
-        qnaAdminService.addQnaAnswer(qVO);
+        int result = qnaAdminService.addQnaAnswer(qVO);
+        if (result == 1) {
+            int qna_num = qVO.getQna_num();
+            int result2 = qnaAdminService.updateQnaFlag(qna_num);
+            System.out.println("여기!!!!!!!" + qna_num);
+            if (result2 == 1) {
+                System.out.println("여기????");
+            }
+        }
         model.addAttribute("qnaAnswer", qVO);
         return "qnas";
     }

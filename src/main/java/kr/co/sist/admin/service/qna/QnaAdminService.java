@@ -47,10 +47,19 @@ public class QnaAdminService {
     // return qnaAnswer;
     // }
 
-    public void addQnaAnswer(QnaVO qVO) {
-        qnaAdminDAO.insertQnaAnswer(qVO);
-        qnaAdminDAO.updateQnaFlag(qVO.getQna_num());
+    public int addQnaAnswer(QnaVO qVO) {
+        int result = qnaAdminDAO.insertQnaAnswer(qVO);
+        // qnaAdminDAO.updateQnaFlag(qVO.getQna_num());
+        return result;
     }
+
+    public int updateQnaFlag(int qna_num) {
+        System.out.println("Updating QNA flag for qna_num: " + qna_num);
+        int result2 = qnaAdminDAO.updateQnaFlag(qna_num);
+        System.out.println("Update result: " + result2);
+        return result2;
+    }
+
 
 
 }
