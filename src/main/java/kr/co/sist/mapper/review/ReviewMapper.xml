@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.sist.user.mapper.review.ReviewMapper">
+
   <select id="selectReviewScreenOutput" parameterType="String" resultType="kr.co.sist.user.vo.review.ReviewVO">
     -- 리뷰 화면 출력
     WITH SurveyStats AS (
@@ -32,10 +33,11 @@
         S.avgQuestion2,
         S.avgQuestion3,
         S.avgQuestion4,
+        R.REVIEW_NUM AS reviewNum, -- reviewNum 추가
         R.TITLE AS title,
         R.CONTENT AS content,
-        R.USER_ID AS userId,     -- 별칭 추가
-        R.INPUT_DATE AS inputDate, -- 별칭 추가
+        R.USER_ID AS userId,
+        R.INPUT_DATE AS inputDate,
         R.RECOMMEND AS recommend
     FROM
         SurveyStats S
@@ -43,7 +45,7 @@
         REVIEW R ON S.companyCode = R.COMPANY_CODE
     ORDER BY
         R.INPUT_DATE DESC
-  </select>
+</select>
 
   <insert id="insertReviewSurvey" parameterType="kr.co.sist.user.domain.review.ReviewSurveyDomain">
     -- 리뷰 설문
