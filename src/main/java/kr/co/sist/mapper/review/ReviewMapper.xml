@@ -96,7 +96,6 @@
     WHERE ROWNUM = 1
   </select>
 
-
   <insert id="insertReview">
     -- 리뷰 작성
     INSERT INTO REVIEW (
