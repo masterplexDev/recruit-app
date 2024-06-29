@@ -14,12 +14,6 @@ public class CompanyinfoUserService {
     
     @Autowired(required=false)
     private CompanyinfoUserDAO companyinfoUserDAO;
-//    private final CompanyinfoUserDAO companyinfoUserDAO;
-//
-//    @Autowired(required = false)
-//    public CompanyinfoUserService(CompanyinfoUserDAO companyinfoUserDAO) {
-//        this.companyinfoUserDAO = companyinfoUserDAO;
-//    }
 
     public List<SearchDomain> searchAllCompanyinfo() {
         System.out.println("이건 서비스야");
