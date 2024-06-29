@@ -2,6 +2,8 @@ package kr.co.sist.user.controller.review;
 
 import java.util.List;
 import javax.servlet.http.HttpSession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,10 +14,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kr.co.sist.user.domain.review.ReviewSurveyDomain;
 import kr.co.sist.user.service.review.ReviewService;
+import kr.co.sist.user.vo.review.RecommendVO;
 import kr.co.sist.user.vo.review.ReviewVO;
 
 @Controller
 public class ReviewController {
+    
+    private static final Logger logger = LogManager.getLogger(ReviewService.class);
 
     @Autowired(required = false)
     private ReviewService reviewService;
@@ -48,21 +53,33 @@ public class ReviewController {
     
     @PostMapping("/review/updateRecommend.do")
     public String updateRecommend(
-        @RequestParam("reviewNum") int reviewNum,
-        HttpSession session, RedirectAttributes redirectAttributes) {
+            @RequestParam("reviewNum") int reviewNum,
+            HttpSession session, RedirectAttributes redirectAttributes) {
 
         String userId = (String) session.getAttribute("userId");
         if (userId == null || userId.isEmpty()) {
             return "redirect:/user/loginPage.do"; // 로그인 페이지로 리디렉션
         }
 
-        boolean isRecommended = reviewService.updateRecommend(userId, reviewNum);
-        if (!isRecommended) {
+        logger.info("Controller - updateRecommend() 시작, reviewNum: {}", reviewNum);
+
+        RecommendVO recommendVO = new RecommendVO();
+        recommendVO.setUserId(userId);
+        recommendVO.setReviewNum(reviewNum);
+
+        // 컨트롤러에서 추천 여부 확인 (서비스의 checkIfRecommended 사용)
+        logger.debug("Controller - checkIfRecommended 호출 전"); // 호출 전 로그 추가
+        boolean isRecommended = reviewService.checkIfRecommended(recommendVO); 
+        logger.debug("Controller - checkIfRecommended 호출 후, isRecommended: {}", isRecommended); // 호출 후 로그 추가
+
+        if (isRecommended) {
             redirectAttributes.addFlashAttribute("recommendMsg", "이미 추천했습니다.");
         } else {
+            // 추천 로직 실행 (서비스의 updateRecommend 사용)
+            reviewService.updateRecommend(recommendVO);
             redirectAttributes.addFlashAttribute("recommendMsg", "추천이 완료되었습니다.");
         }
 
-        return "redirect:/review/reviewResult.do"; // 성공 후 리뷰 결과 페이지로 리디렉션
+        return "redirect:/review/reviewResult.do";
     }
 }

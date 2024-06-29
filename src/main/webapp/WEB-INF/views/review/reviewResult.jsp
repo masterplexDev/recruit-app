@@ -234,7 +234,7 @@ padding: 20px;
         <div class="section_body"> 
             <div class="section_group"> 
                 <c:forEach var="review" items="${reviewScreenOutput}">
-                    <section class="content_ty4 video_ad_content" data-content_type="review" data-content_id="${review.companyCode}" data-company_id="${review.companyCode}"> 
+                    <section class="content_ty4 video_ad_content" data-content_type="review" data-content_id="${review.reviewNum}" data-company_id="${review.companyCode}"> 
                         <div class="content_wrap"> 
                             <div class="content_top_ty2">
                                 <span class="ico_pers"></span>
@@ -307,11 +307,13 @@ padding: 20px;
         }
         return true; // 로그인된 경우 폼 제출
     }
-
-    // 추천 메시지 표시
-    <c:if test="${not empty recommendMsg}">
-        alert('${recommendMsg}');
-    </c:if>
+</script>
+<script>
+  // 추천 메시지 표시 (서버에서 전달된 메시지 사용)
+  var recommendMsg = '${recommendMsg}';
+  if (recommendMsg) {
+    alert(recommendMsg);
+  }
 </script>
                             </div> 
                         </div> 

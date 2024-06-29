@@ -52,20 +52,20 @@
   </insert>
   
  <!-- 리뷰 추천 -->
-<update id="updateRecommend" parameterType="kr.co.sist.user.vo.review.ReviewVO">
+<update id="updateRecommend" parameterType="kr.co.sist.user.vo.review.RecommendVO">
     UPDATE REVIEW
     SET RECOMMEND = RECOMMEND + 1
     WHERE REVIEW_NUM = #{reviewNum}
 </update>
 
 <!-- 추천 기록 추가 -->
-<insert id="insertReviewRecommend" parameterType="kr.co.sist.user.vo.review.ReviewVO">
+<insert id="insertReviewRecommend" parameterType="kr.co.sist.user.vo.review.RecommendVO">
     INSERT INTO REVIEW_RECOMMEND (USER_ID, REVIEW_NUM)
     VALUES (#{userId}, #{reviewNum})
 </insert>
 
 <!-- 이미 추천했는지 확인 -->
-<select id="checkIfRecommended" parameterType="kr.co.sist.user.vo.review.ReviewVO" resultType="int">
+<select id="checkIfRecommended" parameterType="kr.co.sist.user.vo.review.RecommendVO" resultType="int">
     SELECT COUNT(*)
     FROM REVIEW_RECOMMEND
     WHERE USER_ID = #{userId}
