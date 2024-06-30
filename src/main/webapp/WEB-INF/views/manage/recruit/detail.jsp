@@ -25,7 +25,7 @@ input[type="number"]::-webkit-inner-spin-button {
 <script type="text/javascript">
 	$(function() {
 		var selectedPositions = [];
-		var selectedWorkDay = "";
+		var selectedWorkDay = "주5일(월-금)";
 		
 		$("#recruit_menu").addClass("bg-gradient-primary");
 
@@ -106,6 +106,11 @@ input[type="number"]::-webkit-inner-spin-button {
 				careerYears: parseInt($("#career_years").val(), 10),
 				eduStandard: $("input[name='edu_standard']:checked").val() || ""
 		    };
+			
+			if (selectedPositions.length === 0) {
+	            alert("최소 하나 이상의 포지션을 선택해주세요.");
+	            return false;
+	        }
 			
 			$.ajax({
 		        url: "${pageContext.request.contextPath}/api/manage/recruit.do",
@@ -189,12 +194,12 @@ input[type="number"]::-webkit-inner-spin-button {
 									<td class="label">모집 포지션</td>
 									<td class="box text">
 										<div class="chip-group">
-											<div class="chip position-chip" data-value="백엔드">백엔드</div>
-											<div class="chip position-chip" data-value="프론트엔드">프론트엔드</div>
-											<div class="chip position-chip" data-value="임베디드">임베디드</div>
-											<div class="chip position-chip" data-value="QA">QA</div>
-											<div class="chip position-chip" data-value="인프라">인프라</div>
-											<div class="chip position-chip" data-value="DevOps">DevOps</div>
+											<div class="chip position-chip" data-value="BACKDEV">백엔드</div>
+											<div class="chip position-chip" data-value="FRTDEV">프론트엔드</div>
+											<div class="chip position-chip" data-value="EMBDEV">임베디드</div>
+											<div class="chip position-chip" data-value="QAENG">QA</div>
+											<div class="chip position-chip" data-value="INFENG">인프라</div>
+											<div class="chip position-chip" data-value="DEVOPENG">DevOps</div>
 											<!-- <button id="resetButton">초기화</button> -->
 										</div>
 									</td>
@@ -229,7 +234,7 @@ input[type="number"]::-webkit-inner-spin-button {
 									<td class="label">근무 요일</td>
 									<td class="box text">
 										<div class="chip-group">
-											<div class="chip work-day-chip" data-value="주5일(월-금)">주5일(월-금)</div>
+											<div class="chip work-day-chip active" data-value="주5일(월-금)">주5일(월-금)</div>
 											<div class="chip work-day-chip" data-value="주5일(스케줄)">주5일(스케줄)</div>
 											<div class="chip work-day-chip" data-value="주4일">주4일</div>
 											<!-- <button id="resetButton">초기화</button> -->

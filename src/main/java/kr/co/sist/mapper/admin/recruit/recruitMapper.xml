@@ -126,7 +126,7 @@
 	        #{title},
 	        #{content},
 	        #{headcount},
-	        #{endDate},
+	        TO_DATE(TO_CHAR(#{endDate}, 'YYYY-MM-DD'), 'YYYY-MM-DD'),
 	        #{workType},
 	        #{workDay},
 	        #{workStartTime} || '~' || #{workEndTime},

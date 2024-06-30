@@ -51,8 +51,12 @@ public class RecruitAdminController {
     @PostMapping("/api/manage/recruit.do")
     @ResponseBody
     public String addRecruit(@RequestBody RecruitAdminVO recruitVO) {
-        System.out.println(recruitVO.toString());
-        return "success";
+        String result = "success";
+        if (!recruitAdminService.addRecruit(recruitVO)) {
+            result = "fail";
+        }
+        // System.out.println(recruitVO.toString());
+        return result;
     }
 
     @DeleteMapping("/api/manage/recruit.do")
