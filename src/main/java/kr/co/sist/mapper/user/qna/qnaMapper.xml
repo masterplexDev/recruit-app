@@ -10,4 +10,20 @@
 		order by qna_num desc
 	</select>
 
+	<select id="selectOneQna" resultType="kr.co.sist.user.domain.qna.UserQnaDomain">
+		select 
+	    qna.category,
+	    qna.input_date,
+	    qna.title,
+	    qna.content,
+	    qna_answer.ans_title,
+	    qna_answer.reply_date,
+	    qna_answer.ans_content
+	from 
+	    qna
+	left join 
+	    qna_answer on qna.qna_num = qna_answer.qna_num
+	where 
+	    qna.qna_num = #{qna_num}
+	</select>	
 </mapper>

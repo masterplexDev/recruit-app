@@ -20,6 +20,14 @@ public class QnaUserDAO {
         SqlSession session = myBatis.getMyBatisHandler(false);
         List<UserQnaDomain> qnaList = null;
         qnaList = session.selectList("kr.co.sist.qna.user.selectMyQnas");
+        myBatis.closeHandler(session);
         return qnaList;
+    }
+
+    public UserQnaDomain selectOneQna(int qna_num) {
+        SqlSession session = myBatis.getMyBatisHandler(false);
+        UserQnaDomain qnaDetail = session.selectOne("kr.co.sist.qna.user.selectOneQna", qna_num);
+        myBatis.closeHandler(session);
+        return qnaDetail;
     }
 }

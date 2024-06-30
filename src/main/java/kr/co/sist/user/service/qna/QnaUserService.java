@@ -21,4 +21,11 @@ public class QnaUserService {
         qnaList = qnaUserDAO.selectMyQnas();
         return qnaList;
     }
+
+    public UserQnaDomain searchOneQna(int qna_num) {
+        UserQnaDomain oneQna = null;
+        System.out.println("oneQna:------------" + oneQna);
+        oneQna = qnaUserDAO.selectOneQna(qna_num);
+        return oneQna;
+    }
 }
