@@ -2,6 +2,7 @@ package kr.co.sist.admin.controller.resume;
 
 import java.util.List;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,7 +13,6 @@ import kr.co.sist.admin.service.resume.ResumeAdminService;
 import kr.co.sist.admin.vo.resume.SearchVO;
 
 @Controller
-@ResponseBody
 public class ResumeAdminController {
     private final ResumeAdminService resumeAdminService;
 
@@ -20,14 +20,33 @@ public class ResumeAdminController {
         this.resumeAdminService = resumeAdminService;
     }
 
+    @GetMapping("/manage/index.do")
+    public String goManage() {
+        return "/manage/index";
+    }
+
     @GetMapping("/manage/resumes.do")
+    public String showResumePage(SearchVO searchVO, Model model) {
+        model.addAttribute("searchVO", searchVO);
+        return "/manage/recruit/resume/resumes";
+    }
+
+    @GetMapping("/manage/resumes/detail.do")
+    public String showResumeDetailPage(SearchVO searchVO, Model model) {
+        model.addAttribute("searchVO", searchVO);
+        return "/manage/recruit/resume/detail";
+    }
+
+    @GetMapping("/api/manage/resumes.do")
+    @ResponseBody
     public List<ResumeListDomain> searchResumes(@ModelAttribute SearchVO searchVO) {
         List<ResumeListDomain> resumes = resumeAdminService.searchResumes(searchVO);
 
         return resumes;
     }
 
-    @GetMapping("/manage/resumes/detail.do")
+    @GetMapping("/api/manage/resumes/detail.do")
+    @ResponseBody
     public ResumeDomain searchOneResume(@RequestParam String resumeNum) {
         ResumeDomain resume = resumeAdminService.searchOneResume(resumeNum);
 

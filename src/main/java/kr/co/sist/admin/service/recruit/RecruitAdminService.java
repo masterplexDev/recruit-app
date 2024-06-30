@@ -23,9 +23,13 @@ public class RecruitAdminService {
         return recruits;
     }
 
-    public RecruitDomain searchOneRecruit(int recruitId) {
+    public RecruitDomain searchOneRecruit(int recruitNum) {
         RecruitDomain recruit = null;
-        recruit = recruitAdminDAO.selectOneRecruit(recruitId);
+        recruit = recruitAdminDAO.selectOneRecruit(recruitNum);
         return recruit;
+    }
+
+    public boolean deleteRecruit(int recruitNum) {
+        return recruitAdminDAO.deleteRecruit(recruitNum);
     }
 }

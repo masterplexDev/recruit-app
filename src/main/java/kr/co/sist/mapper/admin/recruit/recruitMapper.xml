@@ -101,4 +101,7 @@
         LEFT JOIN companyinfo ci ON r.company_code = ci.company_code
         WHERE recruit_num = #{recruitNum}
     </select>
+    <update id="deleteOneRecruit" parameterType="int">
+    	update recruit set delete_flag = 'T' where recruit_num = #{recruitNum}
+    </update>
 </mapper>
