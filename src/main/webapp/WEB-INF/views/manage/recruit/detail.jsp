@@ -22,10 +22,19 @@
 			height : 300
 		});
 
-		$(".chip").click(function() {
+		$(".position-chip").click(function() {
 			$(this).toggleClass("active");
 
-			var selectedValues = $(".chip.active").map(function() {
+			var selectedValues = $(".position-chip.active").map(function() {
+				return $(this).data("value");
+			}).get();
+		});
+
+		$(".work-day-chip").click(function() {
+			$('.work-day-chip').removeClass('active');
+			$(this).toggleClass("active");
+
+			var selectedValues = $(".work-day-chip.active").map(function() {
 				return $(this).data("value");
 			}).get();
 		});
@@ -97,7 +106,7 @@
 								<tr>
 									<td class="label">기업명</td>
 									<td class="box text">
-										<input type="text" name="name" value="" size="50" class="inputbox naver_shopping_prodName" />
+										<input type="text" name="company_name" value="" size="50" class="inputbox naver_shopping_prodName" />
 										<!-- <input type="button" id="btn-register" class="btn btn-success btn-sm" value="조회" /> -->
 										<input type="button" id="btn-register" class="btn btn-outline-success btn-sm" value="추가" />
 									</td>
@@ -105,25 +114,25 @@
 								<tr>
 									<td class="label">공고 제목</td>
 									<td class="box text">
-										<input type="text" name="name" value="" size="150" class="inputbox naver_shopping_prodName" />
+										<input type="text" name="title" value="" size="150" class="inputbox naver_shopping_prodName" />
 									</td>
 								</tr>
 								<tr>
 									<td class="label">모집 종료일</td>
 									<td class="box text">
-										<input type="text" name="name" value="" size="150" class="inputbox naver_shopping_prodName" />
+										<input type="text" name="end_date" value="" size="150" class="inputbox naver_shopping_prodName" />
 									</td>
 								</tr>
 								<tr>
 									<td class="label">모집 포지션</td>
 									<td class="box text">
 										<div class="chip-group">
-											<div class="chip" data-value="백엔드">백엔드</div>
-											<div class="chip" data-value="프론트엔드">프론트엔드</div>
-											<div class="chip" data-value="임베디드">임베디드</div>
-											<div class="chip" data-value="QA">QA</div>
-											<div class="chip" data-value="인프라">인프라</div>
-											<div class="chip" data-value="DevOps">DevOps</div>
+											<div class="chip position-chip" data-value="백엔드">백엔드</div>
+											<div class="chip position-chip" data-value="프론트엔드">프론트엔드</div>
+											<div class="chip position-chip" data-value="임베디드">임베디드</div>
+											<div class="chip position-chip" data-value="QA">QA</div>
+											<div class="chip position-chip" data-value="인프라">인프라</div>
+											<div class="chip position-chip" data-value="DevOps">DevOps</div>
 											<!-- <button id="resetButton">초기화</button> -->
 										</div>
 									</td>
@@ -131,7 +140,7 @@
 								<tr>
 									<td class="label">모집 인원</td>
 									<td class="box text">
-										<input type="text" name="name" value="" size="10" class="inputbox naver_shopping_prodName" /> 명
+										<input type="text" name="headcount" value="" size="10" class="inputbox naver_shopping_prodName" /> 명
 									</td>
 								</tr>
 							</tbody>
@@ -149,18 +158,18 @@
 								<tr>
 									<td class="label">고용형태</td>
 									<td class="box text">
-										<input type="radio" name="school" value="정규직" /><label>정규직</label>
-										<input type="radio" name="school" value="계약직" /><label>계약직</label>
-										<input type="radio" name="school" value="무기계약직" /><label>무기계약직</label>
+										<input type="radio" name="work_type" value="정규직" /><label>정규직</label>
+										<input type="radio" name="work_type" value="계약직" /><label>계약직</label>
+										<input type="radio" name="work_type" value="무기계약직" /><label>무기계약직</label>
 									</td>
 								</tr>
 								<tr>
 									<td class="label">근무 요일</td>
 									<td class="box text">
 										<div class="chip-group">
-											<div class="chip" data-value="주5일(월-금)">주5일(월-금)</div>
-											<div class="chip" data-value="주5일(스케줄)">주5일(스케줄)</div>
-											<div class="chip" data-value="주4일">주4일</div>
+											<div class="chip work-day-chip" data-value="주5일(월-금)">주5일(월-금)</div>
+											<div class="chip work-day-chip" data-value="주5일(스케줄)">주5일(스케줄)</div>
+											<div class="chip work-day-chip" data-value="주4일">주4일</div>
 											<!-- <button id="resetButton">초기화</button> -->
 										</div>
 									</td>
@@ -176,17 +185,17 @@
 								<tr>
 									<td class="label">근무지</td>
 									<td class="box text">
-										<input type="text" name="name" value="" size="50" class="inputbox naver_shopping_prodName" />
+										<input type="text" name="work_place" value="" size="50" class="inputbox naver_shopping_prodName" />
 									</td>
 								</tr>
 								<tr>
 									<td class="label">급여</td>
 									<td class="box text">
-										<input type="radio" name="school" value="일급" /><label>일급</label>
-										<input type="radio" name="school" value="주급" /><label>주급</label>
-										<input type="radio" name="school" value="월급" /><label>월급</label>
-										<input type="radio" name="school" value="연봉" /><label>연봉</label>
-										<input type="text" name="name" value="" size="10" class="inputbox naver_shopping_prodName" /> 만원
+										<input type="radio" name="sal_type" value="일급" /><label>일급</label>
+										<input type="radio" name="sal_type" value="주급" /><label>주급</label>
+										<input type="radio" name="sal_type" value="월급" /><label>월급</label>
+										<input type="radio" name="sal_type" value="연봉" /><label>연봉</label>
+										<input type="text" name="sal" value="" size="10" class="inputbox naver_shopping_prodName" /> 만원
 									</td>
 								</tr>
 							</tbody>
@@ -204,10 +213,10 @@
 								<tr>
 									<td class="label">경력</td>
 									<td class="box text">
-										<input type="radio" name="career" value="경력무관" /><label>경력무관</label>
-										<input type="radio" name="career" value="신입" /><label>신입</label>
-										<input type="radio" name="career" value="신입" /><label>경력 (</label>
-										<input type="text" name="name" value="" size="5" class="inputbox naver_shopping_prodName" /> 년)
+										<input type="radio" name="career_type" value="경력무관" /><label>경력무관</label>
+										<input type="radio" name="career_type" value="신입" /><label>신입</label>
+										<input type="radio" name="career_type" value="신입" /><label>경력 (</label>
+										<input type="text" name="career_years" value="" size="5" class="inputbox naver_shopping_prodName" /> 년)
 									</td>
 								</tr>
 								<tr>
