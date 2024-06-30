@@ -1,6 +1,8 @@
 package kr.co.sist.user.dao.review;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -34,6 +36,28 @@ public class UserReviewDAO {
         return result;
     }
     
+    public List<ReviewVO> selectReviewScreenOutput(String companyCode, int offset) {
+        SqlSession ss = myBatis.getMyBatisHandler(false);
+        Map<String, Object> params = new HashMap<>();
+        params.put("companyCode", companyCode);
+        params.put("offset", offset);
+        List<ReviewVO> result = ss.selectList("kr.co.sist.user.mapper.review.ReviewMapper.selectReviewScreenOutput", params);
+        myBatis.closeHandler(ss);
+        return result;
+    }
+    
+    // 페이지네이션
+    public List<ReviewVO> selectReviewScreenOutputWithPagination(String companyCode, int offset) {
+        SqlSession ss = myBatis.getMyBatisHandler(false);
+        Map<String, Object> params = new HashMap<>();
+        params.put("companyCode", companyCode);
+        params.put("offset", offset);
+        List<ReviewVO> result = ss.selectList("kr.co.sist.user.mapper.review.ReviewMapper.selectReviewScreenOutputWithPagination", params);
+        myBatis.closeHandler(ss);
+        return result;
+    }
+    
+    
  // 개별 리뷰 통계 값 가져오기
     public ReviewQuestionsVO selectReviewQuestions(int reviewNum) {
         SqlSession ss = myBatis.getMyBatisHandler(false);
@@ -42,6 +66,9 @@ public class UserReviewDAO {
         myBatis.closeHandler(ss);
         return result;
     }
+    
+   
+    
 
     //리뷰 설문 작성
     public int insertReviewSurvey(ReviewSurveyDomain reviewSurveyDomain) {

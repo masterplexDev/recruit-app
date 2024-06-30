@@ -29,8 +29,10 @@ public class ReviewController {
     private ReviewService reviewService;
 
     @GetMapping("/review/reviewResult.do")
-    public String reviewScreen(@RequestParam(value = "companyCode", defaultValue = "comp_0001") String companyCode, Model model) {
-        List<ReviewVO> reviewScreenOutput = reviewService.getReviewScreenOutput(companyCode);
+    public String reviewScreen(@RequestParam(value = "companyCode", defaultValue = "comp_0001") String companyCode,
+                               @RequestParam(value = "page", defaultValue = "0") int page, Model model) {
+        int offset = page * 3;
+        List<ReviewVO> reviewScreenOutput = reviewService.getReviewScreenOutputWithPagination(companyCode, offset);
 
         // 각 리뷰에 대해 개별적인 리뷰 통계 값을 가져와 모델에 추가
         Map<Integer, ReviewQuestionsVO> reviewQuestionsMap = new HashMap<>();
@@ -41,11 +43,32 @@ public class ReviewController {
 
         model.addAttribute("reviewScreenOutput", reviewScreenOutput);
         model.addAttribute("reviewQuestionsMap", reviewQuestionsMap);
+        model.addAttribute("companyCode", companyCode); // 회사 코드를 뷰에 전달
+        model.addAttribute("currentPage", page); // 현재 페이지 번호 전달
         return "review/reviewResult";
     }
-    
-    
 
+    //페이지네이션 
+    @GetMapping("/review/loadMoreReviews.do")
+    public String loadMoreReviews(@RequestParam("page") int page, @RequestParam("companyCode") String companyCode, Model model) {
+        int offset = page * 3;
+        List<ReviewVO> reviewScreenOutput = reviewService.getReviewScreenOutputWithPagination(companyCode, offset);
+
+        // 각 리뷰에 대해 개별적인 리뷰 통계 값을 가져와 모델에 추가
+        Map<Integer, ReviewQuestionsVO> reviewQuestionsMap = new HashMap<>();
+        for (ReviewVO review : reviewScreenOutput) {
+            ReviewQuestionsVO reviewQuestions = reviewService.getReviewQuestions(review.getReviewNum());
+            reviewQuestionsMap.put(review.getReviewNum(), reviewQuestions);
+        }
+
+        model.addAttribute("reviewScreenOutput", reviewScreenOutput);
+        model.addAttribute("reviewQuestionsMap", reviewQuestionsMap);
+        return "review/reviewListFragment"; // 추가 리뷰를 위한 프래그먼트 뷰
+    }
+   
+    
+    
+    // 설문 조사 페이지 이동
     @GetMapping("/review/reviewSurvey.do")
     public String reviewSurveyForm() {
         return "review/reviewSurvey";

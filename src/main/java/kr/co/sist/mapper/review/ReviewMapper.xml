@@ -47,6 +47,67 @@
         R.INPUT_DATE DESC
 </select>
 
+<!-- 페이지 네이션 -->
+  <select id="selectReviewScreenOutputWithPagination" parameterType="map" resultType="kr.co.sist.user.vo.review.ReviewVO">
+    -- 리뷰 화면 출력 (페이지네이션 포함)
+    WITH SurveyStats AS (
+        SELECT
+            RS.COMPANY_CODE AS companyCode,
+            CI.COMPANY_NAME AS companyName,
+            COUNT(RS.SURVEY_NUM) AS totalSurveys,
+            AVG(CASE RS.QUESTION1 WHEN 2 THEN 5 WHEN 1 THEN 2.5 ELSE 0 END) AS avgQuestion1,
+            AVG(CASE RS.QUESTION2 WHEN 2 THEN 5 WHEN 1 THEN 2.5 ELSE 0 END) AS avgQuestion2,
+            AVG(CASE RS.QUESTION3 WHEN 2 THEN 5 WHEN 1 THEN 2.5 ELSE 0 END) AS avgQuestion3,
+            AVG(CASE RS.QUESTION4 WHEN 2 THEN 5 WHEN 1 THEN 2.5 ELSE 0 END) AS avgQuestion4
+        FROM
+            REVIEW_SURVEY RS
+        JOIN
+            COMPANYINFO CI ON RS.COMPANY_CODE = CI.COMPANY_CODE
+        WHERE
+            RS.COMPANY_CODE = #{companyCode}
+        GROUP BY
+            RS.COMPANY_CODE,
+            CI.COMPANY_NAME
+    )
+    SELECT
+        S.companyCode,
+        S.companyName,
+        S.totalSurveys,
+        S.avgQuestion1,
+        S.avgQuestion2,
+        S.avgQuestion3,
+        S.avgQuestion4,
+        R.REVIEW_NUM AS reviewNum,
+        R.TITLE AS title,
+        R.CONTENT AS content,
+        R.USER_ID AS userId,
+        R.INPUT_DATE AS inputDate,
+        R.RECOMMEND AS recommend
+    FROM
+        SurveyStats S
+    LEFT JOIN
+        REVIEW R ON S.companyCode = R.COMPANY_CODE
+    ORDER BY
+        R.INPUT_DATE DESC
+    OFFSET #{offset} ROWS FETCH NEXT 3 ROWS ONLY
+  </select>
+
+  <insert id="insertReview">
+    -- 리뷰 작성
+    INSERT INTO REVIEW (
+        REVIEW_NUM, COMPANY_CODE, USER_ID, TITLE, CONTENT, INPUT_DATE, RECOMMEND, DELETE_FLAG
+    ) VALUES (
+        REVIEW_SEQ.NEXTVAL, -- 리뷰 번호는 시퀀스를 통해 자동 증가
+        #{companyCode}, -- 기업 코드 (화면에서 입력받은 값)
+        #{userId}, -- 사용자 ID (화면에서 입력받은 값)
+        #{title}, -- 리뷰 제목 (화면에서 입력받은 값)
+        #{content}, -- 리뷰 내용 (화면에서 입력받은 값)
+        SYSDATE, -- 작성일은 현재 날짜로 설정
+        0, -- 추천수 초기값은 0
+        'N' -- 삭제 플래그 초기값은 'N'
+    )
+  </insert>
+
   <insert id="insertReviewSurvey" parameterType="kr.co.sist.user.domain.review.ReviewSurveyDomain">
     -- 리뷰 설문
       INSERT INTO REVIEW_SURVEY (SURVEY_NUM, REVIEW_NUM, USER_ID, COMPANY_CODE, QUESTION1, QUESTION2, QUESTION3, QUESTION4)
@@ -95,22 +156,8 @@
     ) RS
     WHERE ROWNUM = 1
   </select>
-
-  <insert id="insertReview">
-    -- 리뷰 작성
-    INSERT INTO REVIEW (
-        REVIEW_NUM, COMPANY_CODE, USER_ID, TITLE, CONTENT, INPUT_DATE, RECOMMEND, DELETE_FLAG
-    ) VALUES (
-        REVIEW_SEQ.NEXTVAL, -- 리뷰 번호는 시퀀스를 통해 자동 증가
-        #{companyCode}, -- 기업 코드 (화면에서 입력받은 값)
-        #{userId}, -- 사용자 ID (화면에서 입력받은 값)
-        #{title}, -- 리뷰 제목 (화면에서 입력받은 값)
-        #{content}, -- 리뷰 내용 (화면에서 입력받은 값)
-        SYSDATE, -- 작성일은 현재 날짜로 설정
-        0, -- 추천수 초기값은 0
-        'N' -- 삭제 플래그 초기값은 'N'
-    )
-  </insert>
+  
+  
   
   <!--  admin -->
   
