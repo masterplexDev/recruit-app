@@ -28,6 +28,7 @@
 			<a href="http://localhost/recruit-app/companyinfo/companyinfoList.do">기업리스트</a>
 			<a href="http://localhost/recruit-app/companyinfo/search_test.do">테스트</a>
 			<a href="http://localhost/recruit-app/companyinfo/companyinfoDetail.do?companyCode=comp_0002">기업상세보기</a>
+			<a href="http://localhost/recruit-app/companyinfo/adminCompanyinfoList.do">관리자 기업리스트</a>
 			<a href="http://localhost/recruit-app/main/main.do">| 메인 페이지 |</a><br>
 			<a href="http://localhost/recruit-app/review/reviewResult.do"> 리뷰 페이지 |</a>
 			<a href="http://localhost/recruit-app/review/reviewSurvey.do"> 리뷰 설문 |</a>

@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import kr.co.sist.user.domain.qna.UserQnaDomain;
 import kr.co.sist.user.service.qna.QnaUserService;
+import kr.co.sist.user.vo.qna.UserQnaVO;
 
 @Controller
 public class QnaUserController {
@@ -17,10 +18,19 @@ public class QnaUserController {
         this.qnaUserService = qnaUserService;
     }
 
-    @GetMapping("/user/mypage/qna/mypageQnaList.do")
+    @GetMapping("/user/mypage/qna/mypageQNAList.do")
     public String searchMyQnaList(Model model) {
-        List<UserQnaDomain> mypageQnaList = qnaUserService.searchMyQnaList();
-        model.addAttribute("mypageQnaList", mypageQnaList);
-        return "user/mypage/qna/mypageQnaList";
+        List<UserQnaDomain> qnaList = qnaUserService.searchMyQnaList();
+        model.addAttribute("qnaList", qnaList);
+        return "user/mypage/qna/mypageQNAList";
+    }
+
+    @GetMapping("/user/mypage/qna/mypageQNADetail.do")
+    public String searchOneQna(UserQnaVO qVO, Model model) {
+        int qna_num = qVO.getQna_num();
+        UserQnaDomain qnaDetail = qnaUserService.searchOneQna(qna_num);
+        System.out.println("---------" + qVO.getQna_num());
+        model.addAttribute("qnaDetail", qnaDetail);
+        return "user/mypage/qna/mypageQNADetail";
     }
 }

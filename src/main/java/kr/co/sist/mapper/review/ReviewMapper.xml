@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.sist.user.mapper.review.ReviewMapper">
+
   <select id="selectReviewScreenOutput" parameterType="String" resultType="kr.co.sist.user.vo.review.ReviewVO">
     -- 리뷰 화면 출력
     WITH SurveyStats AS (
@@ -32,10 +33,11 @@
         S.avgQuestion2,
         S.avgQuestion3,
         S.avgQuestion4,
+        R.REVIEW_NUM AS reviewNum, -- reviewNum 추가
         R.TITLE AS title,
         R.CONTENT AS content,
-        R.USER_ID AS userId,     -- 별칭 추가
-        R.INPUT_DATE AS inputDate, -- 별칭 추가
+        R.USER_ID AS userId,
+        R.INPUT_DATE AS inputDate,
         R.RECOMMEND AS recommend
     FROM
         SurveyStats S
@@ -43,7 +45,7 @@
         REVIEW R ON S.companyCode = R.COMPANY_CODE
     ORDER BY
         R.INPUT_DATE DESC
-  </select>
+</select>
 
   <insert id="insertReviewSurvey" parameterType="kr.co.sist.user.domain.review.ReviewSurveyDomain">
     -- 리뷰 설문
@@ -52,26 +54,47 @@
   </insert>
   
  <!-- 리뷰 추천 -->
-<update id="updateRecommend" parameterType="kr.co.sist.user.vo.review.ReviewVO">
+<update id="updateRecommend" parameterType="kr.co.sist.user.vo.review.RecommendVO">
     UPDATE REVIEW
     SET RECOMMEND = RECOMMEND + 1
     WHERE REVIEW_NUM = #{reviewNum}
 </update>
 
 <!-- 추천 기록 추가 -->
-<insert id="insertReviewRecommend" parameterType="kr.co.sist.user.vo.review.ReviewVO">
+<insert id="insertReviewRecommend" parameterType="kr.co.sist.user.vo.review.RecommendVO">
     INSERT INTO REVIEW_RECOMMEND (USER_ID, REVIEW_NUM)
     VALUES (#{userId}, #{reviewNum})
 </insert>
 
 <!-- 이미 추천했는지 확인 -->
-<select id="checkIfRecommended" parameterType="kr.co.sist.user.vo.review.ReviewVO" resultType="int">
+<select id="checkIfRecommended" parameterType="kr.co.sist.user.vo.review.RecommendVO" resultType="int">
     SELECT COUNT(*)
     FROM REVIEW_RECOMMEND
     WHERE USER_ID = #{userId}
       AND REVIEW_NUM = #{reviewNum}
 </select>
 
+<!-- 특정 리뷰의 질문들 가져오기 -->
+  <select id="selectReviewQuestions" parameterType="int" resultType="kr.co.sist.user.vo.review.ReviewQuestionsVO">
+     SELECT
+        CASE RS.QUESTION1 WHEN 2 THEN 5 WHEN 1 THEN 2.5 ELSE 0 END AS question1,
+        CASE RS.QUESTION2 WHEN 2 THEN 5 WHEN 1 THEN 2.5 ELSE 0 END AS question2,
+        CASE RS.QUESTION3 WHEN 2 THEN 5 WHEN 1 THEN 2.5 ELSE 0 END AS question3,
+        CASE RS.QUESTION4 WHEN 2 THEN 5 WHEN 1 THEN 2.5 ELSE 0 END AS question4
+    FROM (
+        SELECT DISTINCT
+            REVIEW_NUM,
+            QUESTION1,
+            QUESTION2,
+            QUESTION3,
+            QUESTION4
+        FROM
+            REVIEW_SURVEY
+        WHERE
+            REVIEW_NUM = #{reviewNum}
+    ) RS
+    WHERE ROWNUM = 1
+  </select>
 
   <insert id="insertReview">
     -- 리뷰 작성

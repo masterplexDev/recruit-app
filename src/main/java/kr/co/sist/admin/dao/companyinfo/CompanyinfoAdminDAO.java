@@ -1,5 +1,58 @@
 package kr.co.sist.admin.dao.companyinfo;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import org.apache.ibatis.exceptions.PersistenceException;
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import kr.co.sist.domain.companyinfo.SearchDomain;
+import kr.co.sist.properties.MyBatisConfig;
+import kr.co.sist.vo.companyinfo.SearchVO;
+
+@Component
 public class CompanyinfoAdminDAO {
 
+    @Autowired(required=false)
+    private MyBatisConfig mbConfig;
+
+    public List<SearchDomain> selectAllCompanyinfo()throws PersistenceException{
+        System.out.println("이건 다오야");
+        SqlSession ss=mbConfig.getMyBatisHandler(false);
+        List<SearchDomain> list= new ArrayList<SearchDomain>();
+        list=ss.selectList("kr.co.sist.admin.companyinfo.selectAllCompanyinfo");
+        mbConfig.closeHandler(ss);
+        System.out.println("값 잘 받아옴?");
+        return list;
+    }
+    
+    public List<SearchDomain> selectCompanyinfoList(SearchVO sVO)throws PersistenceException{
+        List<SearchDomain> list=null;
+        SqlSession ss=mbConfig.getMyBatisHandler(false);
+        list=ss.selectList("kr.co.sist.admin.companyinfo.selectAllCompanyinfo", sVO);
+        mbConfig.closeHandler(ss);
+        
+        return list;
+    }
+    
+    public List<SearchDomain> selectCompanyinfo(Map<String, Object> params)throws PersistenceException{
+        List<SearchDomain> list=null;
+        SqlSession ss=mbConfig.getMyBatisHandler(false);
+        list=ss.selectList("kr.co.sist.admin.companyinfo.selectCompanyinfo", params);
+        mbConfig.closeHandler(ss);
+        System.out.println("이것은 params야 : "+params);
+        System.out.println("이것은 list야 : "+list);
+        return list;
+    }
+
+    public List<SearchDomain> selectCompanyinfoDetail(String companyCode)throws PersistenceException{
+        List<SearchDomain> list=null;
+        SqlSession ss=mbConfig.getMyBatisHandler(false);
+        list=ss.selectList("kr.co.sist.admin.companyinfo.selectCompanyinfoDetail", companyCode);
+        mbConfig.closeHandler(ss);
+        
+        return list;
+    }
+    
 }

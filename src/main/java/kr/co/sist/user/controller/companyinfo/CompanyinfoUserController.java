@@ -19,12 +19,6 @@ import kr.co.sist.vo.companyinfo.SearchVO;
 public class CompanyinfoUserController {
      @Autowired(required=false)
      private CompanyinfoUserService companyinfoUserService;
-//    private final CompanyinfoUserService companyinfoUserService;
-//
-//    @Autowired(required = false)
-//    public CompanyinfoUserController(CompanyinfoUserService companyinfoUserService) {
-//        this.companyinfoUserService = companyinfoUserService;
-//    }
 
     @GetMapping("/companyinfo/companyinfoList.do")
     public String searchAllCompanyinfo(Model model) {
@@ -72,8 +66,4 @@ public class CompanyinfoUserController {
 //        return "companyinfo/user_company_detail";
     }
 
-//    @GetMapping("/recruit.do")
-//    public RecruitDomain searchOneRecruit(@RequestParam("id") int recruitId) {
-//        return recruitUserService.searchOneRecruit(recruitId);
-//    }
 }
