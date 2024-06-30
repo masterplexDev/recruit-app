@@ -1,14 +1,18 @@
 package kr.co.sist.user.dao.review;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import kr.co.sist.properties.MyBatisConfig;
+import kr.co.sist.user.domain.review.ReviewDomain;
 import kr.co.sist.user.domain.review.ReviewSurveyDomain;
 import kr.co.sist.user.service.review.ReviewService;
+import kr.co.sist.user.vo.review.CompanyInfoVO;
 import kr.co.sist.user.vo.review.RecommendVO;
 import kr.co.sist.user.vo.review.ReviewQuestionsVO;
 import kr.co.sist.user.vo.review.ReviewVO;
@@ -34,6 +38,28 @@ public class UserReviewDAO {
         return result;
     }
     
+    public List<ReviewVO> selectReviewScreenOutput(String companyCode, int offset) {
+        SqlSession ss = myBatis.getMyBatisHandler(false);
+        Map<String, Object> params = new HashMap<>();
+        params.put("companyCode", companyCode);
+        params.put("offset", offset);
+        List<ReviewVO> result = ss.selectList("kr.co.sist.user.mapper.review.ReviewMapper.selectReviewScreenOutput", params);
+        myBatis.closeHandler(ss);
+        return result;
+    }
+    
+    // 페이지네이션
+    public List<ReviewVO> selectReviewScreenOutputWithPagination(String companyCode, int offset) {
+        SqlSession ss = myBatis.getMyBatisHandler(false);
+        Map<String, Object> params = new HashMap<>();
+        params.put("companyCode", companyCode);
+        params.put("offset", offset);
+        List<ReviewVO> result = ss.selectList("kr.co.sist.user.mapper.review.ReviewMapper.selectReviewScreenOutputWithPagination", params);
+        myBatis.closeHandler(ss);
+        return result;
+    }
+    
+    
  // 개별 리뷰 통계 값 가져오기
     public ReviewQuestionsVO selectReviewQuestions(int reviewNum) {
         SqlSession ss = myBatis.getMyBatisHandler(false);
@@ -42,6 +68,9 @@ public class UserReviewDAO {
         myBatis.closeHandler(ss);
         return result;
     }
+    
+   
+    
 
     //리뷰 설문 작성
     public int insertReviewSurvey(ReviewSurveyDomain reviewSurveyDomain) {
@@ -88,5 +117,35 @@ public class UserReviewDAO {
         }
     }
     
+    //리뷰 화면 불러오기
+    public CompanyInfoVO selectCompanyInfo(String companyCode) {
+        SqlSession ss = myBatis.getMyBatisHandler(true);
+        System.out.println("DAO Layer - companyCode: " + companyCode);
+        CompanyInfoVO companyInfo = ss.selectOne("kr.co.sist.user.mapper.review.ReviewMapper.selectCompanyInfo", companyCode);
+        myBatis.closeHandler(ss);
+        System.out.println("DAO Layer - companyInfo: " + (companyInfo != null ? companyInfo.toString() : "null"));
+        return companyInfo;
+    }
+    
+    //리뷰 작성
+    public void insertReview(ReviewDomain reviewDomain) {
+        SqlSession ss = myBatis.getMyBatisHandler(true);
+        try {
+            ss.insert("kr.co.sist.user.mapper.review.ReviewMapper.insertReview", reviewDomain);
+            int reviewNum = ss.selectOne("kr.co.sist.user.mapper.review.ReviewMapper.getLatestReviewNum", reviewDomain);
+            reviewDomain.setReviewNum(reviewNum);
+        } finally {
+            myBatis.closeHandler(ss);
+        }
+    }
+    
+    //리뷰 넘버 가져오기
+    public int getReviewNumByDomain(ReviewDomain reviewDomain) {
+        SqlSession ss = myBatis.getMyBatisHandler(true);
+        int reviewNum = ss.selectOne("kr.co.sist.user.mapper.review.ReviewMapper.getReviewNumByDomain", reviewDomain);
+        myBatis.closeHandler(ss);
+        return reviewNum;
+    }
+   
 
 }

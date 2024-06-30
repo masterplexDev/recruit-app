@@ -78,10 +78,10 @@
         <main class="JobsFeed_Jobsfeed__DpeV9">  
             <section class="Section_Section__P1hhc">
            <form action="${pageContext.request.contextPath}/review/reviewSurvey.do" method="post">
-                    <h1>설문조사</h1>
-                    <input type="hidden" name="companyCode" value="comp_0001">
-                    <input type="hidden" name="userId" value="lee@daum.net">
-                    <input type="hidden" name="reviewNum" value="1">
+    <h1>설문조사</h1>
+    <input type="hidden" name="companyCode" value="${companyCode}">
+    <input type="hidden" name="userId" value="${userId}">
+    <input type="hidden" name="reviewNum" value="${reviewNum}">
                     <div class="item">
                         <label for="question1" style="margin-bottom: 20px; display: block;">1. 이직 시 나의 커리어에 도움이 될까요?</label>
                         <div class="options">

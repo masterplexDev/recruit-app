@@ -229,74 +229,75 @@ padding: 20px;
 </div>
           
           
-         <article id="viewReviewsList" class="article_ty1"> 
-    <div class="section_wrap"> 
-        <div class="section_body"> 
-            <div class="section_group"> 
+         <article id="viewReviewsList" class="article_ty1">
+    <div class="section_wrap">
+        <div class="section_body">
+            <!-- 기존 리뷰 리스트를 감싸는 div 추가 -->
+            <div class="section_group" id="reviewListContainer">
                 <c:forEach var="review" items="${reviewScreenOutput}">
-                    <section class="content_ty4 video_ad_content" data-content_type="review" data-content_id="${review.reviewNum}" data-company_id="${review.companyCode}"> 
-                        <div class="content_wrap"> 
+                    <section class="content_ty4 video_ad_content" data-content_type="review" data-content_id="${review.reviewNum}" data-company_id="${review.companyCode}">
+                        <div class="content_wrap">
                             <div class="content_top_ty2">
                                 <span class="ico_pers"></span>
-                                <span class="txt1">${review.userId}</span> 
-                                <span class="vbar">|</span> 
-                                <span class="txt1"><fmt:formatDate value="${review.inputDate}" pattern="yyyy-MM-dd"/></span> 
-                            </div> 
-                            <div class="ctbody_col2"> 
-                                  <!-- 개별 리뷰 통계 값 그래프 -->
+                                <span class="txt1">${review.userId}</span>
+                                <span class="vbar">|</span>
+                                <span class="txt1"><fmt:formatDate value="${review.inputDate}" pattern="yyyy-MM-dd"/></span>
+                            </div>
+                            <div class="ctbody_col2">
+                                <!-- 개별 리뷰 통계 값 그래프 -->
                                 <c:set var="reviewQuestions" value="${reviewQuestionsMap[review.reviewNum]}"/>
-                                <dl class="ctbody_lft"> 
+                                <dl class="ctbody_lft">
                                     <dt class="df_tit">
                                         커리어 (개별)
-                                    </dt> 
-                                    <dd class="blo_box1"> 
-                                        <div class="us_bl_s"> 
-                                            <div class="bl_score" style="width:${reviewQuestions.question1 * 20}%;"></div> 
-                                        </div> 
-                                    </dd> 
+                                    </dt>
+                                    <dd class="blo_box1">
+                                        <div class="us_bl_s">
+                                            <div class="bl_score" style="width:${reviewQuestions.question1 * 20}%;"></div>
+                                        </div>
+                                    </dd>
                                     <dt class="df_tit">
                                         휴가 및 연차 (개별)
-                                    </dt> 
-                                    <dd class="blo_box1"> 
-                                        <div class="us_bl_s"> 
-                                            <div class="bl_score" style="width:${reviewQuestions.question2 * 20}%;"></div> 
-                                        </div> 
-                                    </dd> 
+                                    </dt>
+                                    <dd class="blo_box1">
+                                        <div class="us_bl_s">
+                                            <div class="bl_score" style="width:${reviewQuestions.question2 * 20}%;"></div>
+                                        </div>
+                                    </dd>
                                     <dt class="df_tit">
                                         연봉 (개별)
-                                    </dt> 
-                                    <dd class="blo_box1"> 
-                                        <div class="us_bl_s"> 
-                                            <div class="bl_score" style="width:${reviewQuestions.question3 * 20}%;"></div> 
-                                        </div> 
-                                    </dd> 
+                                    </dt>
+                                    <dd class="blo_box1">
+                                        <div class="us_bl_s">
+                                            <div class="bl_score" style="width:${reviewQuestions.question3 * 20}%;"></div>
+                                        </div>
+                                    </dd>
                                     <dt class="df_tit">
                                         복지 혜택 (개별)
-                                    </dt> 
-                                    <dd class="blo_box1"> 
-                                        <div class="us_bl_s"> 
-                                            <div class="bl_score" style="width:${reviewQuestions.question4 * 20}%;"></div> 
-                                        </div> 
-                                    </dd> 
-                                </dl> 
-                                
-                                <div class="content_body_ty1"> 
-                                    <div class="us_label_wrap"> 
-                                        <h2 class="us_label "> <span class="us_label_box">BEST</span> ${review.title} </h2> 
-                                    </div> 
-                                    <dl class="tc_list"> 
+                                    </dt>
+                                    <dd class="blo_box1">
+                                        <div class="us_bl_s">
+                                            <div class="bl_score" style="width:${reviewQuestions.question4 * 20}%;"></div>
+                                        </div>
+                                    </dd>
+                                </dl>
+
+                                <div class="content_body_ty1">
+                                    <div class="us_label_wrap">
+                                        <h2 class="us_label "> <span class="us_label_box">BEST</span> ${review.title} </h2>
+                                    </div>
+                                    <dl class="tc_list">
                                         <dd>
                                             ${review.content}
                                         </dd>
-                                    </dl> 
-                                    <div style="display: flex; justify-content: flex-end; margin-top: 20px;"> 
+                                    </dl>
+                                    <div style="display: flex; justify-content: flex-end; margin-top: 20px;">
                                         <form action="${pageContext.request.contextPath}/review/updateRecommend.do" method="post" onsubmit="return checkLoginAndSubmit(this);">
                                             <input type="hidden" name="reviewNum" value="${review.reviewNum}">
                                             <input type="hidden" name="userId" value="${sessionScope.userId}"> <!-- 유저 ID를 넘기도록 설정 -->
                                             <button type="submit" class="btn btn-dark">추천 ${review.recommend}</button>
                                         </form>
                                     </div>
-                                </div> 
+                                </div>
 
                                 <script>
                                     function checkLoginAndSubmit(form) {
@@ -310,23 +311,54 @@ padding: 20px;
                                     }
                                 </script>
                                 <script>
-                                  // 추천 메시지 표시 (서버에서 전달된 메시지 사용)
-                                  var recommendMsg = '${recommendMsg}';
-                                  if (recommendMsg) {
-                                    alert(recommendMsg);
-                                  }
+                                    // 추천 메시지 표시 (서버에서 전달된 메시지 사용)
+                                    var recommendMsg = '${recommendMsg}';
+                                    if (recommendMsg) {
+                                        alert(recommendMsg);
+                                    }
                                 </script>
-                            </div> 
-                        </div> 
-                    </section> 
+                            </div>
+                        </div>
+                    </section>
                 </c:forEach>
-                <div style="height:50px; width:100%; text-align:center;font-size:18px; padding-top:5px">
-                    <a href="#" id="load">더 보기 +</a>
-                </div>
-            </div> 
-        </div> 
-    </div> 
+            </div>
+            <!-- 더 보기 버튼 -->
+            <div style="height:50px; width:100%; text-align:center;font-size:18px; padding-top:5px">
+                <a href="#" id="loadMore" data-page="1">더 보기 +</a>
+            </div>
+        </div>
+    </div>
 </article>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#loadMore').on('click', function(e) {
+            e.preventDefault();
+            var page = $(this).data('page');
+            loadMoreReviews(page);
+        });
+
+        function loadMoreReviews(page) {
+            $.ajax({
+                url: '${pageContext.request.contextPath}/review/loadMoreReviews.do',
+                type: 'GET',
+                data: {
+                    page: page,
+                    companyCode: '${companyCode}'
+                },
+                success: function(response) {
+                    $('#reviewListContainer').append(response);
+                    $('#loadMore').data('page', page + 1);
+                },
+                error: function() {
+                    alert('리뷰를 불러오는 중 오류가 발생했습니다.');
+                }
+            });
+        }
+    });
+</script>
+
           
            
          </div> 

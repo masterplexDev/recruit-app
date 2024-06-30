@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import kr.co.sist.properties.MyBatisConfig;
 import kr.co.sist.user.dao.review.UserReviewDAO;
+import kr.co.sist.user.domain.review.ReviewDomain;
 import kr.co.sist.user.domain.review.ReviewSurveyDomain;
+import kr.co.sist.user.vo.review.CompanyInfoVO;
 import kr.co.sist.user.vo.review.RecommendVO;
 import kr.co.sist.user.vo.review.ReviewQuestionsVO;
 import kr.co.sist.user.vo.review.ReviewVO;
@@ -30,10 +32,20 @@ public class ReviewService {
     @Autowired(required = false)
     private UserReviewDAO userReviewDAO;
 
+    //리뷰 화면 출력
     public List<ReviewVO> getReviewScreenOutput(String companyCode) {
         return userReviewDAO.selectReviewScreenOutput(companyCode);
     }
+    public List<ReviewVO> getReviewScreenOutput(String companyCode, int offset) {
+        return userReviewDAO.selectReviewScreenOutput(companyCode, offset);
+    }
+    
+  //페이지 네이션
+    public List<ReviewVO> getReviewScreenOutputWithPagination(String companyCode, int offset) {
+        return userReviewDAO.selectReviewScreenOutputWithPagination(companyCode, offset);
+    }
 
+    //설문 조사 값 추가
     public void insertReviewSurvey(ReviewSurveyDomain reviewSurveyDomain) {
         userReviewDAO.insertReviewSurvey(reviewSurveyDomain);
     }
@@ -42,6 +54,9 @@ public class ReviewService {
     public ReviewQuestionsVO getReviewQuestions(int reviewNum) {
         return userReviewDAO.selectReviewQuestions(reviewNum);
     }
+    
+    
+    
 
     
  // 추천수 증가 (이미 추천 여부 확인 로직 제거)
@@ -67,4 +82,21 @@ public class ReviewService {
         return userReviewDAO.checkIfRecommended(recommendVO);
     }
     
+    //리뷰 화면 불러오기
+    public CompanyInfoVO getCompanyInfo(String companyCode) {
+        System.out.println("Service Layer - companyCode: " + companyCode);
+        CompanyInfoVO companyInfo = userReviewDAO.selectCompanyInfo(companyCode);
+        System.out.println("Service Layer - companyInfo: " + (companyInfo != null ? companyInfo.toString() : "null"));
+        return companyInfo;
+    }
+    
+    //리뷰 작성 처리
+    public void insertReview(ReviewDomain reviewDomain) {
+        userReviewDAO.insertReview(reviewDomain);
+    }
+    
+    //리뷰 넘버 가져오기
+    public int getReviewNumByDomain(ReviewDomain reviewDomain) {
+        return userReviewDAO.getReviewNumByDomain(reviewDomain);
+    }
 }
