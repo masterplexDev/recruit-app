@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import kr.co.sist.admin.domain.recruit.RecruitDomain;
 import kr.co.sist.admin.vo.recruit.SearchVO;
+import kr.co.sist.admin.vo.resume.RecruitAdminVO;
 import kr.co.sist.exceptions.UnexpectedRowCountException;
 import kr.co.sist.properties.MyBatisConfig;
 
@@ -34,6 +35,10 @@ public class RecruitAdminDAO {
                 session.selectOne("kr.co.sist.recruit.admin.selectOneRecruit", recruitNum);
         myBatis.closeHandler(session);
         return recruit;
+    }
+
+    public boolean insertRecruit(RecruitAdminVO recruitVO) {
+        return true;
     }
 
     public boolean deleteRecruit(int recruitNum) {

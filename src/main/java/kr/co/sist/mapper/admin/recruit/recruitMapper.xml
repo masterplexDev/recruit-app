@@ -101,6 +101,43 @@
         LEFT JOIN companyinfo ci ON r.company_code = ci.company_code
         WHERE recruit_num = #{recruitNum}
     </select>
+    <insert id="insertRecruit" parameterType="kr.co.sist.admin.vo.resume.RecruitAdminVO">
+	    INSERT INTO recruit (
+	        RECRUIT_NUM,
+	        COMPANY_CODE,
+	        POSITION_CODE,
+	        TITLE,
+	        CONTENT,
+	        HEADCOUNT,
+	        END_DATE,
+	        EMPLOYMENT_TYPE,
+	        WORK_DAY,
+	        WORK_TIME,
+	        WORK_PLACE,
+	        SAL_TYPE,
+	        SAL,
+	        CAREER_CONDITION,
+	        YEARS,
+	        EDUCATION_BASE_CODE
+	    ) VALUES (
+	        recruit_seq.NEXTVAL,
+	        #{companyCode},
+	        #{position},
+	        #{title},
+	        #{content},
+	        #{headcount},
+	        #{endDate},
+	        #{workType},
+	        #{workDay},
+	        #{workStartTime} || '~' || #{workEndTime},
+	        #{workPlace},
+	        #{salaryType},
+	        #{salary},
+	        #{careerStandard},
+	        #{careerYears},
+	        #{eduStandard}
+	    )
+	</insert>
     <update id="deleteOneRecruit" parameterType="int">
     	update recruit set delete_flag = 'T' where recruit_num = #{recruitNum}
     </update>

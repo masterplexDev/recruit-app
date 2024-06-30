@@ -1,32 +1,36 @@
 package kr.co.sist.admin.vo.resume;
 
-import java.time.LocalDate;
+import java.sql.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
+@ToString
 public class RecruitAdminVO {
     private int id;
-    private String company;
+    private String companyCode;
+    private String companyName;
     private String position;
     private String title;
     private String content;
-    private int peopleNum;
+    private int headcount;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate endDate;
-    private String hireCategory;
+    private Date endDate;
+    private String workType;
     private String workDay;
-    private String workTime;
+    private String workStartTime;
+    private String workEndTime;
     private String workPlace;
-    private String salaryCategory;
+    private String salaryType;
     private int salary;
     private String careerStandard;
-    private int carrerStandardSum;
+    private int careerYears;
     private String eduStandard;
 }

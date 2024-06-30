@@ -3,7 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
 <jsp:include page="../../assets/layout/admin/lib.jsp" />
+<script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
+<script src="http://localhost/recruit-app/assets/js/admin/datepicker-ko.js"></script>
 <!-- golgolz start -->
 <link href="http://localhost/recruit-app/assets/css/manage/goods/general.css" rel="stylesheet" />
 <link href="http://localhost/recruit-app/assets/css/manage/goods/goods.css" rel="stylesheet" />
@@ -12,9 +15,18 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 <link rel="stylesheet" href="http://localhost/recruit-app/assets/css/manage/recruit/recruit.css">
+<style>
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+</style>
 <script type="text/javascript">
-	
 	$(function() {
+		var selectedPositions = [];
+		var selectedWorkDay = "";
+		
 		$("#recruit_menu").addClass("bg-gradient-primary");
 
 		$('#summernote').summernote({
@@ -22,21 +34,31 @@
 			height : 300
 		});
 
-		$(".position-chip").click(function() {
-			$(this).toggleClass("active");
+    	$("#end_date").datepicker({
+    		showOtherMonths: true,
+    	    selectOtherMonths: true,
+    	    showButtonPanel: true,
+    	    dateFormat: "yy-mm-dd"
+    	});
 
-			var selectedValues = $(".position-chip.active").map(function() {
-				return $(this).data("value");
-			}).get();
+		$(".position-chip").click(function() {
+	        var value = $(this).data("value");
+			var index = selectedPositions.indexOf(value);
+
+	        if (index === -1) {
+	            selectedPositions.push(value);
+	            $(this).addClass("active");
+	        } else {
+	            selectedPositions.splice(index, 1);
+	            $(this).removeClass("active");
+	        }
 		});
 
 		$(".work-day-chip").click(function() {
 			$('.work-day-chip').removeClass('active');
 			$(this).toggleClass("active");
 
-			var selectedValues = $(".work-day-chip.active").map(function() {
-				return $(this).data("value");
-			}).get();
+			selectedWorkDay = $(this).data("value");
 		});
 
 		$('#startTime').timepicker({
@@ -61,6 +83,45 @@
 			dynamic : false,
 			dropdown : true,
 			scrollbar : true
+		});
+		
+		$("#btn-register").click(function(){
+			var summernoteContent = $('#summernote').summernote('code');
+			var recruitVO = {
+			    companyCode: $("#company_code").val(),
+			    companyName: $("#company_name").val(),
+		        position: selectedPositions.join(","),
+		        title: $("#title").val(),
+				content: summernoteContent,
+				headcount: $("#headcount").val(),
+				endDate: $("#end_date").val(),
+				workType: $("input[name='work_type']:checked").val() || "",
+				workDay: selectedWorkDay,
+				workStartTime: $("#startTime").val(),
+				workEndTime: $("#endTime").val(),
+				workPlace: $("#work_place").val(),
+				salaryType: $("input[name='sal_type']:checked").val() || "",
+				salary: $("#sal").val(),
+				careerStandard: $("input[name='career_type']:checked").val() || "",
+				careerYears: parseInt($("#career_years").val(), 10),
+				eduStandard: $("input[name='edu_standard']:checked").val() || ""
+		    };
+			
+			$.ajax({
+		        url: "${pageContext.request.contextPath}/api/manage/recruit.do",
+		        type: "POST",
+		        contentType: "application/json; charset=utf-8",
+		        data: JSON.stringify(recruitVO),
+		        error: function(xhr) {
+		            alert("등록에 실패했습니다.");
+		        },
+		        success: function(response) {
+		        	if(response === "success"){
+			            alert("등록에 성공했습니다.");
+			            location.href="${pageContext.request.contextPath}/manage/recruits.do";
+		        	}
+		        }
+		    });
 		});
 	});
 </script>
@@ -106,21 +167,22 @@
 								<tr>
 									<td class="label">기업명</td>
 									<td class="box text">
-										<input type="text" name="company_name" value="" size="50" class="inputbox naver_shopping_prodName" />
+										<input type="text" id="company_name" name="company_name" value="기업명을 입력해주세요." size="50" class="inputbox naver_shopping_prodName" />
+										<input type="hidden" id="company_code" name="company_code" value="comp_0005"/>
 										<!-- <input type="button" id="btn-register" class="btn btn-success btn-sm" value="조회" /> -->
-										<input type="button" id="btn-register" class="btn btn-outline-success btn-sm" value="추가" />
+										<input type="button" id="btn-search-company" class="btn btn-outline-success btn-sm" value="추가" />
 									</td>
 								</tr>
 								<tr>
 									<td class="label">공고 제목</td>
 									<td class="box text">
-										<input type="text" name="title" value="" size="150" class="inputbox naver_shopping_prodName" />
+										<input type="text" id="title" name="title" value="공고 제목을 입력해주세요." size="150" class="inputbox naver_shopping_prodName" />
 									</td>
 								</tr>
 								<tr>
 									<td class="label">모집 종료일</td>
 									<td class="box text">
-										<input type="text" name="end_date" value="" size="150" class="inputbox naver_shopping_prodName" />
+										<input type="text" id="end_date" name="end_date" value="2024-06-30" size="10" class="inputbox naver_shopping_prodName" />
 									</td>
 								</tr>
 								<tr>
@@ -140,7 +202,7 @@
 								<tr>
 									<td class="label">모집 인원</td>
 									<td class="box text">
-										<input type="text" name="headcount" value="" size="10" class="inputbox naver_shopping_prodName" /> 명
+										<input type="number" id="headcount" name="headcount" value="0" size="10" class="inputbox naver_shopping_prodName" /> 명
 									</td>
 								</tr>
 							</tbody>
@@ -158,7 +220,7 @@
 								<tr>
 									<td class="label">고용형태</td>
 									<td class="box text">
-										<input type="radio" name="work_type" value="정규직" /><label>정규직</label>
+										<input type="radio" name="work_type" value="정규직" checked/><label>정규직</label>
 										<input type="radio" name="work_type" value="계약직" /><label>계약직</label>
 										<input type="radio" name="work_type" value="무기계약직" /><label>무기계약직</label>
 									</td>
@@ -185,7 +247,7 @@
 								<tr>
 									<td class="label">근무지</td>
 									<td class="box text">
-										<input type="text" name="work_place" value="" size="50" class="inputbox naver_shopping_prodName" />
+										<input type="text" id="work_place" name="work_place" value="서울시 강남구" size="50" class="inputbox naver_shopping_prodName" />
 									</td>
 								</tr>
 								<tr>
@@ -194,8 +256,8 @@
 										<input type="radio" name="sal_type" value="일급" /><label>일급</label>
 										<input type="radio" name="sal_type" value="주급" /><label>주급</label>
 										<input type="radio" name="sal_type" value="월급" /><label>월급</label>
-										<input type="radio" name="sal_type" value="연봉" /><label>연봉</label>
-										<input type="text" name="sal" value="" size="10" class="inputbox naver_shopping_prodName" /> 만원
+										<input type="radio" name="sal_type" value="연봉" checked/><label>연봉</label>
+										<input type="number" id="sal" name="sal" value="3000" size="10" class="inputbox naver_shopping_prodName" /> 만원
 									</td>
 								</tr>
 							</tbody>
@@ -213,20 +275,20 @@
 								<tr>
 									<td class="label">경력</td>
 									<td class="box text">
-										<input type="radio" name="career_type" value="경력무관" /><label>경력무관</label>
+										<input type="radio" name="career_type" value="경력무관" checked/><label>경력무관</label>
 										<input type="radio" name="career_type" value="신입" /><label>신입</label>
-										<input type="radio" name="career_type" value="신입" /><label>경력 (</label>
-										<input type="text" name="career_years" value="" size="5" class="inputbox naver_shopping_prodName" /> 년)
+										<input type="radio" name="career_type" value="경력" /><label>경력 (</label>
+										<input type="number" id="career_years" name="career_years" value="" size="5" class="inputbox naver_shopping_prodName" /> 년)
 									</td>
 								</tr>
 								<tr>
 									<td class="label">학력</td>
 									<td class="box text">
-										<input type="radio" name="school" value="고등학교 졸업" /><label>고등학교 졸업 </label>
-										<input type="radio" name="school" value="전문대 졸업" /><label>전문대 졸업 </label>
-										<input type="radio" name="school" value="대학교 졸업" /><label>대학교 졸업 </label>
-										<input type="radio" name="school" value="대학원(석사)" /><label>대학원(석사) </label>
-										<input type="radio" name="school" value="대학원(박사)" /><label>대학원(박사) </label>
+										<input type="radio" name="edu_standard" value="1" checked/><label>고등학교 졸업 </label>
+										<input type="radio" name="edu_standard" value="2" /><label>전문대 졸업 </label>
+										<input type="radio" name="edu_standard" value="3" /><label>대학교 졸업 </label>
+										<input type="radio" name="edu_standard" value="4" /><label>대학원(석사) </label>
+										<input type="radio" name="edu_standard" value="5" /><label>대학원(박사) </label>
 									</td>
 								</tr>
 							</tbody>
@@ -235,7 +297,7 @@
 							<img src="http://localhost/recruit-app/assets/images/manage/common/bul_subtitle.gif" />
 							공고상세
 						</div>
-						<div id="summernote"></div>
+						<div id="summernote">공고 상세 내용을 입력해주세요.</div>
 						<div class="alignCenter">
 							<% if(request.getParameter("code") == null){ %>
 								<input type="button" id="btn-register" class="btn btn-outline-success btn-sm detail-control" value="등록하기" />

@@ -7,11 +7,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import kr.co.sist.admin.domain.recruit.RecruitDomain;
 import kr.co.sist.admin.service.recruit.RecruitAdminService;
 import kr.co.sist.admin.vo.recruit.SearchVO;
+import kr.co.sist.admin.vo.resume.RecruitAdminVO;
 
 @Controller
 public class RecruitAdminController {
@@ -43,6 +46,13 @@ public class RecruitAdminController {
     @ResponseBody
     public RecruitDomain searchOneRecruit(@RequestParam("id") int recruitNum) {
         return recruitAdminService.searchOneRecruit(recruitNum);
+    }
+
+    @PostMapping("/api/manage/recruit.do")
+    @ResponseBody
+    public String addRecruit(@RequestBody RecruitAdminVO recruitVO) {
+        System.out.println(recruitVO.toString());
+        return "success";
     }
 
     @DeleteMapping("/api/manage/recruit.do")

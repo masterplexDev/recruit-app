@@ -44,10 +44,6 @@
     	$(".goResumes").click(function(){
     		location.href = "http://localhost/recruit-app/manage/recruit/resume/resumes.jsp";
     	});
-    	
-    	$(".goRegist").click(function(){
-    		location.href = "http://localhost/recruit-app/manage/recruit/detail.jsp";
-    	});
 	});
 </script>
 <!-- golgolz start -->
@@ -240,7 +236,7 @@
               				<tr>
                 				<td align="right">
 									<input type="button" value="등록하기" class="btn btn-outline-success btn-sm float-right goRegist" style="font-weight: bold; margin: 10px auto;" 
-									onclick="location.href='http://localhost/recruit-app/manage/recruit/resume/detail.jsp'"/>
+									onclick="location.href='${pageContext.request.contextPath}/manage/recruits/detail.do'"/>
                 				</td>
               				</tr>
             			</tbody>
