@@ -130,10 +130,22 @@ public class UserReviewDAO {
     //리뷰 작성
     public void insertReview(ReviewDomain reviewDomain) {
         SqlSession ss = myBatis.getMyBatisHandler(true);
-        ss.insert("kr.co.sist.user.mapper.review.ReviewMapper.insertReview", reviewDomain);
-        myBatis.closeHandler(ss);
+        try {
+            ss.insert("kr.co.sist.user.mapper.review.ReviewMapper.insertReview", reviewDomain);
+            int reviewNum = ss.selectOne("kr.co.sist.user.mapper.review.ReviewMapper.getLatestReviewNum", reviewDomain);
+            reviewDomain.setReviewNum(reviewNum);
+        } finally {
+            myBatis.closeHandler(ss);
+        }
     }
     
+    //리뷰 넘버 가져오기
+    public int getReviewNumByDomain(ReviewDomain reviewDomain) {
+        SqlSession ss = myBatis.getMyBatisHandler(true);
+        int reviewNum = ss.selectOne("kr.co.sist.user.mapper.review.ReviewMapper.getReviewNumByDomain", reviewDomain);
+        myBatis.closeHandler(ss);
+        return reviewNum;
+    }
    
 
 }

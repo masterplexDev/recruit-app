@@ -94,4 +94,9 @@ public class ReviewService {
     public void insertReview(ReviewDomain reviewDomain) {
         userReviewDAO.insertReview(reviewDomain);
     }
+    
+    //리뷰 넘버 가져오기
+    public int getReviewNumByDomain(ReviewDomain reviewDomain) {
+        return userReviewDAO.getReviewNumByDomain(reviewDomain);
+    }
 }

@@ -145,6 +145,7 @@
   
   
   
+  <!-- 리뷰 화면 불러오기   -->
 <resultMap id="companyInfoResultMap" type="CompanyInfoVO">
     <result property="companyCode" column="COMPANY_CODE"/>
     <result property="companyName" column="COMPANY_NAME"/>
@@ -177,8 +178,19 @@
         0, -- 추천수 초기값은 0
         'N' -- 삭제 플래그 초기값은 'N'
     )
-  </insert>  
-  
+</insert>
+
+<!-- 리뷰 넘버 가져오기 -->
+<select id="getLatestReviewNum" resultType="int">
+    SELECT REVIEW_NUM
+    FROM REVIEW
+    WHERE COMPANY_CODE = #{companyCode}
+    AND USER_ID = #{userId}
+    AND TITLE = #{title}
+    AND CONTENT = #{content}
+    ORDER BY INPUT_DATE DESC
+    FETCH FIRST 1 ROWS ONLY
+</select>
   
   <!--  admin -->
   

@@ -70,9 +70,12 @@ public class ReviewController {
    
     
     
-    // 설문 조사 페이지 이동
+ // 설문 조사 페이지 이동
     @GetMapping("/review/reviewSurvey.do")
-    public String reviewSurveyForm() {
+    public String reviewSurveyForm(@RequestParam("reviewNum") int reviewNum, @RequestParam("companyCode") String companyCode, @RequestParam("userId") String userId, Model model) {
+        model.addAttribute("reviewNum", reviewNum);
+        model.addAttribute("companyCode", companyCode);
+        model.addAttribute("userId", userId);
         return "review/reviewSurvey";
     }
     
@@ -141,18 +144,28 @@ public class ReviewController {
         return "review/reviewWrite"; // 리뷰 작성 페이지로 이동
     }
 
-    // 리뷰 작성 처리
+ // 리뷰 작성 처리
     @PostMapping("/review/submitReview.do")
-    public String submitReview(@RequestParam("title") String title, @RequestParam("content") String content, @RequestParam("companyCode") String companyCode, HttpSession session) {
+    public String submitReview(@RequestParam("title") String title, @RequestParam("content") String content, @RequestParam("companyCode") String companyCode, HttpSession session, Model model) {
         String userId = (String) session.getAttribute("userId");
 
         if (userId == null || userId.isEmpty()) {
             return "redirect:/user/loginPage.do";
         }
 
-        ReviewDomain reviewDomain = new ReviewDomain(companyCode, userId, title, content);
+        ReviewDomain reviewDomain = new ReviewDomain();
+        reviewDomain.setCompanyCode(companyCode);
+        reviewDomain.setUserId(userId);
+        reviewDomain.setTitle(title);
+        reviewDomain.setContent(content);
+
         reviewService.insertReview(reviewDomain);
 
-        return "redirect:/review/reviewResult.do?companyCode=" + companyCode;
+        // 작성된 리뷰의 리뷰 번호를 가져옴
+        int reviewNum = reviewDomain.getReviewNum();
+
+        // reviewNum, companyCode, userId를 URL 파라미터로 전달
+        return "redirect:/review/reviewSurvey.do?reviewNum=" + reviewNum + "&companyCode=" + companyCode + "&userId=" + userId;
     }
+
 }
