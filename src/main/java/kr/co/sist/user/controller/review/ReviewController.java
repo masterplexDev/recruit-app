@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import kr.co.sist.user.domain.review.ReviewDomain;
 import kr.co.sist.user.domain.review.ReviewSurveyDomain;
 import kr.co.sist.user.service.review.ReviewService;
+import kr.co.sist.user.vo.review.CompanyInfoVO;
 import kr.co.sist.user.vo.review.RecommendVO;
 import kr.co.sist.user.vo.review.ReviewQuestionsVO;
 import kr.co.sist.user.vo.review.ReviewVO;
@@ -117,5 +119,40 @@ public class ReviewController {
         }
 
         return "redirect:/review/reviewResult.do";
+    }
+    
+ // 리뷰 작성
+    @GetMapping("/review/reviewWrite.do")
+    public String writeReview(@RequestParam(value = "companyCode", defaultValue = "comp_0001") String companyCode, Model model, HttpSession session) {
+        String userId = (String) session.getAttribute("userId");
+        if (userId == null || userId.isEmpty()) {
+            return "redirect:/user/loginPage.do"; // 로그인 페이지로 리디렉션
+        }
+
+        // 회사 정보를 가져와 모델에 추가
+        CompanyInfoVO companyInfo = reviewService.getCompanyInfo(companyCode);
+        model.addAttribute("companyInfo", companyInfo);
+        model.addAttribute("userId", userId);
+        
+     // 디버깅을 위한 로그 추가
+        System.out.println("Company Info: " + companyInfo);
+        System.out.println("User ID: " + userId);
+        
+        return "review/reviewWrite"; // 리뷰 작성 페이지로 이동
+    }
+
+    // 리뷰 작성 처리
+    @PostMapping("/review/submitReview.do")
+    public String submitReview(@RequestParam("title") String title, @RequestParam("content") String content, @RequestParam("companyCode") String companyCode, HttpSession session) {
+        String userId = (String) session.getAttribute("userId");
+
+        if (userId == null || userId.isEmpty()) {
+            return "redirect:/user/loginPage.do";
+        }
+
+        ReviewDomain reviewDomain = new ReviewDomain(companyCode, userId, title, content);
+        reviewService.insertReview(reviewDomain);
+
+        return "redirect:/review/reviewResult.do?companyCode=" + companyCode;
     }
 }

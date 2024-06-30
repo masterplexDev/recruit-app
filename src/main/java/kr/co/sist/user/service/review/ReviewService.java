@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import kr.co.sist.properties.MyBatisConfig;
 import kr.co.sist.user.dao.review.UserReviewDAO;
+import kr.co.sist.user.domain.review.ReviewDomain;
 import kr.co.sist.user.domain.review.ReviewSurveyDomain;
+import kr.co.sist.user.vo.review.CompanyInfoVO;
 import kr.co.sist.user.vo.review.RecommendVO;
 import kr.co.sist.user.vo.review.ReviewQuestionsVO;
 import kr.co.sist.user.vo.review.ReviewVO;
@@ -80,4 +82,16 @@ public class ReviewService {
         return userReviewDAO.checkIfRecommended(recommendVO);
     }
     
+    //리뷰 화면 불러오기
+    public CompanyInfoVO getCompanyInfo(String companyCode) {
+        System.out.println("Service Layer - companyCode: " + companyCode);
+        CompanyInfoVO companyInfo = userReviewDAO.selectCompanyInfo(companyCode);
+        System.out.println("Service Layer - companyInfo: " + (companyInfo != null ? companyInfo.toString() : "null"));
+        return companyInfo;
+    }
+    
+    //리뷰 작성 처리
+    public void insertReview(ReviewDomain reviewDomain) {
+        userReviewDAO.insertReview(reviewDomain);
+    }
 }

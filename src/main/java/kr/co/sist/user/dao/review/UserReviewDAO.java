@@ -9,8 +9,10 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import kr.co.sist.properties.MyBatisConfig;
+import kr.co.sist.user.domain.review.ReviewDomain;
 import kr.co.sist.user.domain.review.ReviewSurveyDomain;
 import kr.co.sist.user.service.review.ReviewService;
+import kr.co.sist.user.vo.review.CompanyInfoVO;
 import kr.co.sist.user.vo.review.RecommendVO;
 import kr.co.sist.user.vo.review.ReviewQuestionsVO;
 import kr.co.sist.user.vo.review.ReviewVO;
@@ -115,5 +117,23 @@ public class UserReviewDAO {
         }
     }
     
+    //리뷰 화면 불러오기
+    public CompanyInfoVO selectCompanyInfo(String companyCode) {
+        SqlSession ss = myBatis.getMyBatisHandler(true);
+        System.out.println("DAO Layer - companyCode: " + companyCode);
+        CompanyInfoVO companyInfo = ss.selectOne("kr.co.sist.user.mapper.review.ReviewMapper.selectCompanyInfo", companyCode);
+        myBatis.closeHandler(ss);
+        System.out.println("DAO Layer - companyInfo: " + (companyInfo != null ? companyInfo.toString() : "null"));
+        return companyInfo;
+    }
+    
+    //리뷰 작성
+    public void insertReview(ReviewDomain reviewDomain) {
+        SqlSession ss = myBatis.getMyBatisHandler(true);
+        ss.insert("kr.co.sist.user.mapper.review.ReviewMapper.insertReview", reviewDomain);
+        myBatis.closeHandler(ss);
+    }
+    
+   
 
 }
