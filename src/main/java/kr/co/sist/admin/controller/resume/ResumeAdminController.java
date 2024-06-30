@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import kr.co.sist.admin.domain.resume.ResumeDomain;
 import kr.co.sist.admin.domain.resume.ResumeListDomain;
@@ -27,8 +28,8 @@ public class ResumeAdminController {
     }
 
     @GetMapping("/manage/resumes/detail.do")
-    public ResumeDomain searchOneResume() {
-        ResumeDomain resume = resumeAdminService.searchOneResume();
+    public ResumeDomain searchOneResume(@RequestParam String resumeNum) {
+        ResumeDomain resume = resumeAdminService.searchOneResume(resumeNum);
 
         return resume;
     }

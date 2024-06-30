@@ -21,8 +21,8 @@ public class ResumeAdminService {
         return resumes;
     }
 
-    public ResumeDomain searchOneResume() {
-        ResumeDomain resume = resumeAdminDAO.selectResume();
+    public ResumeDomain searchOneResume(String resumeNum) {
+        ResumeDomain resume = resumeAdminDAO.searchOneResume(resumeNum);
 
         return resume;
     }

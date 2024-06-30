@@ -28,8 +28,24 @@ public class ResumeAdminDAO {
         return resumes;
     }
 
-    public ResumeDomain selectResume() {
-        ResumeDomain resume = null;
+    public ResumeDomain searchOneResume(String resumeNum) {
+        SqlSession session = myBatis.getMyBatisHandler(false);
+        StringBuilder subData = new StringBuilder("{");
+        String[] subDataQueries = {"selectSkillResume", "selectEduResume", "selectCareerResume",
+                "selectCertificationResume", "selectLanguageResume"};
+        String result = "";
+
+        ResumeDomain resume =
+                session.selectOne("kr.co.sist.resume.admin.selectMetaResume", resumeNum);
+
+        for (String query : subDataQueries) {
+            result = session.selectOne("kr.co.sist.resume.admin." + query, resumeNum);
+            subData.append(result.substring(1, result.length() - 1)).append(",");
+        }
+
+        subData.setCharAt(subData.length() - 1, '}');
+        resume.setId(resumeNum);
+        resume.setSubData(subData.toString());
 
         return resume;
     }
