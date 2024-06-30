@@ -14,6 +14,21 @@
 	    <result property="docPass" column="doc_pass_flag"/>
 	    <result property="finalPass" column="final_pass_flag"/>
 	</resultMap>
+	<resultMap id="resumeDetailResultMap" type="kr.co.sist.admin.domain.resume.ResumeDomain">
+		<result property="id" column="resume_num"/>
+	    <result property="owner" column="name"/>
+	    <result property="email" column="user_id"/>
+	    <result property="title" column="title"/>
+	    <result property="profile" column="profile_img"/>
+	    <result property="birth" column="birth_date"/>
+	    <result property="gender" column="gender"/>
+	    <result property="tel" column="tel"/>
+	    <result property="phone" column="phone"/>
+	    <result property="addr" column="addr"/>
+	    <result property="introduce" column="self_introduction"/>
+	    <result property="inputDate" column="input_date"/>
+	    <result property="modifyDate" column="modify_date"/>
+	</resultMap>
     <select id="selectResumes" resultMap="resumeListResultMap" parameterType="kr.co.sist.admin.vo.resume.SearchVO">
 	    SELECT resume_num, recruit_title, name, apply_date, resume_title, career, addr, doc_pass_flag, final_pass_flag
 	    FROM (
@@ -102,9 +117,102 @@
 	            AND rnum BETWEEN #{startNum} AND #{endNum}
 	        </if>
 	    </where>
-	    
 	</select>
-    <!-- <select id="selectOneResume" parameterType="int" resultMap="recruitResultMap">
-    	
-    </select> -->
+    <select id="selectMetaResume" parameterType="java.lang.String" resultMap="resumeDetailResultMap">
+	    SELECT 
+	    	u.name,
+	    	u.user_id,
+	    	r.title,
+	    	r.profile_img,
+	    	TO_CHAR(u.birth_date, 'YYYY-MM-DD') as birth_date,
+	    	u.gender,
+	    	u.tel,
+	    	u.phone,
+	    	r.addr,
+	    	TO_CHAR(r.input_date, 'YYYY-MM-DD') as input_date,
+	    	TO_CHAR(r.update_date, 'YYYY-MM-DD') as modify_date,
+	        r.self_introduction
+	    FROM users u
+	    JOIN resume r ON u.user_id = r.user_id
+	    WHERE r.resume_num = #{resumeNum}
+	</select>
+    <select id="selectSkillResume" parameterType="java.lang.String" resultType="java.lang.String">
+	    SELECT JSON_OBJECT(
+	        'skills' VALUE JSON_ARRAYAGG(
+	            JSON_OBJECT(
+	                'skill_name' VALUE sl.skill_name
+	            )
+	        )
+	    ) AS skills_json
+	    FROM resume r
+	    JOIN skill s ON s.resume_num = r.resume_num
+	    JOIN skill_list sl ON s.skill_code = sl.skill_code
+	    WHERE r.resume_num = #{resumeNum}
+	</select>
+    <select id="selectEduResume" parameterType="java.lang.String" resultType="java.lang.String">
+	    SELECT JSON_OBJECT(
+	        'education' VALUE JSON_ARRAYAGG(
+	            JSON_OBJECT(
+	                'school_classification' VALUE e.school_classification,
+	                'school_name'           VALUE e.school_name,
+	                'admission_date'        VALUE TO_CHAR(e.admission_date, 'YYYY-MM-DD'),
+	                'graduation_date'       VALUE TO_CHAR(e.graduation_date, 'YYYY-MM-DD'),
+	                'graduation_state'      VALUE e.graduation_state,
+	                'major'                 VALUE e.major,
+	                'grades'                VALUE e.grades,
+	                'total_score'           VALUE e.total_score
+	            )
+	        )
+	    ) AS education_json
+	    FROM resume r
+	    JOIN education e ON e.resume_num = r.resume_num
+	    WHERE r.resume_num = #{resumeNum}
+	</select>
+    <select id="selectCareerResume" parameterType="java.lang.String" resultType="java.lang.String">
+    	SELECT JSON_OBJECT(
+		  'career' VALUE JSON_ARRAYAGG(
+		    JSON_OBJECT(
+		      'company_name' VALUE ci.company_name,
+		      'dname' VALUE c.dname,
+		      'join_date' VALUE TO_CHAR(c.join_date, 'YYYY-MM-DD'),
+		      'resignation_date' VALUE TO_CHAR(c.resignation_date, 'YYYY-MM-DD'),
+		      'job_description' VALUE c.job_description,
+		      'sal' VALUE c.sal
+		    )
+		  )
+		) AS career_json
+		FROM resume r
+		JOIN career c ON c.resume_num = r.resume_num
+		JOIN companyinfo ci ON ci.company_code = c.company_code
+		WHERE r.resume_num = #{resumeNum}
+    </select>
+    <select id="selectCertificationResume" parameterType="java.lang.String" resultType="java.lang.String">
+	    SELECT JSON_OBJECT(
+		  'certifications' VALUE JSON_ARRAYAGG(
+		    JSON_OBJECT(
+		      'certificate_name' VALUE cert.certificate_name,
+		      'publisher' VALUE cert.publisher,
+		      'acquisition_date' VALUE TO_CHAR(cert.acquisition_date, 'YYYY-MM-DD')
+		    )
+		  )
+		) AS certifications_json
+		FROM resume r
+		JOIN certificate cert ON cert.resume_num = r.resume_num
+		WHERE r.resume_num = #{resumeNum}
+	</select>
+    <select id="selectLanguageResume" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT JSON_OBJECT(
+		  'languages' VALUE JSON_ARRAYAGG(
+		    JSON_OBJECT(
+		      'language' VALUE lang.language,
+		      'test_name' VALUE lang.test_name,
+		      'lang_level' VALUE lang.lang_level,
+		      'category' VALUE lang.category
+		    )
+		  )
+		) AS languages_json
+		FROM resume r
+		JOIN language lang ON lang.resume_num = r.resume_num
+		WHERE r.resume_num = #{resumeNum}
+    </select>
 </mapper>
