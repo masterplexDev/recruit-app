@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import kr.co.sist.admin.domain.recruit.RecruitDomain;
 import kr.co.sist.admin.vo.recruit.SearchVO;
+import kr.co.sist.admin.vo.resume.RecruitAdminVO;
+import kr.co.sist.exceptions.UnexpectedRowCountException;
 import kr.co.sist.properties.MyBatisConfig;
 
 @Component
@@ -32,7 +34,68 @@ public class RecruitAdminDAO {
         RecruitDomain recruit =
                 session.selectOne("kr.co.sist.recruit.admin.selectOneRecruit", recruitNum);
         myBatis.closeHandler(session);
-        System.out.println(recruit.toString());
         return recruit;
+    }
+
+    public boolean insertRecruit(RecruitAdminVO recruitVO) {
+        boolean result = true;
+        SqlSession session = myBatis.getMyBatisHandler(false);
+        try {
+            int affectedRows = session.insert("kr.co.sist.recruit.admin.insertRecruit", recruitVO);
+
+            if (affectedRows != 1) {
+                throw new UnexpectedRowCountException(1, affectedRows);
+            }
+
+            session.commit();
+        } catch (UnexpectedRowCountException e) {
+            session.rollback();
+            result = false;
+        } finally {
+            myBatis.closeHandler(session);
+        }
+        return result;
+    }
+
+    public boolean updateRecruit(RecruitAdminVO recruitVO) {
+        boolean result = true;
+        SqlSession session = myBatis.getMyBatisHandler(false);
+        try {
+            int affectedRows = session.insert("kr.co.sist.recruit.admin.updateRecruit", recruitVO);
+
+            if (affectedRows != 1) {
+                throw new UnexpectedRowCountException(1, affectedRows);
+            }
+
+            session.commit();
+        } catch (UnexpectedRowCountException e) {
+            session.rollback();
+            result = false;
+        } finally {
+            myBatis.closeHandler(session);
+        }
+        return result;
+    }
+
+    public boolean deleteRecruit(int recruitNum) {
+        boolean result = true;
+        SqlSession session = myBatis.getMyBatisHandler(false);
+        try {
+            int affectedRows =
+                    session.update("kr.co.sist.recruit.admin.deleteOneRecruit", recruitNum);
+
+            if (affectedRows != 1) {
+                throw new UnexpectedRowCountException(1, affectedRows);
+            }
+
+            session.commit();
+        } catch (UnexpectedRowCountException e) {
+            session.rollback();
+            result = false;
+        } finally {
+            myBatis.closeHandler(session);
+        }
+
+        return result;
     }
 }

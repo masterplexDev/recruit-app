@@ -54,22 +54,40 @@
 			FROM recruit r
 			LEFT JOIN companyinfo ci ON r.company_code = ci.company_code
 			<where>
+				r.delete_flag = 'F'
 				<if test="id != 0">
 					and r.recruit_num = #{id}
 				</if>
-				<if test="companyCode != null">
-					and ci.company_code = #{companyCode}
-				</if>
-				<if test="inputDate != null">
-					and r.input_date > #{inputDate}
-				</if>
-				<if test="endDate != null">
-					and end_date <![CDATA[ < ]]> #{endDate}
-				</if>
+				<choose>
+	                <when test="category == 0 and keyword != null and keyword != ''">
+	                    and ci.company_code LIKE '%' || #{keyword} || '%'
+	                </when>
+	                <when test="category == 1 and keyword != null and keyword != ''">
+	                    and ci.company_name LIKE '%' || #{keyword} || '%'
+	                </when>
+	                <when test="category == 2 and keyword != null and keyword != ''">
+	                    and r.title LIKE '%' || #{keyword} || '%'
+	                </when>
+	                <when test="category == 3 and keyword != null and keyword != ''">
+	                    and r.work_place LIKE '%' || #{keyword} || '%'
+	                </when>
+	            </choose>
+				<if test="inputDateStart != null">
+                	and r.input_date >= #{inputDateStart}
+	            </if>
+	            <if test="inputDateEnd != null">
+	                and r.input_date <![CDATA[ <= ]]> #{inputDateEnd}
+	            </if>
+	            <if test="endDateStart != null">
+	                and r.end_date >= #{endDateStart}
+	            </if>
+	            <if test="endDateEnd != null">
+	                and r.end_date <![CDATA[ <= ]]> #{endDateEnd}
+	            </if>
 				<if test="career != null">
 					and career_condition = #{career}
 				</if>
-				<if test="employmentType != null">
+				<if test="employmentType != null and employmentType != ''">
 					and employment_type = #{employmentType}
 				</if>
 			</where>
@@ -83,6 +101,7 @@
     <select id="selectOneRecruit" parameterType="int" resultMap="recruitResultMap">
     	SELECT
             ci.company_name,
+            ci.company_code,
             title,
             end_date,
             position_code,
@@ -101,4 +120,65 @@
         LEFT JOIN companyinfo ci ON r.company_code = ci.company_code
         WHERE recruit_num = #{recruitNum}
     </select>
+    <insert id="insertRecruit" parameterType="kr.co.sist.admin.vo.resume.RecruitAdminVO">
+	    INSERT INTO recruit (
+	        RECRUIT_NUM,
+	        COMPANY_CODE,
+	        POSITION_CODE,
+	        TITLE,
+	        CONTENT,
+	        HEADCOUNT,
+	        END_DATE,
+	        EMPLOYMENT_TYPE,
+	        WORK_DAY,
+	        WORK_TIME,
+	        WORK_PLACE,
+	        SAL_TYPE,
+	        SAL,
+	        CAREER_CONDITION,
+	        YEARS,
+	        EDUCATION_BASE_CODE
+	    ) VALUES (
+	        recruit_seq.NEXTVAL,
+	        #{companyCode},
+	        #{position},
+	        #{title},
+	        #{content},
+	        #{headcount},
+	        TO_DATE(TO_CHAR(#{endDate}, 'YYYY-MM-DD'), 'YYYY-MM-DD'),
+	        #{workType},
+	        #{workDay},
+	        #{workStartTime} || '~' || #{workEndTime},
+	        #{workPlace},
+	        #{salaryType},
+	        #{salary},
+	        #{careerStandard},
+	        #{careerYears},
+	        #{eduStandard}
+	    )
+	</insert>
+	<update id="updateRecruit" parameterType="kr.co.sist.admin.vo.resume.RecruitAdminVO">
+	    UPDATE recruit
+	    SET
+	        COMPANY_CODE = #{companyCode},
+	        POSITION_CODE = #{position},
+	        TITLE = #{title},
+	        CONTENT = #{content},
+	        HEADCOUNT = #{headcount},
+	        END_DATE = TO_DATE(TO_CHAR(#{endDate}, 'YYYY-MM-DD'), 'YYYY-MM-DD'),
+	        EMPLOYMENT_TYPE = #{workType},
+	        WORK_DAY = #{workDay},
+	        WORK_TIME = #{workStartTime} || '~' || #{workEndTime},
+	        WORK_PLACE = #{workPlace},
+	        SAL_TYPE = #{salaryType},
+	        SAL = #{salary},
+	        CAREER_CONDITION = #{careerStandard},
+	        YEARS = #{careerYears},
+	        EDUCATION_BASE_CODE = #{eduStandard}
+	    WHERE
+	        RECRUIT_NUM = #{id}
+	</update>
+    <update id="deleteOneRecruit" parameterType="int">
+    	update recruit set delete_flag = 'T' where recruit_num = #{recruitNum}
+    </update>
 </mapper>

@@ -39,4 +39,7 @@ public class RecruitDomain {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
     private Date establishDate;
     private int companyPeopleNum;
+
+    // for total count info
+    private int count;
 }
