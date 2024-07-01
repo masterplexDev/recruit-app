@@ -30,23 +30,36 @@ public class ReviewController {
     @Autowired(required = false)
     private ReviewService reviewService;
 
+    //리뷰 화면 출력
     @GetMapping("/review/reviewResult.do")
-    public String reviewScreen(@RequestParam(value = "companyCode", defaultValue = "comp_0001") String companyCode,
-                               @RequestParam(value = "page", defaultValue = "0") int page, Model model) {
+    public String reviewScreen(
+        @RequestParam(value = "companyCode", defaultValue = "comp_0001") String companyCode,
+        @RequestParam(value = "page", defaultValue = "0") int page,
+        @RequestParam(value = "reviewNum", required = false) Integer reviewNum,
+        Model model) {
+
         int offset = page * 3;
         List<ReviewVO> reviewScreenOutput = reviewService.getReviewScreenOutputWithPagination(companyCode, offset);
 
-        // 각 리뷰에 대해 개별적인 리뷰 통계 값을 가져와 모델에 추가
+        // reviewScreenOutput이 비어있지 않은 경우에만 reviewQuestionsMap 생성
         Map<Integer, ReviewQuestionsVO> reviewQuestionsMap = new HashMap<>();
-        for (ReviewVO review : reviewScreenOutput) {
-            ReviewQuestionsVO reviewQuestions = reviewService.getReviewQuestions(review.getReviewNum());
-            reviewQuestionsMap.put(review.getReviewNum(), reviewQuestions);
+        if (!reviewScreenOutput.isEmpty()) {
+            for (ReviewVO review : reviewScreenOutput) {
+                ReviewQuestionsVO reviewQuestions = reviewService.getReviewQuestions(review.getReviewNum());
+                reviewQuestionsMap.put(review.getReviewNum(), reviewQuestions);
+            }
         }
-
+        
         model.addAttribute("reviewScreenOutput", reviewScreenOutput);
         model.addAttribute("reviewQuestionsMap", reviewQuestionsMap);
-        model.addAttribute("companyCode", companyCode); // 회사 코드를 뷰에 전달
-        model.addAttribute("currentPage", page); // 현재 페이지 번호 전달
+        model.addAttribute("companyCode", companyCode);
+        model.addAttribute("currentPage", page);
+        
+        // reviewNum이 null이 아닌 경우에만 모델에 추가
+        if (reviewNum != null) {
+            model.addAttribute("reviewNum", reviewNum);
+        }
+
         return "review/reviewResult";
     }
 
