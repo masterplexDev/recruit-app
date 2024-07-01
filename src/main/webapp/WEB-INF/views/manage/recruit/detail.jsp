@@ -157,8 +157,6 @@ input[type="number"]::-webkit-inner-spin-button {
 		
 	    var recruitNum = <c:out value="${recruitNum}" default="null"/>;
 	    if (recruitNum !== null) {
-            console.log("asdf");
-	        // 서버에서 데이터 가져오기
 	        $.ajax({
 	            url: "${pageContext.request.contextPath}/api/manage/recruit.do?id=" + recruitNum,
 	            method: 'GET',
@@ -210,22 +208,49 @@ input[type="number"]::-webkit-inner-spin-button {
 	    $('#career_years').val(data.careerYears);
 
 	    // 라디오 버튼
-	    $(`input[name="work_type"][value="${data.workType}"]`).prop('checked', true);
 	    $(`input[name="sal_type"][value="${data.salaryType}"]`).prop('checked', true);
 	    $(`input[name="career_type"][value="${data.careerType}"]`).prop('checked', true);
 	    $(`input[name="edu_standard"][value="${data.eduStandard}"]`).prop('checked', true);
-
-	    // Chip 선택 (모집 포지션)
-	    data.position.split(',').forEach(pos => {
-	        $(`.position-chip[data-value="${pos}"]`).addClass('active');
+	    
+	    var $exactMatch = $(`input[name="work_type"][value="${data.hireCategory}"]`);
+	    var lowercaseHireCategory = data.hireCategory.toLowerCase();
+	    var matchFound = false;
+	    $('input[name="work_type"]').each(function() {
+	        if ($(this).val().toLowerCase() === lowercaseHireCategory) {
+	            $(this).prop('checked', true);
+	            matchFound = true;
+	            console.log("Case-insensitive match found and checked:", $(this).val());
+	            return false; // 루프 중단
+	        }
 	    });
 
+	    selectedPositions = [];
+	    if (data.position) {
+	        data.position.split(',').forEach(pos => {
+	            selectedPositions.push(pos); 
+	        });
+
+		    $(".position-chip").each(function(){
+		    	var chipValue = $(this).data("value");
+	            if (selectedPositions.includes(chipValue)) {
+	                $(this).addClass("active");
+	            }
+		    });
+	    }
+	    
 	    // 근무 요일 (Chip)
-	    $(`.work-day-chip[data-value="${data.workDay}"]`).addClass('active');
+	    $(".work-day-chip").removeClass("active");
+	    $(".work-day-chip").each(function(){
+	    	var chipValue = $(this).data("value");
+            if (chipValue === data.workDay) {
+                $(this).addClass("active");
+            }
+	    });
 
 	    // 근무 시간
-	    $('#startTime').val(data.workStartTime);
-	    $('#endTime').val(data.workEndTime);
+	    var workTime = data.workTime.split("~");
+	    $('#startTime').val(workTime[0]);
+	    $('#endTime').val(workTime[1]);
 
 	    // Summernote 에디터
 	    $('#summernote').summernote('code', data.content);
@@ -290,7 +315,7 @@ input[type="number"]::-webkit-inner-spin-button {
 								<tr>
 									<td class="label">공고 제목</td>
 									<td class="box text">
-										<input type="text" id="title" name="title" value="공고 제목을 입력해주세요." size="150" class="inputbox naver_shopping_prodName" />
+										<input type="text" id="title" name="title" value="공고 제목을 입력해주세요." size="100" class="inputbox naver_shopping_prodName" />
 									</td>
 								</tr>
 								<tr>
@@ -334,15 +359,15 @@ input[type="number"]::-webkit-inner-spin-button {
 								<tr>
 									<td class="label">고용형태</td>
 									<td class="box text">
-										<input type="radio" name="work_type" value="정규직" checked/><label>정규직</label>
-										<input type="radio" name="work_type" value="계약직" /><label>계약직</label>
+										<input type="radio" name="work_type" value="정규직"/><label>정규직</label>
+										<input type="radio" name="work_type" value="계약직"/><label>계약직</label>
 									</td>
 								</tr>
 								<tr>
 									<td class="label">근무 요일</td>
 									<td class="box text">
 										<div class="chip-group">
-											<div class="chip work-day-chip active" data-value="주5일(월-금)">주5일(월-금)</div>
+											<div class="chip work-day-chip" data-value="주5일(월-금)">주5일(월-금)</div>
 											<div class="chip work-day-chip" data-value="주5일(스케줄)">주5일(스케줄)</div>
 											<div class="chip work-day-chip" data-value="주4일">주4일</div>
 											<!-- <button id="resetButton">초기화</button> -->
