@@ -138,6 +138,27 @@
 	        #{eduStandard}
 	    )
 	</insert>
+	<update id="updateRecruit" parameterType="kr.co.sist.admin.vo.resume.RecruitAdminVO">
+	    UPDATE recruit
+	    SET
+	        COMPANY_CODE = #{companyCode},
+	        POSITION_CODE = #{position},
+	        TITLE = #{title},
+	        CONTENT = #{content},
+	        HEADCOUNT = #{headcount},
+	        END_DATE = TO_DATE(TO_CHAR(#{endDate}, 'YYYY-MM-DD'), 'YYYY-MM-DD'),
+	        EMPLOYMENT_TYPE = #{workType},
+	        WORK_DAY = #{workDay},
+	        WORK_TIME = #{workStartTime} || '~' || #{workEndTime},
+	        WORK_PLACE = #{workPlace},
+	        SAL_TYPE = #{salaryType},
+	        SAL = #{salary},
+	        CAREER_CONDITION = #{careerStandard},
+	        YEARS = #{careerYears},
+	        EDUCATION_BASE_CODE = #{eduStandard}
+	    WHERE
+	        RECRUIT_NUM = #{id}
+	</update>
     <update id="deleteOneRecruit" parameterType="int">
     	update recruit set delete_flag = 'T' where recruit_num = #{recruitNum}
     </update>

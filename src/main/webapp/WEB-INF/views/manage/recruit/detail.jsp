@@ -23,10 +23,9 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 </style>
 <script type="text/javascript">
+	var selectedPositions = [];
+	var selectedWorkDay = "주5일(월-금)";
 	$(function() {
-		var selectedPositions = [];
-		var selectedWorkDay = "주5일(월-금)";
-		
 		$("#recruit_menu").addClass("bg-gradient-primary");
 
 		$('#summernote').summernote({
@@ -86,26 +85,7 @@ input[type="number"]::-webkit-inner-spin-button {
 		});
 		
 		$("#btn-register").click(function(){
-			var summernoteContent = $('#summernote').summernote('code');
-			var recruitVO = {
-			    companyCode: $("#company_code").val(),
-			    companyName: $("#company_name").val(),
-		        position: selectedPositions.join(","),
-		        title: $("#title").val(),
-				content: summernoteContent,
-				headcount: $("#headcount").val(),
-				endDate: $("#end_date").val(),
-				workType: $("input[name='work_type']:checked").val() || "",
-				workDay: selectedWorkDay,
-				workStartTime: $("#startTime").val(),
-				workEndTime: $("#endTime").val(),
-				workPlace: $("#work_place").val(),
-				salaryType: $("input[name='sal_type']:checked").val() || "",
-				salary: $("#sal").val(),
-				careerStandard: $("input[name='career_type']:checked").val() || "",
-				careerYears: parseInt($("#career_years").val(), 10),
-				eduStandard: $("input[name='edu_standard']:checked").val() || ""
-		    };
+		    var recruitVO = createRecruitVO();
 			
 			if (selectedPositions.length === 0) {
 	            alert("최소 하나 이상의 포지션을 선택해주세요.");
@@ -128,7 +108,74 @@ input[type="number"]::-webkit-inner-spin-button {
 		        }
 		    });
 		});
+		
+		$("#btn-update").click(function(){
+		    var recruitVO = createRecruitVO();
+		    recruitVO.id = $("#recruit_num").val();
+		    
+		    if (selectedPositions.length === 0) {
+		        alert("최소 하나 이상의 포지션을 선택해주세요.");
+		        return false;
+		    }
+		    
+		    $.ajax({
+		        url: "${pageContext.request.contextPath}/api/manage/recruit.do",
+		        type: "PUT",
+		        contentType: "application/json; charset=utf-8",
+		        data: JSON.stringify(recruitVO),
+		        error: function(xhr) {
+		            alert("수정에 실패했습니다.");
+		        },
+		        success: function(response) {
+		            if(response === "success"){
+		                alert("수정에 성공했습니다.");
+		                location.href="${pageContext.request.contextPath}/manage/recruits.do";
+		            }
+		        }
+		    });
+		});
+		
+		$("#btn-delete").click(function(){
+		    $.ajax({
+		        url: "${pageContext.request.contextPath}/api/manage/recruit.do",
+		        type: "DELETE",
+		        contentType: "application/json; charset=utf-8",
+		        data: $("#recruit_num").val(),
+		        error: function(xhr) {
+		            alert("삭제에 실패했습니다.");
+		        },
+		        success: function(response) {
+		            if(response === "success"){
+		                alert("삭제에 성공했습니다.");
+		                location.href="${pageContext.request.contextPath}/manage/recruits.do";
+		            }
+		        }
+		    });
+		});
 	});
+	
+	function createRecruitVO(){
+		var summernoteContent = $('#summernote').summernote('code');
+	    return {
+	        companyCode: $("#company_code").val(),
+	        companyName: $("#company_name").val(),
+	        position: selectedPositions.join(","),
+	        title: $("#title").val(),
+	        content: summernoteContent,
+	        headcount: $("#headcount").val(),
+	        endDate: $("#end_date").val(),
+	        workType: $("input[name='work_type']:checked").val() || "",
+	        workDay: selectedWorkDay,
+	        workStartTime: $("#startTime").val(),
+	        workEndTime: $("#endTime").val(),
+	        workPlace: $("#work_place").val(),
+	        salaryType: $("input[name='sal_type']:checked").val() || "",
+	        salary: $("#sal").val(),
+	        careerStandard: $("input[name='career_type']:checked").val() || "",
+	        careerYears: parseInt($("#career_years").val(), 10),
+	        eduStandard: $("input[name='edu_standard']:checked").val() || ""
+	    };
+	}
 </script>
 <!-- golgolz end -->
 </head>
@@ -163,6 +210,7 @@ input[type="number"]::-webkit-inner-spin-button {
 							<img src="http://localhost/recruit-app/assets/images/manage/common/bul_subtitle.gif" />
 							공고 정보
 						</div>
+						<input type="hidden" id="recruit_num" value="lee@daum_1" />
 						<table class="tbstyleB" width="100%">
 							<colgroup>
 								<col width="15%" />
