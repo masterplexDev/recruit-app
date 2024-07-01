@@ -3,6 +3,7 @@ package kr.co.sist.user.service.mypage;
 import org.springframework.stereotype.Service;
 import kr.co.sist.user.dao.basic.UserBasicDAO;
 import kr.co.sist.user.dao.mypage.MypageDAO;
+import kr.co.sist.user.domain.mypage.UserInfoDomain;
 import kr.co.sist.user.vo.basic.UpdatePassVO;
 
 @Service
@@ -25,6 +26,18 @@ public class MypageService {
         int cnt = mDAO.updatePassFlag(userId);
 
         return cnt;
+    }
+
+    public UserInfoDomain searchUserInfo(String userId) {
+        UserInfoDomain uid = mDAO.selectUserInfo(userId);
+
+        return uid;
+    }
+
+    public String searchChkPass(String userId) {
+        String password = mDAO.selectChkPass(userId);
+
+        return password;
     }
 
 }

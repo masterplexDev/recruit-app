@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -128,7 +129,6 @@ public class SecurityController {
                 resultMsg = "비밀번호가 일치하지 않습니다. 다시 시도해주세요.";
             } // end else
         } // end else
-          // resultMsg = "로그인 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.";
 
         model.addAttribute("resultMsg", resultMsg);
         return "user/login";
@@ -152,7 +152,6 @@ public class SecurityController {
 
         if (userId != null && userId != "") {
             String tempPass = TempPasswordGenerator.generateRandomPassword();
-            System.out.println(tempPass);
             String cipherPass = passwordEncoder.encode(tempPass);
 
             UpdatePassVO upVO = new UpdatePassVO(userId, cipherPass);
@@ -165,6 +164,7 @@ public class SecurityController {
 
                 model.addAttribute("resultMsg", resultMsg);
                 model.addAttribute("tempPassword", tempPass);
+                model.addAttribute("userId", userId);
 
             } else {
                 System.out.println("비밀번호 업데이트 중 문제 발생");
@@ -197,6 +197,25 @@ public class SecurityController {
         }
 
         return "user/mypage/modifyPassProcess";
+    }
+
+    @PostMapping("/user/mypage/chkPassword.do")
+    public String searchChkPass(@SessionAttribute String userId, String password,
+            RedirectAttributes redirectAttributes) {
+        String inputUserId = userId;
+        String searchPass = ms.searchChkPass(inputUserId);
+
+        if (searchPass != null && searchPass != "") {
+            String inputPass = password;
+
+            boolean chkResult = passwordEncoder.matches(inputPass, searchPass);
+
+            if (chkResult == false) {
+                redirectAttributes.addFlashAttribute("resultMsg", "비밀번호가 틀렸습니다.");
+                return "redirect:/user/mypage/checkPass.do";
+            }
+        }
+        return "redirect:/user/mypage/modifyUserInfo.do";
     }
 
     /*

@@ -3,6 +3,7 @@ package kr.co.sist.user.dao.mypage;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 import kr.co.sist.properties.MyBatisConfig;
+import kr.co.sist.user.domain.mypage.UserInfoDomain;
 import kr.co.sist.user.vo.basic.UpdatePassVO;
 
 @Component
@@ -44,6 +45,28 @@ public class MypageDAO {
         myBatis.closeHandler(ss);
 
         return cnt;
+    }
+
+    public UserInfoDomain selectUserInfo(String userId) {
+        SqlSession ss = myBatis.getMyBatisHandler(false);
+
+        UserInfoDomain uid =
+                ss.selectOne("kr.co.sist.mapper.user.mypage.mypageMapper.selectUserInfo", userId);
+
+        myBatis.closeHandler(ss);
+
+        return uid;
+    }
+
+    public String selectChkPass(String userId) {
+        SqlSession ss = myBatis.getMyBatisHandler(false);
+
+        String password =
+                ss.selectOne("kr.co.sist.mapper.user.mypage.mypageMapper.selectChkPass", userId);
+
+        myBatis.closeHandler(ss);
+
+        return password;
     }
 
 }

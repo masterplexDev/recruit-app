@@ -15,20 +15,13 @@
 	<!-- golgolz end -->
 	<style type="text/css">
 		<!-- golgolz start -->
+		.error {
+			  color: red;
+			}
 		<!-- golgolz end -->
 	</style>
 	<script type="text/javascript">
 			<!-- golgolz start -->
-			/* document.addEventListener('DOMContentLoaded', function() {
-				  const elements = document.querySelectorAll('.css-1w1wifl'); // 클래스가 css-1w1wifl인 모든 요소 선택
-
-				  elements.forEach(element => {
-				    element.addEventListener('click', function(event) {
-				      // 필요한 경우 event.preventDefault(); 추가
-				      window.location.href = "modifyUserInfo.jsp";
-				    });
-				  });
-				}); */
 				
 			$(function(){
 				
@@ -47,7 +40,8 @@
 					}
 					
 					if(isNull && isValidatePass){
-						location.href='http://localhost/recruit-app/user/mypage/modifyUserInfo.do';
+						//location.href='http://localhost/recruit-app/user/mypage/modifyUserInfo.do';
+						$("#checkPassFrm").submit();
 					}
 				});//click
 				
@@ -73,11 +67,6 @@
 			    	 return passRegex.test(pass);
 			    }//function
 			    
-			    // 데이터 베이스 조회 후 입력한 비밀번호와 비교하는 로직 추가 예정
-			    function chkUserPass(){
-			    	
-			    }//function
-				
 				// 초기 로딩
 			    chkNull();
 				
@@ -109,9 +98,15 @@
 							<div class="css-1jxi7lq"></div>
 						</div>
 						<div class="css-ng7qrx">
-							<p data-testid="Typography" color="rgba(55, 56, 60, 0.61)" class="css-d08m0c" >개인정보 변경을 위해 비밀번호 확인이 필요해요.</p>
+							<p data-testid="Typography" color="rgba(55, 56, 60, 0.61)" class="css-d08m0c" style="margin-bottom: 25px;">개인정보 변경을 위해 비밀번호 확인이 필요해요.</p>
+							<c:if test="${ resultMsg != null }">
+								<div class="error" style="text-align: center; color: red;">
+								${ resultMsg }
+								</div>
+							</c:if>
+							<form id="checkPassFrm" action="../mypage/chkPassword.do" method="post">
 							<div class="css-env1z2"><label data-testid="Typography" color="rgba(55, 56, 60, 0.61)"
-									for="mobile" class="css-afh7p0">비밀번호</label></div>
+									for="password" class="css-afh7p0">비밀번호</label></div>
 							<div class="css-14o8ny9">
 								<div class="css-gjm025">
 							<input type="password" id="inputPass"
@@ -121,6 +116,7 @@
 							<button type="button" id="nextBtn" class="css-1w1wifl">
 								<span color="#000000" class="css-kfktv3">계속</span>
 							</button>
+							</form>
 						</div>
 					</div>
 				</div>

@@ -79,7 +79,6 @@
 		    	 return passRegex.test(pass);
 		    	}
 		    
-		    	
 		     function login(){
 		    	 	$("#loginFrm").submit();
 			    }

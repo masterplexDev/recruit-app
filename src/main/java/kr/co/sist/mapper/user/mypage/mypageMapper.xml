@@ -8,5 +8,15 @@
   		set updatepass_flag='N'
   		where user_id=#{ userId }
   	</update>
+  	<select id="selectUserInfo" parameterType="String" resultType="kr.co.sist.user.domain.mypage.UserInfoDomain">
+  		select user_id userId,name,gender,phone,tel
+		from users
+		where user_id=#{ userId }
+  	</select>
+  	<select id="selectChkPass" parameterType="String" resultType="String">
+  		select password
+		from users
+		where user_id=#{ userId }
+  	</select>
  
  </mapper>
