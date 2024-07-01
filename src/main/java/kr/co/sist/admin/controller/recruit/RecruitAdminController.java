@@ -82,7 +82,7 @@ public class RecruitAdminController {
     @ResponseBody
     public String deleteRecruit(@RequestParam("id") int recruitNum) {
         String result = "success";
-
+        
         if (!recruitAdminService.deleteRecruit(recruitNum)) {
             result = "fail";
             System.out.println("failed");

@@ -131,6 +131,10 @@
             e.stopPropagation();
     		location.href = "http://localhost/recruit-app/manage/resumes.do";
         });
+
+        var totalCount = tableBody.children().length;
+        var $totalCountElement = $(".local_ov .fc_red");
+        $totalCountElement.text(totalCount);
     }
     
     function resetForm() {
