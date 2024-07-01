@@ -290,12 +290,14 @@ padding: 20px;
                                             ${review.content}
                                         </dd>
                                     </dl>
+                                    
                                     <div style="display: flex; justify-content: flex-end; margin-top: 20px;">
                                         <form action="${pageContext.request.contextPath}/review/updateRecommend.do" method="post" onsubmit="return checkLoginAndSubmit(this);">
-                                            <input type="hidden" name="reviewNum" value="${review.reviewNum}">
-                                            <input type="hidden" name="userId" value="${sessionScope.userId}"> <!-- 유저 ID를 넘기도록 설정 -->
-                                            <button type="submit" class="btn btn-dark">추천 ${review.recommend}</button>
-                                        </form>
+    <input type="hidden" name="reviewNum" value="${review.reviewNum}">
+    <input type="hidden" name="companyCode" value="${companyCode}">
+    <input type="hidden" name="userId" value="${sessionScope.userId}"> <!-- 유저 ID를 넘기도록 설정 -->
+    <button type="submit" class="btn btn-dark">추천 ${review.recommend}</button>
+</form>
                                     </div>
                                 </div>
 
@@ -310,13 +312,19 @@ padding: 20px;
                                         return true; // 로그인된 경우 폼 제출
                                     }
                                 </script>
-                                <script>
+                                <!-- <script>
                                     // 추천 메시지 표시 (서버에서 전달된 메시지 사용)
                                     var recommendMsg = '${recommendMsg}';
                                     if (recommendMsg) {
                                         alert(recommendMsg);
                                     }
-                                </script>
+                                </script> -->
+                                <c:if test="${not empty recommendMsg}">
+        <script>
+            alert("${recommendMsg}");
+        </script>
+    </c:if>
+    <c:remove var="recommendMsg" scope="request"/>
                             </div>
                         </div>
                     </section>
