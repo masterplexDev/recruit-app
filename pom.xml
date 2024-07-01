@@ -199,6 +199,13 @@
     <artifactId>spring-tx</artifactId>
     <version>5.3.23</version> </dependency>
 		<!-- 240629 성강 - 트랜잭션 처리 위한 추가 end -->
+		<!-- 240630 명호 - 임시 비밀번호 생성을 위한 추가 start -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		    <version>3.12.0</version> 
+		</dependency>
+		<!-- 240630 명호 - 임시 비밀번호 생성을 위한 추가 end -->
 	</dependencies>
 	<build>
 		<plugins>

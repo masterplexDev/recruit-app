@@ -35,4 +35,19 @@
   		select q_num,content
 		from password_q
   </select>
+  <select id="selectPasswordId" resultType="String" parameterType="kr.co.sist.user.vo.basic.FindPassVO">
+  		select user_id userId
+		from users
+		where user_id=#{ userId } and name=#{ name } and phone=#{ phone }
+  </select>
+  <update id="updatePassword" parameterType="kr.co.sist.user.vo.basic.UpdatePassVO">
+  		update users
+		set password=#{ password }
+		where user_id=#{ userId }
+  </update>
+  <update id="updatePassFlag" parameterType="String">
+  		update users
+  		set updatepass_flag='Y'
+  		where user_id=#{ userId }
+  </update>
  </mapper>

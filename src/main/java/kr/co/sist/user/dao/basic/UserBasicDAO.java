@@ -11,7 +11,9 @@ import kr.co.sist.properties.MyBatisConfig;
 import kr.co.sist.user.domain.basic.LoginDomain;
 import kr.co.sist.user.domain.basic.QuestionDomain;
 import kr.co.sist.user.vo.basic.FindMailVO;
+import kr.co.sist.user.vo.basic.FindPassVO;
 import kr.co.sist.user.vo.basic.LoginVO;
+import kr.co.sist.user.vo.basic.UpdatePassVO;
 import kr.co.sist.user.vo.signup.Signup2VO;
 import kr.co.sist.user.vo.signup.SignupVO;
 
@@ -138,4 +140,47 @@ public class UserBasicDAO {
         return userId;
     }// selectUserId
 
+
+    public String selectPasswordId(FindPassVO fpVO) {
+        SqlSession ss = myBatis.getMyBatisHandler(false);
+
+        String userId =
+                ss.selectOne("kr.co.sist.mapper.user.basic.userBasicMapper.selectPasswordId", fpVO);
+
+        myBatis.closeHandler(ss);
+
+        return userId;
+    }
+
+    public int updatePassword(UpdatePassVO upVO) {
+        SqlSession ss = myBatis.getMyBatisHandler(false);
+
+        int cnt = ss.update("kr.co.sist.mapper.user.basic.userBasicMapper.updatePassword", upVO);
+
+        if (cnt > 0) {
+            ss.commit();
+        } else {
+            ss.rollback();
+        }
+
+        myBatis.closeHandler(ss);
+
+        return cnt;
+    }
+
+    public int updatePassFlag(String userId) {
+        SqlSession ss = myBatis.getMyBatisHandler(false);
+
+        int cnt = ss.update("kr.co.sist.mapper.user.basic.userBasicMapper.updatePassFlag", userId);
+
+        if (cnt > 0) {
+            ss.commit();
+        } else {
+            ss.rollback();
+        }
+
+        myBatis.closeHandler(ss);
+
+        return cnt;
+    }
 }

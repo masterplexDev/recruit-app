@@ -1,6 +1,7 @@
 package kr.co.sist.security;
 
 import java.util.List;
+import java.util.UUID;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +14,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kr.co.sist.user.domain.basic.LoginDomain;
 import kr.co.sist.user.domain.basic.QuestionDomain;
 import kr.co.sist.user.service.basic.UserBasicService;
+import kr.co.sist.user.vo.basic.FindPassVO;
 import kr.co.sist.user.vo.basic.LoginVO;
+import kr.co.sist.user.vo.basic.UpdatePassVO;
 import kr.co.sist.user.vo.signup.Signup2VO;
 import kr.co.sist.user.vo.signup.SignupVO;
 
@@ -135,6 +139,49 @@ public class SecurityController {
         return "main/main";
     }
 
+
+    @PostMapping("/user/resetPassword.do")
+    public String resetPassword(FindPassVO fpVO, RedirectAttributes redirectAttributes,
+            Model model) {
+        // 입력받은 사용자 이메일 존재 여부 확인
+        String userId = ubs.searchPasswordId(fpVO);
+        String resultMsg = "";
+
+        if (userId != null && userId != "") {
+            String tempPass = TempPasswordGenerator.generateRandomPassword();
+            System.out.println(tempPass);
+            String cipherPass = passwordEncoder.encode(tempPass);
+
+            UpdatePassVO upVO = new UpdatePassVO(userId, cipherPass);
+
+            int cnt = ubs.modifyPassword(upVO);
+
+            if (cnt > 0) {
+                ubs.modifyPassFlag(userId);
+                resultMsg = "임시 비밀번호는 로그인 하신 후 비밀번호를 변경하셔야 계정 서비스 이용이 가능합니다.";
+
+                model.addAttribute("resultMsg", resultMsg);
+                model.addAttribute("tempPassword", tempPass);
+
+            } else {
+                System.out.println("비밀번호 업데이트 중 문제 발생");
+                redirectAttributes.addFlashAttribute("resultMsg", "문제가 발생했습니다. 잠시 후 다시 시도해주세요.");
+                return "redirect:/user/findPass.do";
+            }
+
+        } else {
+            redirectAttributes.addFlashAttribute("resultMsg", "입력하신 정보로 조회되는 정보가 없습니다.");
+            return "redirect:/user/findPass.do";
+        }
+
+
+        return "user/findPassComplete";
+    }
+
+    public String generateTempPassword() {
+        String uuid = UUID.randomUUID().toString();
+        return passwordEncoder.encode(uuid);
+    }
 
     // @PostMapping("manage/adminLogin.do")
     // public String adminLoginProcess(AdminLoginVO lVO, Model model) {

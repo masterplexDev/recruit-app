@@ -65,7 +65,8 @@
 				
 				if(resultFlag){
 					//DB 검색
-					var isSearchPass = searchPass();
+					$("#findPassFrm").submit();
+					/* var isSearchPass = searchPass();
 					if(isSearchPass){ // 정보가 존재할 경우
 						findResult.hide();
 						alert('비밀번호 찾기 성공!');
@@ -77,7 +78,7 @@
 						findResult.addClass('error');
 						findResult.show();
 						return;
-					}
+					} */
 				}else{
 					alert('문제가 발생했습니다. 잠시 후 다시 시도해주세요.');
 					return;
@@ -107,14 +108,6 @@
 			inputPhone.on('input',chkNull);
 			inputName.on('input',chkNull);
 			
-			function searchPass(){
-				
-				//DB 조회 결과
-				var flag = true; //임시 설정
-				
-				return flag;
-				
-			}//function
 			
 			// 이메일 유효성 검증
 		    function validateEmail() {
@@ -166,6 +159,7 @@
 							<div class="css-1jxi7lq"></div>
 						</div>
 						<div class="css-ng7qrx">
+						<form id="findPassFrm" action="findPassword.do" method="post">
 							<h3 color="#000000" class="css-1qgiy3i" style="text-align: center; margin-bottom: 10px;">회원정보를 입력해 주세요.</h3>
 							<p color="rgba(55, 56, 60, 0.61)" class="css-d08m0c" style="margin-bottom: 5px;">입력하신 이메일로 재설정 된 비밀번호를 보내드려요.</p>
 							<div class="findPassResult" style='display: none; text-align: center;'>
@@ -174,24 +168,25 @@
 									for="email" class="css-afh7p0">이메일</label></div>
 							<div class="css-14o8ny9">
 								<div class="css-gjm025">
-							<input type="text" placeholder="이메일을 입력해주세요" id="email" class="css-1sbrczv" value=""></div>
+							<input type="text" placeholder="이메일을 입력해주세요" id="email" name="userId" class="css-1sbrczv" value=""></div>
 							</div>
 							<br/>
 							<div class="css-env1z2"><label color="rgba(55, 56, 60, 0.61)"
 									for="mobile" class="css-afh7p0">이름</label></div>
 							<div class="css-14o8ny9">
 								<div class="css-gjm025">
-							<input type="text" placeholder="이름을 입력해주세요" id="name" class="css-1sbrczv" value="" maxlength="18"></div>
+							<input type="text" placeholder="이름을 입력해주세요" id="name" name="name" class="css-1sbrczv" value="" maxlength="18"></div>
 							</div>
 							<br/>
 							<div class="css-env1z2"><label color="rgba(55, 56, 60, 0.61)" 
 								for="phone" class="css-afh7p0">휴대폰 번호(-제외)</label></div>
 							<div class="css-14o8ny9">
 								<div class="css-gjm025">
-							<input type="tel" pattern="[0-9]*" placeholder="(예시) 01013245768" id="phone" class="css-1sbrczv" value="" maxlength="11"></div>
+							<input type="tel" pattern="[0-9]*" placeholder="(예시) 01013245768" id="phone" name="phone" class="css-1sbrczv" value="" maxlength="11"></div>
 							</div>
 							<button type="button" id="findPassBtn" class="css-1w1wifl"><span
 									data-testid="Typography" color="#000000" class="css-kfktv3">비밀번호 찾기</span></button>
+						</form>
 						</div>
 					</div>
 				</div>
