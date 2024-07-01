@@ -290,6 +290,7 @@ padding: 20px;
                                             ${review.content}
                                         </dd>
                                     </dl>
+                                    
                                     <div style="display: flex; justify-content: flex-end; margin-top: 20px;">
                                         <form action="${pageContext.request.contextPath}/review/updateRecommend.do" method="post" onsubmit="return checkLoginAndSubmit(this);">
     <input type="hidden" name="reviewNum" value="${review.reviewNum}">
