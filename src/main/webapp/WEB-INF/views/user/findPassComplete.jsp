@@ -45,10 +45,10 @@
 							<div class="css-1jxi7lq"></div>
 						</div>
 						<div class="css-ng7qrx">
-							<h3 data-testid="Typography" color="#000000" class="css-1qgiy3i" style="text-align: center; margin-bottom: 20px;">비밀번호를 찾았어요</h3>
-							<p data-testid="Typography" color="rgba(55, 56, 60, 0.61)" class="css-d08m0c">재설정 된 비밀번호를 알려드려요.</p>
+							<h3 data-testid="Typography" color="#000000" class="css-1qgiy3i" style="text-align: center; margin-bottom: 20px;">임시 비밀번호를 발급했어요.</h3>
+							<p data-testid="Typography" color="rgba(55, 56, 60, 0.61)" class="css-d08m0c">${ resultMsg }</p>
 							<div style="padding: 13px 0px; width: 100%; height: 50px; background-color: rgb(244, 244, 245); text-align: center;">
-								<p class="css-14qpgc6" style="font-size: 16px; font-weight: normal;">l240523@Njh#</p>										
+								<p class="css-14qpgc6" style="font-size: 16px; font-weight: normal;">${ tempPassword }</p>										
 							</div>
 							<div data-testid="Typography" color="#000000" class="css-ng7qrx" style="text-align: center;">
 								<a href="http://localhost/recruit-app/user/mypage/modifyPass.jsp"><strong>비밀번호 변경하러 가기</strong></a>
