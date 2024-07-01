@@ -80,7 +80,7 @@
                           <h4
                             class="Typography_Typography__root__xYuMs Typography_Typography__heading1__bVyRs Typography_Typography__weightBold__e15ql Typography_Typography__noWrap__ovbzF Typography_Typography__alignLeft__fYbY6 ProfileViewHeaderAvatar_ProfileViewHeaderAvatar__info__title__KuxZF"
                           >
-                            정명호
+                            ${ userInfo.name }
                           </h4>
                         </div>
                       </div>
@@ -102,7 +102,7 @@
                 </section>
                 <hr class="Divider_Divider__root__f2LD0 Divider_Divider__colorAlternative__nElS3"/>
                 <section class="Grid_Grid__item__FUkSS Grid_Grid__align-items_flex-start__PA0JE ProfileView_ProfileView__borderSection__VkDe7" style="margin: 40px;">
-                  <h1 style="font-size: 25px; text-align: center"><strong>정명호님, 환영해요.</strong></h1>
+                  <h1 style="font-size: 25px; text-align: center"><strong>${ name }님, 환영해요.</strong></h1>
                 </section>
                 <section
                   class="Grid_Grid__item__FUkSS Grid_Grid__align-items_flex-start__PA0JE"
@@ -115,23 +115,20 @@
                   <ul class="css-14jv0iu">
                   <li data-list-type="EMAIL_CHANGE" tabindex="0" class="css-1f5onls">
                   <p data-testid="Typography" color="#000000" class="css-9dug5j">이메일</p>
-                  <p data-testid="Typography" color="#171719" class="css-j2itip">jeong@gmail.com</p> </li>
+                  <p data-testid="Typography" color="#171719" class="css-j2itip">${ userInfo.userId }</p> </li>
                   <li data-list-type="NAME_CHANGE" tabindex="0" class="css-15hfbq8">
                   <p data-testid="Typography" color="#000000" class="css-9dug5j">이름</p>
-                  <p data-testid="Typography" color="#171719" class="css-j2itip">정명호</p>
+                  <p data-testid="Typography" color="#171719" class="css-j2itip">${ userInfo.name }</p>
                   </li>
                   <li data-list-type="NAME_CHANGE" tabindex="0" class="css-15hfbq8">
                   <p data-testid="Typography" color="#000000" class="css-9dug5j">성별</p>
-                  <p data-testid="Typography" color="#171719" class="css-j2itip">남자</p>
+                  <p data-testid="Typography" color="#171719" class="css-j2itip">${ userInfo.gender }</p>
                   </li>
                   <li data-list-type="PHONE_CHANGE" tabindex="0" class="css-xr5rwo"><p color="#000000" class="css-9dug5j">휴대폰 번호</p>
-                  <p data-testid="Typography" color="#171719" class="css-j2itip">010-4017-8712</p>
+                  <p data-testid="Typography" color="#171719" class="css-j2itip">${ userInfo.phone }</p>
                   </li>
                   <li data-list-type="PHONE_CHANGE" tabindex="0" class="css-xr5rwo"><p color="#000000" class="css-9dug5j">전화번호</p>
-                  <p data-testid="Typography" color="#171719" class="css-j2itip">012-456-7890</p>
-                  </li>
-                  <li data-list-type="SOCIAL_LINK" tabindex="0" class="css-15hfbq8"><p color="#000000" class="css-9dug5j">주소</p>
-                  <p data-testid="Typography" color="#171719" class="css-j2itip">인천시 부평구 부평 1동</p>
+                  <p data-testid="Typography" color="#171719" class="css-j2itip">${ userInfo.tel }</p>
                   </li>
                   </ul></article>
                 </section>

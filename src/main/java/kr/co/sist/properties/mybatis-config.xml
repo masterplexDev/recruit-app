@@ -35,6 +35,7 @@
     <mapper resource="kr/co/sist/mapper/admin/qna/QnaMapper.xml"/>
     <mapper resource="kr/co/sist/mapper/user/qna/qnaMapper.xml"/>
     <mapper resource="kr/co/sist/mapper/admin/companyinfo/companyinfoAdminMapper.xml"/>
+    <mapper resource="kr/co/sist/mapper/user/mypage/mypageMapper.xml"/>
     
   </mappers>
 </configuration>

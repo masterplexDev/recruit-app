@@ -1,7 +1,6 @@
 package kr.co.sist.security;
 
 import java.util.List;
-import java.util.UUID;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +11,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kr.co.sist.user.domain.basic.LoginDomain;
 import kr.co.sist.user.domain.basic.QuestionDomain;
 import kr.co.sist.user.service.basic.UserBasicService;
+import kr.co.sist.user.service.mypage.MypageService;
 import kr.co.sist.user.vo.basic.FindPassVO;
 import kr.co.sist.user.vo.basic.LoginVO;
 import kr.co.sist.user.vo.basic.UpdatePassVO;
@@ -30,14 +31,17 @@ public class SecurityController {
 
     private final JwtSignupProvider jwtSignupProvider;
     private final UserBasicService ubs;
+    private MypageService ms;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
 
-    public SecurityController(JwtSignupProvider jwtSignupProvider, UserBasicService ubs) {
+    public SecurityController(JwtSignupProvider jwtSignupProvider, UserBasicService ubs,
+            MypageService ms) {
         this.jwtSignupProvider = jwtSignupProvider;
         this.ubs = ubs;
+        this.ms = ms;
     }
 
 
@@ -125,7 +129,6 @@ public class SecurityController {
                 resultMsg = "비밀번호가 일치하지 않습니다. 다시 시도해주세요.";
             } // end else
         } // end else
-          // resultMsg = "로그인 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.";
 
         model.addAttribute("resultMsg", resultMsg);
         return "user/login";
@@ -149,7 +152,6 @@ public class SecurityController {
 
         if (userId != null && userId != "") {
             String tempPass = TempPasswordGenerator.generateRandomPassword();
-            System.out.println(tempPass);
             String cipherPass = passwordEncoder.encode(tempPass);
 
             UpdatePassVO upVO = new UpdatePassVO(userId, cipherPass);
@@ -162,6 +164,7 @@ public class SecurityController {
 
                 model.addAttribute("resultMsg", resultMsg);
                 model.addAttribute("tempPassword", tempPass);
+                model.addAttribute("userId", userId);
 
             } else {
                 System.out.println("비밀번호 업데이트 중 문제 발생");
@@ -173,15 +176,52 @@ public class SecurityController {
             redirectAttributes.addFlashAttribute("resultMsg", "입력하신 정보로 조회되는 정보가 없습니다.");
             return "redirect:/user/findPass.do";
         }
-
-
         return "user/findPassComplete";
     }
 
-    public String generateTempPassword() {
-        String uuid = UUID.randomUUID().toString();
-        return passwordEncoder.encode(uuid);
+    @PostMapping("/user/mypage/modifyPassword.do")
+    public String modifyPassword(UpdatePassVO upVO, Model model) {
+
+        String cipherPass = passwordEncoder.encode(upVO.getPassword());
+        upVO.setPassword(cipherPass);
+
+        int cnt = ms.modifyPassword(upVO);
+        String resultMsg = "";
+        if (cnt > 0) {
+            ms.modifyPassFlag(upVO.getUserId());
+            resultMsg = "비밀번호가 정상적으로 변경 되었습니다.";
+            model.addAttribute("resultMsg", resultMsg);
+        } else {
+            resultMsg = "비밀번호 변경 중 문제가 발생 했습니다. 잠시 후 다시 시도해주세요.";
+            model.addAttribute("resultMsg", resultMsg);
+        }
+
+        return "user/mypage/modifyPassProcess";
     }
+
+    @PostMapping("/user/mypage/chkPassword.do")
+    public String searchChkPass(@SessionAttribute String userId, String password,
+            RedirectAttributes redirectAttributes) {
+        String inputUserId = userId;
+        String searchPass = ms.searchChkPass(inputUserId);
+
+        if (searchPass != null && searchPass != "") {
+            String inputPass = password;
+
+            boolean chkResult = passwordEncoder.matches(inputPass, searchPass);
+
+            if (chkResult == false) {
+                redirectAttributes.addFlashAttribute("resultMsg", "비밀번호가 틀렸습니다.");
+                return "redirect:/user/mypage/checkPass.do";
+            }
+        }
+        return "redirect:/user/mypage/modifyUserInfo.do";
+    }
+
+    /*
+     * public String generateTempPassword() { String uuid = UUID.randomUUID().toString(); return
+     * passwordEncoder.encode(uuid); }
+     */
 
     // @PostMapping("manage/adminLogin.do")
     // public String adminLoginProcess(AdminLoginVO lVO, Model model) {
