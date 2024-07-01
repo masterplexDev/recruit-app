@@ -170,7 +170,7 @@
 	      	    var flag = false;
 	      	    
 	      	    if(chkAll){
-	      	    	location.href='http://localhost/recruit-app/user/mypage/modifyPass.do';
+	      	    	location.href='http://localhost/recruit-app/user/mypage/modifyPassPage.do';
 		      	    // 필드 초기화 후 닫기
 					$("#questionSelect").val('0');
 					$("#answerInput").val('');

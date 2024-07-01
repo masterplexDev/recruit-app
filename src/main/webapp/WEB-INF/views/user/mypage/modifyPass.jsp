@@ -19,7 +19,7 @@
     .css-9dug5j {
         min-width: auto;
     }
-    .css-j2itip {
+    .css-j2itip { 
         display: flex;
         flex-direction: column;
         align-items: flex-end;
@@ -119,8 +119,7 @@
 				  var chkPassFlag = isEmptyPass && isEmptyPassCon && isValidatePass && isConfirmPass
 				  
 				  if(chkPassFlag){
-		      	  	  alert('비밀번호 변경이 완료 되었습니다.');
-		      	  	  location.href='mypageUserInfo.do';
+		      	  	  $("#modifyPassFrm").submit();
 				  }else if(!isEmptyPass || !isEmptyPassCon) {
 					  alert('변경할 비밀번호를 입력해주세요.');
 					  return;
@@ -171,22 +170,25 @@
                 <section
                   class="Grid_Grid__item__FUkSS Grid_Grid__align-items_flex-start__PA0JE" style="margin-bottom: 50px;"
                 >
+                <form id="modifyPassFrm" action="../mypage/modifyPassword.do" method="post">
                   <article class="css-dnwsdj">
                   <div class="css-9as5im">
                   <p data-testid="Typography" color="rgba(55, 56, 60, 0.61)" class="css-1b12nwt"><strong>새로운 비밀번호</strong>를 입력해주세요.</p>
                   </div>
                   <ul class="css-14jv0iu">
+                  <input type="hidden" name="userId" value="${ sessionScope.userId }">
                   <li data-list-type="SOCIAL_LINK" tabindex="0" class="css-15hfbq8"><p data-testid="Typography" color="#000000" class="css-9dug5j">새로운 비밀번호</p>
                   <input type="password" id="newPass" name="password" autocomplete="on" class="css-1sbrczv" value="">
                   </li>
                   <li data-list-type="SOCIAL_LINK" tabindex="0" class="css-15hfbq8"><p data-testid="Typography" color="#000000" class="css-9dug5j">비밀번호 확인</p>
-                  <input type="password" id="newPassCon" name="password" autocomplete="on" class="css-1sbrczv" value="">
+                  <input type="password" id="newPassCon" autocomplete="on" class="css-1sbrczv" value="">
                   </li>
                    <li data-list-type="SOCIAL_LINK" tabindex="0" style="text-align: center;">
                    <input type="button" id="modifyBtn" value="수정완료" class="btn btn-outline-warning btn-sm update-btn" style="margin: 5px;">
                    <input type="button" id="cancleBtn" value="취소" class="btn btn-outline-danger btn-sm remove-btn" style="margin: 5px;">
                    </li>
                   </ul></article>
+                </form>
                 </section>
               </div>
             </div>

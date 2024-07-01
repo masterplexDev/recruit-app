@@ -6,7 +6,9 @@ import kr.co.sist.user.dao.basic.UserBasicDAO;
 import kr.co.sist.user.domain.basic.LoginDomain;
 import kr.co.sist.user.domain.basic.QuestionDomain;
 import kr.co.sist.user.vo.basic.FindMailVO;
+import kr.co.sist.user.vo.basic.FindPassVO;
 import kr.co.sist.user.vo.basic.LoginVO;
+import kr.co.sist.user.vo.basic.UpdatePassVO;
 import kr.co.sist.user.vo.signup.Signup2VO;
 import kr.co.sist.user.vo.signup.SignupVO;
 
@@ -61,6 +63,26 @@ public class UserBasicService {
         String userId = ubDAO.selectUserId(fmVO);
 
         return userId;
+    }
+
+    public String searchPasswordId(FindPassVO fpVO) {
+        String formatPhone = formatNumber(fpVO.getPhone());
+        fpVO.setPhone(formatPhone);
+        String userId = ubDAO.selectPasswordId(fpVO);
+
+        return userId;
+    }
+
+    public int modifyPassword(UpdatePassVO upVO) {
+        int cnt = ubDAO.updatePassword(upVO);
+
+        return cnt;
+    }
+
+    public int modifyPassFlag(String userId) {
+        int cnt = ubDAO.updatePassFlag(userId);
+
+        return cnt;
     }
 
     private String formatNumber(String phoneNumber) {

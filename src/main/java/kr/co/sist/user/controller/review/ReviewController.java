@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import kr.co.sist.user.domain.review.ReviewDomain;
 import kr.co.sist.user.domain.review.ReviewSurveyDomain;
 import kr.co.sist.user.service.review.ReviewService;
+import kr.co.sist.user.vo.review.CompanyInfoVO;
 import kr.co.sist.user.vo.review.RecommendVO;
 import kr.co.sist.user.vo.review.ReviewQuestionsVO;
 import kr.co.sist.user.vo.review.ReviewVO;
@@ -28,9 +30,44 @@ public class ReviewController {
     @Autowired(required = false)
     private ReviewService reviewService;
 
+    //리뷰 화면 출력
     @GetMapping("/review/reviewResult.do")
-    public String reviewScreen(@RequestParam(value = "companyCode", defaultValue = "comp_0001") String companyCode, Model model) {
-        List<ReviewVO> reviewScreenOutput = reviewService.getReviewScreenOutput(companyCode);
+    public String reviewScreen(
+        @RequestParam(value = "companyCode", defaultValue = "comp_0001") String companyCode,
+        @RequestParam(value = "page", defaultValue = "0") int page,
+        @RequestParam(value = "reviewNum", required = false) Integer reviewNum,
+        Model model) {
+
+        int offset = page * 3;
+        List<ReviewVO> reviewScreenOutput = reviewService.getReviewScreenOutputWithPagination(companyCode, offset);
+
+        // reviewScreenOutput이 비어있지 않은 경우에만 reviewQuestionsMap 생성
+        Map<Integer, ReviewQuestionsVO> reviewQuestionsMap = new HashMap<>();
+        if (!reviewScreenOutput.isEmpty()) {
+            for (ReviewVO review : reviewScreenOutput) {
+                ReviewQuestionsVO reviewQuestions = reviewService.getReviewQuestions(review.getReviewNum());
+                reviewQuestionsMap.put(review.getReviewNum(), reviewQuestions);
+            }
+        }
+        
+        model.addAttribute("reviewScreenOutput", reviewScreenOutput);
+        model.addAttribute("reviewQuestionsMap", reviewQuestionsMap);
+        model.addAttribute("companyCode", companyCode);
+        model.addAttribute("currentPage", page);
+        
+        // reviewNum이 null이 아닌 경우에만 모델에 추가
+        if (reviewNum != null) {
+            model.addAttribute("reviewNum", reviewNum);
+        }
+
+        return "review/reviewResult";
+    }
+
+    //페이지네이션 
+    @GetMapping("/review/loadMoreReviews.do")
+    public String loadMoreReviews(@RequestParam("page") int page, @RequestParam("companyCode") String companyCode, Model model) {
+        int offset = page * 3;
+        List<ReviewVO> reviewScreenOutput = reviewService.getReviewScreenOutputWithPagination(companyCode, offset);
 
         // 각 리뷰에 대해 개별적인 리뷰 통계 값을 가져와 모델에 추가
         Map<Integer, ReviewQuestionsVO> reviewQuestionsMap = new HashMap<>();
@@ -41,13 +78,17 @@ public class ReviewController {
 
         model.addAttribute("reviewScreenOutput", reviewScreenOutput);
         model.addAttribute("reviewQuestionsMap", reviewQuestionsMap);
-        return "review/reviewResult";
+        return "review/reviewListFragment"; // 추가 리뷰를 위한 프래그먼트 뷰
     }
+   
     
     
-
+ // 설문 조사 페이지 이동
     @GetMapping("/review/reviewSurvey.do")
-    public String reviewSurveyForm() {
+    public String reviewSurveyForm(@RequestParam("reviewNum") int reviewNum, @RequestParam("companyCode") String companyCode, @RequestParam("userId") String userId, Model model) {
+        model.addAttribute("reviewNum", reviewNum);
+        model.addAttribute("companyCode", companyCode);
+        model.addAttribute("userId", userId);
         return "review/reviewSurvey";
     }
     
@@ -95,4 +136,49 @@ public class ReviewController {
 
         return "redirect:/review/reviewResult.do";
     }
+    
+ // 리뷰 작성
+    @GetMapping("/review/reviewWrite.do")
+    public String writeReview(@RequestParam(value = "companyCode", defaultValue = "comp_0001") String companyCode, Model model, HttpSession session) {
+        String userId = (String) session.getAttribute("userId");
+        if (userId == null || userId.isEmpty()) {
+            return "redirect:/user/loginPage.do"; // 로그인 페이지로 리디렉션
+        }
+
+        // 회사 정보를 가져와 모델에 추가
+        CompanyInfoVO companyInfo = reviewService.getCompanyInfo(companyCode);
+        model.addAttribute("companyInfo", companyInfo);
+        model.addAttribute("userId", userId);
+        
+     // 디버깅을 위한 로그 추가
+        System.out.println("Company Info: " + companyInfo);
+        System.out.println("User ID: " + userId);
+        
+        return "review/reviewWrite"; // 리뷰 작성 페이지로 이동
+    }
+
+ // 리뷰 작성 처리
+    @PostMapping("/review/submitReview.do")
+    public String submitReview(@RequestParam("title") String title, @RequestParam("content") String content, @RequestParam("companyCode") String companyCode, HttpSession session, Model model) {
+        String userId = (String) session.getAttribute("userId");
+
+        if (userId == null || userId.isEmpty()) {
+            return "redirect:/user/loginPage.do";
+        }
+
+        ReviewDomain reviewDomain = new ReviewDomain();
+        reviewDomain.setCompanyCode(companyCode);
+        reviewDomain.setUserId(userId);
+        reviewDomain.setTitle(title);
+        reviewDomain.setContent(content);
+
+        reviewService.insertReview(reviewDomain);
+
+        // 작성된 리뷰의 리뷰 번호를 가져옴
+        int reviewNum = reviewDomain.getReviewNum();
+
+        // reviewNum, companyCode, userId를 URL 파라미터로 전달
+        return "redirect:/review/reviewSurvey.do?reviewNum=" + reviewNum + "&companyCode=" + companyCode + "&userId=" + userId;
+    }
+
 }

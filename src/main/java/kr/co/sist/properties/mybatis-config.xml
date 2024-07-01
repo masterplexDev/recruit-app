@@ -9,6 +9,7 @@
   	<typeAlias type="kr.co.sist.admin.domain.basic.LoginDomain" alias="adminLoginResultMap" />
   	<typeAlias type="kr.co.sist.admin.domain.qna.QnaDomain" alias="QnaDomain"/>
   	<typeAlias type="kr.co.sist.user.domain.qna.UserQnaDomain" alias="UserQnaDomain"/>
+  	<typeAlias alias="CompanyInfoVO" type="kr.co.sist.user.vo.review.CompanyInfoVO"/>
   </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -34,6 +35,7 @@
     <mapper resource="kr/co/sist/mapper/admin/qna/QnaMapper.xml"/>
     <mapper resource="kr/co/sist/mapper/user/qna/qnaMapper.xml"/>
     <mapper resource="kr/co/sist/mapper/admin/companyinfo/companyinfoAdminMapper.xml"/>
+    <mapper resource="kr/co/sist/mapper/user/mypage/mypageMapper.xml"/>
     
   </mappers>
 </configuration>
