@@ -2,9 +2,16 @@ package kr.co.sist.user.controller.mypage;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import kr.co.sist.user.service.mypage.MypageService;
 
 @Controller
 public class MypageController {
+
+    private MypageService ms;
+
+    public MypageController(MypageService ms) {
+        this.ms = ms;
+    }
 
 
     @GetMapping("/user/mypage/mypageUserInfo.do")
@@ -22,8 +29,8 @@ public class MypageController {
         return "user/mypage/modifyUserInfo";
     }
 
-    @GetMapping("/user/mypage/modifyPass.do")
-    public String modifyPass() {
+    @GetMapping("/user/mypage/modifyPassPage.do")
+    public String modifyPassPage() {
         return "user/mypage/modifyPass";
     }
 
@@ -41,4 +48,5 @@ public class MypageController {
     public String mypageReview() {
         return "user/mypage/mypageReview";
     }
+
 }

@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.core.Logger;
 import org.springframework.stereotype.Component;
 import kr.co.sist.properties.MyBatisConfig;
 import kr.co.sist.user.domain.basic.LoginDomain;
@@ -20,7 +18,6 @@ import kr.co.sist.user.vo.signup.SignupVO;
 @Component
 public class UserBasicDAO {
     private final MyBatisConfig myBatis;
-    private static final Logger log = (Logger) LogManager.getLogger(UserBasicDAO.class);
 
     public UserBasicDAO(MyBatisConfig myBatis) {
         this.myBatis = myBatis;

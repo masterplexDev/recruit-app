@@ -44,27 +44,28 @@
 				if(!isValidateEmail){
 					msg ='잘못된 이메일 형식입니다.'
 					findResult.text(msg);
-					findResult.addClass('error');
+					/* findResult.addClass('error'); */
 					findResult.show();
 					return;
 				}
 				else if(!isValidateName){
 					msg = '이름은 한글 또는 영문으로 최대 10자까지만 입력이 가능합니다.';
 					findResult.text(msg);
-					findResult.addClass('error');
+					/* findResult.addClass('error'); */
 					findResult.show();
 					return;
 				}
 				else if(!isValidatePhoneNumber){
 					msg = '휴대폰 번호는 숫자로 최대 11자까지만 입력이 가능합니다.';
 					findResult.text(msg);
-					findResult.addClass('error');
+					/* findResult.addClass('error'); */
 					findResult.show();
 					return;
 				}
 				
 				if(resultFlag){
 					//DB 검색
+					findResult.hide();
 					$("#findPassFrm").submit();
 					/* var isSearchPass = searchPass();
 					if(isSearchPass){ // 정보가 존재할 경우
@@ -162,8 +163,17 @@
 						<form id="findPassFrm" action="../user/resetPassword.do" method="post">
 							<h3 color="#000000" class="css-1qgiy3i" style="text-align: center; margin-bottom: 10px;">회원정보를 입력해 주세요.</h3>
 							<p color="rgba(55, 56, 60, 0.61)" class="css-d08m0c" style="margin-bottom: 5px;">입력하신 회원정보로 임시 비밀번호를 발급합니다.</p>
-							<div class="findPassResult" style='display: none; text-align: center;'>
+							<div class="findPassResult error" style='display: none; text-align: center;'>
 							</div>
+							<% 
+							String resultMsg = (String)request.getAttribute("resultMsg");
+							if(resultMsg != null && resultMsg != ""){ %>
+							<div class="findPassResult error" style="text-align: center;">
+								${ resultMsg }
+							</div>
+							<%
+							}
+							%>
 							<div class="css-env1z2" style="margin-top: 20px;"><label color="rgba(55, 56, 60, 0.61)"
 									for="email" class="css-afh7p0">이메일</label></div>
 							<div class="css-14o8ny9">
