@@ -17,21 +17,39 @@
     		showOtherMonths: true,
     	    selectOtherMonths: true,
     	    showButtonPanel: true,
-    	    dateFormat: "yy-mm-dd"
+    	    dateFormat: "yy-mm-dd",
+            onSelect: function(selectedDate) {
+                $("#end_date_first").datepicker("option", "minDate", selectedDate);
+                $("#start_date_sec").datepicker("option", "minDate", selectedDate);
+            }
     	});
     	
     	$("#end_date_first").datepicker({
   	    	showOtherMonths: true,
   	    	selectOtherMonths: true,
   	    	showButtonPanel: true,
-  	    	dateFormat: "yy-mm-dd"
+  	    	dateFormat: "yy-mm-dd",
+  	        onSelect: function(selectedDate) {
+  	            var startDate = $("#start_date_first").datepicker("getDate");
+  	            var endDate = $(this).datepicker("getDate");
+  	            
+  	            if (startDate && endDate && startDate > endDate) {
+  	                alert("종료 날짜는 시작 날짜 이후여야 합니다.");
+  	                $(this).val(""); // 선택한 값을 지웁니다
+  	                return false;
+  	            }
+                $("#start_date_sec").datepicker("option", "minDate", selectedDate);
+  	        }
   		});
     	
     	$("#start_date_sec").datepicker({
     		showOtherMonths: true,
     	    selectOtherMonths: true,
     	    showButtonPanel: true,
-    	    dateFormat: "yy-mm-dd"
+    	    dateFormat: "yy-mm-dd",
+            onSelect: function(selectedDate) {
+                $("#end_date_sec").datepicker("option", "minDate", selectedDate);
+            }
     	});
     	
     	$("#end_date_sec").datepicker({
@@ -41,21 +59,160 @@
   	    	dateFormat: "yy-mm-dd"
   		});
     	
-    	$(".goResumes").click(function(){
-    		location.href = "http://localhost/recruit-app/manage/recruit/resume/resumes.jsp";
+    	$("#btn-reset").click(function(e){
+    		e.preventDefault();
+    		resetForm();
     	});
+    	
+    	$("#btn-search").click(function(e){
+    		e.preventDefault();
+        	updateRecruitList(false);
+    	});
+    	
+    	updateRecruitList(true);
+    	resetForm();
 	});
+
+	function updateRecruitList(isFirst) {
+		var searchVO = "";
+		
+		if(!isFirst){
+			searchVO = getSearchVO();
+		}
+		
+        $.ajax({
+            url: "${pageContext.request.contextPath}/api/manage/recruits.do",
+            method: 'GET',
+            data: searchVO,
+            dataType: 'JSON',
+            success: function(data) {
+                populateTable(data);
+                if(!(data && data.length > 0)){
+                    $("#sodr_list tbody").html('<tr><td colspan="10" style="font-size: 16px; font-weight: bold;">검색 결과가 없습니다.</td></tr>');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error fetching data: " + error);
+                $("#sodr_list tbody").html('<tr><td colspan="10" style="font-size: 16px; font-weight: bold;">데이터를 불러오는 데 실패했습니다.</td></tr>');
+            }
+        });
+    }
+
+    function populateTable(recruits) {
+        var tableBody = $("#sodr_list tbody");
+        tableBody.empty();
+
+        $.each(recruits, function(index, recruit) {
+            var row = $('<tr>')
+                .addClass('list0')
+                .attr('data-href', 'http://localhost/recruit-app/manage/recruits/detail.do?id=' + recruit.id);
+            
+            row.append($('<td>').text(index + 1))
+               .append($('<td>').text(recruit.companyCode))
+               .append($('<td>').text(recruit.companyName))
+               .append($('<td>').text(recruit.inputDate))
+               .append($('<td>').text(recruit.endDate))
+               .append($('<td>').text(recruit.title))
+               .append($('<td>').text(recruit.careerStandard))
+               .append($('<td>').text(recruit.hireCategory))
+               .append($('<td>').text(recruit.workPlace))
+               .append($('<td>').html('<input type="button" value="바로가기" class="btn btn-outline-secondary btn-sm goResumes" style="font-weight: bold; margin: 0px auto;" />'));
+
+            tableBody.append(row);
+        });
+
+        $('.list0').on('click', function(e) {
+            if (!$(e.target).is('td:last-child, td:last-child *')) {
+                window.location.href = $(this).data('href');
+            }
+        });
+
+        $('.goResumes').on('click', function(e) {
+            e.stopPropagation();
+    		location.href = "http://localhost/recruit-app/manage/resumes.do";
+        });
+    }
+    
+    function resetForm() {
+        $("input[name='page']").val("1");
+        $("select[name='category']").val("0");
+        $("input[name='keyword']").val("");
+        $(".frm_input[id^='start_date'], .frm_input[id^='end_date']").val("");
+        $("#date").val("");
+        $("input[name='career'][value='0']").prop("checked", true);
+        $("input[name='work-type'][value='0']").prop("checked", true);
+    }
+	
+	function getSearchVO() {
+		var careerType = "";
+		var employmentType = "";
+		
+		switch($("input[name='career']:checked").val()) {
+	        case "1":
+	        	careerType = "신입";
+	            break;
+	        case "2":
+	        	careerType = "경력";
+	            break;
+	        default:
+	        	careerType = undefined;
+	        	break;
+		}
+
+		switch($("input[name='work-type']:checked").val()) {
+	        case "1":
+	        	employmentType = "정규직";
+	            break;
+	        case "2":
+	        	employmentType = "계약직";
+	            break;
+	        default:
+	        	employmentType = undefined;
+	        	break;
+		}
+		
+	    return {
+	        //page: $("input[name='page']").val(),
+	        category: $("select[name='category']").val(),
+	        keyword: $("input[name='keyword']").val(),
+	        inputDateStart: $("#start_date_first").val() || undefined,
+	        inputDateEnd: $("#end_date_first").val() || undefined,
+	        endDateStart: $("#start_date_sec").val() || undefined,
+	        endDateEnd: $("#end_date_sec").val() || undefined,
+	        career: careerType,
+	        employmentType: employmentType
+	    };
+	}
 </script>
 <!-- golgolz start -->
 <link href="http://localhost//recruit-app/assets/css/pagenation.css" rel="stylesheet" />
 <link href="http://localhost//recruit-app/assets/css/manage/order/admin.css" rel="stylesheet" />
 <link href="http://localhost//recruit-app/assets/css/manage/order/reset.css" rel="stylesheet" />
+<style>
+.list0 {
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.list0:hover {
+	background-color: #ededed;
+}
+
+/* 마지막 열(바로가기 버튼)에는 호버 효과를 제외 */
+.list0:hover td:last-child {
+	background-color: transparent;
+}
+
+.page-item{
+	margin-right: 3px;
+}
+</style>
 <!-- golgolz end -->
 </head>
 <body>
 	<jsp:include page="../../assets/layout/admin/header.jsp" />
 	<main
-		class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ps ps--active-y">
+		class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ps--active-y">
 		<nav
 			class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl"
 			id="navbarBlur" data-scroll="true">
@@ -102,29 +259,28 @@
 								<tr>
 									<th scope="row">공고등록일</th>
               						<td class="box text">
-              							<input type="text" id="start_date_first" class="frm_input" size="10"> - 
-              							<input type="text" id="end_date_first" class="frm_input" size="10"> 
+              							<input type="text" id="start_date_first" class="frm_input" size="10" readonly> - 
+              							<input type="text" id="end_date_first" class="frm_input" size="10" readonly> 
               						</td>
 								</tr>
 								<tr>
 									<th scope="row">공고종료일</th>
               						<td class="box text">
-              							<input type="hidden" id="date" name="date" value="${param.date}" />
-              							<input type="text" id="start_date_sec" class="frm_input" size="10"> - 
-              							<input type="text" id="end_date_sec" class="frm_input" size="10"> 
+              							<input type="text" id="start_date_sec" class="frm_input" size="10" readonly> - 
+              							<input type="text" id="end_date_sec" class="frm_input" size="10" readonly> 
               						</td>
 								</tr>
 								<tr>
 									<th scope="row">경력</th>
 									<td>
 										<label class="od_status">
-											<input type="radio" name="delivery" value="0"${param.delivery eq '0' ? " checked" : "" }> 전체
+											<input type="radio" name="career" value="0"${param.career eq '0' ? " checked" : "" }> 전체
 										</label> 
 										<label class="od_status">
-											<input type="radio" name="delivery" value="1"${param.delivery eq '1' ? " checked" : "" }> 신입
+											<input type="radio" name="career" value="1"${param.career eq '1' ? " checked" : "" }> 신입
 										</label> 
 										<label class="od_status">
-											<input type="radio" name="delivery" value="2"${param.delivery eq '2' ? " checked" : "" }> 경력
+											<input type="radio" name="career" value="2"${param.career eq '2' ? " checked" : "" }> 경력
 										</label> 
 									</td>
 								</tr>
@@ -132,13 +288,13 @@
 									<th scope="row">근무형태</th>
 									<td>
 										<label class="od_status">
-											<input type="radio" name="purchase" value="0"${param.purchase eq '0' ? " checked" : "" }> 전체
+											<input type="radio" name="work-type" value="0" ${param.work-type eq '0' ? " checked" : "" }> 전체
 										</label>
 										<label class="od_status">
-											<input type="radio" name="purchase" value="1"${param.purchase eq '1' ? " checked" : "" }> 정규직
+											<input type="radio" name="work-type" value="1"${param.work-type eq '1' ? " checked" : "" }> 정규직
 										</label> 
 										<label class="od_status">
-											<input type="radio" name="purchase" value="2"${param.purchase eq '2' ? " checked" : "" }> 계약직
+											<input type="radio" name="work-type" value="2"${param.work-type eq '2' ? " checked" : "" }> 계약직
 										</label>
 									</td>
 								</tr>
@@ -146,17 +302,13 @@
 						</table>
 					</div>
 					<div class="btn_confirm">
-					    <input type="submit" value="검색" class="btn btn-secondary btn-sm"/>
-						<input type="submit" value="초기화" class="btn btn-outline-secondary btn-sm"/>
+					    <input type="button" value="검색" class="btn btn-secondary btn-sm" id="btn-search"/>
+						<input type="button" value="초기화" class="btn btn-outline-secondary btn-sm" id="btn-reset"/>
 					</div>
 				</form>
 				<div class="local_ov mart30">
 					전체 : <b class="fc_red">3</b> 건 조회
 				</div>
-				<form name="forderlist" id="forderlist" method="post">
-					<input type="hidden" name="q1" value="code=list"> 
-					<input type="hidden" name="page" value="1">
-				</form>
 				<div class="tbl_head01">
 					<table id="sodr_list">
 						<colgroup>
@@ -185,48 +337,6 @@
 						</tr>
 						</thead>
 						<tbody>
-							<tr class="list0">
-								<td>1</td>
-								<td>COMPANY01</td>
-								<td>삼성전자</td>
-								<td>2024-05-22</td>
-								<td>2024-06-23</td>
-								<td>2024년 상반기 공채 백엔드 엔지니어</td>
-								<td>신입</td>
-								<td>정규직</td>
-								<td>경기도 수원</td>
-								<td>
-									<input type="button" value="바로가기" class="btn btn-outline-secondary btn-sm goResumes" style="font-weight: bold; margin: 0px auto;"  />
-								</td>
-							</tr>
-							<tr class="list0">
-								<td>2</td>
-								<td>COMPANY02</td>
-								<td>LG전자</td>
-								<td>2024-05-22</td>
-								<td>2024-06-23</td>
-								<td>2024년 상반기 공채 프론트 엔지니어</td>
-								<td>경력</td>
-								<td>정규직</td>
-								<td>경기도 수원</td>
-								<td>
-									<input type="button" value="바로가기" class="btn btn-outline-secondary btn-sm goResumes" style="font-weight: bold; margin: 0px auto;"  />
-								</td>
-							</tr>
-							<tr class="list0">
-								<td>3</td>
-								<td>COMPANY01</td>
-								<td>삼성전자</td>
-								<td>2024-05-22</td>
-								<td>2024-06-23</td>
-								<td>2024년 상반기 공채 펌웨어 엔지니어</td>
-								<td>신입</td>
-								<td>정규직</td>
-								<td>경기도 수원</td>
-								<td>
-									<input type="button" value="바로가기" class="btn btn-outline-secondary btn-sm goResumes" style="font-weight: bold; margin: 0px auto;"  />
-								</td>
-							</tr>
 						</tbody>
 					</table>
 				</div>
@@ -241,16 +351,18 @@
               				</tr>
             			</tbody>
           			</table>
-					<div id="pageNation">
-						<ul class="pagination" style="justify-content: center;">
-							<li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-							<li class="page-item"><a class="page-link" href="#">1</a></li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item"><a class="page-link" href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span></a></li>
-						</ul>
-					</div>
-        		</div>	
+					<ul class="pagination" style="justify-content: center;">
+						<li><a class="page-link" href="#" aria-label="Previous">
+								<span aria-hidden="true">&laquo;</span>
+						</a></li>
+						<li><a class="page-link" href="#">1</a></li>
+						<li><a class="page-link" href="#">2</a></li>
+						<li><a class="page-link" href="#">3</a></li>
+						<li><a class="page-link" href="#" aria-label="Next"> <span
+								aria-hidden="true">&raquo;</span>
+						</a></li>
+					</ul>
+				</div>	
 			</div>
 		</div>
 	</main>

@@ -57,19 +57,36 @@
 				<if test="id != 0">
 					and r.recruit_num = #{id}
 				</if>
-				<if test="companyCode != null">
-					and ci.company_code = #{companyCode}
-				</if>
-				<if test="inputDate != null">
-					and r.input_date > #{inputDate}
-				</if>
-				<if test="endDate != null">
-					and end_date <![CDATA[ < ]]> #{endDate}
-				</if>
+				<choose>
+	                <when test="category == 0 and keyword != null and keyword != ''">
+	                    and ci.company_code LIKE '%' || #{keyword} || '%'
+	                </when>
+	                <when test="category == 1 and keyword != null and keyword != ''">
+	                    and ci.company_name LIKE '%' || #{keyword} || '%'
+	                </when>
+	                <when test="category == 2 and keyword != null and keyword != ''">
+	                    and r.title LIKE '%' || #{keyword} || '%'
+	                </when>
+	                <when test="category == 3 and keyword != null and keyword != ''">
+	                    and r.work_place LIKE '%' || #{keyword} || '%'
+	                </when>
+	            </choose>
+				<if test="inputDateStart != null">
+                	and r.input_date >= #{inputDateStart}
+	            </if>
+	            <if test="inputDateEnd != null">
+	                and r.input_date <![CDATA[ <= ]]> #{inputDateEnd}
+	            </if>
+	            <if test="endDateStart != null">
+	                and r.end_date >= #{endDateStart}
+	            </if>
+	            <if test="endDateEnd != null">
+	                and r.end_date <![CDATA[ <= ]]> #{endDateEnd}
+	            </if>
 				<if test="career != null">
 					and career_condition = #{career}
 				</if>
-				<if test="employmentType != null">
+				<if test="employmentType != null and employmentType != ''">
 					and employment_type = #{employmentType}
 				</if>
 			</where>
