@@ -54,6 +54,7 @@
 			FROM recruit r
 			LEFT JOIN companyinfo ci ON r.company_code = ci.company_code
 			<where>
+				r.delete_flag = 'F'
 				<if test="id != 0">
 					and r.recruit_num = #{id}
 				</if>
@@ -100,6 +101,7 @@
     <select id="selectOneRecruit" parameterType="int" resultMap="recruitResultMap">
     	SELECT
             ci.company_name,
+            ci.company_code,
             title,
             end_date,
             position_code,

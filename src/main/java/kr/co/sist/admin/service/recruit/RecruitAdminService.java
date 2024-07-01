@@ -34,6 +34,10 @@ public class RecruitAdminService {
         return recruitAdminDAO.insertRecruit(recruitVO);
     }
 
+    public boolean modifyRecruit(RecruitAdminVO recruitVO) {
+        return recruitAdminDAO.updateRecruit(recruitVO);
+    }
+
     public boolean deleteRecruit(int recruitNum) {
         return recruitAdminDAO.deleteRecruit(recruitNum);
     }

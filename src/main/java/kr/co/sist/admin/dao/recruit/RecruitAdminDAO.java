@@ -57,6 +57,26 @@ public class RecruitAdminDAO {
         return result;
     }
 
+    public boolean updateRecruit(RecruitAdminVO recruitVO) {
+        boolean result = true;
+        SqlSession session = myBatis.getMyBatisHandler(false);
+        try {
+            int affectedRows = session.insert("kr.co.sist.recruit.admin.updateRecruit", recruitVO);
+
+            if (affectedRows != 1) {
+                throw new UnexpectedRowCountException(1, affectedRows);
+            }
+
+            session.commit();
+        } catch (UnexpectedRowCountException e) {
+            session.rollback();
+            result = false;
+        } finally {
+            myBatis.closeHandler(session);
+        }
+        return result;
+    }
+
     public boolean deleteRecruit(int recruitNum) {
         boolean result = true;
         SqlSession session = myBatis.getMyBatisHandler(false);

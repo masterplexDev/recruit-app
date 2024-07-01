@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,13 +27,14 @@ public class RecruitAdminController {
     }
 
     @GetMapping("/manage/recruits.do")
-    public String showResumePage(SearchVO searchVO, Model model) {
-        model.addAttribute("searchVO", searchVO);
+    public String showResumePage() {
         return "/manage/recruit/recruits";
     }
 
     @GetMapping("/manage/recruits/detail.do")
-    public String showResumeDetailPage() {
+    public String showResumeDetailPage(
+            @RequestParam(value = "id", required = false) Integer recruitNum, Model model) {
+        model.addAttribute("recruitNum", recruitNum);
         return "/manage/recruit/detail";
     }
 
@@ -45,23 +47,47 @@ public class RecruitAdminController {
     @GetMapping("/api/manage/recruit.do")
     @ResponseBody
     public RecruitDomain searchOneRecruit(@RequestParam("id") int recruitNum) {
-        return recruitAdminService.searchOneRecruit(recruitNum);
+        RecruitDomain result = recruitAdminService.searchOneRecruit(recruitNum);
+        result.setId(recruitNum);
+
+        return result;
     }
 
     @PostMapping("/api/manage/recruit.do")
     @ResponseBody
     public String addRecruit(@RequestBody RecruitAdminVO recruitVO) {
         String result = "success";
+
         if (!recruitAdminService.addRecruit(recruitVO)) {
             result = "fail";
         }
-        // System.out.println(recruitVO.toString());
+
+        return result;
+    }
+
+    @PutMapping("/api/manage/recruit.do")
+    @ResponseBody
+    public String modifyRecruit(@RequestBody RecruitAdminVO recruitVO) {
+        String result = "success";
+        System.out.println(recruitVO.toString());
+        if (!recruitAdminService.modifyRecruit(recruitVO)) {
+            result = "fail";
+            System.out.println("failed");
+        }
+
         return result;
     }
 
     @DeleteMapping("/api/manage/recruit.do")
     @ResponseBody
-    public boolean deleteRecruit(@RequestParam int recruitNum) {
-        return recruitAdminService.deleteRecruit(recruitNum);
+    public String deleteRecruit(@RequestParam("id") int recruitNum) {
+        String result = "success";
+
+        if (!recruitAdminService.deleteRecruit(recruitNum)) {
+            result = "fail";
+            System.out.println("failed");
+        }
+
+        return result;
     }
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" info=""%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -136,22 +137,41 @@ input[type="number"]::-webkit-inner-spin-button {
 		});
 		
 		$("#btn-delete").click(function(){
-		    $.ajax({
-		        url: "${pageContext.request.contextPath}/api/manage/recruit.do",
-		        type: "DELETE",
-		        contentType: "application/json; charset=utf-8",
-		        data: $("#recruit_num").val(),
-		        error: function(xhr) {
-		            alert("삭제에 실패했습니다.");
-		        },
-		        success: function(response) {
-		            if(response === "success"){
-		                alert("삭제에 성공했습니다.");
-		                location.href="${pageContext.request.contextPath}/manage/recruits.do";
-		            }
-		        }
-		    });
+		    if (confirm("정말로 이 채용공고를 삭제하시겠습니까?")) {
+		        var recruitNum = $("#recruit_num").val();
+			    $.ajax({
+			        url: "${pageContext.request.contextPath}/api/manage/recruit.do?id=" + recruitNum,
+			        type: "DELETE",
+			        error: function(xhr) {
+			            alert("삭제에 실패했습니다.");
+			        },
+			        success: function(response) {
+			            if(response === "success"){
+			                alert("삭제에 성공했습니다.");
+			                location.href="${pageContext.request.contextPath}/manage/recruits.do";
+			            }
+			        }
+			    });
+		    }
 		});
+		
+	    var recruitNum = <c:out value="${recruitNum}" default="null"/>;
+	    if (recruitNum !== null) {
+            console.log("asdf");
+	        // 서버에서 데이터 가져오기
+	        $.ajax({
+	            url: "${pageContext.request.contextPath}/api/manage/recruit.do?id=" + recruitNum,
+	            method: 'GET',
+	            success: function(data) {
+	                populateForm(data);
+	                console.log(data);
+	            },
+	            error: function(xhr, status, error) {
+	                console.error("Error fetching recruit data:", error);
+	                alert("채용공고 데이터를 불러오는데 실패했습니다.");
+	            }
+	        });
+	    }
 	});
 	
 	function createRecruitVO(){
@@ -175,6 +195,47 @@ input[type="number"]::-webkit-inner-spin-button {
 	        careerYears: parseInt($("#career_years").val(), 10),
 	        eduStandard: $("input[name='edu_standard']:checked").val() || ""
 	    };
+	}
+	
+	function populateForm(data) {
+	    // 기본 텍스트 필드
+	    $('#recruit_num').val(data.id);
+	    $('#company_name').val(data.companyName);
+	    $('#company_code').val(data.companyCode);
+	    $('#title').val(data.title);
+	    $('#end_date').val(data.endDate);
+	    $('#headcount').val(data.companyPeopleNum);
+	    $('#work_place').val(data.workPlace);
+	    $('#sal').val(data.salary);
+	    $('#career_years').val(data.careerYears);
+
+	    // 라디오 버튼
+	    $(`input[name="work_type"][value="${data.workType}"]`).prop('checked', true);
+	    $(`input[name="sal_type"][value="${data.salaryType}"]`).prop('checked', true);
+	    $(`input[name="career_type"][value="${data.careerType}"]`).prop('checked', true);
+	    $(`input[name="edu_standard"][value="${data.eduStandard}"]`).prop('checked', true);
+
+	    // Chip 선택 (모집 포지션)
+	    data.position.split(',').forEach(pos => {
+	        $(`.position-chip[data-value="${pos}"]`).addClass('active');
+	    });
+
+	    // 근무 요일 (Chip)
+	    $(`.work-day-chip[data-value="${data.workDay}"]`).addClass('active');
+
+	    // 근무 시간
+	    $('#startTime').val(data.workStartTime);
+	    $('#endTime').val(data.workEndTime);
+
+	    // Summernote 에디터
+	    $('#summernote').summernote('code', data.content);
+
+	    // 경력 관련 필드 처리
+	    if (data.careerType === '경력') {
+	        $('#career_years').prop('disabled', false);
+	    } else {
+	        $('#career_years').prop('disabled', true);
+	    }
 	}
 </script>
 <!-- golgolz end -->
@@ -275,7 +336,6 @@ input[type="number"]::-webkit-inner-spin-button {
 									<td class="box text">
 										<input type="radio" name="work_type" value="정규직" checked/><label>정규직</label>
 										<input type="radio" name="work_type" value="계약직" /><label>계약직</label>
-										<input type="radio" name="work_type" value="무기계약직" /><label>무기계약직</label>
 									</td>
 								</tr>
 								<tr>
@@ -352,13 +412,16 @@ input[type="number"]::-webkit-inner-spin-button {
 						</div>
 						<div id="summernote">공고 상세 내용을 입력해주세요.</div>
 						<div class="alignCenter">
-							<% if(request.getParameter("code") == null){ %>
-								<input type="button" id="btn-register" class="btn btn-outline-success btn-sm detail-control" value="등록하기" />
-							<% } else { %>
-								<input type="button" id="btn-update" class="btn btn-outline-warning btn-sm detail-control" value="수정하기" />
-								<input type="button" id="btn-delete" class="btn btn-outline-danger btn-sm detail-control" value="삭제하기" />
-							<% } %>
-								<input type="button" id="btn-back" class="btn btn-outline-dark btn-sm detail-control" value="뒤로" onClick="javascript:history.back();"/>
+					        <c:choose>
+					            <c:when test="${empty recruitNum}">
+									<input type="button" id="btn-register" class="btn btn-outline-success btn-sm detail-control" value="등록하기" />
+								</c:when>
+	            				<c:otherwise>
+									<input type="button" id="btn-update" class="btn btn-outline-warning btn-sm detail-control" value="수정하기" />
+									<input type="button" id="btn-delete" class="btn btn-outline-danger btn-sm detail-control" value="삭제하기" />
+								</c:otherwise>
+        					</c:choose>
+							<input type="button" id="btn-back" class="btn btn-outline-dark btn-sm detail-control" value="뒤로" onClick="javascript:history.back();"/>
 						</div>
 					</form>
 				</div>
