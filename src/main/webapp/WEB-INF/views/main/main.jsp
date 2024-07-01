@@ -84,8 +84,8 @@
                 <div class="custom-post-wrapper">
 
                   <div class="custom-post">
-                    <div class="custom-slider-image-container">
-                      <img src="../assets/images/ads/1.webp" class="custom-slider-image">
+                    <div class="custom-slider-image-container"  style="width: 200 %;">
+                      <img src="../assets/images/ads/1.webp" class="custom-slider-image" >
                       <div class="custom-image-text">
                         <strong>클라썸은 지금도 전 직원 채용중.</strong> <br/>
                         <span style="font-size: 15px;">어서 지원하세요!</span>
@@ -96,7 +96,7 @@
                   </div>
 
                   <div class="custom-post">
-                    <div class="custom-slider-image-container">
+                    <div class="custom-slider-image-container" style="width: 150%;">
                       <img src="../assets/images/ads/3.webp" class="custom-slider-image">
                       <div class="custom-image-text">
                         <strong>인공지능 (AI)포지션.</strong> <br/>
@@ -109,6 +109,8 @@
                 </div>
               </div>
             </div>
+            
+            
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
             <script>
@@ -390,6 +392,7 @@
     </div>
 </article>
       
+    </section>
     </section>
   </main>
   <script>
