@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import kr.co.sist.user.dao.qna.QnaUserDAO;
 import kr.co.sist.user.domain.qna.UserQnaDomain;
+import kr.co.sist.user.vo.qna.UserQnaVO;
 
 @Service
 public class QnaUserService {
@@ -27,5 +28,9 @@ public class QnaUserService {
         System.out.println("oneQna:------------" + oneQna);
         oneQna = qnaUserDAO.selectOneQna(qna_num);
         return oneQna;
+    }
+
+    public void addQna(UserQnaVO qVO) {
+        qnaUserDAO.insertQna(qVO);
     }
 }

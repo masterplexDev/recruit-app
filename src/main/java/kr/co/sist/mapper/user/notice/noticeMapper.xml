@@ -2,7 +2,11 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
- <mapper namespace="kr.co.sist.qna.user">
- 	<select id="selectNotice" resultType="kr.co.sist.user.domain.notice.NoticeDomain">
+  
+ <mapper namespace="kr.co.sist.notice.user">
+ 	<select id="selectNotices" resultType="kr.co.sist.user.domain.notice.NoticeDomain">
+ 		select category, title, input_date
+ 		from notice
+ 		order by input_date desc
  	</select>
  </mapper>

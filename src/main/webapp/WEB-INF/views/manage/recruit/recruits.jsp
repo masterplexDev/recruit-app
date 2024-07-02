@@ -9,6 +9,13 @@
 <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
 <script src="http://localhost/recruit-app/assets/js/admin/datepicker-ko.js"></script>
 <script type="text/javascript">
+	var startNum = 1;
+	var endNum = startNum + itemsPerPage;
+	var itemsPerPage = 5;
+	var showPages = 3;
+	var totalPages = 0;
+	var currentPage = 1;
+	
 	$(function(){
 		$.datepicker.setDefaults($.datepicker.regional['ko']);
     	$("#recruit_menu").addClass("bg-gradient-primary");
@@ -69,24 +76,81 @@
         	updateRecruitList(false);
     	});
     	
+    	$('.pagination').on('click', '.page-link', function(e) {
+            /* e.preventDefault();
+            var clickedPage = $(this).data('page');
+            if (clickedPage) {
+                currentPage = clickedPage;
+                startNum = itemsPerPage * (currentPage - 1) + 1;
+                updateRecruitList(false);
+            } */
+            
+            e.preventDefault();
+            var clickedPage = $(this).data('page');
+            if (clickedPage) {
+                currentPage = clickedPage;
+                startNum = itemsPerPage * (currentPage - 1) + 1;
+                updateRecruitList(false);
+            } else if ($(this).attr('id') === 'prev-page') {
+                if (currentPage > 1) {
+                    currentPage--;
+                    startNum = itemsPerPage * (currentPage - 1) + 1;
+                    updateRecruitList(false);
+                }
+            } else if ($(this).attr('id') === 'next-page') {
+                if (currentPage < Math.ceil(totalPages / itemsPerPage)) {
+                    currentPage++;
+                    startNum = itemsPerPage * (currentPage - 1) + 1;
+                    updateRecruitList(false);
+                }
+            }
+        }); 
+    	
+    	/* // 이전 페이지 버튼
+        $('#prev-page').click(function(e) {
+            e.preventDefault();
+            if (currentPage > 1) {
+            	currentPage--;
+                startNum = itemsPerPage * (currentPage - 1) + 1;
+                updateRecruitList(false);
+            }
+        });
+
+        // 다음 페이지 버튼
+        $('#next-page').click(function(e) {
+            e.preventDefault();
+            if (currentPage < Math.ceil(totalPages / itemsPerPage)) {
+            	currentPage++;
+                startNum = itemsPerPage * (currentPage - 1) + 1;
+                updateRecruitList(false);
+            }
+        }); */
+    	
     	updateRecruitList(true);
     	resetForm();
 	});
 
 	function updateRecruitList(isFirst) {
-		var searchVO = "";
-		
-		if(!isFirst){
-			searchVO = getSearchVO();
-		}
-		
-        $.ajax({
+		var searchVO = {};
+	    
+	    if (isFirst) {
+	        searchVO = {
+	            startNum: 1,
+	            endNum: itemsPerPage
+	        };
+	    } else {
+	        searchVO = getSearchVO();
+	    }
+
+	    $.ajax({
             url: "${pageContext.request.contextPath}/api/manage/recruits.do",
             method: 'GET',
             data: searchVO,
             dataType: 'JSON',
             success: function(data) {
                 populateTable(data);
+                countRecruits(isFirst);
+                updatePagination();
                 if(!(data && data.length > 0)){
                     $("#sodr_list tbody").html('<tr><td colspan="10" style="font-size: 16px; font-weight: bold;">검색 결과가 없습니다.</td></tr>');
                 }
@@ -107,7 +171,7 @@
                 .addClass('list0')
                 .attr('data-href', 'http://localhost/recruit-app/manage/recruits/detail.do?id=' + recruit.id);
             
-            row.append($('<td>').text(index + 1))
+            row.append($('<td>').text(index + startNum))
                .append($('<td>').text(recruit.companyCode))
                .append($('<td>').text(recruit.companyName))
                .append($('<td>').text(recruit.inputDate))
@@ -176,7 +240,6 @@
 		}
 		
 	    return {
-	        //page: $("input[name='page']").val(),
 	        category: $("select[name='category']").val(),
 	        keyword: $("input[name='keyword']").val(),
 	        inputDateStart: $("#start_date_first").val() || undefined,
@@ -184,9 +247,49 @@
 	        endDateStart: $("#start_date_sec").val() || undefined,
 	        endDateEnd: $("#end_date_sec").val() || undefined,
 	        career: careerType,
-	        employmentType: employmentType
+	        employmentType: employmentType,
+	        startNum: startNum,
+	        endNum: startNum + itemsPerPage - 1
 	    };
 	}
+	
+	function countRecruits(searchVO){
+		$.ajax({
+            url: "${pageContext.request.contextPath}/api/manage/recruit/counts.do",
+            method: 'GET',
+            data: searchVO,
+            dataType: 'JSON',
+            async: false,
+            success: function(data) {
+            	totalPages = data;
+            },
+            error: function(xhr, status, error) {
+                console.error("Error fetching data: " + error);
+            }
+        });
+	}
+
+ 	// 페이지네이션 업데이트
+    function updatePagination() { 
+ 		var currentGroup = Math.ceil(currentPage / showPages);
+    	var startPage = (currentGroup - 1) * showPages + 1;
+        var paginationHtml = '';
+        var endPage = Math.min(Math.ceil(totalPages / itemsPerPage) , startPage + showPages - 1);
+        paginationHtml += '<li class="page-items' + (currentPage === 1 ? ' disabled' : '') + '">';
+        paginationHtml += '<a class="page-link" href="#" aria-label="Previous" id="prev-page">';
+        paginationHtml += '<span aria-hidden="true">&laquo;</span></a></li>';
+
+        for (var i = startPage; i <= endPage; i++) {
+            paginationHtml += '<li class="page-items' + (i === currentPage ? ' active' : '') + '">';
+            paginationHtml += '<a class="page-link" href="#" data-page="' + i + '">' + i + '</a></li>';
+        }
+
+        paginationHtml += '<li class="page-items' + (currentPage === Math.ceil(totalPages / itemsPerPage) ? ' disabled' : '') + '">';
+        paginationHtml += '<a class="page-link" href="#" aria-label="Next" id="next-page">';
+        paginationHtml += '<span aria-hidden="true">&raquo;</span></a></li>';
+
+        $('.pagination').html(paginationHtml);
+    }
 </script>
 <!-- golgolz start -->
 <link href="http://localhost//recruit-app/assets/css/pagenation.css" rel="stylesheet" />
@@ -356,15 +459,19 @@
             			</tbody>
           			</table>
 					<ul class="pagination" style="justify-content: center;">
-						<li><a class="page-link" href="#" aria-label="Previous">
-								<span aria-hidden="true">&laquo;</span>
-						</a></li>
-						<li><a class="page-link" href="#">1</a></li>
-						<li><a class="page-link" href="#">2</a></li>
-						<li><a class="page-link" href="#">3</a></li>
-						<li><a class="page-link" href="#" aria-label="Next"> <span
-								aria-hidden="true">&raquo;</span>
-						</a></li>
+						<li class="page-items">
+							<a class="page-link" href="#" aria-label="Previous" id="prev-page">
+					            <span aria-hidden="true">&laquo;</span>
+					        </a>
+						</li>
+						<li class="page-items"><a class="page-link" href="#" data-page="1">1</a></li></li>
+						<li class="page-items"><a class="page-link" href="#" data-page="2">2</a></li></li>
+						<li class="page-items"><a class="page-link" href="#" data-page="3">3</a></li></li>
+						<li class="page-items">
+							<a class="page-link" href="#" aria-label="Next" id="next-page">
+					            <span aria-hidden="true">&raquo;</span>
+					        </a>
+						</li>
 					</ul>
 				</div>	
 			</div>
