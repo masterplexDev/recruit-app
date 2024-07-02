@@ -43,33 +43,30 @@
         TO_CHAR(DR.SIGNUP_DATE, 'YYYY-MM-DD')
   </select>
 
-
-  <!-- 모든 등록 기업 수 -->
-  <select id="getAllRegisteredCompanyCounts" resultType="map">
-    SELECT
-        TRUNC(ESTABLISHMENT_DATE) AS ESTABLISHMENT_DATE,
-        COUNT(*) AS REGISTERCOMPANY_CNT
-    FROM
-        COMPANYINFO
-    GROUP BY
-        TRUNC(ESTABLISHMENT_DATE)
-    ORDER BY
-        TRUNC(ESTABLISHMENT_DATE)
-  </select>
-
+ <!-- 등록 기업 수 결과 매핑 -->
+  <resultMap id="RegisteredCompanyCountMap" type="kr.co.sist.admin.vo.dashboard.RegisteredCompanyCountVO">
+    <result property="registrationDate" column="REGISTRATION_DATE"/>
+    <result property="companyCount" column="COMPANY_CNT"/>
+  </resultMap>
+  
   <!-- 오늘을 기준으로 일주일 전까지의 등록 기업 수 -->
-  <select id="getRegisteredCompanyCountsForLastWeek" resultType="map">
-    SELECT
-        TRUNC(ESTABLISHMENT_DATE) AS ESTABLISHMENT_DATE,
-        COUNT(*) AS REGISTERCOMPANY_CNT
-    FROM
-        COMPANYINFO
-    WHERE
-        ESTABLISHMENT_DATE &gt;= TRUNC(SYSDATE) - 7 AND ESTABLISHMENT_DATE &lt; TRUNC(SYSDATE)
-    GROUP BY
-        TRUNC(ESTABLISHMENT_DATE)
-    ORDER BY
-        TRUNC(ESTABLISHMENT_DATE)
+  <select id="getRegisteredCompanyCountsForLastWeek" resultMap="RegisteredCompanyCountMap">
+    WITH DateRange AS (
+    SELECT TRUNC(SYSDATE) - LEVEL AS ESTABLISHMENT_DATE
+    FROM DUAL
+    CONNECT BY LEVEL &lt;= 7
+)
+SELECT
+    TO_CHAR(DR.ESTABLISHMENT_DATE, 'YYYY-MM-DD') AS REGISTRATION_DATE,
+    NVL(COUNT(C.COMPANY_CODE), 0) AS REGISTERCOMPANY_CNT
+FROM
+    DateRange DR
+LEFT JOIN
+    COMPANYINFO C ON TRUNC(C.ESTABLISHMENT_DATE) = DR.ESTABLISHMENT_DATE
+GROUP BY
+    TO_CHAR(DR.ESTABLISHMENT_DATE, 'YYYY-MM-DD')
+ORDER BY
+    TO_CHAR(DR.ESTABLISHMENT_DATE, 'YYYY-MM-DD')
   </select>
 
   <!-- 기술 스택 수 -->

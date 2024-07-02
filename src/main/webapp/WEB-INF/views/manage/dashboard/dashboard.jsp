@@ -77,12 +77,6 @@
                                         <canvas id="signup-chart"></canvas>
                                     </div>
                                     <div class="d-flex flex-row justify-content-end">
-                                        <span class="mr-2">
-                                            <i class="fas fa-square text-primary"></i> 이번 주
-                                        </span>
-                                        <span>
-                                            <i class="fas fa-square text-gray"></i> 지난 주
-                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -100,12 +94,6 @@
                                         <canvas id="companies-chart"></canvas>
                                     </div>
                                     <div class="d-flex flex-row justify-content-end">
-                                        <span class="mr-2">
-                                            <i class="fas fa-square text-primary"></i> 이번 주
-                                        </span>
-                                        <span>
-                                            <i class="fas fa-square text-gray"></i> 지난 주
-                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -205,55 +193,65 @@
                 console.error('JSON 파싱 오류:', e);
             }
 
-            var ctxCompanies = document.getElementById('companies-chart').getContext('2d');
-            var companiesChart = new Chart(ctxCompanies, {
-                type: 'line',
-                data: {
-                    labels: ['18th', '20th', '22nd', '24th', '26th', '28th', '30th'],
-                    datasets: [{
-                        label: '이번 주',
-                        backgroundColor: 'rgba(0,128,0,0.1)',
-                        borderColor: 'rgba(0,128,0,1)',
-                        pointRadius: false,
-                        pointColor: '#008000',
-                        pointStrokeColor: 'rgba(0,128,0,1)',
-                        pointHighlightFill: '#fff',
-                        pointHighlightStroke: 'rgba(0,128,0,1)',
-                        data: [50, 60, 70, 80, 90, 100, 110]
-                    },
-                    {
-                        label: '지난 주',
-                        backgroundColor: 'rgba(210, 214, 222, 0.1)',
-                        borderColor: 'rgba(210, 214, 222, 1)',
-                        pointRadius: false,
-                        pointColor: 'rgba(210, 214, 222, 1)',
-                        pointStrokeColor: '#c1c7d1',
-                        pointHighlightFill: '#fff',
-                        pointHighlightStroke: 'rgba(220,220,220,1)',
-                        data: [40, 50, 60, 70, 80, 90, 100]
-                    }]
-                },
-                options: {
-                    maintainAspectRatio: false,
-                    responsive: true,
-                    tooltips: {
-                        mode: 'index',
-                        intersect: true
-                    },
-                    hover: {
-                        mode: 'nearest',
-                        intersect: true
-                    },
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true,
-                                max: 200
-                            }
+         // 등록 기업 수 데이터 처리
+            var registeredCompanyCountsJson = '${registeredCompanyCountsLastWeekJson}';
+            console.log("Registered Company Counts JSON:", registeredCompanyCountsJson);
+
+            try {
+                var parsedRegisteredCompanyCounts = JSON.parse(registeredCompanyCountsJson);
+                console.log("Parsed Registered Company Counts:", parsedRegisteredCompanyCounts);
+
+                var companyLabels = parsedRegisteredCompanyCounts.map(function(item) {
+                    return item.registrationDate;
+                });
+                var companyData = parsedRegisteredCompanyCounts.map(function(item) {
+                    return item.companyCount;
+                });
+
+                console.log("Company Labels:", companyLabels);
+                console.log("Company Data:", companyData);
+
+                var ctxCompanies = document.getElementById('companies-chart').getContext('2d');
+                var companiesChart = new Chart(ctxCompanies, {
+                    type: 'line',
+                    data: {
+                        labels: companyLabels,
+                        datasets: [{
+                            label: '등록 기업 수',
+                            backgroundColor: 'rgba(0,128,0,0.1)',
+                            borderColor: 'rgba(0,128,0,1)',
+                            pointRadius: false,
+                            pointColor: '#008000',
+                            pointStrokeColor: 'rgba(0,128,0,1)',
+                            pointHighlightFill: '#fff',
+                            pointHighlightStroke: 'rgba(0,128,0,1)',
+                            data: companyData
                         }]
+                    },
+                    options: {
+                        maintainAspectRatio: false,
+                        responsive: true,
+                        tooltips: {
+                            mode: 'index',
+                            intersect: true
+                        },
+                        hover: {
+                            mode: 'nearest',
+                            intersect: true
+                        },
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true,
+                                    max: 10
+                                }
+                            }]
+                        }
                     }
-                }
-            });
+                });
+            } catch (e) {
+                console.error('Registered Company JSON 파싱 오류:', e);
+            }
             
             // 기술 스택 차트 설정
             var ctxTechStack = document.getElementById('techStack-chart').getContext('2d');
