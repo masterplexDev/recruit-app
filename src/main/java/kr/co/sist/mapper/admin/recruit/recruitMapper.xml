@@ -25,6 +25,62 @@
 	    <result property="companyPeopleNum" column="headcount"/>
 	    <result property="establishDate" column="establishment_date"/>
 	</resultMap>
+	<select id="countRecruits" resultType="int" parameterType="kr.co.sist.admin.vo.recruit.SearchVO">
+	    SELECT COUNT(*) AS total_count
+	    FROM (
+	        SELECT
+	            r.recruit_num,
+	            r.company_code,
+	            ci.company_name,
+	            r.input_date,
+	            r.end_date,
+	            r.title,
+	            r.career_condition,
+	            r.years,
+	            r.employment_type,
+	            r.work_place
+	        FROM recruit r
+	        LEFT JOIN companyinfo ci ON r.company_code = ci.company_code
+	        <where>
+	            r.delete_flag = 'F'
+	            <if test="id != 0">
+	                and r.recruit_num = #{id}
+	            </if>
+	            <choose>
+	                <when test="category == 0 and keyword != null and keyword != ''">
+	                    and ci.company_code LIKE '%' || #{keyword} || '%'
+	                </when>
+	                <when test="category == 1 and keyword != null and keyword != ''">
+	                    and ci.company_name LIKE '%' || #{keyword} || '%'
+	                </when>
+	                <when test="category == 2 and keyword != null and keyword != ''">
+	                    and r.title LIKE '%' || #{keyword} || '%'
+	                </when>
+	                <when test="category == 3 and keyword != null and keyword != ''">
+	                    and r.work_place LIKE '%' || #{keyword} || '%'
+	                </when>
+	            </choose>
+	            <if test="inputDateStart != null">
+	                and r.input_date >= #{inputDateStart}
+	            </if>
+	            <if test="inputDateEnd != null">
+	                and r.input_date <![CDATA[ <= ]]> #{inputDateEnd}
+	            </if>
+	            <if test="endDateStart != null">
+	                and r.end_date >= #{endDateStart}
+	            </if>
+	            <if test="endDateEnd != null">
+	                and r.end_date <![CDATA[ <= ]]> #{endDateEnd}
+	            </if>
+	            <if test="career != null">
+	                and career_condition = #{career}
+	            </if>
+	            <if test="employmentType != null and employmentType != ''">
+	                and employment_type = #{employmentType}
+	            </if>
+	        </where>
+	    )
+	</select>
     <select id="selectRecruits" resultMap="recruitResultMap" parameterType="kr.co.sist.admin.vo.recruit.SearchVO">
     	SELECT 
     		rnum,
@@ -119,6 +175,15 @@
         FROM recruit r
         LEFT JOIN companyinfo ci ON r.company_code = ci.company_code
         WHERE recruit_num = #{recruitNum}
+    </select>
+    <select id="selectCompanyNames" parameterType="java.lang.String" resultType="kr.co.sist.admin.domain.resume.CompanyDomain">
+    	SELECT company_name as name, company_code as code from companyinfo
+    	<where>
+    		<if test="keyword != null and keyword != ''">
+    			and company_name like '%' || #{keyword} || '%'
+    		</if>
+    	</where>
+    	ORDER BY company_name
     </select>
     <insert id="insertRecruit" parameterType="kr.co.sist.admin.vo.resume.RecruitAdminVO">
 	    INSERT INTO recruit (
