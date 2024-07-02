@@ -1,7 +1,6 @@
 package kr.co.sist.security;
 
 import java.util.List;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -25,7 +24,7 @@ import kr.co.sist.user.vo.basic.UpdatePassVO;
 import kr.co.sist.user.vo.signup.Signup2VO;
 import kr.co.sist.user.vo.signup.SignupVO;
 
-@SessionAttributes({"jwtSignup", "jwtLogin", "resultMsg", "userId", "name"})
+@SessionAttributes({"jwtSignup", "jwtLogin", "userId", "name"})
 @Controller
 public class SecurityController {
 
@@ -58,14 +57,7 @@ public class SecurityController {
         session.setAttribute("jwtSignup", jwtSignup);
 
         List<QuestionDomain> list = ubs.searchPasswordQList();
-        String resultMsg = "";
-        if (list == null) {
-            resultMsg = "리스트 조회 실패";
-            System.out.println(resultMsg);
-            return "user/signup";
-        } else {
-            model.addAttribute("questionList", list);
-        }
+        model.addAttribute("questionList", list);
 
         return "user/signup2";
     }
@@ -105,7 +97,7 @@ public class SecurityController {
 
 
     @PostMapping("/user/login.do")
-    public String login(LoginVO loginVO, Model model, HttpServletResponse response) {
+    public String login(LoginVO loginVO, Model model, RedirectAttributes redirectAttributes) {
         String resultMsg = "";
 
         LoginDomain loginDomain = ubs.userLogin(loginVO);
@@ -130,8 +122,8 @@ public class SecurityController {
             } // end else
         } // end else
 
-        model.addAttribute("resultMsg", resultMsg);
-        return "user/login";
+        redirectAttributes.addFlashAttribute("resultMsg", resultMsg);
+        return "redirect:/user/loginPage.do";
     }
 
     @GetMapping("/user/logout.do")

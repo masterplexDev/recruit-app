@@ -11,11 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class UserInfoDomain {
-    private String userId;
-    private String name;
-    private String gender;
-    private String phone;
-    private String tel;
-    private String profileImg;
+public class QuestResultDomain {
+    private int qNum;
+    private String qAnswer;
 }

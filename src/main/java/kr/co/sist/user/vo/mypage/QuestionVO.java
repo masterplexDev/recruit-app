@@ -1,4 +1,4 @@
-package kr.co.sist.user.domain.mypage;
+package kr.co.sist.user.vo.mypage;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,11 +11,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class UserInfoDomain {
+public class QuestionVO {
     private String userId;
-    private String name;
-    private String gender;
-    private String phone;
-    private String tel;
-    private String profileImg;
+    private int qNum;
+    private String qAnswer;
 }
