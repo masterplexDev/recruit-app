@@ -3,6 +3,12 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="kr.co.sist.mapper.user.mypage.mypageMapper">
+	 <resultMap id="userApplyList" type="kr.co.sist.user.domain.mypage.UserApplyDomain">
+		    <result property="companyName" column="company_name"/>
+		    <result property="title" column="title"/>
+		    <result property="applyDate" column="apply_date"/>
+		    <result property="progressState" column="progress_state"/>
+	</resultMap>
  	<update id="updatePassFlag" parameterType="String">
   		update users
   		set updatepass_flag='N'
@@ -28,4 +34,9 @@
 	set name=#{ name }, phone=#{ phone }, tel=#{ tel }
 	where user_id=#{ userId }
   	</update>
+  	<select id="selectApply" parameterType="String" resultMap="userApplyList">
+  	select cpi.company_name, rc.title, ap.apply_date, ap.progress_state
+	from apply ap, recruit rc, companyinfo cpi
+	where ((ap.recruit_num=rc.recruit_num) and (rc.company_code=cpi.company_code)) and ap.user_id=#{ userId }
+  	</select>
  </mapper>
