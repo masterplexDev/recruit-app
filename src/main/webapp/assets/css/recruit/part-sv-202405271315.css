@@ -538,13 +538,13 @@
 /* AD */
 #adPartTop {position:absolute; right:15px; top:15px;}
 /* 리스트 상단*/
-.tplJobListWrap {position:relative; margin-top:70px; z-index:1;}
+.tplJobListWrap {position:relative; margin-top:20px; z-index:1;}
 .tplJobListWrap .tplAdd {margin-top:10px;}
 .tplJobListWrap .tplList {margin:10px 0;}
 .tplJobListFunc {position:relative;}
 .tplJobListFunc .tplJobManTot {float:left;font-size:20px;letter-spacing: -0.5px; color:#000;}
 .tplJobListFunc .tplJobManTot .tahoma {color:#39f; vertical-align:middle;}
-.tplJobListFunc .tplJobManBtn {position:absolute; top:2px; right:0;}
+.tplJobListFunc .tplJobManBtn {/* position:absolute;  */top:2px; right:0;}
 .tplJobListFunc .tplJobManBtn > .tplSltBx {margin-left:4px; vertical-align:top;}
 .tplJobListFunc .tplJobManBtn > .tplSltBx:first-child{background-position: 22px -94px;}
 .tplJobListFunc .tplJobManBtn > .tplSltBx:first-child select{width:124px; padding:0 4px;}

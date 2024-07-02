@@ -86,7 +86,7 @@ a.link:visited{color: #999;}
 .tpl_hd_3 {font-size:15px;letter-spacing: 0px; color:#333; font-weight:bold;}
 .tpl_hd_3:before {content:""; display:inline-block; width:3px; height:14px; margin:-2px 6px 0 0; background:#39f; vertical-align:middle;}
 /* Button */
-.tplBtn:before, .tplBtn:after, .tplBtnTy {position:relative; display:inline-block; background:url("/content/images/ver_1/common/tpl_sp_btn.png?2018032814") no-repeat; vertical-align:middle;}
+/* .tplBtn:before, .tplBtn:after, .tplBtnTy {position:relative; display:inline-block; background:url("/content/images/ver_1/common/tpl_sp_btn.png?2018032814") no-repeat; vertical-align:middle;} */
 .tplBtn, .tplBtnTy {position:relative; overflow:hidden; display:inline-block; text-align:center; vertical-align:middle; line-height:normal; white-space:nowrap;}
 .tplBtn span, .tplBtnTy span {position:relative;}
 .tplBtn .blind, .tplBtnTy .blind, .tplBtn .skip, .tplBtnTy .skip {position:absolute;}
@@ -256,7 +256,7 @@ a.tplBtn_2 span {top:0;}
 .tplGiSlt {height:34px; background-position:100% -98px;}
 .tplGiSlt label {height:23px; line-height:23px;}
 .tplGiSlt label.chk {color:#666;}
-.tplGiSlt select {height:23px; line-height:25px; padding:0 0 0 10px;}
+.tplGiSlt select {height:33px; line-height:25px; padding:0 0 0 10px;}
 .tplGiSlt.disabled {border:1px solid #e5e5e5; background-position:100% -141px;}
 .tplGiSlt.disabled label {color:#aaa;}
 .tplTabBx {border-bottom:1px solid #e6e7e8; /* border-top-color:#4a577a; */ }
