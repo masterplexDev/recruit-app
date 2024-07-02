@@ -70,9 +70,10 @@ public class QnaAdminController {
         if (result == 1) {
             int qna_num = qVO.getQna_num();
             int result2 = qnaAdminService.updateQnaFlag(qna_num);
-            System.out.println("여기!!!!!!!" + qna_num);
+            // System.out.println("여기!!!!!!!" + qna_num);
             if (result2 == 1) {
-                System.out.println("여기????");
+                // System.out.println("여기????");
+                qVO.setAns_title("RE:" + qVO.getAns_title());
             }
         }
         model.addAttribute("qnaAnswer", qVO);

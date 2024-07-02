@@ -1,4 +1,4 @@
-package kr.co.sist.user.domain.notice;
+package kr.co.sist.user.vo.notice;
 
 import java.sql.Date;
 import lombok.AllArgsConstructor;
@@ -12,7 +12,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class NoticeDomain {
+public class NoticeUserVO {
     private int notice_num, views;
     private String category, title, content, admin_id, modifier, blind_flag;
     private Date input_date, update_date;
