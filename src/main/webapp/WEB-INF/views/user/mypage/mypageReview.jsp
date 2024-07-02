@@ -1,3 +1,5 @@
+<%@page import="kr.co.sist.user.domain.mypage.UserReviewDomain"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     info=""%>
@@ -138,50 +140,7 @@
     font-weight: bold;
 	}
     </style>
-	<style type="text/css">
-	</style>
-
-
-<script type="text/javascript">
-	$(function(){
-    	$("#qna_menu").addClass("bg-gradient-primary");
-	});
-</script>
-	<script type="text/javascript">
-		$(function(){
-			<!-- golgolz start -->
-			<!-- golgolz end -->
-		});
-	</script>
-</head>
-<body>
-    <div id="__next" data-reactroot="">
-		<jsp:include page="../../../../assets/layout/user/header.jsp" />
-		<main class="JobsFeed_Jobsfeed__DpeV9">  
-			<section class="Section_Section__P1hhc">
-			<!-- golgolz start -->
-        <div class="MainLayout_MainLayout__root__p6itg">
-          <div class="Grid_Grid__container__J9CcC Grid_Grid__spacing__5__ZwgDV">
-          <jsp:include page="mypage_layout.jsp"/>
-            <div class="Grid_Grid__item__FUkSS Grid_Grid__justify_center__QJu2X Grid_Grid__align-items_flex-start__PA0JE Grid_Grid__grid__xs__12__rVqKh Grid_Grid__grid__md__6__9g_JE">
-            <div style="margin: 30px; margin-right: 50px;">
-            <h1 style="font-size: 25px;"><strong>리뷰</strong></h1>
-			<!--// tap menu -->
-			<div class="mtcTplTab" >
-				<ul class="tabItems">
-					<li class=""><a href="mypageCareer.jsp">나의 커리어</a></li>
-					<li class="on"><a href="mypageReview.jsp">나의 리뷰</a></li>
-				</ul>
-			</div>
-			<!-- tap menu //-->
-				<div style="margin-top: 30px;">
-					<label>나의 리뷰</label>
-				</div>
-				<div>
-					<label>총 <strong>n</strong>건</label>
-				</div>
-				<div class="row salaryList salaryCompanyList" style="margin-top: 30px;">
-				<style>
+	<style>
 					table,tr{
 					border: 1px solid #edeef0; 
 					width: 100%; 
@@ -213,48 +172,85 @@
 					 .btn:hover{
 					 color: white;
 			         }
-			         
+			        .List_List_empty__pphW6 {
+				    margin-top: 40px;
+				    margin-bottom: 40px;
+				    text-align: center;
+				    font-size: 15px;
+					}
 				</style>
+
+<script type="text/javascript">
+	$(function(){
+    	$("#qna_menu").addClass("bg-gradient-primary");
+	});
+</script>
+	<script type="text/javascript">
+		$(function(){
+			<!-- golgolz start -->
+			<!-- golgolz end -->
+		});
+	</script>
+</head>
+<%
+	List<UserReviewDomain> reviewList = (List)request.getAttribute("reviewList");
+%>
+<body>
+    <div id="__next" data-reactroot="">
+		<jsp:include page="../../../../assets/layout/user/header.jsp" />
+		<main class="JobsFeed_Jobsfeed__DpeV9">  
+			<section class="Section_Section__P1hhc">
+			<!-- golgolz start -->
+        <div class="MainLayout_MainLayout__root__p6itg">
+          <div class="Grid_Grid__container__J9CcC Grid_Grid__spacing__5__ZwgDV">
+          <jsp:include page="mypage_layout.jsp"/>
+            <div class="Grid_Grid__item__FUkSS Grid_Grid__justify_center__QJu2X Grid_Grid__align-items_flex-start__PA0JE Grid_Grid__grid__xs__12__rVqKh Grid_Grid__grid__md__6__9g_JE">
+            <div style="margin: 30px; margin-right: 50px;">
+            <h1 style="font-size: 25px;"><strong>리뷰</strong></h1>
+			<!--// tap menu -->
+			<div class="mtcTplTab" >
+				<ul class="tabItems">
+					<li class=""><a href="mypageCareer.do">나의 커리어</a></li>
+					<li class="on"><a href="mypageReview.do">나의 리뷰</a></li>
+				</ul>
+			</div>
+			<!-- tap menu //-->
+				<div style="margin-top: 30px;">
+					<label>나의 리뷰</label>
+				</div>
+				<div>
+					<label>총 <strong><%= reviewList.size() %></strong>건</label>
+				</div>
+				<div class="row salaryList salaryCompanyList" style="margin-top: 50px; margin-bottom: 50px;">
+				<% if(reviewList == null || reviewList.isEmpty()) { %>
+					<div class="List_List_table__K2VFf">
+								<ul>
+									<dl class="List_List_empty__pphW6"">
+										<dd>조회 결과가 없습니다.</dd>
+									</dl>
+								</ul>
+					</div>
+				<%} else { %>
 				<div class="container">
 					<table>
+						<% for(UserReviewDomain urd : reviewList) { %>
 						<tr>
-							<td class="tableHeader"><h1 style="font-size: 15px;">쿠팡</h1></td>
+							<td class="tableHeader"><h1 style="font-size: 15px;"><%= urd.getCompanyName() %></h1></td>
 							<td class="companyInfo">
 							<ul class="companyInfo">
-								<li class="reviewTitle">좋습니다</li>
-								<li class="writeDate">2024-05-11</li>
-								<li class="reviewContent">신입사원 초봉이 높아요. 좋아요.</li>
+								<li class="reviewTitle"><%= urd.getTitle() %></li>
+								<li class="writeDate"><%= urd.getInputDate() %></li>
+								<li class="reviewContent"><%= urd.getContent() %></li>
 							</ul>
 							</td>
 							<td class="tableHeader"><input type="button" class="btn btn-outline-info btn-sm" 
 								value="상세보기" onclick="location.href='http://localhost/recruit-app/review/reviewResult.jsp?reviewNum=1'"></td>
 						</tr>
-						<tr>
-							<td class="tableHeader"><h1 style="font-size: 15px;">배달의 민족</h1></td>
-							<td class="companyInfo">
-							<ul class="companyInfo">
-								<li class="reviewTitle">조금 힘들어요</li>
-								<li class="writeDate">2022-01-13</li>
-								<li class="reviewContent">일은 힘든데, 성과급을 잘 챙겨줘요.</li>
-							</ul>
-							</td>
-							<td class="tableHeader"><input type="button" class="btn btn-outline-info btn-sm" 
-								value="상세보기" onclick="location.href='http://localhost/recruit-app/review/reviewResult.jsp?reviewNum=2'"></td>
-						</tr>
-						<tr">
-							<td class="tableHeader"><h1 style="font-size: 15px;">티모넷</h1></td>
-							<td class="companyInfo">
-							<ul class="companyInfo">
-								<li class="reviewTitle">추천해요</li>
-								<li class="writeDate">2018-03-10</li>
-								<li class="reviewContent">워라벨이 보장돼요.</li>
-							</ul>
-							</td>
-							<td class="tableHeader"><input type="button" class="btn btn-outline-info btn-sm" 
-								value="상세보기" onclick="location.href='http://localhost/recruit-app/review/reviewResult.jsp?reviewNum=3'"></td>
-						</tr>
+						<%}//end for %>
 					</table>
                 </div>
+                <% }//end else %>
+				</div>
                 <!-- 페이지네이션 시작 -->
 						<div style="text-align:center;">
 					        <nav aria-label="...">
@@ -274,7 +270,6 @@
 							         </nav>
 								</div>
 				<!-- 페이지네이션 끝 -->
-				</div>
             </div>
             </div>
           </div>

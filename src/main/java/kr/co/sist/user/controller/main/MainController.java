@@ -13,6 +13,8 @@ public class MainController {
     @Autowired(required = false)
     private MainService mainService;
 
+    
+    
     @GetMapping("/mainTest.do")
     public String mainTest(Model model) {
         List<MainVO> recentJobPosts = mainService.getRecentJobPosts();
@@ -20,6 +22,10 @@ public class MainController {
         return "mainTest";
     }
    
+    @GetMapping("/")
+    public String redirectToMain() {
+        return "redirect:/main/main.do";
+    }
     
     
     @GetMapping("/main/main.do")

@@ -23,6 +23,7 @@
     </environment>
   </environments>
   <mappers>
+    <mapper resource="kr/co/sist/mapper/dashboard/DashboardMapper.xml"/>
     <mapper resource="kr/co/sist/mapper/exampleMapper.xml"/>
     <mapper resource="kr/co/sist/mapper/admin/recruit/recruitMapper.xml"/>
     <mapper resource="kr/co/sist/mapper/admin/basic/adminMapper.xml"/>

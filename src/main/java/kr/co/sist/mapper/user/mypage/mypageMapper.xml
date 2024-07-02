@@ -3,6 +3,25 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="kr.co.sist.mapper.user.mypage.mypageMapper">
+	 <resultMap id="userApplyList" type="kr.co.sist.user.domain.mypage.UserApplyDomain">
+		    <result property="companyName" column="company_name"/>
+		    <result property="title" column="title"/>
+		    <result property="applyDate" column="apply_date"/>
+		    <result property="progressState" column="progress_state"/>
+	</resultMap>
+	<resultMap id="userCareerList" type="kr.co.sist.user.domain.mypage.UserCareerDomain">
+		    <result property="logo" column="logo"/>
+		    <result property="companyName" column="company_name"/>
+		    <result property="revenue" column="revenue"/>
+		    <result property="headcount" column="headcount"/>
+	</resultMap>
+	<resultMap id="userReviewList" type="kr.co.sist.user.domain.mypage.UserReviewDomain">
+		    <result property="reviewNum" column="review_num"/>
+		    <result property="companyName" column="company_name"/>
+		    <result property="title" column="title"/>
+		    <result property="inputDate" column="input_date"/>
+		    <result property="content" column="content"/>
+	</resultMap>
  	<update id="updatePassFlag" parameterType="String">
   		update users
   		set updatepass_flag='N'
@@ -28,4 +47,21 @@
 	set name=#{ name }, phone=#{ phone }, tel=#{ tel }
 	where user_id=#{ userId }
   	</update>
+  	<select id="selectApply" parameterType="String" resultMap="userApplyList">
+  	select cpi.company_name, rc.title, ap.apply_date, ap.progress_state
+	from apply ap, recruit rc, companyinfo cpi
+	where ((ap.recruit_num=rc.recruit_num) and (rc.company_code=cpi.company_code)) and ap.user_id=#{ userId }
+  	</select>
+  	<select id="selectCareer" parameterType="String" resultMap="userCareerList">
+  	select cpi.logo,cpi.company_name,cpi.revenue,cpi.headcount
+	from career cr,resume rs, companyinfo cpi
+	where ((cr.resume_num=rs.resume_num) and (cpi.company_code=cr.company_code)) and rs.user_id=#{ userId }
+	order by cr.join_date desc
+  	</select>
+  	<select id="selectReview" parameterType="String" resultMap="userReviewList">
+  	select riv.review_num,cpi.company_name,riv.title,riv.input_date,riv.content
+	from review riv,companyinfo cpi
+	where (riv.company_code=cpi.company_code) and riv.user_id=#{ userId } and riv.delete_flag='N'
+	order by input_date desc
+  	</select>
  </mapper>

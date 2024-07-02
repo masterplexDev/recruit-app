@@ -48,7 +48,7 @@ public class AdminBasicController {
         return "test";
     }
 
-    @GetMapping("/manage/admins.do")
+    @GetMapping("/manage/admin/admins.do")
     public String searchAdmin(Model model) {
 
         // List<AdminInfoDomain> list = ams.searchAdminList();
@@ -57,7 +57,25 @@ public class AdminBasicController {
 
         // return "admin/admins";
 
-        return "test";
+        return "manage/admin/admins";
+    }
+
+    @GetMapping("/manage/user/users.do")
+    public String searchUser(Model model) {
+
+        return "manage/user/users";
+    }
+
+    @GetMapping("/manage/user/detail.do")
+    public String searchUserDetail(Model model) {
+
+        return "manage/user/detail";
+    }
+
+    @GetMapping("/manage/adminLogin/adminLoginPage.do")
+    public String adminLoginPage(Model model) {
+
+        return "manage/adminLogin/adminLogin";
     }
 
 
