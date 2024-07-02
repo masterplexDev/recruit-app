@@ -155,6 +155,46 @@ input[type="number"]::-webkit-inner-spin-button {
 		    }
 		});
 		
+		$('#btn-search-company').click(function() {
+	        var keyword = $('#company_keyword').val();
+	        
+	        $.ajax({
+	            url: "${pageContext.request.contextPath}/api/manage/recruit/companies.do",  // 실제 엔드포인트 URL로 변경해주세요
+	            type: "GET",
+	            data: { keyword: keyword },
+	            dataType: "JSON",
+	            success: function(response) {
+	            	alert("기업 검색 결과가 조회되었습니다. 기업을 선택해주세요.");
+	    	        $('#company_name').text("");
+	                var select = $("#company-select");
+	                select.empty();
+	                select.append('<option value="">검색 결과 조회하기</option>');
+
+	                $.each(response, function(index, company) {
+	                    select.append($('<option></option>')
+	                        .attr('value', company.code)
+	                        .text(company.name));
+	                });
+	                
+	                if(response.length > 0) {
+	                    select.show();
+	                } else {
+	                    select.hide();
+	                }
+	            },
+	            error: function(xhr, status, error) {
+	                console.error("Ajax request failed: " + status + ", " + error);
+	            }
+	        });
+	    });
+
+	    // select 값이 변경될 때 company_name과 company_code 업데이트
+	    $('#company-select').change(function() {
+	        var selectedOption = $(this).find('option:selected');
+	        $('#company_name').text(selectedOption.text());
+	        $('#company_code').val(selectedOption.val());
+	    });
+		
 	    var recruitNum = <c:out value="${recruitNum}" default="null"/>;
 	    if (recruitNum !== null) {
 	        $.ajax({
@@ -306,10 +346,16 @@ input[type="number"]::-webkit-inner-spin-button {
 								<tr>
 									<td class="label">기업명</td>
 									<td class="box text">
-										<input type="text" id="company_name" name="company_name" value="기업명을 입력해주세요." size="50" class="inputbox naver_shopping_prodName" />
-										<input type="hidden" id="company_code" name="company_code" value="comp_0005"/>
+										<input type="text" id="company_keyword" name="company_keyword" placeholder="검색할 기업명을 입력해주세요." size="20" class="inputbox naver_shopping_prodName" />
+										<input type="button" id="btn-search-company" class="btn btn-outline-success btn-sm" value="조회" />
+								        <span style="font-weight:bold; margin-left: 20px;">검색 결과 : </span>
+								        <select id="company-select" style="height: 28px;">
+								            <option value="">기업을 선택하세요</option>
+								        </select>
+								        <span style="font-weight:bold; margin-left: 20px;">선택된 기업 : </span>
+								        <span id="company_name"></span>
+										<input type="hidden" id="company_code" name="company_code" value=""/>
 										<!-- <input type="button" id="btn-register" class="btn btn-success btn-sm" value="조회" /> -->
-										<input type="button" id="btn-search-company" class="btn btn-outline-success btn-sm" value="추가" />
 									</td>
 								</tr>
 								<tr>

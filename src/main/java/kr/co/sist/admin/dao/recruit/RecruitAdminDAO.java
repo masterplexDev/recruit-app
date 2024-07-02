@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import kr.co.sist.admin.domain.recruit.RecruitDomain;
+import kr.co.sist.admin.domain.resume.CompanyDomain;
 import kr.co.sist.admin.vo.recruit.SearchVO;
 import kr.co.sist.admin.vo.resume.RecruitAdminVO;
 import kr.co.sist.exceptions.UnexpectedRowCountException;
@@ -35,6 +36,14 @@ public class RecruitAdminDAO {
                 session.selectOne("kr.co.sist.recruit.admin.selectOneRecruit", recruitNum);
         myBatis.closeHandler(session);
         return recruit;
+    }
+
+    public List<CompanyDomain> selectCompanies(String keyword) {
+        SqlSession session = myBatis.getMyBatisHandler(false);
+        List<CompanyDomain> companies =
+                session.selectList("kr.co.sist.recruit.admin.selectCompanyNames", keyword);
+        myBatis.closeHandler(session);
+        return companies;
     }
 
     public boolean insertRecruit(RecruitAdminVO recruitVO) {

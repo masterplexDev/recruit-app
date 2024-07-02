@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import kr.co.sist.admin.domain.recruit.RecruitDomain;
+import kr.co.sist.admin.domain.resume.CompanyDomain;
 import kr.co.sist.admin.service.recruit.RecruitAdminService;
 import kr.co.sist.admin.vo.recruit.SearchVO;
 import kr.co.sist.admin.vo.resume.RecruitAdminVO;
@@ -53,6 +54,12 @@ public class RecruitAdminController {
         return result;
     }
 
+    @GetMapping("/api/manage/recruit/companies.do")
+    @ResponseBody
+    public List<CompanyDomain> selectCompanies(String keyword) {
+        return recruitAdminService.selectCompanies(keyword);
+    }
+
     @PostMapping("/api/manage/recruit.do")
     @ResponseBody
     public String addRecruit(@RequestBody RecruitAdminVO recruitVO) {
@@ -82,7 +89,7 @@ public class RecruitAdminController {
     @ResponseBody
     public String deleteRecruit(@RequestParam("id") int recruitNum) {
         String result = "success";
-        
+
         if (!recruitAdminService.deleteRecruit(recruitNum)) {
             result = "fail";
             System.out.println("failed");

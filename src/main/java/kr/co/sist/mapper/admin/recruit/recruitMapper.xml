@@ -120,6 +120,15 @@
         LEFT JOIN companyinfo ci ON r.company_code = ci.company_code
         WHERE recruit_num = #{recruitNum}
     </select>
+    <select id="selectCompanyNames" parameterType="java.lang.String" resultType="kr.co.sist.admin.domain.resume.CompanyDomain">
+    	SELECT company_name as name, company_code as code from companyinfo
+    	<where>
+    		<if test="keyword != null and keyword != ''">
+    			and company_name like '%' || #{keyword} || '%'
+    		</if>
+    	</where>
+    	ORDER BY company_name
+    </select>
     <insert id="insertRecruit" parameterType="kr.co.sist.admin.vo.resume.RecruitAdminVO">
 	    INSERT INTO recruit (
 	        RECRUIT_NUM,
