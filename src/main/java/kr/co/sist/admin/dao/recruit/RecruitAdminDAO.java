@@ -38,6 +38,13 @@ public class RecruitAdminDAO {
         return recruit;
     }
 
+    public int selectRecruitsCount(SearchVO searchVO) {
+        SqlSession session = myBatis.getMyBatisHandler(false);
+        int result = session.selectOne("kr.co.sist.recruit.admin.countRecruits", searchVO);
+        myBatis.closeHandler(session);
+        return result;
+    }
+
     public List<CompanyDomain> selectCompanies(String keyword) {
         SqlSession session = myBatis.getMyBatisHandler(false);
         List<CompanyDomain> companies =

@@ -240,7 +240,7 @@ input[type="number"]::-webkit-inner-spin-button {
 	function populateForm(data) {
 	    // 기본 텍스트 필드
 	    $('#recruit_num').val(data.id);
-	    $('#company_name').val(data.companyName);
+	    $('#company_name').text(data.companyName);
 	    $('#company_code').val(data.companyCode);
 	    $('#title').val(data.title);
 	    $('#end_date').val(data.endDate);
@@ -349,7 +349,7 @@ input[type="number"]::-webkit-inner-spin-button {
 									<td class="label">기업명</td>
 									<td class="box text">
 										<input type="text" id="company_keyword" name="company_keyword" placeholder="검색할 기업명을 입력해주세요." size="20" class="inputbox naver_shopping_prodName" />
-										<input type="button" id="btn-search-company" class="btn btn-outline-success btn-sm" value="조회" />
+										<input type="button" id="btn-search-company" class="btn btn-outline-success btn-sm" value="검색" />
 								        <span style="font-weight:bold; margin-left: 20px;">검색 결과 : </span>
 								        <select id="company-select" style="height: 28px;">
 								            <option value="">기업을 선택하세요</option>

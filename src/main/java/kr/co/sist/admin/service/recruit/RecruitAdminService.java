@@ -31,6 +31,10 @@ public class RecruitAdminService {
         return recruit;
     }
 
+    public int searchRecruitsCount(SearchVO searchVO) {
+        return recruitAdminDAO.selectRecruitsCount(searchVO);
+    }
+
     public List<CompanyDomain> selectCompanies(String keyword) {
         return recruitAdminDAO.selectCompanies(keyword);
     }

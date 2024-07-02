@@ -54,6 +54,12 @@ public class RecruitAdminController {
         return result;
     }
 
+    @GetMapping("/api/manage/recruit/counts.do")
+    @ResponseBody
+    public int searchRecruitsCount(@ModelAttribute SearchVO searchVO) {
+        return recruitAdminService.searchRecruitsCount(searchVO);
+    }
+
     @GetMapping("/api/manage/recruit/companies.do")
     @ResponseBody
     public List<CompanyDomain> selectCompanies(String keyword) {
@@ -76,10 +82,8 @@ public class RecruitAdminController {
     @ResponseBody
     public String modifyRecruit(@RequestBody RecruitAdminVO recruitVO) {
         String result = "success";
-        System.out.println(recruitVO.toString());
         if (!recruitAdminService.modifyRecruit(recruitVO)) {
             result = "fail";
-            System.out.println("failed");
         }
 
         return result;
@@ -92,7 +96,6 @@ public class RecruitAdminController {
 
         if (!recruitAdminService.deleteRecruit(recruitNum)) {
             result = "fail";
-            System.out.println("failed");
         }
 
         return result;
