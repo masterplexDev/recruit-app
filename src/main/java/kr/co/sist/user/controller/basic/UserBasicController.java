@@ -41,6 +41,11 @@ public class UserBasicController {
         return "user/findPass";
     }
 
+    @GetMapping("/user/findPassComplete.do")
+    public String findPassComplete() {
+        return "user/findPassComplete";
+    }
+
     @GetMapping("/main/mainPage.do")
     public String mainPage() {
         return "main/main";

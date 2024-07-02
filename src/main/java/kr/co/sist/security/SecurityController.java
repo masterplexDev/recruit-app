@@ -1,6 +1,7 @@
 package kr.co.sist.security;
 
 import java.util.List;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -137,7 +138,7 @@ public class SecurityController {
 
     @PostMapping("/user/resetPassword.do")
     public String resetPassword(FindPassVO fpVO, RedirectAttributes redirectAttributes,
-            Model model) {
+            HttpServletResponse response) {
         // 입력받은 사용자 이메일 존재 여부 확인
         String userId = ubs.searchPasswordId(fpVO);
         String resultMsg = "";
@@ -154,9 +155,8 @@ public class SecurityController {
                 ubs.modifyPassFlag(userId);
                 resultMsg = "임시 비밀번호는 로그인 하신 후 비밀번호를 변경하셔야 계정 서비스 이용이 가능합니다.";
 
-                model.addAttribute("resultMsg", resultMsg);
-                model.addAttribute("tempPassword", tempPass);
-                model.addAttribute("userId", userId);
+                redirectAttributes.addFlashAttribute("resultMsg", resultMsg);
+                redirectAttributes.addFlashAttribute("tempPassword", tempPass);
 
             } else {
                 System.out.println("비밀번호 업데이트 중 문제 발생");
@@ -168,7 +168,8 @@ public class SecurityController {
             redirectAttributes.addFlashAttribute("resultMsg", "입력하신 정보로 조회되는 정보가 없습니다.");
             return "redirect:/user/findPass.do";
         }
-        return "user/findPassComplete";
+
+        return "redirect:/user/findPassComplete.do";
     }
 
     @PostMapping("/user/mypage/modifyPassword.do")
