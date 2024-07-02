@@ -31,7 +31,9 @@
 			<a href="http://localhost/recruit-app/companyinfo/adminCompanyinfoList.do">관리자 기업리스트</a>
 			<a href="http://localhost/recruit-app/main/main.do">| 메인 페이지 |</a><br>
 			<a href="http://localhost/recruit-app/review/reviewResult.do"> 리뷰 페이지 |</a>
-			<a href="http://localhost/recruit-app/review/reviewWrite.do"> 리뷰 작성 |</a>
+			<a href="http://localhost/recruit-app/review/reviewWrite.do"> 리뷰 작성 |</a> <br>
+			<a href="http://localhost/recruit-app/manage/dashboard/dashboard.do"> 리뷰 작성 |</a>
+			
 			<!-- golgolz end -->
 			</section>
 			<jsp:include page="./assets/layout/user/footer.jsp" />  
