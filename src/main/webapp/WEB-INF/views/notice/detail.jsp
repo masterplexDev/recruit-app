@@ -65,8 +65,6 @@
                <!--  <input type="btton" value="목록" class="btn btn-outline-dark btn-sm detail-control"> -->
                     <a href="notices.jsp" class="btnMtcTpl">목록</a>
                 </div>
-                
-                <!-- /notice/notices.do -->
                 <!-- <button type="button" onclick="javascript: window.scrollTo(0,0);" class="btnMtcTpl">TOP</button> -->
             </div>
         </div>
