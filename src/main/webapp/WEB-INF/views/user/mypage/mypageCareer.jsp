@@ -1,3 +1,5 @@
+<%@page import="kr.co.sist.user.domain.mypage.UserCareerDomain"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     info=""%>
@@ -167,6 +169,12 @@
 					.btn{
 			         width: 70px; height: 30px; font-size: 15px;
 			         }
+			         .List_List_empty__pphW6 {
+				    margin-top: 40px;
+				    margin-bottom: 40px;
+				    text-align: center;
+				    font-size: 15px;
+					}
 	</style>
 
 
@@ -182,6 +190,9 @@
 		});
 	</script>
 </head>
+<%
+	List<UserCareerDomain> careerList = (List)request.getAttribute("careerList");
+%>
 <body>
     <div id="__next" data-reactroot="">
 		<jsp:include page="../../../../assets/layout/user/header.jsp" />
@@ -197,8 +208,8 @@
 			<!--// tap menu -->
 			<div class="mtcTplTab" >
 				<ul class="tabItems">
-					<li class="on"><a href="mypageCareer.jsp">나의 커리어</a></li>
-					<li class=""><a href="mypageReview.jsp">나의 리뷰</a></li>
+					<li class="on"><a href="mypageCareer.do">나의 커리어</a></li>
+					<li class=""><a href="mypageReview.do">나의 리뷰</a></li>
 				</ul>
 			</div>
 			<!-- tap menu //-->
@@ -206,60 +217,36 @@
 					<label>나의 재직 기업</label>
 				</div>
 				<div>
-					<label>총 <strong>n</strong>건</label>
+					<label>총 <strong><%= careerList.size() %></strong>건</label>
 				</div>
-				<div class="row salaryList salaryCompanyList" style="margin-top: 30px;">
+				<div class="row salaryList salaryCompanyList" style="margin-top: 50px; margin-bottom: 50px;">
+					<% if(careerList == null || careerList.isEmpty()) { %>
+						<div class="List_List_table__K2VFf">
+							<ul>
+								<dl class="List_List_empty__pphW6"">
+									<dd>조회 결과가 없습니다.</dd>
+								</dl>
+							</ul>
+						</div>
+					<% } else { %>
 				<div class="container">
 					<table>
+						<% for(UserCareerDomain ucd : careerList) { %>
 						<tr class="tableMiddle">
-							<td class="tableHeader"><img src="http://localhost/recruit-app/assets/images/mypage/user_default.png" style="width: 70px; height: 70px;"></td>
+							<td class="tableHeader"><img src="http://localhost/recruit-app/assets/images/company/<%= ucd.getLogo() %>" style="width: 70px; height: 70px;"></td>
 							<td class="companyInfo">
-							<h1 class="companyInfo" style="font-size: 18px;"><strong>쿠팡</strong></h1>
+							<h1 class="companyInfo" style="font-size: 18px;"><strong><%= ucd.getCompanyName() %></strong></h1>
 							<ul class="companyInfo">
-								<li>매출액 4조 4227억</li>
-								<li>사원수 6372명</li>
+								<li>매출액 <%= ucd.getRevenue() %>억</li>
+								<li>사원수 <%= ucd.getHeadcount() %>명</li>
 							</ul>
 							</td>
 							<td class="tableHeader"><input type="button" name="writeRivew" class="btn btn-outline-success btn-sm register-btn" 
 								value="리뷰 작성" onclick="location.href='http://localhost/recruit-app/review/reviewWrite.jsp';"></td>
 						</tr>
-						<tr class="tableMiddle">
-							<td class="tableHeader"><img src="http://localhost/recruit-app/assets/images/mypage/user_default.png" style="width: 70px; height: 70px;"></td>
-							<td class="companyInfo">
-							<h1 class="companyInfo" style="font-size: 18px;"><strong>배달의 민족</strong></h1>
-							<ul class="companyInfo">
-								<li>매출액 4조 4227억</li>
-								<li>사원수 6372명</li>
-							</ul>
-							</td>
-							<td class="tableHeader"><input type="button" name="writeRivew" class="btn btn-outline-success btn-sm register-btn" 
-								value="리뷰 작성" onclick="location.href='http://localhost/recruit-app/review/reviewWrite.jsp';"></td>
-						</tr>
-						<tr class="tableMiddle">
-							<td class="tableHeader"><img src="http://localhost/recruit-app/assets/images/mypage/user_default.png" style="width: 70px; height: 70px;"></td>
-							<td class="companyInfo">
-							<h1 class="companyInfo" style="font-size: 18px;"><strong>LG전자</strong></h1>
-							<ul class="companyInfo">
-								<li>매출액 4조 4227억</li>
-								<li>사원수 6372명</li>
-							</ul>
-							</td>
-							<td class="tableHeader"><input type="button" name="writeRivew" class="btn btn-outline-success btn-sm register-btn" 
-								value="리뷰 작성" onclick="location.href='http://localhost/recruit-app/review/reviewWrite.jsp';"></td>
-						</tr>
-						<tr class="tableMiddle">
-							<td class="tableHeader"><img src="http://localhost/recruit-app/assets/images/mypage/user_default.png" style="width: 70px; height: 70px;"></td>
-							<td class="companyInfo">
-							<h1 class="companyInfo" style="font-size: 18px;"><strong>넥슨 유니버스</strong></h1>
-							<ul class="companyInfo">
-								<li>매출액 4조 4227억</li>
-								<li>사원수 6372명</li>
-							</ul>
-							</td>
-							<td class="tableHeader"><input type="button" name="writeRivew" class="btn btn-outline-success btn-sm register-btn" 
-								value="리뷰 작성" onclick="location.href='http://localhost/recruit-app/review/reviewWrite.jsp';"></td>
-						</tr>
+						<% }//end for %>
 					</table>
+					<%}//end else %>
                 </div>
             		<!-- 페이지네이션 시작 -->
 						<div style="text-align:center;">
@@ -284,10 +271,10 @@
             </div>
             </div>
           </div>
+		 <jsp:include page="../../../../assets/layout/user/footer.jsp" />
         </div>
 			<!-- golgolz end -->
 			</section>
-			<jsp:include page="../../../../assets/layout/user/footer.jsp" />
 		</main>
 	</div>
 </body>

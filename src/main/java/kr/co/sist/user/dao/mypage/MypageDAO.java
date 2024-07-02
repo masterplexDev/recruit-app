@@ -6,7 +6,9 @@ import org.springframework.stereotype.Component;
 import kr.co.sist.properties.MyBatisConfig;
 import kr.co.sist.user.domain.mypage.QuestResultDomain;
 import kr.co.sist.user.domain.mypage.UserApplyDomain;
+import kr.co.sist.user.domain.mypage.UserCareerDomain;
 import kr.co.sist.user.domain.mypage.UserInfoDomain;
+import kr.co.sist.user.domain.mypage.UserReviewDomain;
 import kr.co.sist.user.vo.basic.UpdatePassVO;
 import kr.co.sist.user.vo.mypage.QuestionVO;
 import kr.co.sist.user.vo.mypage.UpdateUserVO;
@@ -111,6 +113,28 @@ public class MypageDAO {
         myBatis.closeHandler(ss);
 
         return applyList;
+    }
+
+    public List<UserCareerDomain> selectUserCareer(String userId) {
+        SqlSession ss = myBatis.getMyBatisHandler(false);
+
+        List<UserCareerDomain> careerList =
+                ss.selectList("kr.co.sist.mapper.user.mypage.mypageMapper.selectCareer", userId);
+
+        myBatis.closeHandler(ss);
+
+        return careerList;
+    }
+
+    public List<UserReviewDomain> selectUserReview(String userId) {
+        SqlSession ss = myBatis.getMyBatisHandler(false);
+
+        List<UserReviewDomain> reviewList =
+                ss.selectList("kr.co.sist.mapper.user.mypage.mypageMapper.selectReview", userId);
+
+        myBatis.closeHandler(ss);
+
+        return reviewList;
     }
 
 }

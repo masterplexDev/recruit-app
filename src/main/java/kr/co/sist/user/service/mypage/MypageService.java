@@ -6,7 +6,9 @@ import kr.co.sist.user.dao.basic.UserBasicDAO;
 import kr.co.sist.user.dao.mypage.MypageDAO;
 import kr.co.sist.user.domain.mypage.QuestResultDomain;
 import kr.co.sist.user.domain.mypage.UserApplyDomain;
+import kr.co.sist.user.domain.mypage.UserCareerDomain;
 import kr.co.sist.user.domain.mypage.UserInfoDomain;
+import kr.co.sist.user.domain.mypage.UserReviewDomain;
 import kr.co.sist.user.vo.basic.UpdatePassVO;
 import kr.co.sist.user.vo.mypage.QuestionVO;
 import kr.co.sist.user.vo.mypage.UpdateUserVO;
@@ -80,6 +82,18 @@ public class MypageService {
         List<UserApplyDomain> applyList = mDAO.selectUserApply(userId);
 
         return applyList;
+    }
+
+    public List<UserCareerDomain> searchUserCareer(String userId) {
+        List<UserCareerDomain> careerList = mDAO.selectUserCareer(userId);
+
+        return careerList;
+    }
+
+    public List<UserReviewDomain> searchUserReview(String userId) {
+        List<UserReviewDomain> reviewList = mDAO.selectUserReview(userId);
+
+        return reviewList;
     }
 
     public String replaceDash(String phoneNumber) {
