@@ -39,11 +39,12 @@ public class QnaUserController {
 
     @PostMapping("/user/mypage/qna/mypageWriteQNA.do")
     public String addQna(@ModelAttribute("qVO") UserQnaVO qVO, Model model) {
+        String category = qVO.getCategory();
 
-        if (qVO.getCategory() == null || qVO.getCategory().isEmpty()
-                || "선택".equals(qVO.getCategory())) {
-            throw new IllegalArgumentException("Category cannot be null or empty");
+        if (category == null || category.isEmpty()) {
+            throw new IllegalArgumentException("카테고리를 선택해주세요.");
         }
+
         qnaUserService.addQna(qVO);
         List<String> categories = Arrays.asList("제안사항", "오류신고", "서비스 문의");
         model.addAttribute("categories", categories);

@@ -59,12 +59,6 @@
 			<!-- tap menu //-->
 		    <div class="inquiryForm inquiryForm--selection">
 		       <form action="${pageContext.request.contextPath}/user/mypage/qna/mypageQNAList.do" method="post" id="Qnaform">
-		          <!-- <input name="__RequestVerificationToken" type="hidden" value="u-pKXJVgM8PjAvtSkvCZ7ESdn7cq1LeUJ_qATcucklnoQplh8nDe7kWvaHm8qc6dJn7DrmDcOMl7MbFsxmCo9wazb4VtlDFSbBX9Mvds3N01" />
-		          <input type="hidden" name="giNo" value="0" />
-		          <input type="hidden" name="coMemId" />
-		          <input type="hidden" name="coMemType" />
-		          <input type="hidden" name="Category" id="Category" value="-1" />
-		          <input type="hidden" name="IsAgree" id="IsAgree" value="false" /> -->
 		       <fieldset>
 		       <legend>문의하기 입력</legend>
 			    <div class="tbInquiryBx">
@@ -76,15 +70,12 @@
 			    <!-- <div class="mtcSltBx listLenSel"> -->
 			    <div >
 			    <label for="lb_view_1" id="lb_type"></label>
-			    <select style="width:180px; height:35px" id="category" name="category">
-			          <option value="">선택</option>
-			          <c:forEach var="category" items="${categories}">
-			          	<option value="${category}" <c:if test="${category == qna.category }">selected</c:if>>${category}</option>
-			          </c:forEach>
-			          <!-- <option value="서비스 문의">서비스 문의</option>
-			          <option value="오류신고" >오류 신고</option>
-			          <option value="제안사항">제안 사항</option> -->
-			       </select>
+				    <select style="width:180px; height:35px" id="category" name="category">
+				          <option value="">선택</option>
+				          <option value="서비스 문의">서비스 문의</option>
+				          <option value="오류신고" >오류 신고</option>
+				          <option value="제안사항">제안 사항</option>
+				     </select>
 			       </div>
 			       </div>
 			       </div>
@@ -95,7 +86,7 @@
 			       </div>
 			       <!-- <div class="tbCell"> -->
 			       <div class="tbCell">
-			         <textarea name="title" id="lb_inq_2" title="제목을 입력하세요." style="height:35px; width:400px ;font-size:15px" value="${qna.title}"></textarea>
+			         <textarea name="title" id="lb_inq_2" title="제목을 입력하세요." style="height:35px; width:400px ;font-size:15px" value="${param.title}"></textarea>
 			         <!-- <textarea name="contents" id="lb_inq_2" title="내용을 입력하세요." class="txArea" style="height:45px"></textarea> -->
 			       </div>
 			       </div>
@@ -106,7 +97,8 @@
 <!-- 			       <div class="tbCell">
 			       <textarea name="contents" id="lb_inq_2" title="내용을 입력하세요." class="txArea"></textarea> -->
 			       <div>
-			       <textarea name="content" value="${qna.content}" id="lb_inq_2" title="내용을 입력하세요." style="height:350px; width:400px"></textarea>
+			       <textarea name="content" value="${param.content}" id="lb_inq_2" title="내용을 입력하세요." style="height:350px; width:400px"></textarea>
+			       <input id="reply_date" name="qna_num"  value="${param.qna_num}" type="hidden" />
 			       </div>
 			       </div>
 			       
@@ -152,7 +144,7 @@
 			      </div>
 			      <div class="inquiryBtn" style="margin-bottom:30px">
 			       <!--   <button type="submit" class="btnInq"><span>문의하기</span></button> -->
-			         <button type="button" class="btnInq"><span>문의하기</span></button>
+			         <button type="submit" class="btnInq" id=""><span>문의하기</span></button>
 			         <button type="button" class="btnInq btnCancel"><span>취소</span></button>
 			      </div>
 			      </fieldset>
