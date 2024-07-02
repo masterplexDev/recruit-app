@@ -207,7 +207,7 @@ public class SecurityController {
                 return "redirect:/user/mypage/checkPass.do";
             }
         }
-        return "redirect:/user/mypage/modifyUserInfo.do";
+        return "redirect:/user/mypage/modifyUserPage.do";
     }
 
     /*

@@ -13,6 +13,7 @@ import kr.co.sist.user.domain.mypage.UserInfoDomain;
 import kr.co.sist.user.service.basic.UserBasicService;
 import kr.co.sist.user.service.mypage.MypageService;
 import kr.co.sist.user.vo.mypage.QuestionVO;
+import kr.co.sist.user.vo.mypage.UpdateUserVO;
 
 @Controller
 public class MypageController {
@@ -41,8 +42,8 @@ public class MypageController {
         return "user/mypage/checkPass";
     }
 
-    @GetMapping("/user/mypage/modifyUserInfo.do")
-    public String modifyInfo(@SessionAttribute("userId") String userId, Model model) {
+    @GetMapping("/user/mypage/modifyUserPage.do")
+    public String modifyInfoPage(@SessionAttribute("userId") String userId, Model model) {
 
         UserInfoDomain userInfo = ms.searchModifyInfo(userId);
         List<QuestionDomain> qList = ubs.searchPasswordQList();
@@ -53,6 +54,28 @@ public class MypageController {
         return "user/mypage/modifyUserInfo";
     }
 
+    @PostMapping("/user/mypage/modifyUser.do")
+    public String modifyUserInfo(@SessionAttribute("userId") String userId, UpdateUserVO uVO,
+            RedirectAttributes redirectAttributes) {
+        uVO.setUserId(userId);
+        int cnt = ms.modifyUserInfo(uVO);
+
+        if (cnt > 0) {
+            redirectAttributes.addFlashAttribute("resultMsg", "회원 정보 변경이 완료 되었습니다.");
+
+        } else {
+            redirectAttributes.addFlashAttribute("resultMsg",
+                    "회원 정보 변경 중 문제가 발생 했습니다. 잠시 후 다시 시도해주세요.");
+        }
+        return "redirect:/user/mypage/modifyUserProcess.do";
+    }
+
+    @GetMapping("/user/mypage/modifyUserProcess.do")
+    public String modifyUserProcess() {
+
+        return "user/mypage/modifyUserProcess";
+    }
+
     @PostMapping("/user/mypage/certification.do")
     public String certificationQuest(@SessionAttribute("userId") String userId, QuestionVO qVO,
             RedirectAttributes redirectAttributes) {
@@ -61,11 +84,12 @@ public class MypageController {
         QuestResultDomain qrd = ms.certificationQuest(qVO);
         if (qrd == null) {
             redirectAttributes.addFlashAttribute("resultMsg", "인증에 실패 하였습니다.");
-            return "redirect:/user/mypage/modifyUserInfo.do";
+            return "redirect:/user/mypage/modifyUserPage.do";
         }
 
         return "redirect:/user/mypage/modifyPassPage.do";
     }
+
 
     @GetMapping("/user/mypage/modifyPassPage.do")
     public String modifyPassPage() {
