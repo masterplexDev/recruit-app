@@ -1,3 +1,5 @@
+<%@page import="kr.co.sist.user.domain.basic.QuestionDomain"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     info=""%>
@@ -124,12 +126,12 @@
     		  var isValidateName = validateName();
       	  	  var isValidatePhone = validatePhoneNumber();
     		  var isValidateTel = validateTelNumber();
-    		  var isValidateAddr = validateAddr();
-    		  var validateFlag = isValidateName && isValidatePhone && isValidateTel && isValidateAddr;
+    		  var validateFlag = isValidateName && isValidatePhone && isValidateTel;
       	  	  
       	  	  if(notNullFlag && validateFlag){
-	      	  	  alert('회원정보 수정이 완료 되었습니다.');
-	      	  	  location.href='mypageUserInfo.do';
+	      	  	  //alert('회원정보 수정이 완료 되었습니다.');
+	      	  	  $("#modifyUserFrm").submit();
+	      	  	  //location.href='mypageUserInfo.do';
       	  	  }else if(!notNullFlag) {
       	  		  alert('회원정보를 입력해주세요.');
       	  		  return;
@@ -141,9 +143,6 @@
 				  return;
 			  }else if(!isValidateTel){
 			      alert('전화번호는 숫자로 최대 11자까지만 입력이 가능합니다.');
-				  return;
-			  }else if(!isValidateAddr){
-				  alert('주소는 한글 또는 영문으로 최대 100자까지만 입력이 가능합니다.');
 				  return;
 			  }
       	  	  
@@ -162,15 +161,9 @@
 	      	    isNotEmptyAnswer = answer.trim() !== '';
 	      	    chkAll =  isSelectQuestion && isNotEmptyAnswer;
 	
-	      	    // 유효한 답변일 경우 처리 로직 추가
-	      	    console.log("선택된 질문:", selectedQuestion);
-	      	    console.log("답변:", answer);
-	      	    
-	      	    // 데이터베이스 조회 결과와 비교
-	      	    var flag = false;
-	      	    
 	      	    if(chkAll){
-	      	    	location.href='http://localhost/recruit-app/user/mypage/modifyPassPage.do';
+	      	    	$("#securityQuestionForm").submit();
+	      	    	//location.href='http://localhost/recruit-app/user/mypage/modifyPassPage.do';
 		      	    // 필드 초기화 후 닫기
 					$("#questionSelect").val('0');
 					$("#answerInput").val('');
@@ -181,7 +174,12 @@
 	      	    	alert('답변을 작성해주세요.');
 	      	    }
 	      	});//click
-	      	
+	      	    // 데이터베이스 조회 결과와 비교
+	      		<%
+	      		String resultMsg = (String)request.getAttribute("resultMsg");
+	      		if(resultMsg != null) {%>
+					alert('${ resultMsg }');	      	    	
+	      	<%}%>
 	      	$("#cancleModal").click(function(){
 	      		$("#questionSelect").val('0');
 				$("#answerInput").val('');
@@ -193,20 +191,15 @@
 				$("#answerInput").val('');
 	    	});//click
 	    	
-	    	var email = $("#email");
 	    	var name = $("#name");
-	    	var gender = $("#gender");
 	    	var phone = $("#phone");
 	    	var tel = $("#tel");
-	    	var addr = $("#addr");
 	    	
 	    	function chkNull(){
-	    		var isEmptyEmail = email.val().trim() !== '';
 	    		var isEmptyName = name.val().trim() !== '';
-	    		var isEmptyGender = gender.val().trim() !== '';
 	    		var isEmptyPhone = phone.val().trim() !== '';
 	    		var isEmptyTel = tel.val().trim() !== '';
-	    		var emptyFlag = isEmptyEmail && isEmptyName && isEmptyGender && isEmptyPhone && isEmptyTel && isEmptyTel
+	    		var emptyFlag =  isEmptyName && isEmptyPhone && isEmptyTel
 	    		
 	    		return emptyFlag;
 	    	}//function
@@ -236,15 +229,6 @@
 				return nameRegex.test(chkName);
 			}//function
 			
-			// 주소 유효성 검증
-			function validateAddr() {
-				var chkAddr = addr.val().trim();
-				// 주소 유효성 정규식: 최대 100자 이내, 한/영문,숫자,특수문자,공백 포함하여 허용
-				var addrRegex = /^[가-힣a-zA-Z0-9\s.,()-]{1,100}$/;
-				
-				return addrRegex.test(chkAddr);
-			}//function
-	    	
 			<!-- golgolz end -->
 		});
 	</script>
@@ -291,7 +275,7 @@
                             <div class="Avatar_Avatar__bg__MRkK0" style="text-align: center;">
                               <img
                                 alt="프로필 이미지"
-                                src="http://localhost/recruit-app/assets/images/mypage/user_default.png"
+                                src="http://localhost/recruit-app/assets/images/mypage/${ userInfo.profileImg }"
                                 class="Avatar_Avatar__img__kcubw"
                                 style="text-align: center;"
                               />
@@ -304,7 +288,7 @@
                           <h4
                             class="Typography_Typography__root__xYuMs Typography_Typography__heading1__bVyRs Typography_Typography__weightBold__e15ql Typography_Typography__noWrap__ovbzF Typography_Typography__alignLeft__fYbY6 ProfileViewHeaderAvatar_ProfileViewHeaderAvatar__info__title__KuxZF"
                           >
-                            정명호
+                            ${ userInfo.name }
                           </h4>
                         </div>
                       </div>
@@ -318,6 +302,7 @@
                 <section
                   class="Grid_Grid__item__FUkSS Grid_Grid__align-items_flex-start__PA0JE" style="margin-bottom: 50px;"
                 >
+                  <form id="modifyUserFrm" action="../mypage/modifyUser.do" method="post">
                   <article class="css-dnwsdj">
                   <div class="css-9as5im">
                   <p data-testid="Typography" color="#000000" class="css-dk1ca0">회원정보</p>
@@ -326,44 +311,35 @@
                   <ul class="css-14jv0iu">
                   <li data-list-type="EMAIL_CHANGE" tabindex="0" class="css-1f5onls">
                   <p data-testid="Typography" color="#000000" class="css-9dug5j">이메일</p>
-                  <p style="padding-left: 15px; font-size: 15px;">jeong@gmail.com</p>
-                  <input type="hidden" name="email" data-testid="Input_email" id="email"
-					autocomplete="on" class="css-1sbrczv" value="jeong@gmail.com" readyonly>
+                  <p style="padding-left: 15px; font-size: 15px;">${ userInfo.userId }</p>
                   </li>
                   <li data-list-type="NAME_CHANGE" tabindex="0" class="css-15hfbq8">
                   <p data-testid="Typography" color="#000000" class="css-9dug5j">이름</p>
-                  <input type="name" placeholder="이름을 입력해주세요." id="name" name="name" maxlength="10"
-					autocomplete="on" class="css-1sbrczv" value="정명호">
+                  <input type="text" placeholder="이름을 입력해주세요." id="name" name="name" maxlength="10"
+					autocomplete="on" class="css-1sbrczv" value="${ userInfo.name }">
                   </li>
                   <li data-list-type="NAME_CHANGE" tabindex="0" class="css-15hfbq8" style="height: 79px;">
                   <p data-testid="Typography" color="#000000" class="css-9dug5j">성별</p>
-                  <p style="padding-left: 15px; font-size: 15px;">남자</p>
-                  <input type="hidden" name="gender" id="gender"
-					autocomplete="on" class="css-1sbrczv" value="남자" readonly="readonly">
+                  <p style="padding-left: 15px; font-size: 15px;">${ userInfo.gender }</p>
                   </li>
-                  <li data-list-type="PHONE_CHANGE" tabindex="0" class="css-15hfbq8"><p data-testid="Typography" color="#000000" class="css-9dug5j">휴대폰 번호</p>
+                  <li data-list-type="PHONE_CHANGE" tabindex="0" class="css-15hfbq8"><p data-testid="Typography" color="#000000" class="css-9dug5j">휴대폰 번호(-제외)</p>
                   <input type="tel" placeholder="휴대폰 번호를 입력해주세요." id="phone" name="phone" maxlength="11"
-					autocomplete="on" class="css-1sbrczv" value="01000000000">
+					autocomplete="on" class="css-1sbrczv" value="${ userInfo.phone }">
                   </li>
-                  <li data-list-type="PHONE_CHANGE" tabindex="0" class="css-15hfbq8"><p data-testid="Typography" color="#000000" class="css-9dug5j">전화번호</p>
+                  <li data-list-type="PHONE_CHANGE" tabindex="0" class="css-15hfbq8"><p data-testid="Typography" color="#000000" class="css-9dug5j">전화번호(-제외)</p>
                   <input type="tel" placeholder="전화번호를 입력해주세요." id="tel" name="tel" maxlength="11"
-					autocomplete="on" class="css-1sbrczv" value="0320000000">
-                  </li>
-                  <li data-list-type="SOCIAL_LINK" tabindex="0" class="css-15hfbq8"><p data-testid="Typography" color="#000000" class="css-9dug5j">주소</p>
-                  <input type="text" placeholder="주소를 입력해주세요." id="addr" name="addr"
-					autocomplete="on" class="css-1sbrczv" value="인천시 부평구 부평동" maxlength="100">
+					autocomplete="on" class="css-1sbrczv" value="${ userInfo.tel }">
                   </li>
                   <li data-list-type="SOCIAL_LINK" tabindex="0" class="css-15hfbq8" style="height: 79px;">
                   <p data-testid="Typography" color="#000000" class="css-9dug5j" style="font-size: 15px;">
-                  <button id="modifyPassBtn"><p>비밀번호 변경</p></button>
-                  </p>
-                  
+                  <button type="button" id="modifyPassBtn"><p>비밀번호 변경</p></button>
                   </li>
                    <li data-list-type="SOCIAL_LINK" tabindex="0" style="text-align: center;">
                    <input type="button" id="modifyBtn" value="수정완료" class="btn btn-outline-warning btn-sm update-btn" style="margin: 5px;">
                    <input type="button" id="cancleBtn" value="취소" class="btn btn-outline-danger btn-sm remove-btn" style="margin: 5px;">
                    </li>
                   </ul></article>
+                  </form>
 				  
 				  <!-- 모달 창 시작 -->
                   <div class="modal fade" id="securityQuestionModal" tabindex="-1" aria-labelledby="securityQuestionModalLabel" aria-hidden="true">
@@ -374,21 +350,25 @@
 				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				      </div>
 				      <div class="modal-body">
-				        <form id="securityQuestionForm">
+				        <form id="securityQuestionForm" action="../mypage/certification.do" method="post">
 				          <div class="mb-3">
 				            <label for="questionSelect" class="form-label">질문 선택</label>
-				            <select class="form-select" id="questionSelect" style="font-size: 15px;">
+				            <select class="form-select" id="questionSelect" name="qNum" style="font-size: 15px;">
 				              <option value="0">질문을 선택하세요</option>
-							  <option value="1">당신이 가장 좋아하는 영화 이름은 무엇인가요?</option>
-							  <option value="2">당신의 별명은 무엇인가요?</option>
-							  <option value="3">가장 친한 친구 이름은 무엇인가요?</option>
-							  <option value="4">당신이 태어난 도시 이름은 무엇인가요?</option>
-							  <option value="5">당신이 가장 좋아하는 색깔은 무엇인가요?</option>
+				              <%
+				              List<QuestionDomain> qList = (List)request.getAttribute("qList");
+				              
+				              if(qList != null){
+				                  for(QuestionDomain qd : qList){
+				              %>
+				              <option value="<%= qd.getQNum() %>"><%= qd.getContent() %></option>
+				              <%  }
+				                } %>
 				            </select>
 				          </div>
 				          <div class="mb-3">
 				            <label for="answerInput" class="form-label">답변</label>
-				            <input type="text" class="form-control" id="answerInput" style="font-size: 15px;">
+				            <input type="text" class="form-control" id="answerInput" name="qAnswer" style="font-size: 15px;" maxlength="160">
 				          </div>
 				        </form>
 				      </div>

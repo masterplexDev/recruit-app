@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
-    info=""%>
+    pageEncoding="UTF-8" info=""%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,13 +58,13 @@
 				</div>
 			<!-- tap menu //-->
 		    <div class="inquiryForm inquiryForm--selection">
-		       <form id="form" action="/Help/Inquiry/Save" method="post">
-		          <input name="__RequestVerificationToken" type="hidden" value="u-pKXJVgM8PjAvtSkvCZ7ESdn7cq1LeUJ_qATcucklnoQplh8nDe7kWvaHm8qc6dJn7DrmDcOMl7MbFsxmCo9wazb4VtlDFSbBX9Mvds3N01" />
+		       <form action="${pageContext.request.contextPath}/user/mypage/qna/mypageQNAList.do" method="post" id="Qnaform">
+		          <!-- <input name="__RequestVerificationToken" type="hidden" value="u-pKXJVgM8PjAvtSkvCZ7ESdn7cq1LeUJ_qATcucklnoQplh8nDe7kWvaHm8qc6dJn7DrmDcOMl7MbFsxmCo9wazb4VtlDFSbBX9Mvds3N01" />
 		          <input type="hidden" name="giNo" value="0" />
 		          <input type="hidden" name="coMemId" />
 		          <input type="hidden" name="coMemType" />
 		          <input type="hidden" name="Category" id="Category" value="-1" />
-		          <input type="hidden" name="IsAgree" id="IsAgree" value="false" />
+		          <input type="hidden" name="IsAgree" id="IsAgree" value="false" /> -->
 		       <fieldset>
 		       <legend>문의하기 입력</legend>
 			    <div class="tbInquiryBx">
@@ -76,12 +76,14 @@
 			    <!-- <div class="mtcSltBx listLenSel"> -->
 			    <div >
 			    <label for="lb_view_1" id="lb_type"></label>
-			    <select style="width:180px; height:35px">
-			       <!-- <select name="" id="lb_view_1" title="문의 종류 선택"> -->
-			          <option value="선택">선택</option>
-			          <option value="서비스 이용문의">서비스 이용문의</option>
-			          <option value="불량정보·오류 신고" >불량정보·오류 신고</option>
-			          <option value="서비스 제안·칭찬">서비스 제안·칭찬</option>
+			    <select style="width:180px; height:35px" id="category" name="category">
+			          <option value="">선택</option>
+			          <c:forEach var="category" items="${categories}">
+			          	<option value="${category}" <c:if test="${category == qna.category }">selected</c:if>>${category}</option>
+			          </c:forEach>
+			          <!-- <option value="서비스 문의">서비스 문의</option>
+			          <option value="오류신고" >오류 신고</option>
+			          <option value="제안사항">제안 사항</option> -->
 			       </select>
 			       </div>
 			       </div>
@@ -93,7 +95,7 @@
 			       </div>
 			       <!-- <div class="tbCell"> -->
 			       <div class="tbCell">
-			         <textarea name="title" id="lb_inq_2" title="내용을 입력하세요." style="height:35px; width:400px ;font-size:15px"></textarea>
+			         <textarea name="title" id="lb_inq_2" title="제목을 입력하세요." style="height:35px; width:400px ;font-size:15px" value="${qna.title}"></textarea>
 			         <!-- <textarea name="contents" id="lb_inq_2" title="내용을 입력하세요." class="txArea" style="height:45px"></textarea> -->
 			       </div>
 			       </div>
@@ -104,7 +106,7 @@
 <!-- 			       <div class="tbCell">
 			       <textarea name="contents" id="lb_inq_2" title="내용을 입력하세요." class="txArea"></textarea> -->
 			       <div>
-			       <textarea name="contents" id="lb_inq_2" title="내용을 입력하세요." style="height:350px; width:400px"></textarea>
+			       <textarea name="content" value="${qna.content}" id="lb_inq_2" title="내용을 입력하세요." style="height:350px; width:400px"></textarea>
 			       </div>
 			       </div>
 			       

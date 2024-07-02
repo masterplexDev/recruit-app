@@ -9,7 +9,7 @@
   		where user_id=#{ userId }
   	</update>
   	<select id="selectUserInfo" parameterType="String" resultType="kr.co.sist.user.domain.mypage.UserInfoDomain">
-  		select user_id userId,name,gender,phone,tel
+  		select user_id userId,name,gender,phone,tel,profile_img profileImg
 		from users
 		where user_id=#{ userId }
   	</select>
@@ -18,5 +18,14 @@
 		from users
 		where user_id=#{ userId }
   	</select>
- 
+  	<select id="selectChkQuestion" parameterType="kr.co.sist.user.vo.mypage.QuestionVO" resultType="kr.co.sist.user.domain.mypage.QuestResultDomain">
+  	select q_num qNum,q_answer qAnswer
+	from users
+	where user_id=#{ userId } and q_num=#{ qNum } and q_answer=#{ qAnswer }
+  	</select>
+  	<update id="updateUserInfo" parameterType="kr.co.sist.user.vo.mypage.UpdateUserVO">
+  	update users
+	set name=#{ name }, phone=#{ phone }, tel=#{ tel }
+	where user_id=#{ userId }
+  	</update>
  </mapper>

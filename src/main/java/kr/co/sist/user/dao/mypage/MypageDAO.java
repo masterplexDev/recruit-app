@@ -3,8 +3,11 @@ package kr.co.sist.user.dao.mypage;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 import kr.co.sist.properties.MyBatisConfig;
+import kr.co.sist.user.domain.mypage.QuestResultDomain;
 import kr.co.sist.user.domain.mypage.UserInfoDomain;
 import kr.co.sist.user.vo.basic.UpdatePassVO;
+import kr.co.sist.user.vo.mypage.QuestionVO;
+import kr.co.sist.user.vo.mypage.UpdateUserVO;
 
 @Component
 public class MypageDAO {
@@ -58,6 +61,7 @@ public class MypageDAO {
         return uid;
     }
 
+
     public String selectChkPass(String userId) {
         SqlSession ss = myBatis.getMyBatisHandler(false);
 
@@ -67,6 +71,33 @@ public class MypageDAO {
         myBatis.closeHandler(ss);
 
         return password;
+    }
+
+    public int updateUserInfo(UpdateUserVO uVO) {
+        SqlSession ss = myBatis.getMyBatisHandler(false);
+
+        int cnt = ss.update("kr.co.sist.mapper.user.mypage.mypageMapper.updateUserInfo", uVO);
+
+        if (cnt > 0) {
+            ss.commit();
+        } else {
+            ss.rollback();
+        }
+
+        myBatis.closeHandler(ss);
+
+        return cnt;
+    }
+
+    public QuestResultDomain selectChkQuestion(QuestionVO qVO) {
+        SqlSession ss = myBatis.getMyBatisHandler(false);
+
+        QuestResultDomain qrd =
+                ss.selectOne("kr.co.sist.mapper.user.mypage.mypageMapper.selectChkQuestion", qVO);
+
+        myBatis.closeHandler(ss);
+
+        return qrd;
     }
 
 }

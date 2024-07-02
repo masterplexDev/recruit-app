@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import kr.co.sist.properties.MyBatisConfig;
 import kr.co.sist.user.domain.qna.UserQnaDomain;
+import kr.co.sist.user.vo.qna.UserQnaVO;
 
 @Component
 public class QnaUserDAO {
@@ -29,5 +30,11 @@ public class QnaUserDAO {
         UserQnaDomain qnaDetail = session.selectOne("kr.co.sist.qna.user.selectOneQna", qna_num);
         myBatis.closeHandler(session);
         return qnaDetail;
+    }
+
+    public void insertQna(UserQnaVO qVO) {
+        SqlSession session = myBatis.getMyBatisHandler(true);
+        session.insert("kr.co.sist.qna.user.insertQna", qVO);
+        myBatis.closeHandler(session);
     }
 }
