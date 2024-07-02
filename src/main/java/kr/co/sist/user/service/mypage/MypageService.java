@@ -7,6 +7,7 @@ import kr.co.sist.user.domain.mypage.QuestResultDomain;
 import kr.co.sist.user.domain.mypage.UserInfoDomain;
 import kr.co.sist.user.vo.basic.UpdatePassVO;
 import kr.co.sist.user.vo.mypage.QuestionVO;
+import kr.co.sist.user.vo.mypage.UpdateUserVO;
 
 @Service
 public class MypageService {
@@ -54,6 +55,19 @@ public class MypageService {
         return userInfo;
     }
 
+    public int modifyUserInfo(UpdateUserVO uVO) {
+
+        String formatTel = formatNumber(uVO.getTel());
+        String formatPhone = formatNumber(uVO.getPhone());
+
+        uVO.setTel(formatTel);
+        uVO.setPhone(formatPhone);
+
+        int cnt = mDAO.updateUserInfo(uVO);
+
+        return cnt;
+    }
+
     public QuestResultDomain certificationQuest(QuestionVO qVO) {
         QuestResultDomain qrd = mDAO.selectChkQuestion(qVO);
 
@@ -62,6 +76,11 @@ public class MypageService {
 
     public String replaceDash(String phoneNumber) {
         return phoneNumber.replace("-", "");
+    }
+
+    public String formatNumber(String phoneNumber) {
+        String formatNum = phoneNumber.replaceFirst("(\\d{3})(\\d{3,4})(\\d{4})", "$1-$2-$3");
+        return formatNum;
     }
 
 }

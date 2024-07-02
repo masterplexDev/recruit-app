@@ -40,7 +40,7 @@
 					}
 					
 					if(isNull && isValidatePass){
-						//location.href='http://localhost/recruit-app/user/mypage/modifyUserInfo.do';
+						//location.href='http://localhost/recruit-app/user/mypage/modifyUserPage.do';
 						$("#checkPassFrm").submit();
 					}
 				});//click

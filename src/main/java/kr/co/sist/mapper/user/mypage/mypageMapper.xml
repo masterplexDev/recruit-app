@@ -23,4 +23,9 @@
 	from users
 	where user_id=#{ userId } and q_num=#{ qNum } and q_answer=#{ qAnswer }
   	</select>
+  	<update id="updateUserInfo" parameterType="kr.co.sist.user.vo.mypage.UpdateUserVO">
+  	update users
+	set name=#{ name }, phone=#{ phone }, tel=#{ tel }
+	where user_id=#{ userId }
+  	</update>
  </mapper>
