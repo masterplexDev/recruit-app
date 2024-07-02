@@ -85,7 +85,7 @@ public class UserBasicService {
         return cnt;
     }
 
-    private String formatNumber(String phoneNumber) {
+    public String formatNumber(String phoneNumber) {
         // 전화번호 하이픈 추가
         String formatNum = phoneNumber.replaceFirst("(\\d{3})(\\d{3,4})(\\d{4})", "$1-$2-$3");
         return formatNum;

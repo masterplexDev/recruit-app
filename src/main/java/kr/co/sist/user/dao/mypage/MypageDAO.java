@@ -1,12 +1,17 @@
 package kr.co.sist.user.dao.mypage;
 
+import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 import kr.co.sist.properties.MyBatisConfig;
 import kr.co.sist.user.domain.mypage.QuestResultDomain;
+import kr.co.sist.user.domain.mypage.UserApplyDomain;
+import kr.co.sist.user.domain.mypage.UserCareerDomain;
 import kr.co.sist.user.domain.mypage.UserInfoDomain;
+import kr.co.sist.user.domain.mypage.UserReviewDomain;
 import kr.co.sist.user.vo.basic.UpdatePassVO;
 import kr.co.sist.user.vo.mypage.QuestionVO;
+import kr.co.sist.user.vo.mypage.UpdateUserVO;
 
 @Component
 public class MypageDAO {
@@ -60,6 +65,7 @@ public class MypageDAO {
         return uid;
     }
 
+
     public String selectChkPass(String userId) {
         SqlSession ss = myBatis.getMyBatisHandler(false);
 
@@ -71,6 +77,22 @@ public class MypageDAO {
         return password;
     }
 
+    public int updateUserInfo(UpdateUserVO uVO) {
+        SqlSession ss = myBatis.getMyBatisHandler(false);
+
+        int cnt = ss.update("kr.co.sist.mapper.user.mypage.mypageMapper.updateUserInfo", uVO);
+
+        if (cnt > 0) {
+            ss.commit();
+        } else {
+            ss.rollback();
+        }
+
+        myBatis.closeHandler(ss);
+
+        return cnt;
+    }
+
     public QuestResultDomain selectChkQuestion(QuestionVO qVO) {
         SqlSession ss = myBatis.getMyBatisHandler(false);
 
@@ -80,6 +102,39 @@ public class MypageDAO {
         myBatis.closeHandler(ss);
 
         return qrd;
+    }
+
+    public List<UserApplyDomain> selectUserApply(String userId) {
+        SqlSession ss = myBatis.getMyBatisHandler(false);
+
+        List<UserApplyDomain> applyList =
+                ss.selectList("kr.co.sist.mapper.user.mypage.mypageMapper.selectApply", userId);
+
+        myBatis.closeHandler(ss);
+
+        return applyList;
+    }
+
+    public List<UserCareerDomain> selectUserCareer(String userId) {
+        SqlSession ss = myBatis.getMyBatisHandler(false);
+
+        List<UserCareerDomain> careerList =
+                ss.selectList("kr.co.sist.mapper.user.mypage.mypageMapper.selectCareer", userId);
+
+        myBatis.closeHandler(ss);
+
+        return careerList;
+    }
+
+    public List<UserReviewDomain> selectUserReview(String userId) {
+        SqlSession ss = myBatis.getMyBatisHandler(false);
+
+        List<UserReviewDomain> reviewList =
+                ss.selectList("kr.co.sist.mapper.user.mypage.mypageMapper.selectReview", userId);
+
+        myBatis.closeHandler(ss);
+
+        return reviewList;
     }
 
 }

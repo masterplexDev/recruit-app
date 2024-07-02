@@ -76,15 +76,12 @@
 			    <!-- <div class="mtcSltBx listLenSel"> -->
 			    <div >
 			    <label for="lb_view_1" id="lb_type"></label>
-			    <select style="width:180px; height:35px" id="category" name="category">
-			          <option value="">선택</option>
-			          <c:forEach var="category" items="${categories}">
-			          	<option value="${category}" <c:if test="${category == qna.category }">selected</c:if>>${category}</option>
-			          </c:forEach>
-			          <!-- <option value="서비스 문의">서비스 문의</option>
-			          <option value="오류신고" >오류 신고</option>
-			          <option value="제안사항">제안 사항</option> -->
-			       </select>
+				    <select style="width:180px; height:35px" id="category" name="category">
+				          <option value="">선택</option>
+				          <option value="서비스 문의">서비스 문의</option>
+				          <option value="오류신고" >오류 신고</option>
+				          <option value="제안사항">제안 사항</option>
+				     </select>
 			       </div>
 			       </div>
 			       </div>
