@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kr.co.sist.user.domain.basic.QuestionDomain;
 import kr.co.sist.user.domain.mypage.QuestResultDomain;
+import kr.co.sist.user.domain.mypage.UserApplyDomain;
 import kr.co.sist.user.domain.mypage.UserInfoDomain;
 import kr.co.sist.user.service.basic.UserBasicService;
 import kr.co.sist.user.service.mypage.MypageService;
@@ -97,7 +98,11 @@ public class MypageController {
     }
 
     @GetMapping("/user/mypage/mypageApply.do")
-    public String mypageApply() {
+    public String mypageApply(@SessionAttribute("userId") String userId, Model model) {
+        List<UserApplyDomain> applyList = ms.searchUserApply(userId);
+
+        model.addAttribute("applyList", applyList);
+
         return "user/mypage/mypageApply";
     }
 

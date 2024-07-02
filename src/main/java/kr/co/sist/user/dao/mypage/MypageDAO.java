@@ -1,9 +1,11 @@
 package kr.co.sist.user.dao.mypage;
 
+import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 import kr.co.sist.properties.MyBatisConfig;
 import kr.co.sist.user.domain.mypage.QuestResultDomain;
+import kr.co.sist.user.domain.mypage.UserApplyDomain;
 import kr.co.sist.user.domain.mypage.UserInfoDomain;
 import kr.co.sist.user.vo.basic.UpdatePassVO;
 import kr.co.sist.user.vo.mypage.QuestionVO;
@@ -98,6 +100,17 @@ public class MypageDAO {
         myBatis.closeHandler(ss);
 
         return qrd;
+    }
+
+    public List<UserApplyDomain> selectUserApply(String userId) {
+        SqlSession ss = myBatis.getMyBatisHandler(false);
+
+        List<UserApplyDomain> applyList =
+                ss.selectList("kr.co.sist.mapper.user.mypage.mypageMapper.selectApply", userId);
+
+        myBatis.closeHandler(ss);
+
+        return applyList;
     }
 
 }

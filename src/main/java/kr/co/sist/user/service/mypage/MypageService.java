@@ -1,9 +1,11 @@
 package kr.co.sist.user.service.mypage;
 
+import java.util.List;
 import org.springframework.stereotype.Service;
 import kr.co.sist.user.dao.basic.UserBasicDAO;
 import kr.co.sist.user.dao.mypage.MypageDAO;
 import kr.co.sist.user.domain.mypage.QuestResultDomain;
+import kr.co.sist.user.domain.mypage.UserApplyDomain;
 import kr.co.sist.user.domain.mypage.UserInfoDomain;
 import kr.co.sist.user.vo.basic.UpdatePassVO;
 import kr.co.sist.user.vo.mypage.QuestionVO;
@@ -72,6 +74,12 @@ public class MypageService {
         QuestResultDomain qrd = mDAO.selectChkQuestion(qVO);
 
         return qrd;
+    }
+
+    public List<UserApplyDomain> searchUserApply(String userId) {
+        List<UserApplyDomain> applyList = mDAO.selectUserApply(userId);
+
+        return applyList;
     }
 
     public String replaceDash(String phoneNumber) {

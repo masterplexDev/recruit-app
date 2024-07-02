@@ -1,3 +1,5 @@
+<%@page import="kr.co.sist.user.domain.mypage.UserApplyDomain"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" info=""%>
 <!DOCTYPE html>
@@ -97,7 +99,7 @@ ol, ul {
     display: inline-block;
     text-align: center;
     color: #86939e;
-    width: 24%;
+    width: 19%;
     border-right: 1px solid #d1d1d1;
 }
 .Summary_Summary_list__AyGdy:last-of-type {
@@ -203,6 +205,7 @@ input, input:focus {
 }
 .List_List_empty__pphW6 {
     margin-top: 80px;
+    margin-bottom: 80px;
     text-align: center;
 }
 dl {
@@ -257,6 +260,9 @@ dl {
 		});
 	</script>
 </head>
+<%
+	List<UserApplyDomain> applyList = (List)request.getAttribute("applyList");
+%>
 <body>
 	<div id="__next" data-reactroot="">
 		<jsp:include page="../../../../assets/layout/user/header.jsp" />
@@ -269,7 +275,7 @@ dl {
 					<section class="Body_Body__MlgY5">
 					<div style="text-align: left;  margin-bottom:15px; margin-left:15px;"><h1 style="font-size: 25px;"><strong>지원 현황</strong></h1></div>
 						<ul class="Summary_Summary__AO8Mn" >
-							<li class="Summary_Summary_list__AyGdy" style="padding-right: 15px;">
+							<li class="Summary_Summary_list__AyGdy">
 							<a href="#void" class="Summary_Summary_list__AyGdy Summary_Summary_list_active__qwfF0"><dl>
 										<dt>0</dt>
 										<dd>전체</dd>
@@ -279,11 +285,16 @@ dl {
 										<dt>0</dt>
 										<dd>지원 완료</dd>
 									</dl></a></li>
+							<li class="Summary_Summary_list__AyGdy" ><a
+								href="#void" class=""><dl>
+										<dt>0</dt>
+										<dd>서류 합격</dd>
+									</dl></a></li>
 							<li
 								class="Summary_Summary_list__AyGdy"><a
 								href="#void" class=""><dl>
 										<dt>0</dt>
-										<dd>면접 합격</dd>
+										<dd>최종 합격</dd>
 									</dl></a></li>
 							<li class="Summary_Summary_list__AyGdy"><a
 								href="#void" class=""><dl>
@@ -306,13 +317,15 @@ dl {
 							</div>
 						</div>
 						<div>
-							<div class="List_List_table__K2VFf" style="display: none;">
+						<% if(applyList == null || applyList.isEmpty()) { %>
+							<div class="List_List_table__K2VFf">
 								<ul>
 									<dl class="List_List_empty__pphW6">
 										<dd>요청하신 결과가 없습니다.</dd>
 									</dl>
 								</ul>
 							</div>
+						<%}else {%>
 							<table class="apply_table" id="applyTable">
 								<tr>
 									<th>지원회사</th>
@@ -320,26 +333,17 @@ dl {
 									<th>지원일자</th>
 									<th>진행상태</th>
 								</tr>
+							<% for(UserApplyDomain uad : applyList){%>
 								<tr>
-									<td>배달의 민족</td>
-									<td>배민B마트 캡틴 모집</td>
-									<td>2023-08-11</td>
-									<td>지원완료</td>
+									<td><%= uad.getCompanyName() %></td>
+									<td><%= uad.getTitle() %></td>
+									<td><%= uad.getApplyDate() %></td>
+									<td><%= uad.getProgressState() %></td>
 								</tr>
-								<tr>
-									<td>쿠팡</td>
-									<td>쿠팡 인프라 엔지니어 채용</td>
-									<td>2023-07-22</td>
-									<td>면접 합격</td>
-								</tr>
-								<tr>
-									<td>LG</td>
-									<td>LG 모바일캠프리더 채용</td>
-									<td>2023-06-03</td>
-									<td>면접 불합격</td>
-								</tr>
+							<%}//end for %> 
 							</table>
 						</div>
+							<% }//end else %>
 						<!-- 페이지네이션 시작 -->
 						<div style="text-align:center;">
 					        <nav aria-label="...">
