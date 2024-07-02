@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import kr.co.sist.admin.service.dashboard.DashboardService;
 import kr.co.sist.admin.vo.dashboard.SignupCountVO;
 
@@ -14,11 +15,18 @@ public class DashboardController {
     private DashboardService dashboardService;
 
     //회원가입 화면 표시
-    @GetMapping("/admin/dashboard")
+    @GetMapping("/manage/dashboard/dashboard.do")
     public String dashboard(Model model) {
         List<SignupCountVO> signupCountsLastWeek = dashboardService.getSignupCountsForLastWeek();
-        model.addAttribute("signupCountsLastWeek", signupCountsLastWeek);
-        return "admin/dashboard";
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            String signupCountsJson = mapper.writeValueAsString(signupCountsLastWeek);
+            System.out.println("Signup Counts JSON: " + signupCountsJson); // 로그 출력
+            model.addAttribute("signupCountsLastWeekJson", signupCountsJson);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "manage/dashboard/dashboard";
     }
 }
 

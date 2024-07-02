@@ -2,21 +2,8 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.sist.admin.mapper.dashboard.DashboardMapper">
+<mapper namespace="kr.co.sist.mapper.dashboard.DashboardMapper">
 
-  <!-- 대시보드 최신 데이터 불러오기 -->
-  <select id="getLatestDashboardData" resultType="map">
-    SELECT
-        BASE_DATE,
-        REGISTERCOMPANY_CNT,
-        QNA_CNT,
-        SIGNUP_CNT,
-        REVIEW_CNT
-    FROM
-        DASHBOARD
-    WHERE
-        BASE_DATE = (SELECT MAX(BASE_DATE) FROM DASHBOARD)
-  </select>
 
   <!-- 모든 회원 가입자 수 -->
   <select id="getAllSignupCounts" resultType="map">
@@ -30,36 +17,32 @@
     ORDER BY
         TRUNC(SIGNUP_DATE)
   </select>
+  <!-- 회원 가입자 수 결과 매핑 -->
+  <resultMap id="SignupCountMap" type="kr.co.sist.admin.vo.dashboard.SignupCountVO">
+    <result property="signupDate" column="SIGNUP_DATE"/>
+    <result property="signupCount" column="SIGNUP_CNT"/>
+  </resultMap>
 
   <!-- 오늘을 기준으로 일주일 전까지의 회원 가입자 수 -->
-  <select id="getSignupCountsForLastWeek" resultType="map">
+   <select id="getSignupCountsForLastWeek" resultMap="SignupCountMap">
+    WITH DateRange AS (
+        SELECT TRUNC(SYSDATE) - LEVEL AS SIGNUP_DATE
+        FROM DUAL
+        CONNECT BY LEVEL &lt;= 7
+    )
     SELECT
-        TRUNC(SIGNUP_DATE) AS SIGNUP_DATE,
-        COUNT(*) AS SIGNUP_CNT
+        TO_CHAR(DR.SIGNUP_DATE, 'YYYY-MM-DD') AS SIGNUP_DATE,
+        NVL(COUNT(U.USER_ID), 0) AS SIGNUP_CNT
     FROM
-        USERS
-    WHERE
-        SIGNUP_DATE &gt;= TRUNC(SYSDATE) - 7 AND SIGNUP_DATE &lt; TRUNC(SYSDATE)
+        DateRange DR
+    LEFT JOIN
+        USERS U ON TRUNC(U.SIGNUP_DATE) = DR.SIGNUP_DATE
     GROUP BY
-        TRUNC(SIGNUP_DATE)
+        TO_CHAR(DR.SIGNUP_DATE, 'YYYY-MM-DD')
     ORDER BY
-        TRUNC(SIGNUP_DATE)
+        TO_CHAR(DR.SIGNUP_DATE, 'YYYY-MM-DD')
   </select>
 
-  <!-- 일주일 전부터 그 전주까지의 회원 가입자 수 -->
-  <select id="getSignupCountsForWeekBeforeLast" resultType="map">
-    SELECT
-        TRUNC(SIGNUP_DATE) AS SIGNUP_DATE,
-        COUNT(*) AS SIGNUP_CNT
-    FROM
-        USERS
-    WHERE
-        SIGNUP_DATE &gt;= TRUNC(SYSDATE) - 14 AND SIGNUP_DATE &lt; TRUNC(SYSDATE) - 7
-    GROUP BY
-        TRUNC(SIGNUP_DATE)
-    ORDER BY
-        TRUNC(SIGNUP_DATE)
-  </select>
 
   <!-- 모든 등록 기업 수 -->
   <select id="getAllRegisteredCompanyCounts" resultType="map">
@@ -87,26 +70,6 @@
         TRUNC(ESTABLISHMENT_DATE)
     ORDER BY
         TRUNC(ESTABLISHMENT_DATE)
-  </select>
-
-  <!-- 일주일 전부터 그 전주까지의 등록 기업 수 -->
-  <select id="getRegisteredCompanyCountsForWeekBeforeLast" resultType="map">
-    SELECT
-        TRUNC(ESTABLISHMENT_DATE) AS ESTABLISHMENT_DATE,
-        COUNT(*) AS REGISTERCOMPANY_CNT
-    FROM
-        COMPANYINFO
-    WHERE
-        ESTABLISHMENT_DATE &gt;= TRUNC(SYSDATE) - 14 AND ESTABLISHMENT_DATE &lt; TRUNC(SYSDATE) - 7
-    GROUP BY
-        TRUNC(ESTABLISHMENT_DATE)
-    ORDER BY
-        TRUNC(ESTABLISHMENT_DATE)
-  </select>
-
-  <!-- 기술 스택 -->
-  <select id="getAllSkills" resultType="map">
-    SELECT * FROM SKILL
   </select>
 
   <!-- 기술 스택 수 -->

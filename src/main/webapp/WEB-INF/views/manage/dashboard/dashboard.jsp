@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" info=""%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>    
@@ -60,56 +61,56 @@
         </nav>
         <!-- golgolz start -->
 		<div class="container-fluid">
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-6 col-md-12 chart-container">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex">
-                                <p class="d-flex flex-column">
-                                    <span>회원 가입자 수</span>
-                                    <span class="text-bold text-lg">820 명</span>
-                                </p>
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12 chart-container">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex">
+                                        <p class="d-flex flex-column">
+                                            <span>회원 가입자 수</span>
+                                            <span class="text-bold text-lg">820 명</span>
+                                        </p>
+                                    </div>
+                                    <div class="position-relative mb-4">
+                                        <canvas id="signup-chart"></canvas>
+                                    </div>
+                                    <div class="d-flex flex-row justify-content-end">
+                                        <span class="mr-2">
+                                            <i class="fas fa-square text-primary"></i> 이번 주
+                                        </span>
+                                        <span>
+                                            <i class="fas fa-square text-gray"></i> 지난 주
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="position-relative mb-4">
-                                <canvas id="visitors-chart"></canvas>
-                            </div>
-                            <div class="d-flex flex-row justify-content-end">
-                                <span class="mr-2">
-                                    <i class="fas fa-square text-primary"></i> 이번 주
-                                </span>
-                                <span>
-                                    <i class="fas fa-square text-gray"></i> 지난 주
-                                </span>
+                        </div>
+                        <div class="col-lg-6 col-md-12 chart-container">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex">
+                                        <p class="d-flex flex-column">
+                                            <span>등록 기업 수</span>
+                                            <span class="text-bold text-lg">150 개</span>
+                                        </p>
+                                    </div>
+                                    <div class="position-relative mb-4">
+                                        <canvas id="companies-chart"></canvas>
+                                    </div>
+                                    <div class="d-flex flex-row justify-content-end">
+                                        <span class="mr-2">
+                                            <i class="fas fa-square text-primary"></i> 이번 주
+                                        </span>
+                                        <span>
+                                            <i class="fas fa-square text-gray"></i> 지난 주
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-6 col-md-12 chart-container">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex">
-                                <p class="d-flex flex-column">
-                                    <span>등록 기업 수</span>
-                                    <span class="text-bold text-lg">150 개</span>
-                                </p>
-                            </div>
-                            <div class="position-relative mb-4">
-                                <canvas id="companies-chart"></canvas>
-                            </div>
-                            <div class="d-flex flex-row justify-content-end">
-                                <span class="mr-2">
-                                    <i class="fas fa-square text-primary"></i> 이번 주
-                                </span>
-                                <span>
-                                    <i class="fas fa-square text-gray"></i> 지난 주
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="row">
                 <div class="col-lg-6 col-md-12">
                     <div class="card">
@@ -135,57 +136,74 @@
         </div>
     </section>
     <script>
-    
-    //회원가입자 수
-    $(function () {
-        var signupCounts = ${signupCountsLastWeek};
-        var labels = [];
-        var data = [];
-
-        for (var i = 0; i < signupCounts.length; i++) {
-            labels.push(signupCounts[i].signupDate);
-            data.push(signupCounts[i].signupCount);
-        }
-
-        var ctxSignup = document.getElementById('signup-chart').getContext('2d');
-        var signupChart = new Chart(ctxSignup, {
-            type: 'line',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: '가입자 수',
-                    backgroundColor: 'rgba(60,141,188,0.1)',
-                    borderColor: 'rgba(60,141,188,1)',
-                    pointRadius: false,
-                    pointColor: '#3b8bba',
-                    pointStrokeColor: 'rgba(60,141,188,1)',
-                    pointHighlightFill: '#fff',
-                    pointHighlightStroke: 'rgba(60,141,188,1)',
-                    data: data
-                }]
-            },
-            options: {
-                maintainAspectRatio: false,
-                responsive: true,
-                tooltips: {
-                    mode: 'index',
-                    intersect: true
-                },
-                hover: {
-                    mode: 'nearest',
-                    intersect: true
-                },
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true,
-                            max: 200
-                        }
-                    }]
-                }
-            }
-        });
+    $(function(){
+        $("#dashboard_menu").addClass("bg-gradient-primary");
     });
+        $(function () {
+        	
+        	// JSP에서 전달된 JSON 데이터
+            var signupCountsJson = '${signupCountsLastWeekJson}';
+            console.log("Signup Counts JSON:", signupCountsJson); // JSON 데이터 확인
+
+            // JSON 데이터 파싱
+            try {
+                var parsedSignupCounts = JSON.parse(signupCountsJson);
+                console.log("Parsed Signup Counts:", parsedSignupCounts); // 파싱된 데이터 확인
+
+                // 날짜와 가입자 수를 추출하여 배열에 저장
+                var labels = parsedSignupCounts.map(function(item) {
+                    return item.signupDate;
+                });
+                var data = parsedSignupCounts.map(function(item) {
+                    return item.signupCount;
+                });
+
+                // 데이터 확인을 위해 콘솔에 출력
+                console.log("Labels:", labels);
+                console.log("Data:", data);
+
+                // 회원가입자 수 차트 생성
+                var ctxSignup = document.getElementById('signup-chart').getContext('2d');
+                var signupChart = new Chart(ctxSignup, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: '가입자 수',
+                            backgroundColor: 'rgba(60,141,188,0.1)',
+                            borderColor: 'rgba(60,141,188,1)',
+                            pointRadius: false,
+                            pointColor: '#3b8bba',
+                            pointStrokeColor: 'rgba(60,141,188,1)',
+                            pointHighlightFill: '#fff',
+                            pointHighlightStroke: 'rgba(60,141,188,1)',
+                            data: data
+                        }]
+                    },
+                    options: {
+                        maintainAspectRatio: false,
+                        responsive: true,
+                        tooltips: {
+                            mode: 'index',
+                            intersect: true
+                        },
+                        hover: {
+                            mode: 'nearest',
+                            intersect: true
+                        },
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true,
+                                    max: 10
+                                }
+                            }]
+                        }
+                    }
+                });
+            } catch (e) {
+                console.error('JSON 파싱 오류:', e);
+            }
 
             var ctxCompanies = document.getElementById('companies-chart').getContext('2d');
             var companiesChart = new Chart(ctxCompanies, {
