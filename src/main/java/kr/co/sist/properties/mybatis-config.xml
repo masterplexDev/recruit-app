@@ -9,6 +9,7 @@
   	<typeAlias type="kr.co.sist.admin.domain.qna.QnaDomain" alias="QnaDomain"/>
   	<typeAlias type="kr.co.sist.user.domain.qna.UserQnaDomain" alias="UserQnaDomain"/>
   	<typeAlias alias="CompanyInfoVO" type="kr.co.sist.user.vo.review.CompanyInfoVO"/>
+  	<typeAlias type="kr.co.sist.user.domain.notice.NoticeUserDomain" alias="NoticeUserDomain"/>
   </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -22,6 +23,7 @@
     </environment>
   </environments>
   <mappers>
+    <mapper resource="kr/co/sist/mapper/dashboard/DashboardMapper.xml"/>
     <mapper resource="kr/co/sist/mapper/exampleMapper.xml"/>
     <mapper resource="kr/co/sist/mapper/admin/recruit/recruitMapper.xml"/>
     <mapper resource="kr/co/sist/mapper/admin/basic/adminMapper.xml"/>
@@ -35,6 +37,7 @@
     <mapper resource="kr/co/sist/mapper/user/qna/qnaMapper.xml"/>
     <mapper resource="kr/co/sist/mapper/admin/companyinfo/companyinfoAdminMapper.xml"/>
     <mapper resource="kr/co/sist/mapper/user/mypage/mypageMapper.xml"/>
+    <mapper resource="kr/co/sist/mapper/user/notice/noticeMapper.xml"/>
     
   </mappers>
 </configuration>

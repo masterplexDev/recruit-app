@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.sist.mapper.dashboard.DashboardMapper">
+
+
+  <!-- 모든 회원 가입자 수 -->
+  <select id="getAllSignupCounts" resultType="map">
+    SELECT
+        TRUNC(SIGNUP_DATE) AS SIGNUP_DATE,
+        COUNT(*) AS SIGNUP_CNT
+    FROM
+        USERS
+    GROUP BY
+        TRUNC(SIGNUP_DATE)
+    ORDER BY
+        TRUNC(SIGNUP_DATE)
+  </select>
+  <!-- 회원 가입자 수 결과 매핑 -->
+  <resultMap id="SignupCountMap" type="kr.co.sist.admin.vo.dashboard.SignupCountVO">
+    <result property="signupDate" column="SIGNUP_DATE"/>
+    <result property="signupCount" column="SIGNUP_CNT"/>
+  </resultMap>
+
+  <!-- 오늘을 기준으로 일주일 전까지의 회원 가입자 수 -->
+   <select id="getSignupCountsForLastWeek" resultMap="SignupCountMap">
+    WITH DateRange AS (
+        SELECT TRUNC(SYSDATE) - LEVEL AS SIGNUP_DATE
+        FROM DUAL
+        CONNECT BY LEVEL &lt;= 7
+    )
+    SELECT
+        TO_CHAR(DR.SIGNUP_DATE, 'YYYY-MM-DD') AS SIGNUP_DATE,
+        NVL(COUNT(U.USER_ID), 0) AS SIGNUP_CNT
+    FROM
+        DateRange DR
+    LEFT JOIN
+        USERS U ON TRUNC(U.SIGNUP_DATE) = DR.SIGNUP_DATE
+    GROUP BY
+        TO_CHAR(DR.SIGNUP_DATE, 'YYYY-MM-DD')
+    ORDER BY
+        TO_CHAR(DR.SIGNUP_DATE, 'YYYY-MM-DD')
+  </select>
+
+ <!-- 등록 기업 수 결과 매핑 -->
+  <resultMap id="RegisteredCompanyCountMap" type="kr.co.sist.admin.vo.dashboard.RegisteredCompanyCountVO">
+    <result property="registrationDate" column="REGISTRATION_DATE"/>
+    <result property="companyCount" column="COMPANY_CNT"/>
+  </resultMap>
+  
+  <!-- 오늘을 기준으로 일주일 전까지의 등록 기업 수 -->
+  <select id="getRegisteredCompanyCountsForLastWeek" resultMap="RegisteredCompanyCountMap">
+    WITH DateRange AS (
+    SELECT TRUNC(SYSDATE) - LEVEL AS ESTABLISHMENT_DATE
+    FROM DUAL
+    CONNECT BY LEVEL &lt;= 7
+)
+SELECT
+    TO_CHAR(DR.ESTABLISHMENT_DATE, 'YYYY-MM-DD') AS REGISTRATION_DATE,
+    NVL(COUNT(C.COMPANY_CODE), 0) AS REGISTERCOMPANY_CNT
+FROM
+    DateRange DR
+LEFT JOIN
+    COMPANYINFO C ON TRUNC(C.ESTABLISHMENT_DATE) = DR.ESTABLISHMENT_DATE
+GROUP BY
+    TO_CHAR(DR.ESTABLISHMENT_DATE, 'YYYY-MM-DD')
+ORDER BY
+    TO_CHAR(DR.ESTABLISHMENT_DATE, 'YYYY-MM-DD')
+  </select>
+
+  <!-- 기술 스택 수 -->
+  <select id="getSkillCounts" resultType="map">
+    SELECT
+        SKILL_CODE,
+        COUNT(*) AS SKILL_COUNT
+    FROM
+        SKILL
+    GROUP BY
+        SKILL_CODE
+    ORDER BY
+        SKILL_COUNT DESC
+  </select>
+</mapper>

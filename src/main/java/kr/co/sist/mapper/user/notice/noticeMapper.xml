@@ -4,9 +4,18 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
  <mapper namespace="kr.co.sist.notice.user">
- 	<select id="selectNotices" resultType="kr.co.sist.user.domain.notice.NoticeDomain">
- 		select category, title, input_date
+ 	<select id="selectNotices" resultType="kr.co.sist.user.domain.notice.NoticeUserDomain">
+ 		select category, title, input_date, notice_num
  		from notice
  		order by input_date desc
  	</select>
+ 	
+ 	<select id="selectOneNotice" resultType="kr.co.sist.user.domain.notice.NoticeUserDomain">
+ 		select notice_num, category, title, content, input_date
+   		from notice
+    	where notice_num = #{notice_num}
+    
+    
+ 	</select>
+ 	
  </mapper>

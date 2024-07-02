@@ -21,4 +21,10 @@ public class NoticeUserService {
         notieceList = noticeUserDAO.selectNotices();
         return notieceList;
     }
+
+    public NoticeUserDomain searchOneNotice(int notice_num) {
+        NoticeUserDomain noticeDetail = null;
+        noticeDetail = noticeUserDAO.selectOneNotice(notice_num);
+        return noticeDetail;
+    }
 }
