@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import kr.co.sist.admin.dao.recruit.RecruitAdminDAO;
 import kr.co.sist.admin.domain.recruit.RecruitDomain;
+import kr.co.sist.admin.domain.resume.CompanyDomain;
 import kr.co.sist.admin.vo.recruit.SearchVO;
 import kr.co.sist.admin.vo.resume.RecruitAdminVO;
 
@@ -28,6 +29,14 @@ public class RecruitAdminService {
         RecruitDomain recruit = null;
         recruit = recruitAdminDAO.selectOneRecruit(recruitNum);
         return recruit;
+    }
+
+    public int searchRecruitsCount(SearchVO searchVO) {
+        return recruitAdminDAO.selectRecruitsCount(searchVO);
+    }
+
+    public List<CompanyDomain> selectCompanies(String keyword) {
+        return recruitAdminDAO.selectCompanies(keyword);
     }
 
     public boolean addRecruit(RecruitAdminVO recruitVO) {
