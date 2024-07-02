@@ -23,4 +23,13 @@ public class NoticeUserDAO {
         myBatis.closeHandler(session);
         return noticeList;
     }
+
+    public NoticeUserDomain selectOneNotice(int notice_num) {
+        SqlSession session = myBatis.getMyBatisHandler(false);
+        NoticeUserDomain noticeDtail =
+                session.selectOne("kr.co.sist.notice.user.selectOneNotice", notice_num);
+        myBatis.closeHandler(session);
+        return noticeDtail;
+    }
+
 }
