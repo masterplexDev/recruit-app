@@ -28,12 +28,12 @@ public class RecruitAdminController {
     }
 
     @GetMapping("/manage/recruits.do")
-    public String showResumePage() {
+    public String showRecruitPage() {
         return "/manage/recruit/recruits";
     }
 
     @GetMapping("/manage/recruits/detail.do")
-    public String showResumeDetailPage(
+    public String showRecruitDetailPage(
             @RequestParam(value = "id", required = false) Integer recruitNum, Model model) {
         model.addAttribute("recruitNum", recruitNum);
         return "/manage/recruit/detail";
