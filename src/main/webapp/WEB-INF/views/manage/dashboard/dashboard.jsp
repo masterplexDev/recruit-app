@@ -141,7 +141,6 @@
                 var data = parsedSignupCounts.map(function(item) {
                     return item.signupCount;
                 });
-
                 // 데이터 확인을 위해 콘솔에 출력
                 console.log("Labels:", labels);
                 console.log("Data:", data);
