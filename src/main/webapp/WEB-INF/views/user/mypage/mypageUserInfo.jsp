@@ -68,7 +68,7 @@
                             <div class="Avatar_Avatar__bg__MRkK0">
                               <img
                                 alt="프로필 이미지"
-                                src="http://localhost/recruit-app/assets/images/mypage/user_default.png"
+                                src="http://localhost/recruit-app/assets/images/mypage/${ userInfo.profileImg }"
                                 class="Avatar_Avatar__img__kcubw"
                               />
                             </div>
