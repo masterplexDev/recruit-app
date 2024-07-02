@@ -23,7 +23,7 @@
 				<a
 					id="admin_menu"
 					class="nav-link text-white"
-					href="http://localhost/recruit-app/manage/admin/admins.jsp">
+					href="http://localhost/recruit-app/manage/admin/admins.do">
 					<span class="nav-link-text ms-1">관리자 관리</span>
 				</a>
 			</li>
@@ -31,7 +31,7 @@
 				<a 
 					id="user_menu"
 					class="nav-link text-white"
-					href="http://localhost/recruit-app/manage/user/users.jsp">
+					href="http://localhost/recruit-app/manage/user/users.do">
 					<span class="nav-link-text ms-1">사용자 관리</span>
 				</a>
 			</li>
