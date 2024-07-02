@@ -111,29 +111,31 @@ input[type="number"]::-webkit-inner-spin-button {
 		});
 		
 		$("#btn-update").click(function(){
-		    var recruitVO = createRecruitVO();
-		    recruitVO.id = $("#recruit_num").val();
-		    
-		    if (selectedPositions.length === 0) {
-		        alert("최소 하나 이상의 포지션을 선택해주세요.");
-		        return false;
+		    if (confirm("공고를 수정하시겠습니까?")) {
+			    var recruitVO = createRecruitVO();
+			    recruitVO.id = $("#recruit_num").val();
+			    
+			    if (selectedPositions.length === 0) {
+			        alert("최소 하나 이상의 포지션을 선택해주세요.");
+			        return false;
+			    }
+			    
+			    $.ajax({
+			        url: "${pageContext.request.contextPath}/api/manage/recruit.do",
+			        type: "PUT",
+			        contentType: "application/json; charset=utf-8",
+			        data: JSON.stringify(recruitVO),
+			        error: function(xhr) {
+			            alert("수정에 실패했습니다.");
+			        },
+			        success: function(response) {
+			            if(response === "success"){
+			                alert("수정에 성공했습니다.");
+			                location.href="${pageContext.request.contextPath}/manage/recruits.do";
+			            }
+			        }
+			    });
 		    }
-		    
-		    $.ajax({
-		        url: "${pageContext.request.contextPath}/api/manage/recruit.do",
-		        type: "PUT",
-		        contentType: "application/json; charset=utf-8",
-		        data: JSON.stringify(recruitVO),
-		        error: function(xhr) {
-		            alert("수정에 실패했습니다.");
-		        },
-		        success: function(response) {
-		            if(response === "success"){
-		                alert("수정에 성공했습니다.");
-		                location.href="${pageContext.request.contextPath}/manage/recruits.do";
-		            }
-		        }
-		    });
 		});
 		
 		$("#btn-delete").click(function(){
