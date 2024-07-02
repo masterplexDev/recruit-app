@@ -65,40 +65,36 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-6 col-md-12 chart-container">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="d-flex">
-                                        <p class="d-flex flex-column">
-                                            <span>회원 가입자 수</span>
-                                            <span class="text-bold text-lg">820 명</span>
-                                        </p>
-                                    </div>
-                                    <div class="position-relative mb-4">
-                                        <canvas id="signup-chart"></canvas>
-                                    </div>
-                                    <div class="d-flex flex-row justify-content-end">
-                                    </div>
-                                </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex flex-column">
+                                <h4 class="card-title">최근 회원가입자 수 : </h4>
+                                <span class="text-bold text-lg">${totalSignups} 명</span> 
                             </div>
-                        </div>
-                        <div class="col-lg-6 col-md-12 chart-container">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="d-flex">
-                                        <p class="d-flex flex-column">
-                                            <span>등록 기업 수</span>
-                                            <span class="text-bold text-lg">150 개</span>
-                                        </p>
-                                    </div>
-                                    <div class="position-relative mb-4">
-                                        <canvas id="companies-chart"></canvas>
-                                    </div>
-                                    <div class="d-flex flex-row justify-content-end">
-                                    </div>
-                                </div>
+                            <div class="position-relative mb-4">
+                                <canvas id="signup-chart"></canvas>
+                            </div>
+                            <div class="d-flex flex-row justify-content-end">
                             </div>
                         </div>
                     </div>
+                </div>
+                        <div class="col-lg-6 col-md-12 chart-container">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex flex-column">
+                                <h4 class="card-title">최근 등록 기업 수 : </h4>
+                                <span class="text-bold text-lg">${totalCompanies} 개</span>
+                            </div>
+                            <div class="position-relative mb-4">
+                                <canvas id="companies-chart"></canvas>
+                            </div>
+                            <div class="d-flex flex-row justify-content-end">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-lg-6 col-md-12">
                     <div class="card">

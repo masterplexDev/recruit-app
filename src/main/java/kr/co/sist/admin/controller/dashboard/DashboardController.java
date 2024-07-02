@@ -20,12 +20,19 @@ public class DashboardController {
     public String dashboard(Model model) {
         List<SignupCountVO> signupCountsLastWeek = dashboardService.getSignupCountsForLastWeek();
         List<RegisteredCompanyCountVO> registeredCompanyCountsLastWeek = dashboardService.getRegisteredCompanyCountsForLastWeek();
+        
+        //데이터 카운트
+        int totalSignups = signupCountsLastWeek.stream().mapToInt(SignupCountVO::getSignupCount).sum();
+        int totalCompanies = registeredCompanyCountsLastWeek.stream().mapToInt(RegisteredCompanyCountVO::getCompanyCount).sum();
+        
         ObjectMapper mapper = new ObjectMapper();
         try {
             String signupCountsJson = mapper.writeValueAsString(signupCountsLastWeek);
             String registeredCompanyCountsJson = mapper.writeValueAsString(registeredCompanyCountsLastWeek);
             model.addAttribute("signupCountsLastWeekJson", signupCountsJson);
             model.addAttribute("registeredCompanyCountsLastWeekJson", registeredCompanyCountsJson);
+            model.addAttribute("totalSignups", totalSignups);
+            model.addAttribute("totalCompanies", totalCompanies);
         } catch (Exception e) {
             e.printStackTrace();
         }
