@@ -81,7 +81,7 @@
     width: 100%;
     margin:10px;
     margin-top: 30px;
-    margin-bottom: 300px;
+    margin-bottom: 30px;
     font-size: 15px;
 }
 
@@ -365,11 +365,11 @@ dl {
 						<!-- 페이지네이션 끝 -->
 					</section>
 				</div>
-          </div>
-        </div>
+          	  </div>
+        	</div>
 				<!-- golgolz end -->
 			</section>
-			<jsp:include page="../../../../assets/layout/user/footer.jsp" />
+		<jsp:include page="../../../../assets/layout/user/footer.jsp" />
 		</main>
 	</div>
 </body>
