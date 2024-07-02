@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import kr.co.sist.admin.vo.dashboard.RegisteredCompanyCountVO;
 import kr.co.sist.admin.vo.dashboard.SignupCountVO;
+import kr.co.sist.admin.vo.dashboard.SkillCountVO;
 import kr.co.sist.properties.MyBatisConfig;
 
 @Component
@@ -32,6 +33,15 @@ public class DashboardDAO {
         SqlSession ss = myBatis.getMyBatisHandler(false);
         List<RegisteredCompanyCountVO> result = 
                 ss.selectList("kr.co.sist.mapper.dashboard.DashboardMapper.getRegisteredCompanyCountsForLastWeek");
+        myBatis.closeHandler(ss);
+        return result;
+    }
+    
+    // 기술 스택 수
+    public List<SkillCountVO> getSkillCounts() {
+        SqlSession ss = myBatis.getMyBatisHandler(false);
+        List<SkillCountVO> result = 
+                ss.selectList("kr.co.sist.mapper.dashboard.DashboardMapper.getSkillCounts");
         myBatis.closeHandler(ss);
         return result;
     }

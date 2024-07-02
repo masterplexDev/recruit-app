@@ -69,8 +69,14 @@ ORDER BY
     TO_CHAR(DR.ESTABLISHMENT_DATE, 'YYYY-MM-DD')
   </select>
 
+   <!-- 기술 스택 수 결과 매핑 -->
+  <resultMap id="SkillCountMap" type="kr.co.sist.admin.vo.dashboard.SkillCountVO">
+    <result property="skillCode" column="SKILL_CODE"/>
+    <result property="skillCount" column="SKILL_COUNT"/>
+  </resultMap>
+
   <!-- 기술 스택 수 -->
-  <select id="getSkillCounts" resultType="map">
+  <select id="getSkillCounts" resultMap="SkillCountMap">
     SELECT
         SKILL_CODE,
         COUNT(*) AS SKILL_COUNT

@@ -248,24 +248,44 @@
                 console.error('Registered Company JSON 파싱 오류:', e);
             }
             
-            // 기술 스택 차트 설정
-            var ctxTechStack = document.getElementById('techStack-chart').getContext('2d');
-            var techStackChart = new Chart(ctxTechStack, {
-                type: 'doughnut',
-                data: {
-                    labels: ['C언어', '자료구조', '알고리즘', '네트워크', '운영체제'],
-                    datasets: [{
-                        data: [30, 20, 15, 25, 10],
-                        backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#ff851b']
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    legend: {
-                        position: 'right'
+            // 기술 스택 데이터 처리
+            var skillCountsJson = '${skillCountsJson}';
+            console.log("Skill Counts JSON:", skillCountsJson);
+
+            try {
+                var parsedSkillCounts = JSON.parse(skillCountsJson);
+                console.log("Parsed Skill Counts:", parsedSkillCounts);
+
+                var skillLabels = parsedSkillCounts.map(function(item) {
+                    return item.skillCode;
+                });
+                var skillData = parsedSkillCounts.map(function(item) {
+                    return item.skillCount;
+                });
+
+                console.log("Skill Labels:", skillLabels);
+                console.log("Skill Data:", skillData);
+
+                var ctxTechStack = document.getElementById('techStack-chart').getContext('2d');
+                var techStackChart = new Chart(ctxTechStack, {
+                    type: 'doughnut',
+                    data: {
+                        labels: skillLabels,
+                        datasets: [{
+                            data: skillData,
+                            backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#ff851b']
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        legend: {
+                            position: 'right'
+                        }
                     }
-                }
-            });
+                });
+            } catch (e) {
+                console.error('Skill JSON 파싱 오류:', e);
+            }
             
             var ctxReviewCount = document.getElementById('reviewCount-chart').getContext('2d');
             var reviewCountChart = new Chart(ctxReviewCount, {
