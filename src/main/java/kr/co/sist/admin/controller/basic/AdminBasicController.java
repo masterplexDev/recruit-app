@@ -1,43 +1,54 @@
 package kr.co.sist.admin.controller.basic;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-import kr.co.sist.admin.domain.basic.LoginDomain;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import kr.co.sist.admin.domain.basic.AdminLoginDomain;
 import kr.co.sist.admin.service.basic.AdminBasicService;
-import kr.co.sist.admin.vo.basic.LoginVO;
+import kr.co.sist.admin.vo.basic.AdminLoginVO;
 
 @SessionAttributes("adminId")
 @Controller
 public class AdminBasicController {
     private final AdminBasicService abs;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     public AdminBasicController(AdminBasicService abs) {
         this.abs = abs;
     }
 
-    @PostMapping("/views/login.do")
-    public String adminLogin(LoginVO lVO, Model model) {
-        String adminId = "";
+    @PostMapping("/manage/adminLogin/adminLogin.do")
+    public String adminLogin(AdminLoginVO lVO, Model model, RedirectAttributes redirectAttributes) {
+        String inputAdminId = lVO.getAdminId();
+        String inputPassword = lVO.getPassword();
 
-        LoginDomain ld = abs.adminLogin(lVO);
+        AdminLoginDomain ld = abs.adminLogin(inputAdminId);
 
         if (ld == null) {
-            System.out.println("로그인 실패");
-            return "test";
+            redirectAttributes.addFlashAttribute("resultMsg", "존재하지 않는 계정입니다.");
+            return "redirect:/manage/adminLogin/adminLoginPage.do";
         }
 
-        adminId = ld.getAdminId();
+        boolean login = passwordEncoder.matches(inputPassword, ld.getPassword());
+
+        if (!login) {
+            redirectAttributes.addFlashAttribute("resultMsg", "비밀번호가 다릅니다.");
+            return "redirect:/manage/adminLogin/adminLoginPage.do";
+        }
+
+        String adminId = ld.getAdminId();
+
         model.addAttribute("adminId", adminId);
-        model.addAttribute("loginData", ld);
 
-        // model.addAttribute("adminId", adminId);
-
-        // return "dashboard/dashboard";
-        return "test";
+        return "/manage/index.do";
     }
 
     @GetMapping("/logout.do")
@@ -45,7 +56,7 @@ public class AdminBasicController {
 
         ss.setComplete();
 
-        return "test";
+        return "/manage/adminLogin/adminLoginPage.do";
     }
 
     @GetMapping("/manage/admin/admins.do")
@@ -73,7 +84,7 @@ public class AdminBasicController {
     }
 
     @GetMapping("/manage/adminLogin/adminLoginPage.do")
-    public String adminLoginPage(Model model) {
+    public String adminLoginPage() {
 
         return "manage/adminLogin/adminLogin";
     }

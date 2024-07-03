@@ -8,16 +8,11 @@
 	    <result property="adminId" column="admin_id"/>
 	    <result property="authority" column="authority"/>
 	</resultMap>
-	<resultMap id="adminLoginResultMap" type="kr.co.sist.admin.domain.basic.LoginDomain">
-	    <result property="adminId" column="admin_id"/>
-	    <result property="position" column="position"/>
-	    <result property="authority" column="authority"/>
-	</resultMap>
 
-  <select id="selectLogin" resultMap="adminLoginResultMap" parameterType="kr.co.sist.admin.vo.basic.LoginVO">
-  		select admin_id,position,authority
+  <select id="selectLogin" resultType="kr.co.sist.admin.domain.basic.AdminLoginDomain" parameterType="String">
+  		select admin_id adminId,password
 		from admin
-		where admin_id=#{ adminId } and password=#{ password }
+		where admin_id=#{ adminId }
   </select>
   <select id="selectAdminList" resultMap="adminInfoResultMap">
   		select position,admin_id,authority
@@ -25,4 +20,7 @@
 		where 1=1 and position!='슈퍼'
 		OFFSET 0 ROWS FETCH NEXT 10 ROWS ONLY
   </select>
+  <insert id="insertAdmin" parameterType="kr.co.sist.admin.vo.basic.InsertAdminVO">
+  		insert into admin(admin_id,password,authority) values(#{ adminId },#{ password },#{ authority });
+  </insert>
  </mapper>
