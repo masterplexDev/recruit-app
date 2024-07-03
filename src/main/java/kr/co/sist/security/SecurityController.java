@@ -80,16 +80,15 @@ public class SecurityController {
 
 
         int cnt = ubs.addUser(signupVO, signup2VO);
-        System.out.println("회원가입 성공 여부 : " + cnt);
         String resultMsg = "";
         if (cnt > 0) {
             session.removeAttribute("jwtSignup");
             resultMsg = "회원가입이 완료 되었습니다. 감사합니다.";
-            System.out.println(resultMsg);
             model.addAttribute("resultMsg", resultMsg);
         } else {
             resultMsg = "회원가입에 실패했습니다. 잠시 후 다시 시도해주세요.";
             model.addAttribute("resultMsg", resultMsg);
+            return "user/login";
         }
 
 
@@ -173,7 +172,7 @@ public class SecurityController {
     }
 
     @PostMapping("/user/mypage/modifyPassword.do")
-    public String modifyPassword(UpdatePassVO upVO, Model model) {
+    public String modifyPassword(UpdatePassVO upVO, RedirectAttributes redirectAttributes) {
 
         String cipherPass = passwordEncoder.encode(upVO.getPassword());
         upVO.setPassword(cipherPass);
@@ -183,13 +182,12 @@ public class SecurityController {
         if (cnt > 0) {
             ms.modifyPassFlag(upVO.getUserId());
             resultMsg = "비밀번호가 정상적으로 변경 되었습니다.";
-            model.addAttribute("resultMsg", resultMsg);
         } else {
             resultMsg = "비밀번호 변경 중 문제가 발생 했습니다. 잠시 후 다시 시도해주세요.";
-            model.addAttribute("resultMsg", resultMsg);
         }
+        redirectAttributes.addFlashAttribute(resultMsg, "resultMsg");
 
-        return "user/mypage/modifyPassProcess";
+        return "redirect:/user/mypage/modifyPassProcess.do";
     }
 
     @PostMapping("/user/mypage/chkPassword.do")

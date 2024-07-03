@@ -5,6 +5,12 @@
 <!DOCTYPE html>
 <html>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<%
+	String resultMsg = (String)request.getAttribute("resultMsg");
+	if(resultMsg == null || resultMsg.isEmpty()){
+	    response.sendRedirect("../mypage/mypageUserInfo.do");
+	}
+%>
 <script type="text/javascript">
     $(function() {
         <c:if test="${not empty resultMsg}">
@@ -20,7 +26,7 @@
                     location.href = "../mypage/modifyPassPage.do"; // 실패 시 다시 비밀번호 변경 화면으로 이동
                 </c:otherwise>
             </c:choose>
-            }, 500); // 500ms(0.5초) 후 이동
+            }, 500);
             
         </c:if>
     });

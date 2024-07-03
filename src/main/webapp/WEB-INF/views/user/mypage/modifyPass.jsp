@@ -103,6 +103,10 @@
 	<script type="text/javascript">
 		$(function(){
 			
+				window.addEventListener('unload', function() {
+				    history.pushState(null, null, 'checkPass.do');
+				});
+			
 				var newPass = $("#newPass");
 				var newPassCon = $("#newPassCon");
 				
