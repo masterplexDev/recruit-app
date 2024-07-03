@@ -15,14 +15,14 @@ import lombok.ToString;
 @ToString
 public class SearchVO {
     private String title;
-    private String companyName;
+    private String category;
+    private String keyword;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate startDate;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
-    private String career;
-    private String employmentType;
-    private String eduStandard;
-    private String workLocation;
-    private String position;
+    private String addr;
+    // private String career; -> todo
     private int startNum;
     private int endNum;
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import kr.co.sist.admin.domain.recruit.RecruitDomain;
+import kr.co.sist.user.domain.recruit.RecruitListDomain;
 import kr.co.sist.user.service.recruit.RecruitUserService;
 import kr.co.sist.user.vo.recruit.SearchVO;
 
@@ -35,7 +36,7 @@ public class RecruitUserController {
 
     @GetMapping("/api/recruits.do")
     @ResponseBody
-    public List<RecruitDomain> searchRecruits(@ModelAttribute SearchVO searchVO) {
+    public List<RecruitListDomain> searchRecruits(@ModelAttribute SearchVO searchVO) {
         return recruitUserService.searchRecruits(searchVO);
     }
 

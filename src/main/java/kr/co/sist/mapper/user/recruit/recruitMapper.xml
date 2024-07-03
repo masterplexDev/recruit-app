@@ -25,11 +25,22 @@
 	    <result property="companyPeopleNum" column="headcount"/>
 	    <result property="establishDate" column="establishment_date"/>
 	</resultMap>
-	<select id="selectRecruits" resultMap="recruitResultMap" parameterType="kr.co.sist.user.vo.recruit.SearchVO">
+	<resultMap id="recruitListResultMap" type="kr.co.sist.user.domain.recruit.RecruitListDomain">
+	    <id property="id" column="recruit_num"/>
+	    <result property="title" column="title"/>
+	    <result property="inputDate" column="input_date"/>
+	    <result property="endDate" column="end_date"/>
+	    <result property="addr" column="work_place"/>
+	    <result property="workType" column="employment_type"/>
+	    <result property="career" column="career_condition"/>
+	    <result property="education" column="education_base_code"/>
+	    <result property="position" column="position_code"/>
+	</resultMap>
+	<select id="selectRecruits" resultMap="recruitListResultMap" parameterType="kr.co.sist.user.vo.recruit.SearchVO">
 	    SELECT
-	        rnum,
 	        recruit_num,
 	        company_name,
+	        position_code,
 	        title,
 	        career_condition,
 	        years,
@@ -37,11 +48,13 @@
 	        work_place,
 	        employment_type,
 	        content,
+	        input_date,
 	        end_date
 	    FROM (
 	        SELECT
 	            ROW_NUMBER() OVER (ORDER BY r.input_date ASC) AS rnum,
 	            recruit_num,
+	        	position_code,
 	            ci.company_name,
 	            title,
 	            career_condition,
@@ -50,6 +63,7 @@
 	            work_place,
 	            employment_type,
 	            content,
+	            r.input_date,
 	            end_date
 	        FROM recruit r
 	        LEFT JOIN companyinfo ci ON r.company_code = ci.company_code

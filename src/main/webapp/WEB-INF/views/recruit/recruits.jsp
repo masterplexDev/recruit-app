@@ -19,7 +19,7 @@
 	<!-- golgolz end -->
 	<style text="text/css">
 		<!-- golgolz start -->
-		.lgiSubMain{
+		.lgiSubMain {
 			z-index: -2;
 		}
 		
@@ -32,7 +32,7 @@
 		}
 		
 		.chip {
-			padding: 8px 16px; /* 좌우 패딩 16px로 변경 */
+			padding: 8px 16px;
 			background-color: #f1f1f1;
 			border-radius: 20px;
 			margin: 5px;
@@ -45,67 +45,72 @@
 		}
 		
 		.search-container {
-            display:flex; 
-            justify-content:center;
-            background-color: white;
-            border-radius: 8px;
-        }
-        
-        .search-table {
-            width: 90%;
-            border-collapse: collapse;
-        }
-        
-        .search-table td {
+			display: flex;
+			justify-content: center;
+			background-color: white;
+			border-radius: 8px;
+		}
+		
+		.search-table {
+			width: 90%;
+			border-collapse: collapse;
+		}
+		
+		.search-table td {
 			font-size: 14px;
-            padding: 10px;
-            border-bottom: 1px solid #e0e0e0;
-            border-top: 1px solid #e0e0e0;
-        }
-        
-        .search-table td:first-child {
-            width: 100px;
-            background-color: #f9f9f9;
-            font-weight: 400;
-        }
-        
-        .search-input {
-        	font-size: 13px;
-            width: 200px;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        
-        .search-select {
-        	font-size: 13px;
-            width: 100px;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        
-        .search-button {
-            padding: 8px 15px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        
-        .button-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 20px;
-        }
-        
-        .btn {
-        	width: 65px;
-        	height: 34px;
-        	font-size: 15px;
-        }
+			padding: 10px;
+			border-bottom: 1px solid #e0e0e0;
+			border-top: 1px solid #e0e0e0;
+		}
+		
+		.search-table td:first-child {
+			width: 100px;
+			background-color: #f9f9f9;
+			font-weight: 400;
+		}
+		
+		.search-input {
+			font-size: 13px;
+			width: 200px;
+			padding: 8px;
+			border: 1px solid #ddd;
+			border-radius: 4px;
+		}
+		
+		.search-select {
+			font-size: 13px;
+			width: 100px;
+			padding: 8px;
+			border: 1px solid #ddd;
+			border-radius: 4px;
+		}
+		
+		.search-button {
+			padding: 8px 15px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+		
+		.button-container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-top: 25px;
+		}
+		
+		.btn {
+			width: 65px;
+			height: 34px;
+			font-size: 15px;
+		}
+		
+		#btn-reset {
+			border: solid 1px #c8c8c8;
+			margin-left: 5px;
+		}
 		<!-- golgolz end -->
 	</style>
 	<script text="text/javascript">
@@ -192,8 +197,25 @@
 	  	            }
 	  	        }
 	  		});
+	    	
+	    	$("#btn-reset").click(function(){
+	    		resetSearchTable();
+	    	});
 			<!-- golgolz end -->
 		});
+		
+		function resetSearchTable() {
+	        $('#category').val('1');
+	        $('#keyword').val('');
+	        $('#start_date, #end_date').val('');
+	        $('#sido1').val('').find('option:first').prop('selected', true);
+	        $('#gugun1').empty().append("<option style='font-size: 14px;' value=''>구/군 선택</option>");
+	        $('.position-chip').removeClass('active');
+	        $('.position-chip[data-value="BACKDEV"]').addClass('active');
+	        if ($.fn.datepicker) {
+	            $('#start_date, #end_date').datepicker('setDate', null);
+	        }
+	    }
 	</script>
 </head>
 <body>
@@ -225,19 +247,19 @@
 									            <tr>
 									                <td><label for="name-search">검색어</label></td>
 									                <td>
-									                	<select class="search-select">
-									                		<option>기업명</option>
-									                		<option>공고명</option>
-									                		<option>공고내용</option>
+									                	<select class="search-select" id="category" name="category">
+									                		<option value="1">기업명</option>
+									                		<option value="2">공고명</option>
+									                		<option value="3">공고내용</option>
 									                	</select>
-									                    <input type="text" id="name-search" class="search-input" placeholder="이름을 입력하세요">
+									                    <input type="text" id="keyword" class="search-input" placeholder="이름을 입력하세요">
 									                </td>
 									            </tr>
 									            <tr>
 									                <td><label for="name-search">공고 등록일</label></td>
 									                <td>
 									                    <input type="text" id="start_date" class="frm_input search-input" size="10" readonly> 
-									                    <span style="font-size: 15px;"> - </span>
+									                    <span style="font-size: 20px;"> - </span>
               											<input type="text" id="end_date" class="frm_input search-input" size="10" readonly> 
 									                </td>
 									            </tr>
@@ -271,7 +293,7 @@
 										    <input type="button" value="검색" class="btn btn-secondary btn-sm" id="btn-search"/>
 											<input type="button" value="초기화" class="btn btn-outline-secondary btn-sm" id="btn-reset"/>
 										</div>
-										<ul class="tplTab clear" id="anchorGICnt_1" style="margin-top: 15px; margin-left: 3px;">
+										<ul class="tplTab clear" id="anchorGICnt_1" style="margin-top: 25px; margin-left: 13px; margin-bottom: 5px;">
 											<li data-tab-index="0">
 												<button type="button">
 													<span data-text="전체" style="color: #000;">전체 <em>(117,341건)</em></span>
