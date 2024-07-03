@@ -5,17 +5,15 @@
 <!DOCTYPE html>
 <html>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<%
-	String resultMsg = (String)request.getAttribute("resultMsg");
-	if(resultMsg == null || resultMsg.isEmpty()){
-	    response.sendRedirect("../mypage/mypageUserInfo.do");
-	}
-%>
 <script type="text/javascript">
     $(function() {
+        <c:if test="${ empty resultMsg }">
+        	setTimeout(function(){
+        		location.href="../mypage/mypageUserInfo.do";
+        	},100);
+        </c:if>
         <c:if test="${not empty resultMsg}">
             alert("${resultMsg}");
-            
             
             setTimeout(function() {
             <c:choose>

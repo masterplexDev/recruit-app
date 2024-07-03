@@ -172,20 +172,33 @@ public class SecurityController {
     }
 
     @PostMapping("/user/mypage/modifyPassword.do")
-    public String modifyPassword(UpdatePassVO upVO, RedirectAttributes redirectAttributes) {
+    public String modifyPassword(@SessionAttribute("userId") String userId, UpdatePassVO upVO,
+            RedirectAttributes redirectAttributes) {
+        String resultMsg = "";
+        upVO.setUserId(userId);
+
+        String inputPass = upVO.getPassword();
+        String searchPass = ms.searchChkPass(userId);
+
+        boolean duplicationFlag = passwordEncoder.matches(inputPass, searchPass);
+
+        if (duplicationFlag) {
+            resultMsg = "동일한 비밀번호로는 변경이 불가합니다.";
+            redirectAttributes.addFlashAttribute("resultMsg", resultMsg);
+            return "redirect:/user/mypage/modifyPassProcess.do";
+        }
 
         String cipherPass = passwordEncoder.encode(upVO.getPassword());
         upVO.setPassword(cipherPass);
 
         int cnt = ms.modifyPassword(upVO);
-        String resultMsg = "";
         if (cnt > 0) {
             ms.modifyPassFlag(upVO.getUserId());
             resultMsg = "비밀번호가 정상적으로 변경 되었습니다.";
         } else {
             resultMsg = "비밀번호 변경 중 문제가 발생 했습니다. 잠시 후 다시 시도해주세요.";
         }
-        redirectAttributes.addFlashAttribute(resultMsg, "resultMsg");
+        redirectAttributes.addFlashAttribute("resultMsg", resultMsg);
 
         return "redirect:/user/mypage/modifyPassProcess.do";
     }

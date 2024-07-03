@@ -180,7 +180,6 @@
                   <p data-testid="Typography" color="rgba(55, 56, 60, 0.61)" class="css-1b12nwt"><strong>새로운 비밀번호</strong>를 입력해주세요.</p>
                   </div>
                   <ul class="css-14jv0iu">
-                  <input type="hidden" name="userId" value="${ sessionScope.userId }">
                   <li data-list-type="SOCIAL_LINK" tabindex="0" class="css-15hfbq8"><p data-testid="Typography" color="#000000" class="css-9dug5j">새로운 비밀번호</p>
                   <input type="password" id="newPass" name="password" autocomplete="on" class="css-1sbrczv" value="">
                   </li>
