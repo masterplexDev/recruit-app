@@ -5,9 +5,9 @@
 <mapper namespace="kr.co.sist.qna.user">
 
 	<select id="selectMyQnas" resultType="kr.co.sist.user.domain.qna.UserQnaDomain">
-		select qna_num, title, input_date
+		select row_number() over (order by input_date) as qna_num, title, input_date
 		from qna
-		order by qna_num desc
+		order by input_date desc
 	</select>
 
 	<select id="selectOneQna" resultType="kr.co.sist.user.domain.qna.UserQnaDomain">
