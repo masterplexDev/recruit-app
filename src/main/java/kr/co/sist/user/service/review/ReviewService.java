@@ -99,4 +99,9 @@ public class ReviewService {
     public int getReviewNumByDomain(ReviewDomain reviewDomain) {
         return userReviewDAO.getReviewNumByDomain(reviewDomain);
     }
+    
+    //회사 정보 가져오기
+    public CompanyInfoVO getCompanyDetailsByCode(String companyCode) {
+        return userReviewDAO.getCompanyDetailsByCode(companyCode);
+    }
 }

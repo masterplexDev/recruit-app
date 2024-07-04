@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import kr.co.sist.admin.dao.dashboard.DashboardDAO;
 import kr.co.sist.admin.vo.dashboard.RegisteredCompanyCountVO;
+import kr.co.sist.admin.vo.dashboard.ReviewCountVO;
 import kr.co.sist.admin.vo.dashboard.SignupCountVO;
+import kr.co.sist.admin.vo.dashboard.SkillCountVO;
 import kr.co.sist.properties.MyBatisConfig;
 
 @Service
@@ -29,5 +31,15 @@ public class DashboardService {
     //등록 기업 수
     public List<RegisteredCompanyCountVO> getRegisteredCompanyCountsForLastWeek() {
         return dashboardDAO.getRegisteredCompanyCountsForLastWeek();
+    }
+    
+    //기술 스택
+    public List<SkillCountVO> getSkillCounts() {
+        return dashboardDAO.getSkillCounts();
+    }
+    
+    //리뷰 수 (월간)
+    public List<ReviewCountVO> getReviewCountsForLastSixMonths() {
+        return dashboardDAO.getReviewCountsForLastSixMonths();
     }
 }
