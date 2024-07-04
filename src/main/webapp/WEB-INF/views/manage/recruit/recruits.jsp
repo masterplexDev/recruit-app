@@ -42,7 +42,7 @@
   	            
   	            if (startDate && endDate && startDate > endDate) {
   	                alert("종료 날짜는 시작 날짜 이후여야 합니다.");
-  	                $(this).val(""); // 선택한 값을 지웁니다
+  	                $(this).val("");
   	                return false;
   	            }
                 $("#start_date_sec").datepicker("option", "minDate", selectedDate);
@@ -77,14 +77,6 @@
     	});
     	
     	$('.pagination').on('click', '.page-link', function(e) {
-            /* e.preventDefault();
-            var clickedPage = $(this).data('page');
-            if (clickedPage) {
-                currentPage = clickedPage;
-                startNum = itemsPerPage * (currentPage - 1) + 1;
-                updateRecruitList(false);
-            } */
-            
             e.preventDefault();
             var clickedPage = $(this).data('page');
             if (clickedPage) {
@@ -105,26 +97,6 @@
                 }
             }
         }); 
-    	
-    	/* // 이전 페이지 버튼
-        $('#prev-page').click(function(e) {
-            e.preventDefault();
-            if (currentPage > 1) {
-            	currentPage--;
-                startNum = itemsPerPage * (currentPage - 1) + 1;
-                updateRecruitList(false);
-            }
-        });
-
-        // 다음 페이지 버튼
-        $('#next-page').click(function(e) {
-            e.preventDefault();
-            if (currentPage < Math.ceil(totalPages / itemsPerPage)) {
-            	currentPage++;
-                startNum = itemsPerPage * (currentPage - 1) + 1;
-                updateRecruitList(false);
-            }
-        }); */
     	
     	updateRecruitList(true);
     	resetForm();
@@ -269,7 +241,6 @@
         });
 	}
 
- 	// 페이지네이션 업데이트
     function updatePagination() { 
  		var currentGroup = Math.ceil(currentPage / showPages);
     	var startPage = (currentGroup - 1) * showPages + 1;
