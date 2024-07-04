@@ -63,9 +63,10 @@
 				
 			    function validatePass(){
 			    	 var pass = inputPass.val().trim();
-			    	 var passRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()])[a-zA-Z\d!@#$%^&*()]{8,16}$/;
+			    	 var passRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()-=])[a-zA-Z\d!@#$%^&*()-=]{8,16}$/;
 			    	 return passRegex.test(pass);
-			    }//function
+			    	}
+			    
 			    
 				// 초기 로딩
 			    chkNull();

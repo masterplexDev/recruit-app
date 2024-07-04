@@ -115,7 +115,10 @@
 	<script type="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
-      	  
+			window.addEventListener('unload', function() {
+			    history.pushState(null, null, 'checkPass.do');
+			});
+			
       	  	$('#cancleBtn').click(function(){
       	  	  alert('회원정보 변경이 취소 되었습니다.');
       	  	  location.href='mypageUserInfo.do';		

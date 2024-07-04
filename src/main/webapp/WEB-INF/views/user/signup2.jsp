@@ -47,6 +47,10 @@
 				language: 'ko' // 한국어 설정
 			}); */
 			
+			window.addEventListener('unload', function() {
+			    history.pushState(null, null, 'loginPage.do');
+			});
+			
 			$('#backBtn').click(function(){
 				location.href='http://localhost/recruit-app/user/loginPage.do';
 			});//click
