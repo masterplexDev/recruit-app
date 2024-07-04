@@ -27,8 +27,8 @@
 			</where>
 			)
 		<where>
-			<if test="startNum != 0 and endNum !=0">
-				and rnum between #{startNum} and #{endNum}
+			<if test="startNum != 0 and endNum != 0">
+				rnum between #{startNum} and #{endNum}
 			</if>
 		</where>
   </select>

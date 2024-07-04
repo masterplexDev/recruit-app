@@ -35,6 +35,10 @@ public class AdminBasicDAO {
         List<AdminInfoDomain> list =
                 ss.selectList("kr.co.sist.mapper.admin.basic.adminMapper.selectAdminList", sVO);
 
+        System.out.println(sVO.getStartNum() + " : " + sVO.getEndNum());
+        for (AdminInfoDomain aid : list) {
+            System.out.println(aid.getAdminId());
+        }
         myBatis.closeHandler(ss);
 
         return list;
