@@ -5,6 +5,7 @@
 
 <% 
 String userId = (String) session.getAttribute("userId");
+String companyCode = request.getParameter("companyCode");
 %>
 
 <!doctype html>
@@ -58,51 +59,57 @@ String userId = (String) session.getAttribute("userId");
 <main class="JobsFeed_Jobsfeed__DpeV9"> 
     <section class="Section_Section__P1hhc"> <!-- golgolz start --> 
         <link rel="stylesheet" media="all" href="http://localhost/recruit-app/assets/css/review/companies-afa4d7b5c5b020895de3ce30935faf8c1cc0ae8954ef59a46484c2edbc9108d5.css" data-turbolinks-track="true"> 
-        <div class="company-header-container">
-            <div class="company-header-branding background-type4">
-                <div class="company-header-branding-container ">
-                    <input type="hidden" id="mId" value="">
-                    <input type="hidden" id="cId" value="">
-                    <input type="hidden" id="jkcId" value="nexonhr">
-                    <input type="hidden" id="devPath" value="https://www.jobkorea.co.kr">
-                    <div class="logo"><a href="/company/1882711"><img src="//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2011/10/2w1aj007Pm_gWzi2y3i2jm0djMcSj_ldjm.gif?v=202406091636&amp;hash=r&amp;serviceCode=CL" onerror="companylogoOnError('//imgs.jobkorea.co.kr/img1/_whitebg/200X80/Co_Logo/Logo/2011/10/2w1aj007Pm_gWzi2y3i2jm0djMcSj_ldjm.gif?v=202406091636&amp;hash=r&amp;serviceCode=CL' , this)" alt="(주)넥슨코리아 로고" class="screen-out"></a></div>
-                    <div class="company-header-branding-body">
-                        <div class="special-feature"></div>
-                        <div class="name">
-                            (주)넥슨코리아
-                        </div>
-                        <div class="summary">
-                            <div class="summary-item">넥슨그룹 계열사</div>
-                            <div class="summary-item">컴퓨터·하드웨어·장비 </div>
-                        </div>
-                    </div>
-                </div>
+        
+        
+        <!-- 회사 정보 표시 -->
+<div class="company-header-container">
+    <div class="company-header-branding background-type4">
+        <div class="company-header-branding-container ">
+            <input type="hidden" id="mId" value="">
+            <input type="hidden" id="cId" value="">
+            <input type="hidden" id="jkcId" value="nexonhr">
+            <input type="hidden" id="devPath" value="https://www.jobkorea.co.kr">
+            <div class="logo">
+                <img src="${companyInfo.companyImg}" alt="${companyInfo.companyName} 로고" onerror="companylogoOnError(this)">
             </div>
-            <div class="company-nav" role="navigation"  style="background-color: #ffffff;">
-                <div class="company-nav-container">
-                    <a href="../companyInfo/user_company_detail.jsp" class="company-nav-item activecompany-nav-item">
-                        <div class="name">기업정보</div>
-                        <div class="post">
-                            <div class="header screen-out">게시물</div>
-                            <div class="value"></div>
-                        </div>
-                    </a>
-                    <a href="reviewResult.jsp" class="company-nav-item active">
-                        <div class="name">기업리뷰</div>
-                        <div class="post">
-                            <div class="header screen-out">게시물</div>
-                            <div class="value">${fn:length(reviewScreenOutput)}</div>
-                        </div>
-                    </a>
-                    <a href="../recruit/recruits.jsp" class="company-nav-item ">
-                        <div class="name">채용공고</div>
-                        <div class="post">
-                            <div class="header screen-out">게시물</div>
-                        </div>
-                    </a>
+            <div class="company-header-branding-body">
+                <div class="special-feature"></div>
+                <div class="name">
+                    ${companyInfo.companyName}
+                </div>
+                <div class="summary">
+                    <div class="summary-item">넥슨그룹 계열사</div>
+                    <div class="summary-item">컴퓨터·하드웨어·장비</div>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="company-nav" role="navigation" style="background-color: #ffffff;">
+        <div class="company-nav-container">
+            <a href="../companyInfo/user_company_detail.jsp" class="company-nav-item activecompany-nav-item">
+                <div class="name">기업정보</div>
+                <div class="post">
+                    <div class="header screen-out">게시물</div>
+                    <div class="value"></div>
+                </div>
+            </a>
+            <a href="reviewResult.jsp" class="company-nav-item active">
+                <div class="name">기업리뷰</div>
+                <div class="post">
+                    <div class="header screen-out">게시물</div>
+                    <div class="value">${fn:length(reviewScreenOutput)}</div>
+                </div>
+            </a>
+            <a href="../recruit/recruits.jsp" class="company-nav-item ">
+                <div class="name">채용공고</div>
+                <div class="post">
+                    <div class="header screen-out">게시물</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
 
         <div id="contents_wrap" style="background-color: #ffffff;" > 
             <div id="contents" class="jpcont_col2_a"  > 

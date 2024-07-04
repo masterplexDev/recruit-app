@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kr.co.sist.user.domain.review.ReviewDomain;
 import kr.co.sist.user.domain.review.ReviewSurveyDomain;
 import kr.co.sist.user.service.review.ReviewService;
@@ -30,7 +30,7 @@ public class ReviewController {
     @Autowired(required = false)
     private ReviewService reviewService;
 
-    //리뷰 화면 출력
+  //리뷰 화면 출력
     @GetMapping("/review/reviewResult.do")
     public String reviewScreen(
         @RequestParam(value = "companyCode", defaultValue = "comp_0001") String companyCode,
@@ -49,12 +49,16 @@ public class ReviewController {
                 reviewQuestionsMap.put(review.getReviewNum(), reviewQuestions);
             }
         }
-        
+
+        // 회사 정보 가져오기
+        CompanyInfoVO companyInfo = reviewService.getCompanyDetailsByCode(companyCode);
+
         model.addAttribute("reviewScreenOutput", reviewScreenOutput);
         model.addAttribute("reviewQuestionsMap", reviewQuestionsMap);
         model.addAttribute("companyCode", companyCode);
         model.addAttribute("currentPage", page);
-        
+        model.addAttribute("companyInfo", companyInfo); // 회사 정보 모델에 추가
+
         // reviewNum이 null이 아닌 경우에만 모델에 추가
         if (reviewNum != null) {
             model.addAttribute("reviewNum", reviewNum);
@@ -106,16 +110,13 @@ public class ReviewController {
     }
     
     @PostMapping("/review/updateRecommend.do")
-    @ResponseBody
-    public Map<String, Object> updateRecommend(@RequestParam("reviewNum") int reviewNum, HttpSession session) {
+    public String updateRecommend(
+            @RequestParam("reviewNum") int reviewNum,
+            HttpSession session, RedirectAttributes redirectAttributes) {
 
-        Map<String, Object> response = new HashMap<>();
         String userId = (String) session.getAttribute("userId");
-        
         if (userId == null || userId.isEmpty()) {
-            response.put("success", false);
-            response.put("message", "로그인이 필요합니다.");
-            return response;
+            return "redirect:/user/loginPage.do"; // 로그인 페이지로 리디렉션
         }
 
         logger.info("Controller - updateRecommend() 시작, reviewNum: {}", reviewNum);
@@ -125,21 +126,19 @@ public class ReviewController {
         recommendVO.setReviewNum(reviewNum);
 
         // 컨트롤러에서 추천 여부 확인 (서비스의 checkIfRecommended 사용)
-        logger.debug("Controller - checkIfRecommended 호출 전");
+        logger.debug("Controller - checkIfRecommended 호출 전"); // 호출 전 로그 추가
         boolean isRecommended = reviewService.checkIfRecommended(recommendVO); 
-        logger.debug("Controller - checkIfRecommended 호출 후, isRecommended: {}", isRecommended);
+        logger.debug("Controller - checkIfRecommended 호출 후, isRecommended: {}", isRecommended); // 호출 후 로그 추가
 
         if (isRecommended) {
-            response.put("success", false);
-            response.put("message", "이미 추천했습니다.");
+            redirectAttributes.addFlashAttribute("recommendMsg", "이미 추천했습니다.");
         } else {
             // 추천 로직 실행 (서비스의 updateRecommend 사용)
             reviewService.updateRecommend(recommendVO);
-            response.put("success", true);
-            response.put("message", "추천이 완료되었습니다.");
+            redirectAttributes.addFlashAttribute("recommendMsg", "추천이 완료되었습니다.");
         }
 
-        return response;
+        return "redirect:/review/reviewResult.do";
     }
     
  // 리뷰 작성
