@@ -19,6 +19,18 @@
 	    order by input_date desc
 	    ]]>
     </select>
+    
+    <select id="selectNoticesbyKeyword" resultType="kr.co.sist.user.domain.notice.NoticeUserDomain" >
+	    select category, title, input_date, notice_num
+	    from notice
+	    where blind_flag = 'N'
+	        and (
+	            title like '%' || #{keyword} || '%'
+	            or (title like '%' || #{keyword} || '%' and content like '%' || #{keyword} || '%')
+	            or content like '%' || #{keyword} || '%'
+	        )
+	    order by input_date desc
+    </select>
   	
  	<select id="selectOneNotice" resultType="kr.co.sist.user.domain.notice.NoticeUserDomain">
  		select notice_num, category, title, content, input_date

@@ -55,15 +55,21 @@ public class NoticeUserContoller {
 
     @GetMapping("/notice/noticesByCategory.do")
     @ResponseBody
-    public Map<String, Object> getNoticesByCategory(@RequestParam("category") String category) {
+    public Map<String, Object> searhNoticesByCategory(@RequestParam("category") String category) {
         System.out.println("-----------------" + category);
         List<NoticeUserDomain> noticeList = noticeUserService.searchNoticesByCategory(category);
         System.out.println("---------????--------" + noticeList);
         Map<String, Object> response = new HashMap<>();
         response.put("noticeList", noticeList);
-        return response;
+        return response; // 공지사항 카테고리 검색
     }
 
+    @GetMapping("/notice/noticesbyKeyword.do")
+    public String searchNoticesbyKeyword(@RequestParam("keyword") String keyword, Model model) {
+        Object searchResult = noticeUserService.searchNoticesbyKeyword(keyword);
+        model.addAttribute("searchResult", searchResult);
+        return "/notice/notices";
+    }
 
 
     @GetMapping("/notice/detail.do")

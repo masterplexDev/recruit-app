@@ -30,22 +30,16 @@
 </resultMap>
 
     <select id="selectAllCompanyinfo" resultMap="companyInfoResultMap">
-	    SELECT COMPANY_CODE, COMPANY_NAME, LOGO, COMPANY_CLASSIFICATION, AVG_SAL, HEADCOUNT, ADDR
+	    SELECT COMPANY_CODE, COMPANY_NAME, LOGO, COMPANY_CLASSIFICATION, AVG_SAL, HEADCOUNT
 		FROM COMPANYINFO
     </select>
     
     <select id="selectCompanyinfo" resultMap="companyInfoResultMap" parameterType="map">
-    	SELECT COMPANY_CODE, COMPANY_NAME, LOGO, REVENUE, HEADCOUNT, INPUT_DATE, ADDR
+    	SELECT COMPANY_CODE, COMPANY_NAME, LOGO, REVENUE, HEADCOUNT, INPUT_DATE
 		FROM COMPANYINFO
 		<where>
-	        <if test="companyCode != null and companyCode != ''">
-	            COMPANY_CODE LIKE '%' || #{companyCode} || '%'
-	        </if>
 	        <if test="companyName != null and companyName != ''">
 	            COMPANY_NAME LIKE '%' || #{companyName} || '%'
-	        </if>
-	        <if test="addr != null and addr != ''">
-	            ADDR LIKE '%' || #{addr} || '%'
 	        </if>
 	        <if test="avg_sal != null">
 	            AND AVG_SAL >= #{avgSal}
@@ -54,37 +48,43 @@
 	            AND COMPANY_CLASSIFICATION = #{companyClassification}
 	        </if>
 	        <if test="headcount != null">
-	            AND HEADCOUNT between 0 and #{headcount}
+	            <choose>
+                <when test="headcount == '0'">
+                    AND HEADCOUNT &lt; 5
+                </when>
+                <when test="headcount == '1'">
+                    AND HEADCOUNT &lt; 50
+                </when>
+                <when test="headcount == '2'">
+                    AND HEADCOUNT &gt;= 50
+                </when>
+            </choose>
 	        </if>
     	</where>
     </select>
     
     <select id="selectCompanyinfoDetail" resultMap="companyInfoResultMap" parameterType="String">
-    	SELECT
-		    ci.COMPANY_CODE,
-		    ci.COMPANY_NAME,
-		    ci.LOGO,
-		    ci.COMPANY_IMG,
-		    ci.DESCRIPTION,
-		    ci.HEADCOUNT,
-		    ci.COMPANY_CLASSIFICATION,
-		    ci.REVENUE,
-		    ci.CEO_NAME,
-		    ci.ADDR,
-		    ci.ESTABLISHMENT_DATE,
-		    ci.INPUT_DATE,
-		    w.CATEGORY,
-		    w.WELFARE_CONTENT,
-		    h.BASE_DATE,
-		    h.HISTORY_CONTENT
-		FROM
-		    COMPANYINFO ci
-		LEFT JOIN
-		    WELFARE w ON ci.COMPANY_CODE = w.COMPANY_CODE
-		LEFT JOIN
-		    HISTORY h ON ci.COMPANY_CODE = h.COMPANY_CODE
-		WHERE    
-			ci.COMPANY_CODE = #{companyCode}
+    	SELECT COMPANY_CODE,COMPANY_NAME,LOGO,COMPANY_IMG,DESCRIPTION,HEADCOUNT,COMPANY_CLASSIFICATION,REVENUE,CEO_NAME,ADDR,ESTABLISHMENT_DATE,INPUT_DATE
+    	FROM COMPANYINFO
+    	WHERE COMPANY_CODE = #{companyCode}
+    </select>
+    
+    <select id="selectHistory" resultMap="companyInfoResultMap" parameterType="String">
+    	SELECT COMPANY_CODE,BASE_DATE,HISTORY_CONTENT
+    	FROM HISTORY
+    	WHERE COMPANY_CODE = #{companyCode}
+    </select>
+    
+    <select id="selectWelfareCategory" resultMap="companyInfoResultMap" parameterType="String">
+    	SELECT COMPANY_CODE,CATEGORY
+    	FROM WELFARE
+    	WHERE COMPANY_CODE = #{companyCode}
+    </select>
+    
+    <select id="selectWelfareContent" resultMap="companyInfoResultMap" parameterType="String">
+    	SELECT COMPANY_CODE,HISTORY_CONTENT
+    	FROM WELFARE
+    	WHERE COMPANY_CODE = #{companyCode}
     </select>
     
     
