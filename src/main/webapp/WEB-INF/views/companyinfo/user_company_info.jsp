@@ -195,7 +195,7 @@
                 <ul class="list" id="listCompany" style="padding-top:30px" >
                     <c:forEach var="company" items="${ requestScope.listCompanyinfo }" varStatus="i">
                     <li id="companyinfoList">
-                        <a href="http://localhost/recruit-app/companyInfo/user_company_detail.jsp" target="_blank">
+                        <a href="http://localhost/recruit-app/companyinfo/companyinfoDetail.do?companyCode=${ company.companyCode }">
                             <div class="thumbnail">
                                 <img src="http://localhost/recruit-app/assets/images/company/logo/<c:out value="${ company.logo }"/>" />
                                 <div class="inner"><c:out value="${ company.logo }"/></div>

@@ -7,7 +7,63 @@
 <jsp:include page="../assets/layout/admin/lib.jsp" />
 <script type="text/javascript">
 	$(function() {
-		$("#company_menu").addClass("bg-gradient-primary");		
+		$("#company_menu").addClass("bg-gradient-primary");
+		var initialTotalItems = $("#listCompany li").length;
+	    $(".total em").text(initialTotalItems);
+		
+		$("#companySearch").click(function(){
+			var companyName= $("#companyName").val();
+			var avgSal= $("#avgSal").val();
+			var selectedValue = $('input[name="company-classification"]:checked').val();
+			
+			$.ajax({
+				url:"companySearchList.do",
+				type:"POST",
+				dataType:"JSON",
+				data:{
+					"companyName" : companyName,
+					"avgSal" : avgSal,
+					"selectedValue" : selectedValue
+				},
+				success:function(response){
+					if (response.status === "success") {
+						var $list = $("#listCompany");
+	                    $list.empty(); // 기존 리스트 지우기
+
+	                    var totalItems = response.listCompanyinfo.length;
+	                    $(".fc_red").text(totalItems); 
+
+	                    if (totalItems > 0) {
+	                        $.each(response.listCompanyinfo, function(index, company) {
+	                            var listItem = '<tr class="list0"><td>' + (index + 1) + '</td>' +
+	                                '<td><img src="http://localhost/recruit-app/assets/images/company/logo/' + company.logo + '" style="width: auto; height: 35px;"/></td>' +
+	                                '<td>' + company.companyName + '</td>' +
+	                                '<td>' + company.companyClassification + '</td>' +
+	                                '<td>' + company.avgSal + '만</td>' +
+	                                '<td><input type="button" value="바로가기" class="btn btn-outline-secondary btn-sm" style="font-weight: bold; margin: 0px auto;" onclick="location.href=\'http://localhost/recruit-app/manage/company/detail.jsp\'" /></td></tr>';
+
+	                            $list.append(listItem);
+	                        });//each
+	                    } else {
+	                        $list.append('<div style="height:50px; width:100%; text-align:center;font-size:18px; padding-top:5px">검색 결과가 없습니다.</div>');
+	                    }//end else
+					}
+	            },
+				error:function(xhr){
+					console.log(xhr);
+				}//error
+			});//ajax
+		});//click
+		
+		$("#initialization").click(function() {//초기화 버튼
+            $("#companyName").val('');
+            $("#avgSal").val('');
+            $('input[name="company-classification"]').prop('checked', false);
+            
+            
+            
+        });//click
+		
 	});
 </script>
 <!-- golgolz start -->
@@ -48,51 +104,44 @@
 							</colgroup>
 							<tbody>
 								<tr>
-									<th scope="row">직무별 검색</th>
+									<th scope="row">기업명</th>
 									<td><input type="hidden" name="page" value="1" />
-										<select name="category">
+										<%-- <select name="category">
 											<option value="기업코드" ${param.category eq '0' ? " selected" : "" }>기업코드</option>
 											<option value="기업명" ${param.category eq '1' ? " selected" : "" }>기업명</option>
 											<option value="근무지역" ${param.category eq '2' ? " selected" : "" }>근무지역</option>
-										</select> 
-										<input type="text" name="keyword" value="${ param.keyword }" class="frm_input" size="30">
+										</select>  --%>
+										<input type="text" id="" name="keyword" value="" class="frm_input" size="30">
 									</td>
 								</tr>
 								<tr>
 									<th scope="row">평균 연봉</th>
 									<td class="box text">
-										<input type="text" name="keyword" value="${ param.keyword }" class="frm_input" size="13"> 만원 ~
-										<input type="text" name="keyword" value="${ param.keyword }" class="frm_input" size="13"> 만원
+										<input type="text" id="avgSal" name="avgSal" value="" class="frm_input" size="13"> 만원 이상
 									</td>
 								</tr>
 								<tr>
 									<th scope="row">기업 구분</th>
 									<td>
 										<label class="od_status"> 
-											<input type="radio" name="compC" value="0" ${param.delivery eq '0' ? " checked" : "" }> 전체
+											<input type="radio" name="compC" value="대기업" ${param.delivery eq '0' ? " checked" : "" }> 대기업
 										</label> 
 										<label class="od_status">
-											<input type="radio" name="compC" value="1" ${param.delivery eq '1' ? " checked" : "" }> 대기업
+											<input type="radio" name="compC" value="중견기업" ${param.delivery eq '1' ? " checked" : "" }> 중견기업
 										</label>
 										<label class="od_status"> 
-											<input type="radio" name="compC" value="2" ${param.delivery eq '2' ? " checked" : "" }> 중견기업
-										</label>
-										<label class="od_status"> 
-											<input type="radio" name="compC" value="2" ${param.delivery eq '2' ? " checked" : "" }> 중소기업
+											<input type="radio" name="compC" value="중소기업" ${param.delivery eq '2' ? " checked" : "" }> 중소기업
 										</label>
 									</td>
 								</tr>
 								<tr>
 									<th scope="row">사원수</th>
 									<td>
-										<label class="od_status"> 
-											<input type="radio" name="headC" value="0" ${param.delivery eq '0' ? " checked" : "" }> 전체
-										</label> 
 										<label class="od_status">
-											<input type="radio" name="headC" value="1" ${param.delivery eq '1' ? " checked" : "" }> 5인 미만
+											<input type="radio" name="headC" value="0" ${param.delivery eq '1' ? " checked" : "" }> 5인 미만
 										</label>
 										<label class="od_status"> 
-											<input type="radio" name="headC" value="2" ${param.delivery eq '2' ? " checked" : "" }> 50인 미만
+											<input type="radio" name="headC" value="1" ${param.delivery eq '2' ? " checked" : "" }> 50인 미만
 										</label>
 										<label class="od_status"> 
 											<input type="radio" name="headC" value="2" ${param.delivery eq '2' ? " checked" : "" }> 50인 이상
@@ -138,7 +187,7 @@
 							<c:forEach var="company" items="${requestScope.listCompanyinfo}" varStatus="i">
 							<tr class="list0">
 								<td><c:out value="${ i.index +1 }"/></td>
-								<td><img src="http://localhost/recruit-app/assets/images/company/logo/<c:out value="${ company.logo }"/>"/></td>
+								<td><img src="http://localhost/recruit-app/assets/images/company/logo/<c:out value="${ company.logo }"/>" style="width: auto; height: 35px;"/></td>
 								<td><c:out value="${ company.companyName }"/></td>
 								<td><c:out value="${ company.companyClassification }"/></td>
 								<td><c:out value="${ company.avgSal }"/>만</td>
