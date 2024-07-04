@@ -8,6 +8,7 @@ import kr.co.sist.admin.dao.basic.AdminBasicDAO;
 import kr.co.sist.admin.domain.basic.AdminInfoDomain;
 import kr.co.sist.admin.domain.basic.AdminLoginDomain;
 import kr.co.sist.admin.vo.basic.InsertAdminVO;
+import kr.co.sist.admin.vo.basic.SearchVO;
 
 @Service
 public class AdminBasicService {
@@ -27,10 +28,16 @@ public class AdminBasicService {
         return ld;
     }
 
-    public List<AdminInfoDomain> searchAdminList() {
-        List<AdminInfoDomain> list = amDAO.selectAdminList();
+    public List<AdminInfoDomain> searchAdminList(SearchVO sVO) {
+        List<AdminInfoDomain> list = amDAO.selectAdminList(sVO);
 
         return list;
+    }
+
+    public int searchAdminCnt(SearchVO sVO) {
+        int cnt = amDAO.selectAdminCnt(sVO);
+
+        return cnt;
     }
 
     public int addAdmin(InsertAdminVO iVO) {
@@ -42,6 +49,12 @@ public class AdminBasicService {
         int cnt = amDAO.insertAdmin(iVO);
 
         return cnt;
+    }
+
+    public AdminInfoDomain searchAdminInfo(String adminId) {
+        AdminInfoDomain adminInfo = amDAO.selectAdminInfo(adminId);
+
+        return adminInfo;
     }
 
 }
