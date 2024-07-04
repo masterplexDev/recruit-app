@@ -5,10 +5,11 @@
   
 <mapper namespace="kr.co.sist.qna.admin">
   <select id="selectNewQnas" resultType="kr.co.sist.admin.domain.qna.QnaDomain">
-  	select qna_num, category, title, content, user_id, input_date
-	from qna
-	where flag='N'
-	order by qna_num desc
+	select   row_number() over (order by input_date) as qna_num,
+        category, title, content, user_id, input_date
+    from  qna
+    where  flag = 'N'
+    order by  input_date desc
   </select>
   
   <select id="selectOneNewQna" resultType="kr.co.sist.admin.domain.qna.QnaDomain">
@@ -27,10 +28,10 @@
   </select>
   
   <select id="selectOldQnas" resultType="kr.co.sist.admin.domain.qna.QnaDomain">
-  	select qna_num, title, input_date
-  	from qna 
-  	where flag='Y'
-  	order by qna_num desc
+  	select   row_number() over (order by input_date) as qna_num, category, title, input_date
+    from  qna
+    where  flag = 'Y'
+    order by  input_date desc
   </select>
   
   <select id="selectOneOldQna" resultType="kr.co.sist.admin.domain.qna.QnaDomain">

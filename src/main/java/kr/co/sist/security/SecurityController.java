@@ -1,6 +1,7 @@
 package kr.co.sist.security;
 
 import java.util.List;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -79,16 +80,15 @@ public class SecurityController {
 
 
         int cnt = ubs.addUser(signupVO, signup2VO);
-        System.out.println("회원가입 성공 여부 : " + cnt);
         String resultMsg = "";
         if (cnt > 0) {
             session.removeAttribute("jwtSignup");
             resultMsg = "회원가입이 완료 되었습니다. 감사합니다.";
-            System.out.println(resultMsg);
             model.addAttribute("resultMsg", resultMsg);
         } else {
             resultMsg = "회원가입에 실패했습니다. 잠시 후 다시 시도해주세요.";
             model.addAttribute("resultMsg", resultMsg);
+            return "user/login";
         }
 
 
@@ -137,7 +137,7 @@ public class SecurityController {
 
     @PostMapping("/user/resetPassword.do")
     public String resetPassword(FindPassVO fpVO, RedirectAttributes redirectAttributes,
-            Model model) {
+            HttpServletResponse response) {
         // 입력받은 사용자 이메일 존재 여부 확인
         String userId = ubs.searchPasswordId(fpVO);
         String resultMsg = "";
@@ -154,9 +154,8 @@ public class SecurityController {
                 ubs.modifyPassFlag(userId);
                 resultMsg = "임시 비밀번호는 로그인 하신 후 비밀번호를 변경하셔야 계정 서비스 이용이 가능합니다.";
 
-                model.addAttribute("resultMsg", resultMsg);
-                model.addAttribute("tempPassword", tempPass);
-                model.addAttribute("userId", userId);
+                redirectAttributes.addFlashAttribute("resultMsg", resultMsg);
+                redirectAttributes.addFlashAttribute("tempPassword", tempPass);
 
             } else {
                 System.out.println("비밀번호 업데이트 중 문제 발생");
@@ -168,27 +167,40 @@ public class SecurityController {
             redirectAttributes.addFlashAttribute("resultMsg", "입력하신 정보로 조회되는 정보가 없습니다.");
             return "redirect:/user/findPass.do";
         }
-        return "user/findPassComplete";
+
+        return "redirect:/user/findPassComplete.do";
     }
 
     @PostMapping("/user/mypage/modifyPassword.do")
-    public String modifyPassword(UpdatePassVO upVO, Model model) {
+    public String modifyPassword(@SessionAttribute("userId") String userId, UpdatePassVO upVO,
+            RedirectAttributes redirectAttributes) {
+        String resultMsg = "";
+        upVO.setUserId(userId);
+
+        String inputPass = upVO.getPassword();
+        String searchPass = ms.searchChkPass(userId);
+
+        boolean duplicationFlag = passwordEncoder.matches(inputPass, searchPass);
+
+        if (duplicationFlag) {
+            resultMsg = "동일한 비밀번호로는 변경이 불가합니다.";
+            redirectAttributes.addFlashAttribute("resultMsg", resultMsg);
+            return "redirect:/user/mypage/modifyPassProcess.do";
+        }
 
         String cipherPass = passwordEncoder.encode(upVO.getPassword());
         upVO.setPassword(cipherPass);
 
         int cnt = ms.modifyPassword(upVO);
-        String resultMsg = "";
         if (cnt > 0) {
             ms.modifyPassFlag(upVO.getUserId());
             resultMsg = "비밀번호가 정상적으로 변경 되었습니다.";
-            model.addAttribute("resultMsg", resultMsg);
         } else {
             resultMsg = "비밀번호 변경 중 문제가 발생 했습니다. 잠시 후 다시 시도해주세요.";
-            model.addAttribute("resultMsg", resultMsg);
         }
+        redirectAttributes.addFlashAttribute("resultMsg", resultMsg);
 
-        return "user/mypage/modifyPassProcess";
+        return "redirect:/user/mypage/modifyPassProcess.do";
     }
 
     @PostMapping("/user/mypage/chkPassword.do")

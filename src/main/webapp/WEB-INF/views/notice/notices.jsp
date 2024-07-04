@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" info=""%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +15,10 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <!-- bootstrap -->
+
+<!--jQuery CDN 시작-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<!--jQuery CDN 끝-->
 	
 	<jsp:include page="../assets/layout/user/lib.jsp" />  
 	<!-- golgolz start -->
@@ -27,6 +32,38 @@
 	<script type="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
+			$("#category").change(function() {
+	            var category = $("#category").val();
+	            
+	            $.ajax({
+	                url : "/recruit-app/notice/noticesByCategory.do",
+	                type : "GET", 
+	                dataType : "JSON", 
+	                data: {
+	                    "category" : category
+	                },
+	                error : function(xhr) {
+	                	console.error(xhr);
+	                    alert("일시적인 오류입니다. 잠시 후 다시 시도해주세요.");
+	                },
+	                success : function(data) {
+	                    var noticeList = data.noticeList;
+	                    var tableBody ="";
+	                    noticeList.forEach(function(notice) {
+	                        var date = new Date(notice.input_date);
+	                        var dateString = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);								
+	                        
+	                        tableBody += "<tr class='primary'>"+
+	                                        "<td class='sort'>" + notice.category + "</td>" +
+	                                        "<td class='alLeft'><span class='tit'><a href='detail.jsp'>" + notice.title + "</a></span></td>" +
+	                                        "<td class='date'>" + dateString + "</td>" +
+	                                    "</tr>";
+	                    });
+	                    $("table tbody").html(tableBody);
+	                }
+	            });
+	            
+	        });
 			<!-- golgolz end -->
 		});
 	</script>
@@ -78,11 +115,10 @@
 						<tr>
 							<th scope="col">
 								<div  style="float:left; padding-left:15px">
-									<select
-										style="width: 80px; height: 36px; border: 0.2px solid #FFFFFF;">
+									<select id="category" name="category" style="width: 80px; height: 36px; border: 0.2px solid #FFFFFF;">
 										<option value="전체" selected>전체</option>
-										<option value="일반공지">일반공지</option>
-										<option value="서비스">서비스</option>
+										<option value="안내">안내</option>
+										<option value="서비스종료">서비스종료</option>
 										<option value="이벤트">이벤트</option>
 									</select>
 								</div>
@@ -96,7 +132,7 @@
 								<tr class=primary>
 									<td class="sort"><c:out value="${notice.category}"/></td>
 									<td class="alLeft"><span class="tit"><a href="detail.jsp"><c:out value="${notice.title}"/></a></span></td>
-									<td class="date"><c:out value="${notice.input_date}"/></td>
+									<td class="date"><fmt:formatDate value="${notice.input_date}" pattern="yy-MM-dd"/></td>
 								</tr>
 						</c:forEach>
 					</tbody>
@@ -105,25 +141,7 @@
 
 				<div class="listBtmArea" style="margin-bottom:40px">
                 <div class="btnListExDn">
-                  <!-- <a href="notice_list.jsp" class="btnMtcTpl">목록</a> -->
                 </div>
-                
-               <!--  
-					<div class="listBtmArea">
-						            <div class="tplPagination">
-
-                <ul>
-
-                                <li><span class="now">1</span></li>
-                                <li><a href="/help/notice?tab=1&amp;Page=2" data-page="2">2</a></li>
-                                <li><a href="/help/notice?tab=1&amp;Page=3" data-page="3">3</a></li>
-
-                </ul>
-
-                    <p><a href="/help/notice?tab=1&amp;Page=11" class="tplBtn btnPgnNext" data-page="11"><span>다음 페이지</span></a></p>
-            </div>
-
-					</div> -->
 					
 				<div style="text-align:center; margin-top:30px">
 			        <nav aria-label="...">
