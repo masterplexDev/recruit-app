@@ -50,6 +50,7 @@ public class ReviewController {
             }
         }
 
+        
         // 회사 정보 가져오기
         CompanyInfoVO companyInfo = reviewService.getCompanyDetailsByCode(companyCode);
 
