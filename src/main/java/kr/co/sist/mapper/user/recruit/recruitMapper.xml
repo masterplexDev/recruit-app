@@ -77,12 +77,24 @@
 	                    and r.title LIKE '%' || #{keyword} || '%'
 	                </when>
 	                <when test="category == 3 and keyword != null and keyword != ''">
-	                    and r.work_place LIKE '%' || #{keyword} || '%'
+	                    r.content LIKE '%' || #{keyword} || '%'
 	                </when>
 	            </choose>
-	            <if test="startDate != null and endDate != null">
+	            <if test="addr != null and addr != ''">
+	                and r.work_place LIKE '%' || #{keyword} || '%'
+	            </if>
+	            <if test="startDate != null">
 	                and r.input_date >= #{startDate}
-	                and r.input_date <![CDATA[ <= ]]> #{endDate}
+	            </if>
+	            <if test="endDate != null">
+	                and r.end_date <![CDATA[ <= ]]> #{endDate}
+	            </if>
+	            <if test="positions != null and positions != ''">
+	                and (
+	                    <foreach item="position" collection="positionList" separator=" OR ">
+	                        REGEXP_LIKE(r.position_code, '(^|,)' || #{position} || '(,|$)')
+	                    </foreach>
+	                )
 	            </if>
 	        </where>
 	    )
@@ -121,12 +133,24 @@
 	                    and r.title LIKE '%' || #{keyword} || '%'
 	                </when>
 	                <when test="category == 3 and keyword != null and keyword != ''">
-	                    and r.work_place LIKE '%' || #{keyword} || '%'
+	                    r.content LIKE '%' || #{keyword} || '%'
 	                </when>
 	            </choose>
-	            <if test="startDate != null and endDate != null">
+	            <if test="addr != null and addr != ''">
+	                and r.work_place LIKE '%' || #{keyword} || '%'
+	            </if>
+	            <if test="startDate != null">
 	                and r.input_date >= #{startDate}
-	                and r.input_date <![CDATA[ <= ]]> #{endDate}
+	            </if>
+	            <if test="endDate != null">
+	                and r.end_date <![CDATA[ <= ]]> #{endDate}
+	            </if>
+	            <if test="positions != null and positions != ''">
+	                and (
+	                    <foreach item="position" collection="positionList" separator=" OR ">
+	                        REGEXP_LIKE(r.position_code, '(^|,)' || #{position} || '(,|$)')
+	                    </foreach>
+	                )
 	            </if>
 	        </where>
 	    )

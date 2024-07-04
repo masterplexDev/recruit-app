@@ -1,6 +1,7 @@
 package kr.co.sist.user.vo.recruit;
 
 import java.time.LocalDate;
+import java.util.List;
 import org.springframework.format.annotation.DateTimeFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,6 +17,7 @@ import lombok.ToString;
 public class SearchVO {
     private String category;
     private String keyword;
+    private String positions;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate startDate;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -24,4 +26,5 @@ public class SearchVO {
     // private String career; -> todo
     private int startNum;
     private int endNum;
+    private List<String> positionList;
 }

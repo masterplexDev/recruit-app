@@ -1,5 +1,7 @@
 package kr.co.sist.user.controller.recruit;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,13 +39,24 @@ public class RecruitUserController {
     @GetMapping("/api/recruits.do")
     @ResponseBody
     public List<RecruitListDomain> searchRecruits(@ModelAttribute SearchVO searchVO) {
-        System.out.println(searchVO);
+        if (searchVO.getPositions() != null && !searchVO.getPositions().isEmpty()) {
+            searchVO.setPositionList(Arrays.asList(searchVO.getPositions().split(",")));
+        } else {
+            searchVO.setPositionList(new ArrayList<>());
+        }
+
         return recruitUserService.searchRecruits(searchVO);
     }
 
     @GetMapping("/api/recruits/counts.do")
     @ResponseBody
     public int selectRecruitCount(SearchVO searchVO) {
+        if (searchVO.getPositions() != null && !searchVO.getPositions().isEmpty()) {
+            searchVO.setPositionList(Arrays.asList(searchVO.getPositions().split(",")));
+        } else {
+            searchVO.setPositionList(new ArrayList<>());
+        }
+
         return recruitUserService.selectRecruitCount(searchVO);
     }
 

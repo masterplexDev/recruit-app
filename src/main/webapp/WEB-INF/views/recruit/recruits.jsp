@@ -15,6 +15,7 @@
     <link href="http://localhost/recruit-app/assets/css/recruit/part-sv-202405271315.css" rel="stylesheet" type="text/css"/>
     <link href="http://localhost/recruit-app/assets/css/recruit/rcr-sv-202405271315.css" rel="stylesheet" type="text/css"/>
 	<link href="http://localhost/recruit-app/assets/css/recruit/recruits.css" rel="stylesheet" type="text/css" />
+	<link href="http://localhost/recruit-app/assets/css/layout/user/btn-bootstrap.css" rel="stylesheet" type="text/css" />
     <!--  <link rel="stylesheet" href="http://localhost/recruit-app/assets/css/global_user.css"> -->
 	<!-- golgolz end -->
 	<style text="text/css">
@@ -118,6 +119,9 @@
 		var startNum = 1 - itemsPerPage;
 		var endNum = startNum - 1;
 		var totalRecruits = -1;
+		var selectedPositions = [];
+		var searchVO = {};
+		var isNoResult = false;
 		
 		var positionMap = {
             'BACKDEV': '백엔드',
@@ -216,6 +220,41 @@
 	    		resetSearchTable();
 	    	});
 	    	
+	    	$("#btn-search").click(function(){
+	    		if(isNoResult){
+	    			const $observerTarget = $('#observer-target');
+	    			  
+	    			$observerTarget.hide();
+	    			  
+	    			setTimeout(() => {
+	    			    $observerTarget.show();
+	    			}, 100);
+	    			
+	    			isNoResult = false;
+	    		}
+	    		
+	            var tableBody = $("#recruit-list tbody");
+	            startNum = 1 - itemsPerPage;
+	    		endNum = startNum - 1;
+	            tableBody.empty();
+		        searchVO = getSearchVO();
+		        countRecruits(searchVO);
+		        $("#total-recruits").text("(" + totalRecruits + "건)");
+	    	})
+	    	
+	    	$("#search-position-chips").click(function(){
+	    	    var value = $(this).data("value");
+	    		var index = selectedPositions.indexOf(value);
+
+	    	    if (index === -1) {
+	    	        selectedPositions.push(value);
+	    	        $(this).addClass("active");
+	    	    } else {
+	    	        selectedPositions.splice(index, 1);
+	    	        $(this).removeClass("active");
+	    	    }
+	    	});
+	    	
 	    	// Intersection Observer 설정
 		    var isLoading = false;
 	        const options = {
@@ -235,22 +274,40 @@
 	        const target = document.getElementById('observer-target');
 	        observer.observe(target);
 	        
-	        var searchVO = getSearchVO()
 	        countRecruits(searchVO);
 	        $("#total-recruits").text("(" + totalRecruits + "건)");
-	        console.log(totalRecruits);
 			<!-- golgolz end -->
 		});
 		
+		function resetSearchTable() {
+	        $('#category').val('1');
+	        $('#keyword').val('');
+	        $('#start_date, #end_date').val('');
+	        $('#sido1').val('').find('option:first').prop('selected', true);
+	        $('#gugun1').empty().append("<option style='font-size: 14px;' value=''>구/군 선택</option>");
+	        $('.position-chip').removeClass('active');
+
+	        if ($.fn.datepicker) {
+	            $('#start_date, #end_date').datepicker('setDate', null);
+	        }
+	    }
+		
 		function getSearchVO() {
+			var addr = "";
+			
+			if(!$("#sido1").val() == '시/도 선택' && !$("#gugun1").val() == '구/군 선택' && !$("#gugun1").val() == ''){
+				addr = $("#sido1").val() + " " + $("#gugun1").val() || undefined;
+			}
+			
 		    return {
 		        category: $("select[name='category']").val(),
 		        keyword: $("input[name='keyword']").val(),
 		        startDate: $("#start_date").val() || undefined,
 		        endDate: $("#end_date").val() || undefined,
-		        addr: $("#sido1").val() + " " + $("#gugun1").val() || undefined,
+		        addr: addr,
 		        startNum: startNum,
-		        endNum: endNum
+		        endNum: endNum,
+		        positions: selectedPositions.join(",") || undefined
 		    };
 		}
 		
@@ -263,6 +320,9 @@
 	            async: false,
 	            success: function(data) {
 	            	totalRecruits = data;
+	            	if(data == 0){
+						isNoResult = true;
+	            	}
 	            },
 	            error: function(xhr, status, error) {
 	                console.error("Error fetching data: " + error);
@@ -271,11 +331,14 @@
 		}
 		
 		function updateRecruitList(){
+			if(startNum + itemsPerPage - 1> totalRecruits){
+				return;
+			}
 			startNum += itemsPerPage;
 			endNum = startNum + itemsPerPage - 1;
 			
-			var searchVO = {};
-		    searchVO = getSearchVO();
+		    searchVO.startNum = startNum;
+		    searchVO.endNum = endNum;
 		    
 		    $.ajax({
 	            url: "${pageContext.request.contextPath}/api/recruits.do",
@@ -284,6 +347,10 @@
 	            dataType: 'JSON',
 	            success: function(data) {
 	            	renderRecruitList(data);
+	            	if(data.size === 0){
+	            		isNoResult = true;
+	            		$("#recruit-list tbody").html('<tr><td colspan="4" style="font-size: 16px; font-weight: bold;">검색 결과가 없습니다.</td></tr>');
+	            	}
 	            },
 	            error: function(xhr, status, error) {
 	                console.error("Error fetching data: " + error);
@@ -294,6 +361,7 @@
 		
 	    function renderRecruitList(recruits) {
 	        var tbody = $("#recruit-list tbody");
+	        
 	        recruits.forEach(function(recruit) {
 	            var row = $("<tr class='devloopArea'></tr>");
 	            row.append('<th scope="row"><span class="tplChkRect tplChkRect_1"></span></th>');
@@ -326,12 +394,15 @@
 	            var chipGroup = $("<div class='chip-group'></div>");
 	            var positions = recruit.position.split(',');
 	            
-	            positions.forEach(function(pos) {
-	                console.log(positionMap[pos], pos);
+	            Object.keys(positionMap).forEach(function(key) {
+	                var isActive = positions.includes(key);
+	                var chipClasses = 'chip position-chip' + (isActive ? ' active' : '');
+	                
 	                var chip = $('<div>').attr({
-	                    'class': 'chip position-chip active',
-	                    'data-value': pos
-	                }).text(positionMap[pos] || pos);
+	                    'class': chipClasses,
+	                    'data-value': key
+	                }).text(positionMap[key]);
+	                
 	                chipGroup.append(chip);
 	            });
 	            
@@ -389,7 +460,7 @@
 									                		<option value="2">공고명</option>
 									                		<option value="3">공고내용</option>
 									                	</select>
-									                    <input type="text" id="keyword" class="search-input" placeholder="이름을 입력하세요">
+									                    <input type="text" id="keyword" name="keyword" class="search-input" placeholder="이름을 입력하세요">
 									                </td>
 									            </tr>
 									            <tr>
@@ -412,9 +483,8 @@
 									            <tr>
 									                <td><label for="job-search">포지션</label></td>
 													<td>
-														<div class="chip-group" style="margin-bottom:0px; padding-left: 0px;">
-															<div class="chip position-chip active"
-																data-value="BACKDEV">백엔드</div>
+														<div class="chip-group search-position-chips" style="margin-bottom:0px; padding-left: 0px;">
+															<div class="chip position-chip" data-value="BACKDEV">백엔드</div>
 															<div class="chip position-chip" data-value="FRTDEV">프론트엔드</div>
 															<div class="chip position-chip" data-value="EMBDEV">임베디드</div>
 															<div class="chip position-chip" data-value="QAENG">QA</div>
@@ -433,7 +503,7 @@
 										<ul class="tplTab clear" id="anchorGICnt_1" style="margin-top: 25px; margin-left: 13px; margin-bottom: 5px;">
 											<li data-tab-index="0">
 												<button type="button">
-													<span data-text="전체" style="color: #000;">전체 <em id="total-recruits">(117,341건)</em></span>
+													<span data-text="전체" style="color: #000;">전체 <em id="total-recruits"></em></span>
 												</button>
 											</li>
 										</ul>
@@ -458,60 +528,10 @@
 													</tr>
 												</thead>
 												<tbody>
-													<tr class="devloopArea">
-														<th scope="row"><span class="tplChkRect tplChkRect_1"></span></th>
-														<td class="tplCo">
-															<!--app.svcFunc.clickCnt--> 
-															<a href="http://localhost/recruit-app/recruit/detail.jsp" class="link normalLog" data-clickctgrcode="B01">아르네코리아㈜</a>
-															<div class="typ"></div>
-														</td>
-														<td class="tplTit">
-															<div class="titBx">
-																<strong><a href="http://localhost/recruit-app/recruit/detail.jsp" class="link normalLog" title="[아르네코리아㈜] 개발팀 정규직 채용(광주)" data-clickctgrcode="B02">[아르네코리아㈜] 개발팀 정규직 채용(광주)</a></strong>
-																<p class="etc">
-																	<span class="cell">신입·경력</span> 
-																	<span class="cell">학력무관</span>
-																	<span class="cell">광주 광산구 외</span> 
-																	<span class="cell">정규직</span>
-																</p>
-															</div>
-															<div class="chip-group">
-																<div class="chip position-chip active" data-value="BACKDEV">백엔드</div>
-																<div class="chip position-chip" data-value="FRTDEV">프론트엔드</div>
-																<div class="chip position-chip" data-value="EMBDEV">임베디드</div>
-																<div class="chip position-chip" data-value="QAENG">QA</div>
-																<div class="chip position-chip" data-value="INFENG">인프라</div>
-																<div class="chip position-chip" data-value="DEVOPENG">DevOps</div>
-																<!-- <button id="resetButton">초기화</button> -->
-															</div>
-														</td>
-														<td class="odd">
-															<button type="button" class="tplBtn tplBtn_1 tplBtnOrg">
-																<span>즉시지원</span>
-															</button> 
-															<span class="time dotum"><span class="tahoma">05/22</span>(수) 등록</span> 
-															<span class="date dotum"><span class="tahoma">~06/07</span>(금)</span>
-														</td>
-													</tr>
 												</tbody>
 											</table>
 										</div>
 										<div id="observer-target"></div>
-										<!-- <div id="dvGIPaging">
-											<div class="tplPagination newVer">
-												<ul>
-													<li><span class="now" data-page="1">1</span></li>
-													<li><a href="http://localhost/recruit-app/recruit/recruits.jsp" data-page="2">2</a></li>
-													<li><a href="http://localhost/recruit-app/recruit/recruits.jsp" data-page="3">3</a></li>
-													<li><a href="http://localhost/recruit-app/recruit/recruits.jsp" data-page="4">4</a></li>
-													<li><a href="http://localhost/recruit-app/recruit/recruits.jsp" data-page="5">5</a></li>
-													<li>
-												</ul>
-												<p>
-													<a href="http://localhost/recruit-app/recruit/recruits.jsp" class="tplBtn btnPgnNext" data-page="11">다음<i class="ico"></i></a>
-												</p>
-											</div>
-										</div> -->
 									</div>
 								</div>
 							</div>
