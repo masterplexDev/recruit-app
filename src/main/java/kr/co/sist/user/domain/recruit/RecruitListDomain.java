@@ -16,6 +16,7 @@ import lombok.ToString;
 public class RecruitListDomain {
     private String id;
     private String title;
+    private String company;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
     private Date inputDate;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")

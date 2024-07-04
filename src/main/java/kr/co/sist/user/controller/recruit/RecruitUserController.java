@@ -37,7 +37,14 @@ public class RecruitUserController {
     @GetMapping("/api/recruits.do")
     @ResponseBody
     public List<RecruitListDomain> searchRecruits(@ModelAttribute SearchVO searchVO) {
+        System.out.println(searchVO);
         return recruitUserService.searchRecruits(searchVO);
+    }
+
+    @GetMapping("/api/recruits/counts.do")
+    @ResponseBody
+    public int selectRecruitCount(SearchVO searchVO) {
+        return recruitUserService.selectRecruitCount(searchVO);
     }
 
     @GetMapping("/api/recruit.do")

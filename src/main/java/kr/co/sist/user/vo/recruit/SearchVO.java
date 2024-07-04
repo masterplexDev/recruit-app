@@ -14,7 +14,6 @@ import lombok.ToString;
 @Setter
 @ToString
 public class SearchVO {
-    private String title;
     private String category;
     private String keyword;
     @DateTimeFormat(pattern = "yyyy-MM-dd")

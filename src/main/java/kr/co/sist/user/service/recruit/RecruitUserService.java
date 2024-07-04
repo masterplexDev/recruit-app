@@ -18,7 +18,33 @@ public class RecruitUserService {
     }
 
     public List<RecruitListDomain> searchRecruits(SearchVO searchVO) {
-        return recruitUserDAO.selectRecruits(searchVO);
+        List<RecruitListDomain> recruits = recruitUserDAO.selectRecruits(searchVO);
+
+        for (RecruitListDomain recruit : recruits) {
+            switch (recruit.getEducation()) {
+                case "1":
+                    recruit.setEducation("고등학교");
+                    break;
+                case "2":
+                    recruit.setEducation("대학교(2,3년제)");
+                    break;
+                case "3":
+                    recruit.setEducation("대학교(4년제)");
+                    break;
+                case "4":
+                    recruit.setEducation("대학원(석사)");
+                    break;
+                case "5":
+                    recruit.setEducation("대학원(박사)");
+                    break;
+            }
+        }
+
+        return recruits;
+    }
+
+    public int selectRecruitCount(SearchVO searchVO) {
+        return recruitUserDAO.selectRecruitCount(searchVO);
     }
 
     public RecruitDomain searchOneRecruit(int recruitId) {

@@ -28,6 +28,7 @@
 	<resultMap id="recruitListResultMap" type="kr.co.sist.user.domain.recruit.RecruitListDomain">
 	    <id property="id" column="recruit_num"/>
 	    <result property="title" column="title"/>
+	    <result property="company" column="company_name"/>
 	    <result property="inputDate" column="input_date"/>
 	    <result property="endDate" column="end_date"/>
 	    <result property="addr" column="work_place"/>
@@ -68,29 +69,20 @@
 	        FROM recruit r
 	        LEFT JOIN companyinfo ci ON r.company_code = ci.company_code
 	        <where>
-	            <if test="title != null and title != ''">
-	                AND title LIKE '%' || #{title} || '%'
-	            </if>
-	            <if test="companyName != null and companyName != ''">
-	                AND ci.company_name LIKE '%' || #{companyName} || '%'
-	            </if>
-	            <if test="career != null and career != ''">
-	                AND career_condition = #{career}
-	            </if>
-	            <if test="employmentType != null and employmentType != ''">
-	                AND employment_type = #{employmentType}
-	            </if>
-	            <if test="eduStandard != null and eduStandard != ''">
-	                AND edu_standard = #{eduStandard}
-	            </if>
-	            <if test="workLocation != null and workLocation != ''">
-	                AND work_place LIKE '%' || #{workLocation} || '%'
-	            </if>
-	            <if test="position != null and position != ''">
-	                AND position LIKE '%' || #{position} || '%'  
-	            </if>
-	            <if test="endDate != null">
-	                AND end_date &lt; #{endDate} 
+	        	<choose>
+	                <when test="category == 1 and keyword != null and keyword != ''">
+	                    and ci.company_name LIKE '%' || #{keyword} || '%'
+	                </when>
+	                <when test="category == 2 and keyword != null and keyword != ''">
+	                    and r.title LIKE '%' || #{keyword} || '%'
+	                </when>
+	                <when test="category == 3 and keyword != null and keyword != ''">
+	                    and r.work_place LIKE '%' || #{keyword} || '%'
+	                </when>
+	            </choose>
+	            <if test="startDate != null and endDate != null">
+	                and r.input_date >= #{startDate}
+	                and r.input_date <![CDATA[ <= ]]> #{endDate}
 	            </if>
 	        </where>
 	    )
@@ -99,6 +91,45 @@
 	            AND rnum BETWEEN #{startNum} AND #{endNum}
 	        </if>
 	    </where>
+	</select>
+	<select id="countRecruits" resultType="int" parameterType="kr.co.sist.user.vo.recruit.SearchVO">
+	    SELECT
+	        count(*)
+	    FROM (
+	        SELECT
+	            ROW_NUMBER() OVER (ORDER BY r.input_date ASC) AS rnum,
+	            recruit_num,
+	        	position_code,
+	            ci.company_name,
+	            title,
+	            career_condition,
+	            years,
+	            education_base_code,
+	            work_place,
+	            employment_type,
+	            content,
+	            r.input_date,
+	            end_date
+	        FROM recruit r
+	        LEFT JOIN companyinfo ci ON r.company_code = ci.company_code
+	        <where>
+	        	<choose>
+	                <when test="category == 1 and keyword != null and keyword != ''">
+	                    and ci.company_name LIKE '%' || #{keyword} || '%'
+	                </when>
+	                <when test="category == 2 and keyword != null and keyword != ''">
+	                    and r.title LIKE '%' || #{keyword} || '%'
+	                </when>
+	                <when test="category == 3 and keyword != null and keyword != ''">
+	                    and r.work_place LIKE '%' || #{keyword} || '%'
+	                </when>
+	            </choose>
+	            <if test="startDate != null and endDate != null">
+	                and r.input_date >= #{startDate}
+	                and r.input_date <![CDATA[ <= ]]> #{endDate}
+	            </if>
+	        </where>
+	    )
 	</select>
 	<select id="selectOneRecruit" parameterType="int" resultMap="recruitResultMap">
 	    SELECT

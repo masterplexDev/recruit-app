@@ -28,6 +28,14 @@ public class RecruitUserDAO {
         return recruits;
     }
 
+    public int selectRecruitCount(SearchVO searchVO) {
+        SqlSession session = myBatis.getMyBatisHandler(false);
+        int count = session.selectOne("kr.co.sist.recruit.user.countRecruits", searchVO);
+        myBatis.closeHandler(session);
+
+        return count;
+    }
+
     public RecruitDomain selectOneRecruit(int recruitNum) {
         SqlSession session = myBatis.getMyBatisHandler(false);
         RecruitDomain recruit =
