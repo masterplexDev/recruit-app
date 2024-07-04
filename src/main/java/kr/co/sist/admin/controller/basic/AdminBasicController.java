@@ -1,17 +1,25 @@
 package kr.co.sist.admin.controller.basic;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import kr.co.sist.admin.domain.basic.AdminInfoDomain;
 import kr.co.sist.admin.domain.basic.AdminLoginDomain;
 import kr.co.sist.admin.service.basic.AdminBasicService;
 import kr.co.sist.admin.vo.basic.AdminLoginVO;
+import kr.co.sist.admin.vo.basic.InsertAdminVO;
+import kr.co.sist.admin.vo.basic.SearchVO;
 
 @SessionAttributes("adminId")
 @Controller
@@ -59,16 +67,24 @@ public class AdminBasicController {
         return "/manage/adminLogin/adminLoginPage.do";
     }
 
+    @GetMapping("/api/manage/admins.do")
+    @ResponseBody
+    public List<AdminInfoDomain> searchAdmin(@ModelAttribute SearchVO sVO) {
+
+        List<AdminInfoDomain> list = abs.searchAdminList(sVO);
+
+        return list;
+    }
+
     @GetMapping("/manage/admin/admins.do")
-    public String searchAdmin(Model model) {
-
-        // List<AdminInfoDomain> list = ams.searchAdminList();
-        //
-        // model.addAttribute("adminList",list);
-
-        // return "admin/admins";
-
+    public String searchAdminPage() {
         return "manage/admin/admins";
+    }
+
+    @GetMapping("/api/manage/admin/counts.do")
+    @ResponseBody
+    public int searchRecruitsCount(@ModelAttribute SearchVO searchVO) {
+        return abs.searchAdminCnt(searchVO);
     }
 
     @GetMapping("/manage/user/users.do")
@@ -89,5 +105,25 @@ public class AdminBasicController {
         return "manage/adminLogin/adminLogin";
     }
 
+    @PostMapping("/manage/admin/addAdmin.do")
+    public @ResponseBody Map<String, Object> addAdmin(InsertAdminVO insertAdminVO) {
+
+        int cnt = abs.addAdmin(insertAdminVO);
+
+        Map<String, Object> response = new HashMap<String, Object>();
+
+        if (cnt > 0) {
+            AdminInfoDomain adminInfo = abs.searchAdminInfo(insertAdminVO.getAdminId());
+            response.put("resultMsg", "success");
+            response.put("newAdminId", adminInfo.getAdminId());
+            response.put("newPosition", adminInfo.getPosition());
+            response.put("newAuthority", adminInfo.getAuthority());
+            return response;
+        } else {
+            response.put("resultMsg", "error");
+            return response;
+        }
+
+    }
 
 }

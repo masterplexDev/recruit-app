@@ -1,3 +1,5 @@
+<%@page import="kr.co.sist.admin.domain.basic.AdminInfoDomain"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" info=""%>
 	
@@ -12,10 +14,35 @@
 <style type="text/css">
 	body.modal-open {
   		padding-right: 0 !important;
-}
+	}
+		/* .list0 {
+		cursor: pointer;
+		transition: background-color 0.3s ease;
+	} */
+	
+	/* .list0:hover {
+		background-color: #ededed;
+	} */
+	
+	/* 마지막 열(바로가기 버튼)에는 호버 효과를 제외 */
+	.list0:hover td:last-child {
+		background-color: transparent;
+	}
+	
+	.page-item{
+		margin-right: 3px;
+	}
 </style>
 <script type="text/javascript">
 	$(function(){
+		var startNum = 1;
+		var endNum = startNum + itemsPerPage;
+		var itemsPerPage = 10;
+		var showPages = 3;
+		var totalPages = 0;
+		var currentPage = 1;
+		const totalCnt = 0;
+		
 		$("#admin_menu").addClass("bg-gradient-primary");
 		
 	    	$("#start_date_first").datepicker({
@@ -52,33 +79,150 @@
 	    		
 	    	});//click
 	    	
+	    	var addAdminId = $("#addAdminId");
+	    	var addPassword = $("#addPassword");
+	    	var passwordCon = $("#addPasswordCon");
+	    	var modifyAdminId = $("#modifyAdminId");
 	    	
-	    	$("#registerAdmin").click(function(){
+	    	function addAdminChkNull(){
+	    		var isEmptyAdminId = addAdminId.val().trim() != '';
+	    		var isEmptyPass = addPassword.val().trim() != '';
+	    		var isEmptyPassCon = passwordCon.val().trim() != '';
+	    		var chkFlag = isEmptyAdminId && isEmptyPass && isEmptyPassCon;
 	    		
-	    		//유효성 검증 로직, 데이터베이스에 데이터를 추가하는 로직 추가할 예정
+	    		return chkFlag;
+	    	}//function
+	    	
+	    	// 아이디 유효성 검증 형식
+		    function validateId(inputAdminId) {
+		    	  var adminId = inputAdminId.val().trim();
+		    	  var IdRegex = /^[a-zA-Z0-9]{2,30}$/;
+		    	  return IdRegex.test(adminId);
+		    	}//function
+		    
+		     // 비밀번호 유효성 검증 형식
+		    function validatePass(){
+		    	 var pass = addPassword.val().trim();
+		    	 var passRegex = /^[a-zA-Z0-9._%+-@]{8,16}$/;
+		    	 return passRegex.test(pass);
+		    	}//function
+		    
+		   	function chkPassCon(){
+		    		var passConFlag = addPassword.val().trim() === passwordCon.val().trim();
+		    		return passConFlag;
+		    	}//function
+		    
+		    // 체크된 권한 정보를 가져오는 함수
+		    function getCheckedPermissions() {
+		    	 var permissions = {};
+		    	 $(".addCheckbox").each(function() {
+		    	   permissions[$(this).attr("id")] = $(this).is(":checked") ? 'Y' : 'N';
+		    	 });
+		    	 return JSON.stringify(permissions);
+		    }//function
+		    
+		    function addAdmin(){
+		    	var adminId = addAdminId.val().trim();
+	    		var password = addPassword.val().trim();
+  				var permissionsJson = getCheckedPermissions();
+  				
+  				var adminData = {
+  						adminId:adminId,
+  						password:password,
+  						authority:permissionsJson
+  								}
+
+	  			// AJAX 요청으로 서버에 데이터 전송
+	  			  $.ajax({
+	  			    url: "../admin/addAdmin.do", 
+	  			    method: "POST",
+	  			    data: adminData,
+	  			    success: function(response) {
+	  			     if(response.resultMsg == 'success'){
+		  			 // 성공 시
+		  			 alert("새로운 관리자가 등록 되었습니다.");
+		  			 var newAuthority = JSON.parse(response.newAuthority);
+		  			 console.log(newAuthority);
+		  			 console.log(newAuthority.dashboard);
+		  			 
+		  			 var newAdminRow = `
+		  			 	<tr>
+		  			 		<td>\${response.newPosition}</td>
+		  			 		<td>\${response.newAdminId}</td>
+		  			 		<td>\${newAuthority.dashboard}</td>
+		  			 		<td>\${newAuthority.user}</td>
+		  			 		<td>\${newAuthority.company}</td>
+		  			 		<td>\${newAuthority.recruit}</td>
+		  			 		<td>\${newAuthority.review}</td>
+		  			 		<td>\${newAuthority.qna}</td>
+		  			 		<td>\${newAuthority.notice}</td>
+		  			 		<td><input type="button" value="권한설정" id="" class="btn btn-outline-secondary btn-sm adminSettingBtn" style="font-weight: bold;margin:0px auto;" /></td>
+		  			    </tr>
+		  			 `;
+		  			 $("#sodr_list tbody").append(newAdminRow);
+		    		 
+		  			 resetForm();
+	  			    }else {
+	  			      alert("문제가 발생 했습니다. 잠시 후 다시 시도해주세요.");
+	  			    	
+	  			      resetForm();
+	  			    }
+	  			    },
+	  			    error: function(error) {
+	  			    // 실패 시
+	  			      //alert("문제가 발생 했습니다. 잠시 후 다시 시도해주세요.");
+	  			     alert(error.status+" : "+error.statusText);
+	  			     console.log(error.responseText);
+	  			     
+	  			   	 resetForm();
+	  			    }
+	  			  });//ajax
+		    }//addAdmin
+	    	
+	    	
+	    	$("#addAdmin").click(function(){
+	    		//유효성 검증 로직
+	    		var chkFlag = addAdminChkNull();
+	    		if(chkFlag == false) {
+	    			alert('관리자 정보를 입력해주세요.');
+	    			return;
+	    		}
+	    		var isValidateId = validateId(addAdminId);
+	    		if(isValidateId == false) {
+	    			alert('아이디는 영문 대소문자, 숫자를 포함하여 30자까지 입력이 가능합니다.');
+	    			return;
+	    		}
+	    		var isValidatePass = validatePass();
+	    		if(isValidatePass == false){
+	    			alert('비밀번호는 영문 대소문자,숫자,특수문자를 포함하여 16자까지 입력이 가능합니다.');
+	    			return;
+	    		}
+	    		var chkPassConFlag = chkPassCon();
+	    		if(chkPassConFlag == false){
+	    			alert('비밀번호가 동일하지 않습니다.');
+	    			return;
+	    		}
+	    		addAdmin();
 	    		
-	    		alert('새로운 관리자가 등록 되었습니다.');
-	    		
-	    		// 입력창 전체 초기화
-	    		$("#adminId").val('');
-	    		$("#adminPassword").val('');
-	    		// 모든 체크박스 체크 해제
-	    		$("#adminModal input[type='checkbox']").prop("checked", false);
-	    		$("#adminModal").modal("hide");
 	    	});//click
 	    	
+	    	function resetForm(){// 입력창 전체 초기화
+	    		 $("#addAdminId").val('');
+	    		 $("#addPassword").val('');
+	    		 $("#addPasswordCon").val('');
+	    		 $("#adminModal input[type='checkbox']").prop("checked", false);
+	    		 $("#adminModal").modal("hide");
+	    	}//function
+	    	
 	    	$("#cancleBtn").click(function(){
-	    		// 입력창 전체 초기화
-	    		$("#adminId").val('');
-	    		$("#adminPassword").val('');
-	    	    $("#adminModal input[type='checkbox']").prop("checked", false);
-	    		$("#adminModal").modal("hide");
+	    		resetForm();
 	    	});//click
 
 	    	$('#adminModal').on('hidden.bs.modal', function () {
 	    		  // 입력창 전체 초기화
-	    		  $("#adminId").val('');
-	    		  $("#adminPassword").val('');
+	    		  $("#addAdminId").val('');
+	    		  $("#addPassword").val('');
+	    		  $("#addPasswordCon").val('');
 	    		  // 모든 체크박스 체크 해제
 	    		  $("#adminModal input[type='checkbox']").prop("checked", false);
 	    		});
@@ -96,7 +240,7 @@
 	    		alert('저장 되었습니다.');
 	    		
 	    		// 입력창 전체 초기화
-	    		$("#adminId2").val('');
+	    		$("#modifyAdminId").val('');
 	    		// 모든 체크박스 체크 해제
 	    		$("#settingModal input[type='checkbox']").prop("checked", false);
 	    		$("#settingModal").modal("hide");
@@ -104,17 +248,163 @@
 	    	
 	    	$("#cancleBtn2").click(function(){
 	    		// 입력창 전체 초기화
-	    		$("#adminId2").val('');
+	    		$("#modifyAdminId").val('');
 	    	    $("#settingModal input[type='checkbox']").prop("checked", false);
 	    		$("#settingModal").modal("hide");
 	    	});//click
 	    	
 	    	$('#settingModal').on('hidden.bs.modal', function () {
 	    		  // 입력창 전체 초기화
-	    		  $("#adminId2").val('');
+	    		  $("#modifyAdminId").val('');
 	    		  // 모든 체크박스 체크 해제
 	    		  $("#settingModal input[type='checkbox']").prop("checked", false);
 	    		});
+	    	
+	    	updateAdminList(false);
+	    	countAdminList(false);
+	
+			function updateAdminList(isFirst) {
+				var searchVO = {};
+			    
+			    if (isFirst) {
+			        searchVO = {
+			            startNum: 1,
+			            endNum: itemsPerPage
+			        };
+			    } else {
+			        searchVO = getSearchVO();
+			    }
+		
+			    $.ajax({
+		            url: "${pageContext.request.contextPath}/api/manage/admins.do",
+		            method: 'GET',
+		            data: searchVO,
+		            dataType: 'JSON',
+		            success: function(data) {
+		                populateTable(data);
+		                countAdminList(isFirst);
+		                updatePagination();
+		                if(!(data && data.length > 0)){
+		                    $("#sodr_list tbody").html('<tr><td colspan="10" style="font-size: 16px; font-weight: bold;">검색 결과가 없습니다.</td></tr>');
+		                }
+		                $(".fc_result").text(data.length); 
+		            },
+		            error: function(xhr, status, error) {
+		                console.error("Error fetching data: " + error);
+		                $("#sodr_list tbody").html('<tr><td colspan="10" style="font-size: 16px; font-weight: bold;">데이터를 불러오는 데 실패했습니다.</td></tr>');
+		            }
+		        });
+		    }
+	    	
+	    	function populateTable(adminList) {
+	            var tableBody = $("#sodr_list tbody");
+	            tableBody.empty();
+
+	            $.each(adminList, function(index, adminInfo) {
+	            	var authority = JSON.parse(adminInfo.authority);
+	                var row = $('<tr>')
+	                    .addClass('list0')
+	                    //.attr('data-href', 'http://localhost/recruit-app/manage/recruits/detail.do?id=' + recruit.id);
+	                row.append($('<td>').text(index + startNum))
+	                   .append($('<td>').text(adminInfo.position))
+	                   .append($('<td>').text(adminInfo.adminId))
+	                   .append($('<td>').text(authority.dashboard))
+	                   .append($('<td>').text(authority.user))
+	                   .append($('<td>').text(authority.company))
+	                   .append($('<td>').text(authority.recruit))
+	                   .append($('<td>').text(authority.review))
+	                   .append($('<td>').text(authority.qna))
+	                   .append($('<td>').text(authority.notice))
+	                   .append($('<td>').html('<input type="button" value="권한설정" class="btn btn-outline-secondary btn-sm adminSettingBtn" style="font-weight: bold;margin:0px auto;" />'));
+
+	                tableBody.append(row);
+	            });//each
+	    	}//function
+	          
+	            function getSearchVO() {
+	        	    return {
+	        	        keyword: $("input[name='keyword']").val().trim(),
+	        	        startNum: startNum,
+	        	        endNum: startNum + itemsPerPage - 1
+	        	    };
+	        	}//function
+	        	
+	        	
+	            
+	            function countAdminList(searchVO){
+	        		$.ajax({
+	                    url: "${pageContext.request.contextPath}/api/manage/admin/counts.do",
+	                    method: 'GET',
+	                    data: searchVO,
+	                    dataType: 'TEXT',
+	                    async: false,
+	                    success: function(data) {
+	                    	totalPages = data;
+	                    	$(".fc_all").text(data); 
+	                    },
+	                    error: function(xhr, status, error) {
+	                        console.error("Error fetching data: " + error);
+	                    }
+	                });//ajax
+	        	}//function
+	        	
+	        	$("#btn-reset").click(function(e){
+	        		e.preventDefault();
+	        		$("#keyword").val('');
+	        	});
+	        	
+	        	$("#btn-search").click(function(e){
+	        		e.preventDefault();
+	        		updateAdminList(false);
+	        	});
+	            
+	            $('.pagination').on('click', '.page-link', function(e) {
+	                
+	                e.preventDefault();
+	                var clickedPage = $(this).data('page');
+	                if (clickedPage) {
+	                    currentPage = clickedPage;
+	                    startNum = itemsPerPage * (currentPage - 1) + 1;
+	                    updateAdminList(false);
+	                } else if ($(this).attr('id') === 'prev-page') {
+	                    if (currentPage > 1) {
+	                        currentPage--;
+	                        startNum = itemsPerPage * (currentPage - 1) + 1;
+	                        updateAdminList(false);
+	                    }
+	                } else if ($(this).attr('id') === 'next-page') {
+	                    if (currentPage < Math.ceil(totalPages / itemsPerPage)) {
+	                        currentPage++;
+	                        startNum = itemsPerPage * (currentPage - 1) + 1;
+	                        updateAdminList(false);
+	                    }
+	                }
+	        	
+	            updateAdminList(true);
+	        	//resetForm();
+	    	});//function
+	            
+	         // 페이지네이션 업데이트
+	            function updatePagination() {
+	         		var currentGroup = Math.ceil(currentPage / showPages);
+	            	var startPage = (currentGroup - 1) * showPages + 1;
+	                var paginationHtml = '';
+	                var endPage = Math.min(Math.ceil(totalPages / itemsPerPage) , startPage + showPages - 1);
+	                paginationHtml += '<li class="page-items' + (currentPage === 1 ? ' disabled' : '') + '">';
+	                paginationHtml += '<a class="page-link" href="#" aria-label="Previous" id="prev-page">';
+	                paginationHtml += '<span aria-hidden="true">&laquo;</span></a></li>';
+
+	                for (var i = startPage; i <= endPage; i++) {
+	                    paginationHtml += '<li class="page-items' + (i === currentPage ? ' active' : '') + '">';
+	                    paginationHtml += '<a class="page-link" href="#" data-page="' + i + '">' + i + '</a></li>';
+	                }
+
+	                paginationHtml += '<li class="page-items' + (currentPage === Math.ceil(totalPages / itemsPerPage) ? ' disabled' : '') + '">';
+	                paginationHtml += '<a class="page-link" href="#" aria-label="Next" id="next-page">';
+	                paginationHtml += '<span aria-hidden="true">&raquo;</span></a></li>';
+
+	                $('.pagination').html(paginationHtml);
+	            }//function
 	    	
 	});//ready
 </script>
@@ -167,22 +457,22 @@
 										<select name="category" style="width: 87px;">
 												<option value="1"${param.category eq '1' ? " selected" : "" }>아이디</option>
 										</select> 
-										<input type="text" name="keyword" value="${ param.keyword }" class="frm_input" size="30">
+										<input type="text" id="keyword" name="keyword" value="${ param.keyword }" class="frm_input" size="30">
 									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 					<div class="btn_confirm">
-						<input type="button" value="검색" class="btn btn-secondary btn-sm"> 
-						<input type="button" value="초기화" id="frmRest" class="btn btn-outline-secondary btn-sm">
+						<input type="button" value="검색" id="btn-search" class="btn btn-secondary btn-sm"> 
+						<input type="button" value="초기화" id="btn-reset" class="btn btn-outline-secondary btn-sm">
 					</div>
 				</form>
 				<div class="local_ov mart30">
 					<div class="alignRight" style="text-align: right;">
 						<input type="button" id="addAdminBtn" value="관리자 등록" class="btn btn-outline-success btn-sm float-right" style="font-weight: bold; margin:0px auto;" />
 	        		</div>	
-					전체 : <b class="fc_red">n</b> 건 조회
+					전체 : <b class="fc_all"></b>건 중 <b class="fc_result fc_red"></b>건 조회
 				</div>
 				<form name="forderlist" id="forderlist" method="post">
 					<input type="hidden" name="q1" value="code=list"> 
@@ -218,50 +508,8 @@
 						</tr>
 						</thead>
 						<tbody>
-							<tr class="list0">
-								<td>1</td>
-								<td>일반</td>
-								<td>userManager</td>
-								<td>Y</td>
-								<td>Y</td>
-								<td>N</td>
-								<td>N</td>
-								<td>Y</td>
-								<td>Y</td>
-								<td>N</td>
-								<td><input type="button" value="권한설정" id="" class="btn btn-outline-secondary btn-sm adminSettingBtn" style="font-weight: bold;margin:0px auto;" /></td>
-							</tr>
-							<tr class="list0">
-								<td>2</td>
-								<td>일반</td>
-								<td>companyManager</td>
-								<td>Y</td>
-								<td>N</td>
-								<td>Y</td>
-								<td>Y</td>
-								<td>Y</td>
-								<td>Y</td>
-								<td>N</td>
-								<td><input type="button" value="권한설정" class="btn btn-outline-secondary btn-sm adminSettingBtn" style="font-weight: bold;margin:0px auto;" /></td>
-							</tr>
-							<tr class="list0">
-								<td>3</td>
-								<td>일반</td>
-								<td>noticeManager</td>
-								<td>Y</td>
-								<td>N</td>
-								<td>N</td>
-								<td>N</td>
-								<td>N</td>
-								<td>N</td>
-								<td>Y</td>
-								<td><input type="button" value="권한설정" class="btn btn-outline-secondary btn-sm adminSettingBtn" style="font-weight: bold;margin:0px auto;" /></td>
-							</tr>
 						</tbody>
 					</table>
-				</div>
-				<div style="text-align: center; display: none;">
-					<h4><strong>검색결과가 존재하지 않습니다.</strong></h4>
 				</div>
 				<!-- 관리자 등록 modal -->
 				<div class="modal fade" id="adminModal" tabindex="-1" aria-labelledby="adminModalLabel" aria-hidden="true">
@@ -272,54 +520,52 @@
 				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				      </div>
 				      <div class="modal-body">
-				        <form>
 				          <div class="mb-3">
-				            <label for="adminId" class="form-label">관리자 ID</label>
-				            <input type="text" class="form-control" id="adminId" maxlength="30" style="margin-right:5px; border: 1px solid #dedede; font-size: 15px;">
+				            <label for="addAdminId" class="form-label">관리자 ID</label>
+				            <input type="email" class="form-control" id="addAdminId" name="adminId" maxlength="30" style="margin-right:5px; border: 1px solid #dedede; font-size: 15px;">
 				          </div>
 				          <div class="mb-3">
-				            <label for="adminPassword" class="form-label">비밀번호</label>
-				            <input type="password" class="form-control" id="adminPassword" maxlength="30" style="margin-right:5px; border: 1px solid #dedede; font-size: 15px;">
+				            <label for="addPassword" class="form-label">비밀번호</label>
+				            <input type="password" class="form-control" id="addPassword" name="password" maxlength="16" style="margin-right:5px; border: 1px solid #dedede; font-size: 15px;">
 				          </div>
 				          <div class="mb-3">
-				            <label for="adminPassword" class="form-label">비밀번호 확인</label>
-				            <input type="password" class="form-control" id="adminPasswordCon" maxlength="30" style="margin-right:5px; border: 1px solid #dedede; font-size: 15px;">
+				            <label for="addPasswordCon" class="form-label">비밀번호 확인</label>
+				            <input type="password" class="form-control" id="addPasswordCon" maxlength="16" style="margin-right:5px; border: 1px solid #dedede; font-size: 15px;">
 				          </div>
 				          <div class="mb-3">
 				            <label class="form-label">권한 부여</label>
 				            <div class="form-check">
-				              <input class="checkbox" type="checkbox" value="dashboard" id="dashboard">
+				              <input class="addCheckbox" name="dashboard" type="checkbox" value="dashboard" id="dashboard">
 				              <label class="form-check-label" for="dashboard">대시보드</label>
 				            </div>
 				            <div class="form-check">
-				              <input class="checkbox" type="checkbox" value="user" id="user">
+				              <input class="addCheckbox" name="user" type="checkbox" value="user" id="user">
 				              <label class="form-check-label" for="user">사용자 관리</label>
 				            </div>
 				            <div class="form-check">
-				              <input class="checkbox" type="checkbox" value="company" id="company">
+				              <input class="addCheckbox" name="company" type="checkbox" value="company" id="company">
 				              <label class="form-check-label" for="company">기업 관리</label>
 				            </div>
 				            <div class="form-check">
-				              <input class="checkbox" type="checkbox" value="recruit" id="recruit">
+				              <input class="addCheckbox" name="recruit" type="checkbox" value="recruit" id="recruit">
 				              <label class="form-check-label" for="recruit">공고 관리</label>
 				            </div>
 				            <div class="form-check">
-				              <input class="checkbox" type="checkbox" value="review" id="review">
+				              <input class="addCheckbox" name="review" type="checkbox" value="review" id="review">
 				              <label class="form-check-label" for="review">리뷰 관리</label>
 				            </div>
 				            <div class="form-check">
-				              <input class="checkbox" type="checkbox" value="qna" id="qna">
+				              <input class="addCheckbox" name="qna" type="checkbox" value="qna" id="qna">
 				              <label class="form-check-label" for="qna">문의 관리</label>
 				            </div>
 				            <div class="form-check">
-				              <input class="checkbox" type="checkbox" value="notice" id="notice">
+				              <input class="addCheckbox" name="notice" type="checkbox" value="notice" id="notice">
 				              <label class="form-check-label" for="notice">공지 관리</label>
 				            </div>
 				          </div>
-				        </form>
 				      </div>
 				      <div class="modal-footer" >
-				        <button type="button" class="btn btn-outline-success btn-sm float-right" id="registerAdmin" style="text-align: center; margin: 5px; width:80px; ">등록</button>
+				        <button type="button" class="btn btn-outline-success btn-sm float-right" id="addAdmin" style="text-align: center; margin: 5px; width:80px; ">등록</button>
 				        <button type="button" class="btn btn-outline-dark btn-sm detail-control" id="cancleBtn" style="text-align: center; margin: 5px; width:80px;">취소</button>
 				      </div>
 				    </div>
@@ -336,39 +582,39 @@
 				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				      </div>
 				      <div class="modal-body">
-				        <form>
+				        <form id="modifyAdminFrm" action="modifyAdmin.do" method="post">
 				          <div class="mb-3">
-				            <label for="adminId" class="form-label">관리자 ID</label>
-				            <input type="text" class="form-control" id="adminId2" maxlength="30" style="margin-right:5px; border: 1px solid #dedede; font-size: 15px;">
+				            <label for="modifyAdminId" class="form-label">관리자 ID</label>
+				            <input type="email" class="form-control" id="modifyAdminId" name="adminId" maxlength="30" style="margin-right:5px; border: 1px solid #dedede; font-size: 15px;">
 				          </div>
 				          <div class="mb-3">
 				            <label class="form-label">권한 부여</label>
 				            <div class="form-check">
-				              <input class="checkbox" type="checkbox" value="dashboard" id="dashboard2">
+				              <input class="modifyCheckbox" name="modifyCheckbox" type="checkbox" value="dashboard" id="dashboard2">
 				              <label class="form-check-label" for="dashboard2">대시보드</label>
 				            </div>
 				            <div class="form-check">
-				              <input class="checkbox" type="checkbox" value="user" id="user2">
+				              <input class="modifyCheckbox" name="modifyCheckbox" type="checkbox" value="user" id="user2">
 				              <label class="form-check-label" for="user2">사용자 관리</label>
 				            </div>
 				            <div class="form-check">
-				              <input class="checkbox" type="checkbox" value="company" id="company2">
+				              <input class="modifyCheckbox" name="modifyCheckbox" type="checkbox" value="company" id="company2">
 				              <label class="form-check-label" for="company2">기업 관리</label>
 				            </div>
 				            <div class="form-check">
-				              <input class="checkbox" type="checkbox" value="recruit" id="recruit2">
+				              <input class="modifyCheckbox" name="modifyCheckbox" type="checkbox" value="recruit" id="recruit2">
 				              <label class="form-check-label" for="recruit2">공고 관리</label>
 				            </div>
 				            <div class="form-check">
-				              <input class="checkbox" type="checkbox" value="review" id="review2">
+				              <input class="modifyCheckbox" name="modifyCheckbox" type="checkbox" value="review" id="review2">
 				              <label class="form-check-label" for="review2">리뷰 관리</label>
 				            </div>
 				            <div class="form-check">
-				              <input class="checkbox" type="checkbox" value="qna" id="qna2">
+				              <input class="modifyCheckbox" name="modifyCheckbox" type="checkbox" value="qna" id="qna2">
 				              <label class="form-check-label" for="qna2">문의 관리</label>
 				            </div>
 				            <div class="form-check">
-				              <input class="checkbox" type="checkbox" value="notice" id="notice2">
+				              <input class="modifyCheckbox" name="modifyCheckbox" type="checkbox" value="notice" id="notice2">
 				              <label class="form-check-label" for="notice2">공지 관리</label>
 				            </div>
 				          </div>
@@ -392,18 +638,18 @@
 										<div style="justify-content: center;">
 											<nav aria-label="Page navigation example">
 												<ul class="pagination" style="justify-content: center;">
-													<li>
-														<a class="page-link" href="#" aria-label="Previous">
-														<span aria-hidden="true">&laquo;</span>
-														</a>
+													<li class="page-items">
+														<a class="page-link" href="#" aria-label="Previous" id="prev-page">
+												            <span aria-hidden="true">&laquo;</span>
+												        </a>
 													</li>
-													<li><a class="page-link" href="#">1</a></li>
-													<li><a class="page-link" href="#">2</a></li>
-													<li><a class="page-link" href="#">3</a></li>
-													<li>
-														<a class="page-link" href="#" aria-label="Next">
-														<span aria-hidden="true">&raquo;</span>
-														</a>
+													<li class="page-items"><a class="page-link" href="#" data-page="1">1</a></li>
+													<li class="page-items"><a class="page-link" href="#" data-page="2">2</a></li>
+													<li class="page-items"><a class="page-link" href="#" data-page="3">3</a></li>
+													<li class="page-items">
+														<a class="page-link" href="#" aria-label="Next" id="next-page">
+												            <span aria-hidden="true">&raquo;</span>
+												        </a>
 													</li>
 												</ul>
 											</nav>
