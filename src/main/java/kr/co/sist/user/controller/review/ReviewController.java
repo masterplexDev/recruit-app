@@ -49,7 +49,6 @@ public class ReviewController {
                 reviewQuestionsMap.put(review.getReviewNum(), reviewQuestions);
             }
         }
-
         
         // 회사 정보 가져오기
         CompanyInfoVO companyInfo = reviewService.getCompanyDetailsByCode(companyCode);
