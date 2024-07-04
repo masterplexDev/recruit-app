@@ -23,6 +23,8 @@
 		<!-- golgolz end -->
 	</style>
 	<script text="text/javascript">
+		var company = "";
+		
 		$(function(){
 			<!-- golgolz start -->
 			$.ajax({
@@ -32,17 +34,31 @@
 	            success: function(data) {
 	            	console.log(data);
 	            	renderRecruitData(data);
+	            	company = data.companyCode;
 	            },
 	            error: function(xhr, status, error) {
 	                console.error("Error fetching data: " + error);
 	            }
 	        });
+			
+			
 			<!-- golgolz end -->
 		});
 		
 		function renderRecruitData(Recruit) {
-		    // 기존 코드
-		    $('.coName').text(Recruit.companyName);
+			$.ajax({
+				url: "${pageContext.request.contextPath}/api/welfares.do?company=" + Recruit.companyCode,
+				method: 'GET',
+	            dataType: 'JSON',
+	            success: function(data) {
+	            	updateWelfare(data);
+	            },
+	            error: function(xhr, status, error) {
+	                console.error("Error fetching data: " + error);
+	            }
+			});
+
+			$('.coName').text(Recruit.companyName);
 		    var h3Element = $('.hd_3');
 		    var headerDiv = h3Element.find('.header');
 		    h3Element.contents().filter(function() {
@@ -99,13 +115,11 @@
 		    const today = new Date();
 		    const distance = endDate - today;
 
-		    // 시간 계산
 		    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
 		    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 		    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 		    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-		    // 카운트다운 텍스트 업데이트
 		    let countdownText = '';
 		    if (days > 0) {
 		        countdownText += days + "일 ";
@@ -115,7 +129,6 @@
 				            seconds.toString().padStart(2, '0');
 		    $('.devRemainCount .tahoma').text(countdownText);
 
-		    // 마감된 경우
 		    if (distance < 0) {
 		        clearInterval(countdownTimer);
 		        $('.devRemainCount .tahoma').text('마감됨');
@@ -125,7 +138,6 @@
 		}
 
 		function updateDateInfo(inputDate, endDate) {
-		    // 시작일 업데이트
 		    var startDate = new Date(inputDate);
 		    var startDateStr = startDate.getFullYear() + '.' + 
 		                       (startDate.getMonth() + 1).toString().padStart(2, '0') + '.' + 
@@ -134,7 +146,6 @@
 		    $('.date dt:contains("시작일") + dd .tahoma').text(startDateStr);
 		    $('.date dt:contains("시작일") + dd').append('(' + startDayOfWeek + ')');
 
-		    // 마감일 업데이트
 		    var endDateObj = new Date(endDate);
 		    var endDateStr = endDateObj.getFullYear() + '.' + 
 		                     (endDateObj.getMonth() + 1).toString().padStart(2, '0') + '.' + 
@@ -144,15 +155,33 @@
 		    $('.date dt:contains("마감일") + dd').append('(' + endDayOfWeek + ')');
 		}
 
-		// 전역 변수로 타이머 ID 저장
 		let countdownTimer;
-
-		// 페이지 언로드 시 타이머 정리
 		$(window).on('unload', function() {
 		    if (countdownTimer) {
 		        clearInterval(countdownTimer);
 		    }
 		});
+		
+		function updateWelfare(welfareData) {
+		    var $welfareContainer = $('.location .tbRow dl:first dd');
+		    console.log("welfareData : ", welfareData);
+		    $welfareContainer.find('dl').remove();
+
+		    if (welfareData.length > 0) {
+		        var firstItem = welfareData[0];
+		        $welfareContainer.find('dl:first dt').text(firstItem.category);
+		        $welfareContainer.find('dl:first dd').text(firstItem.content);
+		    }
+
+		    for (var i = 1; i < welfareData.length; i++) {
+		        var item = welfareData[i];
+		        var $newDl = $('<dl>');
+		        $newDl.append('<dt>' + item.category + '</dt>');
+		        $newDl.append('<dd>' + item.content + '</dd>');
+		        $welfareContainer.append($newDl);
+		    }
+
+		}
 	</script>
 </head>
 <body>
@@ -293,7 +322,7 @@
 											<dl class="time">
 												<dt class="girIcn icnTime">남은시간</dt>
 												<dd class="devRemainCount">
-													<span class="tahoma">07:30:38</span>
+													<span class="tahoma"></span>
 												</dd>
 											</dl>
 											<dl class="date">
@@ -320,11 +349,11 @@
 											</div>
 										</div>
 
-										<div class="tbRow tbRsm tbCase">
+										<!-- <div class="tbRow tbRsm tbCase">
 											<dl>
 												<dt>지원양식</dt>
 												<dd class="devTplLyClick">
-													<strong>잡코리아 이력서 양식</strong>
+													<strong>구지직 이력서 양식</strong>
 												</dd>
 											</dl>
 										</div>
@@ -332,15 +361,14 @@
 											<dl>
 												<dt>모집분야</dt>
 												<dd>
-													<a
-														href="https://www.jobkorea.co.kr/Recruit/GI_Read/44738554?rPageCode=AM&amp;logpath=21&amp;sn=6#Apply">CDU개발팀</a>
+													<a href="https://www.jobkorea.co.kr/Recruit/GI_Read/44738554?rPageCode=AM&amp;logpath=21&amp;sn=6#Apply">CDU개발팀</a>
 												</dd>
 												<dt>모집인원</dt>
 												<dd>
 													<span class="tahoma">○</span>명
 												</dd>
 											</dl>
-										</div>
+										</div> -->
 									</article>
 								</div>
 
@@ -554,25 +582,8 @@
 												<dt>복리후생</dt>
 												<dd>
 													<dl>
-														<dt>연금·보험</dt>
-														<dd>국민연금 , 고용보험, 산재보험, 건강보험, 퇴직연금, 개인연금</dd>
-													</dl>
-													<dl>
-														<dt>휴무·휴가·행사</dt>
-														<dd>주5일제, 연차제도</dd>
-													</dl>
-													<dl>
-														<dt>보상·수당·지원</dt>
-														<dd>퇴직금, 인센티브, 자녀교육비, 장기근속 포상, 우수사원 포상제도, 가족 의료비 지원,
-															자기개발 지원, 휴일근로수당, 연월차제도수당, 휴가비</dd>
-													</dl>
-													<dl>
-														<dt>사내제도·성장</dt>
-														<dd>사내 외국어강좌 운영</dd>
-													</dl>
-													<dl>
-														<dt>사내시설</dt>
-														<dd>기숙사 지원, 구내식당, 휴식공간</dd>
+														<dt></dt>
+														<dd></dd>
 													</dl>
 													<dl>
 														<dt>편의·여가·건강</dt>
