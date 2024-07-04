@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" info=""%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,6 +28,7 @@
 	<script type="text/javascript">
 		$(function(){
 			<!-- golgolz start -->
+			
 			<!-- golgolz end -->
 		});
 	</script>
@@ -65,6 +67,7 @@
 								</fieldset>
 			</form>
 		</div>
+		
 		<div class="schListWrap">
 			<div class="mtcSchListTb">
 				<table summary="">
@@ -81,8 +84,8 @@
 									<select
 										style="width: 80px; height: 36px; border: 0.2px solid #FFFFFF;">
 										<option value="전체" selected>전체</option>
-										<option value="일반공지">일반공지</option>
-										<option value="서비스">서비스</option>
+										<option value="안내">안내</option>
+										<option value="서비스 종료">서비스 종료</option>
 										<option value="이벤트">이벤트</option>
 									</select>
 								</div>
@@ -96,7 +99,7 @@
 								<tr class=primary>
 									<td class="sort"><c:out value="${notice.category}"/></td>
 									<td class="alLeft"><span class="tit"><a href="detail.jsp"><c:out value="${notice.title}"/></a></span></td>
-									<td class="date"><c:out value="${notice.input_date}"/></td>
+									<td class="date"><fmt:formatDate value="${notice.input_date}" pattern="yy-MM-dd"/></td>
 								</tr>
 						</c:forEach>
 					</tbody>
@@ -107,24 +110,6 @@
                 <div class="btnListExDn">
                   <!-- <a href="notice_list.jsp" class="btnMtcTpl">목록</a> -->
                 </div>
-                
-               <!--  
-					<div class="listBtmArea">
-						            <div class="tplPagination">
-
-                <ul>
-
-                                <li><span class="now">1</span></li>
-                                <li><a href="/help/notice?tab=1&amp;Page=2" data-page="2">2</a></li>
-                                <li><a href="/help/notice?tab=1&amp;Page=3" data-page="3">3</a></li>
-
-                </ul>
-
-                    <p><a href="/help/notice?tab=1&amp;Page=11" class="tplBtn btnPgnNext" data-page="11"><span>다음 페이지</span></a></p>
-            </div>
-
-					</div> -->
-					
 				<div style="text-align:center; margin-top:30px">
 			        <nav aria-label="...">
 			                <ul class="pagination pagination-lg" style="display: inline-flex;">
@@ -141,8 +126,7 @@
 			                        </li>
 			                 </ul>
 			         </nav>
-			</div>
-					
+				</div>
 			</div>
 		</div>
 	</div>

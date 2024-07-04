@@ -7,15 +7,23 @@
  	<select id="selectNotices" resultType="kr.co.sist.user.domain.notice.NoticeUserDomain">
  		select category, title, input_date, notice_num
  		from notice
+ 		where blind_flag='N'
  		order by input_date desc
  	</select>
  	
+ 	<select id="selectNoticesByCategory" resultType="kr.co.sist.user.domain.notice.NoticeUserDomain" parameterType="String">
+ 		<![CDATA[
+	    select category, title, input_date, notice_num
+	    from notice
+	    where blind_flag = 'N' and category = #{category, jdbcType=VARCHAR}
+	    order by input_date desc
+	    ]]>
+    </select>
+  	
  	<select id="selectOneNotice" resultType="kr.co.sist.user.domain.notice.NoticeUserDomain">
  		select notice_num, category, title, content, input_date
    		from notice
     	where notice_num = #{notice_num}
-    
-    
  	</select>
  	
  </mapper>
