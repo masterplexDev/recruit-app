@@ -37,12 +37,15 @@
 			background-color: #f1f1f1;
 			border-radius: 20px;
 			margin: 5px;
-			cursor: pointer;
 		}
 		
 		.chip.active {
 			background-color: #007bff;
 			color: white;
+		}
+		
+		.search-position {
+			cursor: pointer;
 		}
 		
 		.search-container {
@@ -489,12 +492,12 @@
 									                <td><label for="job-search">포지션</label></td>
 													<td>
 														<div class="chip-group search-position-chips" style="margin-bottom:0px; padding-left: 0px;">
-															<div class="chip position-chip" data-value="BACKDEV">백엔드</div>
-															<div class="chip position-chip" data-value="FRTDEV">프론트엔드</div>
-															<div class="chip position-chip" data-value="EMBDEV">임베디드</div>
-															<div class="chip position-chip" data-value="QAENG">QA</div>
-															<div class="chip position-chip" data-value="INFENG">인프라</div>
-															<div class="chip position-chip" data-value="DEVOPENG">DevOps</div>
+															<div class="chip position-chip search-position" data-value="BACKDEV">백엔드</div>
+															<div class="chip position-chip search-position" data-value="FRTDEV">프론트엔드</div>
+															<div class="chip position-chip search-position" data-value="EMBDEV">임베디드</div>
+															<div class="chip position-chip search-position" data-value="QAENG">QA</div>
+															<div class="chip position-chip search-position" data-value="INFENG">인프라</div>
+															<div class="chip position-chip search-position" data-value="DEVOPENG">DevOps</div>
 															<!-- <button id="resetButton">초기화</button> -->
 														</div>
 													</td>
