@@ -1,0 +1,92 @@
+.lgiSubMain {
+	z-index: -2;
+}
+
+.chip-group {
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 13px;
+	padding-left: 15px;
+	margin-bottom: 15px;
+}
+
+.chip {
+	padding: 8px 16px;
+	background-color: #f1f1f1;
+	border-radius: 20px;
+	margin: 5px;
+	cursor: pointer;
+}
+
+.chip.active {
+	background-color: #007bff;
+	color: white;
+}
+
+.search-container {
+	display: flex;
+	justify-content: center;
+	background-color: white;
+	border-radius: 8px;
+}
+
+.search-table {
+	width: 90%;
+	border-collapse: collapse;
+}
+
+.search-table td {
+	font-size: 14px;
+	padding: 10px;
+	border-bottom: 1px solid #e0e0e0;
+	border-top: 1px solid #e0e0e0;
+}
+
+.search-table td:first-child {
+	width: 100px;
+	background-color: #f9f9f9;
+	font-weight: 400;
+}
+
+.search-input {
+	font-size: 13px;
+	width: 200px;
+	padding: 8px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+}
+
+.search-select {
+	font-size: 13px;
+	width: 100px;
+	padding: 8px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+}
+
+.search-button {
+	padding: 8px 15px;
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.button-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 25px;
+}
+
+.btn {
+	width: 65px;
+	height: 34px;
+	font-size: 15px;
+}
+
+#btn-reset {
+	border: solid 1px #c8c8c8;
+	margin-left: 5px;
+}

@@ -25,11 +25,23 @@
 	    <result property="companyPeopleNum" column="headcount"/>
 	    <result property="establishDate" column="establishment_date"/>
 	</resultMap>
-	<select id="selectRecruits" resultMap="recruitResultMap" parameterType="kr.co.sist.user.vo.recruit.SearchVO">
+	<resultMap id="recruitListResultMap" type="kr.co.sist.user.domain.recruit.RecruitListDomain">
+	    <id property="id" column="recruit_num"/>
+	    <result property="title" column="title"/>
+	    <result property="company" column="company_name"/>
+	    <result property="inputDate" column="input_date"/>
+	    <result property="endDate" column="end_date"/>
+	    <result property="addr" column="work_place"/>
+	    <result property="workType" column="employment_type"/>
+	    <result property="career" column="career_condition"/>
+	    <result property="education" column="education_base_code"/>
+	    <result property="position" column="position_code"/>
+	</resultMap>
+	<select id="selectRecruits" resultMap="recruitListResultMap" parameterType="kr.co.sist.user.vo.recruit.SearchVO">
 	    SELECT
-	        rnum,
 	        recruit_num,
 	        company_name,
+	        position_code,
 	        title,
 	        career_condition,
 	        years,
@@ -37,11 +49,13 @@
 	        work_place,
 	        employment_type,
 	        content,
+	        input_date,
 	        end_date
 	    FROM (
 	        SELECT
 	            ROW_NUMBER() OVER (ORDER BY r.input_date ASC) AS rnum,
 	            recruit_num,
+	        	position_code,
 	            ci.company_name,
 	            title,
 	            career_condition,
@@ -50,33 +64,37 @@
 	            work_place,
 	            employment_type,
 	            content,
+	            r.input_date,
 	            end_date
 	        FROM recruit r
 	        LEFT JOIN companyinfo ci ON r.company_code = ci.company_code
 	        <where>
-	            <if test="title != null and title != ''">
-	                AND title LIKE '%' || #{title} || '%'
+	        	<choose>
+	                <when test="category == 1 and keyword != null and keyword != ''">
+	                    and ci.company_name LIKE '%' || #{keyword} || '%'
+	                </when>
+	                <when test="category == 2 and keyword != null and keyword != ''">
+	                    and r.title LIKE '%' || #{keyword} || '%'
+	                </when>
+	                <when test="category == 3 and keyword != null and keyword != ''">
+	                    r.content LIKE '%' || #{keyword} || '%'
+	                </when>
+	            </choose>
+	            <if test="addr != null and addr != ''">
+	                and r.work_place LIKE '%' || #{keyword} || '%'
 	            </if>
-	            <if test="companyName != null and companyName != ''">
-	                AND ci.company_name LIKE '%' || #{companyName} || '%'
-	            </if>
-	            <if test="career != null and career != ''">
-	                AND career_condition = #{career}
-	            </if>
-	            <if test="employmentType != null and employmentType != ''">
-	                AND employment_type = #{employmentType}
-	            </if>
-	            <if test="eduStandard != null and eduStandard != ''">
-	                AND edu_standard = #{eduStandard}
-	            </if>
-	            <if test="workLocation != null and workLocation != ''">
-	                AND work_place LIKE '%' || #{workLocation} || '%'
-	            </if>
-	            <if test="position != null and position != ''">
-	                AND position LIKE '%' || #{position} || '%'  
+	            <if test="startDate != null">
+	                and r.input_date >= #{startDate}
 	            </if>
 	            <if test="endDate != null">
-	                AND end_date &lt; #{endDate} 
+	                and r.end_date <![CDATA[ <= ]]> #{endDate}
+	            </if>
+	            <if test="positions != null and positions != ''">
+	                and (
+	                    <foreach item="position" collection="positionList" separator=" OR ">
+	                        REGEXP_LIKE(r.position_code, '(^|,)' || #{position} || '(,|$)')
+	                    </foreach>
+	                )
 	            </if>
 	        </where>
 	    )
@@ -85,6 +103,57 @@
 	            AND rnum BETWEEN #{startNum} AND #{endNum}
 	        </if>
 	    </where>
+	</select>
+	<select id="countRecruits" resultType="int" parameterType="kr.co.sist.user.vo.recruit.SearchVO">
+	    SELECT
+	        count(*)
+	    FROM (
+	        SELECT
+	            ROW_NUMBER() OVER (ORDER BY r.input_date ASC) AS rnum,
+	            recruit_num,
+	        	position_code,
+	            ci.company_name,
+	            title,
+	            career_condition,
+	            years,
+	            education_base_code,
+	            work_place,
+	            employment_type,
+	            content,
+	            r.input_date,
+	            end_date
+	        FROM recruit r
+	        LEFT JOIN companyinfo ci ON r.company_code = ci.company_code
+	        <where>
+	        	<choose>
+	                <when test="category == 1 and keyword != null and keyword != ''">
+	                    and ci.company_name LIKE '%' || #{keyword} || '%'
+	                </when>
+	                <when test="category == 2 and keyword != null and keyword != ''">
+	                    and r.title LIKE '%' || #{keyword} || '%'
+	                </when>
+	                <when test="category == 3 and keyword != null and keyword != ''">
+	                    r.content LIKE '%' || #{keyword} || '%'
+	                </when>
+	            </choose>
+	            <if test="addr != null and addr != ''">
+	                and r.work_place LIKE '%' || #{keyword} || '%'
+	            </if>
+	            <if test="startDate != null">
+	                and r.input_date >= #{startDate}
+	            </if>
+	            <if test="endDate != null">
+	                and r.end_date <![CDATA[ <= ]]> #{endDate}
+	            </if>
+	            <if test="positions != null and positions != ''">
+	                and (
+	                    <foreach item="position" collection="positionList" separator=" OR ">
+	                        REGEXP_LIKE(r.position_code, '(^|,)' || #{position} || '(,|$)')
+	                    </foreach>
+	                )
+	            </if>
+	        </where>
+	    )
 	</select>
 	<select id="selectOneRecruit" parameterType="int" resultMap="recruitResultMap">
 	    SELECT

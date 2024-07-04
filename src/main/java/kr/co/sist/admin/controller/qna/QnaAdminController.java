@@ -55,15 +55,6 @@ public class QnaAdminController {
         return "manage/qna/old_detail";
     } // 답변 완료된 문의사항 상세조회
 
-    // @PostMapping("/manage/qnaAnswer.do")
-    // public String addQnaAnswer(@RequestParam("user_id") int user_id,
-    // @RequestParam("qnaNum") int qna_num, @RequestParam("content") String content,
-    // Model model) {
-    // QnaVO qnaAnswer = qnaAdminService.addQnaAnswer(user_id, qna_num, content);
-    // model.addAttribute("qnaAnswer", qnaAnswer);
-    // return "qnaAnswer";
-    // }
-
     @PostMapping("/manage/qna/qnas.do")
     public String addQnaAnswer(QnaVO qVO, Model model) {
         int result = qnaAdminService.addQnaAnswer(qVO);

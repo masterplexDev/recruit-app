@@ -14,12 +14,13 @@
 	<script src="http://localhost/recruit-app/assets/js/admin/datepicker-ko.js"></script>
     <link href="http://localhost/recruit-app/assets/css/recruit/part-sv-202405271315.css" rel="stylesheet" type="text/css"/>
     <link href="http://localhost/recruit-app/assets/css/recruit/rcr-sv-202405271315.css" rel="stylesheet" type="text/css"/>
-	<link rel="stylesheet" href="http://localhost/recruit-app/assets/css/layout/user/btn-bootstrap.css" />
+	<link href="http://localhost/recruit-app/assets/css/recruit/recruits.css" rel="stylesheet" type="text/css" />
+	<link href="http://localhost/recruit-app/assets/css/layout/user/btn-bootstrap.css" rel="stylesheet" type="text/css" />
     <!--  <link rel="stylesheet" href="http://localhost/recruit-app/assets/css/global_user.css"> -->
 	<!-- golgolz end -->
 	<style text="text/css">
 		<!-- golgolz start -->
-		.lgiSubMain{
+		.lgiSubMain {
 			z-index: -2;
 		}
 		
@@ -32,11 +33,10 @@
 		}
 		
 		.chip {
-			padding: 8px 16px; /* 좌우 패딩 16px로 변경 */
+			padding: 8px 16px;
 			background-color: #f1f1f1;
 			border-radius: 20px;
 			margin: 5px;
-			cursor: pointer;
 		}
 		
 		.chip.active {
@@ -44,71 +44,103 @@
 			color: white;
 		}
 		
+		.search-position {
+			cursor: pointer;
+		}
+		
 		.search-container {
-            display:flex; 
-            justify-content:center;
-            background-color: white;
-            border-radius: 8px;
-        }
-        
-        .search-table {
-            width: 90%;
-            border-collapse: collapse;
-        }
-        
-        .search-table td {
+			display: flex;
+			justify-content: center;
+			background-color: white;
+			border-radius: 8px;
+		}
+		
+		.search-table {
+			width: 90%;
+			border-collapse: collapse;
+		}
+		
+		.search-table td {
 			font-size: 14px;
-            padding: 10px;
-            border-bottom: 1px solid #e0e0e0;
-            border-top: 1px solid #e0e0e0;
-        }
-        
-        .search-table td:first-child {
-            width: 100px;
-            background-color: #f9f9f9;
-            font-weight: 400;
-        }
-        
-        .search-input {
-        	font-size: 13px;
-            width: 200px;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        
-        .search-select {
-        	font-size: 13px;
-            width: 100px;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        
-        .search-button {
-            padding: 8px 15px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        
-        .button-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 20px;
-        }
-        
-        .btn {
-        	width: 65px;
-        	height: 34px;
-        	font-size: 15px;
-        }
+			padding: 10px;
+			border-bottom: 1px solid #e0e0e0;
+			border-top: 1px solid #e0e0e0;
+		}
+		
+		.search-table td:first-child {
+			width: 100px;
+			background-color: #f9f9f9;
+			font-weight: 400;
+		}
+		
+		.search-input {
+			font-size: 13px;
+			width: 200px;
+			padding: 8px;
+			border: 1px solid #ddd;
+			border-radius: 4px;
+		}
+		
+		.search-select {
+			font-size: 13px;
+			width: 100px;
+			padding: 8px;
+			border: 1px solid #ddd;
+			border-radius: 4px;
+		}
+		
+		.search-button {
+			padding: 8px 15px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+		
+		.button-container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-top: 25px;
+		}
+		
+		.btn {
+			width: 65px;
+			height: 34px;
+			font-size: 15px;
+		}
+		
+		#btn-reset {
+			border: solid 1px #c8c8c8;
+			margin-left: 5px;
+		}
+		
+		.tplBtn_1 {
+			font-weight: 500;
+			font-size: 15px;
+			margin-top: 10px;
+		}
 		<!-- golgolz end -->
 	</style>
 	<script text="text/javascript">
+		var itemsPerPage = 5;
+		var startNum = 1 - itemsPerPage;
+		var endNum = startNum - 1;
+		var totalRecruits = -1;
+		var selectedPositions = [];
+		var searchVO = {};
+		var isNoResult = false;
+		
+		var positionMap = {
+            'BACKDEV': '백엔드',
+            'FRTDEV': '프론트엔드',
+            'EMBDEV': '임베디드',
+            'QAENG': 'QA',
+            'INFENG': '인프라',
+            'DEVOPENG': 'DevOps'
+        };
+		
 		$(function(){
 			<!-- golgolz start -->
 			$(".position-chip").click(function() {
@@ -124,7 +156,7 @@
 		        }
 			});
 			
-			var area0 = ["시/도 선택","서울특별시","인천광역시","대전광역시","광주광역시","대구광역시","울산광역시","부산광역시","경기도","강원도","충청북도","충청남도","전라북도","전라남도","경상북도","경상남도","제주도"];
+			var area0 = ["시/도 선택","서울시","인천시","대전시","광주시","대구시","울산시","부산시","경기도","강원도","충청북도","충청남도","전라북도","전라남도","경상북도","경상남도","제주도"];
 			var area1 = ["강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"];
 			var area2 = ["계양구","남구","남동구","동구","부평구","서구","연수구","중구","강화군","옹진군"];
 			var area3 = ["대덕구","동구","서구","유성구","중구"];
@@ -192,8 +224,214 @@
 	  	            }
 	  	        }
 	  		});
+	    	
+	    	$("#btn-reset").click(function(){
+	    		resetSearchTable();
+	    	});
+	    	
+	    	$("#btn-search").click(function(){
+	    		if(isNoResult){
+	    			const $observerTarget = $('#observer-target');
+	    			  
+	    			$observerTarget.hide();
+	    			  
+	    			setTimeout(() => {
+	    			    $observerTarget.show();
+	    			}, 100);
+	    			
+	    			isNoResult = false;
+	    		}
+	    		
+	            var tableBody = $("#recruit-list tbody");
+	            startNum = 1 - itemsPerPage;
+	    		endNum = startNum - 1;
+	            tableBody.empty();
+		        searchVO = getSearchVO();
+		        countRecruits(searchVO);
+		        $("#total-recruits").text("(" + totalRecruits + "건)");
+	    	})
+	    	
+	    	$("#search-position-chips").click(function(){
+	    	    var value = $(this).data("value");
+	    		var index = selectedPositions.indexOf(value);
+
+	    	    if (index === -1) {
+	    	        selectedPositions.push(value);
+	    	        $(this).addClass("active");
+	    	    } else {
+	    	        selectedPositions.splice(index, 1);
+	    	        $(this).removeClass("active");
+	    	    }
+	    	});
+	    	
+	    	// Intersection Observer 설정
+		    var isLoading = false;
+	        const options = {
+	            root: null,
+	            rootMargin: '0px',
+	            threshold: 0.1
+	        };
+	    	
+	    	const observer = new IntersectionObserver((entries) => {
+	            entries.forEach(entry => {
+	                if (entry.isIntersecting && !isLoading) {
+	                    updateRecruitList();
+	                }
+	            });
+	        }, options);
+
+	        const target = document.getElementById('observer-target');
+	        observer.observe(target);
+	        
+	        countRecruits(searchVO);
+	        $("#total-recruits").text("(" + totalRecruits + "건)");
 			<!-- golgolz end -->
 		});
+		
+		function resetSearchTable() {
+	        $('#category').val('1');
+	        $('#keyword').val('');
+	        $('#start_date, #end_date').val('');
+	        $('#sido1').val('').find('option:first').prop('selected', true);
+	        $('#gugun1').empty().append("<option style='font-size: 14px;' value=''>구/군 선택</option>");
+	        $('.position-chip').removeClass('active');
+
+	        if ($.fn.datepicker) {
+	            $('#start_date, #end_date').datepicker('setDate', null);
+	        }
+	    }
+		
+		function getSearchVO() {
+			var addr = "";
+			
+			if(!$("#sido1").val() == '시/도 선택' && !$("#gugun1").val() == '구/군 선택' && !$("#gugun1").val() == ''){
+				addr = $("#sido1").val() + " " + $("#gugun1").val() || undefined;
+			}
+			
+		    return {
+		        category: $("select[name='category']").val(),
+		        keyword: $("input[name='keyword']").val(),
+		        startDate: $("#start_date").val() || undefined,
+		        endDate: $("#end_date").val() || undefined,
+		        addr: addr,
+		        startNum: startNum,
+		        endNum: endNum,
+		        positions: selectedPositions.join(",") || undefined
+		    };
+		}
+		
+		function countRecruits(searchVO){
+			$.ajax({
+	            url: "${pageContext.request.contextPath}/api/recruits/counts.do",
+	            method: 'GET',
+	            data: searchVO,
+	            dataType: 'JSON',
+	            async: false,
+	            success: function(data) {
+	            	totalRecruits = data;
+	            	if(data == 0){
+						isNoResult = true;
+	            	}
+	            },
+	            error: function(xhr, status, error) {
+	                console.error("Error fetching data: " + error);
+	            }
+	        });
+		}
+		
+		function updateRecruitList(){
+			if(startNum + itemsPerPage - 1> totalRecruits){
+				return;
+			}
+			startNum += itemsPerPage;
+			endNum = startNum + itemsPerPage - 1;
+			
+		    searchVO.startNum = startNum;
+		    searchVO.endNum = endNum;
+		    
+		    $.ajax({
+	            url: "${pageContext.request.contextPath}/api/recruits.do",
+	            method: 'GET',
+	            data: searchVO,
+	            dataType: 'JSON',
+	            success: function(data) {
+	            	renderRecruitList(data);
+	            	if(data.size === 0){
+	            		isNoResult = true;
+	            		$("#recruit-list tbody").html('<tr><td colspan="4" style="font-size: 16px; font-weight: bold;">검색 결과가 없습니다.</td></tr>');
+	            	}
+	            },
+	            error: function(xhr, status, error) {
+	                console.error("Error fetching data: " + error);
+	                $("#recruit-list tbody").html('<tr><td colspan="4" style="font-size: 16px; font-weight: bold;">데이터를 불러오는 데 실패했습니다.</td></tr>');
+	            }
+	        });
+		}
+		
+	    function renderRecruitList(recruits) {
+	        var tbody = $("#recruit-list tbody");
+	        
+	        recruits.forEach(function(recruit) {
+	            var row = $("<tr class='devloopArea'></tr>");
+	            row.append('<th scope="row"><span class="tplChkRect tplChkRect_1"></span></th>');
+	            
+	            var companyCell = $("<td class='tplCo'></td>");
+	            companyCell.append($('<a>').attr({
+	                'href': 'http://localhost/recruit-app/company/detail.do?id=' + recruit.id,
+	                'class': 'link normalLog'
+	            }).text(recruit.company));
+	            companyCell.append('<div class="typ"></div>');
+	            row.append(companyCell);
+	            
+	            var titleCell = $("<td class='tplTit'></td>");
+	            var titleBox = $("<div class='titBx'></div>");
+	            titleBox.append($('<strong>').append($('<a>').attr({
+	                'href': 'http://localhost/recruit-app/recruit/detail.do?id=' + recruit.id,
+	                'class': 'link normalLog',
+	                'title': recruit.title,
+	                'data-clickctgrcode': 'B02'
+	            }).text(recruit.title)));
+	            
+	            var etcInfo = $("<p class='etc' style='font-size: 14px;'></p>");
+	            etcInfo.append($('<span class="cell">').text(recruit.career));
+	            etcInfo.append($('<span class="cell">').text(recruit.education + " 졸업 이상"));
+	            etcInfo.append($('<span class="cell">').text(recruit.addr));
+	            etcInfo.append($('<span class="cell">').text(recruit.workType));
+	            titleBox.append(etcInfo);
+	            
+	            var chipGroup = $("<div class='chip-group'></div>");
+	            var positions = recruit.position.split(',');
+	            
+	            Object.keys(positionMap).forEach(function(key) {
+	                var isActive = positions.includes(key);
+	                var chipClasses = 'chip position-chip' + (isActive ? ' active' : '');
+	                
+	                var chip = $('<div>').attr({
+	                    'class': chipClasses,
+	                    'data-value': key
+	                }).text(positionMap[key]);
+	                
+	                chipGroup.append(chip);
+	            });
+	            
+	            titleCell.append(titleBox);
+	            titleCell.append(chipGroup);
+	            row.append(titleCell);
+	            
+	            var dateCell = $("<td class='odd' style='font-size: 14px;'></td>");
+	            dateCell.append('<button type="button" class="tplBtn tplBtn_1 tplBtnOrg"><span>즉시지원</span></button>');
+	            dateCell.append(recruit.inputDate + "<br>");
+	            dateCell.append("~ " + recruit.endDate);
+	            row.append(dateCell);
+	            
+	            tbody.append(row);
+	        });
+	    }
+		
+		function getDayOfWeek(date) {
+		    const days = ['일', '월', '화', '수', '목', '금', '토'];
+		    return days[date.getDay()];
+		}
 	</script>
 </head>
 <body>
@@ -225,19 +463,19 @@
 									            <tr>
 									                <td><label for="name-search">검색어</label></td>
 									                <td>
-									                	<select class="search-select">
-									                		<option>기업명</option>
-									                		<option>공고명</option>
-									                		<option>공고내용</option>
+									                	<select class="search-select" id="category" name="category">
+									                		<option value="1">기업명</option>
+									                		<option value="2">공고명</option>
+									                		<option value="3">공고내용</option>
 									                	</select>
-									                    <input type="text" id="name-search" class="search-input" placeholder="이름을 입력하세요">
+									                    <input type="text" id="keyword" name="keyword" class="search-input" placeholder="이름을 입력하세요">
 									                </td>
 									            </tr>
 									            <tr>
 									                <td><label for="name-search">공고 등록일</label></td>
 									                <td>
 									                    <input type="text" id="start_date" class="frm_input search-input" size="10" readonly> 
-									                    <span style="font-size: 15px;"> - </span>
+									                    <span style="font-size: 20px;"> - </span>
               											<input type="text" id="end_date" class="frm_input search-input" size="10" readonly> 
 									                </td>
 									            </tr>
@@ -253,14 +491,13 @@
 									            <tr>
 									                <td><label for="job-search">포지션</label></td>
 													<td>
-														<div class="chip-group" style="margin-bottom:0px; padding-left: 0px;">
-															<div class="chip position-chip active"
-																data-value="BACKDEV">백엔드</div>
-															<div class="chip position-chip" data-value="FRTDEV">프론트엔드</div>
-															<div class="chip position-chip" data-value="EMBDEV">임베디드</div>
-															<div class="chip position-chip" data-value="QAENG">QA</div>
-															<div class="chip position-chip" data-value="INFENG">인프라</div>
-															<div class="chip position-chip" data-value="DEVOPENG">DevOps</div>
+														<div class="chip-group search-position-chips" style="margin-bottom:0px; padding-left: 0px;">
+															<div class="chip position-chip search-position" data-value="BACKDEV">백엔드</div>
+															<div class="chip position-chip search-position" data-value="FRTDEV">프론트엔드</div>
+															<div class="chip position-chip search-position" data-value="EMBDEV">임베디드</div>
+															<div class="chip position-chip search-position" data-value="QAENG">QA</div>
+															<div class="chip position-chip search-position" data-value="INFENG">인프라</div>
+															<div class="chip position-chip search-position" data-value="DEVOPENG">DevOps</div>
 															<!-- <button id="resetButton">초기화</button> -->
 														</div>
 													</td>
@@ -271,15 +508,15 @@
 										    <input type="button" value="검색" class="btn btn-secondary btn-sm" id="btn-search"/>
 											<input type="button" value="초기화" class="btn btn-outline-secondary btn-sm" id="btn-reset"/>
 										</div>
-										<ul class="tplTab clear" id="anchorGICnt_1" style="margin-top: 15px; margin-left: 3px;">
+										<ul class="tplTab clear" id="anchorGICnt_1" style="margin-top: 25px; margin-left: 13px; margin-bottom: 5px;">
 											<li data-tab-index="0">
 												<button type="button">
-													<span data-text="전체" style="color: #000;">전체 <em>(117,341건)</em></span>
+													<span data-text="전체" style="color: #000;">전체 <em id="total-recruits"></em></span>
 												</button>
 											</li>
 										</ul>
 										<div class="tplList tplJobList">
-											<table>
+											<table id="recruit-list">
 												<caption>
 													<span class="blind">전체 채용정보 목록</span>
 												</caption>
@@ -299,199 +536,10 @@
 													</tr>
 												</thead>
 												<tbody>
-													<tr class="devloopArea">
-														<th scope="row"><span class="tplChkRect tplChkRect_1"></span></th>
-														<td class="tplCo">
-															<!--app.svcFunc.clickCnt--> 
-															<a href="http://localhost/recruit-app/recruit/detail.jsp" class="link normalLog" data-clickctgrcode="B01">아르네코리아㈜</a>
-															<div class="typ"></div>
-														</td>
-														<td class="tplTit">
-															<div class="titBx">
-																<strong><a href="http://localhost/recruit-app/recruit/detail.jsp" class="link normalLog" title="[아르네코리아㈜] 개발팀 정규직 채용(광주)" data-clickctgrcode="B02">[아르네코리아㈜] 개발팀 정규직 채용(광주)</a></strong>
-																<p class="etc">
-																	<span class="cell">신입·경력</span> 
-																	<span class="cell">학력무관</span>
-																	<span class="cell">광주 광산구 외</span> 
-																	<span class="cell">정규직</span>
-																</p>
-															</div>
-															<div class="chip-group">
-																<div class="chip position-chip active" data-value="BACKDEV">백엔드</div>
-																<div class="chip position-chip" data-value="FRTDEV">프론트엔드</div>
-																<div class="chip position-chip" data-value="EMBDEV">임베디드</div>
-																<div class="chip position-chip" data-value="QAENG">QA</div>
-																<div class="chip position-chip" data-value="INFENG">인프라</div>
-																<div class="chip position-chip" data-value="DEVOPENG">DevOps</div>
-																<!-- <button id="resetButton">초기화</button> -->
-															</div>
-														</td>
-														<td class="odd">
-															<button type="button" class="tplBtn tplBtn_1 tplBtnOrg">
-																<span>즉시지원</span>
-															</button> 
-															<span class="time dotum"><span class="tahoma">05/22</span>(수) 등록</span> 
-															<span class="date dotum"><span class="tahoma">~06/07</span>(금)</span>
-														</td>
-													</tr>
-													<tr class="devloopArea">
-														<th scope="row"><span class="tplChkRect tplChkRect_1"></span></th>
-														<td class="tplCo">
-															<!--app.svcFunc.clickCnt--> 
-															<a href="http://localhost/recruit-app/recruit/detail.jsp" class="link normalLog" data-clickctgrcode="B01">아르네코리아㈜</a>
-															<div class="typ"></div>
-														</td>
-														<td class="tplTit">
-															<div class="titBx">
-																<strong><a href="http://localhost/recruit-app/recruit/detail.jsp" class="link normalLog" title="[아르네코리아㈜] 개발팀 정규직 채용(광주)" data-clickctgrcode="B02">[아르네코리아㈜] 개발팀 정규직 채용(광주)</a></strong>
-																<p class="etc">
-																	<span class="cell">신입·경력</span> 
-																	<span class="cell">학력무관</span>
-																	<span class="cell">광주 광산구 외</span> 
-																	<span class="cell">정규직</span>
-																</p>
-															</div>
-															<div class="chip-group">
-																<div class="chip position-chip active" data-value="BACKDEV">백엔드</div>
-																<div class="chip position-chip" data-value="FRTDEV">프론트엔드</div>
-																<div class="chip position-chip" data-value="EMBDEV">임베디드</div>
-																<div class="chip position-chip" data-value="QAENG">QA</div>
-																<div class="chip position-chip" data-value="INFENG">인프라</div>
-																<div class="chip position-chip" data-value="DEVOPENG">DevOps</div>
-																<!-- <button id="resetButton">초기화</button> -->
-															</div>
-														</td>
-														<td class="odd">
-															<button type="button" class="tplBtn tplBtn_1 tplBtnOrg">
-																<span>즉시지원</span>
-															</button> 
-															<span class="time dotum"><span class="tahoma">05/22</span>(수) 등록</span> 
-															<span class="date dotum"><span class="tahoma">~06/07</span>(금)</span>
-														</td>
-													</tr>
-													<tr class="devloopArea">
-														<th scope="row"><span class="tplChkRect tplChkRect_1"></span></th>
-														<td class="tplCo">
-															<!--app.svcFunc.clickCnt--> 
-															<a href="http://localhost/recruit-app/recruit/detail.jsp" class="link normalLog" data-clickctgrcode="B01">아르네코리아㈜</a>
-															<div class="typ"></div>
-														</td>
-														<td class="tplTit">
-															<div class="titBx">
-																<strong><a href="http://localhost/recruit-app/recruit/detail.jsp" class="link normalLog" title="[아르네코리아㈜] 개발팀 정규직 채용(광주)" data-clickctgrcode="B02">[아르네코리아㈜] 개발팀 정규직 채용(광주)</a></strong>
-																<p class="etc">
-																	<span class="cell">신입·경력</span> 
-																	<span class="cell">학력무관</span>
-																	<span class="cell">광주 광산구 외</span> 
-																	<span class="cell">정규직</span>
-																</p>
-															</div>
-															<div class="chip-group">
-																<div class="chip position-chip active" data-value="BACKDEV">백엔드</div>
-																<div class="chip position-chip active" data-value="FRTDEV">프론트엔드</div>
-																<div class="chip position-chip" data-value="EMBDEV">임베디드</div>
-																<div class="chip position-chip" data-value="QAENG">QA</div>
-																<div class="chip position-chip" data-value="INFENG">인프라</div>
-																<div class="chip position-chip" data-value="DEVOPENG">DevOps</div>
-																<!-- <button id="resetButton">초기화</button> -->
-															</div>
-														</td>
-														<td class="odd">
-															<button type="button" class="tplBtn tplBtn_1 tplBtnOrg">
-																<span>즉시지원</span>
-															</button> 
-															<span class="time dotum"><span class="tahoma">05/22</span>(수) 등록</span> 
-															<span class="date dotum"><span class="tahoma">~06/07</span>(금)</span>
-														</td>
-													</tr>
-													<tr class="devloopArea">
-														<th scope="row"><span class="tplChkRect tplChkRect_1"></span></th>
-														<td class="tplCo">
-															<!--app.svcFunc.clickCnt--> 
-															<a href="http://localhost/recruit-app/recruit/detail.jsp" class="link normalLog" data-clickctgrcode="B01">아르네코리아㈜</a>
-															<div class="typ"></div>
-														</td>
-														<td class="tplTit">
-															<div class="titBx">
-																<strong><a href="http://localhost/recruit-app/recruit/detail.jsp" class="link normalLog" title="[아르네코리아㈜] 개발팀 정규직 채용(광주)" data-clickctgrcode="B02">[아르네코리아㈜] 개발팀 정규직 채용(광주)</a></strong>
-																<p class="etc">
-																	<span class="cell">신입·경력</span> 
-																	<span class="cell">학력무관</span>
-																	<span class="cell">광주 광산구 외</span> 
-																	<span class="cell">정규직</span>
-																</p>
-															</div>
-															<div class="chip-group">
-																<div class="chip position-chip active" data-value="BACKDEV">백엔드</div>
-																<div class="chip position-chip" data-value="FRTDEV">프론트엔드</div>
-																<div class="chip position-chip" data-value="EMBDEV">임베디드</div>
-																<div class="chip position-chip" data-value="QAENG">QA</div>
-																<div class="chip position-chip" data-value="INFENG">인프라</div>
-																<div class="chip position-chip" data-value="DEVOPENG">DevOps</div>
-																<!-- <button id="resetButton">초기화</button> -->
-															</div>
-														</td>
-														<td class="odd">
-															<button type="button" class="tplBtn tplBtn_1 tplBtnOrg">
-																<span>즉시지원</span>
-															</button> 
-															<span class="time dotum"><span class="tahoma">05/22</span>(수) 등록</span> 
-															<span class="date dotum"><span class="tahoma">~06/07</span>(금)</span>
-														</td>
-													</tr>
-													<tr class="devloopArea">
-														<th scope="row"><span class="tplChkRect tplChkRect_1"></span></th>
-														<td class="tplCo">
-															<!--app.svcFunc.clickCnt--> 
-															<a href="http://localhost/recruit-app/recruit/detail.jsp" class="link normalLog" data-clickctgrcode="B01">아르네코리아㈜</a>
-															<div class="typ"></div>
-														</td>
-														<td class="tplTit">
-															<div class="titBx">
-																<strong><a href="http://localhost/recruit-app/recruit/detail.jsp" class="link normalLog" title="[아르네코리아㈜] 개발팀 정규직 채용(광주)" data-clickctgrcode="B02">[아르네코리아㈜] 개발팀 정규직 채용(광주)</a></strong>
-																<p class="etc">
-																	<span class="cell">신입·경력</span> 
-																	<span class="cell">학력무관</span>
-																	<span class="cell">광주 광산구 외</span> 
-																	<span class="cell">정규직</span>
-																</p>
-															</div>
-															<div class="chip-group">
-																<div class="chip position-chip active" data-value="BACKDEV">백엔드</div>
-																<div class="chip position-chip" data-value="FRTDEV">프론트엔드</div>
-																<div class="chip position-chip" data-value="EMBDEV">임베디드</div>
-																<div class="chip position-chip" data-value="QAENG">QA</div>
-																<div class="chip position-chip" data-value="INFENG">인프라</div>
-																<div class="chip position-chip" data-value="DEVOPENG">DevOps</div>
-																<!-- <button id="resetButton">초기화</button> -->
-															</div>
-														</td>
-														<td class="odd">
-															<button type="button" class="tplBtn tplBtn_1 tplBtnOrg">
-																<span>즉시지원</span>
-															</button> 
-															<span class="time dotum"><span class="tahoma">05/22</span>(수) 등록</span> 
-															<span class="date dotum"><span class="tahoma">~06/07</span>(금)</span>
-														</td>
-													</tr>
 												</tbody>
 											</table>
 										</div>
-										<div id="dvGIPaging">
-											<div class="tplPagination newVer">
-												<ul>
-													<li><span class="now" data-page="1">1</span></li>
-													<li><a href="http://localhost/recruit-app/recruit/recruits.jsp" data-page="2">2</a></li>
-													<li><a href="http://localhost/recruit-app/recruit/recruits.jsp" data-page="3">3</a></li>
-													<li><a href="http://localhost/recruit-app/recruit/recruits.jsp" data-page="4">4</a></li>
-													<li><a href="http://localhost/recruit-app/recruit/recruits.jsp" data-page="5">5</a></li>
-													<li>
-												</ul>
-												<p>
-													<a href="http://localhost/recruit-app/recruit/recruits.jsp" class="tplBtn btnPgnNext" data-page="11">다음<i class="ico"></i></a>
-												</p>
-											</div>
-										</div>
+										<div id="observer-target"></div>
 									</div>
 								</div>
 							</div>

@@ -1,5 +1,7 @@
 package kr.co.sist.user.controller.recruit;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import kr.co.sist.admin.domain.recruit.RecruitDomain;
+import kr.co.sist.user.domain.recruit.RecruitListDomain;
 import kr.co.sist.user.service.recruit.RecruitUserService;
 import kr.co.sist.user.vo.recruit.SearchVO;
 
@@ -35,8 +38,26 @@ public class RecruitUserController {
 
     @GetMapping("/api/recruits.do")
     @ResponseBody
-    public List<RecruitDomain> searchRecruits(@ModelAttribute SearchVO searchVO) {
+    public List<RecruitListDomain> searchRecruits(@ModelAttribute SearchVO searchVO) {
+        if (searchVO.getPositions() != null && !searchVO.getPositions().isEmpty()) {
+            searchVO.setPositionList(Arrays.asList(searchVO.getPositions().split(",")));
+        } else {
+            searchVO.setPositionList(new ArrayList<>());
+        }
+
         return recruitUserService.searchRecruits(searchVO);
+    }
+
+    @GetMapping("/api/recruits/counts.do")
+    @ResponseBody
+    public int selectRecruitCount(SearchVO searchVO) {
+        if (searchVO.getPositions() != null && !searchVO.getPositions().isEmpty()) {
+            searchVO.setPositionList(Arrays.asList(searchVO.getPositions().split(",")));
+        } else {
+            searchVO.setPositionList(new ArrayList<>());
+        }
+
+        return recruitUserService.selectRecruitCount(searchVO);
     }
 
     @GetMapping("/api/recruit.do")
