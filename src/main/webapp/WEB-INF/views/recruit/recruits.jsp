@@ -112,6 +112,12 @@
 			border: solid 1px #c8c8c8;
 			margin-left: 5px;
 		}
+		
+		.tplBtn_1 {
+			font-weight: 500;
+			font-size: 15px;
+			margin-top: 10px;
+		}
 		<!-- golgolz end -->
 	</style>
 	<script text="text/javascript">
@@ -368,9 +374,8 @@
 	            
 	            var companyCell = $("<td class='tplCo'></td>");
 	            companyCell.append($('<a>').attr({
-	                'href': 'http://localhost/recruit-app/recruit/detail.jsp?id=' + recruit.id,
-	                'class': 'link normalLog',
-	                'data-clickctgrcode': 'B01'
+	                'href': 'http://localhost/recruit-app/company/detail.do?id=' + recruit.id,
+	                'class': 'link normalLog'
 	            }).text(recruit.company));
 	            companyCell.append('<div class="typ"></div>');
 	            row.append(companyCell);
@@ -378,13 +383,13 @@
 	            var titleCell = $("<td class='tplTit'></td>");
 	            var titleBox = $("<div class='titBx'></div>");
 	            titleBox.append($('<strong>').append($('<a>').attr({
-	                'href': 'http://localhost/recruit-app/recruit/detail.jsp?id=' + recruit.id,
+	                'href': 'http://localhost/recruit-app/recruit/detail.do?id=' + recruit.id,
 	                'class': 'link normalLog',
 	                'title': recruit.title,
 	                'data-clickctgrcode': 'B02'
 	            }).text(recruit.title)));
 	            
-	            var etcInfo = $("<p class='etc'></p>");
+	            var etcInfo = $("<p class='etc' style='font-size: 14px;'></p>");
 	            etcInfo.append($('<span class="cell">').text(recruit.career));
 	            etcInfo.append($('<span class="cell">').text(recruit.education + " 졸업 이상"));
 	            etcInfo.append($('<span class="cell">').text(recruit.addr));
@@ -410,10 +415,10 @@
 	            titleCell.append(chipGroup);
 	            row.append(titleCell);
 	            
-	            var dateCell = $("<td class='odd'></td>");
+	            var dateCell = $("<td class='odd' style='font-size: 14px;'></td>");
 	            dateCell.append('<button type="button" class="tplBtn tplBtn_1 tplBtnOrg"><span>즉시지원</span></button>');
-	            var inputDate = new Date(recruit.inputDate);
-	            var endDate = new Date(recruit.endDate);
+	            dateCell.append(recruit.inputDate + "<br>");
+	            dateCell.append("~ " + recruit.endDate);
 	            row.append(dateCell);
 	            
 	            tbody.append(row);
