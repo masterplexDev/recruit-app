@@ -87,4 +87,31 @@ ORDER BY
     ORDER BY
         SKILL_COUNT DESC
   </select>
+  
+   <!-- 리뷰 수 결과 매핑 -->
+  <resultMap id="ReviewCountMap" type="kr.co.sist.admin.vo.dashboard.ReviewCountVO">
+    <result property="month" column="MONTH"/>
+    <result property="reviewCount" column="REVIEW_CNT"/>
+  </resultMap>
+  
+    <!-- 최근 6개월 등록 리뷰 수 -->
+  <select id="getReviewCountsForLastSixMonths" resultMap="ReviewCountMap">
+    WITH DateRange AS (
+        SELECT ADD_MONTHS(TRUNC(SYSDATE, 'MM'), -LEVEL + 1) AS MONTH_START
+        FROM DUAL
+        CONNECT BY LEVEL &lt;= 6
+    )
+    SELECT
+        TO_CHAR(DR.MONTH_START, 'YYYY-MM') AS MONTH,
+        NVL(COUNT(R.REVIEW_NUM), 0) AS REVIEW_CNT
+    FROM
+        DateRange DR
+    LEFT JOIN
+        REVIEW R ON TRUNC(R.INPUT_DATE, 'MM') = DR.MONTH_START
+    GROUP BY
+        TO_CHAR(DR.MONTH_START, 'YYYY-MM')
+    ORDER BY
+        TO_CHAR(DR.MONTH_START, 'YYYY-MM')
+  </select>
+  
 </mapper>

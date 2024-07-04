@@ -273,7 +273,8 @@
                         labels: skillLabels,
                         datasets: [{
                             data: skillData,
-                            backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#ff851b']
+                            backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#ff851b',
+                                '#3c8dbc', '#d2d6de', '#7cb342', '#ff7043', '#d81b60']
                         }]
                     },
                     options: {
@@ -287,14 +288,20 @@
                 console.error('Skill JSON 파싱 오류:', e);
             }
             
+            // 최근 등록 리뷰 수 차트 데이터 처리
+            var reviewCountsJson = '${reviewCountsJson}';
+            var parsedReviewCounts = JSON.parse(reviewCountsJson);
+            var reviewLabels = parsedReviewCounts.map(function(item) { return item.month; });
+            var reviewData = parsedReviewCounts.map(function(item) { return item.reviewCount; });
+
             var ctxReviewCount = document.getElementById('reviewCount-chart').getContext('2d');
             var reviewCountChart = new Chart(ctxReviewCount, {
                 type: 'bar',
                 data: {
-                    labels: ['1월', '2월', '3월', '4월', '5월', '6월'],
+                    labels: reviewLabels,
                     datasets: [{
                         label: '리뷰 수',
-                        data: [12, 19, 3, 5, 2, 3],
+                        data: reviewData,
                         backgroundColor: 'rgba(255,215,0,0.5)',
                         borderColor: 'rgba(255,215,0,1)',
                         borderWidth: 1
@@ -303,12 +310,17 @@
                 options: {
                     responsive: true,
                     scales: {
-                        y: {
-                            beginAtZero: true
-                        }
+                    	 yAxes: [{
+                             ticks: {
+                                 beginAtZero: true,
+                                 maxTicksLimit: 10 // y축 눈금을 10개로 제한
+                             }
+                         }]
+                
                     }
                 }
             });
+            
         });
     </script>
     </div>
