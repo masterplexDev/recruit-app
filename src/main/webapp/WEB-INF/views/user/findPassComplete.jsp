@@ -3,6 +3,12 @@
     info=""%>
 <!DOCTYPE html>
 <html>
+<%
+	String tempPassword = (String)request.getAttribute("tempPassword");
+	if(tempPassword == null || tempPassword.isEmpty()){
+	    response.sendRedirect("../user/loginPage.do");
+	} 
+%>
 <head>
 	<jsp:include page="../../../assets/layout/user/lib.jsp" />  
 	<!-- golgolz start -->
@@ -51,7 +57,7 @@
 								<p class="css-14qpgc6" style="font-size: 16px; font-weight: normal;">${ tempPassword }</p>										
 							</div>
 							<div data-testid="Typography" color="#000000" class="css-ng7qrx" style="text-align: center;">
-								<a href="../user/mypage/modifyPassPage.do"><strong>비밀번호 변경하러 가기</strong></a>
+								<a href="../user/loginPage.do"><strong>로그인 하러가기</strong></a>
 							</div>
 						</div>
 					</div>

@@ -3,6 +3,12 @@
     info=""%>
 <!DOCTYPE html>
 <html>
+<%
+	String findUserId = (String)request.getAttribute("findUserId");
+	if(findUserId == null || findUserId.isEmpty()){
+	    response.sendRedirect("../user/loginPage.do");
+	} 
+%>
 <head>
 	<jsp:include page="../../../assets/layout/user/lib.jsp" />
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

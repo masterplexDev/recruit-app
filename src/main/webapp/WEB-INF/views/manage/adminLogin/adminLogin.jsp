@@ -116,14 +116,12 @@
     <link href="https://getbootstrap.com/docs/5.3/examples/sign-in/sign-in.css" rel="stylesheet">
     <script type="text/javascript">
 	    $(function(){
-	    	loginFrm = $('#loginFrm');
+	    	adminLoginFrm = $('#adminLoginFrm');
 	    	
 	    	$('#loginBtn').click(function(){
-	    		loginFrm.attr("action","../dashboard.do").submit();
+	    		//adminLoginFrm.attr("action","../dashboard.do").submit();
 	    		
-	    		//location.href="../dashboard.do";
-	    		
-	    		// loginFrm.submit();
+	    		adminLoginFrm.submit();
 	    		
 	    	});//click
 	    });//ready
@@ -183,7 +181,7 @@
 
     
 <main class="form-signin w-100 m-auto">
-  <form id="loginFrm" method="post">
+  <form id="adminLoginFrm" action="/manage/adminLogin/adminLogin.do" method="post">
     <img class="mb-4" src="http://localhost/recruit-app/assets/images/admin/adminLoginIcoNight.png" alt="" width="80" height="80">
     <h1 class="h3 mb-3 fw-normal"><strong>Admin Login</strong></h1>
 

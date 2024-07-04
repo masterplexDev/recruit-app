@@ -102,7 +102,7 @@
                 </section>
                 <hr class="Divider_Divider__root__f2LD0 Divider_Divider__colorAlternative__nElS3"/>
                 <section class="Grid_Grid__item__FUkSS Grid_Grid__align-items_flex-start__PA0JE ProfileView_ProfileView__borderSection__VkDe7" style="margin: 40px;">
-                  <h1 style="font-size: 25px; text-align: center"><strong>${ name }님, 환영해요.</strong></h1>
+                  <h1 style="font-size: 25px; text-align: center"><strong>${ userInfo.name }님, 환영해요.</strong></h1>
                 </section>
                 <section
                   class="Grid_Grid__item__FUkSS Grid_Grid__align-items_flex-start__PA0JE"

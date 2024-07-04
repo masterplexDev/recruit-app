@@ -11,7 +11,7 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
-public class LoginVO {
+public class AdminLoginVO {
     private String adminId;
     private String password;
 

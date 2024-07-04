@@ -75,9 +75,14 @@ public class MypageController {
 
     @GetMapping("/user/mypage/modifyUserProcess.do")
     public String modifyUserProcess() {
-
         return "user/mypage/modifyUserProcess";
     }
+
+    @GetMapping("/user/mypage/modifyPassProcess.do")
+    public String modifyPassProcess() {
+        return "user/mypage/modifyPassProcess";
+    }
+
 
     @PostMapping("/user/mypage/certification.do")
     public String certificationQuest(@SessionAttribute("userId") String userId, QuestionVO qVO,

@@ -28,7 +28,7 @@
                 data-attribute-id="gnb"
                 data-gnb-kind="event"
               >
-                <a href="http://localhost/recruit-app/recruit/recruits.jsp"
+                <a href="http://localhost/recruit-app/recruits.do"
                   ><span>채용공고</span></a
                 >
               </li>
@@ -44,7 +44,7 @@
                 data-attribute-id="gnb"
                 data-gnb-kind="community"
               >
-                <a href="http://localhost/recruit-app/resume/resumes.jsp"
+                <a href="http://localhost/recruit-app/resumes.do"
                   ><span>이력서관리</span></a
                 >
               </li>

@@ -19,14 +19,14 @@ public class QnaAdminController {
         this.qnaAdminService = qnaAdminService;
     }
 
-    @GetMapping("/manage/new_qnas.do")
+    @GetMapping("/manage/qna/new_qnas.do")
     public String searchNewQnas(Model model) {
         List<QnaDomain> newQnas = qnaAdminService.searchNewQnas();
         model.addAttribute("newQnas", newQnas);
-        return "new_qnas";
+        return "manage/qna/new_qnas";
     } // 새 문의사항 리스트 조회
 
-    @GetMapping("/manage/new_detail.do")
+    @GetMapping("/manage/qna/new_detail.do")
     public String searchOneNewQna(QnaVO qVO, Model model) {
         int qna_num = qVO.getQna_num();
         // System.out.println(qVO.toString());
@@ -34,17 +34,17 @@ public class QnaAdminController {
 
         System.out.println("----------" + qVO);
         model.addAttribute("newDetail", newDetail);
-        return "new_detail";
+        return "manage/qna/new_detail";
     } // 새 문의사항 상세조회
 
-    @GetMapping("/manage/qnas.do")
+    @GetMapping("/manage/qna/qnas.do")
     public String searchOldQnas(Model model) {
         List<QnaDomain> oldQnas = qnaAdminService.searchOldQnas();
         model.addAttribute("oldQnas", oldQnas);
-        return "qnas";
+        return "manage/qna/qnas";
     } // 답변 완료된 문의사항 리스트 조회
 
-    @GetMapping("/manage/old_detail.do")
+    @GetMapping("/manage/qna/old_detail.do")
     public String searchOneOldQna(QnaVO qVO, Model model) {
         int qna_num = qVO.getQna_num();
         // System.out.println(qVO.toString());
@@ -52,7 +52,7 @@ public class QnaAdminController {
         model.addAttribute("oldDetail", oldDetail);
 
         System.out.println("------" + oldDetail);
-        return "old_detail";
+        return "manage/qna/old_detail";
     } // 답변 완료된 문의사항 상세조회
 
     // @PostMapping("/manage/qnaAnswer.do")
@@ -64,7 +64,7 @@ public class QnaAdminController {
     // return "qnaAnswer";
     // }
 
-    @PostMapping("/manage/qnas.do")
+    @PostMapping("/manage/qna/qnas.do")
     public String addQnaAnswer(QnaVO qVO, Model model) {
         int result = qnaAdminService.addQnaAnswer(qVO);
         if (result == 1) {
@@ -77,7 +77,7 @@ public class QnaAdminController {
             }
         }
         model.addAttribute("qnaAnswer", qVO);
-        return "qnas";
+        return "manage/qna/qnas";
     }
 
 }
