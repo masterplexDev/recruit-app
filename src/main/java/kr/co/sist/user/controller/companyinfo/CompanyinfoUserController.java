@@ -61,9 +61,13 @@ public class CompanyinfoUserController {
     @GetMapping("/companyinfo/companyinfoDetail.do")
     public String searchCompanyinfoDetail(String companyCode, Model model) {
         List<SearchDomain> list=companyinfoUserService.searchCompanyinfoDetail(companyCode);
+        List<SearchDomain> list2=companyinfoUserService.searchHistory(companyCode);
+        List<SearchDomain> list3=companyinfoUserService.searchWelfare(companyCode);
         model.addAttribute("companyDetail",list);
-        return "companyinfo/companyinfo_list";
-//        return "companyinfo/user_company_detail";
+        model.addAttribute("history",list2);
+        model.addAttribute("welfare",list3);
+//        return "companyinfo/companyinfo_list";
+        return "companyinfo/user_company_detail";
     }
 
 }
