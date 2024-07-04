@@ -15,16 +15,6 @@
 	body.modal-open {
   		padding-right: 0 !important;
 	}
-		/* .list0 {
-		cursor: pointer;
-		transition: background-color 0.3s ease;
-	} */
-	
-	/* .list0:hover {
-		background-color: #ededed;
-	} */
-	
-	/* 마지막 열(바로가기 버튼)에는 호버 효과를 제외 */
 	.list0:hover td:last-child {
 		background-color: transparent;
 	}
@@ -41,7 +31,6 @@
 		var showPages = 3;
 		var totalPages = 0;
 		var currentPage = 1;
-		const totalCnt = 0;
 		
 		$("#admin_menu").addClass("bg-gradient-primary");
 		
@@ -141,26 +130,8 @@
 	  			     if(response.resultMsg == 'success'){
 		  			 // 성공 시
 		  			 alert("새로운 관리자가 등록 되었습니다.");
-		  			 var newAuthority = JSON.parse(response.newAuthority);
-		  			 console.log(newAuthority);
-		  			 console.log(newAuthority.dashboard);
+		  			 updateAdminList(false);
 		  			 
-		  			 var newAdminRow = `
-		  			 	<tr>
-		  			 		<td>\${response.newPosition}</td>
-		  			 		<td>\${response.newAdminId}</td>
-		  			 		<td>\${newAuthority.dashboard}</td>
-		  			 		<td>\${newAuthority.user}</td>
-		  			 		<td>\${newAuthority.company}</td>
-		  			 		<td>\${newAuthority.recruit}</td>
-		  			 		<td>\${newAuthority.review}</td>
-		  			 		<td>\${newAuthority.qna}</td>
-		  			 		<td>\${newAuthority.notice}</td>
-		  			 		<td><input type="button" value="권한설정" id="" class="btn btn-outline-secondary btn-sm adminSettingBtn" style="font-weight: bold;margin:0px auto;" /></td>
-		  			    </tr>
-		  			 `;
-		  			 $("#sodr_list tbody").append(newAdminRow);
-		    		 
 		  			 resetForm();
 	  			    }else {
 	  			      alert("문제가 발생 했습니다. 잠시 후 다시 시도해주세요.");
@@ -260,8 +231,8 @@
 	    		  $("#settingModal input[type='checkbox']").prop("checked", false);
 	    		});
 	    	
-	    	updateAdminList(false);
-	    	countAdminList(false);
+	    	//초기로딩
+	    	updateAdminList(true);
 	
 			function updateAdminList(isFirst) {
 				var searchVO = {};
@@ -274,7 +245,8 @@
 			    } else {
 			        searchVO = getSearchVO();
 			    }
-		
+				
+			    //console.log(startNum+","+itemsPerPage);
 			    $.ajax({
 		            url: "${pageContext.request.contextPath}/api/manage/admins.do",
 		            method: 'GET',
@@ -336,11 +308,11 @@
 	                    url: "${pageContext.request.contextPath}/api/manage/admin/counts.do",
 	                    method: 'GET',
 	                    data: searchVO,
-	                    dataType: 'TEXT',
+	                    dataType: 'JSON',
 	                    async: false,
 	                    success: function(data) {
 	                    	totalPages = data;
-	                    	$(".fc_all").text(data); 
+	                    	$(".fc_all").text(JSON.stringify(data)); 
 	                    },
 	                    error: function(xhr, status, error) {
 	                        console.error("Error fetching data: " + error);
@@ -380,7 +352,6 @@
 	                    }
 	                }
 	        	
-	            updateAdminList(true);
 	        	//resetForm();
 	    	});//function
 	            
@@ -419,7 +390,7 @@
 <body>
 	<jsp:include page="../../assets/layout/admin/header.jsp" />
 	<main
-		class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ps ps--active-y">
+		class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ps--active-y ps--active-x">
 		<nav
 			class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl"
 			id="navbarBlur" data-scroll="true">
