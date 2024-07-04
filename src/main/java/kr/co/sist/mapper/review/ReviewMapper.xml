@@ -4,6 +4,19 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.sist.user.mapper.review.ReviewMapper">
 
+  <!-- 회사 코드로 회사 정보 조회 -->
+  <select id="getCompanyDetailsByCode" parameterType="string" resultType="kr.co.sist.user.vo.review.CompanyInfoVO">
+    SELECT
+        COMPANY_CODE AS companyCode,
+        COMPANY_NAME AS companyName,
+        COMPANY_IMG AS companyImg
+    FROM
+        COMPANYINFO
+    WHERE
+        COMPANY_CODE = #{companyCode}
+  </select>
+	
+
   <select id="selectReviewScreenOutput" parameterType="String" resultType="kr.co.sist.user.vo.review.ReviewVO">
     -- 리뷰 화면 출력
     WITH SurveyStats AS (

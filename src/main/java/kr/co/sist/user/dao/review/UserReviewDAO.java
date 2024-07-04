@@ -146,6 +146,14 @@ public class UserReviewDAO {
         myBatis.closeHandler(ss);
         return reviewNum;
     }
+    
+    // 회사 코드로 회사 정보 가져오기
+    public CompanyInfoVO getCompanyDetailsByCode(String companyCode) {
+        SqlSession ss = myBatis.getMyBatisHandler(true);
+        CompanyInfoVO companyInfo = ss.selectOne("kr.co.sist.user.mapper.review.ReviewMapper.getCompanyDetailsByCode", companyCode);
+        myBatis.closeHandler(ss);
+        return companyInfo;
+    }
    
 
 }
