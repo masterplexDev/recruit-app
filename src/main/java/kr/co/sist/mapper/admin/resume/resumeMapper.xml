@@ -89,6 +89,9 @@
 			    <if test="keyword != null and keyword != ''">
 			        AND self_introduction LIKE '%' || #{keyword} || '%'
 			    </if>
+		        <if test="recruitId != null">
+				    AND apply.recruit_num = #{recruitId}
+				</if>
 	        </where>
 	    )
 	    <where>

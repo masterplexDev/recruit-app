@@ -4,6 +4,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
+<jsp:include page="../../../assets/layout/admin/lib.jsp" />
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
@@ -24,10 +25,61 @@
   	    	showButtonPanel: true,
   	    	dateFormat: "yy-mm-dd"
   		});
+    	
+    	var searchVO = {};
+    	searchVO.recruitId = ${recruitNum};
+    	$.ajax({
+    		url: "${pageContext.request.contextPath}/api/manage/resumes.do",
+            method: 'GET',
+            data: searchVO,
+            dataType: 'JSON',
+            success: function(data) {
+            	console.log(data);
+            	populateTable(data);
+                if(!(data && data.length > 0)){
+                    $("#sodr_list tbody").html('<tr><td colspan="10" style="font-size: 16px; font-weight: bold;">검색 결과가 없습니다.</td></tr>');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error fetching data: " + error);
+                $("#sodr_list tbody").html('<tr><td colspan="10" style="font-size: 16px; font-weight: bold;">데이터를 불러오는 데 실패했습니다.</td></tr>');
+            }
+    	});
 	});
+	
+	// 테이블에 데이터를 채우는 함수
+	function populateTable(data) {
+	    var tableBody = document.querySelector("#sodr_list tbody");
+	    
+	    // 기존 데이터 삭제
+	    tableBody.innerHTML = "";
+	    
+	    // 새 데이터 추가
+	    for (var i = 0; i < data.length; i++) {
+	        var item = data[i];
+	        var row = document.createElement("tr");
+	        row.className = "list0";
+	        
+	        row.innerHTML = 
+	            "<td>" + (i + 1) + "</td>" +
+	            "<td>" + item.userName + "</td>" +
+	            "<td>" + item.applyDate + "</td>" +
+	            "<td>" + item.resumeTitle + "</td>" +
+	            "<td>" + item.career + "</td>" +
+	            "<td>" + item.addr + "</td>" +
+	            "<td>" + item.docPass + "</td>" +
+	            "<td>" + item.finalPass + "</td>" +
+	            "<td>" +
+	                "<input type='button' value='바로가기' class='btn btn-outline-secondary btn-sm' " +
+	                "style='font-weight: bold; margin: 0px auto;' " +
+	                "onclick='location.href=\"http://localhost/recruit-app/manage/recruit/resume/detail.jsp?id=" + item.resumeId + "\"' />" +
+	            "</td>";
+	        
+	        tableBody.appendChild(row);
+	    }
+	}
 </script>
 <!-- golgolz start -->
-<jsp:include page="../../../assets/layout/admin/lib.jsp" />
 <link href="http://localhost//recruit-app/assets/css/pagenation.css" rel="stylesheet" />
 <link href="http://localhost//recruit-app/assets/css/manage/order/admin.css" rel="stylesheet" />
 <link href="http://localhost//recruit-app/assets/css/manage/order/reset.css" rel="stylesheet" />
@@ -84,17 +136,17 @@
 									<td>
 										<input type="hidden" name="page" value="1" />
 										<select name="category">
-												<option value="0"${param.category eq '0' ? " selected" : "" }>이름</option>
-												<option value="1"${param.category eq '1' ? " selected" : "" }>제목</option>
-												<option value="2"${param.category eq '2' ? " selected" : "" }>내용</option>
+												<option value="0">이름</option>
+												<option value="1">제목</option>
+												<option value="2">내용</option>
 										</select> 
-										<input type="text" name="keyword" value="${ param.keyword }" class="frm_input" size="30">
+										<input type="text" name="keyword" value="" class="frm_input" size="30">
 									</td>
 								</tr>
 								<tr>
 									<th scope="row">지원일</th>
               						<td class="box text">
-              							<input type="hidden" id="date" name="date" value="${param.date}" />
+              							<input type="hidden" id="date" name="date" value="" />
               							<input type="text" id="start_date" class="frm_input" size="10"> - 
               							<input type="text" id="end_date" class="frm_input" size="10"> 
               						</td>
@@ -103,13 +155,13 @@
 									<th scope="row">경력</th>
 									<td>
 										<label class="od_status">
-											<input type="radio" name="delivery" value="0"${param.delivery eq '0' ? " checked" : "" }> 전체
+											<input type="radio" name="delivery" value="0"> 전체
 										</label> 
 										<label class="od_status">
-											<input type="radio" name="delivery" value="1"${param.delivery eq '1' ? " checked" : "" }> 신입
+											<input type="radio" name="delivery" value="1"> 신입
 										</label> 
 										<label class="od_status">
-											<input type="radio" name="delivery" value="2"${param.delivery eq '2' ? " checked" : "" }> 경력
+											<input type="radio" name="delivery" value="2"> 경력
 										</label> 
 									</td>
 								</tr>
@@ -117,25 +169,22 @@
 									<th scope="row">최종 학력</th>
 									<td>
 										<label class="od_status">
-											<input type="radio" name="purchase" value="0"${param.purchase eq '0' ? " checked" : "" }> 전체
+											<input type="radio" name="purchase" value="0"> 전체
 										</label>
 										<label class="od_status">
-											<input type="radio" name="purchase" value="1"${param.purchase eq '1' ? " checked" : "" }> 고등학교
+											<input type="radio" name="purchase" value="1"> 고등학교
 										</label> 
 										<label class="od_status">
-											<input type="radio" name="purchase" value="1"${param.purchase eq '1' ? " checked" : "" }> 전문제(2년제)
+											<input type="radio" name="purchase" value="2"> 대학교(2,3년제)
 										</label> 
 										<label class="od_status">
-											<input type="radio" name="purchase" value="1"${param.purchase eq '1' ? " checked" : "" }> 전문제(3년제)
+											<input type="radio" name="purchase" value="3"> 대학교(4년제)
 										</label> 
 										<label class="od_status">
-											<input type="radio" name="purchase" value="1"${param.purchase eq '1' ? " checked" : "" }> 대학교
+											<input type="radio" name="purchase" value="4"> 대학원(석사)
 										</label> 
 										<label class="od_status">
-											<input type="radio" name="purchase" value="1"${param.purchase eq '1' ? " checked" : "" }> 대학원(석사)
-										</label> 
-										<label class="od_status">
-											<input type="radio" name="purchase" value="1"${param.purchase eq '1' ? " checked" : "" }> 대학원(박사)
+											<input type="radio" name="purchase" value="5"> 대학원(박사)
 										</label> 
 									</td>
 								</tr>
@@ -143,9 +192,9 @@
 									<th scope="row">거주지</th>
 									<td>
 										<select name="category">
-												<option value="0"${param.category eq '0' ? " selected" : "" }>서울</option>
-												<option value="1"${param.category eq '1' ? " selected" : "" }>강원</option>
-												<option value="2"${param.category eq '2' ? " selected" : "" }>충북</option>
+												<option value="0">서울</option>
+												<option value="1">강원</option>
+												<option value="2">충북</option>
 										</select> 
 									</td>
 								</tr>
@@ -191,64 +240,10 @@
 						</tr>
 						</thead>
 						<tbody>
-							<tr class="list0">
-								<td>1</td>
-								<td>이명화</td>
-								<td>2024-05-22</td>
-								<td>떠오르는 백엔드 신입 이명화입니다.</td>
-								<td>신입</td>
-								<td>경기도</td>
-								<td>합격</td>
-								<td>합격</td>
-								<td>
-									<input type="button" value="바로가기" class="btn btn-outline-secondary btn-sm" style="font-weight: bold; margin: 0px auto;" 
-									onclick="location.href='http://localhost/recruit-app/manage/recruit/resume/detail.jsp'" />
-								</td>
-							</tr>
-							<tr class="list0">
-								<td>2</td>
-								<td>이명화</td>
-								<td>2024-05-22</td>
-								<td>재능있는 백엔드 신입 장원영입니다.</td>
-								<td>경력</td>
-								<td>경기도</td>
-								<td>합격</td>
-								<td>합격</td>
-								<td>
-									<input type="button" value="바로가기" class="btn btn-outline-secondary btn-sm" style="font-weight: bold; margin: 0px auto;" 
-									onclick="location.href='http://localhost/recruit-app/manage/recruit/resume/detail.jsp'" />
-								</td>
-							</tr>
-							<tr class="list0">
-								<td>3</td>
-								<td>이명화</td>
-								<td>2024-05-22</td>
-								<td>센스있는 백엔드 신입 난원영입니다.</td>
-								<td>신입</td>
-								<td>경기도</td>
-								<td>합격</td>
-								<td>합격</td>
-								<td>
-									<input type="button" value="바로가기" class="btn btn-outline-secondary btn-sm" style="font-weight: bold; margin: 0px auto;" 
-									onclick="location.href='http://localhost/recruit-app/manage/recruit/resume/detail.jsp'" />
-								</td>
-							</tr>
 						</tbody>
 					</table>
 				</div>
 				<div class="alignCenter">
-          			<!-- <table cellpadding="0" cellspacing="0" border="0" width="100%">
-            			<tbody>
-              				<tr>
-                				<td align="center">	
-                				</td>
-                				<td align="right">
-									<input type="button" value="등록하기" class="btn btn-outline-success btn-sm float-right" style="font-weight: bold; margin: 10px auto;" 
-									onclick="location.href='http://localhost/recruit-app/manage/recruit/resume/detail.jsp'" />
-                				</td>
-              				</tr>
-            			</tbody>
-          			</table> -->
 					<div id="pageNation">
 						<ul class="pagination" style="justify-content: center;">
 							<li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
