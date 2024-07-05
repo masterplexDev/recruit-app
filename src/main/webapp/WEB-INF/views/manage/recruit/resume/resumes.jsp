@@ -8,15 +8,20 @@
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
+<script src="http://localhost/recruit-app/assets/js/admin/datepicker-ko.js"></script>
 <script type="text/javascript">
 	$(function(){
+		$.datepicker.setDefaults($.datepicker.regional['ko']);
     	$("#recruit_menu").addClass("bg-gradient-primary");
     	
     	$("#start_date").datepicker({
     		showOtherMonths: true,
     	    selectOtherMonths: true,
     	    showButtonPanel: true,
-    	    dateFormat: "yy-mm-dd"
+    	    dateFormat: "yy-mm-dd",
+            onSelect: function(selectedDate) {
+                $("#end_date").datepicker("option", "minDate", selectedDate);
+            }
     	});
     	
     	$("#end_date").datepicker({
@@ -26,9 +31,23 @@
   	    	dateFormat: "yy-mm-dd"
   		});
     	
-    	var searchVO = {};
-    	searchVO.recruitId = ${recruitNum};
-    	$.ajax({
+    	$("#btn-search").click(function(e){
+    		e.preventDefault();
+    		updateResumeList(false);
+    	});
+    	
+    	$("#btn-reset").click(function(e){
+    		e.preventDefault();
+    		resetForm();
+    	});
+    	
+    	updateResumeList();
+	});
+	
+	function updateResumeList(){
+    	var searchVO = createSearchVO();
+    	console.log(searchVO);
+		$.ajax({
     		url: "${pageContext.request.contextPath}/api/manage/resumes.do",
             method: 'GET',
             data: searchVO,
@@ -45,16 +64,12 @@
                 $("#sodr_list tbody").html('<tr><td colspan="10" style="font-size: 16px; font-weight: bold;">데이터를 불러오는 데 실패했습니다.</td></tr>');
             }
     	});
-	});
+	}
 	
-	// 테이블에 데이터를 채우는 함수
 	function populateTable(data) {
 	    var tableBody = document.querySelector("#sodr_list tbody");
 	    
-	    // 기존 데이터 삭제
 	    tableBody.innerHTML = "";
-	    
-	    // 새 데이터 추가
 	    for (var i = 0; i < data.length; i++) {
 	        var item = data[i];
 	        var row = document.createElement("tr");
@@ -78,6 +93,42 @@
 	        tableBody.appendChild(row);
 	    }
 	}
+	
+	function createSearchVO() {
+	    var searchVO = {};
+    	searchVO.recruitId = ${recruitNum};
+    	searchVO.startNum = 1;
+    	searchVO.endNum = 10;
+	    searchVO.category = document.querySelector('select[name="category"]').value;
+	    searchVO.keyword = document.querySelector('input[name="keyword"]').value;
+	    searchVO.startDate = document.getElementById('start_date').value;
+	    searchVO.endDate = document.getElementById('end_date').value;
+	    var deliveryRadios = document.querySelectorAll('input[name="delivery"]');
+	    for (var i = 0; i < deliveryRadios.length; i++) {
+	        if (deliveryRadios[i].checked) {
+	            searchVO.career = deliveryRadios[i].value;
+	            break;
+	        }
+	    }
+
+	    var purchaseRadios = document.querySelectorAll('input[name="purchase"]');
+	    for (var i = 0; i < purchaseRadios.length; i++) {
+	        if (purchaseRadios[i].checked) {
+	            searchVO.endSchool = purchaseRadios[i].value;
+	            break;
+	        }
+	    }
+
+	    return searchVO;
+	}
+	
+	function resetForm() {
+        $('select[name="category"]').prop('selectedIndex', 0);
+        $('input[name="keyword"]').val('');
+        $('#start_date, #end_date, #date').val('');
+        $('input[name="delivery"][value="0"]').prop('checked', true);
+        $('input[name="purchase"][value=""]').prop('checked', true);
+    }
 </script>
 <!-- golgolz start -->
 <link href="http://localhost//recruit-app/assets/css/pagenation.css" rel="stylesheet" />
@@ -139,6 +190,7 @@
 												<option value="0">이름</option>
 												<option value="1">제목</option>
 												<option value="2">내용</option>
+												<option value="3">거주지</option>
 										</select> 
 										<input type="text" name="keyword" value="" class="frm_input" size="30">
 									</td>
@@ -155,7 +207,7 @@
 									<th scope="row">경력</th>
 									<td>
 										<label class="od_status">
-											<input type="radio" name="delivery" value="0"> 전체
+											<input type="radio" name="delivery" value="0" checked> 전체
 										</label> 
 										<label class="od_status">
 											<input type="radio" name="delivery" value="1"> 신입
@@ -169,7 +221,7 @@
 									<th scope="row">최종 학력</th>
 									<td>
 										<label class="od_status">
-											<input type="radio" name="purchase" value="0"> 전체
+											<input type="radio" name="purchase" value="" checked> 전체
 										</label>
 										<label class="od_status">
 											<input type="radio" name="purchase" value="1"> 고등학교
@@ -188,22 +240,12 @@
 										</label> 
 									</td>
 								</tr>
-								<tr>
-									<th scope="row">거주지</th>
-									<td>
-										<select name="category">
-												<option value="0">서울</option>
-												<option value="1">강원</option>
-												<option value="2">충북</option>
-										</select> 
-									</td>
-								</tr>
 							</tbody>
 						</table>
 					</div>
 					<div class="btn_confirm">
-					    <input type="submit" value="검색" class="btn btn-secondary btn-sm"/>
-						<input type="submit" value="초기화" class="btn btn-outline-secondary btn-sm"/>
+					    <input type="submit" id="btn-search" value="검색" class="btn btn-secondary btn-sm"/>
+						<input type="submit" id="btn-reset" value="초기화" class="btn btn-outline-secondary btn-sm"/>
 					</div>
 				</form>
 				<div class="local_ov mart30">

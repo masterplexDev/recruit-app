@@ -45,6 +45,12 @@ public class ResumeAdminController {
         return resumes;
     }
 
+    @GetMapping("/api/manage/resume/counts.do")
+    @ResponseBody
+    public int searchResumeCount(@ModelAttribute SearchVO searchVO) {
+        return resumeAdminService.searchResumeCount(searchVO);
+    }
+
     @GetMapping("/api/manage/resumes/detail.do")
     @ResponseBody
     public ResumeDomain searchOneResume(@RequestParam String resumeNum) {
