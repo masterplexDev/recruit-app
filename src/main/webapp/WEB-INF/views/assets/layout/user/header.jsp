@@ -42,15 +42,6 @@
               <li
                 class="Menu_MenuItem__wI1yA"
                 data-attribute-id="gnb"
-                data-gnb-kind="community"
-              >
-                <a href="http://localhost/recruit-app/resumes.do"
-                  ><span>이력서관리</span></a
-                >
-              </li>
-              <li
-                class="Menu_MenuItem__wI1yA"
-                data-attribute-id="gnb"
                 data-gnb-kind="resume"
               >
                 <a href="https://www.wanted.co.kr/cv/list"
