@@ -31,14 +31,19 @@ public class NoticeUserService {
     // }
 
     public List<NoticeUserDomain> searchNoticesByCategory(String category) {
-        System.out.println("=============" + category);
         List<NoticeUserDomain> result = noticeUserDAO.selectNoticesByCategory(category);
         // noticeList = noticeUserDAO.selectNoticesByCategory(category);
-        System.out.println("=====?????????========" + result);
         return result;
     }
 
-
+    public Object searchNoticesbyKeyword(String keyword) {
+        try {
+            Object result = noticeUserDAO.selectNoticesbyKeyword(keyword);
+            return result;
+        } catch (Exception e) {
+            throw new RuntimeException("오류 발생", e);
+        }
+    }
 
     public NoticeUserDomain searchOneNotice(int notice_num) {
         NoticeUserDomain noticeDetail = null;

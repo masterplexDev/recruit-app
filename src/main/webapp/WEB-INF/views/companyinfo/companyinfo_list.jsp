@@ -8,13 +8,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="icon" href="http://192.168.10.216/spring_mvc/common/favicon.ico"/>
+<link rel="icon" href="http://211.63.89.138/spring_mvc/common/favicon.ico"/>
 <!--bootstrap 시작-->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <!--bootstrap 끝-->
-<link rel="stylesheet" href="http://192.168.10.216/spring_mvc/common/css/main.css" type="text/css" media="all" />
-<link rel="stylesheet" href="http://192.168.10.216/spring_mvc/common/css/board.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://211.63.89.138/spring_mvc/common/css/main.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://211.63.89.138/spring_mvc/common/css/board.css" type="text/css" media="all" />
 <!--jQuery CDN 시작-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <!--jQuery CDN 끝-->
@@ -31,23 +31,26 @@
 <div>
 입력하신 부서번호 [<strong><c:out value="${ param.companyCode }"/></strong>번]의 사원정보 검색결과<br>
 <c:catch var="e">
+<c:if test="${not empty requestScope.companyDetail}">
+    <c:set var="companyIntroDetail" value="${requestScope.companyDetail[0]}" /> <%-- 변수 설정 --%>
+</c:if>
 <table class="table table-hover">
 <tr>
-<th style="width: 80px">기업코드</th>
-<th style="width: 200px">기업명</th>
-<th style="width: 120px">기업로고</th>
-<th style="width: 120px">매출액</th>
-<th style="width: 200px">사원수</th>
-<th style="width: 200px">등록일</th>
-<th style="width: 200px">등록일</th>
-<th style="width: 200px">등록일</th>
-<th style="width: 200px">등록일</th>
-<th style="width: 200px">등록일</th>
-<th style="width: 200px">등록일</th>
-<th style="width: 200px">등록일</th>
-<th style="width: 200px">등록일</th>
-<th style="width: 200px">등록일</th>
-<th style="width: 200px">등록일</th>
+<th style="width: 80px">companyCode</th>
+<th style="width: 200px">companyName</th>
+<th style="width: 120px">logo</th>
+<th style="width: 120px">companyImg</th>
+<th style="width: 200px">description</th>
+<th style="width: 200px">headcount</th>
+<th style="width: 200px">revenue</th>
+<th style="width: 200px">ceoName</th>
+<th style="width: 200px">addr</th>
+<th style="width: 200px">establishmentDate</th>
+<th style="width: 200px">inputDate</th>
+<th style="width: 200px">category</th>
+<th style="width: 200px">welfareContent</th>
+<th style="width: 200px">baseDate</th>
+<th style="width: 200px">historyContent</th>
 </tr>
 <c:if test="${ empty requestScope.companyDetail }">
 <tr>
@@ -56,8 +59,48 @@
 </td>
 </tr>
 </c:if>
-<c:forEach var="company" items="${requestScope.companyDetail}" varStatus="status">
-    <c:if test="${status.index < fn:length(requestScope.companyDetail)}"> <%-- 리스트 크기만큼만 반복 --%>
+  <c:if test="${not empty requestScope.companyDetail}">
+        <tr> <%-- 첫 번째 행은 companyDetail의 첫 번째 요소만 출력 --%>
+            <td><c:out value="${companyIntroDetail.companyCode}"/></td>
+            <td><c:out value="${companyIntroDetail.companyName}"/></td>
+            <td><c:out value="${companyIntroDetail.logo}"/></td>
+            <td><c:out value="${companyIntroDetail.companyImg}"/></td>
+            <td><c:out value="${companyIntroDetail.description}"/></td>
+            <td><c:out value="${companyIntroDetail.headcount}"/></td>
+            <td><c:out value="${companyIntroDetail.revenue}"/></td>
+            <td><c:out value="${companyIntroDetail.ceoName}"/></td>
+            <td><c:out value="${companyIntroDetail.addr}"/></td>
+            <td><c:out value="${companyIntroDetail.establishmentDate}"/></td>
+            <td><c:out value="${companyIntroDetail.inputDate}"/></td>
+            <%-- 나머지 셀은 빈 칸으로 남겨두기 --%>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </c:if>
+
+    <c:forEach var="company" items="${requestScope.companyDetail}"> 
+        <tr> <%-- 두 번째 행부터는 category 아래 데이터만큼 반복 --%>
+            <td></td> <%-- 첫 열부터 10열까지는 빈 칸으로 남겨두기 --%>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><c:out value="${company.category}"/></td>
+            <td><c:out value="${company.welfareContent}"/></td>
+            <td><c:out value="${company.baseDate}"/></td>
+            <td><c:out value="${company.historyContent}"/></td>
+        </tr>
+    </c:forEach>
+<%-- <c:forEach var="company" items="${requestScope.companyDetail}" varStatus="status">
+    <c:if test="${status.index < fn:length(requestScope.companyDetail)}"> 리스트 크기만큼만 반복
     <tr>
         <td><c:out value="${company.companyCode}"/></td>
         <td><c:out value="${company.companyName}"/></td>
@@ -76,7 +119,7 @@
         <td><c:out value="${company.historyContent}"/></td>
     </tr>
     </c:if>
-</c:forEach>
+</c:forEach> --%>
 <tr>
 <%-- <td><c:out value="${ company.companyCode }"/></td> requestScope.listCompanyinfo
 <td><c:out value="${ company.companyName }"/></td>

@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     info=""%>
- <%
+ <%-- <%
     response.sendRedirect("main/main.do");
-%> 
+%>  --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,6 +36,7 @@
 			<a href="http://localhost/recruit-app/review/reviewResult.do"> 리뷰 페이지 |</a>
 			<a href="http://localhost/recruit-app/review/reviewWrite.do"> 리뷰 작성 |</a> <br>
 			<a href="http://localhost/recruit-app/manage/dashboard/dashboard.do"> 대시보드 |</a>
+			<a href="http://localhost/recruit-app/manage/review/review.do"> 관리자리뷰 |</a>
 			
 			<!-- golgolz end -->
 			</section>

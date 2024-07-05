@@ -1,6 +1,5 @@
 package kr.co.sist.admin.dao.basic;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.apache.ibatis.session.SqlSession;
@@ -8,6 +7,7 @@ import org.springframework.stereotype.Component;
 import kr.co.sist.admin.domain.basic.AdminInfoDomain;
 import kr.co.sist.admin.domain.basic.AdminLoginDomain;
 import kr.co.sist.admin.vo.basic.InsertAdminVO;
+import kr.co.sist.admin.vo.basic.SearchVO;
 import kr.co.sist.properties.MyBatisConfig;
 
 @Component
@@ -28,17 +28,31 @@ public class AdminBasicDAO {
         return ld;
     }// selectLogin
 
-    public List<AdminInfoDomain> selectAdminList() {
-        List<AdminInfoDomain> list = new ArrayList<AdminInfoDomain>();
+    public List<AdminInfoDomain> selectAdminList(SearchVO sVO) {
 
         SqlSession ss = myBatis.getMyBatisHandler(false);
 
-        list = ss.selectList("kr.co.sist.mapper.admin.basic.adminMapper.selectAdminList");
+        List<AdminInfoDomain> list =
+                ss.selectList("kr.co.sist.mapper.admin.basic.adminMapper.selectAdminList", sVO);
 
+        System.out.println(sVO.getStartNum() + " : " + sVO.getEndNum());
+        for (AdminInfoDomain aid : list) {
+            System.out.println(aid.getAdminId());
+        }
         myBatis.closeHandler(ss);
 
         return list;
     }// selectAdminList
+
+    public int selectAdminCnt(SearchVO sVO) {
+        SqlSession ss = myBatis.getMyBatisHandler(false);
+
+        int cnt = ss.selectOne("kr.co.sist.mapper.admin.basic.adminMapper.selectAdminCnt", sVO);
+
+        myBatis.closeHandler(ss);
+
+        return cnt;
+    }// selectAdminCnt
 
     public int insertAdmin(InsertAdminVO iVO) {
         SqlSession ss = myBatis.getMyBatisHandler(false);
@@ -53,5 +67,16 @@ public class AdminBasicDAO {
 
         return cnt;
     }// insertAdmin
+
+    public AdminInfoDomain selectAdminInfo(String adminId) {
+        SqlSession ss = myBatis.getMyBatisHandler(false);
+
+        AdminInfoDomain adminInfo =
+                ss.selectOne("kr.co.sist.mapper.admin.basic.adminMapper.selectAdminInfo", adminId);
+
+        myBatis.closeHandler(ss);
+
+        return adminInfo;
+    }
 
 }

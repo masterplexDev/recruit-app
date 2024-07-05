@@ -47,14 +47,14 @@
 							</colgroup>
 							<tbody>
 								<tr>
-									<th scope="row">직무별 검색</th>
+									<th scope="row">기업명</th>
 									<td><input type="hidden" name="page" value="1" />
-										<select name="category">
+										<%-- <select name="category">
 											<option value="0" ${param.category eq '0' ? " selected" : "" }>기업코드</option>
 											<option value="1" ${param.category eq '1' ? " selected" : "" }>기업명</option>
 											<option value="2" ${param.category eq '2' ? " selected" : "" }>공고명</option>
 											<option value="3" ${param.category eq '3' ? " selected" : "" }>근무지역</option>
-										</select> 
+										</select>  --%>
 										<input type="text" name="keyword" value="${ param.keyword }" class="frm_input" size="30">
 									</td>
 								</tr>

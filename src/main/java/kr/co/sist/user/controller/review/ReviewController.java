@@ -30,7 +30,7 @@ public class ReviewController {
     @Autowired(required = false)
     private ReviewService reviewService;
 
-    //리뷰 화면 출력
+  //리뷰 화면 출력
     @GetMapping("/review/reviewResult.do")
     public String reviewScreen(
         @RequestParam(value = "companyCode", defaultValue = "comp_0001") String companyCode,
@@ -50,11 +50,15 @@ public class ReviewController {
             }
         }
         
+        // 회사 정보 가져오기
+        CompanyInfoVO companyInfo = reviewService.getCompanyDetailsByCode(companyCode);
+
         model.addAttribute("reviewScreenOutput", reviewScreenOutput);
         model.addAttribute("reviewQuestionsMap", reviewQuestionsMap);
         model.addAttribute("companyCode", companyCode);
         model.addAttribute("currentPage", page);
-        
+        model.addAttribute("companyInfo", companyInfo); // 회사 정보 모델에 추가
+
         // reviewNum이 null이 아닌 경우에만 모델에 추가
         if (reviewNum != null) {
             model.addAttribute("reviewNum", reviewNum);

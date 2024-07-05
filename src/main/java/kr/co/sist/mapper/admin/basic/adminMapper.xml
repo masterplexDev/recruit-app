@@ -14,13 +14,43 @@
 		from admin
 		where admin_id=#{ adminId }
   </select>
-  <select id="selectAdminList" resultMap="adminInfoResultMap">
-  		select position,admin_id,authority
-		from admin
-		where 1=1 and position!='슈퍼'
-		OFFSET 0 ROWS FETCH NEXT 10 ROWS ONLY
+  <select id="selectAdminList" resultMap="adminInfoResultMap" parameterType="kr.co.sist.admin.vo.basic.SearchVO">
+  		select rnum,position,admin_id,authority
+  		from (
+  			select row_number() over(order by input_date asc) as rnum,position,admin_id,authority
+			from admin
+			<where>
+			position!='슈퍼'
+			<if test="keyword != null and keyword != ''">
+				and admin_id like '%'||#{ keyword }||'%'
+			</if>
+			</where>
+			)
+		<where>
+			<if test="startNum != 0 and endNum != 0">
+				rnum between #{startNum} and #{endNum}
+			</if>
+		</where>
+  </select>
+  <select id="selectAdminCnt" resultType="int" parameterType="kr.co.sist.admin.vo.basic.SearchVO">
+  		select count(*) as total_count
+  		from (
+  			select row_number() over(order by input_date asc) as rnum,position,admin_id,authority
+			from admin
+			<where>
+			position!='슈퍼'
+			<if test="keyword != null and keyword != ''">
+				and admin_id='%'||#{ keyword }||'%'
+			</if>
+			</where>
+			)
   </select>
   <insert id="insertAdmin" parameterType="kr.co.sist.admin.vo.basic.InsertAdminVO">
-  		insert into admin(admin_id,password,authority) values(#{ adminId },#{ password },#{ authority });
+  		insert into admin(admin_id,password,authority) values(#{ adminId },#{ password },#{ authority })
   </insert>
+  <select id="selectAdminInfo" resultMap="adminInfoResultMap" parameterType="String">
+  		select admin_id,position,authority
+  		from admin
+  		where admin_id=#{ adminId }
+  </select>
  </mapper>

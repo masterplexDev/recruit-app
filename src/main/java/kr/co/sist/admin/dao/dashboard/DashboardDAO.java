@@ -5,7 +5,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import kr.co.sist.admin.vo.dashboard.RegisteredCompanyCountVO;
+import kr.co.sist.admin.vo.dashboard.ReviewCountVO;
 import kr.co.sist.admin.vo.dashboard.SignupCountVO;
+import kr.co.sist.admin.vo.dashboard.SkillCountVO;
 import kr.co.sist.properties.MyBatisConfig;
 
 @Component
@@ -35,5 +37,24 @@ public class DashboardDAO {
         myBatis.closeHandler(ss);
         return result;
     }
+    
+    // 기술 스택 수
+    public List<SkillCountVO> getSkillCounts() {
+        SqlSession ss = myBatis.getMyBatisHandler(false);
+        List<SkillCountVO> result = 
+                ss.selectList("kr.co.sist.mapper.dashboard.DashboardMapper.getSkillCounts");
+        myBatis.closeHandler(ss);
+        return result;
+    }
+    
+    // 최근 6개월 리뷰 수
+    public List<ReviewCountVO> getReviewCountsForLastSixMonths() {
+        SqlSession ss = myBatis.getMyBatisHandler(false);
+        List<ReviewCountVO> result = 
+                ss.selectList("kr.co.sist.mapper.dashboard.DashboardMapper.getReviewCountsForLastSixMonths");
+        myBatis.closeHandler(ss);
+        return result;
+    }
+    
     
 }

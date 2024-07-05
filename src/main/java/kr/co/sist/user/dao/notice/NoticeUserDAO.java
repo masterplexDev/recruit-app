@@ -22,50 +22,52 @@ public class NoticeUserDAO {
                 session.selectList("kr.co.sist.notice.user.selectNotices");
         myBatis.closeHandler(session);
         return noticeList;
-    }
-
-    // public List<NoticeUserDomain> selectNoticesByCategory(String category) {
-    // SqlSession session = myBatis.getMyBatisHandler(false);
-    // List<NoticeUserDomain> noticeList =
-    // session.selectList("kr.co.sist.notice.user.selectNoticesByCategory", category);
-    // myBatis.closeHandler(session);
-    // return noticeList;
-    // }
+    }// 공지사항 전체 리스트 불러오기
 
     public List<NoticeUserDomain> selectNoticesByCategory(String category) {
         SqlSession session = myBatis.getMyBatisHandler(false);
         try {
-            System.out.println("=============" + category);
-            // MyBatis를 통해 SQL 실행
-            List<NoticeUserDomain> noticeList =
-                    session.selectList("kr.co.sist.notice.user.selectNoticesByCategory", category);
+            if ("전체".equals(category)) {
+                List<NoticeUserDomain> noticeList =
+                        session.selectList("kr.co.sist.notice.user.selectNotices");
+                for (NoticeUserDomain notice : noticeList) {
+                }
+                return noticeList; // 결과 리스트
+            } else {
+                List<NoticeUserDomain> noticeList = session
+                        .selectList("kr.co.sist.notice.user.selectNoticesByCategory", category);
+                for (NoticeUserDomain notice : noticeList) {
 
-            System.out.println("===== 결과 리스트 ========");
-            for (NoticeUserDomain notice : noticeList) {
-                System.out.println(notice);
+                }
+                return noticeList;
             }
-            return noticeList; // 결과 리스트
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException("공지사항 조회 중 오류 발생", e);
+        } finally {
+            myBatis.closeHandler(session);
+        }
+    }// 공지사항 카테고리로 불러오기
+
+    public Object selectNoticesbyKeyword(String keyword) {
+        SqlSession session = myBatis.getMyBatisHandler(false);
+        try {
+            List<NoticeUserDomain> noticeList =
+                    session.selectList("kr.co.sist.notice.user.selectNoticesbyKeyword", keyword);
+            if (noticeList.isEmpty()) {
+                return null; // 검색결과없음
+            } else if (noticeList.size() == 1) {
+                return noticeList.get(0); // 검색결과 공지사항 하나
+            } else {
+                return noticeList; // 검색결과 공지사항 리스트
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("공지사항 조회 중 오류 발생", e);
+        } finally {
+            myBatis.closeHandler(session);
         }
     }
 
-    // public List<NoticeUserDomain> selectNotices(String category) {
-    // SqlSession session = myBatis.getMyBatisHandler(false);
-    // List<NoticeUserDomain> noticeList;
-    // try {
-    // if (category != null && !category.isEmpty() && !"전체".equals(category)) {
-    // noticeList = session.selectList(
-    // "kr.co.sist.user.domain.notice.selectNoticesByCategory", category);
-    // } else {
-    // noticeList = session.selectList("kr.co.sist.user.domain.notice.selectNotices");
-    // }
-    // } finally {
-    // myBatis.closeHandler(session);
-    // }
-    // return noticeList;
-    // }
 
     public NoticeUserDomain selectOneNotice(int notice_num) {
         SqlSession session = myBatis.getMyBatisHandler(false);
@@ -73,6 +75,6 @@ public class NoticeUserDAO {
                 session.selectOne("kr.co.sist.notice.user.selectOneNotice", notice_num);
         myBatis.closeHandler(session);
         return noticeDtail;
-    }
+    }// 공지사항 상세조회
 
 }

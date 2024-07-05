@@ -51,30 +51,21 @@
     </select>
     
     <select id="selectCompanyinfoDetail" resultMap="companyInfoResultMap" parameterType="String">
-    	SELECT
-		    ci.COMPANY_CODE,
-		    ci.COMPANY_NAME,
-		    ci.LOGO,
-		    ci.COMPANY_IMG,
-		    ci.DESCRIPTION,
-		    ci.HEADCOUNT,
-		    ci.COMPANY_CLASSIFICATION,
-		    ci.REVENUE,
-		    ci.CEO_NAME,
-		    ci.ADDR,
-		    ci.ESTABLISHMENT_DATE,
-		    ci.INPUT_DATE,
-		    w.CATEGORY,
-		    w.WELFARE_CONTENT,
-		    h.BASE_DATE,
-		    h.HISTORY_CONTENT
-		FROM
-		    COMPANYINFO ci
-		LEFT JOIN
-		    WELFARE w ON ci.COMPANY_CODE = w.COMPANY_CODE
-		LEFT JOIN
-		    HISTORY h ON ci.COMPANY_CODE = h.COMPANY_CODE
-		WHERE    
-			ci.COMPANY_CODE = #{companyCode}
+    	SELECT COMPANY_CODE,COMPANY_NAME,LOGO,COMPANY_IMG,DESCRIPTION,HEADCOUNT,COMPANY_CLASSIFICATION,REVENUE,CEO_NAME,ADDR,ESTABLISHMENT_DATE,INPUT_DATE
+    	FROM COMPANYINFO
+    	WHERE COMPANY_CODE = #{companyCode}
     </select>
+    
+    <select id="selectHistory" resultMap="companyInfoResultMap" parameterType="String">
+    	SELECT COMPANY_CODE,BASE_DATE,HISTORY_CONTENT
+    	FROM HISTORY
+    	WHERE COMPANY_CODE = #{companyCode}
+    </select>
+    
+    <select id="selectWelfare" resultMap="companyInfoResultMap" parameterType="String">
+    	SELECT COMPANY_CODE,CATEGORY,WELFARE_CONTENT
+    	FROM WELFARE
+    	WHERE COMPANY_CODE = #{companyCode}
+    </select>
+
 </mapper>
